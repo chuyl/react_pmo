@@ -1,0 +1,1 @@
+export const ZOOM_IN = 'zoom_in';

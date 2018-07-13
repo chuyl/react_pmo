@@ -1,0 +1,64 @@
+.dialog_open{
+    position: absolute;
+    bottom: 50px;
+    right: 10px;
+    padding: 10px;
+    background-color: yellow;
+    z-index: 10;
+}
+// .dialog_window{
+//     width: 300px;
+//     height: 500px;
+//     margin: auto;
+//     bottom: 100px;
+//     z-index: 20;
+// }
+.dialog_window{
+    margin: 0;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        padding: 0;
+        background-color:palevioletred;
+        transition: all .3s;
+        height: 0;
+        width: 0%;
+        z-index: 20;
+  }
+  .dialog_window.open{
+    margin: 0;
+    width: 35%;
+    position: fixed;
+    bottom: 5px;
+    height: 500px;
+    background-color:palevioletred;
+    /* height: 600px; js代替 */
+    right: 5px;
+    z-index: 20;
+  }
+@media only screen and (max-width:768px ){
+    .dialog_window{
+        margin: 0;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        padding: 0;
+        background-color:palevioletred;
+        transition: all .3s;
+        height: 0;
+        width: 0%;
+        z-index: 20;
+    
+      }
+    .dialog_window.open{
+        margin: 0;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        height: 100vh;
+        background-color:palevioletred;
+        /* height: 600px; js代替 */
+        right: 0;
+        z-index: 20;
+      }
+}

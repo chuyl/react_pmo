@@ -1,0 +1,185 @@
+.App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
+  }
+  
+  .App-header {
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
+  }
+  
+  .App-title {
+    font-size: 1.5em;
+  }
+  
+  .App-intro {
+    font-size: large;
+  }
+  
+  @keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  html, body{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    overflow: hidden;
+    height: 100%;
+  }
+  .container{
+    //width: 1200px;
+    width: 60%;
+    float: left;
+    margin: 0 auto;
+    background-color: #dedee3;
+    overflow-y: scroll;
+    overflow-x: hidden; 
+    height: 90vh;
+  }
+  .container.fixed{
+    overflow-y: hidden;
+  }
+  .container::before{
+    content: "";
+    display: table;
+  }
+  .img{
+    width: 320px;
+    height:170px;
+    background-color: blueviolet;
+  }
+  .card{
+    margin: 1rem;
+    padding: 0;
+    background-color:darkseagreen;
+    height: 256px;
+    overflow: hidden; 
+    transition: all .3s;
+    width: 100%;
+  }
+  .card.open{
+    margin: 0;
+    
+    position: fixed;
+    top: 0;
+    background-color:#427881;
+    /* height: 600px; js代替 */
+    left: 0;
+    z-index: 10;
+  }
+  
+  .bar{
+    position: fixed;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+    background-color: black;
+  }
+  .bar .btn{
+    font-size: 24px;
+    line-height: 80px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    float: right;
+    padding: 0 1em;
+    cursor: pointer;
+  }
+  .bar .btn:hover{
+    background-color: #ffffff;
+    color: #000;   
+  }
+  .sidebar{
+    display: flex;
+    z-index: 1300;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    flex: 1 0 auto;
+  }
+.modal_backdrop{
+  z-index: 15;
+  position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000000;
+    opacity:.5;
+    transition: width all .5s;
+}
+.couter_control{
+  position: absolute;
+  height: 100%;
+  width: 250px;
+  overflow: hidden;
+  z-index: 1000;
+  background-color: #ffffff;
+  transition: width .2s;
+
+}
+
+.footer_position{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  line-height: 36px;
+  z-index: 100;
+  background-color: pink;
+}
+.router_screen{
+  display: block
+  }
+  .router_button{
+    display: none
+    }
+    .box1 {
+      width: 250px;
+      height: 100px;
+      background-color: green;
+      overflow: hidden;
+      transition: width .2s;
+    }
+    .fade-leave.fade-leave-active, .fade-enter {
+      width: 0;
+      left: 0;
+    }
+    
+    .fade-enter.fade-enter-active, .fade-leave {
+      width: 250px;
+      left: 0;
+    }
+    .card_list_div{
+      width: 60%;
+      float: left;
+    }
+    .selected_card{
+      border: 1px solid,palegreen;
+
+    }
+@media only screen and (max-width:768px ){
+.router_screen{
+display: none
+}
+.router_button{
+  display: block;
+  float: left;
+  }
+  .container{
+    width: 100%;
+  }
+  .card_list_div{
+    width: 100%;
+  }
+  .selected_card{
+    border: 1px solid,palegreen;
+    
+  }
+}

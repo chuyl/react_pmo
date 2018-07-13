@@ -1,0 +1,46 @@
+.card_box{
+    margin-left: 1rem;
+    padding: 0;
+    background-color:yellowgreen;
+    height: 90vh;
+    overflow: hidden; 
+    transition: all .3s;
+    float: left;
+    width: 35%;
+  }
+  .card_box.open{
+   // margin: 0;
+    
+  }
+  
+@media only screen and (max-width:768px ){
+    .select_card{
+        position: relative;
+        background-color: palegoldenrod;
+    }
+    .card_box{
+        margin: 0;
+        position: fixed;
+        left: 0;
+        top: 0;
+        padding: 0;
+        background-color:yellowgreen;
+        overflow: hidden; 
+        transition: all .3s;
+        float: left;
+        height: 0;
+        width: 0%;
+        z-index: 10;
+    
+      }
+    .card_box.open{
+        margin: 0;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        background-color:yellowgreen;
+        /* height: 600px; js代替 */
+        left: 0;
+        z-index: 10;
+      }
+}
