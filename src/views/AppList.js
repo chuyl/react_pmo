@@ -9,14 +9,10 @@ class AppList extends Component {
     selected_card:[],
     card_state:false,
 }
-// render(){
-//   return(
-//     <Router history={browserHistory} routes={routes} />
-//   )
-   
-// }
-card_box_concent(selected_card){
- // console.log(document.body.clientWidth)
+card_box_concent(selected_card,e){
+  console.log(e.clientLeft)
+  console.log(e.clientTop)
+  //console.log(this.offsetLeft)
     this.setState({
       selected_card:selected_card,
       card_state:true
@@ -39,16 +35,19 @@ card_box_close = () =>{
     return (
       <div>
         <div id="root1" className="container">
-      {this.state.card_list.map(card_list=> {
+           {this.state.card_list.map(card_list=> {
                 return <Card
-                action={[() => {
-                  this.card_box_concent(card_list)
+                action={[(e) => {
+                  // console.log(this.offsetLeft)
+                  
+                  this.card_box_concent(card_list,e)
                   }]}
                  key={card_list.root} root={card_list.root} name={card_list.name} card={card_list.card}/> 
             })}
       </div>
       <div id="card_box" className={this.state.card_state?"card_box open":"card_box"}>
       <i onClick={this.card_box_close} style={{fontSize:"20px"}} className="glyphicon glyphicon-arrow-left"></i>
+       {/* <input type="date"/> */}
       {/* <img alt="fengjing" src={Boximg}/> */}
       {this.state.selected_card.root}</div>
       </div>

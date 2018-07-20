@@ -2,13 +2,14 @@ import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import TabsControl from './components/Tab'
-import AppList from './views/AppList'
+import Routers from './components/Routers'
 import {
     HashRouter,
-    Route,
     Link,
   } from 'react-router-dom';
 import './css/style.css'
+import Lang from './language'
+
 // window.onresize = function(){
 //   console.log(document.body.clientWidth)
   
@@ -28,16 +29,10 @@ class App extends Component {
     render() {
       return (
         <div style={{height:"100%",width:"100%"}}>
-          <div>列表</div>
-          
           <HashRouter>
           <App>
-          <Route exact path="/home" component={AppList} />
-          <Route path="/about" component={About} />
-          <Route path="/inbox" component={Inbox} /> 
-          <Route exact path="/home1" component={AppList} />
-          <Route path="/about1" component={About} />
-          <Route path="/inbox1" component={Inbox} />                         
+            <Routers/>
+          {/* <Route exact path="/bidding_plan" component={AppList} />*/}
           </App>
           </HashRouter>
          
@@ -46,37 +41,8 @@ class App extends Component {
       );
     }
   }
-  //手机端footer
-  // class Footer extends Component {
-  //   render() {
-  //     return (
-  //       <div className="footer_position">home</div>
-  //       // <table>
-  //       //   <tr>
-  //       //     <td>home</td><td>about</td><td>inbox</td>
-  //       //   </tr>
-  //       // </table>
-  //     );
-  //   }
-  // }
-  const About = () => (
-    <div>
-      <h3>About</h3>
-    </div>
-  )
-  const Message = ({ match }) => (
-    <div>
-      <h3>new messages</h3>
-      <h3>{match.params.id}</h3>
-    </div>
-  )
-  const Inbox = ({ match }) => (
-    <div>
-      <h2>Topics</h2>
-      <Route path={`${match.url}/messages/:id`} component={Message}/>
-   
-    </div>
-  )
+
+
   //选项卡&路由
 class TabComponent extends Component{
   constructor(  ){
@@ -86,43 +52,21 @@ class TabComponent extends Component{
       couter:false,
       show: false,
       dialog_show:false,
-      router_list_first:[{path:"/home",title:"home"},
-      {path:"/about",title:"about"},
-      {path:"/inbox",title:"inbox"}],
-      router_list_second:[{path:"/home1",title:"home1"},
-      {path:"/about1",title:"about1"},
-      {path:"/inbox1",title:"inbox1"}]
 		}
   }
-  // componentWillMount(){
-  //   console.log(document.body.clientHeight)
-  // }
+
     //路由激活状态
     check_router_index( index ){
       return index === this.state.currentIndex ? "tab_title active" : "tab_title"
     }
-  // router_list_first(){
-  //   var components = [];
-  //   var router_lists = [{path:"/home",title:"home"},
-  //                      {path:"/about",title:"about"},
-  //                      {path:"/inbox",title:"inbox"}];
-  //      router_lists.map((router_list)=>{
-  //       return(
-  //         components.push(
-  //           <li key={router_list.title} onClick={ () => { this.setState({ currentIndex :router_list.title}) } } className={ this.check_router_index(router_list.title) }><Link to={router_list.path}>{router_list.title}</Link></li>
-  //        )
-  //       )
-  //      }
-  //     );
-  //      return components
-  // }
+
   router_lists(router_lists){
     var components = [];
     
        router_lists.map((router_list)=>{
         return(
           components.push(
-            <li key={router_list.title} onClick={ () => { this.setState({ currentIndex :router_list.title}) } } className={ this.check_router_index(router_list.title) }><Link to={router_list.path}>{router_list.title}</Link></li>
+            <li key={router_list.title} onClick={ () => { this.setState({ currentIndex :router_list.path}) } } className={ this.check_router_index(router_list.path) }><Link to={router_list.path}>{router_list.title}</Link></li>
          )
         )
        }
@@ -161,26 +105,59 @@ class TabComponent extends Component{
 			<div className="sidebar">
       <div  style={this.state.show===true?{display:"none"}:{}} className="router_screen nav_lists">
       <TabsControl>
-					<div name = "first2">
+					<div name = "项目管理">
                     <HashRouter>
                         <App>
                         <ul>
-                          {this.router_lists(this.state.router_list_first)}
+                          {this.router_lists(Lang.projectManagement)}
                         </ul>  
                         </App>
                     </HashRouter>
 					</div>
-					<div name = "second">
+					<div name = "预决算管理">
           <HashRouter>
                         <App>
                         <ul>
-                        {this.router_lists(this.state.router_list_second)}
+                        {this.router_lists(Lang.budgetAndFinalAccountsManagementcond)}
                         </ul>  
                         </App>
                     </HashRouter>
 					</div>
-					<div name = "third">
-						第三帧
+					<div name = "借款支出管理">
+          <HashRouter>
+                        <App>
+                        <ul>
+                        {this.router_lists(Lang.loanExpenditureManagement)}
+                        </ul>  
+                        </App>
+                    </HashRouter>
+					</div>
+          <div name = "收款管理">
+          <HashRouter>
+                        <App>
+                        <ul>
+                        {this.router_lists(Lang.receivablesManagement)}
+                        </ul>  
+                        </App>
+                    </HashRouter>
+					</div>
+          <div name = "讲师管理">
+          <HashRouter>
+                        <App>
+                        <ul>
+                        {this.router_lists(Lang.lecturerManagement)}
+                        </ul>  
+                        </App>
+                    </HashRouter>
+					</div>
+          <div name = "实施管理">
+          <HashRouter>
+                        <App>
+                        <ul>
+                        {this.router_lists(Lang.implementationManagement)}
+                        </ul>  
+                        </App>
+                    </HashRouter>
 					</div>
 				</TabsControl>
         </div>
@@ -199,26 +176,59 @@ class TabComponent extends Component{
            
              <div style={this.state.show===false?{display:"none"}:{}}  className="couter_control">
           <TabsControl>
-					<div name = "first2">
+					<div name = "项目管理">
                     <HashRouter>
                         <App>
                         <ul>
-                        {this.router_lists(this.state.router_list_first)}
+                        {this.router_lists(Lang.projectManagement)}
                         </ul>  
                         </App>
                     </HashRouter>
 					</div>
-					<div name = "second">
+					<div name = "预决算管理">
 					<HashRouter>
                         <App>
                         <ul>
-                        {this.router_lists(this.state.router_list_second)}
+                        {this.router_lists(Lang.budgetAndFinalAccountsManagementcond)}
                         </ul>  
                         </App>
                     </HashRouter>
 					</div>
-					<div name = "third">
-						第三帧
+					<div name = "借款支出管理">
+          <HashRouter>
+                        <App>
+                        <ul>
+                        {this.router_lists(Lang.loanExpenditureManagement)}
+                        </ul>  
+                        </App>
+                    </HashRouter>
+					</div>
+          <div name = "收款管理">
+          <HashRouter>
+                        <App>
+                        <ul>
+                        {this.router_lists(Lang.receivablesManagement)}
+                        </ul>  
+                        </App>
+                    </HashRouter>
+					</div>
+          <div name = "讲师管理">
+          <HashRouter>
+                        <App>
+                        <ul>
+                        {this.router_lists(Lang.lecturerManagement)}
+                        </ul>  
+                        </App>
+                    </HashRouter>
+					</div>
+          <div name = "实施管理">
+          <HashRouter>
+                        <App>
+                        <ul>
+                        {this.router_lists(Lang.implementationManagement)}
+                        </ul>  
+                        </App>
+                    </HashRouter>
 					</div>
 				</TabsControl>
         </div>
@@ -232,7 +242,7 @@ class TabComponent extends Component{
         <div className="footer_position router_button"> <HashRouter >
                         <App>
                         <ul>
-                        {this.footer_router_lists(this.state.router_list_second)}
+                        {this.footer_router_lists(Lang.budgetAndFinalAccountsManagementcond)}
                         </ul>  
                         </App>
                     </HashRouter></div>
