@@ -9,6 +9,8 @@ import {
   } from 'react-router-dom';
 import './css/style.css'
 import Lang from './language'
+ import config from './config';
+ import {getData,getRouter } from './utils/helpers';
 
 // window.onresize = function(){
 //   console.log(document.body.clientWidth)
@@ -53,6 +55,25 @@ class TabComponent extends Component{
       show: false,
       dialog_show:false,
 		}
+  }
+  componentWillMount() {
+    this.getRoutes();
+  }
+  getRoutes = () => {
+    var cb = (route, message, arg) => {
+      try {
+        if (message.code === 0) {
+          for (var key in message.data.routelist) {
+            sessionStorage.setItem(key, JSON.stringify(message.data.routelist[key]));
+          }
+          var img_url = getRouter("creat_checkcode").url;
+          console.log(img_url)
+         
+        }
+      } catch (e) {
+      }
+    }
+    getData({ url: config.routers }, { type:1, version: config.version }, cb);
   }
 
     //路由激活状态

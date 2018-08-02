@@ -976,6 +976,7 @@ html, body {
   height: 100%; }
 
 .container {
+  padding-top: 1rem;
   width: 60%;
   float: left;
   margin: 0 auto;
@@ -1118,12 +1119,20 @@ html, body {
 .card_box {
   margin-left: 1rem;
   padding: 0;
+  padding-top: 1rem;
   background-color: yellowgreen;
   height: 90vh;
   overflow: hidden;
   transition: all .1s;
   float: left;
   width: 35%; }
+
+.add_button {
+  position: absolute;
+  width: 60%;
+  margin: 0 1rem;
+  top: 0rem;
+  text-align: center; }
 
 @media only screen and (max-width: 768px) {
   .select_card {
@@ -1214,9 +1223,10 @@ html, body {
 
 .add_info_list.open {
   height: 90vh;
-  width: 100%;
+  width: 30%;
+  padding-top: 1rem;
   transition: all .1s;
-  position: absolute;
+  position: fixed;
   top: 0;
   background-color: aquamarine; }
 
@@ -1228,9 +1238,23 @@ html, body {
 .search_info_list.open {
   position: absolute;
   background-color: #fff;
-  width: 173px;
-  min-height: 50px;
+  width: 200px;
+  min-height: 100px;
   overflow-y: scroll; }
+
+.selected_info {
+  width: 200px;
+  background-color: #fff;
+  margin-top: 1rem; }
+
+.add_list_close {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000000;
+  opacity: 0; }
 
 @media only screen and (max-width: 768px) {
   .add_info_list {
@@ -1245,6 +1269,6 @@ html, body {
     width: 100%;
     position: absolute;
     top: 0;
-    background-color: #fff; } }
+    background-color: palegoldenrod; } }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 
 class TextField extends Component {
-  
+    
 	render(){
-        const {id} =this.props;
+        const {id,disabled,inputValue,onChange,onClick,labelValue} =this.props;
 		return (
-           <input id={id}/>
+			<div>
+				<label>{labelValue}</label>
+           <input className={"className"} onClick={onClick} onChange={onChange} defaultValue={inputValue} disabled={disabled} id={id}/>
+		</div>
 		)
 	}
 }

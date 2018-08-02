@@ -1,0 +1,65 @@
+{
+    "token": "agegewg",
+    "api_name": "form-temp",
+    "code": 0,
+    "msg_code": "10010",
+    "msg": "返回成功",
+    "data": {
+        "form-temp-name": "讲师管理",
+        "form-list": [
+            {
+                "type_name": "muti-test",
+                "key": "",
+                "title": "",
+                "tip": "",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            },
+            {
+                "type_name": "simp-test",
+                "key": "",
+                "title": "",
+                "tip": "",
+                "descript": "",
+                "api_uri": ""
+            },
+            {
+                "type_name": "list-test-searche",
+                "key": "",
+                "title": "",
+                "tip": "",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            },
+            {
+                "type_name": "list-test-simp",
+                "key": "",
+                "title": "",
+                "tip": "",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            },
+            {
+                "type_name": "list-num",
+                "key": "",
+                "title": "",
+                "tip": "",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            },
+            {
+                "type_name": "simp-test",
+                "key": "",
+                "title": "",
+                "tip": "",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            }
+        ]
+    }
+}
