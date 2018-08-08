@@ -20,9 +20,8 @@ class ListTextSearch extends Component {
   }
 	render(){
         const {selected_info,id,labelValue}=this.props;
-        console.log(this.state.add_button.data)
 		return (
-            <div>
+            <div className="search_info_list_card"> 
                 
                 <div onClick={()=>{
                     this.searchShow()
@@ -41,12 +40,13 @@ class ListTextSearch extends Component {
              <ul>
                 
                  <li>
-                     <input onChange={(e)=>{
+                     <input className="select_search_input" onChange={(e)=>{
                          this.setState({
                              search_name:e.target.value
                          })
                          
                      }}/><button
+                     className="select_search_button"
                      onClick={()=>{
                         this.setState({
                             search_info_list:[],

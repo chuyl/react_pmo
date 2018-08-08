@@ -67,6 +67,170 @@ class Budget extends Component {
 						"title": "所属项目",
 						"tip": "",
 						"add_button": {
+							"data": {
+								"form-list": [{
+									"id_name":"add_project_name",
+									"type_name": "MutiText", //input
+									"key": "",
+									"title": "项目名称",
+									"tip": "",
+									"add_button": {},
+									"descript": "",
+									"before_api_uri": "",
+									"after_api_uri": ""
+								}, {
+									"id_name":"add_project_gather",
+									"type_name": "ListTextSearch", //下拉搜索
+									"key": "",
+									"title": "所属项目集",
+									"tip": "",
+									"add_button": {
+										"data":{
+											"form-temp-name":"新建项目集",
+											"form-list":[{
+												"id_name":"add_project_gather_charge",
+												"type_name": "ListText", //下拉搜索
+												"key": "",
+												"title": "销售负责人",
+												"tip": "",
+												"add_button": {},
+												"descript": "",
+												"before_api_uri": [{
+													id: 1,
+													name: "亢鹏",
+												}, {
+													id: 2,
+													name: "寇艳艳",
+													budget_cost: 10000
+												}, {
+													id: 3,
+													name: "张剑",
+													budget_cost: 10000
+												}],
+												"after_api_uri": ""
+											}]
+										}
+									},
+									"descript": "",
+									"before_api_uri": [{
+										id: 1,
+										name: "项目集1",
+									}, {
+										id: 2,
+										name: "项目集2",
+									}, {
+										id: 3,
+										name: "项目集3",
+									}],
+									"after_api_uri": ""
+								},
+								{   "id_name":"add_project_charge",
+									"type_name": "ListText", //下拉搜索
+									"key": "",
+									"title": "实施负责人",
+									"tip": "",
+									"add_button": {},
+									"descript": "",
+									"before_api_uri": [{
+										id: 1,
+										name: "亢鹏",
+									}, {
+										id: 2,
+										name: "寇艳艳",
+										budget_cost: 10000
+									}, {
+										id: 3,
+										name: "张剑",
+										budget_cost: 10000
+									}],
+									"after_api_uri": ""},{
+										"id_name":"project_templet",
+										"type_name": "ListTextSearch", //下拉搜索
+										"key": "",
+										"title": "项目模板",
+										"tip": "",
+										"add_button": {
+											"data":{
+												"form-temp-name":"项目模板",
+												"form-list":[{
+													"id_name":"add_project_templet",
+													"type_name": "ListText", //下拉搜索
+													"key": "",
+													"title": "销售负责人1",
+													"tip": "",
+													"add_button": {},
+													"descript": "",
+													"before_api_uri": [{
+														id: 1,
+														name: "亢鹏",
+													}, {
+														id: 2,
+														name: "寇艳艳",
+														budget_cost: 10000
+													}, {
+														id: 3,
+														name: "张剑",
+														budget_cost: 10000
+													}],
+													"after_api_uri": ""
+												}]
+											}
+										},
+										"descript": "",
+										"before_api_uri": [{
+											id: 1,
+											name: "公开课实施",
+										}, {
+											id: 2,
+											name: "行业培训实施",
+										}],
+										"after_api_uri": ""
+									},
+									{
+										"id_name":"add_customer_name",
+										"type_name": "MutiText", //input
+										"key": "",
+										"title": "客户名称",
+										"tip": "",
+										"add_button": {},
+										"descript": "",
+										"before_api_uri": "",
+										"after_api_uri": ""
+									},{
+										"id_name":"add_days",
+										"type_name": "MutiText", //input
+										"key": "",
+										"title": "天数",
+										"tip": "",
+										"add_button": {},
+										"descript": "",
+										"before_api_uri": "",
+										"after_api_uri": ""
+									},{
+										"id_name":"add_training_numbers",
+										"type_name": "MutiText", //input
+										"key": "",
+										"title": "培训人数",
+										"tip": "",
+										"add_button": {},
+										"descript": "",
+										"before_api_uri": "",
+										"after_api_uri": ""
+									},{
+										"id_name":"add_training_ares",
+										"type_name": "MutiText", //input
+										"key": "",
+										"title": "培训地点",
+										"tip": "",
+										"add_button": {},
+										"descript": "",
+										"before_api_uri": "",
+										"after_api_uri": ""
+									}
+								
+							],
+								
+							}
 						},
 						"descript": "",
 						"before_api_uri": [{
@@ -289,7 +453,7 @@ class Budget extends Component {
 										                    group_lists={this.state.budget_paper.data["teacher-form-list"]}
 										                    labelValue={form_list.title}
 															search_info_lists={form_list.before_api_uri} 
-															//add_button={form_list.add_button}
+															add_button={form_list.add_button}
 															selected_info={form_list.key} />
 															
 										:form_list.type_name==="MutiText"?<TextField inputValue={form_list.key} labelValue={form_list.title}/>
