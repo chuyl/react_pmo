@@ -19,14 +19,14 @@
       overflow: hidden; 
   }
   .search_info_list.open{
-      position: absolute;
+      position: relative;
       background-color: #fff;
-      width: 200px;
+      width: calc(100% - 80px);
       min-height: 100px;
       overflow-y: scroll;
   }
   .selected_info{
-      width: 200px;
+      width:calc(100% - 80px);
       background-color: #fff;
       margin-top: 1rem;
      // position: relative;
@@ -50,6 +50,7 @@
        .add_info_list.open{
           display: block;
           height: 100vh;
+          margin-bottom: 70px;
           transition: all .1s;
           width: 100%;
           position: absolute;

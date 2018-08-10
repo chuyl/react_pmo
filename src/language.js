@@ -6,7 +6,7 @@ import BiddingPlan from './views/projectManagement/BiddingPlan'
 import Contract from './views/projectManagement/Contract'
 import Costing from './views/projectManagement/Costing'
 //预决算管理
-import Budget from './views/budgetAndFinalAccountsManagementcond/Budget'
+import Budget from './views/budgetAndFinalAccountsManagementcond/budget/Budget'
 import FinalAccounts from './views/budgetAndFinalAccountsManagementcond/FinalAccounts'
 import BudgetAccounting from './views/budgetAndFinalAccountsManagementcond/BudgetAccounting'
 import BudgetExaminationAndApproval from './views/budgetAndFinalAccountsManagementcond/BudgetExaminationAndApproval'

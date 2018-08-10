@@ -1,3 +1,7 @@
+/** 
+     * @author xuesong
+     * @param TextField 组件  label+input
+     */
 import React, { Component } from 'react';
 
 class TextField extends Component {
@@ -7,10 +11,9 @@ class TextField extends Component {
 		return (
 			<div>
 				<label>{labelValue}</label>
-           <input className={"className"} onClick={onClick} onChange={onChange} defaultValue={inputValue} disabled={disabled} id={id}/>
+           <input className={""} onClick={onClick} onChange={onChange} defaultValue={inputValue} disabled={disabled} id={id}/>
 		</div>
 		)
 	}
 }
-
 export default TextField;

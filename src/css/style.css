@@ -908,6 +908,9 @@
 .glyphicon-menu-up:before {
   content: "\e260"; }
 
+@font-face {
+  font-family: icon;
+  src: url(./font/csi.woff); }
 * {
   margin: 0;
   padding: 0; }
@@ -929,6 +932,12 @@ a {
   transition: width .5s; }
   .tab_title a {
     display: block; }
+
+.tab_title_0::before {
+  font-family: icon;
+  content: '\E032';
+  height: 14px;
+  width: 14px; }
 
 .active {
   background-color: olivedrab; }
@@ -1238,14 +1247,14 @@ html, body {
   overflow: hidden; }
 
 .search_info_list.open {
-  position: absolute;
+  position: relative;
   background-color: #fff;
-  width: 200px;
+  width: calc(100% - 80px);
   min-height: 100px;
   overflow-y: scroll; }
 
 .selected_info {
-  width: 200px;
+  width: calc(100% - 80px);
   background-color: #fff;
   margin-top: 1rem; }
 
@@ -1267,6 +1276,7 @@ html, body {
   .add_info_list.open {
     display: block;
     height: 100vh;
+    margin-bottom: 70px;
     transition: all .1s;
     width: 100%;
     position: absolute;

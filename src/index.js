@@ -87,7 +87,7 @@ class TabComponent extends Component{
        router_lists.map((router_list)=>{
         return(
           components.push(
-            <li key={router_list.title} onClick={ () => { this.setState({ currentIndex :router_list.path}) } } className={ this.check_router_index(router_list.path) }><Link to={router_list.path}>{router_list.title}</Link></li>
+            <li key={router_list.title} onClick={ () => { this.setState({ currentIndex :router_list.path}) } } className={ this.check_router_index(router_list.path)}><Link to={router_list.path}>{router_list.title}</Link></li>
          )
         )
        }
@@ -126,7 +126,7 @@ class TabComponent extends Component{
 			<div className="sidebar">
       <div  style={this.state.show===true?{display:"none"}:{}} className="router_screen nav_lists">
       <TabsControl>
-					<div name = "项目管理">
+					<div  name = {"项目管理"}>
                     <HashRouter>
                         <App>
                         <ul>
