@@ -15,7 +15,6 @@ import ComponentsList from '../../components/ComponentsList'
 import TeacherArrange from './TeacherArrange';
 import ImplementArrange from './ImplementArrange'
 import TravelExpenses from './TravelExpenses'
-import {StringifyButton} from '../../../utils/helpers'
 //import Select from './Select'
 class BudgetListTextSearchLink extends Component {
 
@@ -148,12 +147,30 @@ class BudgetListTextSearchLink extends Component {
      * @author xuesong
      * @param searchShow 函数名 切换显示隐藏
      */
-    searchShow() {
+    searchShow=()=> {
         this.setState({
             search_state: !this.state.search_state
         })
     }
+    /** 
+     * @author xuesong
+     * @param StringifyButton 函数名 循环输出动态值
+     */
 
+    StringifyButton = (list_message)=>{
+        var key_name = [];
+        var value = [];
+        for (var i = 0; i < list_message.length; i++) {
+           value.push(list_message[i].id_name)
+           key_name.push(document.getElementById(list_message[i].id_name).innerHTML || document.getElementById(list_message[i].id_name).value)
+        }
+        var obj = {};
+        for(var j=0;j<value.length;j++){
+            obj[value[j]] =key_name[j];
+        }
+      var data = JSON.stringify(obj,value);//将对象转换成json
+      　　　 console.log(data);  
+    }
 
 
     render() {
@@ -236,13 +253,8 @@ class BudgetListTextSearchLink extends Component {
                      {/* 差旅费用 */}
                      <TravelExpenses/>
                     <button onClick={() => {
-                        StringifyButton(this.state.add_button.data["form-list"]) 
-                        // for (var i = 0; i < this.state.add_button.data["form-list"].length; i++) {
-
-                        //     console.log(document.getElementById(this.state.add_button.data["form-list"][i].id_name).innerHTML || document.getElementById(this.state.add_button.data["form-list"][i].id_name).value)
-
-                        // }
-                    }}>保存1</button>
+                        this.StringifyButton(this.state.add_button.data["form-list"]) 
+                    }}>保存</button>
                 </div>
             </div>
         )

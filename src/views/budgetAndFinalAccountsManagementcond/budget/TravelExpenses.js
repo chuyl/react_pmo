@@ -11,11 +11,15 @@ import LabelButton from '../../components/LabelButton'
 class TravelExpenses extends Component {
     state = {
         add_lists: false,
+        lang_traffic_data_group: [],//输出的长途交通
+        short_traffic_data_group: [],//输出的市内交通
+        hotel_expense_data_group: [],//输出的住宿费
         //长途交通费
         addLongTrafficCondition: [],
         //市内交通费
-        addShortTrafficCondition:[],
-        addHotelExpenseCondition:[],
+        addShortTrafficCondition: [],
+        //住宿费
+        addHotelExpenseCondition: [],
         //长途交通card
         long_traffic_card_list: {
             long_fee_card: [{
@@ -139,10 +143,10 @@ class TravelExpenses extends Component {
                 "before_api_uri": "",
                 "after_api_uri": ""
             },
-           ],
+            ],
         },
-        hotel_expense_card_list:{
-            hotel_expense_card:[{
+        hotel_expense_card_list: {
+            hotel_expense_card: [{
                 "id_name": "hotel_expense_people",
                 "type_name": "MutiText", //input
                 "key": "",
@@ -177,7 +181,7 @@ class TravelExpenses extends Component {
                 "before_api_uri": "",
                 "after_api_uri": ""
             },
-           ],
+            ],
         }
     }
     componentWillMount() {
@@ -208,19 +212,19 @@ class TravelExpenses extends Component {
         //住宿费
         this.state.addHotelExpenseCondition.push(
             <AddThirdCard
-            key={`executeHandle${this.state.addHotelExpenseCondition.length}.lenght+1`}
-            removeDefault={this.removeThirdEvent.bind(this)}
-            index={this.state.addHotelExpenseCondition.length}
-            card_list={this.state.hotel_expense_card_list.hotel_expense_card}
-            //addHotelExpenseCondition={ this.addHotelExpenseCondition.bind(this)}
-            conditionAction={this.state.conditionAction}
-        >
-        </AddThirdCard>
+                key={`executeHandle${this.state.addHotelExpenseCondition.length}.lenght+1`}
+                removeDefault={this.removeThirdEvent.bind(this)}
+                index={this.state.addHotelExpenseCondition.length}
+                card_list={this.state.hotel_expense_card_list.hotel_expense_card}
+                //addHotelExpenseCondition={ this.addHotelExpenseCondition.bind(this)}
+                conditionAction={this.state.conditionAction}
+            >
+            </AddThirdCard>
         )
         this.setState({
             addLongTrafficCondition: this.state.addLongTrafficCondition,
-            addShortTrafficCondition:this.state.addShortTrafficCondition,
-            addHotelExpenseCondition:this.state.addHotelExpenseCondition
+            addShortTrafficCondition: this.state.addShortTrafficCondition,
+            addHotelExpenseCondition: this.state.addHotelExpenseCondition
         })
     }
 
@@ -232,30 +236,54 @@ class TravelExpenses extends Component {
         //长途
         var addLongTrafficConditionValue = this.state.addLongTrafficCondition;
         addLongTrafficConditionValue[value] = '';
-     
+
         this.setState({
             addLongTrafficCondition: this.state.addLongTrafficCondition,
         })
     }
     removeSecondEvent(value) {
-       //市内
+        //市内
         var addShortTrafficConditionValue = this.state.addShortTrafficCondition;
         addShortTrafficConditionValue[value] = '';
-     
+
         this.setState({
             addShortTrafficCondition: this.state.addShortTrafficCondition,
         })
     }
-    removeThirdEvent(value) {
+    /** 
+      * @author xuesong
+      * @param removeThirdEvent 函数名 第三个删除添加组件
+      */
+    removeThirdEvent = (value) => {
         //住宿
-         var addHotelExpenseConditionValue = this.state.addHotelExpenseCondition;
-         addHotelExpenseConditionValue[value] = '';
-      
-         this.setState({
+        var addHotelExpenseConditionValue = this.state.addHotelExpenseCondition;
+        addHotelExpenseConditionValue[value] = '';
+
+        this.setState({
             addHotelExpenseCondition: this.state.addHotelExpenseCondition,
-         })
-     }
-    
+        })
+    }
+    /** 
+      * @author xuesong
+      * @param StringifyMultipleButton 函数名 循环输出动态数组值
+      */
+    StringifyMultipleButton = (list_message, index, arr_list) => {//list_message循环数组,index:card的位置数,arr_list:输出的数组
+        var key_name = [];
+        var value = [];
+        for (var i = 0; i < list_message.length; i++) {
+            value.push(list_message[i].id_name)
+            key_name.push(document.getElementById(list_message[i].id_name + index).innerHTML === "-选择-" ? "" : document.getElementById(list_message[i].id_name + index).innerHTML || document.getElementById(list_message[i].id_name + index).value)
+        }
+        var obj = {};
+        for (var j = 0; j < value.length; j++) {
+            obj[value[j]] = key_name[j];
+        }
+
+        var data = JSON.stringify(obj, value);//将对象转换成json
+        arr_list.push(data);
+        console.log(arr_list);
+
+    }
     render() {
         return (
             <div>
@@ -283,7 +311,6 @@ class TravelExpenses extends Component {
                         }
 
                     </ul>
-                    
                     <button
                         onClick={() => {
                             this.state.addLongTrafficCondition.push(
@@ -333,8 +360,7 @@ class TravelExpenses extends Component {
 
                         }}
                     >添加市内行程安排</button>
-
-                   <p>住宿费</p>
+                    <p>住宿费</p>
                     <ul>
                         {
                             this.state.addHotelExpenseCondition.map((item, index) => {
@@ -347,14 +373,14 @@ class TravelExpenses extends Component {
                         onClick={() => {
                             this.state.addHotelExpenseCondition.push(
                                 <AddThirdCard
-                                key={`executeHandle${this.state.addHotelExpenseCondition.length}.lenght+1`}
-                                removeDefault={this.removeThirdEvent.bind(this)}
-                                index={this.state.addHotelExpenseCondition.length}
-                                card_list={this.state.hotel_expense_card_list.hotel_expense_card}
-                                //addHotelExpenseCondition={ this.addHotelExpenseCondition.bind(this)}
-                                conditionAction={this.state.conditionAction}
-                            >
-                            </AddThirdCard>
+                                    key={`executeHandle${this.state.addHotelExpenseCondition.length}.lenght+1`}
+                                    removeDefault={this.removeThirdEvent.bind(this)}
+                                    index={this.state.addHotelExpenseCondition.length}
+                                    card_list={this.state.hotel_expense_card_list.hotel_expense_card}
+                                    //addHotelExpenseCondition={ this.addHotelExpenseCondition.bind(this)}
+                                    conditionAction={this.state.conditionAction}
+                                >
+                                </AddThirdCard>
                             )
                             this.setState({
                                 addHotelExpenseCondition: this.state.addHotelExpenseCondition,
@@ -362,27 +388,33 @@ class TravelExpenses extends Component {
 
                         }}
                     >添加住宿安排</button>
-    
+
 
                     <button
                         onClick={() => {
-                             //var addLongTrafficCondition = this.state.addLongTrafficCondition;
-                            // var teacher_data_group = [];
-                            // this.setState({
-                            //     teacher_data_group: [],
-                            // })
-                            // //lenght是有效的组件列
-                            // var lenghts = 0;
-                            // for (var i = 0; i < addLongTrafficCondition.length; i++) {
-                            //     if (addLongTrafficCondition[i] !== "") {
-                            //         teacher_data_group.push({ teacher_name: "", teacher_income_tax: "", teacher_lecture_fee: "", teacher_lecture_days: "", teacher_duty: "" })
-                            //         teacher_data_group[lenghts].teacher_name = document.getElementById("teacher_name" + i).innerText === "-选择-" ? "" : document.getElementById("teacher_name" + i).innerText;
-                            //         lenghts++;
-                            //     }
-                            // }
-                            // for (var m = 0; m < teacher_data_group.length; m++) {
-                            //     this.state.teacher_data_group.push(teacher_data_group[m])
-                            // }
+                            this.setState({
+                                lang_traffic_data_group: [],
+                                short_traffic_data_group: [],
+                                hotel_expense_data_group: []
+                            })
+                            //长途交通输出
+                            for (var i = 0; i < this.state.addLongTrafficCondition.length; i++) {
+                                if (this.state.addLongTrafficCondition[i] !== "") {
+                                    this.StringifyMultipleButton(this.state.long_traffic_card_list.long_fee_card, i, this.state.lang_traffic_data_group)
+                                }
+                            }
+                            //市内交通输出
+                            for (var m = 0; m < this.state.addShortTrafficCondition.length; m++) {
+                                if (this.state.addShortTrafficCondition[m] !== "") {
+                                    this.StringifyMultipleButton(this.state.short_traffic_card_list.short_fee_card, m, this.state.short_traffic_data_group)
+                                }
+                            }
+                              //住宿费输出
+                            for (var n = 0; n < this.state.addHotelExpenseCondition.length; n++) {
+                                if (this.state.addHotelExpenseCondition[n] !== "") {
+                                    this.StringifyMultipleButton(this.state.hotel_expense_card_list.hotel_expense_card, n, this.state.hotel_expense_data_group)
+                                }
+                            }
                         }}
 
                     >保存</button>

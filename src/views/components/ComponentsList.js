@@ -16,11 +16,6 @@ class ComponentsList extends Component {
             componentslist: this.props.componentslist,
         }
     }
-    componentDidMount() {
-        console.log(this.state.componentslist)
-
-
-    }
     render() {
         return (
             <div>

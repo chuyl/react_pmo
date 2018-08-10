@@ -6,7 +6,6 @@
     import TextField from '../../components/TextField';
     import LabelButton from '../../components/LabelButton'
     import ComponentsList from '../../components/ComponentsList'
-    import {StringifyButton} from '../../../utils/helpers'
     class ImplementArrange extends Component {
         state = {
             add_lists: false,
@@ -95,7 +94,25 @@
                 }
             }
         }
-     
+        /** 
+         * @author xuesong
+         * @param StringifyButton 函数名 循环输出动态值
+         */
+
+        StringifyButton = (list_message)=>{
+            var key_name = [];
+            var value = [];
+            for (var i = 0; i < list_message.length; i++) {
+               value.push(list_message[i].id_name)
+               key_name.push(document.getElementById(list_message[i].id_name).innerHTML || document.getElementById(list_message[i].id_name).value)
+            }
+            var obj = {};
+            for(var j=0;j<value.length;j++){
+                obj[value[j]] =key_name[j];
+            }
+          var data = JSON.stringify(obj,value);//将对象转换成json
+          　　　 console.log(data);  
+        }
   
 
         render(){
@@ -122,7 +139,7 @@
                    
                     <button
                         onClick={() => {
-                            StringifyButton(this.state.implementArrange.data["form-list"]) 
+                           this.StringifyButton(this.state.implementArrange.data["form-list"]) 
                         }}
     
                     >保存</button>

@@ -439,9 +439,6 @@ class Budget extends Component {
 		//	console.log(this.state.budget_paper.data["form-list"])
 		return (
 			<div>
-				{/* {this.state.budget.data["form-list"].map(form-list= > {
-					return <div></div>
-				})} */}
 				<div id="root1" className="container">
 					<div className="add_button" onClick={(e) => {
 						this.card_box_concent([], e)
@@ -474,16 +471,16 @@ class Budget extends Component {
 											search_info_lists={form_list.before_api_uri}
 											add_button={form_list.add_button}
 											selected_info={form_list.key} />
-											: form_list.type_name === "TextDatetime" ? <TextDatetime
+										: form_list.type_name === "TextDatetime" ? <TextDatetime
 											id={form_list.id_name} inputValue={form_list.key} labelValue={form_list.title} />
-											: form_list.type_name === "TextMoney" ? <TextMoney
+										: form_list.type_name === "TextMoney" ? <TextMoney
 											id={form_list.id_name} inputValue={form_list.key} labelValue={form_list.title} />
 										: form_list.type_name === "MutiText" ? <TextField inputValue={form_list.key} labelValue={form_list.title} />
-											: form_list.type_name === "ListText" ? <ListText id={form_list.id_name}
-												labelValue={form_list.title}
-												search_info_lists={form_list.before_api_uri}
-												//add_button={form_list.add_button}
-												selected_info={form_list.key} /> : ""}
+										: form_list.type_name === "ListText" ? <ListText id={form_list.id_name}
+											labelValue={form_list.title}
+											search_info_lists={form_list.before_api_uri}
+											//add_button={form_list.add_button}
+											selected_info={form_list.key} /> : ""}
 								</div>
 							})
 							: ""}

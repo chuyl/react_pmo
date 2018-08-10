@@ -1247,14 +1247,14 @@ html, body {
   overflow: hidden; }
 
 .search_info_list.open {
-  position: relative;
+  position: absolute;
   background-color: #fff;
-  width: calc(100% - 80px);
+  width: 300px;
   min-height: 100px;
   overflow-y: scroll; }
 
 .selected_info {
-  width: calc(100% - 80px);
+  width: 300px;
   background-color: #fff;
   margin-top: 1rem; }
 
