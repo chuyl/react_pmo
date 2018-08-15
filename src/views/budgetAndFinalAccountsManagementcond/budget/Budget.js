@@ -63,7 +63,7 @@ class Budget extends Component {
 				},]
 			}
 		},
-		budget_paper: {
+			budget_paper: {
 			"data": {
 				"form-temp-name": "预算管理",
 				"form-list": [{
@@ -96,7 +96,7 @@ class Budget extends Component {
 										"form-temp-name": "新建项目集",
 										"form-list": [{
 											"id_name": "add_project_gather_charge",
-											"type_name": "ListText", //下拉搜索
+											"type_name": "ProjectGather",
 											"key": "",
 											"title": "销售负责人",
 											"tip": "",
@@ -458,10 +458,12 @@ class Budget extends Component {
 						//	this.event_target(event,"add_customer_info","search_info_list_div","search_info_list","search_info_list_open")
 
 					}} className={this.state.card_state ? "card_box open" : "card_box"}>
+						<div style={{padding:"18px"}}>
 						<i onClick={this.card_box_close} style={{ fontSize: "20px" }} className="glyphicon glyphicon-arrow-left"></i>
 						{/* paper详细内容 */}
 						{this.state.card_state ?//判断paper是否可见
 							this.state.budget_paper.data["form-list"].map(form_list => {
+								console.log(form_list.type_name)
 								//console.log(form_list.add_button.data.teacher_data_group)
 								return <div key={form_list.id_name}>
 									{form_list.type_name === "BudgetListTextSearchLink" ?
@@ -475,7 +477,7 @@ class Budget extends Component {
 											id={form_list.id_name} inputValue={form_list.key} labelValue={form_list.title} />
 										: form_list.type_name === "TextMoney" ? <TextMoney
 											id={form_list.id_name} inputValue={form_list.key} labelValue={form_list.title} />
-										: form_list.type_name === "MutiText" ? <TextField inputValue={form_list.key} labelValue={form_list.title} />
+											: form_list.type_name === "MutiText" ? <TextField inputValue={form_list.key} labelValue={form_list.title} />
 										: form_list.type_name === "ListText" ? <ListText id={form_list.id_name}
 											labelValue={form_list.title}
 											search_info_lists={form_list.before_api_uri}
@@ -487,6 +489,7 @@ class Budget extends Component {
 
 						{/* <img alt="fengjing" src={Boximg}/> */}
 					</div>
+						</div>
 
 
 				</div>

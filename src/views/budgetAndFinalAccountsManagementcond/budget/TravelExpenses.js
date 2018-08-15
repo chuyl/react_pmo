@@ -11,7 +11,7 @@ import LabelButton from '../../components/LabelButton'
 class TravelExpenses extends Component {
     state = {
         add_lists: false,
-        lang_traffic_data_group: [],//输出的长途交通
+        long_traffic_data_group: [],//输出的长途交通
         short_traffic_data_group: [],//输出的市内交通
         hotel_expense_data_group: [],//输出的住宿费
         //长途交通费
@@ -82,8 +82,8 @@ class TravelExpenses extends Component {
                 "after_api_uri": ""
             },
             {
-                "id_name": "teacher_duty",
-                "type_name": "ListText", //下拉搜索
+                "id_name": "long_fee_card_vehicle",
+                "type_name": "SelectList", //下拉搜索
                 "key": "",
                 "title": "交通工具",
                 "tip": "",
@@ -279,8 +279,8 @@ class TravelExpenses extends Component {
             obj[value[j]] = key_name[j];
         }
 
-        var data = JSON.stringify(obj, value);//将对象转换成json
-        arr_list.push(data);
+        //var data = JSON.stringify(obj, value);//将对象转换成json
+        arr_list.push(obj);
         console.log(arr_list);
 
     }
@@ -294,6 +294,7 @@ class TravelExpenses extends Component {
                         })
                     }]} />
                 <div className={this.state.add_lists ? "add_info_list open" : "add_info_list"}>
+                    <div className="selected_scroll_div">
                     <i onClick={() => {
                         this.setState({
                             add_lists: false
@@ -393,14 +394,14 @@ class TravelExpenses extends Component {
                     <button
                         onClick={() => {
                             this.setState({
-                                lang_traffic_data_group: [],
+                                long_traffic_data_group: [],
                                 short_traffic_data_group: [],
                                 hotel_expense_data_group: []
                             })
                             //长途交通输出
                             for (var i = 0; i < this.state.addLongTrafficCondition.length; i++) {
                                 if (this.state.addLongTrafficCondition[i] !== "") {
-                                    this.StringifyMultipleButton(this.state.long_traffic_card_list.long_fee_card, i, this.state.lang_traffic_data_group)
+                                    this.StringifyMultipleButton(this.state.long_traffic_card_list.long_fee_card, i, this.state.long_traffic_data_group)
                                 }
                             }
                             //市内交通输出
@@ -418,6 +419,7 @@ class TravelExpenses extends Component {
                         }}
 
                     >保存</button>
+                    </div>
                 </div>
             </div>
         )

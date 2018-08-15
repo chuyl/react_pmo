@@ -32,7 +32,7 @@
             const {id,disabled,inputValue,onClick,labelValue} =this.props;
             return (
                 <div>
-                    <label>{labelValue}</label>
+                    <label className="search_info_list_label">{labelValue}</label>
                <input  ref={ref=>this.number=ref} onKeyUp={()=>{this.onlyNumber()}} className={""} onClick={onClick} defaultValue={inputValue} disabled={disabled} id={id}/>
             </div>
             )

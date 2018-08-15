@@ -26,28 +26,17 @@ class TeacherArrange extends Component {
                     "data": {
                         "form-temp-name": "讲师姓名",
                         "form-list": [{
-                            "id_name": "add_a_teacher_name",
-                            "type_name": "MutiText", //input
+                            "id_name": "add_a_teacher_message",
+                            "type_name": "AddTeacher", //input
                             "key": "",
-                            "title": "讲师姓名",
+                            "title": "",
                             "tip": "",
                             "add_button": {
                             },
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""
-                        }, {
-                            "id_name": "teacher_always_money",
-                            "type_name": "MutiText", //input
-                            "key": "",
-                            "title": "常用单价",
-                            "tip": "",
-                            "add_button": {
-                            },
-                            "descript": "",
-                            "before_api_uri": "",
-                            "after_api_uri": ""
-                        },]
+                        }]
                     }
                 },
                 "descript": "",
@@ -104,7 +93,46 @@ class TeacherArrange extends Component {
                 "tip": "",
                 "add_button": {
                     "data": {
-                        "form-list": []
+                        "form-list": [
+                            {
+                                "id_name": "add_teacher_duty",
+                                "type_name": "MutiText", //input
+                                "key": "",
+                                "title": "职责描述",
+                                "tip": "",
+                                "add_button": {},
+                                "descript": "",
+                                "before_api_uri": "",
+                                "after_api_uri": ""
+                            },
+                            {
+                                "id_name": "project_template",
+                                "type_name": "ListText", //下拉搜索
+                                "key": "",
+                                "title": "项目模板",
+                                "tip": "",
+                                "add_button": {
+                                    "data":{
+                                        "from-list":[{}]
+                                    }
+                                },
+                                "descript": "",
+                                "before_api_uri": [{
+                                    id: 1,
+                                    name: "软考",
+                                }, {
+                                    id: 2,
+                                    name: "集成项目经理",
+                                }, {
+                                    id: 3,
+                                    name: "企业内训",
+                                }, {
+                                    id: 4,
+                                    name: "沙龙活动",
+                                }],
+                                "after_api_uri": ""
+                            },
+                        ]
                     }
                 },
                 "descript": "",
@@ -138,20 +166,20 @@ class TeacherArrange extends Component {
             addCondition: this.state.addCondition,
         })
     }
-    /** 
-    * @author xuesong
-    * @param removeFunEvent 函数名 删除动态添加组件
-    */
-    removeFunEvent() {
-        //默认的组件
-        this.props.removeDefault && this.props.removeDefault(this.props.index);
-        //添加的组价
-        this.props.remove && this.props.remove(this.props.index);
-    }
+    // /** 
+    // * @author xuesong
+    // * @param removeFunEvent 函数名 删除动态添加组件
+    // */
+    // removeFunEvent() {
+    //     //默认的组件
+    //     this.props.removeDefault && this.props.removeDefault(this.props.index);
+    //     //添加的组价
+    //     this.props.remove && this.props.remove(this.props.index);
+    // }
 
     /** 
      * @author xuesong
-     * @param removeFunEvent 函数名 删除添加组件
+     * @param removeEvent 函数名 删除添加组件
      */
     removeEvent(value) {
         var addConditionValue = this.state.addCondition;
@@ -176,8 +204,8 @@ class TeacherArrange extends Component {
             obj[value[j]] = key_name[j];
         }
 
-        var data = JSON.stringify(obj, value);//将对象转换成json
-        arr_list.push(data);
+        //var data = JSON.stringify(obj, value);//将对象转换成json
+        arr_list.push(obj);
         console.log(arr_list);
 
     }
@@ -192,6 +220,7 @@ class TeacherArrange extends Component {
                         })
                     }]} />
                 <div className={this.state.add_lists ? "add_info_list open" : "add_info_list"}>
+                    <div className="selected_scroll_div">
                     <i onClick={() => {
                         this.setState({
                             add_lists: false
@@ -239,6 +268,7 @@ class TeacherArrange extends Component {
                         }}
 
                     >保存</button>
+                    </div>
                 </div>
             </div>
         )

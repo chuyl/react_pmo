@@ -2,12 +2,12 @@
     margin-left: 1rem;
     padding: 0;
     padding-top: 1rem;
-    background-color:yellowgreen;
+    background-color:#3f435e;
     height: 90vh;
     overflow: hidden; 
-    overflow-y: scroll;
+    overflow-y: auto;
     transition: all .1s;
-    float: left;
+    position: relative;
     width: 35%;
   }
   .card_box.open{
@@ -35,7 +35,7 @@
         left: 0;
         top: 0;
         padding: 0;
-        background-color:yellowgreen;
+        background-color:#3f435e;
         overflow: hidden; 
         transition: all .1s;
         float: left;
@@ -49,7 +49,7 @@
         width: 100%;
         position: fixed;
         top: 0;
-        background-color:yellowgreen;
+        background-color:#3f435e;
         /* height: 600px; js代替 */
         left: 0;
         z-index: 10;

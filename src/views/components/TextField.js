@@ -10,7 +10,7 @@ class TextField extends Component {
         const {id,disabled,inputValue,onChange,onClick,labelValue} =this.props;
 		return (
 			<div>
-				<label>{labelValue}</label>
+				<label className="search_info_list_label">{labelValue}</label>
            <input className={""} onClick={onClick} onChange={onChange} defaultValue={inputValue} disabled={disabled} id={id}/>
 		</div>
 		)

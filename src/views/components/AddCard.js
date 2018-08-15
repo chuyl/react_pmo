@@ -7,6 +7,8 @@ import TextField from './TextField'
 import TextMoney from './TextMoney'
 import ListText from '../components/ListText'
 import TextDatetime from './TextDatetime'
+import AddTeacher from '../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
+import SelectList from './SelectList'
 //import ComponentsList from './ComponentsList'
 
 import ListTextSearch from '../components/ListTextSearch'
@@ -29,7 +31,7 @@ class AddCard extends Component {
         return (
             <li
                 key={this.props.index}
-                style={{ border: "1px solid #000" }}
+                style={{ border: "1px solid #000",margin:"-1px" }}
             >
                 <button
                     onClick={this.removeFunEvent.bind(this)}
@@ -53,6 +55,11 @@ class AddCard extends Component {
                                     id={card_list.id_name + this.props.index} inputValue={card_list.key} labelValue={card_list.title} />
                                     : card_list.type_name === "TextMoney" ? <TextMoney
                                     id={card_list.id_name + this.props.index} inputValue={card_list.key} labelValue={card_list.title} />
+                                    :card_list.type_name==="AddTeacher"?<AddTeacher/> 
+                                    :card_list.type_name==="SelectList"?<SelectList id={card_list.id_name + this.props.index}
+                                    labelValue={card_list.title}
+                                    search_info_lists={card_list.before_api_uri}
+                                    selected_info={card_list.key}/>
                                     : card_list.type_name === "ListText" ? <ListText id={card_list.id_name + this.props.index}
                                         labelValue={card_list.title}
                                         search_info_lists={card_list.before_api_uri}

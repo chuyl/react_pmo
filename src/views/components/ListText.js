@@ -24,31 +24,31 @@ class ListText extends Component {
     render() {
         const { selected_info, id, labelValue } = this.props;
         return (
-            <div>
+            <div className="search_info_list_card">
 
                 <div onClick={() => {
                     this.searchShow()
                 }} className={this.state.search_state ? "add_list_close" : ""}></div>
-                <label>{labelValue}</label>
+                <label className="search_info_list_label">{labelValue}</label>
                 <div
                     onClick={() => {
                         this.searchShow()
                     }}
                     className="selected_info"
                     id={id}>{selected_info === "" ? "-选择-" : selected_info}</div>
+                 <div className="search_info_position">
                 <div
                     id="search_info_list_div"
                     className={this.state.search_state ? "search_info_list open" : "search_info_list"}
                 >
-                    <ul className="search_info_list_ul">
-
-                        <li>
-                            <input onChange={(e) => {
+                 <div className="select_search_div">
+                <input className="select_search_input" onChange={(e) => {
                                 this.setState({
                                     search_name: e.target.value
                                 })
 
                             }} /><button
+                                className="select_search_button"
                                 onClick={() => {
                                     this.setState({
                                         search_info_list: [],
@@ -65,7 +65,9 @@ class ListText extends Component {
 
                                 }}
                             >搜索1</button>
-                        </li>
+                </div>
+                    <ul className="search_info_list_ul">
+
                         {this.state.search_info_lists.map((info_lists) => {
                             return (
                                 <li onClick={(e) => {
@@ -83,7 +85,7 @@ class ListText extends Component {
              
              >新增</div> */}
                 </div>
-
+                </div>
             </div>
         )
     }

@@ -38,30 +38,19 @@ class BudgetListTextSearchLink extends Component {
                         "tip": "",
                         "add_button": {
                             "data": {
-                                "form-temp-name": "讲师姓名",
+                                "form-temp-name": "添加讲师",
                                 "form-list": [{
-                                    "id_name": "add_a_teacher_name",
-                                    "type_name": "MutiText", //input
+                                    "id_name": "add_a_teacher_message",
+                                    "type_name": "AddTeacher", //input
                                     "key": "",
-                                    "title": "讲师姓名",
+                                    "title": "",
                                     "tip": "",
                                     "add_button": {
                                     },
                                     "descript": "",
                                     "before_api_uri": "",
                                     "after_api_uri": ""
-                                }, {
-                                    "id_name": "teacher_always_money",
-                                    "type_name": "MutiText", //input
-                                    "key": "",
-                                    "title": "常用单价",
-                                    "tip": "",
-                                    "add_button": {
-                                    },
-                                    "descript": "",
-                                    "before_api_uri": "",
-                                    "after_api_uri": ""
-                                },]
+                                }]
                             }
                         },
                         "descript": "",
@@ -162,42 +151,43 @@ class BudgetListTextSearchLink extends Component {
         var value = [];
         for (var i = 0; i < list_message.length; i++) {
            value.push(list_message[i].id_name)
-           key_name.push(document.getElementById(list_message[i].id_name).innerHTML || document.getElementById(list_message[i].id_name).value)
+           key_name.push(document.getElementById(list_message[i].id_name).innerHTML==="-选择-"?"":document.getElementById(list_message[i].id_name).innerHTML|| document.getElementById(list_message[i].id_name).value)
         }
         var obj = {};
         for(var j=0;j<value.length;j++){
             obj[value[j]] =key_name[j];
         }
-      var data = JSON.stringify(obj,value);//将对象转换成json
-      　　　 console.log(data);  
+    //  var data = JSON.stringify(obj,value);//将对象转换成json
+      　　　 console.log(obj);  
     }
 
 
     render() {
         const { selected_info, id, labelValue } = this.props;
         return (
-            <div>
+            <div  className="search_info_list_card">
                 <div onClick={() => {
                     this.searchShow()
                 }} className={this.state.search_state ? "add_list_close" : ""}></div>
-                <label>{labelValue}</label>
+                <label className="search_info_list_label">{labelValue}</label>
                 <div
                     onClick={() => {
                         this.searchShow()
                     }}
                     className="selected_info"
                     id={id}>{selected_info === "" ? "-选择-" : selected_info}</div>
+                <div className="search_info_position">
                 <div
                     id="search_info_list_div"
                     className={this.state.search_state ? "search_info_list open" : "search_info_list"}
                 >
-                    <ul className="search_info_list_li">
-                        <li>
-                            <input onChange={(e) => {
+                <div className="select_search_div">
+                <input className="select_search_input" onChange={(e) => {
                                 this.setState({
                                     search_name: e.target.value
                                 })
                             }} /><button
+                              className="select_search_button"
                                 onClick={() => {
                                     this.setState({
                                         search_info_list: [],
@@ -212,7 +202,9 @@ class BudgetListTextSearchLink extends Component {
                                     })
                                 }}
                             >搜索1</button>
-                        </li>
+                </div>
+                    <ul className="search_info_list_ul">
+                       
                         {this.state.search_info_lists.map((info_lists) => {
                             return (
                                 <li onClick={(e) => {
@@ -229,15 +221,16 @@ class BudgetListTextSearchLink extends Component {
                             )
                         })}
                     </ul>
-                    <div onClick={(e) => {
+                    <div className="add_project_new" onClick={(e) => {
                         this.setState({
                             add_customer: true
                         })
                     }}
                     >新增</div>
-                </div>
+                </div></div>
                 <div>预计成本:{dealNumber(this.state.changeResult)}</div>
                 <div className={this.state.add_customer ? "add_info_list open" : "add_info_list"}>
+                    <div className="selected_scroll_div">
                     <i onClick={() => {
                         this.setState({
                             add_customer: false
@@ -254,7 +247,9 @@ class BudgetListTextSearchLink extends Component {
                      <TravelExpenses/>
                     <button onClick={() => {
                         this.StringifyButton(this.state.add_button.data["form-list"]) 
+                       
                     }}>保存</button>
+                    </div>
                 </div>
             </div>
         )

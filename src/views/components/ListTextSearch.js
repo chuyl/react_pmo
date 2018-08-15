@@ -31,21 +31,20 @@ class ListTextSearch extends Component {
                 <div onClick={() => {
                     this.searchShow()
                 }} className={this.state.search_state ? "add_list_close" : ""}></div>
-                <label>{labelValue}</label>
+                <label className="search_info_list_label">{labelValue}</label>
                 <div
                     onClick={() => {
                         this.searchShow()
                     }}
                     className={"selected_info"}
                     id={id}>{selected_info === "" ? "-选择-" : selected_info}</div>
+                 <div className="search_info_position">
                 <div
                     id="search_info_list_div"
                     className={this.state.search_state ? "search_info_list open" : "search_info_list"}
                 >
-                    <ul className="search_info_list_ul">
-
-                        <li>
-                            <input className="select_search_input" onChange={(e) => {
+                <div className="select_search_div">
+                <input className="select_search_input" onChange={(e) => {
                                 this.setState({
                                     search_name: e.target.value
                                 })
@@ -68,7 +67,10 @@ class ListTextSearch extends Component {
 
                                 }}
                             >搜索1</button>
-                        </li>
+                </div>
+                    <ul className="search_info_list_ul">
+
+                      
                         {this.state.search_info_lists.map((info_lists) => {
                             return (
                                 <li onClick={(e) => {
@@ -78,7 +80,7 @@ class ListTextSearch extends Component {
                             )
                         })}
                     </ul>
-                    <div onClick={(e) => {
+                    <div className="add_project_new" onClick={(e) => {
                         this.setState({
                             add_customer: true
                         })
@@ -86,21 +88,25 @@ class ListTextSearch extends Component {
 
                     >新增</div>
                 </div>
+                </div>
                 <div className={this.state.add_customer ? "add_info_list open" : "add_info_list"}>
+                    <div className="selected_scroll_div">
                     <i onClick={() => {
                         this.setState({
                             add_customer: false
                         })
                     }} style={{ fontSize: "20px" }} className="glyphicon glyphicon-arrow-left"></i>
                     <ComponentsList componentslist={this.state.add_button.data["form-list"]}></ComponentsList>
-                    <button
+                    {/* <button
                         onClick={(e) => {
+                            console.log(this.state.add_button.data["form-list"])
                             // this.state.info_lists.push({id:4,name:"中国铁通"})
-                            this.setState({
-                                add_customer: false
-                            })
+                            // this.setState({
+                            //     add_customer: false
+                            // })
                         }}
-                    >保存</button>
+                    >保存</button> */}
+                    </div>
                 </div>
 
             </div>

@@ -110,8 +110,8 @@
             for(var j=0;j<value.length;j++){
                 obj[value[j]] =key_name[j];
             }
-          var data = JSON.stringify(obj,value);//将对象转换成json
-          　　　 console.log(data);  
+         // var data = JSON.stringify(obj,value);//将对象转换成json
+          　　　 console.log(obj);  
         }
   
 
@@ -126,7 +126,8 @@
                     })
                 }]}/>
                 <div className={this.state.add_lists ? "add_info_list open" : "add_info_list"}>
-                    <i onClick={() => {
+                   <div className="selected_scroll_div">
+                   <i onClick={() => {
                         this.setState({
                             add_lists: false
                         })
@@ -143,6 +144,7 @@
                         }}
     
                     >保存</button>
+                   </div>
                 </div>
             </div>
             )

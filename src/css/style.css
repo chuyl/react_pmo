@@ -1129,12 +1129,12 @@ html, body {
   margin-left: 1rem;
   padding: 0;
   padding-top: 1rem;
-  background-color: yellowgreen;
+  background-color: #3f435e;
   height: 90vh;
   overflow: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   transition: all .1s;
-  float: left;
+  position: relative;
   width: 35%; }
 
 .add_button {
@@ -1155,7 +1155,7 @@ html, body {
     left: 0;
     top: 0;
     padding: 0;
-    background-color: yellowgreen;
+    background-color: #3f435e;
     overflow: hidden;
     transition: all .1s;
     float: left;
@@ -1168,7 +1168,7 @@ html, body {
     width: 100%;
     position: fixed;
     top: 0;
-    background-color: yellowgreen;
+    background-color: #3f435e;
     /* height: 600px; js浠ｆ浛 */
     left: 0;
     z-index: 10; } }
@@ -1231,14 +1231,47 @@ html, body {
   overflow: hidden;
   height: 0; }
 
+.search_info_list_card {
+  min-height: 24px;
+  margin-bottom: 26px; }
+
+.search_info_list_label {
+  float: left;
+  display: inline-block;
+  width: 59px;
+  color: #fff;
+  font-size: 14px;
+  text-align: left;
+  position: relative;
+  padding-left: 5px;
+  word-wrap: break-word;
+  padding-right: 14px;
+  overflow: hidden;
+  padding-top: 3px;
+  word-break: break-all; }
+
+.search_info_list_label::before {
+  content: '';
+  display: block;
+  width: 2px;
+  height: 12px;
+  background: #ff5722;
+  position: absolute;
+  top: 7px;
+  left: 0; }
+
 .add_info_list.open {
   height: 90vh;
-  width: 30%;
+  width: 100%;
+  left: 0;
   padding-top: 1rem;
+  -webkit-transition: all .1s;
+  -o-transition: all .1s;
   transition: all .1s;
-  position: fixed;
-  overflow-y: scroll;
+  position: absolute;
+  overflow: hidden;
   top: 0;
+  z-index: 1;
   background-color: aquamarine; }
 
 .search_info_list {
@@ -1246,17 +1279,48 @@ html, body {
   height: 0;
   overflow: hidden; }
 
+.search_info_position {
+  position: relative; }
+
 .search_info_list.open {
+  min-height: 146px;
+  background: #fff;
+  position: relative;
+  margin-left: 78px;
+  border-radius: 2px;
   position: absolute;
-  background-color: #fff;
-  width: 300px;
-  min-height: 100px;
-  overflow-y: scroll; }
+  overflow-y: auto;
+  border: 1px solid #c6c8ce;
+  width: calc(100% - 80px); }
+
+.selected_scroll_div {
+  height: 90vh;
+  overflow-y: auto;
+  padding: 0 18px; }
 
 .selected_info {
-  width: 300px;
-  background-color: #fff;
-  margin-top: 1rem; }
+  display: inline-block;
+  width: calc(100% - 90px);
+  height: 24px;
+  font: 14px "Microsoft YaHei";
+  line-height: 24px;
+  padding-left: 10px;
+  background: #fff;
+  color: #878e9f;
+  border-radius: 2px;
+  border: 1px solid #c6c8ce; }
+
+.selected_info::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 6px solid #878e9f;
+  float: right;
+  margin-right: 10px;
+  margin-top: 9px; }
 
 .add_list_close {
   position: fixed;
@@ -1266,6 +1330,99 @@ html, body {
   left: 0;
   background-color: #000000;
   opacity: 0; }
+
+/* select ul part */
+.search_info_list_ul {
+  display: block;
+  width: calc(100% - 10px);
+  padding-top: 10px;
+  border-radius: 2px;
+  padding-left: 10px;
+  position: relative;
+  color: #000; }
+
+/* select ul-li part */
+.search_info_list_ul li {
+  display: block;
+  height: 26px;
+  line-height: 26px;
+  margin-right: 10px;
+  font: 14px "Microsoft";
+  padding-left: 10px;
+  border-bottom: 1px solid #c6c8ce;
+  line-height: 26px;
+  text-align: left; }
+
+/* select ul-li first part */
+/* select ul-li last part */
+.select_search_div {
+  display: block;
+  height: 20px;
+  line-height: 26px;
+  margin-right: 10px;
+  font: 14px "Microsoft";
+  padding-left: 10px;
+  /* border-bottom: 1px solid #c6c8ce; */
+  line-height: 26px;
+  margin-top: 10px;
+  text-align: left; }
+
+.select_search_input {
+  display: block;
+  width: calc(100% - 70px);
+  height: 24px;
+  line-height: 24px;
+  border-radius: 2px;
+  padding-right: 60px;
+  outline: medium;
+  padding-left: 9px;
+  border: 1px solid #c6c8ce;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 10px;
+  font: 14px "Microsoft"; }
+
+.select_search_input::placeholder {
+  color: #000; }
+
+.select_search_button {
+  display: block;
+  float: right;
+  /* position: absolute; */
+  height: 24px;
+  width: 40px;
+  margin-top: -25px;
+  right: 10px;
+  font-size: 12px;
+  color: #f4a931;
+  text-align: center;
+  background: #fff;
+  outline: none;
+  border: 0;
+  font-weight: bold; }
+
+.select_search_button::before {
+  display: block;
+  /* position: absolute; */
+  float: left;
+  width: 1px;
+  height: 14px;
+  background: #c6c8ce;
+  content: '';
+  /* left: -4px; */
+  margin-top: 1px; }
+
+.add_project_new {
+  display: block;
+  height: 30px;
+  margin-left: 20px;
+  color: #f4a931;
+  font: 14px "Microsoft";
+  font-weight: bold;
+  width: calc(100% - 20px);
+  cursor: pointer;
+  line-height: 30px; }
 
 @media only screen and (max-width: 768px) {
   .add_info_list {
@@ -1279,8 +1436,13 @@ html, body {
     margin-bottom: 70px;
     transition: all .1s;
     width: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
-    background-color: palegoldenrod; } }
+    background-color: #3f435e; }
+
+  .selected_scroll_div {
+    height: 90vh;
+    overflow-y: auto;
+    padding: 0 18px; } }
 
 /*# sourceMappingURL=style.css.map */
