@@ -64,7 +64,7 @@ class ListText extends Component {
                                     })
 
                                 }}
-                            >搜索1</button>
+                            >搜索</button>
                 </div>
                     <ul className="search_info_list_ul">
 

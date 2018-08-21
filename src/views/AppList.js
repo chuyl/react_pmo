@@ -46,7 +46,7 @@ card_box_close = () =>{
             })}
       </div>
       <div id="card_box" className={this.state.card_state?"card_box open":"card_box"}>
-      <i onClick={this.card_box_close} style={{fontSize:"20px"}} className="glyphicon glyphicon-arrow-left"></i>
+      <div onClick={this.card_box_close} className="return_btn"></div>
        {/* <input type="date"/> */}
       {/* <img alt="fengjing" src={Boximg}/> */}
       {this.state.selected_card.root}</div>

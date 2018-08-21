@@ -459,7 +459,7 @@ class Budget extends Component {
 
 					}} className={this.state.card_state ? "card_box open" : "card_box"}>
 						<div style={{padding:"18px"}}>
-						<i onClick={this.card_box_close} style={{ fontSize: "20px" }} className="glyphicon glyphicon-arrow-left"></i>
+						<div onClick={this.card_box_close}className="return_btn"></div>
 						{/* paper详细内容 */}
 						{this.state.card_state ?//判断paper是否可见
 							this.state.budget_paper.data["form-list"].map(form_list => {

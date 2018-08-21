@@ -8,7 +8,7 @@
 //   }
 .search_info_list_card {
    min-height: 24px;
-   margin-bottom: 26px;
+   margin-bottom: 24px;
 }
 .search_info_list_label {
     float: left;
@@ -18,7 +18,7 @@
     font-size: 14px;
     text-align: left;
     position: relative;
-    padding-left: 5px;
+    padding-left: 7px;
     word-wrap: break-word;
     padding-right: 14px;
     overflow: hidden;
@@ -48,8 +48,8 @@
     overflow: hidden;
     top: 0;
     z-index: 1;
-    background-color: aquamarine;
-  }
+    background: linear-gradient(to bottom right, #3f435e, #4b567f);;
+}
   .search_info_list{
       width: 0;
       height: 0;
@@ -82,7 +82,7 @@
 //   }
 .selected_info {
         display: inline-block;
-        width: calc(100% - 90px);
+        width: calc(100% - 92px);
         height: 24px;
         font: 14px "Microsoft YaHei";
         line-height: 24px;
@@ -180,7 +180,7 @@
     float: right;
     /* position: absolute; */
     height: 24px;
-    width: 40px;
+    width: 48px;
     margin-top: -25px;
     right: 10px;
     font-size: 12px;
@@ -199,6 +199,7 @@
     width: 1px;
     height: 14px;
     background: #c6c8ce;
+    margin-right: 5px;
     content: '';
     /* left: -4px; */
     margin-top: 1px;
@@ -230,8 +231,8 @@
           width: 100%;
           position: fixed;
           top: 0;
-          background-color: #3f435e;
-       } 
+          background: linear-gradient(to bottom right, #3f435e, #4b567f);;
+        } 
        .selected_scroll_div{
         height: 90vh;
         overflow-y: auto;

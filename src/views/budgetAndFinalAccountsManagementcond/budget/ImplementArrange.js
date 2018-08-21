@@ -127,11 +127,11 @@
                 }]}/>
                 <div className={this.state.add_lists ? "add_info_list open" : "add_info_list"}>
                    <div className="selected_scroll_div">
-                   <i onClick={() => {
+                   <div onClick={() => {
                         this.setState({
                             add_lists: false
                         })
-                    }} style={{ fontSize: "20px" }} className="glyphicon glyphicon-arrow-left"></i>
+                    }} className="return_btn"></div>
                     修改实施计划
                     <TextField inputValue={""} labelValue={"合同编号"} />
                     <TextField inputValue={""} labelValue={"课程名称"} />

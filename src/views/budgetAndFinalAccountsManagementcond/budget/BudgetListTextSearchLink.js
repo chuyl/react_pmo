@@ -201,7 +201,7 @@ class BudgetListTextSearchLink extends Component {
                                         search_info_lists: this.state.search_info_list
                                     })
                                 }}
-                            >搜索1</button>
+                            >搜索</button>
                 </div>
                     <ul className="search_info_list_ul">
                        
@@ -228,14 +228,14 @@ class BudgetListTextSearchLink extends Component {
                     }}
                     >新增</div>
                 </div></div>
-                <div>预计成本:{dealNumber(this.state.changeResult)}</div>
+                <div className="select_result_msg">预计成本:{dealNumber(this.state.changeResult)}</div>
                 <div className={this.state.add_customer ? "add_info_list open" : "add_info_list"}>
                     <div className="selected_scroll_div">
-                    <i onClick={() => {
+                    <div onClick={() => {
                         this.setState({
                             add_customer: false
                         })
-                    }} style={{ fontSize: "20px" }} className="glyphicon glyphicon-arrow-left"></i>
+                    }} className="return_btn"></div>
                     {/* 添加客户1 */}
                     <ComponentsList componentslist={this.state.add_button.data["form-list"]}></ComponentsList>
                      {/* 讲师安排 */}

@@ -66,7 +66,7 @@ class ListTextSearch extends Component {
                                     })
 
                                 }}
-                            >搜索1</button>
+                            >搜索</button>
                 </div>
                     <ul className="search_info_list_ul">
 
@@ -91,11 +91,11 @@ class ListTextSearch extends Component {
                 </div>
                 <div className={this.state.add_customer ? "add_info_list open" : "add_info_list"}>
                     <div className="selected_scroll_div">
-                    <i onClick={() => {
+                    <div onClick={() => {
                         this.setState({
                             add_customer: false
                         })
-                    }} style={{ fontSize: "20px" }} className="glyphicon glyphicon-arrow-left"></i>
+                    }} className="return_btn"></div>
                     <ComponentsList componentslist={this.state.add_button.data["form-list"]}></ComponentsList>
                     {/* <button
                         onClick={(e) => {

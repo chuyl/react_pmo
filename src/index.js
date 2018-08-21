@@ -275,11 +275,11 @@ class TabComponent extends Component{
           console.log("goutong")
         }} className="dialog_open">沟通</div>
        <div className={this.state.dialog_show?"dialog_window open":"dialog_window"}> 
-       <i onClick={()=>{
+        <div  onClick={()=>{
          this.setState({
            dialog_show:false
          })
-        }} className="glyphicon glyphicon-arrow-left"></i>
+        }} className="return_btn"></div>
        这是打开的对话窗口
        {/* <div style={this.state.dialog_show===true?{}:{display:"none"}} onClick={this.dialogShow.bind(this)} className="modal_backdrop"></div> */}
        {/* <div className="dialog_window"></div> */}

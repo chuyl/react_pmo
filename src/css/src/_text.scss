@@ -1,0 +1,35 @@
+.text_field_div  {
+    display: block;
+    width: 100%;
+    margin: auto;
+    color: #fff;
+   // position: relative;
+    min-height: 24px;
+    margin-bottom: 24px;
+}
+
+
+.text_field_input {
+    display: block;
+    margin-left: 78px;
+    width: calc(100% - 92px);
+    height: 24px;
+    font: 14px "Microsoft YaHei";
+    line-height: 24px;
+    padding-left: 10px;
+    background: #fff;
+    color: #878e9f;
+    border-radius: 2px;
+   // position: relative;
+    border: 1px solid #c6c8ce;
+}
+
+.text_field_remind {
+    display: block;
+    margin-left: 78px;
+    border-radius: 2px;
+    height: 14px;
+    width: calc(100% - 80px);
+    overflow-y: auto;
+    margin-top: 10px;
+}
