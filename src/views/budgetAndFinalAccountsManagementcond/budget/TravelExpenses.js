@@ -294,16 +294,18 @@ class TravelExpenses extends Component {
                         })
                     }]} />
                 <div className={this.state.add_lists ? "add_info_list open" : "add_info_list"}>
-                    <div className="selected_scroll_div">
-                    <div onClick={() => {
+                <div className="paper_card_title">
+                <div onClick={() => {
                         this.setState({
                             add_lists: false
                         })
                     }} className="return_btn"></div>
-                    修改差旅计划
+                      修改差旅计划
+                    </div>
+                    <div className="selected_scroll_div">
                     <TextField inputValue={""} labelValue={"合同编号"} />
                     <TextField inputValue={""} labelValue={"课程名称"} />
-                    <p>长途交通费</p>
+                    <p className="card_title">长途交通费</p>
                     <ul>
                         {
                             this.state.addLongTrafficCondition.map((item, index) => {
@@ -312,7 +314,7 @@ class TravelExpenses extends Component {
                         }
 
                     </ul>
-                    <button
+                    <button  className="add_card_btn"
                         onClick={() => {
                             this.state.addLongTrafficCondition.push(
                                 <AddCard
@@ -332,7 +334,7 @@ class TravelExpenses extends Component {
 
                         }}
                     >添加长途行程安排</button>
-                    <p>市内交通费</p>
+                    <p className="card_title">市内交通费</p>
                     <ul>
                         {
                             this.state.addShortTrafficCondition.map((item, index) => {
@@ -341,7 +343,7 @@ class TravelExpenses extends Component {
                         }
 
                     </ul>
-                    <button
+                    <button  className="add_card_btn"
                         onClick={() => {
                             this.state.addShortTrafficCondition.push(
                                 <AddSecondCard
@@ -361,7 +363,7 @@ class TravelExpenses extends Component {
 
                         }}
                     >添加市内行程安排</button>
-                    <p>住宿费</p>
+                    <p className="card_title">住宿费</p>
                     <ul>
                         {
                             this.state.addHotelExpenseCondition.map((item, index) => {
@@ -370,7 +372,7 @@ class TravelExpenses extends Component {
                         }
 
                     </ul>
-                    <button
+                    <button  className="add_card_btn"
                         onClick={() => {
                             this.state.addHotelExpenseCondition.push(
                                 <AddThirdCard
@@ -391,7 +393,7 @@ class TravelExpenses extends Component {
                     >添加住宿安排</button>
 
 
-                    <button
+                    <button className="hold_btn"
                         onClick={() => {
                             this.setState({
                                 long_traffic_data_group: [],

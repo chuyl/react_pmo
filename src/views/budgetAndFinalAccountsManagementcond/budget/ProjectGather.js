@@ -3,21 +3,90 @@
      * @param ProjectGather 组件  项目集
      */
     import React, { Component } from 'react';
-    import TextField from '../../components/TextField';
+    import ComponentsList from '../../components/ComponentsList'
+    //import TextField from '../../components/TextField';
+    //import SelectList from '../../components/SelectList'
     import AddCard from '../../components/AddCard';
     class ProjectGather extends Component {
         state = {
             add_lists: false,
             addCondition: [],
-            //讲师安排获取数据list
+
+            ProjectGather:{
+                "data":{
+                    "form-list":[
+                        {
+                            "id_name": "add_a_project_gather_name",
+                            "type_name": "MutiText", //input
+                            "key": "",
+                            "title": "项目集名称",
+                            "tip": "",
+                            "add_button": {},
+                            "descript": "",
+                            "before_api_uri": "",
+                            "after_api_uri": ""
+                        },
+                        {
+                            "id_name": "add_a_project_gather_person_in_charge",
+                            "type_name": "SelectList", //下拉搜索
+                            "key": "",
+                            "title": "项目负责人",
+                            "tip": "",
+                            "add_button": {
+                                "data": {
+                                    "form-list": []
+                                }
+                            },
+                            "descript": "",
+                            "before_api_uri": [{
+                                id: 1,
+                                name: "飞机",
+                            }, {
+                                id: 2,
+                                name: "火车",
+                            }, {
+                                id: 3,
+                                name: "大巴",
+                            }],
+                            "after_api_uri": ""
+                        },{
+                            "id_name": "add_a_project_gather_contract_number",
+                            "type_name": "SelectList", //下拉搜索
+                            "key": "",
+                            "title": "合同编号",
+                            "tip": "",
+                            "add_button": {
+                                "data": {
+                                    "form-list": []
+                                }
+                            },
+                            "descript": "",
+                            "before_api_uri": [{
+                                id: 1,
+                                name: "20180808",
+                            }, {
+                                id: 2,
+                                name: "20180809",
+                            }, {
+                                id: 3,
+                                name: "20180810",
+                            }],
+                            "after_api_uri": ""
+                        },
+                    
+                    
+                
+                    ]}},
+        
+            //联系人获取数据list
             project_gather_data_group:[],
-            //讲师安排card
+            //联系人card
             project_gather_card_list: {
                 project_gather_card: [{
-                    "id_name": "add_a_project_gather_name",
+                    "id_name": "add_a_project_gather_contacts",
                     "type_name": "MutiText", //input
                     "key": "",
-                    "title": "主讲课程",
+                    "title": "联系人",
                     "tip": "",
                     "add_button": {
                     },
@@ -25,10 +94,32 @@
                     "before_api_uri": "",
                     "after_api_uri": ""
                 }, {
-                    "id_name": "project_gather_always_money",
-                    "type_name": "TextMoney", //input
+                    "id_name": "add_a_project_gather_phone",
+                    "type_name": "MutiText",
                     "key": "",
-                    "title": "指导价格",
+                    "title": "联系人电话",
+                    "tip": "",
+                    "add_button": {
+                    },
+                    "descript": "",
+                    "before_api_uri": "",
+                    "after_api_uri": ""
+                }, {
+                    "id_name": "add_a_project_gather_duty",
+                    "type_name": "MutiText",
+                    "key": "",
+                    "title": "职务",
+                    "tip": "",
+                    "add_button": {
+                    },
+                    "descript": "",
+                    "before_api_uri": "",
+                    "after_api_uri": ""
+                }, {
+                    "id_name": "add_a_project_gather_department",
+                    "type_name": "MutiText",
+                    "key": "",
+                    "title": "部门",
                     "tip": "",
                     "add_button": {
                     },
@@ -100,12 +191,13 @@
         render() {
             return (
                 <div>
-                  
-                       
-                        所属项目集
-                        <TextField inputValue={""} labelValue={"合同编号"} />
-                        <TextField inputValue={""} labelValue={"课程名称"} />
-                        <p>所属项目集</p>
+                        {/* 所属项目集 */}
+                        <ComponentsList componentslist={this.state.ProjectGather.data["form-list"]}></ComponentsList>
+                        {/* <SelectList id={"add_a_project_gather_charge"}
+                                    labelValue={"项目负责人"}
+                                    //search_info_lists={this.state.company_name.name}
+                                     /> */}
+                       <p className="card_title">联系人</p>
                         <ul>
                             {
                                 this.state.addCondition.map((item, index) => {
@@ -113,9 +205,8 @@
                                 })
                             }
                         </ul>
-                        <button
+                        <button   className="add_card_btn"
                             onClick={() => {
-                                console.log("hhhhh")
                                 this.state.addCondition.push(
                                     <AddCard
                                         key={`executeHandle${this.state.addCondition.length}.lenght+1`}
@@ -131,8 +222,8 @@
                                     addCondition: this.state.addCondition,
                                 })
                             }}
-                        > 添加主讲课程&gt;</button>
-                        <button
+                        > 添加联系人</button>
+                        <button className="hold_btn"
                         onClick={() => {
                             this.setState({
                                 project_gather_data_group: [],

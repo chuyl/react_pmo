@@ -41,7 +41,7 @@ class ListTextSearchLink extends Component {
                         "form-temp-name": "讲师姓名",
                         "form-list": [{
                             "id_name": "add_a_teacher_name",
-                            "type_name": "MutiText", //input
+                            "type_name": "MutiText1", //input
                             "key": "",
                             "title": "讲师姓名",
                             "tip": "",
@@ -396,12 +396,15 @@ class ListTextSearchLink extends Component {
                 </div>
                 <div>预计成本:{dealNumber(this.state.changeResult)}</div>
                 <div className={this.state.add_customer ? "add_info_list open" : "add_info_list"}>
-                    <div className="selected_scroll_div">
-                    <div onClick={() => {
+                <div className="paper_card_title">
+                <div onClick={() => {
                         this.setState({
                             add_customer: false
                         })
                     }} className="return_btn"></div>
+                    </div>
+                    <div className="selected_scroll_div">
+                   
                     {/* 添加客户1 */}
                     <ComponentsList componentslist={this.state.add_button.data["form-list"]}></ComponentsList>
                      {/* 讲师安排 */}
@@ -416,13 +419,15 @@ class ListTextSearchLink extends Component {
                             }}
                         >修改讲师安排</button>
                         <div className={this.state.add_lists ? "add_info_list open" : "add_info_list"}>
-                            <div className="selected_scroll_div">
-                            <div onClick={() => {
+                        <div className="paper_card_title">
+                        <div onClick={() => {
                                 this.setState({
                                     add_lists: false
                                 })
                             }} className="return_btn"></div>
-                            修改讲师安排
+                             修改讲师安排
+                            </div>
+                            <div className="selected_scroll_div">
                             <TextField inputValue={""} labelValue={"合同编号"} />
                             <TextField inputValue={""} labelValue={"课程名称"} />
                             <p>讲师安排</p>
@@ -444,14 +449,14 @@ class ListTextSearchLink extends Component {
                                 })} */}
                                 {/* {this.add_lists_components()} */}
                             </ul>
-                            <button
+                            <button  className="add_card_btn"
                                 onClick={() => {
                                     this.state.addCondition.push(
                                         <AddCard
                                             key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                                             remove={this.removeEvent.bind(this)}
                                             index={this.state.addCondition.length}
-                                            card_list={this.state.teacher_card_list.teacher_card}
+                                            card_list={this.state.teacher_card_list.teachher_card}
                                             // getAddCondition={ this.getAddConditionEvent.bind(this)}
                                             conditionAction={this.state.conditionAction}
                                         >
@@ -464,7 +469,7 @@ class ListTextSearchLink extends Component {
 
                                 }}
                             >新增讲师</button>
-                            <button
+                            <button  className="hold_btn"
                                 onClick={() => {
                                     console.log(this.state.addCondition)
                                     var addCondition = this.state.addCondition;
@@ -506,7 +511,7 @@ class ListTextSearchLink extends Component {
 
 
 
-                    <button onClick={() => {
+                    <button  className="hold_btn" onClick={() => {
                         for (var i = 0; i < this.state.add_button.data["form-list"].length; i++) {
 
                             console.log(document.getElementById(this.state.add_button.data["form-list"][i].id_name).innerHTML || document.getElementById(this.state.add_button.data["form-list"][i].id_name).value)

@@ -90,12 +90,15 @@ class ListTextSearch extends Component {
                 </div>
                 </div>
                 <div className={this.state.add_customer ? "add_info_list open" : "add_info_list"}>
-                    <div className="selected_scroll_div">
-                    <div onClick={() => {
+                <div className="paper_card_title">
+                <div onClick={() => {
                         this.setState({
                             add_customer: false
                         })
                     }} className="return_btn"></div>
+                    </div>
+                    <div className="selected_scroll_div">
+                   
                     <ComponentsList componentslist={this.state.add_button.data["form-list"]}></ComponentsList>
                     {/* <button
                         onClick={(e) => {

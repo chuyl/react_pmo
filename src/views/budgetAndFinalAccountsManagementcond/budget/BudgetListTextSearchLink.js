@@ -228,14 +228,18 @@ class BudgetListTextSearchLink extends Component {
                     }}
                     >新增</div>
                 </div></div>
-                <div className="select_result_msg">预计成本:{dealNumber(this.state.changeResult)}</div>
+                <div className="select_result_msg">预计成本:<span className="amount_of_money">{dealNumber(this.state.changeResult)}</span></div>
                 <div className={this.state.add_customer ? "add_info_list open" : "add_info_list"}>
-                    <div className="selected_scroll_div">
-                    <div onClick={() => {
+                <div className="paper_card_title"> <div onClick={() => {
                         this.setState({
                             add_customer: false
                         })
                     }} className="return_btn"></div>
+                    新增项目
+                    </div>
+               
+                    <div className="selected_scroll_div">
+                   
                     {/* 添加客户1 */}
                     <ComponentsList componentslist={this.state.add_button.data["form-list"]}></ComponentsList>
                      {/* 讲师安排 */}
@@ -245,10 +249,14 @@ class BudgetListTextSearchLink extends Component {
                      <ImplementArrange/>
                      {/* 差旅费用 */}
                      <TravelExpenses/>
-                    <button onClick={() => {
+                    <button className="button_sm button_position" onClick={() => {
                         this.StringifyButton(this.state.add_button.data["form-list"]) 
                        
-                    }}>保存</button>
+                    }}>更新预算</button>
+                    <button className="button_sm button_position" onClick={() => {
+                        this.StringifyButton(this.state.add_button.data["form-list"]) 
+                       
+                    }}>更新决算</button>
                     </div>
                 </div>
             </div>

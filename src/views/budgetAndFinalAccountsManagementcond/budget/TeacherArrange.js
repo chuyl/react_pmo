@@ -220,16 +220,19 @@ class TeacherArrange extends Component {
                         })
                     }]} />
                 <div className={this.state.add_lists ? "add_info_list open" : "add_info_list"}>
-                    <div className="selected_scroll_div">
-                    <div onClick={() => {
+                <div className="paper_card_title">
+                <div onClick={() => {
                         this.setState({
                             add_lists: false
                         })
                     }}className="return_btn"></div>
                     修改讲师安排
+                    </div>
+                    <div className="selected_scroll_div">
+                   
                     <TextField inputValue={""} labelValue={"合同编号"} />
                     <TextField inputValue={""} labelValue={"课程名称"} />
-                    <p>讲师安排</p>
+                    <p className="card_title">讲师安排</p>
                     <ul>
                         {
                             this.state.addCondition.map((item, index) => {
@@ -237,7 +240,7 @@ class TeacherArrange extends Component {
                             })
                         }
                     </ul>
-                    <button
+                    <button className="add_card_btn"
                         onClick={() => {
                             this.state.addCondition.push(
                                 <AddCard
@@ -255,7 +258,7 @@ class TeacherArrange extends Component {
                             })
                         }}
                     >新增讲师</button>
-                    <button
+                    <button className="hold_btn"
                         onClick={() => {
                             this.setState({
                                 teacher_data_group: [],

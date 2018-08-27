@@ -88,13 +88,13 @@
     font-size: 24px;
     line-height: 80px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #ffffff;
+    color: $white;
     float: right;
     padding: 0 1em;
     cursor: pointer;
   }
   .bar .btn:hover{
-    background-color: #ffffff;
+    background-color: $white;
     color: #000;   
   }
   .sidebar{
@@ -122,7 +122,7 @@
   width: 250px;
   overflow: hidden;
   z-index: 1000;
-  background-color: #ffffff;
+  background-color: $white;
   transition: width .2s;
 
 }

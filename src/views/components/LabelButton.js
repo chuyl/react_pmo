@@ -12,7 +12,7 @@
                 <div className="label_button_card">
                     <div className="label_button_title">{title}</div>
                     <span  className="label_button_label">{label}</span>
-                    <button  className="label_button_button" onClick={this.props.action[0]}
+                    <button  className="label_button_button button_md" onClick={this.props.action[0]}
                         >{button}</button>    
            </div>
             )

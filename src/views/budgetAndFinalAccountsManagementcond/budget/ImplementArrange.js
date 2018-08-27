@@ -126,19 +126,23 @@
                     })
                 }]}/>
                 <div className={this.state.add_lists ? "add_info_list open" : "add_info_list"}>
-                   <div className="selected_scroll_div">
-                   <div onClick={() => {
+                <div className="paper_card_title">
+                <div onClick={() => {
                         this.setState({
                             add_lists: false
                         })
                     }} className="return_btn"></div>
-                    修改实施计划
+                     修改实施计划
+                    </div>
+                   <div className="selected_scroll_div">
+                   
+                   
                     <TextField inputValue={""} labelValue={"合同编号"} />
                     <TextField inputValue={""} labelValue={"课程名称"} />
-                    <p>实施成本</p>
+                    <p className="card_title">实施成本</p>
                     <ComponentsList componentslist={this.state.implementArrange.data["form-list"]}></ComponentsList>
                    
-                    <button
+                    <button className="hold_btn"
                         onClick={() => {
                            this.StringifyButton(this.state.implementArrange.data["form-list"]) 
                         }}

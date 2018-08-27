@@ -101,9 +101,6 @@ import TextMoney from '../../components/TextMoney';
         render() {
             return (
                 <div>
-                  
-                       
-                        添加讲师
                         <TextField inputValue={""} labelValue={"讲师姓名"} />
                         <TextMoney inputValue={""} labelValue={"常用单价"} />
                         <ul>
@@ -113,7 +110,7 @@ import TextMoney from '../../components/TextMoney';
                                 })
                             }
                         </ul>
-                        <button
+                        <button className="add_card_btn"
                             onClick={() => {
                                 this.state.addCondition.push(
                                     <AddCard
@@ -131,7 +128,7 @@ import TextMoney from '../../components/TextMoney';
                                 })
                             }}
                         > 添加主讲课程</button>
-                        <button
+                        <button className="hold_btn"
                         onClick={() => {
                             this.setState({
                                 project_gather_data_group: [],

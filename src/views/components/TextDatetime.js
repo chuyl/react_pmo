@@ -9,9 +9,9 @@
         render(){
             const {id,disabled,inputValue,onChange,onClick,labelValue} =this.props;
             return (
-                <div>
+                <div className="text_field_div">
                     <label className="search_info_list_label">{labelValue}</label>
-               <input type={"datetime-local"} className={"className"} onClick={onClick} onChange={onChange} defaultValue={inputValue} disabled={disabled} id={id}/>
+               <input type={"datetime-local"} className={"text_field_input"} onClick={onClick} onChange={onChange} defaultValue={inputValue} disabled={disabled} id={id}/>
             </div>
             )
         }

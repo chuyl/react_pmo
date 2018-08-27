@@ -30,16 +30,14 @@ class AddCard extends Component {
     render() {
         return (
             <li
-                key={this.props.index}
-                style={{ border: "1px solid #000",margin:"-1px" }}
+                key={this.props.index}  className="card_info_list_card"
             >
-                <button
-                    onClick={this.removeFunEvent.bind(this)}
-                >删除{this.props.index}</button>
+               
                 {/* <ComponentsList componentslist={this.state.card_list}></ComponentsList> */}
 
                 {this.state.card_list.map((card_list, index) => {
-                    return <div key={index}>
+                    console.log(card_list.type_name)
+                    return <div key={index} style={{marginBottom:"-9px"}}>
                         {
                             card_list.type_name === "ListTextSearch" ?
                                 <ListTextSearch id={card_list.id_name + this.props.index}
@@ -66,6 +64,9 @@ class AddCard extends Component {
                                         selected_info={card_list.key} /> : ""}
                     </div>
                 })}
+                 <button className="label_delete_button"
+                    onClick={this.removeFunEvent.bind(this)}
+                >删除</button>
                 {/* {this.add_teacher_card_components(this.props.index)} */}
             </li>
         )

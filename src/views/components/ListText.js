@@ -41,31 +41,7 @@ class ListText extends Component {
                     id="search_info_list_div"
                     className={this.state.search_state ? "search_info_list open" : "search_info_list"}
                 >
-                 <div className="select_search_div">
-                <input className="select_search_input" onChange={(e) => {
-                                this.setState({
-                                    search_name: e.target.value
-                                })
-
-                            }} /><button
-                                className="select_search_button"
-                                onClick={() => {
-                                    this.setState({
-                                        search_info_list: [],
-                                    })
-                                    for (var i = 0; i < this.state.info_lists.length; i++) {
-                                        if (this.state.info_lists[i].name.indexOf(this.state.search_name) >= 0) {
-                                            this.state.search_info_list.push(this.state.info_lists[i])
-
-                                        }
-                                    }
-                                    this.setState({
-                                        search_info_lists: this.state.search_info_list
-                                    })
-
-                                }}
-                            >搜索</button>
-                </div>
+               
                     <ul className="search_info_list_ul">
 
                         {this.state.search_info_lists.map((info_lists) => {

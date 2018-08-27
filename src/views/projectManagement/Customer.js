@@ -46,7 +46,8 @@ class Customer extends Component {
 				})}
 		  </div>
 		  <div id="card_box" className={this.state.card_state?"card_box open":"card_box"}>
-		  <div onClick={this.card_box_close} className="return_btn"></div>
+			<div className="paper_card_title">
+			<div onClick={this.card_box_close} className="return_btn"></div></div>
 			 {/* <input type="date"/> */}
 			 {/* paper详细内容 */}
 			 <div>

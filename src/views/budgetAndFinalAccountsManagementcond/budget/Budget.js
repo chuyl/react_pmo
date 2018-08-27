@@ -458,8 +458,11 @@ class Budget extends Component {
 						//	this.event_target(event,"add_customer_info","search_info_list_div","search_info_list","search_info_list_open")
 
 					}} className={this.state.card_state ? "card_box open" : "card_box"}>
-						<div style={{padding:"18px"}}>
+						<div className="paper_card_title">
 						<div onClick={this.card_box_close}className="return_btn"></div>
+						</div>
+						<div style={{padding:"0 18px"}}>
+						
 						{/* paper详细内容 */}
 						{this.state.card_state ?//判断paper是否可见
 							this.state.budget_paper.data["form-list"].map(form_list => {
