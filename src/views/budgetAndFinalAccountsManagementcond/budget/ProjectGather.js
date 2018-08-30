@@ -28,7 +28,7 @@
                         },
                         {
                             "id_name": "add_a_project_gather_person_in_charge",
-                            "type_name": "SelectList", //下拉搜索
+                            "type_name": "DepartmentList", //下拉搜索
                             "key": "",
                             "title": "项目负责人",
                             "tip": "",
@@ -38,16 +38,18 @@
                                 }
                             },
                             "descript": "",
-                            "before_api_uri": [{
-                                id: 1,
-                                name: "飞机",
-                            }, {
-                                id: 2,
-                                name: "火车",
-                            }, {
-                                id: 3,
-                                name: "大巴",
-                            }],
+                            "before_api_uri": "staff_small_list"
+                            // [{
+                            //     id: 1,
+                            //     name: "飞机",
+                            // }, {
+                            //     id: 2,
+                            //     name: "火车",
+                            // }, {
+                            //     id: 3,
+                            //     name: "大巴",
+                            // }]
+                            ,
                             "after_api_uri": ""
                         },{
                             "id_name": "add_a_project_gather_contract_number",
@@ -61,16 +63,18 @@
                                 }
                             },
                             "descript": "",
-                            "before_api_uri": [{
-                                id: 1,
-                                name: "20180808",
-                            }, {
-                                id: 2,
-                                name: "20180809",
-                            }, {
-                                id: 3,
-                                name: "20180810",
-                            }],
+                            "before_api_uri": "staff_small_list"
+                            //  [{
+                            //     id: 1,
+                            //     name: "20180808",
+                            // }, {
+                            //     id: 2,
+                            //     name: "20180809",
+                            // }, {
+                            //     id: 3,
+                            //     name: "20180810",
+                            // }]
+                            ,
                             "after_api_uri": ""
                         },
                     
@@ -135,7 +139,7 @@
                     key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                     removeDefault={this.removeEvent.bind(this)}
                     index={this.state.addCondition.length}
-                    card_list={this.state.project_gather_card_list.project_gather_card}
+                    cardList={this.state.project_gather_card_list.project_gather_card}
                     //getAddCondition={ this.getAddConditionEvent.bind(this)}
                     conditionAction={this.state.conditionAction}
                 >
@@ -195,7 +199,7 @@
                         <ComponentsList componentslist={this.state.ProjectGather.data["form-list"]}></ComponentsList>
                         {/* <SelectList id={"add_a_project_gather_charge"}
                                     labelValue={"项目负责人"}
-                                    //search_info_lists={this.state.company_name.name}
+                                    //searchInfoLists={this.state.company_name.name}
                                      /> */}
                        <p className="card_title">联系人</p>
                         <ul>
@@ -212,7 +216,7 @@
                                         key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                                         remove={this.removeEvent.bind(this)}
                                         index={this.state.addCondition.length}
-                                        card_list={this.state.project_gather_card_list.project_gather_card}
+                                        cardList={this.state.project_gather_card_list.project_gather_card}
                                         // getAddCondition={ this.getAddConditionEvent.bind(this)}
                                         conditionAction={this.state.conditionAction}
                                     >

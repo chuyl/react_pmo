@@ -78,3 +78,27 @@ export function dealNumber(money){
 }
 
 }
+/**
+ * 每个页面初始化使用的cache
+ * @param {*回调函数} callback 
+ */
+// export function initCache(callback = () => { }) {
+//   if (sessionStorage.logged === "true" || sessionStorage.session !== undefined) {
+//     var cb = (route, message, arg) => {
+//       if (message.code === Code.LOGIC_SUCCESS) {
+//         window.CacheData = message.data;
+//         callback()
+//       }
+//     }
+//     if (Number(sessionStorage.apptype) === APP_TYPE_COMPANY) {
+//       getData(getRouter(QUERY), { session: sessionStorage.session }, cb, { callback: callback });
+
+//     } else if (Number(sessionStorage.apptype) === APP_TYPE_ORANIZATION) {
+//       getData(getRouter(INST_QUERY), { session: sessionStorage.session }, cb, { callback: callback });
+//     } else {
+//       console.log("error app type query");
+//     }
+//   } else {
+//     logout();
+//   }
+// }

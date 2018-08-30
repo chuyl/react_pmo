@@ -5,13 +5,14 @@
 
 import React, { Component } from 'react';
 import TextField from './TextField';
-import ListText from './ListText'
 import TextMoney from './TextMoney'
 import TextDatetime from './TextDatetime'
 import ListTextSearch from './ListTextSearch'
 import AddTeacher from '../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
+import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
 import ProjectGather from '../budgetAndFinalAccountsManagementcond/budget/ProjectGather'
 import SelectList from './SelectList'
+import DepartmentList from './DepartmentList'
 class ComponentsList extends Component {
     constructor(props) {
         super(props);
@@ -27,28 +28,31 @@ class ComponentsList extends Component {
                     return <div key={form_list.id_name}>
                         {form_list.type_name === "ListTextSearch" ?
                             <ListTextSearch id={form_list.id_name}
-                                // className = {form_list.id_name+" selected_info" }
+                                // className = {form_list.id_name+" selectedInfo" }
                                 labelValue={form_list.title}
-                                search_info_lists={form_list.before_api_uri}
-                                add_button={form_list.add_button}
-                                selected_info={form_list.key} />
+                                searchInfoLists={form_list.before_api_uri}
+                                addButton={form_list.add_button}
+                                selectedInfo={form_list.key} />
                                 : form_list.type_name === "TextDatetime" ? <TextDatetime
                                 id={form_list.id_name} inputValue={form_list.key} labelValue={form_list.title} />
                                 : form_list.type_name === "TextMoney" ? <TextMoney
                                 id={form_list.id_name} inputValue={form_list.key} labelValue={form_list.title} />
-                            : form_list.type_name === "MutiText" ? <TextField id={form_list.id_name} inputValue={form_list.key} labelValue={form_list.title} />
-                            :form_list.type_name==="ProjectGather"?<ProjectGather/>   
-                            :form_list.type_name==="AddTeacher"?<AddTeacher/> 
-                                    //add_button={form_list.add_button}
-                            :form_list.type_name==="SelectList"?<SelectList 
-                            labelValue={form_list.title}
-                            search_info_lists={form_list.before_api_uri} 
-                            id={form_list.id_name}
-                            selected_info={form_list.key} />   
-                            : form_list.type_name === "ListText" ? <ListText id={form_list.id_name}
-                                    labelValue={form_list.title}
-                                    search_info_lists={form_list.before_api_uri}
-                                    selected_info={form_list.key} /> : ""}
+                                : form_list.type_name === "MutiText" ? <TextField id={form_list.id_name} inputValue={form_list.key} labelValue={form_list.title} />
+                                :form_list.type_name==="ProjectGather"?<ProjectGather/>   
+                                :form_list.type_name==="AddTeacher"?<AddTeacher/> 
+                                :form_list.type_name==="ProjectTemplate"?<ProjectTemplate/> 
+                                        //addButton={form_list.add_button}
+                                :form_list.type_name==="DepartmentList"?<DepartmentList 
+                                labelValue={form_list.title}
+                                searchInfoLists={form_list.before_api_uri} 
+                                id={form_list.id_name}
+                                selectedInfo={form_list.key} />
+                                :form_list.type_name==="SelectList"?<SelectList 
+                                labelValue={form_list.title}
+                                searchInfoLists={form_list.before_api_uri} 
+                                id={form_list.id_name}
+                                selectedInfo={form_list.key} />  
+                                : ""}
                     </div>
 
                 })}

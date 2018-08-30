@@ -247,9 +247,9 @@ class ListTextSearchLink extends Component {
             ]
         },
         addCondition: [],
-        add_button: this.props.add_button,
-        search_info_lists: this.props.search_info_lists,
-        info_lists: this.props.search_info_lists
+        add_button: this.props.addButton,
+        searchInfoLists: this.props.searchInfoLists,
+        info_lists: this.props.searchInfoLists
     }
     componentWillMount() {
         this.state.addCondition.push(
@@ -257,7 +257,7 @@ class ListTextSearchLink extends Component {
                 key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                 removeDefault={this.removeEvent.bind(this)}
                 index={this.state.addCondition.length}
-                card_list={this.state.teacher_card_list.teacher_card}
+                cardList={this.state.teacher_card_list.teacher_card}
                 //getAddCondition={ this.getAddConditionEvent.bind(this)}
                 conditionAction={this.state.conditionAction}
             >
@@ -326,7 +326,7 @@ class ListTextSearchLink extends Component {
     //     this.state.getAddCondtionData.push(value);
     // }
     render() {
-        const { selected_info, id, labelValue } = this.props;
+        const { selectedInfo, id, labelValue } = this.props;
         return (
             <div>
                 <div onClick={() => {
@@ -337,8 +337,9 @@ class ListTextSearchLink extends Component {
                     onClick={() => {
                         this.searchShow()
                     }}
-                    className="selected_info"
-                    id={id}>{selected_info === "" ? "-选择-" : selected_info}</div>
+                    className="selectedInfo"
+                   // className={this.state.changeResult ===""?"selectedInfo":"selectedInfo_font"}
+                    id={id}>{selectedInfo === "" ? "-选择-" : selectedInfo}</div>
                  <div className="search_info_position">
                 <div
                     id="search_info_list_div"
@@ -363,20 +364,20 @@ class ListTextSearchLink extends Component {
                                         }
                                     }
                                     this.setState({
-                                        search_info_lists: this.state.search_info_list
+                                        searchInfoLists: this.state.search_info_list
                                     })
 
                                 }}
                             >搜索</button>
                 </div>
                     <ul className="search_info_list_ul">
-                        {this.state.search_info_lists.map((info_lists) => {
+                        {this.state.searchInfoLists.map((info_lists) => {
                             return (
                                 <li onClick={(e) => {
-                                    for (var i = 0; i < this.props.search_info_lists.length; i++) {
-                                        if (info_lists.name === this.props.search_info_lists[i].name) {
+                                    for (var i = 0; i < this.props.searchInfoLists.length; i++) {
+                                        if (info_lists.name === this.props.searchInfoLists[i].name) {
                                             this.setState({
-                                                changeResult: this.props.search_info_lists[i].cost
+                                                changeResult: this.props.searchInfoLists[i].cost
                                             })
                                         }
                                     }
@@ -390,6 +391,7 @@ class ListTextSearchLink extends Component {
                         this.setState({
                             add_customer: true
                         })
+                        this.searchShow()
                     }}
                     >新增</div>
                     </div>
@@ -402,6 +404,7 @@ class ListTextSearchLink extends Component {
                             add_customer: false
                         })
                     }} className="return_btn"></div>
+                    {this.state.add_button.data["form-temp-name"]}
                     </div>
                     <div className="selected_scroll_div">
                    
@@ -456,7 +459,7 @@ class ListTextSearchLink extends Component {
                                             key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                                             remove={this.removeEvent.bind(this)}
                                             index={this.state.addCondition.length}
-                                            card_list={this.state.teacher_card_list.teachher_card}
+                                            cardList={this.state.teacher_card_list.teachher_card}
                                             // getAddCondition={ this.getAddConditionEvent.bind(this)}
                                             conditionAction={this.state.conditionAction}
                                         >

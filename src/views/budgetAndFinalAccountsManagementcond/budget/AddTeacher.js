@@ -45,7 +45,7 @@ import TextMoney from '../../components/TextMoney';
                     key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                     removeDefault={this.removeEvent.bind(this)}
                     index={this.state.addCondition.length}
-                    card_list={this.state.project_gather_card_list.project_gather_card}
+                    cardList={this.state.project_gather_card_list.project_gather_card}
                     //getAddCondition={ this.getAddConditionEvent.bind(this)}
                     conditionAction={this.state.conditionAction}
                 >
@@ -117,7 +117,7 @@ import TextMoney from '../../components/TextMoney';
                                         key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                                         remove={this.removeEvent.bind(this)}
                                         index={this.state.addCondition.length}
-                                        card_list={this.state.project_gather_card_list.project_gather_card}
+                                        cardList={this.state.project_gather_card_list.project_gather_card}
                                         // getAddCondition={ this.getAddConditionEvent.bind(this)}
                                         conditionAction={this.state.conditionAction}
                                     >

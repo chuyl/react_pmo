@@ -107,7 +107,7 @@ class TeacherArrange extends Component {
                             },
                             {
                                 "id_name": "project_template",
-                                "type_name": "ListText", //下拉搜索
+                                "type_name": "SelectList", //下拉搜索
                                 "key": "",
                                 "title": "项目模板",
                                 "tip": "",
@@ -156,7 +156,7 @@ class TeacherArrange extends Component {
                 key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                 removeDefault={this.removeEvent.bind(this)}
                 index={this.state.addCondition.length}
-                card_list={this.state.teacher_card_list.teacher_card}
+                cardList={this.state.teacher_card_list.teacher_card}
                 //getAddCondition={ this.getAddConditionEvent.bind(this)}
                 conditionAction={this.state.conditionAction}
             >
@@ -247,7 +247,7 @@ class TeacherArrange extends Component {
                                     key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                                     remove={this.removeEvent.bind(this)}
                                     index={this.state.addCondition.length}
-                                    card_list={this.state.teacher_card_list.teacher_card}
+                                    cardList={this.state.teacher_card_list.teacher_card}
                                     // getAddCondition={ this.getAddConditionEvent.bind(this)}
                                     conditionAction={this.state.conditionAction}
                                 >

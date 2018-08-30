@@ -1,7 +1,6 @@
 .card_box{
     margin-left: 1rem;
     padding: 0;
-    padding-top: 1rem;
     background:linear-gradient(to bottom right, $bluePurple800, $bluePurple700);
     height: 90vh;
     overflow: hidden; 
@@ -15,10 +14,11 @@
     
   }
   .add_button{
-    position: absolute;
-    width: 60%;
+    //position: absolute;
     margin: 0 1rem;
     top: 0rem;
+    height: 24px;
+    
     text-align: center;
     cursor: pointer;
     //background-color: #fff;
@@ -53,6 +53,7 @@
 .add_card_btn{
   border: none;
   display: block;
+  cursor: pointer;
   text-align: center;
   font-size: 14px;
   width: 100%;
@@ -88,6 +89,7 @@
     border-radius: 4px;
     line-height: 20px;
     outline: none;
+    cursor: pointer;
 }
 
 @media only screen and (max-width:768px ){

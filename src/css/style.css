@@ -1180,14 +1180,21 @@ html, body {
   height: 100%; }
 
 .container {
-  padding-top: 1rem;
   width: 60%;
   float: left;
   margin: 0 auto;
   background-color: #dedee3;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: hidden;
   height: 90vh; }
+
+.overflow {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto; }
+
+.overflow::-webkit-scrollbar {
+  width: 4px;
+  height: 4px; }
 
 .container.fixed {
   overflow-y: hidden; }
@@ -1207,8 +1214,7 @@ html, body {
   background-color: darkseagreen;
   height: 256px;
   overflow: hidden;
-  transition: all .3s;
-  width: 100%; }
+  transition: all .3s; }
 
 .card.open {
   margin: 0;
@@ -1323,7 +1329,6 @@ html, body {
 .card_box {
   margin-left: 1rem;
   padding: 0;
-  padding-top: 1rem;
   background: linear-gradient(to bottom right, #3f435e, #4b567f);
   height: 90vh;
   overflow: hidden;
@@ -1333,11 +1338,11 @@ html, body {
   width: 35%; }
 
 .add_button {
-  position: absolute;
-  width: 60%;
   margin: 0 1rem;
   top: 0rem;
-  text-align: center; }
+  height: 24px;
+  text-align: center;
+  cursor: pointer; }
 
 .paper_card_title {
   padding-top: 15px;
@@ -1369,6 +1374,7 @@ html, body {
 .add_card_btn {
   border: none;
   display: block;
+  cursor: pointer;
   text-align: center;
   font-size: 14px;
   width: 100%;
@@ -1402,7 +1408,8 @@ html, body {
   background-color: #f4a931;
   border-radius: 4px;
   line-height: 20px;
-  outline: none; }
+  outline: none;
+  cursor: pointer; }
 
 @media only screen and (max-width: 768px) {
   .select_card {
@@ -1498,8 +1505,8 @@ html, body {
 .card_info_list_card {
   border-radius: 4px;
   background-color: #4b567f;
-  padding: 14px;
-  margin-bottom: 14px;
+  padding: 18px;
+  margin-bottom: 18px;
   padding-bottom: 38px; }
 
 .search_info_list_label {
@@ -1549,13 +1556,13 @@ html, body {
   position: relative; }
 
 .search_info_list.open {
-  min-height: 146px;
+  min-height: 156px;
   background: #fff;
   position: relative;
   margin-left: 80px;
   border-radius: 2px;
   position: absolute;
-  overflow-y: auto;
+  overflow: hidden;
   border: 1px solid #c6c8ce;
   width: calc(100% - 82px); }
 
@@ -1564,7 +1571,11 @@ html, body {
   overflow-y: auto;
   padding: 0 18px; }
 
-.selected_info {
+.selected_scroll_div::-webkit-scrollbar {
+  width: 4px;
+  height: 4px; }
+
+.selectedInfo {
   display: inline-block;
   width: calc(100% - 92px);
   height: 24px;
@@ -1576,7 +1587,31 @@ html, body {
   border-radius: 2px;
   border: 1px solid #c6c8ce; }
 
-.selected_info::before {
+.selectedInfo::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 6px solid #878e9f;
+  float: right;
+  margin-right: 10px;
+  margin-top: 9px; }
+
+.selectedInfoFont {
+  display: inline-block;
+  width: calc(100% - 92px);
+  height: 24px;
+  font: 14px "Microsoft YaHei";
+  line-height: 24px;
+  padding-left: 10px;
+  background: #fff;
+  color: #2e3247;
+  border-radius: 2px;
+  border: 1px solid #c6c8ce; }
+
+.selectedInfo_font::before {
   content: '';
   display: block;
   width: 0;
@@ -1600,12 +1635,17 @@ html, body {
 /* select ul part */
 .search_info_list_ul {
   display: block;
+  height: 85px;
+  overflow-y: auto;
   width: calc(100% - 10px);
-  padding-top: 10px;
   border-radius: 2px;
   padding-left: 10px;
   position: relative;
   color: #000; }
+
+.search_info_list_ul::-webkit-scrollbar {
+  width: 4px;
+  height: 4px; }
 
 /* select ul-li part */
 .search_info_list_ul li {
@@ -1623,7 +1663,7 @@ html, body {
 /* select ul-li last part */
 .select_search_div {
   display: block;
-  height: 20px;
+  height: 24px;
   line-height: 26px;
   margin-right: 10px;
   font: 14px "Microsoft";
@@ -1728,7 +1768,7 @@ html, body {
     background: linear-gradient(to bottom right, #3f435e, #4b567f); }
 
   .selected_scroll_div {
-    height: 90vh;
+    height: 84vh;
     overflow-y: auto;
     padding: 0 18px; } }
 .text_field_div {
@@ -1824,6 +1864,7 @@ html, body {
 
 .label_delete_button {
   float: right;
+  cursor: pointer;
   width: 48px;
   height: 24px;
   font-size: 12px;

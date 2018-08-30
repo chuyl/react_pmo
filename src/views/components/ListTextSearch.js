@@ -14,9 +14,12 @@ class ListTextSearch extends Component {
         search_name: "",
         add_customer_input: "",
         search_info_list: [],
-        add_button: this.props.add_button,
-        search_info_lists: this.props.search_info_lists,
-        info_lists: this.props.search_info_lists
+        add_button: this.props.addButton,
+        searchInfoLists: this.props.searchInfoLists,
+        info_lists: this.props.searchInfoLists
+    }
+    componentWillMount(){
+        console.log(this.state.searchInfoLists)
     }
     searchShow() {
         this.setState({
@@ -24,7 +27,7 @@ class ListTextSearch extends Component {
         })
     }
     render() {
-        const { selected_info, id, labelValue } = this.props;
+        const { selectedInfo, id, labelValue } = this.props;
         return (
             <div className="search_info_list_card">
 
@@ -36,8 +39,9 @@ class ListTextSearch extends Component {
                     onClick={() => {
                         this.searchShow()
                     }}
-                    className={"selected_info"}
-                    id={id}>{selected_info === "" ? "-选择-" : selected_info}</div>
+                    className="selectedInfo"
+                    //className={this.state.changeResult ===""?"selectedInfo":"selectedInfo_font"}
+                    id={id}>{selectedInfo === "" ? "-选择-" : selectedInfo}</div>
                  <div className="search_info_position">
                 <div
                     id="search_info_list_div"
@@ -62,7 +66,7 @@ class ListTextSearch extends Component {
                                         }
                                     }
                                     this.setState({
-                                        search_info_lists: this.state.search_info_list
+                                        searchInfoLists: this.state.search_info_list
                                     })
 
                                 }}
@@ -71,7 +75,7 @@ class ListTextSearch extends Component {
                     <ul className="search_info_list_ul">
 
                       
-                        {this.state.search_info_lists.map((info_lists) => {
+                        {this.state.searchInfoLists.map((info_lists) => {
                             return (
                                 <li onClick={(e) => {
                                     document.getElementById(id).innerHTML = info_lists.name;
@@ -84,6 +88,8 @@ class ListTextSearch extends Component {
                         this.setState({
                             add_customer: true
                         })
+                        //点击关闭下拉菜单，重新获取数据
+                        this.searchShow()
                     }}
 
                     >新增</div>
@@ -96,6 +102,7 @@ class ListTextSearch extends Component {
                             add_customer: false
                         })
                     }} className="return_btn"></div>
+                    {this.state.add_button.data["form-temp-name"]}
                     </div>
                     <div className="selected_scroll_div">
                    

@@ -9,9 +9,10 @@ import Card from '../../Card'
 import TextField from '../../components/TextField'
 import TextMoney from '../../components/TextMoney'
 //import AddInfo from '../components/AddInfo'
-import ListText from '../../components/ListText'
+//import ListText from '../../components/ListText'
 import TextDatetime from '../../components/TextDatetime'
 import BudgetListTextSearchLink from './BudgetListTextSearchLink'
+import { getData, getRouter } from '../../../utils/helpers'
 class Budget extends Component {
 
 	state = {
@@ -36,384 +37,32 @@ class Budget extends Component {
 		card_state: false,
 		add_customer: false,
 		customer_name: "",
-		add_project_gather: {
-			"data": { //新增项目集
-				"form-temp-name": "预算管理",
-				"form-list": [{
-					"type_name": "ListTextSearch", //下拉搜索
-					"key": "",
-					"title": "销售负责人",
-					"tip": "",
-					"add_button": {},
-					"descript": "",
-					"before_api_uri": [{
-						id: 1,
-						name: "负责人1",
-						budget_cost: 10000
-					}, {
-						id: 2,
-						name: "负责人2",
-						budget_cost: 10000
-					}, {
-						id: 3,
-						name: "负责人3",
-						budget_cost: 10000
-					}],
-					"after_api_uri": ""
-				},]
-			}
-		},
-			budget_paper: {
-			"data": {
-				"form-temp-name": "预算管理",
-				"form-list": [{
-					//新建预算
-					"id_name": "budget_project_name",
-					"type_name": "BudgetListTextSearchLink", //下拉搜索+联动
-					"key": "",
-					"title": "所属项目",
-					"tip": "",
-					"add_button": {
-						"data": {
-							"form-list": [{
-								"id_name": "add_project_name",
-								"type_name": "MutiText", //input
-								"key": "",
-								"title": "项目名称",
-								"tip": "",
-								"add_button": {},
-								"descript": "",
-								"before_api_uri": "",
-								"after_api_uri": ""
-							}, {
-								"id_name": "add_project_gather",
-								"type_name": "ListTextSearch", //下拉搜索
-								"key": "",
-								"title": "所属项目集",
-								"tip": "",
-								"add_button": {
-									"data": {
-										"form-temp-name": "新建项目集",
-										"form-list": [{
-											"id_name": "add_project_gather_charge",
-											"type_name": "ProjectGather",
-											"key": "",
-											"title": "销售负责人",
-											"tip": "",
-											"add_button": {},
-											"descript": "",
-											"before_api_uri": [{
-												id: 1,
-												name: "亢鹏",
-											}, {
-												id: 2,
-												name: "寇艳艳",
-												budget_cost: 10000
-											}, {
-												id: 3,
-												name: "张剑",
-												budget_cost: 10000
-											}],
-											"after_api_uri": ""
-										}]
-									}
-								},
-								"descript": "",
-								"before_api_uri": [{
-									id: 1,
-									name: "项目集1",
-								}, {
-									id: 2,
-									name: "项目集2",
-								}, {
-									id: 3,
-									name: "项目集3",
-								}],
-								"after_api_uri": ""
-							},
-							{
-								"id_name": "add_project_charge",
-								"type_name": "ListText", //下拉搜索
-								"key": "",
-								"title": "实施负责人",
-								"tip": "",
-								"add_button": {},
-								"descript": "",
-								"before_api_uri": [{
-									id: 1,
-									name: "亢鹏",
-								}, {
-									id: 2,
-									name: "寇艳艳",
-									budget_cost: 10000
-								}, {
-									id: 3,
-									name: "张剑",
-									budget_cost: 10000
-								}],
-								"after_api_uri": ""
-							}, {
-								"id_name": "project_templet",
-								"type_name": "ListTextSearch", //下拉搜索
-								"key": "",
-								"title": "项目模板",
-								"tip": "",
-								"add_button": {
-									"data": {
-										"form-temp-name": "项目模板",
-										"form-list": [{
-											"id_name": "add_project_templet",
-											"type_name": "ListText", //下拉搜索
-											"key": "",
-											"title": "销售负责人1",
-											"tip": "",
-											"add_button": {},
-											"descript": "",
-											"before_api_uri": [{
-												id: 1,
-												name: "亢鹏",
-											}, {
-												id: 2,
-												name: "寇艳艳",
-												budget_cost: 10000
-											}, {
-												id: 3,
-												name: "张剑",
-												budget_cost: 10000
-											}],
-											"after_api_uri": ""
-										}]
-									}
-								},
-								"descript": "",
-								"before_api_uri": [{
-									id: 1,
-									name: "公开课实施",
-								}, {
-									id: 2,
-									name: "行业培训实施",
-								}],
-								"after_api_uri": ""
-							},
-							{
-								"id_name": "add_customer_name",
-								"type_name": "MutiText", //input
-								"key": "",
-								"title": "客户名称",
-								"tip": "",
-								"add_button": {},
-								"descript": "",
-								"before_api_uri": "",
-								"after_api_uri": ""
-							}, {
-								"id_name": "add_days",
-								"type_name": "MutiText", //input
-								"key": "",
-								"title": "天数",
-								"tip": "",
-								"add_button": {},
-								"descript": "",
-								"before_api_uri": "",
-								"after_api_uri": ""
-							}, {
-								"id_name": "add_training_numbers",
-								"type_name": "MutiText", //input
-								"key": "",
-								"title": "培训人数",
-								"tip": "",
-								"add_button": {},
-								"descript": "",
-								"before_api_uri": "",
-								"after_api_uri": ""
-							}, {
-								"id_name": "add_training_ares",
-								"type_name": "MutiText", //input
-								"key": "",
-								"title": "培训地点",
-								"tip": "",
-								"add_button": {},
-								"descript": "",
-								"before_api_uri": "",
-								"after_api_uri": ""
-							}
-
-							],
-
-						}
-					},
-					"descript": "",
-					"before_api_uri": [{
-						id: 1,
-						name: "项目1",
-						cost: 10000
-					}, {
-						id: 2,
-						name: "项目2",
-						cost: 20000
-					}, {
-						id: 3,
-						name: "项目3",
-						cost: 30000
-					}],
-					"after_api_uri": ""
-				},
-				{
-					"id_name": "budget_tax",
-					"type_name": "MutiText", //input
-					"key": "6%",
-					"title": "税率",
-					"tip": "",
-					"add_button": {},
-					"descript": "",
-					"before_api_uri": "",
-					"after_api_uri": ""
-				},
-				{
-					"id_name": "budget_consulting_fee",
-					"type_name": "MutiText", //input
-					"key": "",
-					"title": "咨询费用",
-					"tip": "",
-					"add_button": {},
-					"descript": "",
-					"before_api_uri": "",
-					"after_api_uri": ""
-				},
-				{
-					"id_name": "budget_expects_revenue",
-					"type_name": "MutiText", //input
-					"key": "",
-					"title": "预计收入",
-					"tip": "",
-					"add_button": {},
-					"descript": "",
-					"before_api_uri": "",
-					"after_api_uri": ""
-				}
-
-				],
-
-				"teacher-form-list": [
-					{
-						"id_name": "teacher_name",
-						"type_name": "ListTextSearch", //下拉搜索
-						"key": "",
-						"title": "讲师姓名",
-						"tip": "",
-						"add_button": {
-							"data": {
-								"form-temp-name": "讲师姓名",
-								"form-list": [{
-									"id_name": "teacher_income_tax",
-									"type_name": "MutiText", //input
-									"key": "",
-									"title": "所得税",
-									"tip": "",
-									"add_button": {},
-									"descript": "",
-									"before_api_uri": "",
-									"after_api_uri": ""
-								},]
-							}
-						},
-						"descript": "",
-						"before_api_uri": [{
-							id: 1,
-							name: "讲师1",
-						}, {
-							id: 2,
-							name: "讲师2",
-						}, {
-							id: 3,
-							name: "讲师3",
-						}],
-						"after_api_uri": ""
-					},
-					{
-						"id_name": "teacher_income_tax",
-						"type_name": "MutiText", //input
-						"key": "",
-						"title": "所得税",
-						"tip": "",
-						"add_button": {},
-						"descript": "",
-						"before_api_uri": "",
-						"after_api_uri": ""
-					},
-					{
-						"id_name": "teacher_lecture_fee",
-						"type_name": "MutiText", //input
-						"key": "3000",
-						"title": "讲课费",
-						"tip": "",
-						"add_button": {},
-						"descript": "",
-						"before_api_uri": "",
-						"after_api_uri": ""
-					},
-					{
-						"id_name": "teacher_lecture_days",
-						"type_name": "MutiText", //input
-						"key": "5",
-						"title": "课程天数",
-						"tip": "",
-						"add_button": {},
-						"descript": "",
-						"before_api_uri": "",
-						"after_api_uri": ""
-					},
-					{
-						"id_name": "teacher_duty",
-						"type_name": "ListTextSearch", //下拉搜索
-						"key": "",
-						"title": "职责",
-						"tip": "",
-						"add_button": {},
-						"descript": "",
-						"before_api_uri": [{
-							id: 1,
-							name: "主讲",
-						}, {
-							id: 2,
-							name: "专家",
-						}, {
-							id: 3,
-							name: "评审",
-						}],
-						"after_api_uri": ""
-					}
-				],
-			}
-		},
-		search_project_lists: [{
-			id: 1,
-			name: "项目1",
-			budget_cost: 10000
-		}, {
-			id: 2,
-			name: "项目2",
-			budget_cost: 10000
-		}, {
-			id: 3,
-			name: "项目3",
-			budget_cost: 10000
-		}],
-		search_customer_lists: [{
-			id: 1,
-			name: "中国移动"
-		}, {
-			id: 2,
-			name: "中国联通"
-		}, {
-			id: 3,
-			name: "中国电信"
-		}]
+		budget_paper: [],//添加项目list
+		teacher_form_list: [],
+		form_temp_name: "",
 	};
+	componentDidMount() {
+		var cb = (route, message, arg) => {
+			if (message.code === 0) {
+				this.setState({
+					budget_paper: message.data.budget_paper.data["form-list"],
+					teacher_form_list: message.data.budget_paper.data["teacher-form-list"],
+					form_temp_name: message.data.budget_paper.data["form-temp-name"],
+				})
+			}
+		}
+		getData(getRouter("budget_all_list"), { session: "tnkGNc" }, cb, {});
+
+		console.log(this.state.budget_paper)
+
+	}
 	/** 
      * @author xuesong
      * @param card_box_concent 函数  打开paper
      */
+
 	card_box_concent(selected_card, e) {
+
 		this.setState({
 			selected_card: selected_card,
 			card_state: true
@@ -443,56 +92,54 @@ class Budget extends Component {
 					<div className="add_button" onClick={(e) => {
 						this.card_box_concent([], e)
 					}}>
-						添加</div>
-					{this.state.card_list.map(card_list => {
-						return <Card
-							action={[(e) => {
-								this.card_box_concent(card_list, e)
-							}]}
-							key={card_list.root} root={card_list.root} name={card_list.name} card={card_list.card} />
-					})}
-
+						添加
+					</div>
+					<div className="overflow">
+						{this.state.card_list.map(card_list => {
+							return <Card
+								action={[(e) => {
+									//console.log(card_list.name)
+									//this.card_box_concent(card_list, e)
+								}]}
+								key={card_list.root} root={card_list.root} name={card_list.name} card={card_list.card} />
+						})}
+					</div>
 				</div>
 				<div>
 					<div id="card_box" onClick={(event) => {
 						//	this.event_target(event,"add_customer_info","search_info_list_div","search_info_list","search_info_list_open")
 
 					}} className={this.state.card_state ? "card_box open" : "card_box"}>
-						<div className="paper_card_title">
-						<div onClick={this.card_box_close}className="return_btn"></div>
+						<div style={this.state.card_state ? { display: "" } : { display: "none" }} className="paper_card_title">
+							<div onClick={this.card_box_close} className="return_btn"></div>
+							{this.state.form_temp_name}
 						</div>
-						<div style={{padding:"0 18px"}}>
-						
-						{/* paper详细内容 */}
-						{this.state.card_state ?//判断paper是否可见
-							this.state.budget_paper.data["form-list"].map(form_list => {
-								console.log(form_list.type_name)
-								//console.log(form_list.add_button.data.teacher_data_group)
-								return <div key={form_list.id_name}>
-									{form_list.type_name === "BudgetListTextSearchLink" ?
-										<BudgetListTextSearchLink id={form_list.id_name}
-											group_lists={this.state.budget_paper.data["teacher-form-list"]}
-											labelValue={form_list.title}
-											search_info_lists={form_list.before_api_uri}
-											add_button={form_list.add_button}
-											selected_info={form_list.key} />
-										: form_list.type_name === "TextDatetime" ? <TextDatetime
-											id={form_list.id_name} inputValue={form_list.key} labelValue={form_list.title} />
-										: form_list.type_name === "TextMoney" ? <TextMoney
-											id={form_list.id_name} inputValue={form_list.key} labelValue={form_list.title} />
-											: form_list.type_name === "MutiText" ? <TextField inputValue={form_list.key} labelValue={form_list.title} />
-										: form_list.type_name === "ListText" ? <ListText id={form_list.id_name}
-											labelValue={form_list.title}
-											search_info_lists={form_list.before_api_uri}
-											//add_button={form_list.add_button}
-											selected_info={form_list.key} /> : ""}
-								</div>
-							})
-							: ""}
+						<div style={{ padding: "0 18px" }}>
+							{/* paper详细内容 */}
+							{this.state.card_state ?//判断paper是否可见
+								this.state.budget_paper.map(form_list => {
+									return <div key={form_list.id_name}>
 
-						{/* <img alt="fengjing" src={Boximg}/> */}
-					</div>
+										{form_list.type_name === "BudgetListTextSearchLink" ?
+											<BudgetListTextSearchLink id={form_list.id_name}
+												groupLists={this.state.teacher_form_list}
+												labelValue={form_list.title}
+												searchInfoLists={form_list.before_api_uri}
+												addButton={form_list.add_button}
+												selectedInfo={form_list.key} />
+											: form_list.type_name === "TextDatetime" ? <TextDatetime
+												id={form_list.id_name} inputValue={form_list.key} labelValue={form_list.title} />
+												: form_list.type_name === "TextMoney" ? <TextMoney
+													id={form_list.id_name} inputValue={form_list.key} labelValue={form_list.title} />
+													: form_list.type_name === "MutiText" ? <TextField inputValue={form_list.key} labelValue={form_list.title} />
+														: ""}
+									</div>
+								})
+								: ""}
+
+							{/* <img alt="fengjing" src={Boximg}/> */}
 						</div>
+					</div>
 
 
 				</div>

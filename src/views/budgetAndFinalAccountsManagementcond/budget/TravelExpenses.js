@@ -145,6 +145,7 @@ class TravelExpenses extends Component {
             },
             ],
         },
+        //住宿
         hotel_expense_card_list: {
             hotel_expense_card: [{
                 "id_name": "hotel_expense_people",
@@ -191,7 +192,7 @@ class TravelExpenses extends Component {
                 key={`executeHandle${this.state.addLongTrafficCondition.length}.lenght+1`}
                 removeDefault={this.removeEvent.bind(this)}
                 index={this.state.addLongTrafficCondition.length}
-                card_list={this.state.long_traffic_card_list.long_fee_card}
+                cardList={this.state.long_traffic_card_list.long_fee_card}
                 //getaddLongTrafficCondition={ this.getaddLongTrafficConditionEvent.bind(this)}
                 conditionAction={this.state.conditionAction}
             >
@@ -203,7 +204,7 @@ class TravelExpenses extends Component {
                 key={`executeHandle${this.state.addShortTrafficCondition.length}.lenght+1`}
                 removeDefault={this.removeSecondEvent.bind(this)}
                 index={this.state.addShortTrafficCondition.length}
-                card_list={this.state.short_traffic_card_list.short_fee_card}
+                cardList={this.state.short_traffic_card_list.short_fee_card}
                 //addShortTrafficCondition={ this.addShortTrafficCondition.bind(this)}
                 conditionAction={this.state.conditionAction}
             >
@@ -215,7 +216,7 @@ class TravelExpenses extends Component {
                 key={`executeHandle${this.state.addHotelExpenseCondition.length}.lenght+1`}
                 removeDefault={this.removeThirdEvent.bind(this)}
                 index={this.state.addHotelExpenseCondition.length}
-                card_list={this.state.hotel_expense_card_list.hotel_expense_card}
+                cardList={this.state.hotel_expense_card_list.hotel_expense_card}
                 //addHotelExpenseCondition={ this.addHotelExpenseCondition.bind(this)}
                 conditionAction={this.state.conditionAction}
             >
@@ -321,7 +322,7 @@ class TravelExpenses extends Component {
                                     key={`executeHandle${this.state.addLongTrafficCondition.length}.lenght+1`}
                                     remove={this.removeEvent.bind(this)}
                                     index={this.state.addLongTrafficCondition.length}
-                                    card_list={this.state.long_traffic_card_list.long_fee_card}
+                                    cardList={this.state.long_traffic_card_list.long_fee_card}
                                     // getaddLongTrafficCondition={ this.getaddLongTrafficConditionEvent.bind(this)}
                                     conditionAction={this.state.conditionAction}
                                 >
@@ -350,7 +351,7 @@ class TravelExpenses extends Component {
                                     key={`executeHandle${this.state.addShortTrafficCondition.length}.lenght+1`}
                                     remove={this.removeSecondEvent.bind(this)}
                                     index={this.state.addShortTrafficCondition.length}
-                                    card_list={this.state.short_traffic_card_list.short_fee_card}
+                                    cardList={this.state.short_traffic_card_list.short_fee_card}
                                     // getaddShortTrafficCondition={ this.getaddShortTrafficConditionEvent.bind(this)}
                                     conditionAction={this.state.conditionAction}
                                 >
@@ -379,7 +380,7 @@ class TravelExpenses extends Component {
                                     key={`executeHandle${this.state.addHotelExpenseCondition.length}.lenght+1`}
                                     removeDefault={this.removeThirdEvent.bind(this)}
                                     index={this.state.addHotelExpenseCondition.length}
-                                    card_list={this.state.hotel_expense_card_list.hotel_expense_card}
+                                    cardList={this.state.hotel_expense_card_list.hotel_expense_card}
                                     //addHotelExpenseCondition={ this.addHotelExpenseCondition.bind(this)}
                                     conditionAction={this.state.conditionAction}
                                 >
