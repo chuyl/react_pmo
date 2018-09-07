@@ -5,7 +5,7 @@
 import React, { Component } from 'react';
 import TextField from '../../components/TextField';
 import AddCard from '../../components/AddCard';
-import LabelButton from '../../components/LabelButton'
+import LinkCard from '../../components/LinkCard'
 class TeacherArrange extends Component {
     state = {
         add_lists: false,
@@ -14,6 +14,198 @@ class TeacherArrange extends Component {
         teacher_data_group: [
             //{ teacher_name: "", teacher_income_tax: "", teacher_lecture_fee: "", teacher_lecture_days: "", teacher_duty: "" }
         ],
+        teacher_card_group: {
+            "data": {
+                "form-temp-name": "修改讲师安排",
+                "form-list": [
+                    {
+                        "id_name": "add_project_name",
+                        "type_name": "MutiText", //input
+                        "key": "",
+                        "title": "合同编号",
+                        "tip": "",
+                        "add_button": {},
+                        "descript": "",
+                        "before_api_uri": "",
+                        "after_api_uri": ""
+                    },
+                    {
+                        "id_name": "teacher_arrange",
+                        "type_name": "CardGroup",
+                        "title": "讲师安排",
+                        "add-button-title": "添加讲师安排",
+                        "before_api_uri": [
+                            {
+                                "id": "1",
+                                "group_card": [{
+                                    "id_name": "teacher_name",
+                                    "type_name": "ListTextSearch", //下拉搜索
+                                    "key": "",
+                                    "title": "讲师姓名",
+                                    "tip": "",
+                                    "add_button": {},
+                                    "descript": "",
+                                    "before_api_uri": ""
+                                }, 
+                            {
+                                    "id_name": "teacher_income_tax",
+                                    "type_name": "MutiText", //input
+                                    "key": "",
+                                    "title": "所得税",
+                                    "tip": "",
+                                    "add_button": {},
+                                    "descript": "",
+                                    "before_api_uri": "",
+                                    "after_api_uri": ""
+                                }],
+
+                            },
+                            {
+                                "id": "2",
+                                "group_card": []
+                            }
+                        ],
+                        "add-button": [{
+                            "id_name": "teacher_name",
+                            "type_name": "ListTextSearch", //下拉搜索
+                            "key": "",
+                            "title": "讲师姓名",
+                            "tip": "",
+                            "add_button": {
+                                "data": {
+                                    "form-temp-name": "讲师姓名",
+                                    "form-list": [{
+                                        "id_name": "add_a_teacher_message",
+                                        "type_name": "AddTeacher", //input
+                                        "key": "",
+                                        "title": "",
+                                        "tip": "",
+                                        "add_button": {
+                                        },
+                                        "descript": "",
+                                        "before_api_uri": "",
+                                        "after_api_uri": ""
+                                    }]
+                                }
+                            },
+                            "descript": "",
+                            "before_api_uri": [{
+                                id: 1,
+                                name: "讲师1",
+                            }, {
+                                id: 2,
+                                name: "讲师2",
+                            }, {
+                                id: 3,
+                                name: "讲师3",
+                            }],
+                            "after_api_uri": ""
+                        },
+                        {
+                            "id_name": "teacher_income_tax",
+                            "type_name": "MutiText", //input
+                            "key": "",
+                            "title": "所得税",
+                            "tip": "",
+                            "add_button": {},
+                            "descript": "",
+                            "before_api_uri": "",
+                            "after_api_uri": ""
+                        },
+                        {
+                            "id_name": "teacher_lecture_fee",
+                            "type_name": "MutiText", //input
+                            "key": "3000",
+                            "title": "讲课费",
+                            "tip": "",
+                            "add_button": {},
+                            "descript": "",
+                            "before_api_uri": "",
+                            "after_api_uri": ""
+                        },
+                        {
+                            "id_name": "teacher_lecture_days",
+                            "type_name": "MutiText", //input
+                            "key": "5",
+                            "title": "课程天数",
+                            "tip": "",
+                            "add_button": {},
+                            "descript": "",
+                            "before_api_uri": "",
+                            "after_api_uri": ""
+                        },
+                        {
+                            "id_name": "teacher_duty",
+                            "type_name": "ListTextSearch", //下拉搜索
+                            "key": "",
+                            "title": "职责",
+                            "tip": "",
+                            "add_button": {
+                                "data": {
+                                    "form-list": [
+                                        {
+                                            "id_name": "add_teacher_duty",
+                                            "type_name": "MutiText", //input
+                                            "key": "",
+                                            "title": "职责描述",
+                                            "tip": "",
+                                            "add_button": {},
+                                            "descript": "",
+                                            "before_api_uri": "",
+                                            "after_api_uri": ""
+                                        },
+                                        {
+                                            "id_name": "project_template",
+                                            "type_name": "SelectList", //下拉搜索
+                                            "key": "",
+                                            "title": "项目模板",
+                                            "tip": "",
+                                            "add_button": {
+                                                "data": {
+                                                    "from-list": [{}]
+                                                }
+                                            },
+                                            "descript": "",
+                                            "before_api_uri": [{
+                                                id: 1,
+                                                name: "软考",
+                                            }, {
+                                                id: 2,
+                                                name: "集成项目经理",
+                                            }, {
+                                                id: 3,
+                                                name: "企业内训",
+                                            }, {
+                                                id: 4,
+                                                name: "沙龙活动",
+                                            }],
+                                            "after_api_uri": ""
+                                        },
+                                    ]
+                                }
+                            },
+                            "descript": "",
+                            "before_api_uri": [{
+                                id: 1,
+                                name: "主讲",
+                            }, {
+                                id: 2,
+                                name: "专家",
+                            }, {
+                                id: 3,
+                                name: "评审",
+                            }],
+                            "after_api_uri": ""
+                        }],
+                    }]
+            }
+
+        },
+
+
+
+
+
         //讲师安排card
         teacher_card_list: {
             teacher_card: [{
@@ -112,8 +304,8 @@ class TeacherArrange extends Component {
                                 "title": "项目模板",
                                 "tip": "",
                                 "add_button": {
-                                    "data":{
-                                        "from-list":[{}]
+                                    "data": {
+                                        "from-list": [{}]
                                     }
                                 },
                                 "descript": "",
@@ -213,64 +405,64 @@ class TeacherArrange extends Component {
         return (
             <div>
                 {/* 讲师安排 */}
-                <LabelButton title={"讲师安排"} label={"讲课费"} button={"修改讲师安排"}
+                <LinkCard title={"讲师安排"} label={"讲课费"} button={"修改讲师安排"}
                     action={[() => {
                         this.setState({
                             add_lists: true
                         })
                     }]} />
                 <div className={this.state.add_lists ? "add_info_list open" : "add_info_list"}>
-                <div className="paper_card_title">
-                <div onClick={() => {
-                        this.setState({
-                            add_lists: false
-                        })
-                    }}className="return_btn"></div>
-                    修改讲师安排
+                    <div className="paper_card_title">
+                        <div onClick={() => {
+                            this.setState({
+                                add_lists: false
+                            })
+                        }} className="return_btn"></div>
+                        修改讲师安排
                     </div>
                     <div className="selected_scroll_div">
-                   
-                    <TextField inputValue={""} labelValue={"合同编号"} />
-                    <TextField inputValue={""} labelValue={"课程名称"} />
-                    <p className="card_title">讲师安排</p>
-                    <ul>
-                        {
-                            this.state.addCondition.map((item, index) => {
-                                return item;
-                            })
-                        }
-                    </ul>
-                    <button className="add_card_btn"
-                        onClick={() => {
-                            this.state.addCondition.push(
-                                <AddCard
-                                    key={`executeHandle${this.state.addCondition.length}.lenght+1`}
-                                    remove={this.removeEvent.bind(this)}
-                                    index={this.state.addCondition.length}
-                                    cardList={this.state.teacher_card_list.teacher_card}
-                                    // getAddCondition={ this.getAddConditionEvent.bind(this)}
-                                    conditionAction={this.state.conditionAction}
-                                >
-                                </AddCard>
-                            )
-                            this.setState({
-                                addCondition: this.state.addCondition,
-                            })
-                        }}
-                    >新增讲师</button>
-                    <button className="hold_btn"
-                        onClick={() => {
-                            this.setState({
-                                teacher_data_group: [],
-                            })
-                            for (var i = 0; i < this.state.addCondition.length; i++) {
-                                if (this.state.addCondition[i] !== "") {
-                                    this.StringifyMultipleButton(this.state.teacher_card_list.teacher_card, i, this.state.teacher_data_group)
-                                }
-                            }
-                        }}
 
-                    >保存</button>
+                        <TextField inputValue={""} labelValue={"合同编号"} />
+                        <TextField inputValue={""} labelValue={"课程名称"} />
+                        <p className="card_title">讲师安排</p>
+                        <ul>
+                            {
+                                this.state.addCondition.map((item, index) => {
+                                    return item;
+                                })
+                            }
+                        </ul>
+                        <button className="add_card_btn"
+                            onClick={() => {
+                                this.state.addCondition.push(
+                                    <AddCard
+                                        key={`executeHandle${this.state.addCondition.length}.lenght+1`}
+                                        remove={this.removeEvent.bind(this)}
+                                        index={this.state.addCondition.length}
+                                        cardList={this.state.teacher_card_list.teacher_card}
+                                        // getAddCondition={ this.getAddConditionEvent.bind(this)}
+                                        conditionAction={this.state.conditionAction}
+                                    >
+                                    </AddCard>
+                                )
+                                this.setState({
+                                    addCondition: this.state.addCondition,
+                                })
+                            }}
+                        >新增讲师</button>
+                        <button className="hold_btn"
+                            onClick={() => {
+                                this.setState({
+                                    teacher_data_group: [],
+                                })
+                                for (var i = 0; i < this.state.addCondition.length; i++) {
+                                    if (this.state.addCondition[i] !== "") {
+                                        this.StringifyMultipleButton(this.state.teacher_card_list.teacher_card, i, this.state.teacher_data_group)
+                                    }
+                                }
+                            }}
+
+                        >保存</button>
                     </div>
                 </div>
             </div>

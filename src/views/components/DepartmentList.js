@@ -69,8 +69,8 @@ class DepartmentList extends Component {
                     className={this.state.search_state ? "search_info_list open" : "search_info_list"}
                 >
                
-                    <ul  style={{height:"150px"}} className="search_info_list_ul">
-                        <li>-公司</li>
+                    <ul className="search_info_list_ul select_info_list_ul">
+                        <li className="nohover">-公司</li>
                         <li onClick={(e) => {
                                     document.getElementById(id).innerHTML = "中软培训";
                                     this.searchShow()

@@ -57,8 +57,24 @@ class TabComponent extends Component{
 		}
   }
   componentWillMount() {
+    this.langMangement(Lang.projectManagement)
+		this.langMangement(Lang.budgetAndFinalAccountsManagementcond)
+		this.langMangement(Lang.loanExpenditureManagement)
+		this.langMangement(Lang.receivablesManagement)
+		this.langMangement(Lang.lecturerManagement)
+		this.langMangement(Lang.implementationManagement)
+	  
     this.getRoutes();
   }
+langMangement(lang){
+for(var x=0;x<lang.length;x++){
+  if(window.location.hash.split("#")[1]===lang[x].path){
+    this.setState({
+      currentIndex:lang[x].path
+    })
+  }
+}
+}
   getRoutes = () => {
     var cb = (route, message, arg) => {
       try {

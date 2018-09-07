@@ -59,7 +59,7 @@ class SelectList extends Component {
                         id="search_info_list_div"
                         className={this.state.search_state ? "search_info_list open" : "search_info_list"}
                     >
-                        <ul style={{ height: "150px" }} className="search_info_list_ul">
+                        <ul className="search_info_list_ul select_info_list_ul">
                             {this.state.searchInfoLists.map((info_lists) => {
                                 return (
                                     <li onClick={(e) => {

@@ -248,8 +248,24 @@ class ListTextSearchLink extends Component {
         },
         addCondition: [],
         add_button: this.props.addButton,
-        searchInfoLists: this.props.searchInfoLists,
-        info_lists: this.props.searchInfoLists
+        before_api_uri: this.props.searchInfoLists,
+        searchInfoLists: [],
+        info_lists: []
+    }
+     /** 
+     * @author xuesong
+     * @param infos 函数名  获取下拉内容
+     */
+    infos() {
+        var cb = (route, message, arg) => {
+            if (message.code === 0) {
+                this.setState({
+                    searchInfoLists: message.data,
+                    info_lists:message.data
+                })
+            }
+        }
+        getData(getRouter(this.state.before_api_uri), { session: "tnkGNc" }, cb, {});
     }
     componentWillMount() {
         this.state.addCondition.push(
@@ -336,6 +352,7 @@ class ListTextSearchLink extends Component {
                 <div
                     onClick={() => {
                         this.searchShow()
+                        this.infos()
                     }}
                     className="selectedInfo"
                    // className={this.state.changeResult ===""?"selectedInfo":"selectedInfo_font"}
@@ -357,6 +374,7 @@ class ListTextSearchLink extends Component {
                                     this.setState({
                                         search_info_list: [],
                                     })
+                                    console.log(this.state.info_lists)
                                     for (var i = 0; i < this.state.info_lists.length; i++) {
                                         if (this.state.info_lists[i].name.indexOf(this.state.search_name) >= 0) {
                                             this.state.search_info_list.push(this.state.info_lists[i])

@@ -7,7 +7,7 @@ import TextField from '../../components/TextField';
 import AddCard from '../../components/AddCard';
 import AddSecondCard from '../../components/AddSecondCard'
 import AddThirdCard from '../../components/AddThirdCard'
-import LabelButton from '../../components/LabelButton'
+import LinkCard from '../../components/LinkCard'
 class TravelExpenses extends Component {
     state = {
         add_lists: false,
@@ -288,7 +288,7 @@ class TravelExpenses extends Component {
     render() {
         return (
             <div>
-                <LabelButton title={"差旅费用"} label={"差旅费用"} button={"修改差旅计划"}
+                <LinkCard title={"差旅费用"} label={"差旅费用"} button={"修改差旅计划"}
                     action={[() => {
                         this.setState({
                             add_lists: true

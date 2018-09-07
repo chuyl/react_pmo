@@ -1,0 +1,53 @@
+{
+    "budget_paper": {
+        "data": {
+            "form-temp-name": "预算管理",
+            "form-list": [{
+                "id_name": "budget_project_name",
+                "type_name": "BudgetListTextSearchLink",
+                "key": "",
+                "title": "所属项目",
+                "tip": "",
+                "add_button": "editProject",
+                "descript": "",
+                "before_api_uri": "projectHeader",
+                "after_api_uri": "editProjectData"
+            },
+            {
+                "id_name": "budget_tax",
+                "type_name": "MutiText", 
+                "key": "6%",
+                "title": "税率",
+                "tip": "",
+                "add_button": {},
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            },
+            {
+                "id_name": "budget_consulting_fee",
+                "type_name": "MutiText", 
+                "key": "",
+                "title": "咨询费用",
+                "tip": "",
+                "add_button": {},
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            },
+            {
+                "id_name": "budget_expects_revenue",
+                "type_name": "MutiText", 
+                "key": "",
+                "title": "预计收入",
+                "tip": "",
+                "add_button": {},
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            }
+
+            ]
+            }
+        }
+        }

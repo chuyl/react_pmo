@@ -1,4 +1,5 @@
 import React, { Component }  from "react"
+import Lang from "../language"
 
 
 class TabsControl extends Component{
@@ -8,7 +9,23 @@ class TabsControl extends Component{
 			currentIndex : 0
 		}
 	}
-
+	componentDidMount() {
+		this.langMangement(Lang.projectManagement,0)
+		this.langMangement(Lang.budgetAndFinalAccountsManagementcond,1)
+		this.langMangement(Lang.loanExpenditureManagement,2)
+		this.langMangement(Lang.receivablesManagement,3)
+		this.langMangement(Lang.lecturerManagement,4)
+		this.langMangement(Lang.implementationManagement,5)
+	  }
+	  langMangement(lang,index){
+		for(var x=0;x<lang.length;x++){
+			if(window.location.hash.split("#")[1]===lang[x].path){
+				this.setState({
+					currentIndex:index
+				})
+			}
+		}
+	  }
 	check_title_index( index ){
 		return index === this.state.currentIndex ? "tab_title active": "tab_title"
 	}

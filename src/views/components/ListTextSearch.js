@@ -3,6 +3,7 @@
      * @param ListTextSearch 组件  下拉筛选/选择/新增
      */
 import React, { Component } from 'react';
+import { getData, getRouter } from '../../utils/helpers'
 import ComponentsList from './ComponentsList'
 // import TextField from './TextField';
 // import ListText from './ListText'
@@ -15,12 +16,28 @@ class ListTextSearch extends Component {
         add_customer_input: "",
         search_info_list: [],
         add_button: this.props.addButton,
-        searchInfoLists: this.props.searchInfoLists,
-        info_lists: this.props.searchInfoLists
+        before_api_uri: this.props.searchInfoLists,
+        searchInfoLists: [],
+        info_lists: []
     }
-    componentWillMount(){
-        console.log(this.state.searchInfoLists)
+     /** 
+     * @author xuesong
+     * @param infos 函数名  获取下拉内容
+     */
+    infos() {
+        var cb = (route, message, arg) => {
+            if (message.code === 0) {
+                this.setState({
+                    searchInfoLists: message.data
+                })
+            }
+        }
+        console.log(this.state.before_api_uri)
+        getData(getRouter(this.state.before_api_uri), { session: "tnkGNc" }, cb, {});
     }
+    // componentWillMount(){
+    //     console.log(this.state.searchInfoLists)
+    // }
     searchShow() {
         this.setState({
             search_state: !this.state.search_state
@@ -38,6 +55,7 @@ class ListTextSearch extends Component {
                 <div
                     onClick={() => {
                         this.searchShow()
+                        this.infos();
                     }}
                     className="selectedInfo"
                     //className={this.state.changeResult ===""?"selectedInfo":"selectedInfo_font"}

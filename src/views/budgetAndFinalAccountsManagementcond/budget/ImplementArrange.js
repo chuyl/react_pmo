@@ -4,7 +4,7 @@
      */
     import React, { Component } from 'react';
     import TextField from '../../components/TextField';
-    import LabelButton from '../../components/LabelButton'
+    import LinkCard from '../../components/LinkCard'
     import ComponentsList from '../../components/ComponentsList'
     class ImplementArrange extends Component {
         state = {
@@ -119,7 +119,7 @@
             return (
                 <div>
               {/* 实施安排 */}
-              <LabelButton title={"实施安排"} label={"实施费用"} button={"修改实施计划"}
+              <LinkCard title={"实施安排"} label={"实施费用"} button={"修改实施计划"}
                action={[() => {
                     this.setState({
                     add_lists: true

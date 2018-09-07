@@ -1,0 +1,19 @@
+{"budgetManageData":{
+    "budget_project_name":"刘雪松",
+    "budget_tax":"7%",
+    "budget_consulting_fee":"5888",
+    "budget_expects_revenue":"99999"
+   },
+   "editProjectData":{
+       "edit_project_id":"111",
+       "add_project_name":"项目名称",
+       "add_project_gather":"所属项目集",
+       "project_templet":"项目名称",
+       "add_customer_name":"客户名称",
+       "add_days":"10",
+       "add_training_numbers":"30",
+       "add_training_ares":"培训地点",
+       "teacher_arrange":"讲师安排"
+
+   }
+}
