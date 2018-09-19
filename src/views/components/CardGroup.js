@@ -3,6 +3,7 @@
      * @param CardGroup 组件  具有增加/删除功能的card
      */
     import React, { Component } from 'react';
+    import AddDelCard from './AddDelCard';
     import AddCard from './AddCard';
     import PropTypes from 'prop-types';
     class CardGroup extends Component {
@@ -12,6 +13,7 @@
             data_group: [],  //获取到的数据
             view_list:this.props.beforeApiUri,    //获取到的视图
             card_list:[],    //点击新增
+            add_card_state:false
         }
         // 子组件声明自己需要使用 context
             static contextTypes = {
@@ -21,12 +23,12 @@
         componentWillMount() {
             this.state.view_list.map((view_list)=>{
                 return (this.state.addCondition.push(
-                    <AddCard
+                    <AddDelCard
                         key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                         removeDefault={this.removeEvent.bind(this)}
                         index={this.state.addCondition.length}
                         cardList={this.props.addButton}>
-                    </AddCard>
+                    </AddDelCard>
                 ))
                  
             })
@@ -34,9 +36,14 @@
                 addCondition: this.state.addCondition,
             })
         }
-        componentDidUpdate(){
+        // componentWillMount(){
+        //     console.log(this.props.onSubmit)
+        // }
+        componentDidMount(){
+
             var addCondition=this.state.addCondition;
             this.callback(addCondition)
+          //  this.props.onSubmit(addCondition)
         }
         /** 
          * @author xuesong
@@ -74,8 +81,40 @@
                     </ul>    
                     <button className="add_card_btn"  
                         onClick={() => {
-                            this.state.addCondition.push(
-                                        <AddCard 
+                            this.setState({
+                                add_card_state: true
+                            })
+                            // this.state.addCondition.push(
+                            //             <AddDelCard 
+                            //                 key={`executeHandle${this.state.addCondition.length}.lenght+1`}
+                            //                 remove={this.removeEvent.bind(this)}
+                            //                 index={this.state.addCondition.length}
+                            //                 cardList={this.props.addButton}
+                            //                 // getAddCondition={ this.getAddConditionEvent.bind(this)}
+                            //                 conditionAction={this.state.conditionAction}
+                            //             >
+                            //             </AddDelCard>
+                            //         )
+                            //         this.setState({
+                            //             addCondition: this.state.addCondition,
+                            //         })
+                                   
+                                }}
+                            >{this.props.addButtonTitle}</button>
+                              
+                            {/* <button  onClick = { cb(this.state.addCondition) }>点击</button> */}
+                            <div className={this.state.add_card_state ? "add_info_list open" : "add_info_list"}>
+                                <div className="paper_card_title">
+                                    <div onClick={() => {
+                                            this.setState({
+                                                add_card_state: false
+                                            })
+                                        }} className="return_btn"></div>
+                                    {this.props.addButtonTitle}
+                                </div>
+                                <div className="selected_scroll_div">
+                            
+                                <AddCard 
                                             key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                                             remove={this.removeEvent.bind(this)}
                                             index={this.state.addCondition.length}
@@ -84,15 +123,13 @@
                                             conditionAction={this.state.conditionAction}
                                         >
                                         </AddCard>
-                                    )
-                                    this.setState({
-                                        addCondition: this.state.addCondition,
-                                    })
-                                   
-                                }}
-                            >{this.props.addButtonTitle}</button>       
-                            {/* <button  onClick = { cb(this.state.addCondition) }>点击</button> */}
-                           
+                                <button className="hold_btn"
+                                    onClick={(e) => {
+                                    
+                                    }}
+                                >保存</button>
+                    </div>
+                </div>  
                 </div>
             )
         }

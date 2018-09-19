@@ -15,10 +15,30 @@ class ListTextSearch extends Component {
         search_name: "",
         add_customer_input: "",
         search_info_list: [],
-        add_button: this.props.addButton,
+        form_temp_name:"",
+        add_uri_button:this.props.addButton,
+        add_button:[], 
         before_api_uri: this.props.searchInfoLists,
         searchInfoLists: [],
         info_lists: []
+    }
+     /** 
+     * @author xuesong
+     * @param fetchData 函数名  获取本地编辑项目json
+     */
+    fetchData() {
+		fetch('../json/'+this.state.add_uri_button+'.json')
+			.then(response => response.json())
+			.then(data => {
+               
+				this.setState({
+                    add_button: data.data["form-list"],
+                    form_temp_name: data.data["form-temp-name"],
+				})
+			})
+			.catch(e => {
+				console.log("error")
+			})
     }
      /** 
      * @author xuesong
@@ -43,8 +63,11 @@ class ListTextSearch extends Component {
             search_state: !this.state.search_state
         })
     }
+    componentDidMount(){
+        this.infos()
+    }
     render() {
-        const { selectedInfo, id, labelValue } = this.props;
+        const { selectedInfo,selectedIdInfo, id, labelValue,disabled } = this.props;
         return (
             <div className="search_info_list_card">
 
@@ -54,19 +77,27 @@ class ListTextSearch extends Component {
                 <label className="search_info_list_label">{labelValue}</label>
                 <div
                     onClick={() => {
-                        this.searchShow()
-                        this.infos();
+                        if(disabled!==true){
+                            this.searchShow()
+                            this.infos();
+                        }
+                       
                     }}
                     className="selectedInfo"
+                    disabled={disabled}
+                   
                     //className={this.state.changeResult ===""?"selectedInfo":"selectedInfo_font"}
-                    id={id}>{selectedInfo === "" ? "-选择-" : selectedInfo}</div>
+                    id={id+"_name"}
+                  
+                    >{selectedInfo === "" ? "-选择-" : selectedInfo}</div>
+                    <input id={id+"_id"} defaultValue={selectedIdInfo} style={{display:"none"}}/>
                  <div className="search_info_position">
                 <div
                     id="search_info_list_div"
                     className={this.state.search_state ? "search_info_list open" : "search_info_list"}
                 >
                 <div className="select_search_div">
-                <input className="select_search_input" onChange={(e) => {
+                <input className="select_search_input"  onChange={(e) => {
                                 this.setState({
                                     search_name: e.target.value
                                 })
@@ -96,9 +127,10 @@ class ListTextSearch extends Component {
                         {this.state.searchInfoLists.map((info_lists) => {
                             return (
                                 <li onClick={(e) => {
-                                    document.getElementById(id).innerHTML = info_lists.name;
+                                    document.getElementById(id+"_name").innerHTML = info_lists.name;
+                                    document.getElementById(id+"_id").value = info_lists.id;
                                     this.searchShow()
-                                }} key={info_lists.id}>{info_lists.name}</li>
+                                }} key={info_lists.id} value={info_lists.id}>{info_lists.name}</li>
                             )
                         })}
                     </ul>
@@ -108,6 +140,7 @@ class ListTextSearch extends Component {
                         })
                         //点击关闭下拉菜单，重新获取数据
                         this.searchShow()
+                        this.fetchData()
                     }}
 
                     >新增</div>
@@ -120,20 +153,16 @@ class ListTextSearch extends Component {
                             add_customer: false
                         })
                     }} className="return_btn"></div>
-                    {this.state.add_button.data["form-temp-name"]}
+                    {this.state.form_temp_name}
                     </div>
                     <div className="selected_scroll_div">
                    
-                    <ComponentsList componentslist={this.state.add_button.data["form-list"]}></ComponentsList>
-                    {/* <button
+                    <ComponentsList componentslist={this.state.add_button}></ComponentsList>
+                    <button className="hold_btn"
                         onClick={(e) => {
-                            console.log(this.state.add_button.data["form-list"])
-                            // this.state.info_lists.push({id:4,name:"中国铁通"})
-                            // this.setState({
-                            //     add_customer: false
-                            // })
+                           
                         }}
-                    >保存</button> */}
+                    >保存</button>
                     </div>
                 </div>
 

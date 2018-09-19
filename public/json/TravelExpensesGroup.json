@@ -1,0 +1,208 @@
+{
+    "data": {
+        "form-list": [
+            {
+                "id_name": "project_number",
+                "type_name": "MutiText",
+                "key": "",
+                "title": "合同编号",
+                "tip": "",
+                "add_button": {},
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            },
+            {
+                "id_name": "course_name",
+                "type_name": "MutiText",
+                "key": "",
+                "title": "课程名称",
+                "tip": "",
+                "add_button": {},
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            },
+            {
+                "id_name": "long_fee_card",
+                "type_name": "CardGroup",
+                "title": "长途交通费",
+                "add_button_title": "添加长途交通费",
+                "before_api_uri": [
+                    {
+
+                    }
+                  
+                ],
+                "add_button": [{
+                    "id_name": "long_fee_card_people",
+                    "type_name": "MutiText", 
+                    "key": "",
+                    "title": "人员",
+                    "tip": "",
+                    "add_button": {
+                    },
+                    "descript": "",
+                    "before_api_uri": "",
+                    "after_api_uri": ""
+                }, {
+                    "id_name": "long_fee_card_start_time",
+                    "type_name": "TextDatetime",
+                    "key": "",
+                    "title": "出发时间",
+                    "tip": "",
+                    "add_button": {
+                    },
+                    "descript": "",
+                    "before_api_uri": "",
+                    "after_api_uri": ""
+                },
+                {
+                    "id_name": "long_fee_card_start_place",
+                    "type_name": "MutiText",
+                    "key": "",
+                    "title": "出发地点",
+                    "tip": "",
+                    "add_button": {
+                    },
+                    "descript": "",
+                    "before_api_uri": "",
+                    "after_api_uri": ""
+                },
+                {
+                    "id_name": "long_fee_card_end_time",
+                    "type_name": "TextDatetime",
+                    "key": "",
+                    "title": "结束时间",
+                    "tip": "",
+                    "add_button": {
+                    },
+                    "descript": "",
+                    "before_api_uri": "",
+                    "after_api_uri": ""
+                },
+                {
+                    "id_name": "long_fee_card_end_place",
+                    "type_name": "MutiText",
+                    "key": "",
+                    "title": "结束地点",
+                    "tip": "",
+                    "add_button": {
+                    },
+                    "descript": "",
+                    "before_api_uri": "",
+                    "after_api_uri": ""
+                },
+                {
+                    "id_name": "long_fee_card_vehicle",
+                    "type_name": "SelectList", 
+                    "key": "",
+                    "title": "交通工具",
+                    "tip": "",
+                    "add_button": {
+                        "data": {
+                            "form-list": []
+                        }
+                    },
+                    "descript": "",
+                    "before_api_uri": "",
+                    "after_api_uri": ""
+                }]
+            },
+            {
+                "id_name": "short_fee_card",
+                "type_name": "CardGroup",
+                "title": "市内交通费",
+                "add_button_title": "添加市内交通费",
+                "before_api_uri": [
+                    {
+                       
+                    }],
+                "add_button": [
+                    {
+                        "id_name": "short_fee_card_people",
+                        "type_name": "MutiText", 
+                        "key": "",
+                        "title": "人员",
+                        "tip": "",
+                        "add_button": {
+                        },
+                        "descript": "",
+                        "before_api_uri": "",
+                        "after_api_uri": ""
+                    }, {
+                        "id_name": "short_fee_type",
+                        "type_name": "MutiText", 
+                        "key": "",
+                        "title": "费用名称",
+                        "tip": "",
+                        "add_button": {
+                        },
+                        "descript": "",
+                        "before_api_uri": "",
+                        "after_api_uri": ""
+                    },
+                    {
+                        "id_name": "short_fee",
+                        "type_name": "MutiText",
+                        "key": "",
+                        "title": "费用",
+                        "tip": "",
+                        "add_button": {
+                        },
+                        "descript": "",
+                        "before_api_uri": "",
+                        "after_api_uri": ""
+                    }]
+            },{
+                "id_name": "hotel_expense_card",
+                "type_name": "CardGroup",
+                "title": "住宿费",
+                "add_button_title": "添加住宿费",
+                "before_api_uri": [
+                    {
+
+                    }
+                  
+                ],
+                "add_button": [
+                    {
+                        "id_name": "hotel_expense_people",
+                        "type_name": "MutiText",
+                        "key": "",
+                        "title": "人员",
+                        "tip": "",
+                        "add_button": {
+                        },
+                        "descript": "",
+                        "before_api_uri": "",
+                        "after_api_uri": ""
+                    }, {
+                        "id_name": "hotel_expense_days",
+                        "type_name": "MutiText", 
+                        "key": "",
+                        "title": "天数",
+                        "tip": "",
+                        "add_button": {
+                        },
+                        "descript": "",
+                        "before_api_uri": "",
+                        "after_api_uri": ""
+                    },
+                    {
+                        "id_name": "hotel_expense_total",
+                        "type_name": "MutiText", 
+                        "key": "",
+                        "title": "费用总价",
+                        "tip": "",
+                        "add_button": {
+                        },
+                        "descript": "",
+                        "before_api_uri": "",
+                        "after_api_uri": ""
+                    }
+                ]
+            }]
+    }
+
+}

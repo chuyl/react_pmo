@@ -11,7 +11,7 @@
                 "add_button": "editProject",
                 "descript": "",
                 "before_api_uri": "projectHeader",
-                "after_api_uri": "editProjectData"
+                "after_api_uri": "editBudgetData"
             },
             {
                 "id_name": "budget_tax",

@@ -19,18 +19,21 @@ class Card extends Component {
         document.getElementById(this.props.card).setAttribute("style"," ");
     }
 	render(){
-        const {name,card,root}=this.props;
+        const {id,customer_name ,course_name, person_in_charge, train_days,  train_date, train_place}=this.props;
 		return (
-            <div  id={card} onClick={this.props.action[0]} className={this.state.zoom_in?"card open":"card"}>
-            <div className="detail"><h1>课程名称:漏洞和基线安全及常用工具</h1>
-            <h2>客户名称:中国联通网络通信有限公司</h2>
-            <h2>销售负责人:寇艳艳</h2>
-            <h3>培训天数:3</h3>
+            <div  id={id} onClick={this.props.action[0]} className={this.state.zoom_in?"card open":"card"}>
+            <h3>客户名称:{customer_name}</h3>
+            <div className="detail"><h1>课程名称:{course_name}</h1>
+            
+            <h2>销售负责人:{person_in_charge}</h2>
+            <h3>培训天数:{train_days}</h3>
+            <h3>培训日期：{train_date}</h3>
+            <h3>培训地点:{train_place}</h3>
             <button>生成预算</button>
             <button>生成决算</button>
-            <button>编辑</button>
+            <button onClick={this.props.action[1]}>编辑</button>
 
-            <div className="h1">{root+name}</div>
+           
             
            </div>
            

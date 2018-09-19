@@ -4,7 +4,7 @@
      */
 import React, { Component } from 'react';
 import TextField from '../../components/TextField';
-import AddCard from '../../components/AddCard';
+import AddDelCard from '../../components/AddDelCard';
 import AddSecondCard from '../../components/AddSecondCard'
 import AddThirdCard from '../../components/AddThirdCard'
 import LinkCard from '../../components/LinkCard'
@@ -188,7 +188,7 @@ class TravelExpenses extends Component {
     componentWillMount() {
         //长途交通
         this.state.addLongTrafficCondition.push(
-            <AddCard
+            <AddDelCard
                 key={`executeHandle${this.state.addLongTrafficCondition.length}.lenght+1`}
                 removeDefault={this.removeEvent.bind(this)}
                 index={this.state.addLongTrafficCondition.length}
@@ -196,7 +196,7 @@ class TravelExpenses extends Component {
                 //getaddLongTrafficCondition={ this.getaddLongTrafficConditionEvent.bind(this)}
                 conditionAction={this.state.conditionAction}
             >
-            </AddCard>
+            </AddDelCard>
         )
         //市内交通
         this.state.addShortTrafficCondition.push(
@@ -318,7 +318,7 @@ class TravelExpenses extends Component {
                     <button  className="add_card_btn"
                         onClick={() => {
                             this.state.addLongTrafficCondition.push(
-                                <AddCard
+                                <AddDelCard
                                     key={`executeHandle${this.state.addLongTrafficCondition.length}.lenght+1`}
                                     remove={this.removeEvent.bind(this)}
                                     index={this.state.addLongTrafficCondition.length}
@@ -326,7 +326,7 @@ class TravelExpenses extends Component {
                                     // getaddLongTrafficCondition={ this.getaddLongTrafficConditionEvent.bind(this)}
                                     conditionAction={this.state.conditionAction}
                                 >
-                                </AddCard>
+                                </AddDelCard>
                             )
                             this.setState({
                                 addLongTrafficCondition: this.state.addLongTrafficCondition,

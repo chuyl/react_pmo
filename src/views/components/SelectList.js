@@ -33,13 +33,16 @@ class SelectList extends Component {
         }
         getData(getRouter(this.state.before_api_uri), { session: "tnkGNc" }, cb, {});
     }
+    componentDidMount(){
+        this.infos();
+    }
     searchShow() {
         this.setState({
             search_state: !this.state.search_state
         })
     }
     render() {
-        const { selectedInfo, id, labelValue } = this.props;
+        const { selectedInfo,selectedIdInfo, id, labelValue } = this.props;
         return (
             <div className="search_info_list_card">
                 <div onClick={() => {
@@ -52,8 +55,10 @@ class SelectList extends Component {
                         this.infos();
                     }}
                     className="selectedInfo"
+                    
                     // className={document.getElementById(id).innerHTML==="-选择-"?"selectedInfo":"selectedInfoFont"}
-                    id={id}>{selectedInfo === "" ? "-选择-" : selectedInfo}</div>
+                    id={id+"_name"}>{selectedInfo === "" ? "-选择-" : selectedInfo}</div>
+                <input id={id+"_id"} defaultValue={selectedIdInfo}  style={{display:"none"}}/>
                 <div className="search_info_position">
                     <div
                         id="search_info_list_div"
@@ -63,7 +68,8 @@ class SelectList extends Component {
                             {this.state.searchInfoLists.map((info_lists) => {
                                 return (
                                     <li onClick={(e) => {
-                                        document.getElementById(id).innerHTML = info_lists.name;
+                                        document.getElementById(id+"_name").innerHTML = info_lists.name;
+                                        document.getElementById(id+"_id").value = info_lists.id;
                                         this.searchShow()
                                     }} key={info_lists.id}>{info_lists.name}</li>
                                 )

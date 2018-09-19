@@ -1,0 +1,31 @@
+{"data": {
+    "form-temp-name": "职责",
+    "form-list": [
+        {
+            "id_name": "add_teacher_duty",
+            "type_name": "MutiText", 
+            "key": "",
+            "title": "职责描述",
+            "tip": "",
+            "add_button": {},
+            "descript": "",
+            "before_api_uri": "",
+            "after_api_uri": ""
+        },
+        {
+            "id_name": "project_template",
+            "type_name": "SelectList", 
+            "key": "",
+            "title": "项目模板",
+            "tip": "",
+            "add_button": {
+                "data": {
+                    "from-list": [{}]
+                }
+            },
+            "descript": "",
+            "before_api_uri":"",
+            "after_api_uri": ""
+        }
+    ]
+}}

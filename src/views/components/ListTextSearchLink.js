@@ -11,7 +11,7 @@ import { dealNumber } from '../../utils/helpers'
 
 // import ListTextSearch from '../components/ListTextSearch'
 import ComponentsList from './ComponentsList'
-import AddCard from './AddCard';
+import AddDelCard from './AddDelCard';
 //import Select from './Select'
 class ListTextSearchLink extends Component {
 
@@ -247,7 +247,8 @@ class ListTextSearchLink extends Component {
             ]
         },
         addCondition: [],
-        add_button: this.props.addButton,
+        add_uri_button:this.props.addButton,
+        add_button:[], 
         before_api_uri: this.props.searchInfoLists,
         searchInfoLists: [],
         info_lists: []
@@ -269,7 +270,7 @@ class ListTextSearchLink extends Component {
     }
     componentWillMount() {
         this.state.addCondition.push(
-            <AddCard
+            <AddDelCard
                 key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                 removeDefault={this.removeEvent.bind(this)}
                 index={this.state.addCondition.length}
@@ -277,11 +278,28 @@ class ListTextSearchLink extends Component {
                 //getAddCondition={ this.getAddConditionEvent.bind(this)}
                 conditionAction={this.state.conditionAction}
             >
-            </AddCard>
+            </AddDelCard>
         )
         this.setState({
             addCondition: this.state.addCondition,
         })
+    }
+      /** 
+     * @author xuesong
+     * @param fetchData 函数名  获取本地编辑项目json
+     */
+    fetchData() {
+		fetch('../json/'+this.state.add_uri_button+'.json')
+			.then(response => response.json())
+			.then(data => {
+               
+				this.setState({
+					add_button: data.adit_project.data["form-list"],
+				})
+			})
+			.catch(e => {
+				console.log("error")
+			})
     }
     /** 
      * @author xuesong
@@ -343,6 +361,7 @@ class ListTextSearchLink extends Component {
     // }
     render() {
         const { selectedInfo, id, labelValue } = this.props;
+        console.log(selectedInfo)
         return (
             <div>
                 <div onClick={() => {
@@ -461,19 +480,19 @@ class ListTextSearchLink extends Component {
                                 }
                                 {/* {this.state.teacher_form_list.data.map((data,index)=>{
                                     console.log(index)
-                                    return <AddCard 
+                                    return <AddDelCard 
                                                 remove={this.removeEvent.bind(this)}
                                                 index={this.state.addCondition.length}
                                                 getAddCondition={ this.getAddConditionEvent.bind(this)}
                                                 conditionAction = { this.state.conditionAction }>
-                                           </AddCard>
+                                           </AddDelCard>
                                 })} */}
                                 {/* {this.add_lists_components()} */}
                             </ul>
                             <button  className="add_card_btn"
                                 onClick={() => {
                                     this.state.addCondition.push(
-                                        <AddCard
+                                        <AddDelCard
                                             key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                                             remove={this.removeEvent.bind(this)}
                                             index={this.state.addCondition.length}
@@ -481,7 +500,7 @@ class ListTextSearchLink extends Component {
                                             // getAddCondition={ this.getAddConditionEvent.bind(this)}
                                             conditionAction={this.state.conditionAction}
                                         >
-                                        </AddCard>
+                                        </AddDelCard>
                                     )
                                     this.setState({
                                         addCondition: this.state.addCondition,

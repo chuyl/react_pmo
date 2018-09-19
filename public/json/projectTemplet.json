@@ -1,0 +1,17 @@
+{
+    "data": {
+        "form-temp-name": "新增项目模板",
+        "form-list": [{
+            "id_name": "add_a_teacher_message",
+            "type_name": "MutiText", 
+            "key": "",
+            "title": "名称",
+            "tip": "",
+            "add_button": {
+            },
+            "descript": "",
+            "before_api_uri": "",
+            "after_api_uri": ""
+        }]
+    }
+}

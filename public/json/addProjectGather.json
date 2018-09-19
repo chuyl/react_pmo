@@ -1,0 +1,16 @@
+{
+    "data": {
+        "form-temp-name": "新建项目集",
+        "form-list": [{
+            "id_name": "add_project_gather_charge",
+            "type_name": "ProjectGather",
+            "key": "",
+            "title": "销售负责人",
+            "tip": "",
+            "add_button": {},
+            "descript": "",
+            "before_api_uri": "staffSmallList",
+            "after_api_uri": ""
+        }]
+    }
+}

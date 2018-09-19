@@ -53,8 +53,6 @@ class Budget extends Component {
 
 	}
 	componentDidMount() {
-
-		this.fetchData()
 		// var cb = (route, message, arg) => {
 		// 	if (message.code === 0) {
 		// 		this.setState({
@@ -135,7 +133,7 @@ class Budget extends Component {
 	}
 	/** 
 	 * @author xuesong
-	 * @param budget_index_add 函数 添加预算
+	 * @param budget_index_add 函数 添加预算 
 	 */
 	budget_index_add = (list_message)=>{
 		var key_name = [];
@@ -185,7 +183,7 @@ class Budget extends Component {
 							<div onClick={this.card_box_close} className="return_btn"></div>
 							{this.state.form_temp_name}
 						</div>
-						<div style={{ padding: "0 18px" }}>
+						<div className="selected_scroll_div" style={{ padding: "0 18px" }}>
 							{/* paper详细内容 */}
 							{this.state.card_state ?//判断paper是否可见
 								<div>

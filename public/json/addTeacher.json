@@ -1,0 +1,73 @@
+{
+    "data": {
+        "form-temp-name": "新增讲师",
+        "form-list": [{
+            "id_name": "add_a_teacher_message",
+            "type_name": "MutiText", 
+            "key": "",
+            "title": "讲师姓名",
+            "tip": "",
+            "add_button": {
+            },
+            "descript": "",
+            "before_api_uri": "",
+            "after_api_uri": ""
+        },{
+            "id_name": "add_a_teacher_price",
+            "type_name": "MutiText", 
+            "key": "",
+            "title": "常用单价",
+            "tip": "",
+            "add_button": {
+            },
+            "descript": "",
+            "before_api_uri": "",
+            "after_api_uri": ""
+        },{
+            "id_name": "add_a_teacher_cooperation_model",
+            "type_name": "SelectList", 
+            "key": "",
+            "title": "合作模式",
+            "tip": "",
+            "add_button": {
+            },
+            "descript": "",
+            "before_api_uri": "",
+            "after_api_uri": ""
+        },{
+            "id_name": "teacher_courses_group",
+            "type_name": "CardGroup",
+            "title": "主讲课程",
+            "add_button_title": "添加主讲课程",
+            "before_api_uri": [
+                {
+                    "group_card": []
+                }
+            ],
+            "add_button": [{
+                "id_name": "teacher_courses",
+                "type_name": "MutiText", 
+                "key": "",
+                "title": "主讲课程",
+                "tip": "",
+                "add_button": "addTeacher",
+                "descript": "",
+                "before_api_uri": "lecturer",
+                "after_api_uri": ""
+            },
+            {
+                "id_name": "teacher_price_courses",
+                "type_name": "MutiText", 
+                "key": "",
+                "title": "指导价格",
+                "tip": "",
+                "add_button": {},
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            }
+         
+           ]
+        }]
+    }
+}

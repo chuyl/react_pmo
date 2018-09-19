@@ -1,6 +1,6 @@
 /** 
      * @author xuesong
-     * @param AddCard 组件  添加card组件
+     * @param AddDelCard 组件  添加card组件
      */
     import React, { Component } from 'react'
     import TextField from './TextField'

@@ -11,7 +11,7 @@ import {dealNumber }from '../../../utils/helpers'
 
 // import ListTextSearch from '../components/ListTextSearch'
 import ComponentsList from '../../components/ComponentsList'
-//import AddCard from '../../components/AddCard';
+//import AddDelCard from '../../components/AddDelCard';
 //import LinkCard from '../../components/LinkCard'
 //import TeacherArrange from './TeacherArrange'; 
 //import ImplementArrange from './ImplementArrange'
@@ -231,11 +231,12 @@ class BudgetListTextSearchLink extends Component {
                             })
                             }}  >
                         </div > 
-                        编辑项目 
+                        新建项目 
                     </div >  
                     < div className = "selected_scroll_div" > 
                      {/* 添加客户1 */} 
-                        < ComponentsList componentslist =  {this.state.add_button} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
+                        <ComponentsList componentslist =  {this.state.add_button} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
+                        <button className="hold_btn">保存</button>
                         {/* 讲师安排 */} 
                         {/* < LinkCard title =  {"讲师安排"}label =  {"讲课费"}button =  {"修改讲师安排"} */}
                             {/* /> */}
@@ -260,9 +261,9 @@ class BudgetListTextSearchLink extends Component {
                             {/* < ImplementArrange/> */}
                             {/* 差旅费用 */} 
                             {/* < TravelExpenses/>   */}
-                            < button className = "button_sm button_position" onClick =  {() =>  {
+                            {/* < button className = "button_sm button_position" onClick =  {() =>  {
                                   // this.UpdateBudget()  //更新预算接口
-                                this.StringifyButton(this.state.add_button.data["form-list"])
+                               // this.StringifyButton(this.state.add_button.data["form-list"])
                        
                                }} > 更新预算 
                             </button >  
@@ -270,7 +271,7 @@ class BudgetListTextSearchLink extends Component {
                          // this.UpdateFinalAccounts()  //更新决算接口
                         this.StringifyButton(this.state.add_button.data["form-list"])
                        
-                    }} > 更新决算 </button >
+                    }} > 更新决算 </button > */}
                       </div >  </div >  </div > )
     }
 }

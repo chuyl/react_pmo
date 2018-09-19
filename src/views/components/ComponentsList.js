@@ -5,7 +5,8 @@
 
 import React, { Component } from 'react';
 import TextField from './TextField';
-//import TextMoney from './TextMoney'
+import TextMoney from './TextMoney'
+import TextDate from './TextDate'
 import TextDatetime from './TextDatetime'
 import ListTextSearch from './ListTextSearch'
 import LinkCard from './LinkCard'
@@ -19,15 +20,38 @@ class ComponentsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            inputValue:"inputValue",
+            targetValue:"",
             componentslist: this.props.componentslist,
             componentsdata:this.props.componentsdata
         }
+    }
+    // state={
+    //     inputValue:"inputValue",
+    //     componentslist: this.props.componentslist,
+    //     componentsdata:this.props.componentsdata
+    // }
+    handleSubmit(con) {
+        console.log(con)
+        // this.state.info.push(con);
+        // this.setState({info: this.state.info})
+    }
+    valueChange=(name,e)=>{
+    
+        this.setState({[e.target.name]:  e.target.value});
+        
+        /*下面这种方式也可以
+         var change = {};
+         change[e.target.name] = e.target.value;
+         this.setState(change);
+        */
     }
     render() {
         return (
             <div>
                 {/* this.state.add_button.data["form-list"] */}
                 {this.props.componentslist.map((form_list) => {
+                   // console.log(this.state.componentsdata[form_list.id_name])
                     return <div key={form_list.id_name}>
                         {form_list.type_name === "ListTextSearch" ?
                             <ListTextSearch id={form_list.id_name}
@@ -35,11 +59,21 @@ class ComponentsList extends Component {
                                 labelValue={form_list.title}
                                 searchInfoLists={form_list.before_api_uri}
                                 addButton={form_list.add_button}
-                                 // selectedInfo={this.props.componentsdata[form_list.id_name]} 
+                               // selectedInfo={form_list.key}
+                                 selectedIdInfo={this.props.componentsdata[form_list.id_name+"_id"]===undefined?"-选择-":this.props.componentsdata[form_list.id_name+"_id"]} 
+                                  selectedInfo={this.props.componentsdata[form_list.id_name+"_name"]===undefined?"-选择-":this.props.componentsdata[form_list.id_name+"_name"]} 
                                   />
                                 : form_list.type_name === "TextDatetime" ? <TextDatetime
                                 id={form_list.id_name} 
-                                //inputValue={this.props.componentsdata[form_list.id_name]} labelValue={form_list.title} 
+                                //inputValue={form_list.key}
+                                inputValue={this.props.componentsdata[form_list.id_name]} 
+                                labelValue={form_list.title} 
+                                />
+                                : form_list.type_name === "TextDate" ? <TextDate
+                                id={form_list.id_name} 
+                                //inputValue={form_list.key}
+                                inputValue={this.props.componentsdata[form_list.id_name]} 
+                                labelValue={form_list.title} 
                                 />
                                 :form_list.type_name === "LinkCard"?<LinkCard  
                                  title={form_list.title} label={form_list.descript} button={form_list.add_button.descript} linkpage={form_list.before_api_uri}
@@ -47,7 +81,18 @@ class ComponentsList extends Component {
                                 // : form_list.type_name === "TextMoney" ? <TextMoney
                                 // id={form_list.id_name} inputValue={this.props.componentsdata[form_list.id_name]} labelValue={form_list.title} />
                                 : form_list.type_name === "MutiText" ? <TextField id={form_list.id_name} 
-                                //inputValue={this.props.componentsdata[form_list.id_name]} 
+                                //     onChange={(e)=>{
+                                //         let data = {}
+                                //         data[form_list.id_name] = e.target.value
+                                //         this.setState(data)
+                                //         console.log(data)
+                                //             //e.name=e.target.value
+                                        
+                                //         console.log("input")
+                                //     // this.props.componentsdata[form_list.id_name]=e.target.value
+                                // }}
+                                name={this.props.componentsdata[form_list.id_name]}
+                                inputValue={this.props.componentsdata[form_list.id_name]} 
                                 labelValue={form_list.title} />
                                // :form_list.type_name==="ProjectGather"?<ProjectGather/>   
                               //  :form_list.type_name==="AddTeacher"?<AddTeacher/> 
@@ -57,14 +102,19 @@ class ComponentsList extends Component {
                                 labelValue={form_list.title}
                                 searchInfoLists={form_list.before_api_uri} 
                                 id={form_list.id_name}
-                               // selectedInfo={this.props.componentsdata[form_list.id_name]} 
+                                //selectedInfo={form_list.key}
+                                selectedInfo={this.props.componentsdata[form_list.id_name]} 
                                 />
                                 :form_list.type_name==="SelectList"?<SelectList 
                                 labelValue={form_list.title}
                                 searchInfoLists={form_list.before_api_uri} 
                                 id={form_list.id_name}
-                                //selectedInfo={this.props.componentsdata[form_list.id_name]}
-                                 />  
+                                //selectedInfo={form_list.key}
+                                selectedIdInfo={this.props.componentsdata[form_list.id_name+"_id"]===undefined?"-选择-":this.props.componentsdata[form_list.id_name+"_id"]} 
+                                selectedInfo={this.props.componentsdata[form_list.id_name+"_name"]===undefined?"-选择-":this.props.componentsdata[form_list.id_name+"_name"]} 
+                                 /> 
+                                 : form_list.type_name === "TextMoney" ? <TextMoney
+                                 id={form_list.id_name} inputValue={form_list.key} labelValue={form_list.title} /> 
                                  :form_list.type_name==="CardGroup"?<CardGroup idName={form_list.id_name} title={form_list.title} addButtonTitle={form_list.add_button_title} beforeApiUri={form_list.before_api_uri} addButton={form_list.add_button} />
                                 : ""}
                     </div>

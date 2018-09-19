@@ -45,7 +45,7 @@ const Language = {
                          component:TrainingProgram},
                         {id:"4",
                         path:"/biddingPlan",
-                        title:"招投标计划",
+                        title:"所属项目集",
                         component:BiddingPlan},
                         {id:"5",
                         path:"/contract",

@@ -6,7 +6,7 @@
     import ComponentsList from '../../components/ComponentsList'
     //import TextField from '../../components/TextField';
     //import SelectList from '../../components/SelectList'
-    import AddCard from '../../components/AddCard';
+    import AddDelCard from '../../components/AddDelCard';
     class ProjectGather extends Component {
         state = {
             add_lists: false,
@@ -135,7 +135,7 @@
         }
         componentWillMount() {
             this.state.addCondition.push(
-                <AddCard
+                <AddDelCard
                     key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                     removeDefault={this.removeEvent.bind(this)}
                     index={this.state.addCondition.length}
@@ -143,7 +143,7 @@
                     //getAddCondition={ this.getAddConditionEvent.bind(this)}
                     conditionAction={this.state.conditionAction}
                 >
-                </AddCard>
+                </AddDelCard>
             )
             this.setState({
                 addCondition: this.state.addCondition,
@@ -212,7 +212,7 @@
                         <button   className="add_card_btn"
                             onClick={() => {
                                 this.state.addCondition.push(
-                                    <AddCard
+                                    <AddDelCard
                                         key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                                         remove={this.removeEvent.bind(this)}
                                         index={this.state.addCondition.length}
@@ -220,7 +220,7 @@
                                         // getAddCondition={ this.getAddConditionEvent.bind(this)}
                                         conditionAction={this.state.conditionAction}
                                     >
-                                    </AddCard>
+                                    </AddDelCard>
                                 )
                                 this.setState({
                                     addCondition: this.state.addCondition,

@@ -102,3 +102,6 @@ export function dealNumber(money){
 //     logout();
 //   }
 // }
+export function getDataList(id) {
+  console.log(id)
+}

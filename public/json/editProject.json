@@ -2,7 +2,7 @@
     "adit_project":{
         "data": {
             "form-list": [{
-                "id_name": "add_project_name",
+                "id_name": "project_name",
                 "type_name": "MutiText",
                 "key": "",
                 "title": "项目名称",
@@ -12,34 +12,19 @@
                 "before_api_uri": "",
                 "after_api_uri": ""
             }, {
-                "id_name": "add_project_gather",
+                "id_name": "project_gather",
                 "type_name": "ListTextSearch",
                 "key": "",
                 "title": "所属项目集",
                 "tip": "",
-                "add_button": {
-                    "data": {
-                        "form-temp-name": "新建项目集",
-                        "form-list": [{
-                            "id_name": "add_project_gather_charge",
-                            "type_name": "ProjectGather",
-                            "key": "",
-                            "title": "销售负责人",
-                            "tip": "",
-                            "add_button": {},
-                            "descript": "",
-                            "before_api_uri": "staffSmallList",
-                            "after_api_uri": ""
-                        }]
-                    }
-                },
+                "add_button":"addProjectGather",
                 "descript": "",
                 "before_api_uri": "ofProject",
                 "after_api_uri": ""
             },
             {
-                "id_name": "add_project_charge",
-                "type_name": "ListText", 
+                "id_name": "project_person_in_charge",
+                "type_name": "SelectList", 
                 "key": "",
                 "title": "实施负责人",
                 "tip": "",
@@ -48,33 +33,18 @@
                 "before_api_uri":"staffSmallList",
                 "after_api_uri": ""
             }, {
-                "id_name": "project_templet",
+                "id_name": "project_project_template",
                 "type_name": "ListTextSearch", 
                 "key": "",
                 "title": "项目模板",
                 "tip": "",
-                "add_button": {
-                    "data": {
-                        "form-temp-name": "项目模板",
-                        "form-list": [{
-                            "id_name": "add_project_templet",
-                            "type_name": "ListText", 
-                            "key": "",
-                            "title": "销售负责人",
-                            "tip": "",
-                            "add_button": {},
-                            "descript": "",
-                            "before_api_uri": [],
-                            "after_api_uri": ""
-                        }]
-                    }
-                },
+                "add_button": "projecttemplat",
                 "descript": "",
                 "before_api_uri": "projectTemplate",
                 "after_api_uri": ""
             },
             {
-                "id_name": "add_customer_name",
+                "id_name": "project_customer_name",
                 "type_name": "MutiText", 
                 "key": "",
                 "title": "客户名称",
@@ -84,7 +54,7 @@
                 "before_api_uri": "",
                 "after_api_uri": ""
             }, {
-                "id_name": "add_days",
+                "id_name": "project_days",
                 "type_name": "MutiText",
                 "key": "",
                 "title": "天数",
@@ -94,7 +64,17 @@
                 "before_api_uri": "",
                 "after_api_uri": ""
             }, {
-                "id_name": "add_training_numbers",
+                "id_name": "project_date",
+                "type_name": "TextDate",
+                "key": "",
+                "title": "培训日期",
+                "tip": "",
+                "add_button": {},
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            }, {
+                "id_name": "project_training_numbers",
                 "type_name": "MutiText", 
                 "key": "",
                 "title": "培训人数",
@@ -104,7 +84,7 @@
                 "before_api_uri": "",
                 "after_api_uri": ""
             }, {
-                "id_name": "add_training_ares",
+                "id_name": "project_training_ares",
                 "type_name": "MutiText",
                 "key": "",
                 "title": "培训地点",
@@ -114,7 +94,7 @@
                 "before_api_uri": "",
                 "after_api_uri": ""
             },{
-                "id_name": "teacher_arrange",
+                "id_name": "project_teacher_arrange",
                 "type_name": "LinkCard", 
                 "key": "",
                 "title": "讲师安排",
@@ -127,7 +107,7 @@
                 "after_api_uri": ""
             }
             ,{
-                "id_name": "implement_arrange:",
+                "id_name": "project_implement_arrange:",
                 "type_name": "LinkCard", 
                 "key": "",
                 "title": "实施安排",
@@ -136,11 +116,11 @@
                     "descript":"修改实施计划"
                 },
                 "descript": "实施费用",
-                "before_api_uri": "teacher_card_group",
+                "before_api_uri": "ImplementArrage",
                 "after_api_uri": ""
             }
             ,{
-                "id_name": "travel_expenses",
+                "id_name": "project_travel_expenses",
                 "type_name": "LinkCard", 
                 "key": "",
                 "title": "差旅费用",
@@ -149,7 +129,7 @@
                     "descript":"修改差旅计划"
                 },
                 "descript": "差旅费用",
-                "before_api_uri": "teacher_card_group",
+                "before_api_uri": "TravelExpensesGroup",
                 "after_api_uri": ""
             }
 

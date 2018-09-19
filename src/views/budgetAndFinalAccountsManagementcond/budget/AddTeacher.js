@@ -4,7 +4,7 @@
      */
     import React, { Component } from 'react';
     import TextField from '../../components/TextField';
-    import AddCard from '../../components/AddCard';
+    import AddDelCard from '../../components/AddDelCard';
 import TextMoney from '../../components/TextMoney';
     class AddTeacher extends Component {
         state = {
@@ -41,7 +41,7 @@ import TextMoney from '../../components/TextMoney';
         }
         componentWillMount() {
             this.state.addCondition.push(
-                <AddCard
+                <AddDelCard
                     key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                     removeDefault={this.removeEvent.bind(this)}
                     index={this.state.addCondition.length}
@@ -49,7 +49,7 @@ import TextMoney from '../../components/TextMoney';
                     //getAddCondition={ this.getAddConditionEvent.bind(this)}
                     conditionAction={this.state.conditionAction}
                 >
-                </AddCard>
+                </AddDelCard>
             )
             this.setState({
                 addCondition: this.state.addCondition,
@@ -113,7 +113,7 @@ import TextMoney from '../../components/TextMoney';
                         <button className="add_card_btn"
                             onClick={() => {
                                 this.state.addCondition.push(
-                                    <AddCard
+                                    <AddDelCard
                                         key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                                         remove={this.removeEvent.bind(this)}
                                         index={this.state.addCondition.length}
@@ -121,7 +121,7 @@ import TextMoney from '../../components/TextMoney';
                                         // getAddCondition={ this.getAddConditionEvent.bind(this)}
                                         conditionAction={this.state.conditionAction}
                                     >
-                                    </AddCard>
+                                    </AddDelCard>
                                 )
                                 this.setState({
                                     addCondition: this.state.addCondition,

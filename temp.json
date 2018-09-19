@@ -57,7 +57,7 @@
                             "before_api_uri":"staff_of_ding",
                             "after_api_uri": ""
                         }, {
-                            "id_name": "project_templet",
+                            "id_name": "project_templat",
                             "type_name": "ListTextSearch", 
                             "key": "",
                             "title": "项目模板",
@@ -66,7 +66,7 @@
                                 "data": {
                                     "form-temp-name": "项目模板",
                                     "form-list": [{
-                                        "id_name": "add_project_templet",
+                                        "id_name": "add_project_templat",
                                         "type_name": "ListText", 
                                         "key": "",
                                         "title": "销售负责人1",

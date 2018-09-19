@@ -11,6 +11,8 @@
             add_button:[],
             groupContextList:[],
             data_group: [],
+            group_data_arr:[],
+            edit_linkCard_data:[],
             linkpage:this.props.linkpage
         }
         // 父组件声明自己支持 context
@@ -22,20 +24,19 @@
         // 父组件提供一个函数，用来返回相应的 context 对象
         getChildContext(){
             return{
-                color:"red",
                 callback:this.callback.bind(this)
             }
+           
         }
         /** 
          * @author xuesong
          * @param callback 函数名  接收子组件传来的值
          */
         callback(msg){
-            const childContext = msg;
-            // this.setState({
-            //     childContext:msg
-            // })
-          console.log(childContext)
+            console.log(msg)
+            this.state.group_data_arr.push(msg)
+           
+       //   console.log(this.state.group_data_arr)
         }
          /** 
          * @author xuesong
@@ -76,6 +77,7 @@
         console.log(arr_list);
 
     }
+    componentDidUpdate
         render(){
             const {id, title,label,button} =this.props;
             return (
@@ -84,6 +86,7 @@
                         <div className="label_button_title">{title}</div>
                         <span  className="label_button_label">{label}</span>
                         <button id={id}  className="label_button_button button_md" onClick={()=>{
+                            console.log(button)
                             this.setState({
                                 linkState:true
                             })
@@ -103,7 +106,7 @@
                         {button}
                     </div>
                     <div className="selected_scroll_div">
-                        <ComponentsList componentslist =  {this.state.add_button} ></ComponentsList > 
+                        {/* <ComponentsList componentslist =  {this.state.add_button} componentsdata = {this.state.edit_linkCard_data} ></ComponentsList >  */}
                         <button className="hold_btn"
                                 onClick={() => {
                                     for(var m = 0;m<this.state.add_button.length;m++){
@@ -111,10 +114,11 @@
                                             // console.log(this.state.childContext)
                                         }
                                     }
-                                    console.log(this.state.add_button)
                                     this.setState({
                                         data_group: [],
+                                        linkState:false
                                     })
+                                    console.log(this.state.group_data_arr)
                                     // for (var i = 0; i < this.state.childContext.length; i++) {
                                     //     if (this.state.childContext[i] !== "") {
                                     //      //   this.stringifyMultipleButton(this.state.teacher_card_list.teacher_card, i, this.state.teacher_data_group)

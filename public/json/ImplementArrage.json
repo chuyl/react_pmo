@@ -1,0 +1,83 @@
+{
+        "data":{
+            "form-list":[
+                {
+                    "id_name": "venue_fee",
+                    "type_name": "TextMoney", 
+                    "key": "",
+                    "title": "会场费",
+                    "tip": "",
+                    "add_button": {},
+                    "descript": "",
+                    "before_api_uri": "",
+                    "after_api_uri": ""
+                },
+                {
+                    "id_name": "material_and_equipment_cost",
+                    "type_name": "TextMoney", 
+                    "key": "",
+                    "title": "教材与设备费用",
+                    "tip": "",
+                    "add_button": {},
+                    "descript": "",
+                    "before_api_uri": "",
+                    "after_api_uri": ""
+                },
+                {
+                    "id_name": "examination_fee",
+                    "type_name": "TextMoney", 
+                    "key": "",
+                    "title": "考试费",
+                    "tip": "",
+                    "add_button": {},
+                    "descript": "",
+                    "before_api_uri": "",
+                    "after_api_uri": ""
+                },
+                {
+                    "id_name": "tea_break",
+                    "type_name": "TextMoney",
+                    "key": "",
+                    "title": "茶歇",
+                    "tip": "",
+                    "add_button": {},
+                    "descript": "",
+                    "before_api_uri": "",
+                    "after_api_uri": ""
+                },
+                {
+                    "id_name": "stationery",
+                    "type_name": "TextMoney", 
+                    "key": "",
+                    "title": "文具",
+                    "tip": "",
+                    "add_button": {},
+                    "descript": "",
+                    "before_api_uri": "",
+                    "after_api_uri": ""
+                },
+                 {
+                    "id_name": "hospitality",
+                    "type_name": "TextMoney", 
+                    "key": "",
+                    "title": "招待费",
+                    "tip": "",
+                    "add_button": {},
+                    "descript": "",
+                    "before_api_uri": "",
+                    "after_api_uri": ""
+                },
+                {
+                    "id_name": "postage",
+                    "type_name": "TextMoney",
+                    "key": "",
+                    "title": "邮寄快递",
+                    "tip": "",
+                    "add_button": {},
+                    "descript": "",
+                    "before_api_uri": "",
+                    "after_api_uri": ""
+                }
+            ]
+        }
+    }
