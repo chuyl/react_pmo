@@ -100,7 +100,8 @@
                 "title": "讲师安排",
                 "tip": "",
                 "add_button": {
-                    "descript":"修改讲师安排"
+                    "descript":"修改讲师安排",
+                    "before_api_uri":"listLecturer"
                 },
                 "descript": "讲课费",
                 "before_api_uri": "teacherCardGroup",
@@ -113,7 +114,8 @@
                 "title": "实施安排",
                 "tip": "",
                 "add_button": {
-                    "descript":"修改实施计划"
+                    "descript":"修改实施计划",
+                    "before_api_uri":"listLecturer"
                 },
                 "descript": "实施费用",
                 "before_api_uri": "ImplementArrage",
@@ -126,7 +128,8 @@
                 "title": "差旅费用",
                 "tip": "",
                 "add_button": {
-                    "descript":"修改差旅计划"
+                    "descript":"修改差旅计划",
+                    "before_api_uri":"listProvince"
                 },
                 "descript": "差旅费用",
                 "before_api_uri": "TravelExpensesGroup",

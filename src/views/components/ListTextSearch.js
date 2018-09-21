@@ -52,7 +52,6 @@ class ListTextSearch extends Component {
                 })
             }
         }
-        console.log(this.state.before_api_uri)
         getData(getRouter(this.state.before_api_uri), { session: "tnkGNc" }, cb, {});
     }
     // componentWillMount(){
@@ -63,9 +62,9 @@ class ListTextSearch extends Component {
             search_state: !this.state.search_state
         })
     }
-    componentDidMount(){
-        this.infos()
-    }
+    // componentDidMount(){
+    //     this.infos()
+    // }
     render() {
         const { selectedInfo,selectedIdInfo, id, labelValue,disabled } = this.props;
         return (

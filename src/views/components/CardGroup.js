@@ -21,30 +21,47 @@
                 callback:PropTypes.func,
             }
         componentWillMount() {
-            this.state.view_list.map((view_list)=>{
-                return (this.state.addCondition.push(
-                    <AddDelCard
-                        key={`executeHandle${this.state.addCondition.length}.lenght+1`}
-                        removeDefault={this.removeEvent.bind(this)}
-                        index={this.state.addCondition.length}
-                        cardList={this.props.addButton}>
-                    </AddDelCard>
-                ))
+            console.log(this.props.beforeApiUri)
+            // this.props.beforeApiUri.map((view_list)=>{
+            //     return (this.state.addCondition.push(
+            //         <AddDelCard
+            //             key={`executeHandle${this.state.addCondition.length}.lenght+1`}
+            //             removeDefault={this.removeEvent.bind(this)}
+            //             index={this.state.addCondition.length}
+            //             cardList={this.props.addButton}>
+            //         </AddDelCard>
+            //     ))
                  
-            })
-            this.setState({
-                addCondition: this.state.addCondition,
-            })
+            // })
+            // this.setState({
+            //     addCondition: this.state.addCondition,
+            // })
         }
         // componentWillMount(){
-        //     console.log(this.props.onSubmit)
+        //     console.log(this.props.beforeApiUri)
         // }
-        componentDidMount(){
-
-            var addCondition=this.state.addCondition;
-            this.callback(addCondition)
-          //  this.props.onSubmit(addCondition)
-        }
+        // componentDidMount(){
+        //     var addCondition=this.state.addCondition;
+        //     this.callback(addCondition)
+        //   //  this.props.onSubmit(addCondition)
+        // }
+        // componentDidUpdate(){
+        //     this.props.beforeApiUri.map((view_list)=>{
+        //         return (this.state.addCondition.push(
+        //             <AddDelCard
+        //                 key={`executeHandle${this.state.addCondition.length}.lenght+1`}
+        //                 removeDefault={this.removeEvent.bind(this)}
+        //                 index={this.state.addCondition.length}
+        //                 cardList={this.props.addButton}>
+        //             </AddDelCard>
+        //         ))
+                 
+        //     })
+        //     this.render()
+        //     // this.setState({
+        //     //     addCondition: this.state.addCondition,
+        //     // })
+        // }
         /** 
          * @author xuesong
          * @param removeEvent 函数名 删除添加组件
@@ -64,20 +81,32 @@
             this.context.callback(msg);
         }
         render() {
-            // const cb = (msg) => {
-            //     return () => {
-            //         this.context.callback(msg);
-            //     }
-            // }
+            console.log(this.state.addButton)
             return (
                 <div>
                     <p className="card_title">{this.props.title}</p>
                     <ul id = {this.props.idName}>
-                        {
+                        {/* {
                             this.state.addCondition.map((item, index) => {
                                         return item;
                                     })
-                        }        
+                        }         */}
+                         {
+                            this.props.beforeApiUri?this.props.beforeApiUri.map((view_list)=>{
+                            return  <AddDelCard
+                                        key={view_list.id}
+                                        removeDefault={this.removeEvent.bind(this)}
+                                        index={this.state.addCondition.length}
+                                        cardList={this.props.addButton}
+                                        messageList={view_list}
+                                        >
+                                         
+                                    </AddDelCard>
+                    
+                            
+                            
+                        }):""
+                         }
                     </ul>    
                     <button className="add_card_btn"  
                         onClick={() => {
@@ -123,11 +152,11 @@
                                             conditionAction={this.state.conditionAction}
                                         >
                                         </AddCard>
-                                <button className="hold_btn"
+                                {/* <button className="hold_btn"
                                     onClick={(e) => {
                                     
                                     }}
-                                >保存</button>
+                                >保存</button> */}
                     </div>
                 </div>  
                 </div>

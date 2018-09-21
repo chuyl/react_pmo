@@ -3,17 +3,8 @@
      * @param AddDelCard 组件  添加card组件
      */
 import React, { Component } from 'react'
-import TextField from './TextField'
-import TextMoney from './TextMoney'
-//import ListText from '../components/ListText'
-import TextDatetime from './TextDatetime'
-import AddTeacher from '../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
-import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
-import SelectList from './SelectList'
-import AddCard from './AddCard'
 import ComponentsList from './ComponentsList'
-
-import ListTextSearch from './ListTextSearch'
+//import LinkGroupList from './LinkGroupList';
 class AddDelCard extends Component {
     state = {
         cardList: this.props.cardList,
@@ -24,6 +15,7 @@ class AddDelCard extends Component {
      * @param removeFunEvent 函数名 删除默认和添加组件
      */
     removeFunEvent() {
+        
         console.log(this)
         //默认的组件
         //this.props.removeDefault && this.props.removeDefault(this.props.index);
@@ -31,12 +23,13 @@ class AddDelCard extends Component {
         //this.props.remove && this.props.remove(this.props.index);
     }
     render() {
+        console.log(this.props.messageList)
         return (
             <li
                 key={this.props.index}  className="card_info_list_card"
             >
                
-                <ComponentsList componentslist={this.state.cardList}></ComponentsList>
+                <ComponentsList componentslist={this.state.cardList} componentsdata={this.props.messageList}></ComponentsList>
 
                 {/*  修改删除、编辑逻辑 用ComponentsList组件代替
                  {this.state.cardList.map((card_list, index) => {
@@ -70,7 +63,10 @@ class AddDelCard extends Component {
                 })} */}
                 
                  <button className="label_delete_button"
-                    onClick={this.removeFunEvent.bind(this)}
+                 onClick={()=>{
+                     console.log(this.props.messageList.id)
+                 }}
+                    // onClick={this.removeFunEvent.bind(this)}
                 >删除</button>
                 <button style={{marginRight:"14px"}} className="label_delete_button"
                      onClick={() => {
@@ -90,7 +86,7 @@ class AddDelCard extends Component {
                                 </div>
                                 <div className="selected_scroll_div">
                                     <div  className="card_info_list_card">
-                                        <ComponentsList componentslist={this.state.cardList}></ComponentsList>
+                                        <ComponentsList componentslist={this.state.cardList} componentsdata={this.props.messageList}></ComponentsList>
                                     </div>
                                 {/* <AddCard 
                                             key={`executeHandle${this.state.addCondition.length}.lenght+1`}

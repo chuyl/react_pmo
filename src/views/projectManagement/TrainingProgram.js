@@ -9,8 +9,8 @@ import Card from '../Card'
 import ComponentsList from '../components/ComponentsList'
 //import TextDatetime from '../components/TextDatetime'
 //import BudgetListTextSearchLink from './BudgetListTextSearchLink'
-import { getData, getRouter,getDataList } from '../../utils/helpers'
-import {BUDGETINDEXADD, ADDPROJECT, LISTPROJECT} from '../../enum'
+import { getData, getRouter } from '../../utils/helpers'
+import { ADDPROJECT, LISTPROJECT} from '../../enum'
 
 class TrainingProgram extends Component {
    
@@ -118,7 +118,8 @@ class TrainingProgram extends Component {
                
 				this.setState({
 					add_button: data.adit_project.data["form-list"],
-					form_temp_name:data.adit_project.data["form-temp-name"]
+					form_temp_name:data.adit_project.data["form-temp-name"],
+
 				})
 			})
 			.catch(e => {
@@ -180,14 +181,24 @@ class TrainingProgram extends Component {
 		for (var i = 0; i < list_message.length; i++) {
 			 if(list_message[i].type_name!=="LinkCard"){
 				 if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"){
-					{this.state.edit_project_data.id!==undefined?value.push("id"):""}
-					{this.state.edit_project_data.id!==undefined?key_name.push(this.state.edit_project_data.id):""}
-					value.push(list_message[i].id_name+"_name")
-					// value.push("session")
-					 key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
-					 value.push(list_message[i].id_name+"_id")
-					// value.push("session")
-					 key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML || document.getElementById(list_message[i].id_name+"_id").value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").value)
+					if(this.state.edit_project_data.id!==undefined){
+						value.push("id")
+						key_name.push(this.state.edit_project_data.id)
+						value.push(list_message[i].id_name+"_name")
+						// value.push("session")
+						 key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
+						 value.push(list_message[i].id_name+"_id")
+						// value.push("session")
+						 key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML || document.getElementById(list_message[i].id_name+"_id").value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").value)
+					}else{
+						value.push(list_message[i].id_name+"_name")
+						// value.push("session")
+						 key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
+						 value.push(list_message[i].id_name+"_id")
+						// value.push("session")
+						 key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML || document.getElementById(list_message[i].id_name+"_id").value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").value)
+					}
+					
 				 }else{
 				value.push(list_message[i].id_name)
 				// value.push("session")
@@ -228,11 +239,7 @@ class TrainingProgram extends Component {
         
         return components
 	}
-	componentDidUpdate(){
-		console.log("componentDidUpdate")
-	}
 	render() {
-		console.log(this.state.edit_project_data)
 		return(
 			<div>
 				<div id="" className="container">
@@ -241,7 +248,6 @@ class TrainingProgram extends Component {
 						this.setState({
 							edit_project_data:[]
 						})
-						//this.fetchData()
 					}}>
 						添加
 					</div>

@@ -29,11 +29,7 @@
                 "type_name": "CardGroup",
                 "title": "讲师安排",
                 "add_button_title": "添加讲师安排",
-                "before_api_uri": [
-                    {
-                        "group_card": []
-                    }
-                ],
+                "before_api_uri": "lecturer",
                 "add_button": [{
                     "id_name": "teacher_name",
                     "type_name": "ListTextSearch", 

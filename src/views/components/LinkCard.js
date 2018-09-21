@@ -4,6 +4,7 @@
      */
     import React, { Component } from 'react';
     import ComponentsList from './ComponentsList'
+    import { getData, getRouter } from '../../utils/helpers'
     import PropTypes from 'prop-types';
     class LinkCard extends Component {
         state =  {
@@ -13,6 +14,7 @@
             data_group: [],
             group_data_arr:[],
             edit_linkCard_data:[],
+            linkListCard:[],
             linkpage:this.props.linkpage
         }
         // 父组件声明自己支持 context
@@ -74,24 +76,38 @@
 
         //var data = JSON.stringify(obj, value);//将对象转换成json
         arr_list.push(obj);
-        console.log(arr_list);
+      //  console.log(arr_list);
 
     }
-    componentDidUpdate
+    message_list(){
+        var cb = (route, message, arg) => {
+			if (message.code === 0) {
+				this.setState({
+					linkListCard:message.data
+				})
+			}
+        }
+        console.log(this.props.isClick )
+		getData(getRouter(this.props.messageList), { session: "tnkGNc",project_id:this.props.isClick }, cb, {});
+    }
         render(){
-            const {id, title,label,button} =this.props;
+            const {id, title,label,button,isClick} =this.props;
+            //console.log(this.state.add_button)
             return (
                 <div>
                     <div className="label_button_card">
                         <div className="label_button_title">{title}</div>
                         <span  className="label_button_label">{label}</span>
                         <button id={id}  className="label_button_button button_md" onClick={()=>{
-                            console.log(button)
-                            this.setState({
-                                linkState:true
-                            })
-                            this.fetchData();
-                            } }
+                            if(isClick!==undefined){
+                                this.setState({
+                                    linkState:true
+                                })
+                                this.fetchData();
+                                this.message_list()
+                                } }
+                            }
+                          
                             >{button}
                         </button>    
                     </div>
@@ -106,8 +122,8 @@
                         {button}
                     </div>
                     <div className="selected_scroll_div">
-                        {/* <ComponentsList componentslist =  {this.state.add_button} componentsdata = {this.state.edit_linkCard_data} ></ComponentsList >  */}
-                        <button className="hold_btn"
+                        <ComponentsList componentslist =  {this.state.add_button} componentsdata = {this.state.linkListCard} ></ComponentsList > 
+                        {/* <button className="hold_btn"
                                 onClick={() => {
                                     for(var m = 0;m<this.state.add_button.length;m++){
                                         if(this.state.add_button[m].type_name==="CardGroup"){
@@ -118,15 +134,9 @@
                                         data_group: [],
                                         linkState:false
                                     })
-                                    console.log(this.state.group_data_arr)
-                                    // for (var i = 0; i < this.state.childContext.length; i++) {
-                                    //     if (this.state.childContext[i] !== "") {
-                                    //      //   this.stringifyMultipleButton(this.state.teacher_card_list.teacher_card, i, this.state.teacher_data_group)
-                                    //     }
-                                    // }
                                 }}
     
-                            >保存</button>
+                            >保存</button> */}
 
                     </div>
                 </div>
