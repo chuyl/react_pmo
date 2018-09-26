@@ -19,7 +19,7 @@
         }
         render() {
             return (
-                <li
+                <div
                     key={this.props.index}  className="card_info_list_card"
                 >
                     {/* <ComponentsList componentslist={this.state.card_list}></ComponentsList> */}
@@ -27,21 +27,21 @@
                         return <div key={index} style={{marginBottom:"-6px"}}>
                             {
                                 card_list.type_name === "ListTextSearch" ?
-                                    <ListTextSearch id={card_list.id_name + this.props.index}
+                                    <ListTextSearch id={card_list.id_name}
                                         labelValue={card_list.title}
                                         searchInfoLists={card_list.before_api_uri}
                                         addButton={card_list.add_button}
                                         selectedInfo={card_list.key} />
                                     :
                                     card_list.type_name === "MutiText" ? <TextField
-                                    id={card_list.id_name + this.props.index} inputValue={card_list.key} labelValue={card_list.title} />
+                                    id={card_list.id_name} inputValue={card_list.key} labelValue={card_list.title} />
                                        : card_list.type_name === "TextDatetime" ? <TextDatetime
-                                        id={card_list.id_name + this.props.index} inputValue={card_list.key} labelValue={card_list.title} />
+                                        id={card_list.id_name} inputValue={card_list.key} labelValue={card_list.title} />
                                         : card_list.type_name === "TextMoney" ? <TextMoney
-                                        id={card_list.id_name + this.props.index} inputValue={card_list.key} labelValue={card_list.title} />
+                                        id={card_list.id_name} inputValue={card_list.key} labelValue={card_list.title} />
                                         :card_list.type_name==="AddTeacher"?<AddTeacher/> 
                                         :card_list.type_name==="ProjectTemplate"?<ProjectTemplate/> 
-                                        :card_list.type_name==="SelectList"?<SelectList id={card_list.id_name + this.props.index}
+                                        :card_list.type_name==="SelectList"?<SelectList id={card_list.id_name}
                                         labelValue={card_list.title}
                                         searchInfoLists={card_list.before_api_uri}
                                         selectedInfo={card_list.key}/>
@@ -54,7 +54,7 @@
                     })}
                     
                     {/* {this.add_teacher_card_components(this.props.index)} */}
-                </li>
+                </div>
             )
         }
     }

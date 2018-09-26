@@ -1,0 +1,21 @@
+{
+    "add_project":{
+        "data": {
+            "form-list": [
+             {
+                "id_name": "project_project_template",
+                "type_name": "ListTextSearch", 
+                "key": "",
+                "title": "项目模板",
+                "tip": "",
+                "add_button": "projecttemplat",
+                "descript": "",
+                "before_api_uri": "projectTemplate",
+                "after_api_uri": ""
+            } 
+
+            ]
+
+        }
+    }
+}

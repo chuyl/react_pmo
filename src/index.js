@@ -10,7 +10,7 @@ import {
 import './css/style.css'
 import Lang from './language'
  import config from './config';
- import {getData,getRouter } from './utils/helpers';
+ import {getData } from './utils/helpers';
 
 // window.onresize = function(){
 //   console.log(document.body.clientWidth)
@@ -82,8 +82,8 @@ for(var x=0;x<lang.length;x++){
           for (var key in message.data.routelist) {
             sessionStorage.setItem(key, JSON.stringify(message.data.routelist[key]));
           }
-          var img_url = getRouter("creat_checkcode").url;
-          console.log(img_url)
+       //   var img_url = getRouter("creat_checkcode").url;
+       //   console.log(img_url)
          
         }
       } catch (e) {

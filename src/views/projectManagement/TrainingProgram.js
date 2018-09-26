@@ -82,30 +82,61 @@ class TrainingProgram extends Component {
 		teacher_form_list: [],
 		edit_project_data:[],
 		form_temp_name: "",
+		projectCard:[],//card的json
+		linkpage:"",//讲师，差旅，实施
 	};
 	// componentWillMount() {
 	// 	this.fetchMessageData()
 
 	// }
-	componentDidMount() {
-
-		this.fetchData()
+	componentWillMount() {
+    console.log("componentDidMount")
+		// this.fetchData()
 		this.listProject()
+		this.fetchListData()
 
 		//	console.log(this.state.budget_paper)
 
 	}
+	componentWillReceiveProps(){
+		console.log("componentWillReceiveProps")
+	}
+	// shouldComponentUpdate(){
+	// 	console.log("shouldComponentUpdate")
+	// }
+	// componentWillUpdate(){
+	// 	console.log("componentWillUpdate")
+	// }
 	listProject(){
 		var cb = (route, message, arg) => {
+			console.log("nnn")
 			if (message.code === 0) {
+				console.log(message.data)
 				this.setState({
 					card_list:message.data
 				})
 			}
 		}
+		console.log(LISTPROJECT)
 		getData(getRouter(LISTPROJECT), { session: "tnkGNc" }, cb, {});
 
 	}
+	fetchListData() {
+		fetch('../json/ProjectCard.json')
+			.then(response => response.json())
+			.then(data => {
+               console.log(data.data["form-list"])
+				this.setState({
+					projectCard: data.data["form-list"],
+					//form_temp_name:data.adit_project.data["form-temp-name"],
+
+				})
+			})
+			.catch(e => {
+				console.log("error")
+			})
+	}
+
 	/** 
 	 * @author xuesong
 	 * @param fetchData 函数名  获取本地json内容
@@ -126,6 +157,36 @@ class TrainingProgram extends Component {
 				console.log("error")
 			})
 	}
+	fetchProjectData() {
+		fetch('../json/AddProject.json')
+			.then(response => response.json())
+			.then(data => {
+               
+				this.setState({
+					add_button: data.add_project.data["form-list"],
+					form_temp_name:data.add_project.data["form-temp-name"],
+
+				})
+			})
+			.catch(e => {
+				console.log("error")
+			})
+	}
+	fetchEditData(linkpage) {
+		fetch('../json/'+linkpage+'.json')
+			.then(response => response.json())
+			.then(data => {
+			   console.log(data.data["form-list"])
+				this.setState({
+					add_button: data.data["form-list"],
+				})
+				
+			})
+			.catch(e => {
+				console.log("error")
+			})
+	}
+
 	// /** 
 	//  * @author xuesong
 	//  * @param fetchMessageData 函数名  获取本地json数据内容
@@ -142,6 +203,7 @@ class TrainingProgram extends Component {
 	// 			console.log("error")
 	// 		})
 	// }
+
 	/** 
 	 * @author xuesong
 	 * @param card_box_concent 函数  打开paper
@@ -177,7 +239,6 @@ class TrainingProgram extends Component {
 	project_index_add = (list_message)=>{
 		var key_name = [];
 		var value = [];
-		console.log(document.getElementById("project_gather_name").innerHTML)
 		for (var i = 0; i < list_message.length; i++) {
 			 if(list_message[i].type_name!=="LinkCard"){
 				 if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"){
@@ -222,28 +283,29 @@ class TrainingProgram extends Component {
 			}
 
 		}
-		console.log(obj)
 		getData(getRouter(ADDPROJECT), {data:obj}, cb, {});
 	}
-	editComponents = () => {
-		console.log(this.state.edit_project_data.id)
-        var components = []
-            components.push(
-				<div key={this.state.edit_project_data.id===undefined?"addComponents":this.state.edit_project_data.id} id="editComponents">
-					 < ComponentsList componentslist =  {this.state.add_button} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
-						<button  onClick={()=>{
-							this.project_index_add(this.state.add_button)
-						}} className="hold_btn">保存</button>
-				</div>				
-                )
+	// editComponents = () => {
+	// 	console.log(this.state.edit_project_data.id)
+    //     var components = []
+    //         components.push(
+	// 			<div key={this.state.edit_project_data.id===undefined?"addComponents":this.state.edit_project_data.id} id="editComponents">
+	// 				 < ComponentsList componentslist =  {this.state.add_button} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
+	// 					<button  onClick={()=>{
+	// 						this.project_index_add(this.state.add_button)
+	// 					}} className="hold_btn">保存</button>
+	// 			</div>				
+    //             )
         
-        return components
-	}
+    //     return components
+	// }
 	render() {
 		return(
 			<div>
 				<div id="" className="container">
 					<div className="add_button" onClick={(e) => {
+						this.fetchProjectData()
+						
 						this.card_box_concent([], e)
 						this.setState({
 							edit_project_data:[]
@@ -252,26 +314,76 @@ class TrainingProgram extends Component {
 						添加
 					</div>
 					<div className="overflow">
-						{this.state.card_list.map(card_list => {
+						{this.state.card_list?this.state.card_list.map(card_list => {
 							return <Card
-								action={[(e) => {
-								},() =>{
-									this.setState({
-										card_state:true,
-										edit_project_data:card_list
-									})
-								}]}
+							// handleClick ={()=>{
+							// 	if(this.state.card_state){
+							// 		setTimeout(function(){
+							// 			document.getElementById("card_box").classList.remove("open")
+							// 		},100)
+							// 	}
+							// 	setTimeout((e) => {
+							// 		document.getElementById("card_box").classList.add("open")
+							// 		this.fetchEditData("teacherCardGroup")
+							// 		this.card_box_concent([], e)
+							// 		this.setState({
+							// 			card_state:true,
+							// 			edit_project_data:card_list
+							// 		})
+							// 	},300)
+							// }}
+							// handleClick={[(e) => {
+							// 	},(e) =>{
+									
+							// 		// setInterval(() => {this.tick()}, 1000);
+							// 		if(this.state.card_state){
+							// 					setTimeout(function(){
+							// 						document.getElementById("card_box").classList.remove("open")
+							// 					},100)
+							// 				}
+							// 		setTimeout((e) => {
+							// 			document.getElementById("card_box").classList.add("open")
+							// 			this.fetchData()
+							// 			this.card_box_concent([], e)
+							// 			this.setState({
+							// 				card_state:true,
+							// 				edit_project_data:card_list
+							// 			})
+							// 		},300)
+									
+							// 	},()=>{
+							// 		this.fetchEditData("teacherCardGroup")
+							// 		this.setState({
+							// 			card_state:true,
+							// 			edit_project_data:card_list
+							// 		})
+							// 		console.log(card_list)
+							// 	},()=>{
+							// 		this.fetchEditData("ImplementArrage")
+							// 		this.setState({
+							// 			card_state:true,
+							// 			edit_project_data:card_list
+							// 		})
+							// 	},()=>{
+							// 		this.fetchEditData("TravelExpensesGroup")
+							// 		this.setState({
+							// 			card_state:true,
+							// 			edit_project_data:card_list
+							// 		})
+							// 	}]}
 								id={card_list.id}
+								card_list={card_list}
+								add_button={this.state.projectCard}
 								key={card_list.id} customer_name ={card_list.project_customer_name}
 								course_name ={card_list.project_name}
 								person_in_charge ={card_list.project_person_in_charge}
 								train_days  ={card_list.project_training_numbers} 
 								train_place  ={card_list.project_training_ares} 
 								train_date ={card_list.project_days } />
-						})}
+						}):""}
 					</div>
 				</div>
-				<div>
+				<div className="paper_div">
 					<div id="card_box" onClick={(event) => {
 					}} className={this.state.card_state ? "card_box overflow open" : "card_box"}>
 						<div style={this.state.card_state ? { display: "" } : { display: "none" }} className="paper_card_title">
@@ -281,11 +393,11 @@ class TrainingProgram extends Component {
 						<div className="selected_scroll_div" style={{ padding: "0 18px" }}>
 							{/* paper详细内容 */}
 							{this.state.card_state ?//判断paper是否可见
-								<div key={this.state.edit_project_data.id===undefined?"addComponents":this.state.edit_project_data.id} id="editComponents">
-								< ComponentsList componentslist =  {this.state.add_button} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
-								   <button  onClick={()=>{
+								<div key={this.state.edit_project_data.id?this.state.edit_project_data.id:"addComponents"} id="editComponents">
+								< ComponentsList componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
+								   {/* <button  onClick={()=>{
 									   this.project_index_add(this.state.add_button)
-								   }} className="hold_btn">保存</button>
+								   }} className="hold_btn">保存</button> */}
 						   </div>		
 								: ""}
 						</div>

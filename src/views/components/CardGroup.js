@@ -6,6 +6,8 @@
     import AddDelCard from './AddDelCard';
     import AddCard from './AddCard';
     import PropTypes from 'prop-types';
+    import {LECTURERADD} from '../../enum'
+    import {getData,getRouter} from '../../utils/helpers'
     class CardGroup extends Component {
         state = {
             addCondition: [],
@@ -13,55 +15,13 @@
             data_group: [],  //获取到的数据
             view_list:this.props.beforeApiUri,    //获取到的视图
             card_list:[],    //点击新增
-            add_card_state:false
+            add_card_state:false,
         }
         // 子组件声明自己需要使用 context
             static contextTypes = {
                 color:PropTypes.string,
                 callback:PropTypes.func,
             }
-        componentWillMount() {
-            console.log(this.props.beforeApiUri)
-            // this.props.beforeApiUri.map((view_list)=>{
-            //     return (this.state.addCondition.push(
-            //         <AddDelCard
-            //             key={`executeHandle${this.state.addCondition.length}.lenght+1`}
-            //             removeDefault={this.removeEvent.bind(this)}
-            //             index={this.state.addCondition.length}
-            //             cardList={this.props.addButton}>
-            //         </AddDelCard>
-            //     ))
-                 
-            // })
-            // this.setState({
-            //     addCondition: this.state.addCondition,
-            // })
-        }
-        // componentWillMount(){
-        //     console.log(this.props.beforeApiUri)
-        // }
-        // componentDidMount(){
-        //     var addCondition=this.state.addCondition;
-        //     this.callback(addCondition)
-        //   //  this.props.onSubmit(addCondition)
-        // }
-        // componentDidUpdate(){
-        //     this.props.beforeApiUri.map((view_list)=>{
-        //         return (this.state.addCondition.push(
-        //             <AddDelCard
-        //                 key={`executeHandle${this.state.addCondition.length}.lenght+1`}
-        //                 removeDefault={this.removeEvent.bind(this)}
-        //                 index={this.state.addCondition.length}
-        //                 cardList={this.props.addButton}>
-        //             </AddDelCard>
-        //         ))
-                 
-        //     })
-        //     this.render()
-        //     // this.setState({
-        //     //     addCondition: this.state.addCondition,
-        //     // })
-        // }
         /** 
          * @author xuesong
          * @param removeEvent 函数名 删除添加组件
@@ -80,8 +40,48 @@
        callback(msg){
             this.context.callback(msg);
         }
+        project_index_add = (list_message)=>{
+            var key_name = [];
+            var value = [];
+            for (var i = 0; i < list_message.length; i++) {
+                 
+                     if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"){
+                      // console.log(document.getElementById(list_message[i].id_name+"_name"))
+                            value.push(list_message[i].id_name+"_name")
+                            // value.push("session")
+                             key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
+                             value.push(list_message[i].id_name+"_id")
+                            // value.push("session")
+                             key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML || document.getElementById(list_message[i].id_name+"_id").value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").value)
+                        
+                        
+                     }else{
+                    value.push(list_message[i].id_name)
+                    // value.push("session")
+                     key_name.push(document.getElementById(list_message[i].id_name).innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name).innerHTML || document.getElementById(list_message[i].id_name).value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name).value)
+                  
+                     //  key_name.push("tnkGNc")
+                    }			 
+                    }
+              
+            
+            var obj = {};
+            for(var j=0;j<value.length;j++){
+                obj[value[j]] =key_name[j];
+            }
+            var cb = (route, message, arg) => {
+                if (message.code === 0) {
+                    this.setState({
+                        card_state:false
+                    })
+                    this.listProject()
+                }
+    
+            }
+            console.log(obj)
+            getData(getRouter(LECTURERADD), {data:obj}, cb, {});
+        }
         render() {
-            console.log(this.state.addButton)
             return (
                 <div>
                     <p className="card_title">{this.props.title}</p>
@@ -113,21 +113,6 @@
                             this.setState({
                                 add_card_state: true
                             })
-                            // this.state.addCondition.push(
-                            //             <AddDelCard 
-                            //                 key={`executeHandle${this.state.addCondition.length}.lenght+1`}
-                            //                 remove={this.removeEvent.bind(this)}
-                            //                 index={this.state.addCondition.length}
-                            //                 cardList={this.props.addButton}
-                            //                 // getAddCondition={ this.getAddConditionEvent.bind(this)}
-                            //                 conditionAction={this.state.conditionAction}
-                            //             >
-                            //             </AddDelCard>
-                            //         )
-                            //         this.setState({
-                            //             addCondition: this.state.addCondition,
-                            //         })
-                                   
                                 }}
                             >{this.props.addButtonTitle}</button>
                               
@@ -152,11 +137,12 @@
                                             conditionAction={this.state.conditionAction}
                                         >
                                         </AddCard>
-                                {/* <button className="hold_btn"
+                                <button className="hold_btn"
                                     onClick={(e) => {
-                                    
+                                        this.project_index_add(this.props.addButton)
+                                    console.log(this.props.addButton)
                                     }}
-                                >保存</button> */}
+                                >保存</button>
                     </div>
                 </div>  
                 </div>

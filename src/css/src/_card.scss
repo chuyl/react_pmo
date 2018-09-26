@@ -1,17 +1,32 @@
-.card_box{
+.paper_div{
+  width: 35%;
+  background:linear-gradient(to bottom right, $bluePurple800, $bluePurple700);
+    // height: 90vh;
     margin-left: 1rem;
     padding: 0;
-    background:linear-gradient(to bottom right, $bluePurple800, $bluePurple700);
+    overflow: hidden; 
+    overflow-y: auto;
+    // transition: all .1s;
+    position: relative;
+}
+.card_box{
+    padding: 0;
+    transition: all 0.3s;
+    //  background:linear-gradient(to bottom right, $bluePurple800, $bluePurple700);
     height: 90vh;
     overflow: hidden; 
     overflow-y: auto;
-    transition: all .1s;
+    //transition: all .1s;
     position: relative;
-    width: 35%;
+    width: 100%;
+    opacity: 0;
+    //right: -100%;
   }
   .card_box.open{
    // margin: 0;
-    
+   //width: 100%;
+   opacity: 1;
+   //right: 0;
   }
   .add_button{
     //position: absolute;
@@ -100,6 +115,9 @@
         position: relative;
         background: linear-gradient(to bottom right, $bluePurple800, $bluePurple700);
     }
+    .paper_div{
+      width: 100%;
+    }
     .card_box{
         margin: 0;
         position: fixed;
@@ -108,7 +126,7 @@
         padding: 0;
         background: linear-gradient(to bottom right, $bluePurple800, $bluePurple700);
         overflow: hidden; 
-        transition: all .1s;
+        transition: all 0.25s 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
         float: left;
         height: 0;
         width: 0%;

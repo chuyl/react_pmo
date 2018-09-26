@@ -10,7 +10,9 @@ import TextDate from './TextDate'
 import TextDatetime from './TextDatetime'
 import ListTextSearch from './ListTextSearch'
 import LinkCard from './LinkCard'
+import Link from './Link'
 import CardGroup from './CardGroup'
+import LabelMessage from './LabelMessage'
 //import AddTeacher from '../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
 //import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
 //import ProjectGather from '../budgetAndFinalAccountsManagementcond/budget/ProjectGather'
@@ -32,7 +34,7 @@ class ComponentsList extends Component {
             <div>
                 {/* this.state.add_button.data["form-list"] */}
                 {this.props.componentslist.map((form_list) => {
-                    // console.log(this.props.componentsdata)
+                    
                     return <div key={form_list.id_name}>
                         {form_list.type_name === "ListTextSearch" ?
                                <ListTextSearch id={form_list.id_name}
@@ -57,13 +59,31 @@ class ComponentsList extends Component {
                                    labelValue={form_list.title} 
                                    />
                                    :form_list.type_name === "LinkCard"?<LinkCard  
-                                    title={form_list.title} messageList={form_list.add_button.before_api_uri} label={form_list.add_button.descript} isClick={this.props.componentsdata.id} button={form_list.add_button.descript} linkpage={form_list.before_api_uri}
+                                    title={form_list.title} 
+                                    messageList={form_list.add_button.before_api_uri} 
+                                    label={form_list.add_button.descript} 
+                                    isClick={this.props.componentsdata.id} button={form_list.add_button.descript} linkpage={form_list.before_api_uri}
                                    />
+                                   :form_list.type_name === "Link"?<Link 
+                                   handleClick = {this.props.handleClick}
+                                   id={form_list.id_name}
+                                   title={form_list.title}
+                                    messageList={form_list.add_button.before_api_uri}
+                                    label={form_list.add_button.descript} 
+                                    isClick={this.props.componentsdata.id}
+                                    button={form_list.add_button.descript} 
+                                    
+                                    linkpage={form_list.before_api_uri}
+                                  />
                                    // : form_list.type_name === "TextMoney" ? <TextMoney
                                    // id={form_list.id_name} inputValue={this.props.componentsdata[form_list.id_name]} labelValue={form_list.title} />
                                    : form_list.type_name === "MutiText" ? <TextField id={form_list.id_name} 
                                    //inputValue={form_list.key}
                                    inputValue={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                   labelValue={form_list.title} />
+                                   :form_list.type_name === "LabelMessage"?<LabelMessage
+                                    id={form_list.id_name} 
+                                   message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                    labelValue={form_list.title} />
                                   // :form_list.type_name==="ProjectGather"?<ProjectGather/>   
                                  //  :form_list.type_name==="AddTeacher"?<AddTeacher/> 

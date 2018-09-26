@@ -33,7 +33,7 @@ class TeacherArrange extends Component {
                         "id_name": "teacher_arrange",
                         "type_name": "CardGroup",
                         "title": "讲师安排",
-                        "add-button-title": "添加讲师安排",
+                        "add-button-title": "添加讲师安排1",
                         "before_api_uri": [
                             {
                                 "id": "1",
