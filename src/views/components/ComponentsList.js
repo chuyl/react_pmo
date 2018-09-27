@@ -34,7 +34,7 @@ class ComponentsList extends Component {
             <div>
                 {/* this.state.add_button.data["form-list"] */}
                 {this.props.componentslist.map((form_list) => {
-                    
+                    // console.log(this.props.componentsdata)
                     return <div key={form_list.id_name}>
                         {form_list.type_name === "ListTextSearch" ?
                                <ListTextSearch id={form_list.id_name}
@@ -111,6 +111,7 @@ class ComponentsList extends Component {
                                     labelValue={form_list.title} /> 
                                     :form_list.type_name==="CardGroup"?<CardGroup idName={form_list.id_name}
                                     title={form_list.title} 
+                                    selectedInfo={this.props.componentsdata?this.props.componentsdata:""} 
                                     addButtonTitle={form_list.add_button_title} 
                                     beforeApiUri={this.props.componentsdata[form_list.before_api_uri]} 
                                     addButton={form_list.add_button} />

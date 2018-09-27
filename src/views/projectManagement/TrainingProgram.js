@@ -2,6 +2,7 @@ import React, {
 	Component
 } from 'react'
 import Card from '../Card'
+import Cards from '../components/Cards'
 //import TextField from '../components/TextField'
 //import TextMoney from '../components/TextMoney'
 //import AddInfo from '../components/AddInfo'
@@ -84,23 +85,19 @@ class TrainingProgram extends Component {
 		form_temp_name: "",
 		projectCard:[],//card的json
 		linkpage:"",//讲师，差旅，实施
+		project_id:"",
+		formData:this.props.formData
 	};
 	// componentWillMount() {
 	// 	this.fetchMessageData()
 
 	// }
 	componentWillMount() {
-    console.log("componentDidMount")
-		// this.fetchData()
 		this.listProject()
 		this.fetchListData()
 
-		//	console.log(this.state.budget_paper)
+	}
 
-	}
-	componentWillReceiveProps(){
-		console.log("componentWillReceiveProps")
-	}
 	// shouldComponentUpdate(){
 	// 	console.log("shouldComponentUpdate")
 	// }
@@ -109,15 +106,12 @@ class TrainingProgram extends Component {
 	// }
 	listProject(){
 		var cb = (route, message, arg) => {
-			console.log("nnn")
 			if (message.code === 0) {
-				console.log(message.data)
 				this.setState({
 					card_list:message.data
 				})
 			}
 		}
-		console.log(LISTPROJECT)
 		getData(getRouter(LISTPROJECT), { session: "tnkGNc" }, cb, {});
 
 	}
@@ -127,7 +121,7 @@ class TrainingProgram extends Component {
 			.then(data => {
                console.log(data.data["form-list"])
 				this.setState({
-					projectCard: data.data["form-list"],
+					projectCard: data.data["card-list"],
 					//form_temp_name:data.adit_project.data["form-temp-name"],
 
 				})
@@ -237,6 +231,7 @@ class TrainingProgram extends Component {
 	 * @param project_index_add 函数 添加项目 
 	 */
 	project_index_add = (list_message)=>{
+		console.log(this.state.project_id)
 		var key_name = [];
 		var value = [];
 		for (var i = 0; i < list_message.length; i++) {
@@ -252,6 +247,7 @@ class TrainingProgram extends Component {
 						// value.push("session")
 						 key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML || document.getElementById(list_message[i].id_name+"_id").value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").value)
 					}else{
+						
 						value.push(list_message[i].id_name+"_name")
 						// value.push("session")
 						 key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
@@ -283,6 +279,7 @@ class TrainingProgram extends Component {
 			}
 
 		}
+		console.log(obj)
 		getData(getRouter(ADDPROJECT), {data:obj}, cb, {});
 	}
 	// editComponents = () => {
@@ -299,13 +296,24 @@ class TrainingProgram extends Component {
         
     //     return components
 	// }
+	message_list(project_id){
+        var cb = (route, message, arg) => {
+			if (message.code === 0) {
+				this.setState({
+					edit_project_data:message.data,
+					//project_id
+				})
+			}
+        }
+     
+		getData(getRouter("listLecturer"), { session: "tnkGNc",project_id:project_id }, cb, {});
+    }
 	render() {
 		return(
 			<div>
 				<div id="" className="container">
 					<div className="add_button" onClick={(e) => {
 						this.fetchProjectData()
-						
 						this.card_box_concent([], e)
 						this.setState({
 							edit_project_data:[]
@@ -315,62 +323,25 @@ class TrainingProgram extends Component {
 					</div>
 					<div className="overflow">
 						{this.state.card_list?this.state.card_list.map(card_list => {
-							return <Card
+							return <Cards 
+							// handleChildChange ={this.handleChildChange}
 							// handleClick ={()=>{
-							// 	if(this.state.card_state){
-							// 		setTimeout(function(){
-							// 			document.getElementById("card_box").classList.remove("open")
-							// 		},100)
-							// 	}
-							// 	setTimeout((e) => {
-							// 		document.getElementById("card_box").classList.add("open")
-							// 		this.fetchEditData("teacherCardGroup")
-							// 		this.card_box_concent([], e)
-							// 		this.setState({
-							// 			card_state:true,
-							// 			edit_project_data:card_list
-							// 		})
-							// 	},300)
+							// 	console.log()
+							// 	// if(this.state.card_state){
+							// 	// 	setTimeout(function(){
+							// 	// 		document.getElementById("card_box").classList.remove("open")
+							// 	// 	},100)
+							// 	// }
+							// 	// setTimeout((e) => {
+							// 	// 	document.getElementById("card_box").classList.add("open")
+							// 	// 	this.fetchData()
+							// 	// 	this.card_box_concent([], e)
+							// 	// 	this.setState({
+							// 	// 		card_state:true,
+							// 	// 		edit_project_data:card_list
+							// 	// 	})
+							// 	// },300)
 							// }}
-							// handleClick={[(e) => {
-							// 	},(e) =>{
-									
-							// 		// setInterval(() => {this.tick()}, 1000);
-							// 		if(this.state.card_state){
-							// 					setTimeout(function(){
-							// 						document.getElementById("card_box").classList.remove("open")
-							// 					},100)
-							// 				}
-							// 		setTimeout((e) => {
-							// 			document.getElementById("card_box").classList.add("open")
-							// 			this.fetchData()
-							// 			this.card_box_concent([], e)
-							// 			this.setState({
-							// 				card_state:true,
-							// 				edit_project_data:card_list
-							// 			})
-							// 		},300)
-									
-							// 	},()=>{
-							// 		this.fetchEditData("teacherCardGroup")
-							// 		this.setState({
-							// 			card_state:true,
-							// 			edit_project_data:card_list
-							// 		})
-							// 		console.log(card_list)
-							// 	},()=>{
-							// 		this.fetchEditData("ImplementArrage")
-							// 		this.setState({
-							// 			card_state:true,
-							// 			edit_project_data:card_list
-							// 		})
-							// 	},()=>{
-							// 		this.fetchEditData("TravelExpensesGroup")
-							// 		this.setState({
-							// 			card_state:true,
-							// 			edit_project_data:card_list
-							// 		})
-							// 	}]}
 								id={card_list.id}
 								card_list={card_list}
 								add_button={this.state.projectCard}
@@ -395,9 +366,10 @@ class TrainingProgram extends Component {
 							{this.state.card_state ?//判断paper是否可见
 								<div key={this.state.edit_project_data.id?this.state.edit_project_data.id:"addComponents"} id="editComponents">
 								< ComponentsList componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
-								   {/* <button  onClick={()=>{
+								   <button  onClick={()=>{
+									   console.log()
 									   this.project_index_add(this.state.add_button)
-								   }} className="hold_btn">保存</button> */}
+								   }} className="hold_btn">保存</button>
 						   </div>		
 								: ""}
 						</div>

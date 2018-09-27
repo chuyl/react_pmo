@@ -82,6 +82,7 @@
             getData(getRouter(LECTURERADD), {data:obj}, cb, {});
         }
         render() {
+            console.log(this.props.selectedInfo)
             return (
                 <div>
                     <p className="card_title">{this.props.title}</p>
@@ -92,9 +93,9 @@
                                     })
                         }         */}
                          {
-                            this.props.beforeApiUri?this.props.beforeApiUri.map((view_list)=>{
+                            this.props.beforeApiUri?this.props.beforeApiUri.map((view_list,index)=>{
                             return  <AddDelCard
-                                        key={view_list.id}
+                                        key={index}
                                         removeDefault={this.removeEvent.bind(this)}
                                         index={this.state.addCondition.length}
                                         cardList={this.props.addButton}
@@ -111,8 +112,10 @@
                     <button className="add_card_btn"  
                         onClick={() => {
                             this.setState({
-                                add_card_state: true
+                                add_card_state: true,
+                                project_id:this.props.selectedInfo.id
                             })
+                            //console.log(this.props.selectedInfo.id)
                                 }}
                             >{this.props.addButtonTitle}</button>
                               
@@ -137,6 +140,7 @@
                                             conditionAction={this.state.conditionAction}
                                         >
                                         </AddCard>
+                                        {/* 添加讲师安排按钮 */}
                                 <button className="hold_btn"
                                     onClick={(e) => {
                                         this.project_index_add(this.props.addButton)
