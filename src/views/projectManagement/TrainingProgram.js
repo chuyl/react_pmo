@@ -1,7 +1,7 @@
 import React, {
 	Component
 } from 'react'
-import Card from '../Card'
+//import Card from '../Card'
 import Cards from '../components/Cards'
 //import TextField from '../components/TextField'
 //import TextMoney from '../components/TextMoney'
@@ -11,7 +11,8 @@ import ComponentsList from '../components/ComponentsList'
 //import TextDatetime from '../components/TextDatetime'
 //import BudgetListTextSearchLink from './BudgetListTextSearchLink'
 import { getData, getRouter } from '../../utils/helpers'
-import { ADDPROJECT, LISTPROJECT} from '../../enum'
+import {LISTPROJECT} from '../../enum'
+//import PropTypes from 'prop-types'; 
 
 class TrainingProgram extends Component {
    
@@ -75,35 +76,18 @@ class TrainingProgram extends Component {
 		// ],
 		card_list:[],
 		selected_card: [],
-		search_info_list: false,
 		card_state: false,
-		add_customer: false,
-		customer_name: "",
-		budget_message_paper: [],
-		teacher_form_list: [],
 		edit_project_data:[],
 		form_temp_name: "",
 		projectCard:[],//card的json
-		linkpage:"",//讲师，差旅，实施
-		project_id:"",
-		formData:this.props.formData
+		dataId:"",//点击card按钮获取到的card的id值
 	};
-	// componentWillMount() {
-	// 	this.fetchMessageData()
 
-	// }
 	componentWillMount() {
 		this.listProject()
 		this.fetchListData()
 
 	}
-
-	// shouldComponentUpdate(){
-	// 	console.log("shouldComponentUpdate")
-	// }
-	// componentWillUpdate(){
-	// 	console.log("componentWillUpdate")
-	// }
 	listProject(){
 		var cb = (route, message, arg) => {
 			if (message.code === 0) {
@@ -112,17 +96,16 @@ class TrainingProgram extends Component {
 				})
 			}
 		}
-		getData(getRouter(LISTPROJECT), { session: "tnkGNc" }, cb, {});
+		getData(getRouter(LISTPROJECT), { token: "tnkGNc" }, cb, {});
 
 	}
 	fetchListData() {
 		fetch('../json/ProjectCard.json')
 			.then(response => response.json())
 			.then(data => {
-               console.log(data.data["form-list"])
 				this.setState({
 					projectCard: data.data["card-list"],
-					//form_temp_name:data.adit_project.data["form-temp-name"],
+					form_temp_name:data.data["form-temp-name"],
 
 				})
 			})
@@ -130,73 +113,25 @@ class TrainingProgram extends Component {
 				console.log("error")
 			})
 	}
-
 	/** 
 	 * @author xuesong
-	 * @param fetchData 函数名  获取本地json内容
+	 * @param card_box_close 函数  关闭paper
 	 */
-
-	fetchData() {
-		fetch('../json/editProject.json')
-			.then(response => response.json())
-			.then(data => {
-               
-				this.setState({
-					add_button: data.adit_project.data["form-list"],
-					form_temp_name:data.adit_project.data["form-temp-name"],
-
-				})
-			})
-			.catch(e => {
-				console.log("error")
-			})
-	}
 	fetchProjectData() {
 		fetch('../json/AddProject.json')
 			.then(response => response.json())
 			.then(data => {
                
 				this.setState({
-					add_button: data.add_project.data["form-list"],
-					form_temp_name:data.add_project.data["form-temp-name"],
-
-				})
-			})
-			.catch(e => {
-				console.log("error")
-			})
-	}
-	fetchEditData(linkpage) {
-		fetch('../json/'+linkpage+'.json')
-			.then(response => response.json())
-			.then(data => {
-			   console.log(data.data["form-list"])
-				this.setState({
 					add_button: data.data["form-list"],
+					form_temp_name:data.data["form-temp-name"],
+
 				})
-				
 			})
 			.catch(e => {
 				console.log("error")
 			})
 	}
-
-	// /** 
-	//  * @author xuesong
-	//  * @param fetchMessageData 函数名  获取本地json数据内容
-	//  */
-	// fetchMessageData() {
-	// 	fetch('../data/budgetManageData.json')
-	// 		.then(response => response.json())
-	// 		.then(data => {
-	// 			this.setState({
-	// 				budget_message_paper: data
-	// 			})
-	// 		})
-	// 		.catch(e => {
-	// 			console.log("error")
-	// 		})
-	// }
 
 	/** 
 	 * @author xuesong
@@ -226,44 +161,81 @@ class TrainingProgram extends Component {
 			document.getElementById("card_box").setAttribute("style", " ");
 		}
 	}
+	// editComponents = () => {
+	// 	console.log(this.state.edit_project_data.id)
+    //     var components = []
+    //         components.push(
+	// 			<div key={this.state.edit_project_data.id===undefined?"addComponents":this.state.edit_project_data.id} id="editComponents">
+	// 				 < ComponentsList componentslist =  {this.state.add_button} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
+	// 					<button  onClick={()=>{
+	// 						this.project_index_add(this.state.add_button)
+	// 					}} className="hold_btn">保存</button>
+	// 			</div>				
+    //             )
+        
+    //     return components
+	// }
 	/** 
+	 * @time 2018-09-27
 	 * @author xuesong
-	 * @param project_index_add 函数 添加项目 
+	 * @param handleChildChange 函数 出来Link返回的数据 
 	 */
-	project_index_add = (list_message)=>{
-		console.log(this.state.project_id)
+	handleChildChange=(newState)=>{ //处理子函数传回来的state,改变自身的state
+			
+		if(newState){
+			// this.setState(newState);
+			if(this.state.card_state){
+				setTimeout(function(){
+					document.getElementById("card_box").classList.remove("open")
+				},100)
+			}
+			setTimeout((e) => {
+				document.getElementById("card_box").classList.add("open")
+				console.log(newState.data)
+				this.setState({
+				  add_button:newState.add_button,
+				  card_state:true,
+				  dataId:newState.dataId,
+				  edit_project_data:newState.data,
+				  form_temp_name:newState.form_temp_name,
+				})
+			},500)			
+			  
+		}
+	  }
+	 /** 
+	 * @time 2018-09-28
+	 * @author xuesong
+	 * @param onHoldClicks 函数 点击保存按钮发送数据
+	 */ 
+	onHoldClicks =(newState)=>{
+        console.log(this.state.dataId)
 		var key_name = [];
 		var value = [];
+		var list_message=this.state.add_button;
 		for (var i = 0; i < list_message.length; i++) {
-			 if(list_message[i].type_name!=="LinkCard"){
-				 if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"){
-					if(this.state.edit_project_data.id!==undefined){
+			if(list_message[i].type_name!=="HoldBtn"){
+				if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"){
+					if(this.state.dataId!==""){
 						value.push("id")
-						key_name.push(this.state.edit_project_data.id)
+						key_name.push(this.state.dataId)
 						value.push(list_message[i].id_name+"_name")
-						// value.push("session")
-						 key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
-						 value.push(list_message[i].id_name+"_id")
-						// value.push("session")
-						 key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML || document.getElementById(list_message[i].id_name+"_id").value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").value)
-					}else{
-						
-						value.push(list_message[i].id_name+"_name")
-						// value.push("session")
-						 key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
-						 value.push(list_message[i].id_name+"_id")
-						// value.push("session")
-						 key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML || document.getElementById(list_message[i].id_name+"_id").value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").value)
+						key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
+						value.push(list_message[i].id_name+"_id")
+						key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML || document.getElementById(list_message[i].id_name+"_id").value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").value)	
 					}
-					
-				 }else{
-				value.push(list_message[i].id_name)
-				// value.push("session")
-				 key_name.push(document.getElementById(list_message[i].id_name).innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name).innerHTML || document.getElementById(list_message[i].id_name).value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name).value)
-			  
-				 //  key_name.push("tnkGNc")
-				}			 
-				}
+					else{
+						value.push(list_message[i].id_name+"_name")
+						key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
+						value.push(list_message[i].id_name+"_id")
+						key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML || document.getElementById(list_message[i].id_name+"_id").value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").value)	
+					}		
+					 }
+				else{
+					value.push(list_message[i].id_name)
+					key_name.push(document.getElementById(list_message[i].id_name).innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name).innerHTML || document.getElementById(list_message[i].id_name).value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name).value)
+					}
+			}			 
 		  
 		}
 		var obj = {};
@@ -279,35 +251,8 @@ class TrainingProgram extends Component {
 			}
 
 		}
-		console.log(obj)
-		getData(getRouter(ADDPROJECT), {data:obj}, cb, {});
-	}
-	// editComponents = () => {
-	// 	console.log(this.state.edit_project_data.id)
-    //     var components = []
-    //         components.push(
-	// 			<div key={this.state.edit_project_data.id===undefined?"addComponents":this.state.edit_project_data.id} id="editComponents">
-	// 				 < ComponentsList componentslist =  {this.state.add_button} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
-	// 					<button  onClick={()=>{
-	// 						this.project_index_add(this.state.add_button)
-	// 					}} className="hold_btn">保存</button>
-	// 			</div>				
-    //             )
-        
-    //     return components
-	// }
-	message_list(project_id){
-        var cb = (route, message, arg) => {
-			if (message.code === 0) {
-				this.setState({
-					edit_project_data:message.data,
-					//project_id
-				})
-			}
-        }
-     
-		getData(getRouter("listLecturer"), { session: "tnkGNc",project_id:project_id }, cb, {});
-    }
+		getData(getRouter(newState.before_api_uri), {data:obj}, cb, {});
+	  }
 	render() {
 		return(
 			<div>
@@ -316,14 +261,17 @@ class TrainingProgram extends Component {
 						this.fetchProjectData()
 						this.card_box_concent([], e)
 						this.setState({
-							edit_project_data:[]
+							edit_project_data:[],
+							dataId:""
 						})
-					}}>
+					    }}
+					>
 						添加
 					</div>
 					<div className="overflow">
 						{this.state.card_list?this.state.card_list.map(card_list => {
 							return <Cards 
+							onChanges = {this.handleChildChange}
 							// handleChildChange ={this.handleChildChange}
 							// handleClick ={()=>{
 							// 	console.log()
@@ -345,12 +293,8 @@ class TrainingProgram extends Component {
 								id={card_list.id}
 								card_list={card_list}
 								add_button={this.state.projectCard}
-								key={card_list.id} customer_name ={card_list.project_customer_name}
-								course_name ={card_list.project_name}
-								person_in_charge ={card_list.project_person_in_charge}
-								train_days  ={card_list.project_training_numbers} 
-								train_place  ={card_list.project_training_ares} 
-								train_date ={card_list.project_days } />
+								key={card_list.id} 
+								 />
 						}):""}
 					</div>
 				</div>
@@ -364,12 +308,12 @@ class TrainingProgram extends Component {
 						<div className="selected_scroll_div" style={{ padding: "0 18px" }}>
 							{/* paper详细内容 */}
 							{this.state.card_state ?//判断paper是否可见
-								<div key={this.state.edit_project_data.id?this.state.edit_project_data.id:"addComponents"} id="editComponents">
-								< ComponentsList componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
-								   <button  onClick={()=>{
+								<div key={this.state.dataId?this.state.dataId:"addComponents"} id="editComponents">
+								< ComponentsList holdClick={this.onHoldClicks} componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
+								   {/* <button  onClick={()=>{
 									   console.log()
 									   this.project_index_add(this.state.add_button)
-								   }} className="hold_btn">保存</button>
+								   }} className="hold_btn">保存</button> */}
 						   </div>		
 								: ""}
 						</div>

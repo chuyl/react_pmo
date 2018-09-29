@@ -8,21 +8,21 @@ class Contact extends Component {
 		check_code:"",
 		list:[]
 	}
-	login = () => {
-		var cb = (route, message, arg) => {
+	// login = () => {
+	// 	var cb = (route, message, arg) => {
 		  
-		  if (message.code === 0) {
-		    this.setState({
-				list:message.data
-			})
+	// 	  if (message.code === 0) {
+	// 	    this.setState({
+	// 			list:message.data
+	// 		})
 		  
-		  }
-		}
+	// 	  }
+	// 	}
 	
 		
-		  getData(getRouter(STAFFSMALLLIST), {session:"tnkGNc" }, cb, { });
+	// 	  getData(getRouter(STAFFSMALLLIST), {token:"tnkGNc" }, cb, { });
 		
-	  }
+	//   }
 	  logins = () => {
 		var cb = (route, message, arg) => {
 		  
@@ -35,7 +35,7 @@ class Contact extends Component {
 		}
 	
 		
-		  getData(getRouter(STAFFOFDING), {session:"tnkGNc" }, cb, { });
+		  getData(getRouter(STAFFOFDING), {token:"tnkGNc" }, cb, { });
 		
 	  }
 	 render(){

@@ -6,8 +6,8 @@
     import AddDelCard from './AddDelCard';
     import AddCard from './AddCard';
     import PropTypes from 'prop-types';
-    import {LECTURERADD} from '../../enum'
-    import {getData,getRouter} from '../../utils/helpers'
+    //import {LECTURERADD} from '../../enum'
+    //import {getData,getRouter} from '../../utils/helpers'
     class CardGroup extends Component {
         state = {
             addCondition: [],
@@ -44,27 +44,22 @@
             var key_name = [];
             var value = [];
             for (var i = 0; i < list_message.length; i++) {
-                 
-                     if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"){
-                      // console.log(document.getElementById(list_message[i].id_name+"_name"))
-                            value.push(list_message[i].id_name+"_name")
-                            // value.push("session")
-                             key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
-                             value.push(list_message[i].id_name+"_id")
-                            // value.push("session")
-                             key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML || document.getElementById(list_message[i].id_name+"_id").value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").value)
-                        
-                        
-                     }else{
+                if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"){
+                    // console.log(document.getElementById(list_message[i].id_name+"_name"))
+                    value.push(list_message[i].id_name+"_name")
+                    // value.push("token")
+                    key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
+                    value.push(list_message[i].id_name+"_id")
+                          // value.push("token")
+                    key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML || document.getElementById(list_message[i].id_name+"_id").value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").value)
+                   }
+                else{
                     value.push(list_message[i].id_name)
-                    // value.push("session")
-                     key_name.push(document.getElementById(list_message[i].id_name).innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name).innerHTML || document.getElementById(list_message[i].id_name).value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name).value)
-                  
-                     //  key_name.push("tnkGNc")
-                    }			 
-                    }
-              
-            
+                  // value.push("token")
+                    key_name.push(document.getElementById(list_message[i].id_name).innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name).innerHTML || document.getElementById(list_message[i].id_name).value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name).value)
+                   //  key_name.push("tnkGNc")
+                  }			 
+            }     
             var obj = {};
             for(var j=0;j<value.length;j++){
                 obj[value[j]] =key_name[j];
@@ -79,7 +74,7 @@
     
             }
             console.log(obj)
-            getData(getRouter(LECTURERADD), {data:obj}, cb, {});
+          //  getData(getRouter(LECTURERADD), {data:obj}, cb, {});
         }
         render() {
             console.log(this.props.selectedInfo)
@@ -87,25 +82,17 @@
                 <div>
                     <p className="card_title">{this.props.title}</p>
                     <ul id = {this.props.idName}>
-                        {/* {
-                            this.state.addCondition.map((item, index) => {
-                                        return item;
-                                    })
-                        }         */}
-                         {
-                            this.props.beforeApiUri?this.props.beforeApiUri.map((view_list,index)=>{
-                            return  <AddDelCard
-                                        key={index}
-                                        removeDefault={this.removeEvent.bind(this)}
-                                        index={this.state.addCondition.length}
-                                        cardList={this.props.addButton}
-                                        messageList={view_list}
-                                        >
-                                         
-                                    </AddDelCard>
-                    
-                            
-                            
+                        { this.props.beforeApiUri?this.props.beforeApiUri.map((view_list,index)=>{
+                            return  (
+                                <AddDelCard
+                                    key={index}
+                                    removeDefault={this.removeEvent.bind(this)}
+                                    index={this.state.addCondition.length}
+                                    cardList={this.props.addButton}
+                                    messageList={view_list}   
+                                >
+                                </AddDelCard>
+                            )
                         }):""
                          }
                     </ul>    
@@ -116,18 +103,21 @@
                                 project_id:this.props.selectedInfo.id
                             })
                             //console.log(this.props.selectedInfo.id)
-                                }}
-                            >{this.props.addButtonTitle}</button>
-                              
+                        }}
+                    >
+                        {this.props.addButtonTitle}
+                    </button>
                             {/* <button  onClick = { cb(this.state.addCondition) }>点击</button> */}
-                            <div className={this.state.add_card_state ? "add_info_list open" : "add_info_list"}>
-                                <div className="paper_card_title">
-                                    <div onClick={() => {
-                                            this.setState({
-                                                add_card_state: false
+                    <div className={this.state.add_card_state ? "add_info_list open" : "add_info_list"}>
+                        <div className="paper_card_title">
+                            <div    onClick={() => {
+                                    this.setState({
+                                        add_card_state: false
                                             })
-                                        }} className="return_btn"></div>
-                                    {this.props.addButtonTitle}
+                                        }} 
+                                    className="return_btn">
+                            </div>
+                            {this.props.addButtonTitle}
                                 </div>
                                 <div className="selected_scroll_div">
                             
@@ -135,7 +125,7 @@
                                             key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                                             remove={this.removeEvent.bind(this)}
                                             index={this.state.addCondition.length}
-                                            cardList={this.props.addButton}
+                                            cardList={this.props.addButton.add_button}
                                             // getAddCondition={ this.getAddConditionEvent.bind(this)}
                                             conditionAction={this.state.conditionAction}
                                         >
@@ -143,8 +133,8 @@
                                         {/* 添加讲师安排按钮 */}
                                 <button className="hold_btn"
                                     onClick={(e) => {
-                                        this.project_index_add(this.props.addButton)
-                                    console.log(this.props.addButton)
+                                        this.project_index_add(this.props.addButton.add_button)
+                                    // console.log(this.props.addButton)
                                     }}
                                 >保存</button>
                     </div>

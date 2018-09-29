@@ -88,7 +88,7 @@
 			}
         }
         console.log(this.props.isClick )
-		getData(getRouter(this.props.messageList), { session: "tnkGNc",project_id:this.props.isClick }, cb, {});
+		getData(getRouter(this.props.messageList), { token: "tnkGNc",project_id:this.props.isClick }, cb, {});
     }
         render(){
             const {id, title,label,button,isClick} =this.props;

@@ -52,7 +52,7 @@ class ListTextSearch extends Component {
                 })
             }
         }
-        getData(getRouter(this.state.before_api_uri), { session: "tnkGNc" }, cb, {});
+        getData(getRouter(this.state.before_api_uri), { token: "tnkGNc" }, cb, {});
     }
     // componentWillMount(){
     //     console.log(this.state.searchInfoLists)
@@ -80,14 +80,10 @@ class ListTextSearch extends Component {
                             this.searchShow()
                             this.infos();
                         }
-                       
                     }}
                     className="selectedInfo"
                     disabled={disabled}
-                   
-                    //className={this.state.changeResult ===""?"selectedInfo":"selectedInfo_font"}
                     id={id+"_name"}
-                  
                     >{selectedInfo === "" ? "-选择-" : selectedInfo}</div>
                     <input id={id+"_id"} defaultValue={selectedIdInfo} style={{display:"none"}}/>
                  <div className="search_info_position">

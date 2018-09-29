@@ -1,5 +1,6 @@
 {
     "data": {
+        "form-temp-name":"项目列表",
         "card-list": [{
             "id_name": "project_customer_name",
             "type_name": "LabelMessage", 
@@ -17,7 +18,7 @@
             "type_name": "LabelMessage", 
             "title": "培训天数"
         },{
-            "id_name": "project_days",
+            "id_name": "project_date",
             "type_name": "LabelMessage", 
             "title": "培训日期："
            
@@ -33,10 +34,10 @@
             "tip": "",
             "add_button": {
                 "descript":"修改讲师安排",
-                "before_api_uri":"editProject"
+                "before_api_uri":"getOneProject"
             },
             "descript": "讲课费",
-            "before_api_uri": "teacherCardGroup",
+            "before_api_uri": "editProject",
             "after_api_uri": ""
         },{
             "id_name": "project_teacher_arrange",

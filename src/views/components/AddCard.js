@@ -27,11 +27,12 @@
                         return <div key={index} style={{marginBottom:"-6px"}}>
                             {
                                 card_list.type_name === "ListTextSearch" ?
-                                    <ListTextSearch id={card_list.id_name}
+                                    <ListTextSearch id={card_list.id_name+index}
                                         labelValue={card_list.title}
                                         searchInfoLists={card_list.before_api_uri}
                                         addButton={card_list.add_button}
-                                        selectedInfo={card_list.key} />
+                                        selectedIdInfo={"-选择-"} 
+                                    selectedInfo={"-选择-"}  />
                                     :
                                     card_list.type_name === "MutiText" ? <TextField
                                     id={card_list.id_name} inputValue={card_list.key} labelValue={card_list.title} />

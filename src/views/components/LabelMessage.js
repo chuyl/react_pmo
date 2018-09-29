@@ -14,7 +14,7 @@
             })
           }
         render(){
-            const {id,message,labelValue} =this.props;
+            const {message,labelValue} =this.props;
             return (
                 <div>
                     <label>{labelValue}</label>

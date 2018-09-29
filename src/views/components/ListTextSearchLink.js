@@ -266,7 +266,7 @@ class ListTextSearchLink extends Component {
                 })
             }
         }
-        getData(getRouter(this.state.before_api_uri), { session: "tnkGNc" }, cb, {});
+        getData(getRouter(this.state.before_api_uri), { token: "tnkGNc" }, cb, {});
     }
     componentWillMount() {
         this.state.addCondition.push(

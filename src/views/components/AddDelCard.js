@@ -3,7 +3,15 @@
      * @param AddDelCard 组件  添加card组件
      */
 import React, { Component } from 'react'
+import DisTextField from './DisTextField'
+import TextMoney from './TextMoney'
+//import ListText from '../components/ListText'
+import TextDatetime from './TextDatetime'
+import AddTeacher from '../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
+import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
+import SelectList from './SelectList'
 import ComponentsList from './ComponentsList'
+import ListTextSearch from './ListTextSearch'
 //import LinkGroupList from './LinkGroupList';
 class AddDelCard extends Component {
     state = {
@@ -23,45 +31,21 @@ class AddDelCard extends Component {
         //this.props.remove && this.props.remove(this.props.index);
     }
     render() {
-        console.log(this.props.messageList)
+        // console.log(this.props.messageList)
         return (
             <li
                 key={this.props.index}  className="card_info_list_card"
             >
-               
-                <ComponentsList componentslist={this.state.cardList} componentsdata={this.props.messageList}></ComponentsList>
-
-                {/*  修改删除、编辑逻辑 用ComponentsList组件代替
-                 {this.state.cardList.map((card_list, index) => {
-                    return <div key={index} style={{marginBottom:"-6px"}}>
-                        {
-                            card_list.type_name === "ListTextSearch" ?
-                                <ListTextSearch disabled={true} id={card_list.id_name + this.props.index}
-                                    labelValue={card_list.title}
-                                    searchInfoLists={card_list.before_api_uri}
-                                    addButton={card_list.add_button}
-                                    selectedInfo={card_list.key} />
-                                :
-                                card_list.type_name === "MutiText" ? <TextField disabled={true}
-                                id={card_list.id_name + this.props.index} inputValue={card_list.key} labelValue={card_list.title} />
-                                   : card_list.type_name === "TextDatetime" ? <TextDatetime disabled={true}
-                                    id={card_list.id_name + this.props.index} inputValue={card_list.key} labelValue={card_list.title} />
-                                    : card_list.type_name === "TextMoney" ? <TextMoney disabled={true}
-                                    id={card_list.id_name + this.props.index} inputValue={card_list.key} labelValue={card_list.title} />
-                                    :card_list.type_name==="AddTeacher"?<AddTeacher/> 
-                                    :card_list.type_name==="ProjectTemplate"?<ProjectTemplate/> 
-                                    :card_list.type_name==="SelectList"?<SelectList id={card_list.id_name + this.props.index}
-                                    labelValue={card_list.title}
-                                    searchInfoLists={card_list.before_api_uri}
-                                    selectedInfo={card_list.key}/>
-                                    // : card_list.type_name === "ListText" ? <ListText id={card_list.id_name + this.props.index}
-                                    //     labelValue={card_list.title}
-                                    //     searchInfoLists={card_list.before_api_uri}
-                                    //     selectedInfo={card_list.key} />
-                                         : ""}
-                    </div>
-                })} */}
-                
+            {this.state.cardList.descript.map((card_list, index) => {
+                        return <div key={index} style={{marginBottom:"-6px"}}>
+                           <DisTextField
+                                    id={card_list.id_name+index} 
+                                    inputValue={this.props.messageList[card_list.id_name]!==null?this.props.messageList[card_list.id_name]:""} 
+                                    labelValue={card_list.title} 
+                                />
+                        </div>
+                    })}
+                {/* <ComponentsList componentslist={this.state.cardList.descript} componentsdata={this.props.messageList}></ComponentsList> */}
                  <button className="label_delete_button"
                  onClick={()=>{
                      console.log(this.props.messageList.id)
@@ -75,7 +59,7 @@ class AddDelCard extends Component {
                         })
                             }}
                 >编辑</button>
-                <div className={this.state.edit_card_state ? "add_info_list open" : "add_info_list"}>
+                {/* <div className={this.state.edit_card_state ? "add_info_list open" : "add_info_list"}>
                                 <div className="paper_card_title">
                                     <div onClick={() => {
                                             this.setState({
@@ -86,24 +70,16 @@ class AddDelCard extends Component {
                                 </div>
                                 <div className="selected_scroll_div">
                                     <div  className="card_info_list_card">
-                                        <ComponentsList componentslist={this.state.cardList} componentsdata={this.props.messageList}></ComponentsList>
+                                        <ComponentsList componentslist={this.state.cardList.add_button} componentsdata={this.props.messageList}></ComponentsList>
                                     </div>
-                                {/* <AddCard 
-                                            key={`executeHandle${this.state.addCondition.length}.lenght+1`}
-                                            remove={this.removeEvent.bind(this)}
-                                            index={this.state.addCondition.length}
-                                            cardList={this.props.addButton}
-                                            // getAddCondition={ this.getAddConditionEvent.bind(this)}
-                                            conditionAction={this.state.conditionAction}
-                                        >
-                                        </AddCard> */}
+                               
                                 <button className="hold_btn"
                                     onClick={(e) => {
-                                    
+                                     
                                     }}
-                                >保存</button>
+                                >保存1</button>
                     </div>
-                </div>  
+                </div>   */}
             </li>
         )
     }

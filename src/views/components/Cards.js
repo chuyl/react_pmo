@@ -24,48 +24,55 @@ class Card extends Component {
         })
         document.getElementById(this.props.card).setAttribute("style"," ");
     }
-   
-    handleChildChange=(newState)=>{ //处理子函数传回来的state,改变自身的state
-		console.log(newState.formData)
-		if(newState){
-			  this.setState(newState);
-			  this.setState({
-				formData:newState.formData
-			  })
-		}
-      }
-   
+    // handleChildChange=(newState)=>{ //处理子函数传回来的state,改变自身的state
+	// 	console.log(newState.formData)
+	// 	if(newState){
+	// 		  this.setState(newState);
+	// 		  this.setState({
+	// 			formData:newState.formData
+	// 		  })
+	// 	}
+    //   }
+      handleClick=(formData)=>{
+        var newState = {
+            add_button:formData.add_button,
+            data:formData.data,
+            dataId:formData.dataId,
+            form_temp_name:formData.form_temp_name
+        }
+        this.props.onChanges(newState);//回调函数传递参数给父组件
+    }
 	render(){
-        // console.log(newState.formData)
-        const {id,customer_name,card_list ,course_name, person_in_charge, train_days,  train_date, train_place}=this.props;
-        
         return (
             <div  className={this.state.zoom_in?"card open":"card"}>
            {this.props.add_button.map((form_list) => {
                     return <div key={form_list.id_name}>
-                        {form_list.type_name === "Link"?<Link 
-                                     button={form_list.title}
-                                     formData={form_list.add_button.before_api_uri}
-                                     onChange = {this.handleChildChange}
-                                //    id={form_list.id_name}
-                                //    title={form_list.title}
-                                //     messageList={form_list.add_button.before_api_uri}
-                                //     label={form_list.add_button.descript} 
-                                //     isClick={this.props.card_list.id}
-                                //     button={form_list.add_button.descript} 
-                                //     linkpage={form_list.before_api_uri}
-                                  />
-                                   :form_list.type_name === "LabelMessage"?<LabelMessage
-                                    id={form_list.id_name} 
-                                   message={this.props.card_list[form_list.id_name]?this.props.card_list[form_list.id_name]:""} 
-                                   labelValue={form_list.title} />
-                                    :form_list.type_name==="CardGroup"?<CardGroup idName={form_list.id_name}
-                                    title={form_list.title} 
-                                    selectedInfo={this.props.card_list?this.props.card_list:""} 
-                                    addButtonTitle={form_list.add_button_title} 
-                                    beforeApiUri={this.props.card_list[form_list.before_api_uri]} 
-                                    addButton={form_list.add_button} />
-                                   : ""}
+                        {form_list.type_name === "Link"?
+                            <Link 
+                                button={form_list.title}
+                                buttonMessage={form_list}
+                                dataId={this.props.card_list.id}
+                                // isClick={this.props.card_list.id}
+                                linkpage={form_list.before_api_uri}
+                                messageList={form_list.add_button.before_api_uri}
+                                onChange = {this.handleClick}
+                            />
+                        :form_list.type_name === "LabelMessage"?
+                            <LabelMessage
+                                id={form_list.id_name} 
+                                labelValue={form_list.title} 
+                                message={this.props.card_list[form_list.id_name]?this.props.card_list[form_list.id_name]:""} 
+                            />
+                        :form_list.type_name==="CardGroup"?
+                            <CardGroup 
+                                addButton={form_list.add_button}
+                                addButtonTitle={form_list.add_button_title} 
+                                beforeApiUri={this.props.card_list[form_list.before_api_uri]} 
+                                idName={form_list.id_name}
+                                title={form_list.title} 
+                                selectedInfo={this.props.card_list?this.props.card_list:""} 
+                            />
+                        : ""}
                     </div>
 
                 })}

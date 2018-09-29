@@ -31,11 +31,9 @@ class SelectList extends Component {
                 })
             }
         }
-        getData(getRouter(this.state.before_api_uri), { session: "tnkGNc" }, cb, {});
+        getData(getRouter(this.state.before_api_uri), { token: "tnkGNc" }, cb, {});
     }
-    componentDidMount(){
-        this.infos();
-    }
+
     searchShow() {
         this.setState({
             search_state: !this.state.search_state

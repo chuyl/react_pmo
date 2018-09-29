@@ -3,7 +3,7 @@
      * @param Link 组件  label+button
      */
     import React,  {Component }from 'react'; 
-    import ComponentsList from './ComponentsList'
+    // import ComponentsList from './ComponentsList'
     import {getData, getRouter }from '../../utils/helpers'
     import PropTypes from 'prop-types'; 
     class Link extends Component {
@@ -14,37 +14,18 @@
             data_group:[], 
             group_data_arr:[], 
             edit_linkCard_data:[], 
-            linkListCard:[], 
+            linkListCardData:[], 
             linkpage:this.props.linkpage
         }
-        // 父组件声明自己支持 context
-        static childContextTypes =  {
-            color:PropTypes.string, 
-            callback:PropTypes.func, 
-        }
-
-        // 父组件提供一个函数，用来返回相应的 context 对象
-        getChildContext() {
-            return {
-                callback:this.callback.bind(this)
-            }
-           
-        }
-        /** 
-         * @author xuesong
-         * @param callback 函数名  接收子组件传来的值
-         */
-        callback(msg) {
-            console.log(msg)
-            this.state.group_data_arr.push(msg)
-           
-       //   console.log(this.state.group_data_arr)
+        static contextTypes = {
+            color:PropTypes.string,
+            callback:PropTypes.func,
         }
          /** 
          * @author xuesong
          * @param fetchData 函数名  获取本地编辑项目json
          */
-        fetchData() {
+        fetchData=()=> {
             fetch('../json/' + this.state.linkpage + '.json')
                 .then(response => response.json())
                 .then(data =>  {
@@ -79,27 +60,61 @@
       //  console.log(arr_list);
 
     }
-    message_list() {
+    message_list=()=> {
         var cb = (route, message, arg) =>  {
 			if (message.code === 0) {
+                console.log("chenggong")
 				this.setState( {
-					linkListCard:message.data
+					linkListCardData:message.data
 				})
 			}
         }
-        console.log(this.props.isClick)
-		getData(getRouter(this.props.messageList),  {session:"tnkGNc", project_id:this.props.isClick }, cb,  {}); 
+        console.log(this.props.messageList)
+		getData(getRouter(this.props.messageList),  {token:"tnkGNc", project_id:this.props.isClick }, cb,  {}); 
     }
     handleClick=()=>{
-        var newState = {
-         formData:this.props.formData
-        }
-        //console.log(this.props.formData)
-        this.props.onChange(newState);//回调函数传递参数给父组件
+        fetch('../json/' + this.props.linkpage + '.json')
+        .then(response => response.json())
+        .then(data =>  {
+            var cb = (route, message, arg) =>  {
+                if (message.code === 0) {
+                   
+                    var newState = {
+                        add_button:data.data["form-list"]?data.data["form-list"]:[],
+                        form_temp_name:data.data["form-temp-name"],
+                        data:message.data?message.data:"",
+                        dataId:this.props.dataId
+                       }
+                }
+                // else{
+                //     var newState = {
+                //         add_button:[],
+                //         form_temp_name:"",
+                //         data:"",
+                //         dataId:""
+                //        }
+                // }
+                this.props.onChange(newState);
+            }
+            console.log(this.props.messageList)
+            getData(getRouter(this.props.messageList),  {token:"tnkGNc", id:this.props.dataId }, cb,  {}); 
+           
+        })
+        .catch(e =>  {
+            console.log("error")
+        })
     }
     render() {
             const {button} = this.props
-            return ( < div >  < button  onClick =  {this.handleClick} >  {button} </button >  </div > )
+            // const cb = (msg,id) => {
+            //     return () => {
+            //         this.context.callback(msg,id);
+            //     }
+            // }
+            return ( 
+            <div>  
+                <button onClick =  {this.handleClick}>{button} </button >  
+            </div > )
         }
     }
     

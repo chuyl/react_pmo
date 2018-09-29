@@ -1,6 +1,6 @@
 import config from "../config"
 function logout() {
-  let e = new Event("session_invalid");
+  let e = new Event("token_invalid");
   dispatchEvent(e);
 }
 /**
@@ -83,7 +83,7 @@ export function dealNumber(money){
  * @param {*回调函数} callback 
  */
 // export function initCache(callback = () => { }) {
-//   if (sessionStorage.logged === "true" || sessionStorage.session !== undefined) {
+//   if (sessionStorage.logged === "true" || sessionStorage.token !== undefined) {
 //     var cb = (route, message, arg) => {
 //       if (message.code === Code.LOGIC_SUCCESS) {
 //         window.CacheData = message.data;
@@ -91,10 +91,10 @@ export function dealNumber(money){
 //       }
 //     }
 //     if (Number(sessionStorage.apptype) === APP_TYPE_COMPANY) {
-//       getData(getRouter(QUERY), { session: sessionStorage.session }, cb, { callback: callback });
+//       getData(getRouter(QUERY), { token: sessionStorage.token }, cb, { callback: callback });
 
 //     } else if (Number(sessionStorage.apptype) === APP_TYPE_ORANIZATION) {
-//       getData(getRouter(INST_QUERY), { session: sessionStorage.session }, cb, { callback: callback });
+//       getData(getRouter(INST_QUERY), { token: sessionStorage.token }, cb, { callback: callback });
 //     } else {
 //       console.log("error app type query");
 //     }
