@@ -27,30 +27,32 @@
                         return <div key={index} style={{marginBottom:"-6px"}}>
                             {
                                 card_list.type_name === "ListTextSearch" ?
-                                    <ListTextSearch id={card_list.id_name+index}
+                                    <ListTextSearch id={card_list.id_name}
                                         labelValue={card_list.title}
                                         searchInfoLists={card_list.before_api_uri}
                                         addButton={card_list.add_button}
                                         selectedIdInfo={"-选择-"} 
-                                    selectedInfo={"-选择-"}  />
-                                    :
-                                    card_list.type_name === "MutiText" ? <TextField
-                                    id={card_list.id_name} inputValue={card_list.key} labelValue={card_list.title} />
-                                       : card_list.type_name === "TextDatetime" ? <TextDatetime
+                                        selectedInfo={"-选择-"}  />
+                                :card_list.type_name === "MutiText" ? 
+                                    <TextField
                                         id={card_list.id_name} inputValue={card_list.key} labelValue={card_list.title} />
-                                        : card_list.type_name === "TextMoney" ? <TextMoney
+                                :card_list.type_name === "TextDatetime" ? 
+                                    <TextDatetime
                                         id={card_list.id_name} inputValue={card_list.key} labelValue={card_list.title} />
-                                        :card_list.type_name==="AddTeacher"?<AddTeacher/> 
-                                        :card_list.type_name==="ProjectTemplate"?<ProjectTemplate/> 
-                                        :card_list.type_name==="SelectList"?<SelectList id={card_list.id_name}
+                                :card_list.type_name === "TextMoney" ? 
+                                    <TextMoney
+                                        id={card_list.id_name} inputValue={card_list.key} labelValue={card_list.title} />
+                                :card_list.type_name==="AddTeacher"?
+                                    <AddTeacher/> 
+                                :card_list.type_name==="ProjectTemplate"?
+                                    <ProjectTemplate/> 
+                                :card_list.type_name==="SelectList"?
+                                    <SelectList id={card_list.id_name}
                                         labelValue={card_list.title}
                                         searchInfoLists={card_list.before_api_uri}
                                         selectedInfo={card_list.key}/>
-                                        // : card_list.type_name === "ListText" ? <ListText id={card_list.id_name + this.props.index}
-                                        //     labelValue={card_list.title}
-                                        //     searchInfoLists={card_list.before_api_uri}
-                                        //     selectedInfo={card_list.key} />
-                                             : ""}
+                                        
+                                : ""}
                         </div>
                     })}
                     

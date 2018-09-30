@@ -15,6 +15,8 @@ import Link from './Link'
 import CardGroup from './CardGroup'
 import LabelMessage from './LabelMessage'
 import HoldBtn from './HoldBtn'
+import AddCardBtn from './AddCardBtn'
+import EditCardBtn from './EditCardBtn'
 //import AddTeacher from '../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
 //import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
 //import ProjectGather from '../budgetAndFinalAccountsManagementcond/budget/ProjectGather'
@@ -130,6 +132,7 @@ class ComponentsList extends Component {
                                     addButton={form_list.add_button} 
                                     beforeApiUri={this.props.componentsdata[form_list.before_api_uri]} 
                                     idName={form_list.id_name}
+                                    isClick={this.props.componentsdata.id}
                                     selectedInfo={this.props.componentsdata?this.props.componentsdata:""} 
                                     title={form_list.title} 
                                 />
@@ -138,6 +141,20 @@ class ComponentsList extends Component {
                                     before_api_uri={form_list.before_api_uri}
                                     onHoldClick={this.handleChildClick}
                             />
+                            :form_list.type_name==="AddCardBtn"?
+                                <AddCardBtn
+                                    title={form_list.title}
+                                    dataId={this.props.dataId}
+                                    addButton={form_list.add_button}
+                                    before_api_uri={form_list.before_api_uri}
+                                />
+                            :form_list.type_name==="EditCardBtn"?
+                                <EditCardBtn
+                                    title={form_list.title}
+                                    dataId={this.props.dataId}
+                                    addButton={form_list.add_button}
+                                    before_api_uri={form_list.before_api_uri}
+                                />
                             : ""}
                         </div>
 )

@@ -191,7 +191,7 @@ class TrainingProgram extends Component {
 			}
 			setTimeout((e) => {
 				document.getElementById("card_box").classList.add("open")
-				console.log(newState.data)
+				console.log(newState)
 				this.setState({
 				  add_button:newState.add_button,
 				  card_state:true,
@@ -271,25 +271,7 @@ class TrainingProgram extends Component {
 					<div className="overflow">
 						{this.state.card_list?this.state.card_list.map(card_list => {
 							return <Cards 
-							onChanges = {this.handleChildChange}
-							// handleChildChange ={this.handleChildChange}
-							// handleClick ={()=>{
-							// 	console.log()
-							// 	// if(this.state.card_state){
-							// 	// 	setTimeout(function(){
-							// 	// 		document.getElementById("card_box").classList.remove("open")
-							// 	// 	},100)
-							// 	// }
-							// 	// setTimeout((e) => {
-							// 	// 	document.getElementById("card_box").classList.add("open")
-							// 	// 	this.fetchData()
-							// 	// 	this.card_box_concent([], e)
-							// 	// 	this.setState({
-							// 	// 		card_state:true,
-							// 	// 		edit_project_data:card_list
-							// 	// 	})
-							// 	// },300)
-							// }}
+							    onChanges = {this.handleChildChange}
 								id={card_list.id}
 								card_list={card_list}
 								add_button={this.state.projectCard}
@@ -309,7 +291,7 @@ class TrainingProgram extends Component {
 							{/* paper详细内容 */}
 							{this.state.card_state ?//判断paper是否可见
 								<div key={this.state.dataId?this.state.dataId:"addComponents"} id="editComponents">
-								< ComponentsList holdClick={this.onHoldClicks} componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
+								< ComponentsList dataId={this.state.dataId} holdClick={this.onHoldClicks} componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
 								   {/* <button  onClick={()=>{
 									   console.log()
 									   this.project_index_add(this.state.add_button)
