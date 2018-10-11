@@ -70,6 +70,8 @@ class Card extends Component {
                                 beforeApiUri={this.props.card_list[form_list.before_api_uri]} 
                                 idName={form_list.id_name}
                                 title={form_list.title} 
+                                // eidtButton={form_list.edit_button}
+                                // delButton = {form_list.del_button}
                                 selectedInfo={this.props.card_list?this.props.card_list:""} 
                             />
                         : ""}

@@ -19,7 +19,7 @@ import { getData, getRouter } from '../../utils/helpers'
                     value.push(list_message[i].id_name+"_name")
                     key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
                     value.push(list_message[i].id_name+"_id")
-                    key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML || document.getElementById(list_message[i].id_name+"_id").value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").value)
+                    key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML)
                    }
                 else{
                     value.push(list_message[i].id_name)
@@ -33,14 +33,13 @@ import { getData, getRouter } from '../../utils/helpers'
             var cb = (route, message, arg) => {
                 if (message.code === 0) {
                     this.setState({
-                        card_state:false
+                        add_card_state:false
                     })
-                    this.listProject()
                 }
     
             }
             console.log(before_api_uri)
-            getData(getRouter(before_api_uri), {data:obj,token:"tnkGNc"}, cb, {});
+        getData(getRouter(before_api_uri), {data:obj,token:"tnkGNc"}, cb, {});
         }
         render(){
             // const {id,disabled,inputValue,onChange,onClick,labelValue} =this.props;

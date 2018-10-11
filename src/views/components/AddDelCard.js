@@ -4,14 +4,14 @@
      */
 import React, { Component } from 'react'
 import DisTextField from './DisTextField'
-import TextMoney from './TextMoney'
+//import TextMoney from './TextMoney'
 //import ListText from '../components/ListText'
-import TextDatetime from './TextDatetime'
-import AddTeacher from '../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
-import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
-import SelectList from './SelectList'
-import ComponentsList from './ComponentsList'
-import ListTextSearch from './ListTextSearch'
+// import TextDatetime from './TextDatetime'
+// import AddTeacher from '../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
+// import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
+// import SelectList from './SelectList'
+// import ComponentsList from './ComponentsList'
+// import ListTextSearch from './ListTextSearch'
 //import LinkGroupList from './LinkGroupList';
 class AddDelCard extends Component {
     state = {
@@ -40,7 +40,7 @@ class AddDelCard extends Component {
                     return (
                     <div key={index} style={{marginBottom:"-6px"}}>
                         <DisTextField
-                            id={card_list.id_name+index} 
+                            id={card_list.id_name} 
                             inputValue={this.props.messageList[card_list.id_name]!==null?this.props.messageList[card_list.id_name]:""} 
                             labelValue={card_list.title} 
                         />

@@ -88,6 +88,9 @@
                             "after_api_uri": ""
                         }
                     ],
+                    "edit_button":"lecturerEdit",
+                    "del_button":"lecturerDel",
+                    "list_button": "listLecturer",
                     "add_button":[{
                         "id_name": "teacher_name",
                         "type_name": "ListTextSearch", 

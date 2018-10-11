@@ -131,6 +131,8 @@
                                        addButtonTitle={form_list.add_button_title} 
                                        addButton={form_list.add_button} 
                                        beforeApiUri={this.props.componentsdata[form_list.before_api_uri]} 
+                                    //    delButton = {form_list.del_button}
+                                    //    eidtButton={form_list.edit_button}
                                        idName={form_list.id_name}
                                        isClick={this.props.componentsdata.id}
                                        selectedInfo={this.props.componentsdata?this.props.componentsdata:""} 

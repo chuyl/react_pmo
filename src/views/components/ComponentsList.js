@@ -43,6 +43,10 @@ class ComponentsList extends Component {
         return (
             <div>
                 {this.props.componentslist.map((form_list) => {
+                    if(form_list.type_name==="CardGroup"){
+                        console.log(form_list.add_button.edit_button)
+                        console.log(this.props.componentsdata)
+                    }
                     return (
                         <div key={form_list.id_name}>
                             {form_list.type_name === "ListTextSearch" ?
@@ -131,6 +135,9 @@ class ComponentsList extends Component {
                                     addButtonTitle={form_list.add_button_title} 
                                     addButton={form_list.add_button} 
                                     beforeApiUri={this.props.componentsdata[form_list.before_api_uri]} 
+                                    delButton = {form_list.add_button.del_button}
+                                    editButton={form_list.add_button.edit_button}
+                                    listButton = {form_list.add_button.list_button}
                                     idName={form_list.id_name}
                                     isClick={this.props.componentsdata.id}
                                     selectedInfo={this.props.componentsdata?this.props.componentsdata:""} 
