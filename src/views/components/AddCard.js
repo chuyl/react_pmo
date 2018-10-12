@@ -33,6 +33,11 @@
             getData(getRouter(this.props.listButton), {id:this.props.conditionAction.header_id, token: "tnkGNc" }, cb, {});
     
         }
+        	/** 
+	 * @time 2018-10-12
+	 * @author xuesong
+	 * @param project_index_add 函数 发送列表
+	 */
         project_index_add = (list_message,before_api_uri)=>{
             var key_name = [];
             var value = [];
@@ -70,14 +75,12 @@
         render() {
             return (
                 <div>
-                    <div
-                    key={this.props.index}  className="card_info_list_card"
-                >
-                    {/* <ComponentsList componentslist={this.state.card_list}></ComponentsList> */}
-                    {this.state.cardList.map((card_list, index) => {
-                        return <div key={index} style={{marginBottom:"-6px"}}>
-                            {
-                                card_list.type_name === "ListTextSearch" ?
+                    <div key={this.props.index} className="card_info_list_card">
+                        {/* <ComponentsList componentslist={this.state.card_list}></ComponentsList> */}
+                        {this.state.cardList?this.state.cardList.map((card_list, index) => {
+                            return (
+                                <div key={index} style={{marginBottom:"-6px"}}>
+                                {card_list.type_name === "ListTextSearch" ?
                                     <ListTextSearch id={card_list.id_name+this.props.conditionAction.id}
                                         labelValue={card_list.title}
                                         searchInfoLists={card_list.before_api_uri}
@@ -102,18 +105,18 @@
                                         labelValue={card_list.title}
                                         selectedIdInfo={this.props.conditionAction[card_list.id_name+"_id"]?this.props.conditionAction[card_list.id_name+"_id"]:"-选择-"} 
                                         selectedInfo={this.props.conditionAction[card_list.id_name+"_name"]?this.props.conditionAction[card_list.id_name+"_name"]:"-选择-"}  />
-                                        
                                 : ""}
-                        </div>
-                    })}
-                     
+                                </div>
+                            )
+                        }):""}
                     {/* {this.add_teacher_card_components(this.props.index)} */}
-                </div>
-                <button className="hold_btn"
-                    onClick={(e) => {
-                        this.project_index_add(this.state.cardList,this.props.editButton)
-                    }}
-                  >保存</button>
+                    </div>
+                    <button className="hold_btn"
+                        onClick={(e) => {
+                            this.project_index_add(this.state.cardList,this.props.editButton)
+                        }}
+                    >保存
+                    </button>
                 </div>
             )
         }

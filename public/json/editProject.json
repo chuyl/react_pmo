@@ -90,7 +90,7 @@
                 "tip": "",
                 "add_button": {},
                 "descript": "",
-                "before_api_uri": "addProject",
+                "before_api_uri": "addTemplate",
                 "after_api_uri": ""
             }
             

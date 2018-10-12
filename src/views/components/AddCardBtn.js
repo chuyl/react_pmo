@@ -14,7 +14,7 @@ import { getData, getRouter } from '../../utils/helpers'
             var value = [];
             for (var i = 0; i < list_message.length; i++) {
                 if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"){
-                    value.push("id")
+                    value.push("header_id")
 					key_name.push(this.props.dataId)
                     value.push(list_message[i].id_name+"_name")
                     key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
@@ -38,11 +38,10 @@ import { getData, getRouter } from '../../utils/helpers'
                 }
     
             }
-            console.log(before_api_uri)
-        getData(getRouter(before_api_uri), {data:obj,token:"tnkGNc"}, cb, {});
+            console.log(obj)
+            getData(getRouter(before_api_uri), {data:obj,token:"tnkGNc"}, cb, {});
         }
         render(){
-            // const {id,disabled,inputValue,onChange,onClick,labelValue} =this.props;
             return (
                 <div>
                     <button className="add_card_btn"  
@@ -50,14 +49,13 @@ import { getData, getRouter } from '../../utils/helpers'
                             this.setState({
                                 add_card_state: true,
                             })
-                            //console.log(this.props.selectedInfo.id)
                         }}
-                        >
+                    >
                         {this.props.title}
                     </button>
                     <div className={this.state.add_card_state ? "add_info_list open" : "add_info_list"}>
                         <div className="paper_card_title">
-                            <div    onClick={() => {
+                            <div onClick={() => {
                                     this.setState({
                                         add_card_state: false
                                             })
@@ -67,27 +65,17 @@ import { getData, getRouter } from '../../utils/helpers'
                             {this.props.title}
                         </div>
                         <div className="selected_scroll_div">
-                        <ComponentsCard  componentslist={this.props.addButton}></ComponentsCard>
-                            {/* <AddCard 
-                                key={`executeHandle${this.state.addCondition.length}.lenght+1`}
-                                remove={this.removeEvent.bind(this)}
-                                index={this.state.addCondition.length}
-                                cardList={this.props.addButton.add_button}
-                                // getAddCondition={ this.getAddConditionEvent.bind(this)}
-                                conditionAction={this.state.conditionAction}       
-                            >
-                            </AddCard> */}
-                                    {/* 添加讲师安排按钮 */}
+                            <ComponentsCard  componentslist={this.props.addButton}></ComponentsCard>
                             <button className="hold_btn"
-                                onClick={(e) => {
-                                    console.log(this.props.dataId)
-                                    this.project_index_add(this.props.addButton,this.props.before_api_uri)
-                                }}
+                                    onClick={(e) => {
+                                        console.log(this.props.dataId)
+                                        this.project_index_add(this.props.addButton,this.props.before_api_uri)
+                                    }}
                             >保存
-                            </button>
+                            </button>  
+                        </div>
+                    </div>  
                 </div>
-            </div>  
-        </div>
             )
         }
     }

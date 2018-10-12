@@ -43,8 +43,8 @@ class ComponentsList extends Component {
         return (
             <div>
                 {this.props.componentslist.map((form_list) => {
-                    if(form_list.type_name==="CardGroup"){
-                        console.log(form_list.add_button.edit_button)
+                    if(form_list.type_name==="SelectList"){
+                        console.log(form_list)
                         console.log(this.props.componentsdata)
                     }
                     return (

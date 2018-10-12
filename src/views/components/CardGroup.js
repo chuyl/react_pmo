@@ -73,11 +73,9 @@
                 }
     
             }
-            console.log(this.props.delButton)
            getData(getRouter(this.props.delButton), {id,id,token:"tnkGNc"}, cb, {});
         }
         render() {
-            console.log(this.props.beforeApiUri)
             return (
                 <div>
                     <p className="card_title">{this.props.title}</p>
@@ -87,7 +85,6 @@
                                 <li
                                   key={index}  className="card_info_list_card"
                                 >
-                                
                                     {this.props.addButton.descript.map((card_list, index) => {
                                         return (
                                         <div key={index} style={{marginBottom:"-6px"}}>
@@ -106,13 +103,13 @@
                                         // onClick={this.removeFunEvent.bind(this)}
                                     >删除</button>
                                     <button className="label_delete_button"
-                                        onClick={() => {
-                                            console.log(this.props.addButton)
-                                            this.setState({
-                                                add_card_state: true,
-                                                conditionAction:view_list
-                                                
-                                            })
+                                            onClick={() => {
+                                                console.log(this.props.addButton)
+                                                this.setState({
+                                                    add_card_state: true,
+                                                    conditionAction:view_list
+                                                    
+                                                })
                                                 }}
                                     >编辑</button>
                                 </li>
@@ -120,51 +117,33 @@
                         }):""
                          }
                     </ul>    
-                    {/* <button className="add_card_btn"  
-                        onClick={() => {
-                            this.setState({
-                                add_card_state: true,
-                                project_id:this.props.selectedInfo.id
-                            })
-                        }}
-                    >
-                        {this.props.addButtonTitle}
-                    </button> */}
-                            {/* <button  onClick = { cb(this.state.addCondition) }>点击</button> */}
                     <div className={this.state.add_card_state ? "add_info_list open" : "add_info_list"}>
                         <div className="paper_card_title">
-                            <div    onClick={() => {
+                            <div onClick={() => {
                                     this.setState({
                                         add_card_state: false
                                             })
                                         }} 
                                     className="return_btn">
                             </div>
-                            {this.props.title}
-                                </div>
-                                <div className="selected_scroll_div">
-                            
-                                <AddCard 
-                                     key={`executeHandle${this.state.addCondition.length}.lenght+1`}
-                                     remove={this.removeEvent.bind(this)}
-                                     index={this.state.addCondition.length}
-                                     cardList={this.props.addButton.add_button}
-                                     addButtonTitle ={this.props.addButtonTitle}
-                                     editButton = {this.props.editButton}
-                                     delButton = {this.props.delButton}
-                                     listButton = {this.props.listButton}
+                                {this.props.title}
+                        </div>
+                        <div className="selected_scroll_div">
+                            <AddCard 
+                                key={`executeHandle${this.state.addCondition.length}.lenght+1`}
+                                remove={this.removeEvent.bind(this)}
+                                index={this.state.addCondition.length}
+                                cardList={this.props.addButton.add_button}
+                                addButtonTitle ={this.props.addButtonTitle}
+                                editButton = {this.props.editButton}
+                                delButton = {this.props.delButton}
+                                listButton = {this.props.listButton}
                                      // getAddCondition={ this.getAddConditionEvent.bind(this)}
-                                     conditionAction={this.state.conditionAction}       
-                                >
-                                </AddCard>
-                                      
-                                {/* <button className="hold_btn"
-                                    onClick={(e) => {
-                                        //this.project_index_add(this.props.addButton.add_button,this.props.addButton.before_api_uri)
-                                    }}
-                                >保存</button> */}
-                    </div>
-                </div>  
+                                conditionAction={this.state.conditionAction}       
+                            >
+                            </AddCard>    
+                        </div>
+                    </div>  
                 </div>
             )
         }

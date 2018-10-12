@@ -32,14 +32,12 @@
            }
        }
        handleChildClick=(newState)=>{
-         //  console.log(newState)
            var newStates = {
                before_api_uri:newState.before_api_uri
               }
           this.props.holdClick(newStates);//回调函数传递参数给父组件
        }
        render() {
-          
            return (
                <div>
                    {this.props.componentslist.map((form_list) => {
@@ -161,7 +159,6 @@
                            </div>
    )
                    }
-                   
                    )}
                </div>
            )

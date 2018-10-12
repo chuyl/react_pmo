@@ -81,11 +81,13 @@ class TrainingProgram extends Component {
 		form_temp_name: "",
 		projectCard:[],//card的json
 		dataId:"",//点击card按钮获取到的card的id值
+		projectList:[]
 	};
 
 	componentWillMount() {
 		this.listProject()
 		this.fetchListData()
+		this.fetchProjectListData()//项目列表
 
 	}
 	listProject(){
@@ -107,6 +109,18 @@ class TrainingProgram extends Component {
 					projectCard: data.data["card-list"],
 					form_temp_name:data.data["form-temp-name"],
 
+				})
+			})
+			.catch(e => {
+				console.log("error")
+			})
+	}
+	fetchProjectListData() {
+		fetch('../data/Project.json')
+			.then(response => response.json())
+			.then(data => {
+				this.setState({
+					projectList:data
 				})
 			})
 			.catch(e => {
@@ -199,7 +213,7 @@ class TrainingProgram extends Component {
 				  edit_project_data:newState.data,
 				  form_temp_name:newState.form_temp_name,
 				})
-			},500)			
+			},200)			
 			  
 		}
 	  }
@@ -222,13 +236,13 @@ class TrainingProgram extends Component {
 						value.push(list_message[i].id_name+"_name")
 						key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
 						value.push(list_message[i].id_name+"_id")
-						key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML || document.getElementById(list_message[i].id_name+"_id").value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").value)	
+						key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML)	
 					}
 					else{
 						value.push(list_message[i].id_name+"_name")
 						key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
 						value.push(list_message[i].id_name+"_id")
-						key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML || document.getElementById(list_message[i].id_name+"_id").value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").value)	
+						key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML)	
 					}		
 					 }
 				else{
@@ -244,14 +258,13 @@ class TrainingProgram extends Component {
 		}
 		var cb = (route, message, arg) => {
 			if (message.code === 0) {
-				this.setState({
+				this.setState({    //  项目创建成功,打开编辑页面。更新view
 					card_state:false
-				})
+				}) 
 				this.listProject()
 			}
-
 		}
-		getData(getRouter(newState.before_api_uri), {data:obj}, cb, {});
+		getData(getRouter(newState.before_api_uri), {data:obj,token:"tnkGNc"}, cb, {});
 	  }
 	render() {
 		return(
@@ -292,10 +305,6 @@ class TrainingProgram extends Component {
 							{this.state.card_state ?//判断paper是否可见
 								<div key={this.state.dataId?this.state.dataId:"addComponents"} id="editComponents">
 								< ComponentsList dataId={this.state.dataId} holdClick={this.onHoldClicks} componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
-								   {/* <button  onClick={()=>{
-									   console.log()
-									   this.project_index_add(this.state.add_button)
-								   }} className="hold_btn">保存</button> */}
 						   </div>		
 								: ""}
 						</div>

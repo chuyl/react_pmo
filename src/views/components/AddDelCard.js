@@ -18,22 +18,9 @@ class AddDelCard extends Component {
         cardList: this.props.cardList,
         edit_card_state:false
     }
-    /** 
-     * @author xuesong
-     * @param removeFunEvent 函数名 删除默认和添加组件
-     */
-    removeFunEvent() {
-        
-        console.log(this)
-        //默认的组件
-        //this.props.removeDefault && this.props.removeDefault(this.props.index);
-        //添加的组价
-        //this.props.remove && this.props.remove(this.props.index);
-    }
     render() {
-        
         return (
-                <li
+            <li
                 key={this.props.index}  className="card_info_list_card"
             >
                 {this.state.cardList.descript.map((card_list, index) => {
@@ -46,41 +33,19 @@ class AddDelCard extends Component {
                         />
                     </div>)
                 })}          
-                        <button className="label_delete_button"
-                                onClick={()=>{
-                                    console.log(this.props.messageList)
+                <button className="label_delete_button"
+                        onClick={()=>{
+                            console.log(this.props.messageList)
                                 }}
-                            // onClick={this.removeFunEvent.bind(this)}
-                        >删除</button>
-                        <button className="label_delete_button"
-                            onClick={() => {
-                                console.log(this.props.messageList)
+                >删除</button>
+                <button className="label_delete_button"
+                        onClick={() => {
+                            console.log(this.props.messageList)
                                 // this.setState({
                                 //     edit_card_state: true
                                 // })
                                     }}
-                        >编辑</button>
-                {   /* <div className={this.state.edit_card_state ? "add_info_list open" : "add_info_list"}>
-                                <div className="paper_card_title">
-                                    <div onClick={() => {
-                                            this.setState({
-                                                edit_card_state: false
-                                            })
-                                        }} className="return_btn"></div>
-                                    {this.props.addButtonTitle}
-                                </div>
-                                <div className="selected_scroll_div">
-                                    <div  className="card_info_list_card">
-                                        <ComponentsList componentslist={this.state.cardList.add_button} componentsdata={this.props.messageList}></ComponentsList>
-                                    </div>
-                               
-                                <button className="hold_btn"
-                                    onClick={(e) => {
-                                     
-                                    }}
-                                >保存1</button>
-                    </div>
-                </div>   */}
+                >编辑</button>
             </li>
         )
     }

@@ -31,17 +31,11 @@
            return (
                <div>
                    {this.props.componentslist.map((form_list) => {
+                        if(form_list.type_name==="SelectList"){
+                            console.log(form_list.before_api_uri)
+                        }
                        return <div key={form_list.id_name}>
-                       {/* {form_list.type_name === "MutiText" ? <TextField id={form_list.id_name} 
-                                   inputValue={form_list.key}
-                                   //inputValue={this.props.componentsdata[form_list.id_name]} 
-                                   labelValue={form_list.title} />
-                                   :form_list.type_name==="CardGroup"?<CardGroup idName={form_list.id_name}
-                                    title={form_list.title} 
-                                    addButtonTitle={form_list.add_button_title} 
-                                    beforeApiUri={this.props.componentsdata[form_list.before_api_uri]} 
-                                    addButton={form_list.add_button} />
-                                   :""} */}
+                      
                            {form_list.type_name === "ListTextSearch" ?
                                <ListTextSearch id={form_list.id_name}
                                    // className = {form_list.id_name+" selectedInfo" }

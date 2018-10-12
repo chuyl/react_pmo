@@ -31,6 +31,7 @@ class SelectList extends Component {
                 })
             }
         }
+        console.log(this.state.before_api_uri)
         getData(getRouter(this.state.before_api_uri), { token: "tnkGNc" }, cb, {});
     }
 
@@ -44,18 +45,19 @@ class SelectList extends Component {
         return (
             <div className="search_info_list_card">
                 <div onClick={() => {
-                    this.searchShow()
-                }} className={this.state.search_state ? "add_list_close" : ""}></div>
+                        this.searchShow()
+                      }} 
+                    className={this.state.search_state ? "add_list_close" : ""}>
+                </div>
                 <label className="search_info_list_label">{labelValue}</label>
-                <div
-                    onClick={() => {
+                <div className="selectedInfo" id={id+"_name"}
+                     onClick={() => {
                         this.searchShow()
                         this.infos();
-                    }}
-                    className="selectedInfo"
-                    
-                    // className={document.getElementById(id).innerHTML==="-选择-"?"selectedInfo":"selectedInfoFont"}
-                    id={id+"_name"}>{selectedInfo === "" ? "-选择-" : selectedInfo}</div>
+                     }}
+                >
+                    {selectedInfo === "" ? "-选择-" : selectedInfo}
+                </div>
                 <div id={id+"_id"}  style={{display:"none"}}>{selectedIdInfo === "" ? "-选择-" : selectedIdInfo}</div>
                 <div className="search_info_position">
                     <div
@@ -73,13 +75,6 @@ class SelectList extends Component {
                                 )
                             })}
                         </ul>
-                        {/* <div onClick={(e)=>{
-                       this.setState({
-                        add_customer:true
-                       })
-                    }}
-                 
-                 >新增</div> */}
                     </div>
                 </div>
             </div>

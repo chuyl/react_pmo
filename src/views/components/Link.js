@@ -78,7 +78,6 @@
         .then(data =>  {
             var cb = (route, message, arg) =>  {
                 if (message.code === 0) {
-                   
                     var newState = {
                         add_button:data.data["form-list"]?data.data["form-list"]:[],
                         form_temp_name:data.data["form-temp-name"],

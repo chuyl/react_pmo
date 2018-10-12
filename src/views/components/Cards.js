@@ -45,37 +45,39 @@ class Card extends Component {
 	render(){
         return (
             <div  className={this.state.zoom_in?"card open":"card"}>
-           {this.props.add_button.map((form_list) => {
-                    return <div key={form_list.id_name}>
-                        {form_list.type_name === "Link"?
-                            <Link 
-                                button={form_list.title}
-                                buttonMessage={form_list}
-                                dataId={this.props.card_list.id}
-                                // isClick={this.props.card_list.id}
-                                linkpage={form_list.before_api_uri}
-                                messageList={form_list.add_button.before_api_uri}
-                                onChange = {this.handleClick}
-                            />
-                        :form_list.type_name === "LabelMessage"?
-                            <LabelMessage
-                                id={form_list.id_name} 
-                                labelValue={form_list.title} 
-                                message={this.props.card_list[form_list.id_name]?this.props.card_list[form_list.id_name]:""} 
-                            />
-                        :form_list.type_name==="CardGroup"?
-                            <CardGroup 
-                                addButton={form_list.add_button}
-                                addButtonTitle={form_list.add_button_title} 
-                                beforeApiUri={this.props.card_list[form_list.before_api_uri]} 
-                                idName={form_list.id_name}
-                                title={form_list.title} 
-                                // eidtButton={form_list.edit_button}
-                                // delButton = {form_list.del_button}
-                                selectedInfo={this.props.card_list?this.props.card_list:""} 
-                            />
-                        : ""}
-                    </div>
+                {this.props.add_button.map((form_list) => {
+                    return (
+                        <div key={form_list.id_name}>
+                            {form_list.type_name === "Link"?
+                                <Link 
+                                    button={form_list.title}
+                                    buttonMessage={form_list}
+                                    dataId={this.props.card_list.id}
+                                    // isClick={this.props.card_list.id}
+                                    linkpage={form_list.before_api_uri}
+                                    messageList={form_list.add_button.before_api_uri}
+                                    onChange = {this.handleClick}
+                                />
+                            :form_list.type_name === "LabelMessage"?
+                                <LabelMessage
+                                    id={form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    message={this.props.card_list[form_list.id_name]?this.props.card_list[form_list.id_name]:""} 
+                                />
+                            :form_list.type_name==="CardGroup"?
+                                <CardGroup 
+                                    addButton={form_list.add_button}
+                                    addButtonTitle={form_list.add_button_title} 
+                                    beforeApiUri={this.props.card_list[form_list.before_api_uri]} 
+                                    idName={form_list.id_name}
+                                    title={form_list.title} 
+                                    // eidtButton={form_list.edit_button}
+                                    // delButton = {form_list.del_button}
+                                    selectedInfo={this.props.card_list?this.props.card_list:""} 
+                                />
+                            : ""}
+                        </div>
+                    )
 
                 })}
             </div>

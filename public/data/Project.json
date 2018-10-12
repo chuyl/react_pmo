@@ -1,0 +1,60 @@
+{
+  
+  "项目list":{
+    "project_customer_name":"客户名称",
+    "project_date":"培训日期",
+    "project_days":"天数",
+    "project_gather_id":"项目集",
+    "project_gather_name":"项目集",
+    "project_name":"项目名称",
+    "project_person_in_charge_id":"实施负责人",
+    "project_person_in_charge_name":"实施负责人",
+    "project_project_templete_id":"项目模板",
+    "project_project_templete_name":"项目模板",
+    "project_training_ares":"培训地点",
+    "project_training_numbers":"培训人数"
+  },
+  "讲师安排list":{
+    "project_number":"项目编号",
+    "course_name":"课程名称",
+    "teacher_arrange":"讲师安排",
+    "teacher_name_name":"讲师姓名",
+    "teacher_name_id":"讲师姓名",
+    "teacher_income_tax":"所得税",
+    "teacher_lecture_fee":"讲课费",
+    "teacher_lecture_days": "课程天数",
+    "teacher_duty_name":"职责",
+    "teacher_duty_id":"职责"
+  },
+  "实施安排list":{
+    "venue_fee":"会场费",
+    "material_and_equipment_cost":"教材与设备费用",
+    "examination_fee":"考试费",
+    "tea_break":"茶歇",
+    "stationery":"文具",
+    "hospitality":"招待费",
+    "postage":"邮寄快递"
+  },
+  "差旅安排":{
+      "长途交通费list":{
+        "long_fee_card_people":"人员",
+        "long_fee_card_start_time":"出发时间",
+        "long_fee_card_start_place":"出发地点",
+        "long_fee_card_end_time":"结束时间",
+        "long_fee_card_end_place":"结束地点",
+        "long_fee_card_vehicle_name":"交通工具",
+        "long_fee_card_vehicle_id":"交通工具"
+      },
+      "市内交通费list":{
+        "short_fee_card_people":"人员",
+        "short_fee_type":"费用名称",
+        "short_fee":"费用"
+      },
+      "住宿费list":{
+        "hotel_expense_people":"人员",
+        "hotel_expense_days":"天数",
+        "hotel_expense_total":"费用总价"
+      }
+  }
+
+}
