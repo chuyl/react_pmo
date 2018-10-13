@@ -20,7 +20,7 @@ class TrainingProgram extends Component {
 		//预算list内容
 		card_list: [{
 			    id:"94",
-				project_customer_name:"客户1",
+				project_customer_name:"客户44444",
 				project_days:"2018-05-01",
 				project_gather_name:"项目集1",
 				project_gather_id:"1",
