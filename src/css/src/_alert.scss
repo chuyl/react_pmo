@@ -1,15 +1,26 @@
 .alert_back{
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: $black;
-    opacity: 0.28;
+    width: 0;
+    height: 0;
   }
   .alert_box{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+  .alert_box.open{
     width: 400px;
     height: 300px;
     background-color: $white;
     margin: auto;
+  }
+  .alert_back.open{
+    position: fixed;
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba($color: #000000, $alpha: 0.28);
   }

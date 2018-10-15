@@ -29,7 +29,6 @@
             fetch('../json/' + this.state.linkpage + '.json')
                 .then(response => response.json())
                 .then(data =>  {
-                   console.log(data.data["form-list"])
                     this.setState( {
                         add_button:data.data["form-list"], 
                     })
@@ -62,14 +61,12 @@
     }
     message_list=()=> {
         var cb = (route, message, arg) =>  {
-			if (message.code === 0) {
-                console.log("chenggong")
+			if (message.code===0) {
 				this.setState( {
 					linkListCardData:message.data
 				})
 			}
         }
-        console.log(this.props.messageList)
 		getData(getRouter(this.props.messageList),  {token:"tnkGNc", project_id:this.props.isClick }, cb,  {}); 
     }
     handleClick=()=>{
@@ -85,17 +82,8 @@
                         dataId:this.props.dataId
                        }
                 }
-                // else{
-                //     var newState = {
-                //         add_button:[],
-                //         form_temp_name:"",
-                //         data:"",
-                //         dataId:""
-                //        }
-                // }
                 this.props.onChange(newState);
             }
-            console.log(this.props.messageList)
             getData(getRouter(this.props.messageList),  {token:"tnkGNc", id:this.props.dataId }, cb,  {}); 
            
         })

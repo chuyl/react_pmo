@@ -6,6 +6,7 @@
     import AddCard from './AddCard';
     import DisTextField from './DisTextField'
     import PropTypes from 'prop-types';
+    import Alert from './Alert'
     //import {LECTURERADD} from '../../enum'
     import {getData,getRouter} from '../../utils/helpers'
     class CardGroup extends Component {
@@ -17,6 +18,9 @@
             card_list:[],    //点击新增
             add_card_state:false,
             conditionAction:[],
+            alertState:false, //弹出框的状态
+            alertMsg:"是否确定删除",
+            thisViewList:[]   //当前card数据list
         }
         // 子组件声明自己需要使用 context
             static contextTypes = {
@@ -67,14 +71,35 @@
             var cb = (route, message, arg) => {
                 if (message.code === 0) {
                     this.setState({
-                        add_card_state:false
+                        add_card_state:false,
+                        alertState:false
                     })
                      this.listGroup()
                 }
     
             }
+            console.log(this.props.delButton)
            getData(getRouter(this.props.delButton), {id,id,token:"tnkGNc"}, cb, {});
         }
+        /** 
+	 * @time 2018-10-14
+	 * @author xuesong
+	 * @param cancelCallback 函数 弹出框取消按钮
+	 */
+        cancelCallback(msg){
+            this.setState({
+                alertState:false
+            })
+        }
+         /** 
+	 * @time 2018-10-14
+	 * @author xuesong
+	 * @param sureCallback 函数 弹出框取消按钮
+	 */
+    sureCallback(msg){
+        this.del_group_button(this.state.thisViewList.id)
+        
+    }
         render() {
             return (
                 <div>
@@ -97,7 +122,12 @@
                                     {/* < ComponentsList componentslist =  {this.props.addButton.descript?this.props.addButton.descript:[]} componentsdata = {view_list} ></ComponentsList >  */}
                                     <button className="label_delete_button"
                                             onClick={()=>{
-                                                this.del_group_button(view_list.id)
+                                                this.setState({
+                                                    alertState:true,
+                                                    thisViewList:view_list
+                                                })
+
+                                                //this.del_group_button(view_list.id)
                                                 console.log(view_list)
                                             }}
                                         // onClick={this.removeFunEvent.bind(this)}
@@ -112,6 +142,7 @@
                                                 })
                                                 }}
                                     >编辑</button>
+                                      
                                 </li>
                             )
                         }):""
@@ -144,6 +175,7 @@
                             </AddCard>    
                         </div>
                     </div>  
+                    <Alert alertMsg = {this.state.alertMsg} sureCallback = {this.sureCallback.bind(this)} cancelCallback = { this.cancelCallback.bind(this) } alertState={this.state.alertState}/>
                 </div>
             )
         }

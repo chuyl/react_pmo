@@ -227,12 +227,14 @@ class TrainingProgram extends Component {
 		var key_name = [];
 		var value = [];
 		var list_message=this.state.add_button;
+		if(this.state.dataId){
+			value.push("id")
+			key_name.push(this.state.dataId)
+		}
 		for (var i = 0; i < list_message.length; i++) {
 			if(list_message[i].type_name!=="HoldBtn"){
 				if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"){
 					if(this.state.dataId!==""){
-						value.push("id")
-						key_name.push(this.state.dataId)
 						value.push(list_message[i].id_name+"_name")
 						key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
 						value.push(list_message[i].id_name+"_id")

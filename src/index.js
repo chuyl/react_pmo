@@ -9,8 +9,9 @@ import {
   } from 'react-router-dom';
 import './css/style.css'
 import Lang from './language'
- import config from './config';
- import {getData } from './utils/helpers';
+import config from './config';
+import local from './local' 
+import {getData } from './utils/helpers';
 
 // window.onresize = function(){
 //   console.log(document.body.clientWidth)
@@ -76,10 +77,29 @@ for(var x=0;x<lang.length;x++){
 }
 }
   getRoutes = () => {
+     console.log(local)
     var cb = (route, message, arg) => {
+       
+
       try {
-        if (message.code === 0) {
+        
+        if (message.error === 0) {
+          // for(var key in message.data.routelist){
+          //   for(var localkey in local){
+          //    if(key===localkey){
+          //      console.log("有相同的接口")
+          //      if(message.data.routelist.version<1){
+          //         sessionStorage.setItem(localkey, JSON.stringify(local[localkey]));
+          //      }else{
+          //         sessionStorage.setItem(key, JSON.stringify(message.data.routelist[key]));
+          //      }
+          //    }else{
+          //         sessionStorage.setItem(localkey, JSON.stringify(local[localkey]));
+          //    }
+          //   }
+          //  }
           for (var key in message.data.routelist) {
+            console.log(JSON.stringify(message.data.routelist[key]).url)
             sessionStorage.setItem(key, JSON.stringify(message.data.routelist[key]));
           }
        //   var img_url = getRouter("creat_checkcode").url;
@@ -297,6 +317,7 @@ for(var x=0;x<lang.length;x++){
          })
         }} className="return_btn"></div>
        这是打开的对话窗口
+       <input/>
        {/* <div style={this.state.dialog_show===true?{}:{display:"none"}} onClick={this.dialogShow.bind(this)} className="modal_backdrop"></div> */}
        {/* <div className="dialog_window"></div> */}
        </div>

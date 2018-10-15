@@ -12,10 +12,12 @@ import { getData, getRouter } from '../../utils/helpers'
         project_index_add = (list_message,before_api_uri)=>{
             var key_name = [];
             var value = [];
+            if(this.props.dataId){
+                value.push("header_id")
+                key_name.push(this.props.dataId)
+            }
             for (var i = 0; i < list_message.length; i++) {
                 if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"){
-                    value.push("header_id")
-					key_name.push(this.props.dataId)
                     value.push(list_message[i].id_name+"_name")
                     key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
                     value.push(list_message[i].id_name+"_id")

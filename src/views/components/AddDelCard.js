@@ -4,6 +4,7 @@
      */
 import React, { Component } from 'react'
 import DisTextField from './DisTextField'
+import Alert from './Alert'
 //import TextMoney from './TextMoney'
 //import ListText from '../components/ListText'
 // import TextDatetime from './TextDatetime'
@@ -16,7 +17,8 @@ import DisTextField from './DisTextField'
 class AddDelCard extends Component {
     state = {
         cardList: this.props.cardList,
-        edit_card_state:false
+        edit_card_state:false,
+        alertState:false //弹出框的状态
     }
     render() {
         return (
@@ -35,6 +37,7 @@ class AddDelCard extends Component {
                 })}          
                 <button className="label_delete_button"
                         onClick={()=>{
+                            
                             console.log(this.props.messageList)
                                 }}
                 >删除</button>
@@ -46,6 +49,7 @@ class AddDelCard extends Component {
                                 // })
                                     }}
                 >编辑</button>
+                <Alert alertState={this.state.alertState}/>
             </li>
         )
     }

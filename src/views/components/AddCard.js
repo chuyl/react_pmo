@@ -41,12 +41,16 @@
         project_index_add = (list_message,before_api_uri)=>{
             var key_name = [];
             var value = [];
+            if(this.props.conditionAction.id){
+                value.push("id")
+                key_name.push(this.props.conditionAction.id)
+            }
+            if(this.props.conditionAction.header_id){
+                value.push("header_id")
+                key_name.push(this.props.conditionAction.header_id)
+            }
             for (var i = 0; i < list_message.length; i++) {
                 if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"){
-                    value.push("id")
-                    key_name.push(this.props.conditionAction.id)
-                    value.push("header_id")
-                    key_name.push(this.props.conditionAction.header_id)
                     value.push(list_message[i].id_name+"_name")
                     key_name.push(document.getElementById(list_message[i].id_name+this.props.conditionAction.id+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+this.props.conditionAction.id+"_name").innerHTML)
                     value.push(list_message[i].id_name+"_id")
@@ -103,6 +107,7 @@
                                 :card_list.type_name==="SelectList"?
                                     <SelectList id={card_list.id_name+this.props.conditionAction.id}
                                         labelValue={card_list.title}
+                                        searchInfoLists={card_list.before_api_uri}
                                         selectedIdInfo={this.props.conditionAction[card_list.id_name+"_id"]?this.props.conditionAction[card_list.id_name+"_id"]:"-选择-"} 
                                         selectedInfo={this.props.conditionAction[card_list.id_name+"_name"]?this.props.conditionAction[card_list.id_name+"_name"]:"-选择-"}  />
                                 : ""}

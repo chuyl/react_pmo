@@ -1428,7 +1428,9 @@ html, body {
     background: linear-gradient(to bottom right, #3f435e, #4b567f); }
 
   .paper_div {
-    width: 100%; }
+    width: 100%;
+    position: fixed;
+    margin-left: 0; }
 
   .card_box {
     margin: 0;
@@ -1449,6 +1451,7 @@ html, body {
     width: 100%;
     position: fixed;
     top: 0;
+    height: 95vh;
     background: linear-gradient(to bottom right, #3f435e, #4b567f);
     /* height: 600px; js浠ｆ浛 */
     left: 0;
@@ -1796,6 +1799,32 @@ html, body {
     height: 84vh;
     overflow-y: auto;
     padding: 0 18px; } }
+.alert_back {
+  width: 0;
+  height: 0; }
+
+.alert_box {
+  width: 0;
+  height: 0;
+  overflow: hidden; }
+
+.alert_box.open {
+  width: 400px;
+  height: 300px;
+  background-color: #fff;
+  margin: auto; }
+
+.alert_back.open {
+  position: fixed;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.28); }
+
 .text_field_div {
   display: block;
   width: 100%;

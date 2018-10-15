@@ -94,7 +94,7 @@ class ComponentsList extends Component {
                             : form_list.type_name === "MutiText" ? 
                                 <TextField 
                                     id={form_list.id_name} 
-                                    inputValue={this.props.componentsdata[form_list.id_name]!==null?this.props.componentsdata[form_list.id_name]:""} 
+                                    inputValue={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""} 
                                     labelValue={form_list.title} 
                                 />
                             :form_list.type_name === "DisTextField"?
@@ -121,8 +121,8 @@ class ComponentsList extends Component {
                                     id={form_list.id_name}
                                     labelValue={form_list.title}
                                     searchInfoLists={form_list.before_api_uri} 
-                                    selectedIdInfo={this.props.componentsdata[form_list.id_name+"_id"]?this.props.componentsdata[form_list.id_name+"_id"]:"-选择-"} 
-                                    selectedInfo={this.props.componentsdata[form_list.id_name+"_name"]?this.props.componentsdata[form_list.id_name+"_name"]:"-选择-"} 
+                                    selectedIdInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_id"]:"-选择-"} 
+                                    selectedInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_name"]:"-选择-"} 
                                 /> 
                             : form_list.type_name === "TextMoney" ? 
                                 <TextMoney

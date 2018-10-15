@@ -65,7 +65,7 @@ class SelectList extends Component {
                         className={this.state.search_state ? "search_info_list open" : "search_info_list"}
                     >
                         <ul className="search_info_list_ul select_info_list_ul">
-                            {this.state.searchInfoLists.map((info_lists) => {
+                            {this.state.searchInfoLists?this.state.searchInfoLists.map((info_lists) => {
                                 return (
                                     <li onClick={(e) => {
                                         document.getElementById(id+"_name").innerHTML = info_lists.name;
@@ -73,7 +73,7 @@ class SelectList extends Component {
                                         this.searchShow()
                                     }} key={info_lists.id}>{info_lists.name}</li>
                                 )
-                            })}
+                            }):""}
                         </ul>
                     </div>
                 </div>

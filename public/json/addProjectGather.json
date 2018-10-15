@@ -3,7 +3,7 @@
         "form-temp-name": "新建项目集",
         "form-list": [{
             "id_name": "add_project_gather_charge",
-            "type_name": "ProjectGather",
+            "type_name": "SelectList",
             "key": "",
             "title": "销售负责人",
             "tip": "",

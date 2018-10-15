@@ -10,45 +10,81 @@ function logout() {
  * @param {*} callback 
  * @param {*} args 
  */
-export function getData(router, json, callback = null, args = {}) {
-    let e = new Event("loading");
-    dispatchEvent(e);
-    fetch(router.url, {
-      method: 'POST',
-      mode: 'cors',
-      cache: 'default',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www.form-urlencoded'
-      },
-      body: JSON.stringify(json)
-    }).then(function status(response) {
-      let e = new Event("dataOnload");
+// export function getRemoteData(router, json, callback = null, args = {}) {
+  
+//   }
+  export function getData(router, json, callback = null, args = {}) {
+      let e = new Event("loading");
       dispatchEvent(e);
-      if (response.status >= 200 && response.status < 300) {
-        return Promise.resolve(response);
-      }
-      else {
-        return Promise.reject(new Error(response.statusText));
-      }
-    }).then(function (response) {
-      return response.json();
-    }).then(function (data) {
-      if (callback !== null) {
-        if (data.code === 10099) {
-          logout();
+      fetch(router.url, {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'default',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www.form-urlencoded'
+        },
+        body: JSON.stringify(json)
+      }).then(function status(response) {
+        let e = new Event("dataOnload");
+        dispatchEvent(e);
+        if (response.status >= 200 && response.status < 300) {
+          return Promise.resolve(response);
         }
-        callback(router, data, args);
-      }
-      return data;
-    }).catch(function (e) {
-      console.log(e);
-      console.log("调用" + router.url + "接口出错");
-    });
-    return
-  }
+        else {
+          return Promise.reject(new Error(response.statusText));
+        }
+      }).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        if (callback !== null) {
+          if (data.code === 10099) {
+            logout();
+          }
+          callback(router, data, args);
+        }
+        return data;
+      }).catch(function (e) {
+        console.log(e);
+        console.log("调用" + router.url + "接口出错");
+      });
+      return
+    }
+  export function getLocalData(router, json, callback = null, args = {}) {
+      let e = new Event("loading");
+      dispatchEvent(e);
+      fetch(router.url)
+        .then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        if (callback !== null) {
+          if (data.code === 10099) {
+            logout();
+          }
+          callback(router, data, args);
+        }
+        return data;
+      }).catch(function (e) {
+        console.log(e);
+        console.log("调用" + router.url + "接口出错");
+      });
+      return
+    }
 export function getRouter(key) {
-    var router = JSON.parse(sessionStorage.getItem(key));
+    //  var router = JSON.parse(sessionStorage.getItem(key));
+    // if(router===null){
+    //   var router = {url:"../data/projectManagement/TrainingProject/"+key+".json"}
+    //   return router === null ? { url: config.routers } : router;
+    // }else{
+    //   if(router.version<1){
+    //     var router = {url:"../data/projectManagement/TrainingProject/"+key+".json"}
+    //     return router === null ? { url: config.routers } : router;
+    //   }else{
+    //     var router = JSON.parse(sessionStorage.getItem(key));
+    //     return router === null ? { url: config.routers } : router;
+    //   }
+    // }
+  var router = JSON.parse(sessionStorage.getItem(key));
   //  return router ===  router;
      return router === null ? { url: config.routers } : router;
   }
