@@ -84,24 +84,28 @@ for(var x=0;x<lang.length;x++){
       try {
         
         if (message.error === 0) {
-          // for(var key in message.data.routelist){
-          //   for(var localkey in local){
-          //    if(key===localkey){
-          //      console.log("有相同的接口")
-          //      if(message.data.routelist.version<1){
-          //         sessionStorage.setItem(localkey, JSON.stringify(local[localkey]));
-          //      }else{
-          //         sessionStorage.setItem(key, JSON.stringify(message.data.routelist[key]));
-          //      }
-          //    }else{
-          //         sessionStorage.setItem(localkey, JSON.stringify(local[localkey]));
-          //    }
-          //   }
-          //  }
-          for (var key in message.data.routelist) {
-            console.log(JSON.stringify(message.data.routelist[key]).url)
-            sessionStorage.setItem(key, JSON.stringify(message.data.routelist[key]));
-          }
+          for(var localkey in local){
+            for(var key in message.data.routelist){
+             if(key===localkey){
+               console.log("有相同的接口")
+               console.log(key)
+               if(message.data.routelist.version<1){
+                 console.log(local)
+                  sessionStorage.setItem(localkey, JSON.stringify(local[localkey]));
+               }else{
+                console.log(message.data.routelist[key])
+                  sessionStorage.setItem(key, JSON.stringify(message.data.routelist[key]));
+               }
+             }
+             if(key!==localkey){
+              sessionStorage.setItem(key, JSON.stringify(message.data.routelist[key]));
+             }
+            }
+           }
+          // for (var key in message.data.routelist) {
+          //   //console.log(JSON.stringify(message.data.routelist[key]))
+          //   sessionStorage.setItem(key, JSON.stringify(message.data.routelist[key]));
+          // }
        //   var img_url = getRouter("creat_checkcode").url;
        //   console.log(img_url)
          

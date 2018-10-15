@@ -92,6 +92,8 @@ class TrainingProgram extends Component {
 	}
 	listProject(){
 		var cb = (route, message, arg) => {
+
+			console.log(message)
 			if (message.code === 0) {
 				this.setState({
 					card_list:message.data

@@ -1,7 +1,7 @@
 var local = {
                 "project_type_list":{"url":"../data/project_type_list.json","version":"1"},
                 "project_type_add":{"url":"../data/project_type_add.json","version":"1"},
-                "project_manage_list":{"url":"../data/project_manage_list.json","version":"1"},
+                "listProject":{"url":"../data/project_manage_list.json","version":"1"},
                 "project_manage_add":{"url":"../data/project_manage_add.json","version":"1"},
                 "project_data_edit":{"url":"../data/project_data_edit.json","version":"1"},
                 "staff_manage_list":{"url":"../data/staff_manage_list.json","version":"1"},

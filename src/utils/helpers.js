@@ -10,12 +10,23 @@ function logout() {
  * @param {*} callback 
  * @param {*} args 
  */
-// export function getRemoteData(router, json, callback = null, args = {}) {
-  
-//   }
   export function getData(router, json, callback = null, args = {}) {
       let e = new Event("loading");
       dispatchEvent(e);
+      router.url.indexOf(".json")!==-1?fetch(router.url).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        if (callback !== null) {
+          if (data.code === 10099) {
+            logout();
+          }
+          callback(router, data, args);
+        }
+        return data;
+      }).catch(function (e) {
+        console.log(e);
+        console.log("调用" + router.url + "接口出错");
+      }):
       fetch(router.url, {
         method: 'POST',
         mode: 'cors',
@@ -50,40 +61,8 @@ function logout() {
       });
       return
     }
-  export function getLocalData(router, json, callback = null, args = {}) {
-      let e = new Event("loading");
-      dispatchEvent(e);
-      fetch(router.url)
-        .then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        if (callback !== null) {
-          if (data.code === 10099) {
-            logout();
-          }
-          callback(router, data, args);
-        }
-        return data;
-      }).catch(function (e) {
-        console.log(e);
-        console.log("调用" + router.url + "接口出错");
-      });
-      return
-    }
+  
 export function getRouter(key) {
-    //  var router = JSON.parse(sessionStorage.getItem(key));
-    // if(router===null){
-    //   var router = {url:"../data/projectManagement/TrainingProject/"+key+".json"}
-    //   return router === null ? { url: config.routers } : router;
-    // }else{
-    //   if(router.version<1){
-    //     var router = {url:"../data/projectManagement/TrainingProject/"+key+".json"}
-    //     return router === null ? { url: config.routers } : router;
-    //   }else{
-    //     var router = JSON.parse(sessionStorage.getItem(key));
-    //     return router === null ? { url: config.routers } : router;
-    //   }
-    // }
   var router = JSON.parse(sessionStorage.getItem(key));
   //  return router ===  router;
      return router === null ? { url: config.routers } : router;
