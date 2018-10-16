@@ -52,7 +52,7 @@
 	 */
     listGroup(){
         var cb = (route, message, arg) => {
-            if (message.code === 0) {
+            if (message.error === 0) {
                 this.setState({
                     view_list:message.data
                 })
@@ -69,7 +69,7 @@
 	 */
         del_group_button(id){
             var cb = (route, message, arg) => {
-                if (message.code === 0) {
+                if (message.error === 0) {
                     this.setState({
                         add_card_state:false,
                         alertState:false

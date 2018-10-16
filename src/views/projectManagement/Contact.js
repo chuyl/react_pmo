@@ -26,7 +26,7 @@ class Contact extends Component {
 	  logins = () => {
 		var cb = (route, message, arg) => {
 		  
-		  if (message.code === 0) {
+		  if (message.error === 0) {
 		    this.setState({
 				list:message.data
 			})

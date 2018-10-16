@@ -34,6 +34,7 @@ class Card extends Component {
 	// 	}
     //   }
       handleClick=(formData)=>{
+          console.log(formData)
         var newState = {
             add_button:formData.add_button,
             data:formData.data,

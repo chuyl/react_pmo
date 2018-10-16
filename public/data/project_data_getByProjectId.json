@@ -1,0 +1,33 @@
+{
+    "data": [{
+			    "id":"94",
+				"project_customer_name":"客户44444",
+				"project_days":"2018-05-01",
+				"project_gather_name":"项目集1",
+				"project_gather_id":"1",
+				"project_name":"",
+				"project_person_in_charge_name":"负责人1",
+				"project_person_in_charge_id":"1",
+				"project_project_template_name":"公共培训部",
+				"project_project_template_id":"1",
+				"project_training_ares":"中软大厦",
+				"project_training_numbers":"1"
+			}, {
+				"id":"93",
+				"project_customer_name":"客户44444",
+				"project_days":"2018-05-01",
+				"project_gather_name":"项目集1",
+				"project_gather_id":"1",
+				"project_name":"",
+				"project_person_in_charge_name":"负责人1",
+				"project_person_in_charge_id":"1",
+				"project_project_template_name":"公共培训部",
+				"project_project_template_id":"1",
+				"project_training_ares":"中软大厦",
+				"project_training_numbers":"1"
+			}
+        ],
+    "code":0,
+    "error":0,
+    "msg":"查询成功"
+}

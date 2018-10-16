@@ -262,7 +262,7 @@ class TrainingProgram extends Component {
 			obj[value[j]] =key_name[j];
 		}
 		var cb = (route, message, arg) => {
-			if (message.code === 0) {
+			if (message.error === 0) {
 				this.setState({    //  项目创建成功,打开编辑页面。更新view
 					card_state:false
 				}) 

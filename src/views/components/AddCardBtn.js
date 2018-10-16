@@ -33,7 +33,7 @@ import { getData, getRouter } from '../../utils/helpers'
                 obj[value[j]] =key_name[j];
             }
             var cb = (route, message, arg) => {
-                if (message.code === 0) {
+                if (message.error === 0) {
                     this.setState({
                         add_card_state:false
                     })

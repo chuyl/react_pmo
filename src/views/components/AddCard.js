@@ -24,7 +24,7 @@
 	 */
         listGroup(){
             var cb = (route, message, arg) => {
-                if (message.code === 0) {
+                if (message.error === 0) {
                     this.setState({
                         card_list:message.data
                     })
@@ -66,7 +66,7 @@
                 obj[value[j]] =key_name[j];
             }
             var cb = (route, message, arg) => {
-                if (message.code === 0) {
+                if (message.error === 0) {
                     this.setState({
                         card_state:false
                     })

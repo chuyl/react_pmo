@@ -259,7 +259,7 @@ class ListTextSearchLink extends Component {
      */
     infos() {
         var cb = (route, message, arg) => {
-            if (message.code === 0) {
+            if (message.error === 0) {
                 this.setState({
                     searchInfoLists: message.data,
                     info_lists:message.data

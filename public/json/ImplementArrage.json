@@ -87,7 +87,7 @@
                     "tip": "",
                     "add_button": {},
                     "descript": "",
-                    "before_api_uri": "",
+                    "before_api_uri": "implement_plan_edit",
                     "after_api_uri": ""
                 }
             ]

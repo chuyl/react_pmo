@@ -22,7 +22,7 @@ class DepartmentList extends Component {
     }
     infos(){
         var cb = (route, message, arg) => {
-            if (message.code === 0) {
+            if (message.error === 0) {
                 this.setState({
                     searchInfoLists:message.data
                    })
@@ -32,7 +32,7 @@ class DepartmentList extends Component {
     }
     departmentinfos(){
         var cb = (route, message, arg) => {
-            if (message.code === 0) {
+            if (message.error === 0) {
                 this.setState({
                     departmentLists:message.data
                    })

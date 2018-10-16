@@ -81,7 +81,7 @@
     }
     message_list(){
         var cb = (route, message, arg) => {
-			if (message.code === 0) {
+			if (message.error === 0) {
 				this.setState({
 					linkListCard:message.data
 				})

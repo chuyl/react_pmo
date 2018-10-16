@@ -149,7 +149,7 @@ class Budget extends Component {
 			obj[value[j]] =key_name[j];
 		}
 		var cb = (route, message, arg) => {
-			if (message.code === 0) {
+			if (message.error === 0) {
 			}
 		}
 		getData(getRouter(BUDGETINDEXADD), obj, cb, {});
