@@ -77,32 +77,51 @@ for(var x=0;x<lang.length;x++){
 }
 }
   getRoutes = () => {
-     console.log(local)
+   
     var cb = (route, message, arg) => {
-       
+      var local_remote={};
+      for(var localkey in local){
+        local_remote[localkey]=local[localkey]
+      }
+      for(var key in message.data.routelist){
+        if(message.data.routelist[key].version>=1.0){
+          local_remote[key]=message.data.routelist[key]
+        }
+        
+      }
+      
+      console.log(local_remote)
+      // for(var local_remote_key_1 in local_remote){
+      //   for(var local_remote_key_2 in local_remote){
+      //   console.log(local_remote_key_2)
+      //   }
+      // }
+      // for(var key in message.data.routelist){
+      //  if(message.data.routelist[key].version>=1.0){
+      //    console.log(message.data.routelist[key])
+      //    local_remote[key]=message.data.routelist[key];
+      //  }
+      
+      //  }
+      //  console.log(local_remote)
+      //  for(var localkey in local){
+      //  for(var local_remote_key in local_remote){
+        
+          
+      //        if(local_remote_key===localkey){
+      //          console.log(localkey)
+      //       // local_remote[localkey]=local[localkey];
+      //      }
+           
+      //    }
+      // }
 
       try {
         
         if (message.error === 0) {
-          for(var localkey in local){
-            for(var key in message.data.routelist){
-             if(key===localkey){
-               console.log("有相同的接口")
-               console.log(message.data.routelist[key].version)
-               if(message.data.routelist[key].version<1.0){
-                 console.log(localkey+JSON.stringify(local[localkey]))
-                  sessionStorage.setItem(localkey, JSON.stringify(local[localkey]));
-               }
-               if(message.data.routelist[key].version>=1.0){
-                console.log(message.data.routelist[key])
-                  sessionStorage.setItem(key, JSON.stringify(message.data.routelist[key]));
-               }
-             }
-             if(key!==localkey){
-              sessionStorage.setItem(localkey, JSON.stringify(local[localkey]));
-             }
-            }
-           }
+          for(var sessionkey in local_remote){
+            sessionStorage.setItem(sessionkey, JSON.stringify(local_remote[sessionkey]));
+          }
           // for (var key in message.data.routelist) {
           //   //console.log(JSON.stringify(message.data.routelist[key]))
           //   sessionStorage.setItem(key, JSON.stringify(message.data.routelist[key]));

@@ -11,7 +11,7 @@ import ComponentsList from '../components/ComponentsList'
 //import TextDatetime from '../components/TextDatetime'
 //import BudgetListTextSearchLink from './BudgetListTextSearchLink'
 import { getData, getRouter } from '../../utils/helpers'
-import {LISTPROJECT} from '../../enum'
+import {PROJECTMANAGELIST} from '../../enum'
 //import PropTypes from 'prop-types'; 
 
 class TrainingProgram extends Component {
@@ -93,14 +93,15 @@ class TrainingProgram extends Component {
 	listProject(){
 		var cb = (route, message, arg) => {
 
-			console.log(message)
-			if (message.code === 0) {
+			
+			if (message.error === 0) {
 				this.setState({
 					card_list:message.data
 				})
+
 			}
 		}
-		getData(getRouter(LISTPROJECT), { token: "tnkGNc" }, cb, {});
+		getData(getRouter(PROJECTMANAGELIST), { token: "tnkGNc" }, cb, {});
 
 	}
 	fetchListData() {
