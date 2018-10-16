@@ -88,17 +88,18 @@ for(var x=0;x<lang.length;x++){
             for(var key in message.data.routelist){
              if(key===localkey){
                console.log("有相同的接口")
-               console.log(key)
-               if(message.data.routelist.version<1){
-                 console.log(local)
+               console.log(message.data.routelist[key].version)
+               if(message.data.routelist[key].version<1.0){
+                 console.log(localkey+JSON.stringify(local[localkey]))
                   sessionStorage.setItem(localkey, JSON.stringify(local[localkey]));
-               }else{
+               }
+               if(message.data.routelist[key].version>=1.0){
                 console.log(message.data.routelist[key])
                   sessionStorage.setItem(key, JSON.stringify(message.data.routelist[key]));
                }
              }
              if(key!==localkey){
-              sessionStorage.setItem(key, JSON.stringify(message.data.routelist[key]));
+              sessionStorage.setItem(localkey, JSON.stringify(local[localkey]));
              }
             }
            }
