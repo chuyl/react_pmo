@@ -87,7 +87,6 @@ class TrainingProgram extends Component {
 	componentWillMount() {
 		this.listProject()
 		this.fetchListData()
-		this.fetchProjectListData()//项目列表
 
 	}
 	listProject(){
@@ -112,18 +111,6 @@ class TrainingProgram extends Component {
 					projectCard: data.data["card-list"],
 					form_temp_name:data.data["form-temp-name"],
 
-				})
-			})
-			.catch(e => {
-				console.log("error")
-			})
-	}
-	fetchProjectListData() {
-		fetch('../data/Project.json')
-			.then(response => response.json())
-			.then(data => {
-				this.setState({
-					projectList:data
 				})
 			})
 			.catch(e => {
@@ -178,20 +165,6 @@ class TrainingProgram extends Component {
 			document.getElementById("card_box").setAttribute("style", " ");
 		}
 	}
-	// editComponents = () => {
-	// 	console.log(this.state.edit_project_data.id)
-    //     var components = []
-    //         components.push(
-	// 			<div key={this.state.edit_project_data.id===undefined?"addComponents":this.state.edit_project_data.id} id="editComponents">
-	// 				 < ComponentsList componentslist =  {this.state.add_button} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
-	// 					<button  onClick={()=>{
-	// 						this.project_index_add(this.state.add_button)
-	// 					}} className="hold_btn">保存</button>
-	// 			</div>				
-    //             )
-        
-    //     return components
-	// }
 	/** 
 	 * @time 2018-09-27
 	 * @author xuesong
@@ -262,15 +235,25 @@ class TrainingProgram extends Component {
 			obj[value[j]] =key_name[j];
 		}
 		var cb = (route, message, arg) => {
-			if (message.error === 0) {
-				this.setState({    //  项目创建成功,打开编辑页面。更新view
-					card_state:false
-				}) 
-				this.listProject()
+			if(newState.before_api_uri==="project_manage_add"){
+				if (message.error === 0) {
+					console.log(message.data.id)//项目创建成功,生成的id
+					this.setState({    //  项目创建成功,打开编辑页面。更新view
+						dataId:message.data.id,
+					}) 
 			}
+			
 		}
+		// if (message.error === 0) {
+		// 	this.setState({    //  项目创建成功,打开编辑页面。更新view
+		// 		card_state:false
+		// 	}) 
+		// 	//this.listProject()  //刷新项目列表
+		// }
+	}
 		getData(getRouter(newState.before_api_uri), {data:obj,token:"tnkGNc"}, cb, {});
 	  }
+	
 	render() {
 		return(
 			<div>
