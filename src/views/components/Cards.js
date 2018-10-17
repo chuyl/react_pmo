@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Link from './Link'
 import LabelMessage from './LabelMessage'
+import LabelSelectMessage from './LabelSelectMessage'
 import CardGroup from './CardGroup'
 class Card extends Component {
     state={
@@ -64,6 +65,12 @@ class Card extends Component {
                                     id={form_list.id_name} 
                                     labelValue={form_list.title} 
                                     message={this.props.card_list[form_list.id_name]?this.props.card_list[form_list.id_name]:""} 
+                                />
+                            :form_list.type_name === "LabelSelectMessage"?
+                                <LabelSelectMessage
+                                    id={form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    message={this.props.card_list[form_list.id_name+"_name"]?this.props.card_list[form_list.id_name+"_name"]:""} 
                                 />
                             :form_list.type_name==="CardGroup"?
                                 <CardGroup 

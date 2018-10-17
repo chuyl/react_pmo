@@ -17,7 +17,6 @@ class SelectList extends Component {
         before_api_uri: this.props.searchInfoLists,
         searchInfoLists: [],
         info_lists: this.props.searchInfoLists,
-        info_state: ""              //select是否为“-选择-”
     }
     /** 
      * @author xuesong

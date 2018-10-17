@@ -289,17 +289,26 @@ class ListTextSearchLink extends Component {
      * @param fetchData 函数名  获取本地编辑项目json
      */
     fetchData() {
-		fetch('../json/'+this.state.add_uri_button+'.json')
-			.then(response => response.json())
-			.then(data => {
-               
-				this.setState({
-					add_button: data.adit_project.data["form-list"],
+        var cb = (route, message, arg) =>  {
+			if (message.code===0) {
+				this.setState( {
+                    add_button: message.adit_project.data["form-list"],
 				})
-			})
-			.catch(e => {
-				console.log("error")
-			})
+			}
+        }
+        getData(getRouter(this.state.add_uri_button),  {token:"tnkGNc"}, cb,  {});
+         
+		// fetch('../json/'+this.state.add_uri_button+'.json')
+		// 	.then(response => response.json())
+		// 	.then(data => {
+               
+		// 		this.setState({
+		// 			add_button: data.adit_project.data["form-list"],
+		// 		})
+		// 	})
+		// 	.catch(e => {
+		// 		console.log("error")
+		// 	})
     }
     /** 
      * @author xuesong

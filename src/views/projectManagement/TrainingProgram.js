@@ -87,7 +87,7 @@ class TrainingProgram extends Component {
 	componentWillMount() {
 		this.listProject()
 		this.fetchListData()
-
+        this.fetchProjectDataList()
 	}
 	listProject(){
 		var cb = (route, message, arg) => {
@@ -104,37 +104,37 @@ class TrainingProgram extends Component {
 
 	}
 	fetchListData() {
-		fetch('../json/ProjectCard.json')
-			.then(response => response.json())
-			.then(data => {
+		var cb = (route, message, arg) => {
+			if (message.error === 0) {
 				this.setState({
-					projectCard: data.data["card-list"],
-					form_temp_name:data.data["form-temp-name"],
-
+					projectCard: message.data["card-list"],
+		 			form_temp_name:message.data["form-temp-name"],
 				})
-			})
-			.catch(e => {
-				console.log("error")
-			})
+
+			}
+		}
+		getData(getRouter("ProjectCard"), { token: "tnkGNc" }, cb, {});
+	}
+	fetchProjectDataList() {
+		var cb = (route, message, arg) => {
+		}
+		getData(getRouter("Project"), { token: "tnkGNc" }, cb, {});
 	}
 	/** 
 	 * @author xuesong
 	 * @param card_box_close 函数  关闭paper
 	 */
-	fetchProjectData() {
-		fetch('../json/AddProject.json')
-			.then(response => response.json())
-			.then(data => {
-               
+	fetchProjectData(url) {
+		var cb = (route, message, arg) => {
+			if (message.error === 0) {
 				this.setState({
-					add_button: data.data["form-list"],
-					form_temp_name:data.data["form-temp-name"],
-
+					add_button: message.data["form-list"],
+					form_temp_name:message.data["form-temp-name"],
 				})
-			})
-			.catch(e => {
-				console.log("error")
-			})
+
+			}
+		}
+		getData(getRouter(url), { token: "tnkGNc" }, cb, {});		
 	}
 
 	/** 
@@ -234,22 +234,23 @@ class TrainingProgram extends Component {
 		for(var j=0;j<value.length;j++){
 			obj[value[j]] =key_name[j];
 		}
+		// componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data
 		var cb = (route, message, arg) => {
 			if(newState.before_api_uri==="project_manage_add"){
 				if (message.error === 0) {
+					this.fetchProjectData("editProject")
 					console.log(message.data.id)//项目创建成功,生成的id
 					this.setState({    //  项目创建成功,打开编辑页面。更新view
 						dataId:message.data.id,
 					}) 
 			}
 			
-		}
-		// if (message.error === 0) {
-		// 	this.setState({    //  项目创建成功,打开编辑页面。更新view
-		// 		card_state:false
-		// 	}) 
-		// 	//this.listProject()  //刷新项目列表
-		// }
+			}else{
+					this.setState({    //  项目创建成功,打开编辑页面。更新view
+					card_state:false
+				}) 
+				this.listProject()  //刷新项目列表
+			}
 	}
 		getData(getRouter(newState.before_api_uri), {data:obj,token:"tnkGNc"}, cb, {});
 	  }
@@ -259,7 +260,7 @@ class TrainingProgram extends Component {
 			<div>
 				<div id="" className="container">
 					<div className="add_button" onClick={(e) => {
-						this.fetchProjectData()
+						this.fetchProjectData("AddProject")
 						this.card_box_concent([], e)
 						this.setState({
 							edit_project_data:[],

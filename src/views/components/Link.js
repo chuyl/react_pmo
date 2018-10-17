@@ -26,17 +26,25 @@
          * @param fetchData 函数名  获取本地编辑项目json
          */
         fetchData=()=> {
-            fetch('../json/' + this.state.linkpage + '.json')
-                .then(response => response.json())
-                .then(data =>  {
-                    this.setState( {
-                        add_button:data.data["form-list"], 
-                    })
+            // fetch('../json/' + this.state.linkpage + '.json')
+            //     .then(response => response.json())
+            //     .then(data =>  {
+            //         this.setState( {
+            //             add_button:data.data["form-list"], 
+            //         })
                     
-                })
-                .catch(e =>  {
-                    console.log("error")
-                })
+            //     })
+            //     .catch(e =>  {
+            //         console.log("error")
+            //     })
+            var cb = (route, message, arg) => {
+                if (message.error === 0) {
+                    this.setState({
+                        add_button:message.data["form-list"], 
+                    })
+                }
+            }
+            getData(getRouter(this.state.linkpage), { token: "tnkGNc" }, cb, {});
         }
         /** 
         * @author xuesong
@@ -69,28 +77,42 @@
         }
 		getData(getRouter(this.props.messageList),  {token:"tnkGNc", project_id:this.props.isClick }, cb,  {}); 
     }
+    /** 
+	 * @time 2018-10-16
+	 * @author xuesong
+	 * @param handleClick 函数 点击link组件获取视图和对应的数据
+	 */
     handleClick=()=>{
-        fetch('../json/' + this.props.linkpage + '.json')
-        .then(response => response.json())
-        .then(data =>  {
-            var cb = (route, message, arg) =>  {
-                if (message.error === 0) {
-                    console.log(message.data)
-                    var newState = {
-                        add_button:data.data["form-list"]?data.data["form-list"]:[],
-                        form_temp_name:data.data["form-temp-name"],
-                        data:message.data?message.data:"",
-                        dataId:this.props.dataId
-                       }
+        var cb = (route, message, arg) =>  {
+            if (message.error === 0) {
+                var cb = (route, messages, arg) =>  {
+                    if (messages.error === 0) {
+                        console.log(message.data)
+                        var newState = {
+                            add_button:message.data["form-list"]?message.data["form-list"]:[],
+                            form_temp_name:message.data["form-temp-name"],
+                            data:messages.data?messages.data:"",
+                            dataId:this.props.dataId
+                           }
+                    }
+                    this.props.onChange(newState);
                 }
-                this.props.onChange(newState);
+                //获取数据接口
+                getData(getRouter(this.props.messageList),  {token:"tnkGNc", id:this.props.dataId }, cb,  {}); 
             }
-            getData(getRouter(this.props.messageList),  {token:"tnkGNc", id:this.props.dataId }, cb,  {}); 
-           
-        })
-        .catch(e =>  {
-            console.log("error")
-        })
+        }
+        //获取视图接口
+        getData(getRouter(this.props.linkpage),  {token:"tnkGNc"}, cb,  {}); 
+        
+    }
+    /** 
+	 * @time 2018-10-16
+	 * @author xuesong
+	 * @param handlegetByProjectId 函数 点击link组件获取数据
+	 */
+    handlegetByProjectId = ()=>{
+       
+
     }
     render() {
             const {button} = this.props

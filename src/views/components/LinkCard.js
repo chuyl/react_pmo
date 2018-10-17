@@ -45,18 +45,14 @@
          * @param fetchData 函数名  获取本地编辑项目json
          */
         fetchData() {
-            fetch('../json/'+this.state.linkpage+'.json')
-                .then(response => response.json())
-                .then(data => {
-                   console.log(data.data["form-list"])
+            var cb = (route, message, arg) => {
+                if (message.error === 0) {
                     this.setState({
-                        add_button: data.data["form-list"],
+                        add_button:message.data["form-list"], 
                     })
-                    
-                })
-                .catch(e => {
-                    console.log("error")
-                })
+                }
+            }
+            getData(getRouter(this.state.linkpage), { token: "tnkGNc" }, cb, {});    
         }
         /** 
         * @author xuesong

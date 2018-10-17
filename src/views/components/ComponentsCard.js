@@ -14,6 +14,7 @@
    import Link from './Link'
    import CardGroup from './CardGroup'
    import LabelMessage from './LabelMessage'
+   import LabelSelectMessage from './LabelSelectMessage'
    import HoldBtn from './HoldBtn'
    import AddCardBtn from './AddCardBtn'
    import EditCardBtn from './EditCardBtn'
@@ -102,6 +103,12 @@
                                        id={form_list.id_name}
                                        labelValue={form_list.title} 
                                        message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                   />
+                                :form_list.type_name === "LabelSelectMessage"?
+                                   <LabelSelectMessage
+                                       id={form_list.id_name} 
+                                       labelValue={form_list.title} 
+                                       message={this.props.card_list[form_list.id_name+"_name"]?this.props.card_list[form_list.id_name+"_name"]:""} 
                                    />
                                :form_list.type_name==="DepartmentList"?
                                    <DepartmentList 

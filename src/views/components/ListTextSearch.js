@@ -27,18 +27,28 @@ class ListTextSearch extends Component {
      * @param fetchData 函数名  获取本地编辑项目json
      */
     fetchData() {
-		fetch('../json/'+this.state.add_uri_button+'.json')
-			.then(response => response.json())
-			.then(data => {
-               
-				this.setState({
-                    add_button: data.data["form-list"],
-                    form_temp_name: data.data["form-temp-name"],
+        var cb = (route, message, arg) =>  {
+			if (message.code===0) {
+				this.setState( {
+                    add_button: message.data["form-list"],
+                    form_temp_name: message.data["form-temp-name"],
 				})
-			})
-			.catch(e => {
-				console.log("error")
-			})
+			}
+        }
+        getData(getRouter(this.state.add_uri_button),  {token:"tnkGNc"}, cb,  {});
+         
+		// fetch('../json/'+this.state.add_uri_button+'.json')
+		// 	.then(response => response.json())
+		// 	.then(data => {
+               
+		// 		this.setState({
+        //             add_button: data.data["form-list"],
+        //             form_temp_name: data.data["form-temp-name"],
+		// 		})
+		// 	})
+		// 	.catch(e => {
+		// 		console.log("error")
+		// 	})
     }
      /** 
      * @author xuesong

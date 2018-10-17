@@ -48,34 +48,30 @@ class BudgetListTextSearchLink extends Component {
      * @param fetchData 函数名  获取本地编辑项目json
      */
     fetchData() {
-		fetch('../json/'+this.state.add_uri_button+'.json')
-			.then(response => response.json())
-			.then(data => {
-               
+        var cb = (route, message, arg) => {
+			if (message.error === 0) {
 				this.setState({
-					add_button: data.adit_project.data["form-list"],
+					add_button: message.adit_project.data["form-list"],
 				})
-			})
-			.catch(e => {
-				console.log("error")
-			})
+	
+			}
+		}
+			getData(getRouter(this.state.add_uri_button), { token: "tnkGNc" }, cb, {});
     }
     	/** 
 	 * @author xuesong
 	 * @param fetchMessageData 函数名  获取本地json数据内容
 	 */
 	fetchMessageData() {
-		fetch('../data/'+this.state.showData+'.json')
-			.then(response => response.json())
-			.then(data => {
-				this.setState({
-					edit_project_data: data
-				})
-
-			})
-			.catch(e => {
-				console.log("error")
-			})
+        var cb = (route, message, arg) => {
+            if (message.error === 0) {
+                this.setState({
+                    edit_project_data: message
+                })
+        
+            }
+        }
+         getData(getRouter(this.state.showData), { token: "tnkGNc" }, cb, {});
 	}
    /** 
      * @author xuesong

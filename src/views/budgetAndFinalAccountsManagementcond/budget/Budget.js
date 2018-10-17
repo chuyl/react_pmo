@@ -73,35 +73,32 @@ class Budget extends Component {
 	 */
 
 	fetchData() {
-		fetch('../json/budgetManage.json')
-			.then(response => response.json())
-			.then(data => {
-				this.setState({
-					budget_paper: data.budget_paper.data["form-list"],
-					teacher_form_list: data.budget_paper.data["teacher-form-list"],
-					form_temp_name: data.budget_paper.data["form-temp-name"],
-				})
-
-			})
-			.catch(e => {
-				console.log("error")
-			})
+			var cb = (route, message, arg) => {
+				if (message.error === 0) {
+					this.setState({
+						budget_paper: message.budget_paper.data["form-list"],
+						teacher_form_list: message.budget_paper.data["teacher-form-list"],
+						form_temp_name: message.budget_paper.data["form-temp-name"],
+					})
+	
+				}
+			}
+			getData(getRouter("budgetManage"), { token: "tnkGNc" }, cb, {});
 	}
 	/** 
 	 * @author xuesong
 	 * @param fetchMessageData 函数名  获取本地json数据内容
 	 */
 	fetchMessageData() {
-		fetch('../data/budgetManageData.json')
-			.then(response => response.json())
-			.then(data => {
-				this.setState({
-					budget_message_paper: data
-				})
-			})
-			.catch(e => {
-				console.log("error")
-			})
+			var cb = (route, message, arg) => {
+				if (message.error === 0) {
+					this.setState({
+						budget_message_paper: message
+					})
+	
+				}
+			}
+			getData(getRouter("budgetManageData"), { token: "tnkGNc" }, cb, {});
 	}
 	/** 
 	 * @author xuesong

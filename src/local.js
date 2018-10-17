@@ -29,6 +29,7 @@ var local = {
                 "travel_hotel_add":{"url":"../data/travel_hotel_add.json","version":"1.0"},//住宿费新增
                 "travel_hotel_edit":{"url":"../data/travel_hotel_edit.json","version":"1.0"},//住宿费修改
                 "travel_hotel_del":{"url":"../data/travel_hotel_del.json","version":"1.0"},//住宿费删除
+                "Project":{"url":"../data/Project.json","version":"1.0"},//住宿费删除
 
                    //视图
                 "AddProject":{"url":"../json/AddProject.json","version":"1.0"},//新建项目

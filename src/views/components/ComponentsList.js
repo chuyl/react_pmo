@@ -14,6 +14,7 @@ import LinkCard from './LinkCard'
 import Link from './Link'
 import CardGroup from './CardGroup'
 import LabelMessage from './LabelMessage'
+import LabelSelectMessage from './LabelSelectMessage'
 import HoldBtn from './HoldBtn'
 import AddCardBtn from './AddCardBtn'
 import EditCardBtn from './EditCardBtn'
@@ -109,6 +110,12 @@ class ComponentsList extends Component {
                                     labelValue={form_list.title} 
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
+                            :form_list.type_name === "LabelSelectMessage"?
+                                <LabelSelectMessage
+                                    id={form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    message={this.props.card_list[form_list.id_name+"_name"]?this.props.card_list[form_list.id_name+"_name"]:""} 
+                                />
                             :form_list.type_name==="DepartmentList"?
                                 <DepartmentList 
                                     id={form_list.id_name}
@@ -121,8 +128,8 @@ class ComponentsList extends Component {
                                     id={form_list.id_name}
                                     labelValue={form_list.title}
                                     searchInfoLists={form_list.before_api_uri} 
-                                    selectedIdInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_id"]:"-选择-"} 
-                                    selectedInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_name"]:"-选择-"} 
+                                    selectedIdInfo={this.props.componentsdata[form_list.id_name+"_id"]?this.props.componentsdata[form_list.id_name+"_id"]:"-选择-"} 
+                                    selectedInfo={this.props.componentsdata[form_list.id_name+"_name"]?this.props.componentsdata[form_list.id_name+"_name"]:"-选择-"} 
                                 /> 
                             : form_list.type_name === "TextMoney" ? 
                                 <TextMoney
