@@ -15,6 +15,8 @@ import Link from './Link'
 import CardGroup from './CardGroup'
 import LabelMessage from './LabelMessage'
 import LabelSelectMessage from './LabelSelectMessage'
+import CardHead from './CardHead'
+import CardItem from './CardItem'
 import HoldBtn from './HoldBtn'
 import AddCardBtn from './AddCardBtn'
 import EditCardBtn from './EditCardBtn'
@@ -41,20 +43,27 @@ class ComponentsList extends Component {
            }
        this.props.holdClick(newStates);//回调函数传递参数给父组件
     }
+    handleClick=(formData)=>{
+        console.log(formData)
+      var newState = {
+          add_button:formData.add_button,
+          data:formData.data,
+          dataId:formData.dataId,
+          form_temp_name:formData.form_temp_name
+      }
+      this.props.onChanges(newState);//回调函数传递参数给父组件
+  }
     render() {
         return (
-            <div>
-                {this.props.componentslist.map((form_list) => {
-                    if(form_list.type_name==="SelectList"){
-                        console.log(form_list)
-                        console.log(this.props.componentsdata)
-                    }
+                this.props.componentslist.map((form_list) => {
+                     console.log(this.props.componentslist)
                     return (
-                        <div key={form_list.id_name}>
-                            {form_list.type_name === "ListTextSearch" ?
+                      
+                            form_list.type_name === "ListTextSearch" ?
                                 <ListTextSearch id={form_list.id_name}
                                     addButton={form_list.add_button}
                                     labelValue={form_list.title}
+                                    key={form_list.id_name}
                                     searchInfoLists={form_list.before_api_uri}
                                     selectedIdInfo={this.props.componentsdata[form_list.id_name+"_id"]?this.props.componentsdata[form_list.id_name+"_id"]:"-选择-"} 
                                     selectedInfo={this.props.componentsdata[form_list.id_name+"_name"]?this.props.componentsdata[form_list.id_name+"_name"]:"-选择-"} 
@@ -63,12 +72,14 @@ class ComponentsList extends Component {
                                 <TextDatetime
                                     id={form_list.id_name} 
                                     inputValue={form_list.key}
+                                    key={form_list.id_name}
                                     //inputValue={this.props.componentsdata[form_list.id_name]} 
                                     labelValue={form_list.title} 
                                 />
                             : form_list.type_name === "TextDate" ? 
                                 <TextDate
                                     id={form_list.id_name} 
+                                    key={form_list.id_name}
                                     //inputValue={form_list.key}
                                     inputValue={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                     labelValue={form_list.title} 
@@ -77,6 +88,7 @@ class ComponentsList extends Component {
                                 <LinkCard   
                                     button={form_list.add_button.descript} 
                                     isClick={this.props.componentsdata.id} 
+                                    key={form_list.id_name}
                                     messageList={form_list.add_button.before_api_uri} 
                                     label={form_list.add_button.descript} 
                                     linkpage={form_list.before_api_uri}
@@ -84,49 +96,77 @@ class ComponentsList extends Component {
                                 />
                             :form_list.type_name === "Link"?
                                 <Link 
-                                    button={form_list.add_button.descript} 
-                                    handleClick = {this.props.handleClick}
-                                    id={form_list.id_name}
-                                    isClick={this.props.componentsdata.id}
-                                    label={form_list.add_button.descript} 
-                                    linkpage={form_list.before_api_uri}   
+                                    button={form_list.title}
+                                    buttonMessage={form_list}
+                                    dataId={this.props.componentsdata.id}
+                                    // isClick={this.props.card_list.id}
+                                    linkpage={form_list.before_api_uri}
+                                    key={form_list.id_name}
                                     messageList={form_list.add_button.before_api_uri}
-                                    title={form_list.title}
+                                    onChange = {this.handleClick}
                                 />
+                            //     <Link 
+                            //     button={form_list.add_button.descript} 
+                            //     handleClick = {this.props.handleClick}
+                            //     id={form_list.id_name}
+                            //     isClick={this.props.componentsdata.id}
+                            //     label={form_list.add_button.descript} 
+                            //     linkpage={form_list.before_api_uri}   
+                            //     messageList={form_list.add_button.before_api_uri}
+                            //     title={form_list.title}
+                            // />
                             : form_list.type_name === "MutiText" ? 
                                 <TextField 
                                     id={form_list.id_name} 
                                     inputValue={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""} 
                                     labelValue={form_list.title} 
+                                    key={form_list.id_name}
                                 />
                             : form_list.type_name === "Invisible" ? 
                                 <Invisible 
                                     id={form_list.id_name} 
                                     inputValue={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""} 
                                     labelValue={form_list.title} 
+                                    key={form_list.id_name}
                                 />
                             :form_list.type_name === "DisTextField"?
                                 <DisTextField
                                     id={form_list.id_name} 
                                     inputValue={this.props.componentsdata[form_list.id_name]!==null?this.props.componentsdata[form_list.id_name]:""} 
                                     labelValue={form_list.title} 
+                                    key={form_list.id_name}
                                 />
                             :form_list.type_name === "LabelMessage"?
                                 <LabelMessage
                                     id={form_list.id_name}
                                     labelValue={form_list.title} 
+                                    key={form_list.id_name}
+                                    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />
+                            :form_list.type_name === "CardHead"?   
+                                <CardHead
+                                    id={form_list.id_name} 
+                                    addButton={form_list.add_button}
+                                    key={form_list.id_name}
+                                />
+                            :form_list.type_name === "CardItem"?   
+                                <CardItem
+                                    id={form_list.id_name} 
+                                    key={form_list.id_name}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
                             :form_list.type_name === "LabelSelectMessage"?
                                 <LabelSelectMessage
                                     id={form_list.id_name} 
                                     labelValue={form_list.title} 
+                                    key={form_list.id_name}
                                     message={this.props.card_list[form_list.id_name+"_name"]?this.props.card_list[form_list.id_name+"_name"]:""} 
                                 />
                             :form_list.type_name==="DepartmentList"?
                                 <DepartmentList 
                                     id={form_list.id_name}
                                     labelValue={form_list.title}
+                                    key={form_list.id_name}
                                     searchInfoLists={form_list.before_api_uri} 
                                     selectedInfo={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
@@ -134,6 +174,7 @@ class ComponentsList extends Component {
                                 <SelectList 
                                     id={form_list.id_name}
                                     labelValue={form_list.title}
+                                    key={form_list.id_name}
                                     searchInfoLists={form_list.before_api_uri} 
                                     selectedIdInfo={this.props.componentsdata[form_list.id_name+"_id"]?this.props.componentsdata[form_list.id_name+"_id"]:"-选择-"} 
                                     selectedInfo={this.props.componentsdata[form_list.id_name+"_name"]?this.props.componentsdata[form_list.id_name+"_name"]:"-选择-"} 
@@ -141,6 +182,7 @@ class ComponentsList extends Component {
                             : form_list.type_name === "TextMoney" ? 
                                 <TextMoney
                                     id={form_list.id_name}
+                                    key={form_list.id_name}
                                     inputValue={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""}  
                                     labelValue={form_list.title} 
                                 /> 
@@ -154,12 +196,14 @@ class ComponentsList extends Component {
                                     listButton = {form_list.add_button.list_button}
                                     idName={form_list.id_name}
                                     isClick={this.props.componentsdata.id}
+                                    key={form_list.id_name}
                                     selectedInfo={this.props.componentsdata?this.props.componentsdata:""} 
                                     title={form_list.title} 
                                 />
                             :form_list.type_name==="HoldBtn"?
                                 <HoldBtn 
                                     before_api_uri={form_list.before_api_uri}
+                                    key={form_list.id_name}
                                     onHoldClick={this.handleChildClick}
                             />
                             :form_list.type_name==="AddCardBtn"?
@@ -168,6 +212,7 @@ class ComponentsList extends Component {
                                     dataId={this.props.dataId}
                                     addButton={form_list.add_button}
                                     before_api_uri={form_list.before_api_uri}
+                                    key={form_list.id_name}
                                 />
                             :form_list.type_name==="EditCardBtn"?
                                 <EditCardBtn
@@ -175,14 +220,15 @@ class ComponentsList extends Component {
                                     dataId={this.props.dataId}
                                     addButton={form_list.add_button}
                                     before_api_uri={form_list.before_api_uri}
+                                    key={form_list.id_name}
                                 />
-                            : ""}
-                        </div>
+                            : ""
+                       
 )
                 }
                 
-                )}
-            </div>
+                )
+            
         )
     }
 }

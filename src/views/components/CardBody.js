@@ -1,10 +1,10 @@
 /** 
      * @author xuesong
-     * @param CardItem 组件  card头里面类型
+     * @param CardBody 组件  card内容
      */
     import React, { Component } from 'react';
 
-    class CardItem extends Component {
+    class CardBody extends Component {
         state={
         }
         
@@ -16,5 +16,5 @@
             )
         }
     }
-    export default CardItem;
+    export default CardBody;
     

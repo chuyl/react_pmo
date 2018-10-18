@@ -41,14 +41,13 @@
        }
        render() {
            return (
-               <div>
-                   {this.props.componentslist.map((form_list) => {
+               this.props.componentslist.map((form_list) => {
                        return (
-                           <div key={form_list.id_name}>
-                               {form_list.type_name === "ListTextSearch" ?
+                           form_list.type_name === "ListTextSearch" ?
                                    <ListTextSearch id={form_list.id_name}
                                        addButton={form_list.add_button}
                                        labelValue={form_list.title}
+                                       key={form_list.id_name}
                                        searchInfoLists={form_list.before_api_uri}
                                        selectedIdInfo={"-选择-"} 
                                        selectedInfo={"-选择-"} 
@@ -57,6 +56,7 @@
                                    <TextDatetime
                                        id={form_list.id_name} 
                                        inputValue={form_list.key}
+                                       key={form_list.id_name}
                                        //inputValue={this.props.componentsdata[form_list.id_name]} 
                                        labelValue={form_list.title} 
                                    />
@@ -66,6 +66,7 @@
                                        //inputValue={form_list.key}
                                        inputValue={form_list.key}
                                        labelValue={form_list.title} 
+                                       key={form_list.id_name}
                                    />
                                :form_list.type_name === "LinkCard"?
                                    <LinkCard   
@@ -74,6 +75,7 @@
                                        messageList={form_list.add_button.before_api_uri} 
                                        label={form_list.add_button.descript} 
                                        linkpage={form_list.before_api_uri}
+                                       key={form_list.id_name}
                                        title={form_list.title} 
                                    />
                                :form_list.type_name === "Link"?
@@ -83,7 +85,8 @@
                                        id={form_list.id_name}
                                        isClick={this.props.componentsdata.id}
                                        label={form_list.add_button.descript} 
-                                       linkpage={form_list.before_api_uri}   
+                                       linkpage={form_list.before_api_uri}  
+                                       key={form_list.id_name} 
                                        messageList={form_list.add_button.before_api_uri}
                                        title={form_list.title}
                                    />
@@ -92,35 +95,41 @@
                                        id={form_list.id_name} 
                                        inputValue={form_list.key} 
                                        labelValue={form_list.title} 
+                                       key={form_list.id_name}
                                    />
                                 : form_list.type_name === "Invisible" ? 
                                    <Invisible 
                                        id={form_list.id_name} 
                                        inputValue={form_list.key} 
                                        labelValue={form_list.title} 
+                                       key={form_list.id_name}
                                    />
                                :form_list.type_name === "DisTextField"?
                                    <DisTextField
                                        id={form_list.id_name} 
                                        inputValue={form_list.key}
                                        labelValue={form_list.title} 
+                                       key={form_list.id_name}
                                    />
                                :form_list.type_name === "LabelMessage"?
                                    <LabelMessage
                                        id={form_list.id_name}
                                        labelValue={form_list.title} 
+                                       key={form_list.id_name}
                                        message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                    />
                                 :form_list.type_name === "LabelSelectMessage"?
                                    <LabelSelectMessage
                                        id={form_list.id_name} 
                                        labelValue={form_list.title} 
+                                       key={form_list.id_name}
                                        message={this.props.card_list[form_list.id_name+"_name"]?this.props.card_list[form_list.id_name+"_name"]:""} 
                                    />
                                :form_list.type_name==="DepartmentList"?
                                    <DepartmentList 
                                        id={form_list.id_name}
                                        labelValue={form_list.title}
+                                       key={form_list.id_name}
                                        searchInfoLists={form_list.before_api_uri} 
                                        selectedInfo={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                    />
@@ -129,6 +138,7 @@
                                        id={form_list.id_name}
                                        labelValue={form_list.title}
                                        searchInfoLists={form_list.before_api_uri} 
+                                       key={form_list.id_name}
                                        selectedIdInfo={"-选择-"} 
                                        selectedInfo={"-选择-"} 
                                    /> 
@@ -137,6 +147,7 @@
                                        id={form_list.id_name}
                                        inputValue={form_list.key}
                                        labelValue={form_list.title} 
+                                       key={form_list.id_name}
                                    /> 
                                :form_list.type_name==="CardGroup"?
                                    <CardGroup 
@@ -147,12 +158,14 @@
                                     //    eidtButton={form_list.edit_button}
                                        idName={form_list.id_name}
                                        isClick={this.props.componentsdata.id}
+                                       key={form_list.id_name}
                                        selectedInfo={this.props.componentsdata?this.props.componentsdata:""} 
                                        title={form_list.title} 
                                    />
                                :form_list.type_name==="HoldBtn"?
                                    <HoldBtn 
                                        before_api_uri={form_list.before_api_uri}
+                                       key={form_list.id_name}
                                        onHoldClick={this.handleChildClick}
                                />
                                :form_list.type_name==="AddCardBtn"?
@@ -161,6 +174,7 @@
                                         title={form_list.title}
                                         dataId={this.props.dataId}
                                         before_api_uri={form_list.before_api_uri}
+                                        key={form_list.id_name}
                                    />
                                    :form_list.type_name==="EditCardBtn"?
                                 <EditCardBtn
@@ -168,13 +182,12 @@
                                     dataId={this.props.dataId}
                                     addButton={form_list.add_button}
                                     before_api_uri={form_list.before_api_uri}
+                                    key={form_list.id_name}
                                 />
-                               : ""}
-                           </div>
+                               : ""
    )
                    }
-                   )}
-               </div>
+                   )
            )
        }
    }

@@ -2,11 +2,7 @@
     "data": {
         "form-temp-name":"项目列表",
         "card-list": [
-            {
-                "id_name": "project_card_head",
-                "type_name": "LabelMessage", 
-                "title": "客户名称:"
-            },
+            
             {
                 "id_name": "project_customer_name",
                 "type_name": "LabelMessage", 

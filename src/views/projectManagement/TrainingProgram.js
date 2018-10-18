@@ -199,7 +199,6 @@ class TrainingProgram extends Component {
 	 * @param onHoldClicks 函数 点击保存按钮发送数据
 	 */ 
 	onHoldClicks =(newState)=>{
-        console.log(this.state.dataId)
 		var key_name = [];
 		var value = [];
 		var list_message=this.state.add_button;
@@ -256,7 +255,6 @@ class TrainingProgram extends Component {
 	  }
 	
 	render() {
-		console.log(this.state.card_list)
 		return(
 			<div>
 				<div id="" className="container">

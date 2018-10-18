@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Link from './Link'
 import LabelMessage from './LabelMessage'
 import LabelSelectMessage from './LabelSelectMessage'
+import CardHead from './CardHead'
 import CardGroup from './CardGroup'
 class Card extends Component {
     state={
@@ -49,27 +50,36 @@ class Card extends Component {
             <div id="card_id" className={this.state.zoom_in?"card open":"card"}>
                 {this.props.add_button.map((form_list) => {
                     return (
-                        <div key={form_list.id_name}>
-                            {form_list.type_name === "Link"?
+                        form_list.type_name === "Link"?
                                 <Link 
                                     button={form_list.title}
                                     buttonMessage={form_list}
                                     dataId={this.props.card_list.id}
                                     // isClick={this.props.card_list.id}
                                     linkpage={form_list.before_api_uri}
+                                    key={form_list.id_name}
                                     messageList={form_list.add_button.before_api_uri}
                                     onChange = {this.handleClick}
+                                />
+                            :form_list.type_name === "CardHead"?
+                                <CardHead
+                                    id={form_list.id_name} 
+                                    addButton={form_list.add_button}
+                                    key={form_list.id_name}
+                                    message={this.props.card_list?this.props.card_list:""} 
                                 />
                             :form_list.type_name === "LabelMessage"?
                                 <LabelMessage
                                     id={form_list.id_name} 
                                     labelValue={form_list.title} 
+                                    key={form_list.id_name}
                                     message={this.props.card_list[form_list.id_name]?this.props.card_list[form_list.id_name]:""} 
                                 />
                             :form_list.type_name === "LabelSelectMessage"?
                                 <LabelSelectMessage
                                     id={form_list.id_name} 
                                     labelValue={form_list.title} 
+                                    key={form_list.id_name}
                                     message={this.props.card_list[form_list.id_name+"_name"]?this.props.card_list[form_list.id_name+"_name"]:""} 
                                 />
                             :form_list.type_name==="CardGroup"?
@@ -78,13 +88,13 @@ class Card extends Component {
                                     addButtonTitle={form_list.add_button_title} 
                                     beforeApiUri={this.props.card_list[form_list.before_api_uri]} 
                                     idName={form_list.id_name}
+                                    key={form_list.id_name}
                                     title={form_list.title} 
                                     // eidtButton={form_list.edit_button}
                                     // delButton = {form_list.del_button}
                                     selectedInfo={this.props.card_list?this.props.card_list:""} 
                                 />
-                            : ""}
-                        </div>
+                            : ""
                     )
 
                 })}

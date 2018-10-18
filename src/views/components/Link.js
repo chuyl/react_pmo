@@ -95,13 +95,14 @@
                             dataId:this.props.dataId
                            }
                     }
-                    this.props.onChange(newState);
+                     this.props.onChange(newState);
                 }
                 //获取数据接口
                 getData(getRouter(this.props.messageList),  {token:"tnkGNc", id:this.props.dataId }, cb,  {}); 
             }
         }
         //获取视图接口
+        console.log(this.props.linkpage)
         getData(getRouter(this.props.linkpage),  {token:"tnkGNc"}, cb,  {}); 
         
     }
@@ -122,9 +123,9 @@
             //     }
             // }
             return ( 
-            <div>  
+           
                 <button onClick =  {this.handleClick}>{button} </button >  
-            </div > )
+             )
         }
     }
     
