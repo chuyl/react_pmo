@@ -16,6 +16,7 @@ import CardGroup from './CardGroup'
 import LabelMessage from './LabelMessage'
 import LabelSelectMessage from './LabelSelectMessage'
 import CardHead from './CardHead'
+import CardTitleItem from './CardTitleItem'
 import CardItem from './CardItem'
 import HoldBtn from './HoldBtn'
 import AddCardBtn from './AddCardBtn'
@@ -51,12 +52,14 @@ class ComponentsList extends Component {
           dataId:formData.dataId,
           form_temp_name:formData.form_temp_name
       }
-      this.props.onChanges(newState);//回调函数传递参数给父组件
+      this.props.twoChange(newState);//回调函数传递参数给父组件
+  }
+  handleThisCardTitleItem=(thisBtnState)=>{
+   console.log(thisBtnState)
   }
     render() {
         return (
                 this.props.componentslist.map((form_list) => {
-                     console.log(this.props.componentslist)
                     return (
                       
                             form_list.type_name === "ListTextSearch" ?
@@ -103,7 +106,7 @@ class ComponentsList extends Component {
                                     linkpage={form_list.before_api_uri}
                                     key={form_list.id_name}
                                     messageList={form_list.add_button.before_api_uri}
-                                    onChange = {this.handleClick}
+                                    oneChange = {this.handleClick}
                                 />
                             //     <Link 
                             //     button={form_list.add_button.descript} 
@@ -154,6 +157,13 @@ class ComponentsList extends Component {
                                     id={form_list.id_name} 
                                     key={form_list.id_name}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />
+                            :form_list.type_name === "CardTitleItem"?   
+                                <CardTitleItem
+                                    id={form_list.id_name} 
+                                    key={form_list.id_name}
+                                    message={form_list.title} 
+                                    handleCardTitleItem={this.handleThisCardTitleItem}
                                 />
                             :form_list.type_name === "LabelSelectMessage"?
                                 <LabelSelectMessage

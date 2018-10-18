@@ -3,6 +3,9 @@ import Link from './Link'
 import LabelMessage from './LabelMessage'
 import LabelSelectMessage from './LabelSelectMessage'
 import CardHead from './CardHead'
+import CardBody from './CardBody'
+import CardOpen from './CardOpen'
+import CardFoot from './CardFoot'
 import CardGroup from './CardGroup'
 class Card extends Component {
     state={
@@ -43,7 +46,7 @@ class Card extends Component {
             dataId:formData.dataId,
             form_temp_name:formData.form_temp_name
         }
-        this.props.onChanges(newState);//回调函数传递参数给父组件
+        this.props.fourChange(newState);//回调函数传递参数给父组件
     }
 	render(){
         return (
@@ -68,6 +71,29 @@ class Card extends Component {
                                     key={form_list.id_name}
                                     message={this.props.card_list?this.props.card_list:""} 
                                 />
+                            :form_list.type_name === "CardBody"?
+                                <CardBody
+                                    id={form_list.id_name} 
+                                    addButton={form_list.add_button}
+                                    key={form_list.id_name}
+                                    threeChange = {this.handleClick}
+                                    message={this.props.card_list?this.props.card_list:""} 
+                                />
+                            :form_list.type_name === "CardOpen"?
+                                <CardOpen 
+                                    id={form_list.id_name} 
+                                    addButton={form_list.add_button}
+                                    key={form_list.id_name}
+                                    message={this.props.card_list?this.props.card_list:""} />
+                            :form_list.type_name === "CardFoot"?
+                                <CardFoot
+                                    id={form_list.id_name} 
+                                    addButton={form_list.add_button}
+                                    key={form_list.id_name}
+                                    threeChange = {this.handleClick}
+                                    message={form_list.title} 
+                                />
+                            
                             :form_list.type_name === "LabelMessage"?
                                 <LabelMessage
                                     id={form_list.id_name} 

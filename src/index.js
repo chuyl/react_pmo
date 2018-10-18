@@ -91,30 +91,6 @@ for(var x=0;x<lang.length;x++){
       }
       
       console.log(local_remote)
-      // for(var local_remote_key_1 in local_remote){
-      //   for(var local_remote_key_2 in local_remote){
-      //   console.log(local_remote_key_2)
-      //   }
-      // }
-      // for(var key in message.data.routelist){
-      //  if(message.data.routelist[key].version>=1.0){
-      //    console.log(message.data.routelist[key])
-      //    local_remote[key]=message.data.routelist[key];
-      //  }
-      
-      //  }
-      //  console.log(local_remote)
-      //  for(var localkey in local){
-      //  for(var local_remote_key in local_remote){
-        
-          
-      //        if(local_remote_key===localkey){
-      //          console.log(localkey)
-      //       // local_remote[localkey]=local[localkey];
-      //      }
-           
-      //    }
-      // }
 
       try {
         
@@ -122,13 +98,6 @@ for(var x=0;x<lang.length;x++){
           for(var sessionkey in local_remote){
             sessionStorage.setItem(sessionkey, JSON.stringify(local_remote[sessionkey]));
           }
-          // for (var key in message.data.routelist) {
-          //   //console.log(JSON.stringify(message.data.routelist[key]))
-          //   sessionStorage.setItem(key, JSON.stringify(message.data.routelist[key]));
-          // }
-       //   var img_url = getRouter("creat_checkcode").url;
-       //   console.log(img_url)
-         
         }
       } catch (e) {
       }

@@ -78,18 +78,18 @@
                                        key={form_list.id_name}
                                        title={form_list.title} 
                                    />
-                               :form_list.type_name === "Link"?
-                                   <Link 
-                                       button={form_list.add_button.descript} 
-                                       handleClick = {this.props.handleClick}
-                                       id={form_list.id_name}
-                                       isClick={this.props.componentsdata.id}
-                                       label={form_list.add_button.descript} 
-                                       linkpage={form_list.before_api_uri}  
-                                       key={form_list.id_name} 
-                                       messageList={form_list.add_button.before_api_uri}
-                                       title={form_list.title}
-                                   />
+                            //    :form_list.type_name === "Link"?
+                            //        <Link 
+                            //            button={form_list.add_button.descript} 
+                            //            handleClick = {this.props.handleClick}
+                            //            id={form_list.id_name}
+                            //            isClick={this.props.componentsdata.id}
+                            //            label={form_list.add_button.descript} 
+                            //            linkpage={form_list.before_api_uri}  
+                            //            key={form_list.id_name} 
+                            //            messageList={form_list.add_button.before_api_uri}
+                            //            title={form_list.title}
+                            //        />
                                : form_list.type_name === "MutiText" ? 
                                    <TextField 
                                        id={form_list.id_name} 

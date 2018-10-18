@@ -95,7 +95,7 @@
                             dataId:this.props.dataId
                            }
                     }
-                     this.props.onChange(newState);
+                     this.props.oneChange(newState);
                 }
                 //获取数据接口
                 getData(getRouter(this.props.messageList),  {token:"tnkGNc", id:this.props.dataId }, cb,  {}); 
