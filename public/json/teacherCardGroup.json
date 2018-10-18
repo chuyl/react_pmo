@@ -100,7 +100,7 @@
                         "tip": "",
                         "add_button": "addTeacher",
                         "descript": "",
-                        "before_api_uri": "lecturer",
+                        "before_api_uri": "lecturer_manage_list",
                         "after_api_uri": ""
                     },
                     {

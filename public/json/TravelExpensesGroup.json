@@ -92,7 +92,7 @@
                         "after_api_uri": ""
                     },
                     {
-                        "id_name": "long_fee_card_vehicle",
+                        "id_name": "long_fee_card_vehicle_name",
                         "type_name": "DisTextField", 
                         "key": "",
                         "title": "交通工具",

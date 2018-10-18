@@ -3,7 +3,7 @@
     "error":0,
     "data":{
         "lecturer":[
-            {"header_id":"94",
+            {"parent_id":"94",
              "id": "56",
              "teacher_duty_id":"2",
              "teacher_duty_name":"主讲",
@@ -12,7 +12,7 @@
              "teacher_lecture_fee":"30006",
              "teacher_name_id":"2",
              "teacher_name_name":"侍尧"  },
-             {"header_id":"94",
+             {"parent_id":"94",
                 "id": "57",
                 "teacher_duty_id":"1",
                 "teacher_duty_name":"助教",

@@ -18,6 +18,7 @@ import LabelSelectMessage from './LabelSelectMessage'
 import HoldBtn from './HoldBtn'
 import AddCardBtn from './AddCardBtn'
 import EditCardBtn from './EditCardBtn'
+import Invisible from './Invisible'
 //import AddTeacher from '../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
 //import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
 //import ProjectGather from '../budgetAndFinalAccountsManagementcond/budget/ProjectGather'
@@ -94,6 +95,12 @@ class ComponentsList extends Component {
                                 />
                             : form_list.type_name === "MutiText" ? 
                                 <TextField 
+                                    id={form_list.id_name} 
+                                    inputValue={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""} 
+                                    labelValue={form_list.title} 
+                                />
+                            : form_list.type_name === "Invisible" ? 
+                                <Invisible 
                                     id={form_list.id_name} 
                                     inputValue={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""} 
                                     labelValue={form_list.title} 

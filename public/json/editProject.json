@@ -2,7 +2,8 @@
         "error":0,
         "data": {
             "form-temp-name":"编辑项目",
-            "form-list": [{
+            "form-list": [
+               {
                 "id_name": "project_name",
                 "type_name": "MutiText",
                 "key": "",

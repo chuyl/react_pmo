@@ -46,7 +46,7 @@ class Card extends Component {
     }
 	render(){
         return (
-            <div  className={this.state.zoom_in?"card open":"card"}>
+            <div id="card_id" className={this.state.zoom_in?"card open":"card"}>
                 {this.props.add_button.map((form_list) => {
                     return (
                         <div key={form_list.id_name}>

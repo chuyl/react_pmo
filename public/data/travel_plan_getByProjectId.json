@@ -3,20 +3,20 @@
     "error":0,
     "data":{
         "city":[
-            {"header_id":"94",
+            {"parent_id":"94",
              "id": "26",
              "short_fee":"2",
              "short_fee_card_people":"主讲",
              "short_fee_type":"6"
             },
-             {"header_id":"94",
+             {"parent_id":"94",
               "id": "27",
              "short_fee":"2",
              "short_fee_card_people":"主讲",
              "short_fee_type":"6"}
         ],
         "province":[
-            {"header_id":"94",
+            {"parent_id":"94",
              "id": "35",
              "long_fee_card_end_place":"2",
              "long_fee_card_end_time":"2018-10-17T03:33",
@@ -24,7 +24,7 @@
              "long_fee_card_start_place":"1",
              "long_fee_card_start_time":"2018-10-11T03:33"
             },
-             {"header_id":"94",
+             {"parent_id":"94",
               "id": "36",
               "long_fee_card_end_place":"2",
               "long_fee_card_end_time":"2018-10-17T03:33",
@@ -33,12 +33,12 @@
               "long_fee_card_start_time":"2018-10-11T03:33"}
         ],
         "stay":[
-            {  "header_id":"94",
+            {  "parent_id":"94",
                "id": "21",
                "hotel_expense_days":"2",
                "hotel_expense_people":"1",
                "hotel_expense_total":"6"},
-            {  "header_id":"94",
+            {  "parent_id":"94",
                "id": "22",
                "hotel_expense_days":"3",
                "hotel_expense_people":"14",

@@ -22,6 +22,7 @@
    //import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
    //import ProjectGather from '../budgetAndFinalAccountsManagementcond/budget/ProjectGather'
    import SelectList from './SelectList'
+   import Invisible from './Invisible'
    import DepartmentList from './DepartmentList'
    class ComponentsCard extends Component {
        constructor(props) {
@@ -88,6 +89,12 @@
                                    />
                                : form_list.type_name === "MutiText" ? 
                                    <TextField 
+                                       id={form_list.id_name} 
+                                       inputValue={form_list.key} 
+                                       labelValue={form_list.title} 
+                                   />
+                                : form_list.type_name === "Invisible" ? 
+                                   <Invisible 
                                        id={form_list.id_name} 
                                        inputValue={form_list.key} 
                                        labelValue={form_list.title} 

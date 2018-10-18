@@ -58,7 +58,7 @@
                 })
             }
         }
-        console.log(this.props.isClick)
+        console.log(this.props.listButton)
         //getData(getRouter(this.props.listButton), {id:this.props.isClick, token: "tnkGNc" }, cb, {});
 
     }

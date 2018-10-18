@@ -5,6 +5,7 @@
 
    import React, { Component } from 'react';
    import TextField from './TextField';
+   import Invisible from './Invisible'
    import TextMoney from './TextMoney'
    import TextDate from './TextDate'
    import TextDatetime from './TextDatetime'
@@ -35,9 +36,9 @@
                             console.log(form_list.before_api_uri)
                         }
                        return <div key={form_list.id_name}>
-                      
                            {form_list.type_name === "ListTextSearch" ?
-                               <ListTextSearch id={form_list.id_name}
+                               <ListTextSearch 
+                                   id={form_list.id_name}
                                    // className = {form_list.id_name+" selectedInfo" }
                                    labelValue={form_list.title}
                                    searchInfoLists={form_list.before_api_uri}
@@ -64,6 +65,10 @@
                                    // : form_list.type_name === "TextMoney" ? <TextMoney
                                    // id={form_list.id_name} inputValue={this.props.componentsdata[form_list.id_name]} labelValue={form_list.title} />
                                    : form_list.type_name === "MutiText" ? <TextField id={form_list.id_name} 
+                                   //inputValue={form_list.key}
+                                   inputValue={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                   labelValue={form_list.title} />
+                                   : form_list.type_name === "Invisible" ? <Invisible id={form_list.id_name} 
                                    //inputValue={form_list.key}
                                    inputValue={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                    labelValue={form_list.title} />

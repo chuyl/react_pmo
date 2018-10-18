@@ -13,7 +13,7 @@ import { getData, getRouter } from '../../utils/helpers'
             var key_name = [];
             var value = [];
             if(this.props.dataId){
-                value.push("header_id")
+                value.push("parent_id")
                 key_name.push(this.props.dataId)
             }
             for (var i = 0; i < list_message.length; i++) {

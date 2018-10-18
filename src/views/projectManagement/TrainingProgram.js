@@ -204,7 +204,7 @@ class TrainingProgram extends Component {
 		var value = [];
 		var list_message=this.state.add_button;
 		if(this.state.dataId){
-			value.push("id")
+			value.push("parent_id")
 			key_name.push(this.state.dataId)
 		}
 		for (var i = 0; i < list_message.length; i++) {
@@ -256,6 +256,7 @@ class TrainingProgram extends Component {
 	  }
 	
 	render() {
+		console.log(this.state.card_list)
 		return(
 			<div>
 				<div id="" className="container">
@@ -270,7 +271,7 @@ class TrainingProgram extends Component {
 					>
 						添加
 					</div>
-					<div className="overflow">
+					<div className="overflow crius-card-list">
 						{this.state.card_list?this.state.card_list.map(card_list => {
 							return <Cards 
 							    onChanges = {this.handleChildChange}

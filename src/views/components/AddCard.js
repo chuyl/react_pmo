@@ -7,6 +7,7 @@
     import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
     import SelectList from './SelectList'
     import TextField from './TextField'
+    import Invisible from './Invisible'
     import TextMoney from './TextMoney'
     //import ListText from '../components/ListText'
     import TextDatetime from './TextDatetime'
@@ -30,7 +31,7 @@
                     })
                 }
             }
-            getData(getRouter(this.props.listButton), {id:this.props.conditionAction.header_id, token: "tnkGNc" }, cb, {});
+            getData(getRouter(this.props.listButton), {id:this.props.conditionAction.parent_id, token: "tnkGNc" }, cb, {});
     
         }
         	/** 
@@ -45,9 +46,9 @@
                 value.push("id")
                 key_name.push(this.props.conditionAction.id)
             }
-            if(this.props.conditionAction.header_id){
-                value.push("header_id")
-                key_name.push(this.props.conditionAction.header_id)
+            if(this.props.conditionAction.parent_id){
+                value.push("parent_id")
+                key_name.push(this.props.conditionAction.parent_id)
             }
             for (var i = 0; i < list_message.length; i++) {
                 if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"){
@@ -93,6 +94,9 @@
                                         selectedInfo={this.props.conditionAction[card_list.id_name+"_name"]?this.props.conditionAction[card_list.id_name+"_name"]:"-选择-"}  />
                                 :card_list.type_name === "MutiText" ? 
                                     <TextField
+                                        id={card_list.id_name+this.props.conditionAction.id} inputValue={this.props.conditionAction[card_list.id_name]?this.props.conditionAction[card_list.id_name]:""} labelValue={card_list.title} />
+                                :card_list.type_name === "Invisible" ? 
+                                    <Invisible
                                         id={card_list.id_name+this.props.conditionAction.id} inputValue={this.props.conditionAction[card_list.id_name]?this.props.conditionAction[card_list.id_name]:""} labelValue={card_list.title} />
                                 :card_list.type_name === "TextDatetime" ? 
                                     <TextDatetime

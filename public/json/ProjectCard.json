@@ -1,82 +1,88 @@
 {   "error":0,
     "data": {
         "form-temp-name":"项目列表",
-        "card-list": [{
-            "id_name": "project_customer_name",
-            "type_name": "LabelMessage", 
-            "title": "客户名称:"
-        },{
-            "id_name": "project_name",
-            "type_name": "LabelMessage", 
-            "title": "课程名称:"
-        },{
-            "id_name": "project_person_in_charge",
-            "type_name": "LabelSelectMessage", 
-            "title": "销售负责人:"
-        },{
-            "id_name": "project_training_numbers",
-            "type_name": "LabelMessage", 
-            "title": "培训天数:"
-        },{
-            "id_name": "project_date",
-            "type_name": "LabelMessage", 
-            "title": "培训日期:"
-           
-        },{
-            "id_name": "project_training_ares",
-            "type_name": "LabelMessage", 
-            "title": "培训地点:"
-        },{
-            "id_name": "edit_project_btn",
-            "type_name": "Link", 
-            "key": "",
-            "title": "编辑",
-            "tip": "",
-            "add_button": {
-                "before_api_uri":"project_data_getByProjectId"
+        "card-list": [
+            {
+                "id_name": "project_card_head",
+                "type_name": "LabelMessage", 
+                "title": "客户名称:"
             },
-            "descript": "",
-            "before_api_uri": "editProject",
-            "after_api_uri": ""
-        },{
-            "id_name": "project_teacher_arrange",
-            "type_name": "Link", 
-            "key": "",
-            "title": "讲师安排",
-            "tip": "",
-            "add_button": {
-                "descript":"修改讲师安排",
-                "before_api_uri":"lecturer_plan_getByProjectId"
-            },
-            "descript": "",
-            "before_api_uri": "teacherCardGroup",
-            "after_api_uri": ""
-        },{
-            "id_name": "project_implement_btn",
-            "type_name": "Link", 
-            "key": "",
-            "title": "实施安排",
-            "tip": "",
-            "add_button": {
-                "descript":"修改实施安排",
-                "before_api_uri":"implement_plan_getByProjectId"
-            },
-            "descript": "讲课费",
-            "before_api_uri": "ImplementArrage",
-            "after_api_uri": ""
-        },{
-            "id_name": "project_travel_btn",
-            "type_name": "Link", 
-            "key": "",
-            "title": "差旅安排",
-            "tip": "",
-            "add_button": {
-                "descript":"修改差旅安排",
-                "before_api_uri":"travel_plan_getByProjectId"
-            },
-            "descript": "",
-            "before_api_uri": "TravelExpensesGroup",
-            "after_api_uri": ""
-        }]
+            {
+                "id_name": "project_customer_name",
+                "type_name": "LabelMessage", 
+                "title": "客户名称:"
+            },{
+                "id_name": "project_name",
+                "type_name": "LabelMessage", 
+                "title": "课程名称:"
+            },{
+                "id_name": "project_person_in_charge",
+                "type_name": "LabelSelectMessage", 
+                "title": "销售负责人:"
+            },{
+                "id_name": "project_training_numbers",
+                "type_name": "LabelMessage", 
+                "title": "培训天数:"
+            },{
+                "id_name": "project_date",
+                "type_name": "LabelMessage", 
+                "title": "培训日期:"
+            
+            },{
+                "id_name": "project_training_ares",
+                "type_name": "LabelMessage", 
+                "title": "培训地点:"
+            },{
+                "id_name": "edit_project_btn",
+                "type_name": "Link", 
+                "key": "",
+                "title": "编辑",
+                "tip": "",
+                "add_button": {
+                    "before_api_uri":"project_data_getByProjectId"
+                },
+                "descript": "",
+                "before_api_uri": "editProject",
+                "after_api_uri": ""
+            },{
+                "id_name": "project_teacher_arrange",
+                "type_name": "Link", 
+                "key": "",
+                "title": "讲师安排",
+                "tip": "",
+                "add_button": {
+                    "descript":"修改讲师安排",
+                    "before_api_uri":"lecturer_plan_getByProjectId"
+                },
+                "descript": "",
+                "before_api_uri": "teacherCardGroup",
+                "after_api_uri": ""
+            },{
+                "id_name": "project_implement_btn",
+                "type_name": "Link", 
+                "key": "",
+                "title": "实施安排",
+                "tip": "",
+                "add_button": {
+                    "descript":"修改实施安排",
+                    "before_api_uri":"implement_plan_getByProjectId"
+                },
+                "descript": "讲课费",
+                "before_api_uri": "ImplementArrage",
+                "after_api_uri": ""
+            },{
+                "id_name": "project_travel_btn",
+                "type_name": "Link", 
+                "key": "",
+                "title": "差旅安排",
+                "tip": "",
+                "add_button": {
+                    "descript":"修改差旅安排",
+                    "before_api_uri":"travel_plan_getByProjectId"
+                },
+                "descript": "",
+                "before_api_uri": "TravelExpensesGroup",
+                "after_api_uri": ""
+            }]
     }
 }
