@@ -31,7 +31,7 @@ class SelectList extends Component {
             }
         }
         console.log(this.state.before_api_uri)
-        getData(getRouter(this.state.before_api_uri), { token: "tnkGNc" }, cb, {});
+        getData(getRouter(this.state.before_api_uri), { token:sessionStorage.token }, cb, {});
     }
 
     searchShow() {

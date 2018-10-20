@@ -44,7 +44,7 @@
                     })
                 }
             }
-            getData(getRouter(this.state.linkpage), { token: "tnkGNc" }, cb, {});
+            getData(getRouter(this.state.linkpage), { token:sessionStorage.token }, cb, {});
         }
         /** 
         * @author xuesong
@@ -69,13 +69,13 @@
     }
     message_list=()=> {
         var cb = (route, message, arg) =>  {
-			if (message.code===0) {
+			if (message.error===0) {
 				this.setState( {
 					linkListCardData:message.data
 				})
 			}
         }
-		getData(getRouter(this.props.messageList),  {token:"tnkGNc", project_id:this.props.isClick }, cb,  {}); 
+		getData(getRouter(this.props.messageList),  {token:sessionStorage.token, project_id:this.props.isClick }, cb,  {}); 
     }
     /** 
 	 * @time 2018-10-16
@@ -98,12 +98,12 @@
                      this.props.oneChange(newState);
                 }
                 //获取数据接口
-                getData(getRouter(this.props.messageList),  {token:"tnkGNc", id:this.props.dataId }, cb,  {}); 
+                getData(getRouter(this.props.messageList),  {token:sessionStorage.token, id:this.props.dataId }, cb,  {}); 
             }
         }
         //获取视图接口
         console.log(this.props.linkpage)
-        getData(getRouter(this.props.linkpage),  {token:"tnkGNc"}, cb,  {}); 
+        getData(getRouter(this.props.linkpage),  {token:sessionStorage.token}, cb,  {}); 
         
     }
     /** 

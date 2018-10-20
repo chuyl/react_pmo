@@ -43,7 +43,7 @@
         
                 }
                 console.log(before_api_uri)
-                getData(getRouter(before_api_uri), {data:obj,token:"tnkGNc"}, cb, {});
+                getData(getRouter(before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
             }
             render(){
                 // const {id,disabled,inputValue,onChange,onClick,labelValue} =this.props;

@@ -52,7 +52,7 @@
                     })
                 }
             }
-            getData(getRouter(this.state.linkpage), { token: "tnkGNc" }, cb, {});    
+            getData(getRouter(this.state.linkpage), { token:sessionStorage.token }, cb, {});    
         }
         /** 
         * @author xuesong
@@ -84,7 +84,7 @@
 			}
         }
         console.log(this.props.isClick )
-		getData(getRouter(this.props.messageList), { token: "tnkGNc",project_id:this.props.isClick }, cb, {});
+		getData(getRouter(this.props.messageList), { token:sessionStorage.token,project_id:this.props.isClick }, cb, {});
     }
         render(){
             const {id, title,label,button,isClick} =this.props;

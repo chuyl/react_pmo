@@ -62,7 +62,7 @@ class Budget extends Component {
 		// 		})
 		// 	}
 		// }
-		// getData(getRouter("budget_all_list"), { token: "tnkGNc" }, cb, {});
+		// getData(getRouter("budget_all_list"), { token:sessionStorage.token }, cb, {});
 
 		//	console.log(this.state.budget_paper)
 
@@ -83,7 +83,7 @@ class Budget extends Component {
 	
 				}
 			}
-			getData(getRouter("budgetManage"), { token: "tnkGNc" }, cb, {});
+			getData(getRouter("budgetManage"), { token:sessionStorage.token }, cb, {});
 	}
 	/** 
 	 * @author xuesong
@@ -98,7 +98,7 @@ class Budget extends Component {
 	
 				}
 			}
-			getData(getRouter("budgetManageData"), { token: "tnkGNc" }, cb, {});
+			getData(getRouter("budgetManageData"), { token:sessionStorage.token }, cb, {});
 	}
 	/** 
 	 * @author xuesong

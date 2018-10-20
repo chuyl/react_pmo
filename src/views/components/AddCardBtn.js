@@ -41,7 +41,7 @@ import { getData, getRouter } from '../../utils/helpers'
     
             }
             console.log(obj)
-            getData(getRouter(before_api_uri), {data:obj,token:"tnkGNc"}, cb, {});
+            getData(getRouter(before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
         }
         render(){
             return (

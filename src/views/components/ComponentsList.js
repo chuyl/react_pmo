@@ -186,8 +186,8 @@ class ComponentsList extends Component {
                                     labelValue={form_list.title}
                                     key={form_list.id_name}
                                     searchInfoLists={form_list.before_api_uri} 
-                                    selectedIdInfo={this.props.componentsdata[form_list.id_name+"_id"]?this.props.componentsdata[form_list.id_name+"_id"]:"-选择-"} 
-                                    selectedInfo={this.props.componentsdata[form_list.id_name+"_name"]?this.props.componentsdata[form_list.id_name+"_name"]:"-选择-"} 
+                                    selectedIdInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_id"]:"-选择-"} 
+                                    selectedInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_name"]:"-选择-"} 
                                 /> 
                             : form_list.type_name === "TextMoney" ? 
                                 <TextMoney

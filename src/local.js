@@ -1,4 +1,5 @@
 var local = {
+                "user_account_login":{"url":"../data/user_account_login.json","version":"1.0"},//登录
                 "project_type_list":{"url":"../data/project_type_list.json","version":"1.0"},//项目模板列表
                 "project_type_add":{"url":"../data/project_type_add.json","version":"1.0"},//项目模板新增
                 "project_manage_list":{"url":"../data/project_manage_list.json","version":"1.0"},//项目列表
@@ -29,8 +30,7 @@ var local = {
                 "travel_hotel_add":{"url":"../data/travel_hotel_add.json","version":"1.0"},//住宿费新增
                 "travel_hotel_edit":{"url":"../data/travel_hotel_edit.json","version":"1.0"},//住宿费修改
                 "travel_hotel_del":{"url":"../data/travel_hotel_del.json","version":"1.0"},//住宿费删除
-                "Project":{"url":"../data/Project.json","version":"1.0"},//住宿费删除
-
+                "Project":{"url":"../data/Project.json","version":"1.0"},//发送数据列表
                    //视图
                 "AddProject":{"url":"../json/AddProject.json","version":"1.0"},//新建项目
                 "addProjectGather":{"url":"../json/addProjectGather.json","version":"1.0"},//新建项目集

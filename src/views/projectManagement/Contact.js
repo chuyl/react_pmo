@@ -20,7 +20,7 @@ class Contact extends Component {
 	// 	}
 	
 		
-	// 	  getData(getRouter(STAFFSMALLLIST), {token:"tnkGNc" }, cb, { });
+	// 	  getData(getRouter(STAFFSMALLLIST), {token:sessionStorage.token }, cb, { });
 		
 	//   }
 	  logins = () => {
@@ -35,7 +35,7 @@ class Contact extends Component {
 		}
 	
 		
-		  getData(getRouter(STAFFOFDING), {token:"tnkGNc" }, cb, { });
+		  getData(getRouter(STAFFOFDING), {token:sessionStorage.token }, cb, { });
 		
 	  }
 	 render(){

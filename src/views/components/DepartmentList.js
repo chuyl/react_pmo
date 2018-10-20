@@ -28,7 +28,7 @@ class DepartmentList extends Component {
                    })
             }
           }
-            getData(getRouter(this.state.before_api_uri), {token:"tnkGNc" }, cb, { });  
+            getData(getRouter(this.state.before_api_uri), {token:sessionStorage.token }, cb, { });  
     }
     departmentinfos(){
         var cb = (route, message, arg) => {
@@ -38,7 +38,7 @@ class DepartmentList extends Component {
                    })
             }
           }
-            getData(getRouter("csst_department_list"), {token:"tnkGNc" }, cb, { });  
+            getData(getRouter("csst_department_list"), {token:sessionStorage.token }, cb, { });  
     }
     searchShow() {
         this.setState({

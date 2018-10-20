@@ -100,7 +100,7 @@ class TrainingProgram extends Component {
 
 			}
 		}
-		getData(getRouter(PROJECTMANAGELIST), { token: "tnkGNc" }, cb, {});
+		getData(getRouter(PROJECTMANAGELIST), { token:sessionStorage.token }, cb, {});
 
 	}
 	fetchListData() {
@@ -113,12 +113,12 @@ class TrainingProgram extends Component {
 
 			}
 		}
-		getData(getRouter("ProjectCard"), { token: "tnkGNc" }, cb, {});
+		getData(getRouter("ProjectCard"), { token:sessionStorage.token }, cb, {});
 	}
 	fetchProjectDataList() {
 		var cb = (route, message, arg) => {
 		}
-		getData(getRouter("Project"), { token: "tnkGNc" }, cb, {});
+		getData(getRouter("Project"), { token:sessionStorage.token }, cb, {});
 	}
 	/** 
 	 * @author xuesong
@@ -134,7 +134,7 @@ class TrainingProgram extends Component {
 
 			}
 		}
-		getData(getRouter(url), { token: "tnkGNc" }, cb, {});		
+		getData(getRouter(url), { token:sessionStorage.token }, cb, {});		
 	}
 
 	/** 
@@ -251,7 +251,7 @@ class TrainingProgram extends Component {
 				this.listProject()  //刷新项目列表
 			}
 	}
-		getData(getRouter(newState.before_api_uri), {data:obj,token:"tnkGNc"}, cb, {});
+		getData(getRouter(newState.before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
 	  }
 	
 	render() {

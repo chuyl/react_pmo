@@ -31,7 +31,7 @@
                     })
                 }
             }
-            getData(getRouter(this.props.listButton), {id:this.props.conditionAction.parent_id, token: "tnkGNc" }, cb, {});
+            getData(getRouter(this.props.listButton), {id:this.props.conditionAction.parent_id, token:sessionStorage.token }, cb, {});
     
         }
         	/** 
@@ -75,7 +75,7 @@
                 }
     
             }
-           getData(getRouter(before_api_uri), {data:obj,token:"tnkGNc"}, cb, {});
+           getData(getRouter(before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
         }
         render() {
             return (

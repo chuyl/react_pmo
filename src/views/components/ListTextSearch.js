@@ -28,14 +28,15 @@ class ListTextSearch extends Component {
      */
     fetchData() {
         var cb = (route, message, arg) =>  {
-			if (message.code===0) {
+			if (message.error===0) {
+                console.log(message)
 				this.setState( {
                     add_button: message.data["form-list"],
                     form_temp_name: message.data["form-temp-name"],
 				})
 			}
         }
-        getData(getRouter(this.state.add_uri_button),  {token:"tnkGNc"}, cb,  {});
+        getData(getRouter(this.state.add_uri_button),  {token:sessionStorage.token}, cb,  {});
          
 		// fetch('../json/'+this.state.add_uri_button+'.json')
 		// 	.then(response => response.json())
@@ -63,7 +64,7 @@ class ListTextSearch extends Component {
                 })
             }
         }
-        getData(getRouter(this.state.before_api_uri), { token: "tnkGNc" }, cb, {});
+        getData(getRouter(this.state.before_api_uri), { token:sessionStorage.token }, cb, {});
     }
     // componentWillMount(){
     //     console.log(this.state.searchInfoLists)
@@ -73,6 +74,52 @@ class ListTextSearch extends Component {
             search_state: !this.state.search_state
         })
     }
+     /** 
+	 * @time 2018-09-28
+	 * @author xuesong
+	 * @param onHoldClicks 函数 点击保存按钮发送数据
+	 */ 
+	onHoldClicks =(newState)=>{
+        console.log(newState)
+		var key_name = [];
+		var value = [];
+		var list_message=this.state.add_button;
+		if(this.state.dataId){
+			value.push("parent_id")
+			key_name.push(this.state.dataId)
+		}
+		for (var i = 0; i < list_message.length; i++) {
+			if(list_message[i].type_name!=="HoldBtn"){
+				if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"){
+					
+						value.push(list_message[i].id_name+"_name")
+						key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
+						value.push(list_message[i].id_name+"_id")
+						key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML)	
+					 }
+				else{
+					value.push(list_message[i].id_name)
+					key_name.push(document.getElementById(list_message[i].id_name).innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name).innerHTML || document.getElementById(list_message[i].id_name).value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name).value)
+					}
+			}			 
+		  
+		}
+		var obj = {};
+		for(var j=0;j<value.length;j++){
+			obj[value[j]] =key_name[j];
+		}
+		// componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data
+		var cb = (route, message, arg) => {
+			if(message.error===0){
+                this.setState({    //  项目创建成功,打开编辑页面。更新view
+					card_state:false
+				}) 
+            }
+				
+			
+	}
+		getData(getRouter(newState.before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
+	  }
     // componentDidMount(){
     //     this.infos()
     // }
@@ -169,12 +216,12 @@ class ListTextSearch extends Component {
                         {this.state.form_temp_name}
                     </div>
                     <div className="selected_scroll_div">
-                        <ComponentsList componentslist={this.state.add_button}></ComponentsList>
-                        <button className="hold_btn"
+                        <ComponentsList holdClick={this.onHoldClicks} componentslist={this.state.add_button}></ComponentsList>
+                        {/* <button className="hold_btn"
                                 onClick={(e) => {
                            
                             }}
-                        >保存</button>
+                        >保存</button> */}
                     </div>
                 </div>
             </div>

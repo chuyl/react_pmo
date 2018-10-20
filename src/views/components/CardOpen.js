@@ -6,7 +6,6 @@
     import ComponentsList from './ComponentsList'
     class CardOpen extends Component {
         render(){
-            console.log("hengxian")
             return (
                
                 <hr className="card-open"/>

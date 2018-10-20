@@ -56,7 +56,7 @@ class BudgetListTextSearchLink extends Component {
 	
 			}
 		}
-			getData(getRouter(this.state.add_uri_button), { token: "tnkGNc" }, cb, {});
+			getData(getRouter(this.state.add_uri_button), { token:sessionStorage.token }, cb, {});
     }
     	/** 
 	 * @author xuesong
@@ -71,7 +71,7 @@ class BudgetListTextSearchLink extends Component {
         
             }
         }
-         getData(getRouter(this.state.showData), { token: "tnkGNc" }, cb, {});
+         getData(getRouter(this.state.showData), { token:sessionStorage.token }, cb, {});
 	}
    /** 
      * @author xuesong
@@ -94,7 +94,7 @@ class BudgetListTextSearchLink extends Component {
              }
             }
         }
-        getData(getRouter(this.state.before_api_uri),  {token:"tnkGNc"}, cb,  {}); 
+        getData(getRouter(this.state.before_api_uri),  {token:sessionStorage.token}, cb,  {}); 
     }
     /** 
      * @author xuesong
@@ -115,7 +115,7 @@ class BudgetListTextSearchLink extends Component {
                 
             }
           }
-            getData(getRouter(),  {token:"tnkGNc"}, cb,  {}); 
+            getData(getRouter(),  {token:sessionStorage.token}, cb,  {}); 
     }
           /** 
      * @author xuesong
@@ -127,7 +127,7 @@ class BudgetListTextSearchLink extends Component {
                 
             }
           }
-            getData(getRouter(),  {token:"tnkGNc"}, cb,  {}); 
+            getData(getRouter(),  {token:sessionStorage.token}, cb,  {}); 
     }
     
     /** 

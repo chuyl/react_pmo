@@ -266,7 +266,7 @@ class ListTextSearchLink extends Component {
                 })
             }
         }
-        getData(getRouter(this.state.before_api_uri), { token: "tnkGNc" }, cb, {});
+        getData(getRouter(this.state.before_api_uri), { token:sessionStorage.token }, cb, {});
     }
     componentWillMount() {
         this.state.addCondition.push(
@@ -290,13 +290,13 @@ class ListTextSearchLink extends Component {
      */
     fetchData() {
         var cb = (route, message, arg) =>  {
-			if (message.code===0) {
+			if (message.error===0) {
 				this.setState( {
                     add_button: message.adit_project.data["form-list"],
 				})
 			}
         }
-        getData(getRouter(this.state.add_uri_button),  {token:"tnkGNc"}, cb,  {});
+        getData(getRouter(this.state.add_uri_button),  {token:sessionStorage.token}, cb,  {});
          
 		// fetch('../json/'+this.state.add_uri_button+'.json')
 		// 	.then(response => response.json())
