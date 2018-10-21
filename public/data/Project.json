@@ -26,6 +26,20 @@
     "teacher_duty_name":"职责",
     "teacher_duty_id":"职责"
   },
+  "新增讲师":{
+    "teacher_name":"讲师姓名",
+    "teacher_price":"常用价格",
+    "teacher_cooperation_model_name":"合作模式",
+    "teacher_cooperation_model_id":"合作模式"
+  },
+  "新增项目集":{
+    "add_program_manage_name":"项目集名称",
+    "add_program_manage_sale_name":"销售负责人",
+    "add_program_manage_sale_id":"销售负责人",
+    "add_program_manage_contract_number":"合同编号"
+
+  },
+
   "实施安排list":{
     "venue_fee":"会场费",
     "material_and_equipment_cost":"教材与设备费用",

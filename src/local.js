@@ -17,6 +17,7 @@ var local = {
                 "lecturer_plan_add":{"url":"../data/lecturer_plan_add.json","version":"1.0"},//讲师安排新增
                 "lecturer_plan_edit":{"url":"../data/lecturer_plan_edit.json","version":"1.0"},//讲师安排修改
                 "lecturer_plan_del":{"url":"../data/lecturer_plan_del.json","version":"1.0"},//讲师安排删除
+                "lecturer_manage_cooperation":{"url":"../data/lecturer_manage_cooperation.json","version":"1.0"},//讲师合作模式
                 "implement_plan_getByProjectId":{"url":"../data/implement_plan_getByProjectId.json","version":"1.0"},//获取实施安排列表
                 "implement_plan_edit":{"url":"../data/implement_plan_edit.json","version":"1.0"},//实施安排修改
                 "travel_plan_getByProjectId":{"url":"../data/travel_plan_getByProjectId.json","version":"1.0"},//获取差旅安排

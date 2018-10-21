@@ -7,15 +7,15 @@
     class CardTitleItem extends Component {
         state={
         }
-        handleClick=()=>{
+        handleStateClick=()=>{
             var newState = {
-                this_state:this.props.message
+                cardTitleItem:this.props.index
             }
             this.props.handleCardTitleItem(newState);//回调函数传递参数给父组件
         }
         render(){
             return (
-                <div onClick =  {this.handleClick} className="card-item">
+                <div onClick =  {this.handleStateClick} className="card-item">
                    {this.props.message} 
                 </div>
             )

@@ -20,12 +20,13 @@
           dataId:formData.dataId,
           form_temp_name:formData.form_temp_name
       }
-      this.props.threeChange(newState);//回调函数传递参数给父组件
+      this.props.fiveChange(newState);//回调函数传递参数给父组件
   }
         render(){
+            console.log(this.props.footState)
             return (
                 <div className="card-body">
-                <ComponentsList twoChange = {this.handleClick}  componentslist =  {this.props.addButton} componentsdata={this.props.message}></ComponentsList > 
+                <ComponentsList footState={this.props.footState} fourChange = {this.handleClick}  componentslist =  {this.props.addButton} componentsdata={this.props.message}></ComponentsList > 
           </div>
             )
         }

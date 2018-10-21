@@ -9,11 +9,16 @@
         state={
 
         }
-        
+        handleTwoCardTitleItem=(thisBtnState)=>{
+            var newState = {
+                cardTitleItem:thisBtnState.cardTitleItem
+            }
+            this.props.handlethreeCardTitleItem(newState);
+          }
         render(){
             return (
                 <div className="card-foot">
-                    <ComponentsList  componentslist =  {this.props.addButton} componentsdata={this.props.message}></ComponentsList > 
+                    <ComponentsList handleTwoCardTitleItem={this.handleTwoCardTitleItem} componentslist =  {this.props.addButton} componentsdata={this.props.message}></ComponentsList > 
               </div>
             )
         }

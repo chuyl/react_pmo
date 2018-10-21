@@ -251,6 +251,7 @@ class TrainingProgram extends Component {
 				this.listProject()  //刷新项目列表
 			}
 	}
+	console.log(newState.before_api_uri)
 		getData(getRouter(newState.before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
 	  }
 	
@@ -272,7 +273,7 @@ class TrainingProgram extends Component {
 					<div className="overflow crius-card-list">
 						{this.state.card_list?this.state.card_list.map(card_list => {
 							return <Cards 
-							    fourChange = {this.handleChildChange}
+							    sixChange = {this.handleChildChange}
 								id={card_list.id}
 								card_list={card_list}
 								add_button={this.state.projectCard}

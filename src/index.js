@@ -53,7 +53,7 @@ class TabComponent extends Component{
   constructor(  ){
 		super(  )
 		this.state = { 
-      currentIndex : 0,
+      currentIndex : "/trainingProgram",
       couter:false,
       show: false,
       dialog_show:false,
@@ -119,6 +119,7 @@ for(var x=0;x<lang.length;x++){
 
     //路由激活状态
     check_router_index( index ){
+      //console.log(index)
       return index === this.state.currentIndex ? "tab_title active" : "tab_title"
     }
 

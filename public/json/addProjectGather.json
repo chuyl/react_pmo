@@ -12,7 +12,7 @@
             "before_api_uri": "",
             "after_api_uri": ""
         },{
-            "id_name": "add_project_gather_charge",
+            "id_name": "add_program_manage_sale",
             "type_name": "SelectList",
             "key": "",
             "title": "销售负责人",
@@ -21,6 +21,16 @@
             "descript": "",
             "before_api_uri": "staff_manage_list",
             "after_api_uri": ""
+        },{
+            "id_name": "add_program_manage_contract_number",
+            "type_name": "MutiText",
+            "key": "",
+            "title": "合同编号",
+            "tip": "",
+            "add_button": {},
+            "descript": "",
+            "before_api_uri": "",
+            "after_api_uri": "" 
         },{
             "id_name": "add_program_manage_btn",
             "type_name": "HoldBtn",

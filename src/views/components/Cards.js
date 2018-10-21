@@ -14,7 +14,8 @@ class Card extends Component {
         type:'',
         add_button:[],
         form_temp_name:"",
-        formData:this.props.formData
+        formData:this.props.formData,
+        cardTitleItem:""
     }
   
     zoom_in = () => {
@@ -44,11 +45,29 @@ class Card extends Component {
             add_button:formData.add_button,
             data:formData.data,
             dataId:formData.dataId,
-            form_temp_name:formData.form_temp_name
+            form_temp_name:formData.form_temp_name,
+            openCtrlState:""//openCard
         }
-        this.props.fourChange(newState);//回调函数传递参数给父组件
+        this.props.sixChange(newState);//回调函数传递参数给父组件
     }
+    handlethreeCardTitleItem=(thisBtnState)=>{
+
+        var newState = {
+            cardTitleItem:thisBtnState.cardTitleItem
+        }
+        this.setState({
+            cardTitleItem:thisBtnState.cardTitleItem
+        })
+       console.log(thisBtnState)
+      }
+      openCtrlState=(state)=>{
+        this.setState({
+            openCtrlState:state.openCtrlState
+        })
+            console.log(state)
+      }
 	render(){
+        console.log(this.state.cardTitleItem)
         return (
             <div id="card_id" className={this.state.zoom_in?"card open":"card"}>
                 {this.props.add_button.map((form_list) => {
@@ -76,7 +95,8 @@ class Card extends Component {
                                     id={form_list.id_name} 
                                     addButton={form_list.add_button}
                                     key={form_list.id_name}
-                                    threeChange = {this.handleClick}
+                                    fiveChange = {this.handleClick}  
+                                    footState={this.state.cardTitleItem}
                                     message={this.props.card_list?this.props.card_list:""} 
                                 />
                             :form_list.type_name === "CardOpen"?
@@ -84,14 +104,16 @@ class Card extends Component {
                                     id={form_list.id_name} 
                                     addButton={form_list.add_button}
                                     key={form_list.id_name}
+                                    openCtrlState={this.openCtrlState}
                                     message={this.props.card_list?this.props.card_list:""} />
                             :form_list.type_name === "CardFoot"?
                                 <CardFoot
                                     id={form_list.id_name} 
                                     addButton={form_list.add_button}
                                     key={form_list.id_name}
-                                    threeChange = {this.handleClick}
+                                    // threeChange = {this.handleClick}
                                     message={form_list.title} 
+                                    handlethreeCardTitleItem = {this.handlethreeCardTitleItem}
                                 />
                             
                             :form_list.type_name === "LabelMessage"?

@@ -999,7 +999,7 @@ a {
     -webkit-tap-highlight-color: transparent;
     outline: none; }
 
-.active {
+.tab_title.active {
   color: #f4a931; }
 
 .tab_item .active a {

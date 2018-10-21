@@ -16,6 +16,7 @@ import CardGroup from './CardGroup'
 import LabelMessage from './LabelMessage'
 import LabelSelectMessage from './LabelSelectMessage'
 import CardHead from './CardHead'
+import CardPage from './CardPage'
 import CardTitleItem from './CardTitleItem'
 import CardItem from './CardItem'
 import HoldBtn from './HoldBtn'
@@ -45,7 +46,6 @@ class ComponentsList extends Component {
        this.props.holdClick(newStates);//回调函数传递参数给父组件
     }
     handleClick=(formData)=>{
-        console.log(formData)
       var newState = {
           add_button:formData.add_button,
           data:formData.data,
@@ -54,12 +54,35 @@ class ComponentsList extends Component {
       }
       this.props.twoChange(newState);//回调函数传递参数给父组件
   }
+  handlethreeClick=(formData)=>{
+    console.log(formData)
+  var newState = {
+      add_button:formData.add_button,
+      data:formData.data,
+      dataId:formData.dataId,
+      form_temp_name:formData.form_temp_name
+  }
+  this.props.fourChange(newState);//回调函数传递参数给父组件
+}
+  handleClicks=(formData)=>{
+    console.log(formData)
+  var newState = {
+      add_button:formData.add_button,
+      data:formData.data,
+      dataId:formData.dataId,
+      form_temp_name:formData.form_temp_name
+  }
+  this.props.fiveChange(newState);//回调函数传递参数给父组件
+}
   handleThisCardTitleItem=(thisBtnState)=>{
-   console.log(thisBtnState)
+    var newState = {
+        cardTitleItem:thisBtnState.cardTitleItem
+    }
+    this.props.handleTwoCardTitleItem(newState);
   }
     render() {
         return (
-                this.props.componentslist.map((form_list) => {
+                this.props.componentslist.map((form_list,index) => {
                     return (
                       
                             form_list.type_name === "ListTextSearch" ?
@@ -152,6 +175,16 @@ class ComponentsList extends Component {
                                     addButton={form_list.add_button}
                                     key={form_list.id_name}
                                 />
+                            :form_list.type_name === "CardPage"?   
+                                <CardPage
+                                    id={form_list.id_name} 
+                                    addButton={form_list.add_button}
+                                    key={form_list.id_name}
+                                    index={index}
+                                    footState={this.props.footState}
+                                    threeChange = {this.handlethreeClick}
+                                    message={this.props.componentsdata?this.props.componentsdata:""} 
+                                />
                             :form_list.type_name === "CardItem"?   
                                 <CardItem
                                     id={form_list.id_name} 
@@ -162,6 +195,7 @@ class ComponentsList extends Component {
                                 <CardTitleItem
                                     id={form_list.id_name} 
                                     key={form_list.id_name}
+                                    index={index}
                                     message={form_list.title} 
                                     handleCardTitleItem={this.handleThisCardTitleItem}
                                 />

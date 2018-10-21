@@ -5,10 +5,27 @@
     import React, { Component } from 'react';
     import ComponentsList from './ComponentsList'
     class CardOpen extends Component {
+        state={
+            openCardState:true
+        }
+        openCtrl=()=>{
+          
+            var newState = {
+                openCardState:this.state.openCardState
+               
+            }
+            this.props.openCtrlState(newState)
+          }
         render(){
             return (
                
-                <hr className="card-open"/>
+                <div onClick={()=>{
+                    this.setState({
+                        openCardState:!this.state.openCardState 
+                    })
+                    this.openCtrl()
+                    // console.log(this.state.openCardState)
+                }} className="open-ctrl">切换</div>
             )
         }
     }
