@@ -9,6 +9,18 @@ import { getData, getRouter } from '../../utils/helpers'
         state={
             add_card_state:false
         }
+      /** 
+	 * @time 2018-10-22
+	 * @author xuesong
+	 * @param success_message 函数 添加groupCard成功的回调函数
+	 */
+        success_message=()=>{
+            console.log("添加成功")
+            var newState = {
+                success_message:true
+            }
+            this.props.editCardSuccess(newState);//回调函数传递参数给父组件
+        }
         project_index_add = (list_message,before_api_uri)=>{
             var key_name = [];
             var value = [];
@@ -37,10 +49,10 @@ import { getData, getRouter } from '../../utils/helpers'
                     this.setState({
                         add_card_state:false
                     })
+                    this.success_message()
                 }
     
             }
-            console.log(obj)
             getData(getRouter(before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
         }
         render(){

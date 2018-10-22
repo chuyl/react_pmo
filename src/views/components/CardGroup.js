@@ -21,6 +21,7 @@
             alertState:false, //弹出框的状态
             alertMsg:"是否确定删除",
             parent_id:"",
+            // success_message:false,
             thisViewList:[]   //当前card数据list
         }
         // 子组件声明自己需要使用 context
@@ -51,16 +52,17 @@
 	 * @author xuesong
 	 * @param listGroup 函数 获取group列表
 	 */
-    listGroup(){
+    listGroup(id){
         var cb = (route, message, arg) => {
             if (message.error === 0) {
+                
                 this.setState({
-                    view_list:message.data[this.props.beforeApiUri]
+                    view_list:message.data[this.props.uriName]
                 })
             }
         }
-        console.log(this.props.isClick)
-        getData(getRouter(this.props.listButton), {id:this.state.parent_id, token:sessionStorage.token }, cb, {});
+        // console.log(this.props.isClick)
+        getData(getRouter(this.props.listButton), {id:id, token:sessionStorage.token }, cb, {});
 
     }
         	/** 
@@ -75,7 +77,7 @@
                         add_card_state:false,
                         alertState:false
                     })
-                     this.listGroup()
+                     this.listGroup(this.state.parent_id)
                 }
     
             }
@@ -100,6 +102,17 @@
     sureCallback(msg){
         this.del_group_button(this.state.thisViewList.id)
         
+    }
+    success_message=(state)=>{
+        this.setState({
+            add_card_state:false,
+            view_list:[]
+        })
+        if(state.success_message===true){
+            this.listGroup(this.state.conditionAction.parent_id)
+        }
+       
+        console.log(state)
     }
         render() {
             return (
@@ -171,6 +184,7 @@
                                 editButton = {this.props.editButton}
                                 delButton = {this.props.delButton}
                                 listButton = {this.props.listButton}
+                                AddCardSuccess={this.success_message}
                                      // getAddCondition={ this.getAddConditionEvent.bind(this)}
                                 conditionAction={this.state.conditionAction}       
                             >

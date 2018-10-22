@@ -80,6 +80,14 @@ class ComponentsList extends Component {
     }
     this.props.handleTwoCardTitleItem(newState);
   }
+  /** 
+	 * @time 2018-10-12
+	 * @author xuesong
+	 * @param editCardSuccess 函数 CardGroup编辑按钮成功的回调函数
+	 */
+  editCardSuccess=(newState)=>{
+    console.log(newState)
+  }
     render() {
         return (
                 this.props.componentslist.map((form_list,index) => {
@@ -235,6 +243,7 @@ class ComponentsList extends Component {
                                     addButtonTitle={form_list.add_button_title} 
                                     addButton={form_list.add_button} 
                                     beforeApiUri={this.props.componentsdata[form_list.before_api_uri]} 
+                                    uriName={form_list.before_api_uri}
                                     delButton = {form_list.add_button.del_button}
                                     editButton={form_list.add_button.edit_button}
                                     listButton = {form_list.add_button.list_button}
@@ -265,6 +274,7 @@ class ComponentsList extends Component {
                                     addButton={form_list.add_button}
                                     before_api_uri={form_list.before_api_uri}
                                     key={form_list.id_name}
+                                    editCardSuccess={this.editCardSuccess}
                                 />
                             : ""
                        

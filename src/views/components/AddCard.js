@@ -34,6 +34,18 @@
             getData(getRouter(this.props.listButton), {id:this.props.conditionAction.parent_id, token:sessionStorage.token }, cb, {});
     
         }
+        /** 
+	 * @time 2018-10-22
+	 * @author xuesong
+	 * @param success_message 函数 修改groupCard成功的回调函数
+	 */
+        success_message=()=>{
+            console.log("保存成功")
+            var newState = {
+                success_message:true
+            }
+            this.props.AddCardSuccess(newState);//回调函数传递参数给父组件
+        }
         	/** 
 	 * @time 2018-10-12
 	 * @author xuesong
@@ -68,7 +80,7 @@
             }
             var cb = (route, message, arg) => {
                 if (message.error === 0) {
-                   
+                   this.success_message()
                     //this.listGroup()
                 }
     
