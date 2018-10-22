@@ -17,7 +17,7 @@
           }
         render(){
             return (
-                <div className="card-foot">
+                <div className={this.props.openState===true?"none":"card-foot"}>
                     <ComponentsList handleTwoCardTitleItem={this.handleTwoCardTitleItem} componentslist =  {this.props.addButton} componentsdata={this.props.message}></ComponentsList > 
               </div>
             )

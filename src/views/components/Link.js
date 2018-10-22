@@ -98,7 +98,7 @@
                      this.props.oneChange(newState);
                 }
                 //获取数据接口
-                getData(getRouter(this.props.messageList),  {token:sessionStorage.token, id:this.props.dataId }, cb,  {}); 
+                getData(getRouter(this.props.messageList),  {id:this.props.dataId }, cb,  {}); 
             }
         }
         //获取视图接口

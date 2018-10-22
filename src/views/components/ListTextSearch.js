@@ -112,7 +112,8 @@ class ListTextSearch extends Component {
 		var cb = (route, message, arg) => {
 			if(message.error===0){
                 this.setState({    //  项目创建成功,打开编辑页面。更新view
-					card_state:false
+                    card_state:false,
+                    add_customer:false
 				}) 
             }
 				

@@ -15,7 +15,8 @@ class Card extends Component {
         add_button:[],
         form_temp_name:"",
         formData:this.props.formData,
-        cardTitleItem:""
+        cardTitleItem:"",
+        openCtrlState:false//openCard
     }
   
     zoom_in = () => {
@@ -39,35 +40,35 @@ class Card extends Component {
 	// 		  })
 	// 	}
     //   }
+
       handleClick=(formData)=>{
-          console.log(formData)
         var newState = {
             add_button:formData.add_button,
             data:formData.data,
             dataId:formData.dataId,
             form_temp_name:formData.form_temp_name,
-            openCtrlState:""//openCard
+           
         }
         this.props.sixChange(newState);//回调函数传递参数给父组件
     }
+    //   获取cardOpen的状态
     handlethreeCardTitleItem=(thisBtnState)=>{
-
         var newState = {
             cardTitleItem:thisBtnState.cardTitleItem
         }
         this.setState({
             cardTitleItem:thisBtnState.cardTitleItem
         })
-       console.log(thisBtnState)
       }
+    //   获取cardOpen的状态
       openCtrlState=(state)=>{
+          console.log(this.state.openCtrlState)
         this.setState({
-            openCtrlState:state.openCtrlState
+            openCtrlState:state.openCardState
         })
-            console.log(state)
       }
 	render(){
-        console.log(this.state.cardTitleItem)
+        // console.log(this.state.openCtrlState)
         return (
             <div id="card_id" className={this.state.zoom_in?"card open":"card"}>
                 {this.props.add_button.map((form_list) => {
@@ -92,6 +93,7 @@ class Card extends Component {
                                 />
                             :form_list.type_name === "CardBody"?
                                 <CardBody
+                                    openState={this.state.openCtrlState}
                                     id={form_list.id_name} 
                                     addButton={form_list.add_button}
                                     key={form_list.id_name}
@@ -108,6 +110,7 @@ class Card extends Component {
                                     message={this.props.card_list?this.props.card_list:""} />
                             :form_list.type_name === "CardFoot"?
                                 <CardFoot
+                                    openState={this.state.openCtrlState}
                                     id={form_list.id_name} 
                                     addButton={form_list.add_button}
                                     key={form_list.id_name}

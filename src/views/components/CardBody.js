@@ -13,7 +13,6 @@
 	 * @param handleChildChange 函数 出来Link返回的数据 
 	 */
     handleClick=(formData)=>{
-        console.log(formData)
       var newState = {
           add_button:formData.add_button,
           data:formData.data,
@@ -23,9 +22,8 @@
       this.props.fiveChange(newState);//回调函数传递参数给父组件
   }
         render(){
-            console.log(this.props.footState)
             return (
-                <div className="card-body">
+                <div className={this.props.openState===true?"card-body open":"card-body"}>
                 <ComponentsList footState={this.props.footState} fourChange = {this.handleClick}  componentslist =  {this.props.addButton} componentsdata={this.props.message}></ComponentsList > 
           </div>
             )

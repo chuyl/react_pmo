@@ -85,7 +85,7 @@
                                 <button className="hold_btn"
                                     onClick={(e) => {
                                         console.log(this.props.dataId)
-                                        this.project_index_add(this.props.addButton,this.props.before_api_uri)
+                                        this.postData(this.props.addButton,this.props.before_api_uri,this.props.dataId)
                                     }}
                                 >保存
                                 </button>

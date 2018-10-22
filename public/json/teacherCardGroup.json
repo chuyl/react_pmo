@@ -138,7 +138,7 @@
                     },
                     {
                         "id_name": "teacher_duty",
-                        "type_name": "ListTextSearch", 
+                        "type_name": "SelectList", 
                         "key": "",
                         "title": "职责",
                         "tip": "",
@@ -200,7 +200,7 @@
                 },
                 {
                     "id_name": "teacher_duty",
-                    "type_name": "ListTextSearch", 
+                    "type_name": "SelectList", 
                     "key": "",
                     "title": "职责",
                     "tip": "",

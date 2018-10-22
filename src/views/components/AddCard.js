@@ -68,10 +68,8 @@
             }
             var cb = (route, message, arg) => {
                 if (message.error === 0) {
-                    this.setState({
-                        card_state:false
-                    })
-                    this.listGroup()
+                   
+                    //this.listGroup()
                 }
     
             }

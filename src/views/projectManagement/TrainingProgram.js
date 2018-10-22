@@ -209,18 +209,11 @@ class TrainingProgram extends Component {
 		for (var i = 0; i < list_message.length; i++) {
 			if(list_message[i].type_name!=="HoldBtn"){
 				if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"){
-					if(this.state.dataId!==""){
 						value.push(list_message[i].id_name+"_name")
 						key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
 						value.push(list_message[i].id_name+"_id")
 						key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML)	
-					}
-					else{
-						value.push(list_message[i].id_name+"_name")
-						key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
-						value.push(list_message[i].id_name+"_id")
-						key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML)	
-					}		
+						
 					 }
 				else{
 					value.push(list_message[i].id_name)
@@ -251,7 +244,7 @@ class TrainingProgram extends Component {
 				this.listProject()  //刷新项目列表
 			}
 	}
-	console.log(newState.before_api_uri)
+	//console.log(newState.before_api_uri)
 		getData(getRouter(newState.before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
 	  }
 	
@@ -284,7 +277,7 @@ class TrainingProgram extends Component {
 				</div>
 				<div className="paper_div">
 					<div id="card_box" onClick={(event) => {
-					}} className={this.state.card_state ? "card_box overflow open" : "card_box"}>
+						}} className={this.state.card_state ? "card_box overflow open" : "card_box"}>
 						<div style={this.state.card_state ? { display: "" } : { display: "none" }} className="paper_card_title">
 							<div onClick={this.card_box_close} className="return_btn"></div>
 							{this.state.form_temp_name}

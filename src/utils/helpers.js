@@ -118,6 +118,40 @@ export function dealNumber(money){
 //     logout();
 //   }
 // }
-export function getDataList(id) {
-  console.log(id)
+export function postData(list_message,before_api_uri,dataId) {
+  console.log(dataId)
+  var key_name = [];
+                var value = [];
+                if(dataId){
+                    value.push("id")
+                    key_name.push(dataId)
+                }
+                for (var i = 0; i < list_message.length; i++) {
+                        
+                    if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"){
+                        value.push(list_message[i].id_name+"_name")
+                        key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
+                        value.push(list_message[i].id_name+"_id")
+                        key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML || document.getElementById(list_message[i].id_name+"_id").value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").value)
+                       }
+                    else{
+                        value.push(list_message[i].id_name)
+                        key_name.push(document.getElementById(list_message[i].id_name).innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name).innerHTML || document.getElementById(list_message[i].id_name).value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name).value)
+                      }			 
+                }     
+                var obj = {};
+                for(var j=0;j<value.length;j++){
+                    obj[value[j]] =key_name[j];
+                }
+                var cb = (route, message, arg) => {
+                    if (message.error === 0) {
+                        this.setState({
+                            card_state:false
+                        })
+                        this.listProject()
+                    }
+        
+                }
+                console.log(before_api_uri)
+                getData(getRouter(before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
 }

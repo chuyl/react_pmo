@@ -20,6 +20,7 @@
             conditionAction:[],
             alertState:false, //弹出框的状态
             alertMsg:"是否确定删除",
+            parent_id:"",
             thisViewList:[]   //当前card数据list
         }
         // 子组件声明自己需要使用 context
@@ -54,12 +55,12 @@
         var cb = (route, message, arg) => {
             if (message.error === 0) {
                 this.setState({
-                    view_list:message.data
+                    view_list:message.data[this.props.beforeApiUri]
                 })
             }
         }
-        console.log(this.props.listButton)
-        //getData(getRouter(this.props.listButton), {id:this.props.isClick, token:sessionStorage.token }, cb, {});
+        console.log(this.props.isClick)
+        getData(getRouter(this.props.listButton), {id:this.state.parent_id, token:sessionStorage.token }, cb, {});
 
     }
         	/** 
@@ -124,7 +125,8 @@
                                             onClick={()=>{
                                                 this.setState({
                                                     alertState:true,
-                                                    thisViewList:view_list
+                                                    thisViewList:view_list,
+                                                    parent_id:view_list.parent_id
                                                 })
 
                                                 //this.del_group_button(view_list.id)
