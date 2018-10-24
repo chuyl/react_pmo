@@ -196,6 +196,7 @@ class ComponentsList extends Component {
                             :form_list.type_name === "CardPage"?   
                                 <CardPage
                                     id={form_list.id_name} 
+                                    cardIndex={this.props.cardIndex}
                                     addButton={form_list.add_button}
                                     key={form_list.id_name}
                                     index={index}

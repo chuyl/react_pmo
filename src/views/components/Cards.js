@@ -62,15 +62,22 @@ class Card extends Component {
       }
     //   获取cardOpen的状态
       openCtrlState=(state)=>{
-          console.log(this.state.openCtrlState)
+          
         this.setState({
-            openCtrlState:state.openCardState
+            openCtrlState:state.openCardState,
+            thisIndex:this.props.index
         })
+        if(this.state.openCtrlState===false){
+           var id="card_id"+this.props.index;
+            setTimeout(function(){
+                document.getElementById(id).classList.remove("move-out")
+            },300)
+        }
       }
 	render(){
-        // console.log(this.state.openCtrlState)
+     
         return (
-            <div id="card_id" className={this.state.openCtrlState===true?"card-project active open move-out":"card-project active"}>
+            <div id={"card_id"+this.props.index} name={"card-project"} className={this.state.openCtrlState===true?"card-project active open move-out":"card-project active"}>
                 {this.props.add_button.map((form_list) => {
                     return (
                         form_list.type_name === "Link"?
@@ -94,6 +101,7 @@ class Card extends Component {
                             :form_list.type_name === "CardBody"?
                                 <CardBody
                                     openState={this.state.openCtrlState}
+                                    cardIndex={this.props.index}
                                     id={form_list.id_name} 
                                     addButton={form_list.add_button}
                                     key={form_list.id_name}

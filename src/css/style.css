@@ -1952,14 +1952,6 @@ html, body {
   padding: 0;
   background-color: #3f435e; }
 
-.card-project {
-  display: none;
-  opacity: 0; }
-
-.card {
-  display: none;
-  opacity: 0; }
-
 .crius-card-list .inverse {
   color: #fff; }
 .crius-card-list .active {
@@ -1993,8 +1985,7 @@ html, body {
     float: left; }
 .crius-card-list .card-body {
   display: block;
-  padding: 1em;
-  width: 100%; }
+  padding: 1em; }
 .crius-card-list .card-foot {
   display: block;
   height: 2em;
@@ -2004,7 +1995,7 @@ html, body {
   background-color: #2c4086;
   height: 2em;
   line-height: 2em; }
-.crius-card-list .active .card-head .inverse {
+.crius-card-list .card-head .inverse {
   background-color: #2c4086; }
 .crius-card-list .open-ctrl {
   height: 1em;
@@ -2015,38 +2006,39 @@ html, body {
   position: absolute;
   bottom: 2.1em;
   width: 100%; }
-.crius-card-list .move-in {
-  display: block;
-  opacity: 0; }
 .crius-card-list .active {
   display: block;
   opacity: 1;
   position: relative; }
-.crius-card-list .active .card-head .card-item:nth-of-type(1),
-.crius-card-list .active .card-foot .card-item:nth-of-type(1) {
+.crius-card-list .card-head .card-item:nth-of-type(1),
+.crius-card-list .card-foot .card-item:nth-of-type(1) {
   width: 33.3333333333%;
   left: 0; }
-.crius-card-list .active .card-head .card-item:nth-of-type(2),
-.crius-card-list .active .card-foot .card-item:nth-of-type(2) {
+.crius-card-list .card-head .card-item:nth-of-type(2),
+.crius-card-list .card-foot .card-item:nth-of-type(2) {
   width: 33.3333333333%;
   left: 0; }
-.crius-card-list .active .card-head .card-item:nth-of-type(3),
-.crius-card-list .active .card-foot .card-item:nth-of-type(3) {
+.crius-card-list .card-head .card-item:nth-of-type(3),
+.crius-card-list .card-foot .card-item:nth-of-type(3) {
   width: 33.3333333333%;
   left: 0; }
 .crius-card-list .card-body {
   position: relative;
   height: 10em;
   transition: height 0.3s cubic-bezier(0.4, 0, 1, 1); }
+.crius-card-list .card-page {
+  border: none;
+  opacity: 0; }
+.crius-card-list .move-in {
+  display: block;
+  opacity: 0;
+  transition: opacity .3s ease; }
 .crius-card-list .card-page.active {
   display: block;
   opacity: 1;
-  height: auto; }
-.crius-card-list .card-page {
-  border: none;
-  opacity: 0;
+  height: auto;
   transition: opacity .3s ease; }
-.crius-card-list .active .card-body .card-page {
+.crius-card-list .card-body .card-page {
   position: absolute; }
 .crius-card-list .card-foot .card-item {
   float: left; }
@@ -2055,12 +2047,11 @@ html, body {
   border: none;
   position: relative;
   transition: border .3s ease; }
-.crius-card-list .open.move-out .card-body {
-  height: 22em; }
 .crius-card-list .open .card-foot {
   height: 0; }
 .crius-card-list .open .card-body {
-  height: initial; }
+  height: 22em;
+  transition: height 0.3s cubic-bezier(0.4, 0, 1, 1); }
 .crius-card-list .open .card-body .card-page {
   transition: opacity .3s ease;
   opacity: 1;
@@ -2069,6 +2060,9 @@ html, body {
   background-image: url(closeline.svg);
   background-repeat: no-repeat;
   bottom: 2px; }
+.crius-card-list .open.move-out .card-body {
+  height: 22em;
+  transition: height 0.3s cubic-bezier(0.4, 0, 1, 1); }
 .crius-card-list .card-foot .active::before {
   position: absolute;
   content: ' ';

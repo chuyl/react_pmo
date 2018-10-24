@@ -144,7 +144,7 @@
                                         </div>)
                                     })}          
                                     {/* < ComponentsList componentslist =  {this.props.addButton.descript?this.props.addButton.descript:[]} componentsdata = {view_list} ></ComponentsList >  */}
-                                    <button className="label_delete_button"
+                                    {this.props.delButton!==""?<button className="label_delete_button"
                                             onClick={()=>{
                                                 this.setState({
                                                     alertState:true,
@@ -153,7 +153,7 @@
                                                 })
 
                                             }}
-                                    >删除</button>
+                                    >删除</button>:""}
                                     <button className="label_delete_button"
                                             onClick={() => {
                                                 console.log(this.props.addButton)

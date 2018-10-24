@@ -1,13 +1,3 @@
-.card-project {
-    display: none;
-    opacity: 0;
-}
-
-.card {
-    display: none;
-    opacity: 0;
-}
-
 @mixin set_card($bor_left_width, $border_left_color, $border_radius) {
     .inverse {
         color: #fff;
@@ -49,7 +39,6 @@
     .card-body {
         display: block;
         padding: 1em;
-        width: 100%;
     }
     .card-foot {
         display: block;
@@ -61,7 +50,7 @@
         height: 2em;
         line-height: 2em;
     }
-    & .active .card-head .inverse {
+    .card-head .inverse {
         background-color: $border_left_color;
     }
 }
@@ -77,17 +66,13 @@
         bottom: 2.1em;
         width: 100%;
     }
-    .move-in {
-        display: block;
-        opacity: 0;
-    }
     .active {
         display: block;
         opacity: 1;
         position: relative;
     }
-    .active .card-head,
-    .active .card-foot {
+    .card-head,
+    .card-foot {
         $width_sum: 0;
         @each $width in $width_list {
             $width_sum: $width_sum + $width;
@@ -106,17 +91,22 @@
         height: $set_minheight;
         transition: height .3s cubic-bezier(0.4, 0, 1, 1);
     }
+    .card-page {
+        border: none;
+        opacity: 0;
+    }
+    .move-in {
+        display: block;
+        opacity: 0;
+        transition: opacity .3s ease;
+    }
     .card-page.active {
         display: block;
         opacity: 1;
         height: auto;
-    }
-    .card-page {
-        border: none;
-        opacity: 0;
         transition: opacity .3s ease;
     }
-    .active .card-body .card-page {
+    .card-body .card-page {
         position: absolute;
     }
     .card-foot .card-item {
@@ -128,17 +118,13 @@
         position: relative;
         transition: border .3s ease;
     }
-    .open.move-out {
-        .card-body {
-            height: $set_height;
-        }
-    }
     .open {
         .card-foot {
             height: 0;
         }
         .card-body {
-            height: initial;
+            height: $set_height;
+            transition: height .3s cubic-bezier(0.4, 0, 1, 1);
         }
         .card-body .card-page {
             transition: opacity .3s ease;
@@ -149,6 +135,12 @@
             background-image: url(closeline.svg);
             background-repeat: no-repeat;
             bottom: 2px;
+        }
+    }
+    .open.move-out {
+        .card-body {
+            height: $set_height;
+            transition: height .3s cubic-bezier(0.4, 0, 1, 1);
         }
     }
     .card-foot .active::before {

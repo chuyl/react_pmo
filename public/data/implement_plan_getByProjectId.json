@@ -2,7 +2,39 @@
     "code":0,
     "error":0,
     "data":{
-        
+        "venue":[
+                    {
+                        "parent_id":"94",
+                        "id": "56",
+                        "room_number":"2",
+                        "unit_price":"2000",
+                        "days":"6",
+                        "total_price":"12000",
+                        "meetingplace_name":"中软大厦",
+                        "meetingplace_address":"学院南路55号"  
+                    },
+                    {
+                        "parent_id":"94",
+                        "id": "56",
+                        "room_number":"2",
+                        "unit_price":"1000",
+                        "days":"6",
+                        "total_price":"6000",
+                        "meetingplace_name":"中软大厦",
+                        "meetingplace_address":"学院南路55号"  
+                    }
+                ],
+        "implement":[
+                        {   
+                            "parent_id":"94",
+                            "material_cost":"100",
+                            "equipment_cost":"200",
+                            "examination_fee":"300",
+                            "tea_break":"400",
+                            "stationery":"500",
+                            "hospitality":"600",
+                            "postage":"700"
+                    }]
     }
    
    
