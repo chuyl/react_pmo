@@ -17,7 +17,9 @@ import { getData, getRouter } from '../../utils/helpers'
         success_message=()=>{
             console.log("添加成功")
             var newState = {
-                success_message:true
+                success_message:true,
+                id:this.props.dataId,
+                freshName:this.props.afterApiUri,
             }
             this.props.editCardSuccess(newState);//回调函数传递参数给父组件
         }

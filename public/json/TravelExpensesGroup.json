@@ -255,7 +255,7 @@
                     },
                     "descript": "",
                     "before_api_uri": "travel_longTrafficType_list",
-                    "after_api_uri": ""
+                    "after_api_uri": "travel_plan_getByProjectId"
                 }],
                 "descript": "",
                 "before_api_uri":"travel_longTraffic_add",
@@ -389,7 +389,7 @@
                     }],
                 "descript": "",
                 "before_api_uri":"travel_inCityTraffic_add",
-                "after_api_uri": ""
+                "after_api_uri": "travel_plan_getByProjectId"
             },{
                 "id_name": "hotel_expense_card",
                 "type_name": "CardGroup",
@@ -523,7 +523,7 @@
                 ],
                 "descript": "",
                 "before_api_uri":"travel_hotel_add",
-                "after_api_uri": ""
+                "after_api_uri": "travel_plan_getByProjectId"
             }]
     }
 

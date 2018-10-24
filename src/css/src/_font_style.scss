@@ -1,0 +1,7 @@
+@mixin set-font-style($width:6em, $line-height:1.5em, $height:1em, $color:#fff) {
+    width: $width;
+    line-height: $line-height;
+    color: $color;
+    overflow: hidden;
+    height: $height;
+}

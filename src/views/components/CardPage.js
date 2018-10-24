@@ -28,7 +28,7 @@
         render(){
             // const {id,disabled,inputValue,onClick,labelValue,name} =this.props;
             return (
-                <div className={this.props.footState===""?this.props.index===0?"card-page active" : "card-page":this.props.footState===this.props.index?"card-page active move-in" : "card-page move-out"}>
+                <div className={this.props.footState===""?this.props.index===0?"card-page active" : "card-page":this.props.footState===this.props.index?"card-page active move-in" : "card-page"}>
                     <ComponentsList  twoChange = {this.handleClick}  componentslist =  {this.props.addButton} componentsdata={this.props.message}></ComponentsList > 
               </div>
             )

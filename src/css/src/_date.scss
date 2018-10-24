@@ -1,0 +1,23 @@
+@mixin set_date($span_font_size, $span_color1, $span_color2) {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    .card_day {
+        font-size: $span_font_size * 2;
+        color: $span_color1;
+        padding-right: 5px;
+        display: inline-block;
+    }
+    .card_month {
+        padding-left: 5px;
+        border-left: 2px solid #333;
+        font-size: $span_font_size;
+        color: $span_color1;
+        display: inline-block;
+    }
+    .card_year {
+        font-size: $span_font_size;
+        color: $span_color2;
+        display: inline-block;
+    }
+}

@@ -40,11 +40,16 @@
     width: 60%;
     float: left;
     margin: 0 auto;
-    background-color: #dedee3;
+    // background-color: #dedee3;
    
-    overflow: hidden; 
+    overflow-x: hidden;
+    overflow-y: auto; 
     height: 90vh;
   }
+  .container::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
   .overflow{
     height: 100%;
     overflow-x: hidden;

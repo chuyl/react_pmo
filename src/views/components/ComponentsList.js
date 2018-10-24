@@ -55,7 +55,6 @@ class ComponentsList extends Component {
       this.props.twoChange(newState);//回调函数传递参数给父组件
   }
   handlethreeClick=(formData)=>{
-    console.log(formData)
   var newState = {
       add_button:formData.add_button,
       data:formData.data,
@@ -65,7 +64,6 @@ class ComponentsList extends Component {
   this.props.fourChange(newState);//回调函数传递参数给父组件
 }
   handleClicks=(formData)=>{
-    console.log(formData)
   var newState = {
       add_button:formData.add_button,
       data:formData.data,
@@ -80,17 +78,29 @@ class ComponentsList extends Component {
     }
     this.props.handleTwoCardTitleItem(newState);
   }
-  /** 
-	 * @time 2018-10-12
+ /** 
+	 * @time 2018-10-22
 	 * @author xuesong
-	 * @param editCardSuccess 函数 CardGroup编辑按钮成功的回调函数
+	 * @param editCardSuccess 函数 CardGroup新建保存回调函数
 	 */
   editCardSuccess=(newState)=>{
-    console.log(newState)
+     var newState={
+        success_message:newState.success_message,
+        id:newState.id,
+        freshName:newState.freshName,
+     }
+     
+     this.props.editCardGroupState(newState)
   }
     render() {
+        
         return (
                 this.props.componentslist.map((form_list,index) => {
+                //   if(form_list.type_name==="CardGroup"){
+                //       console.log(this.props.componentslist)
+                //       console.log(this.props.componentsdata)
+                //       console.log(this.props.componentsdata[form_list.before_api_uri])
+                //   }
                     return (
                       
                             form_list.type_name === "ListTextSearch" ?
@@ -205,6 +215,7 @@ class ComponentsList extends Component {
                                     key={form_list.id_name}
                                     index={index}
                                     message={form_list.title} 
+                                    footItemState={this.props.footItemState}
                                     handleCardTitleItem={this.handleThisCardTitleItem}
                                 />
                             :form_list.type_name === "LabelSelectMessage"?
@@ -252,6 +263,7 @@ class ComponentsList extends Component {
                                     key={form_list.id_name}
                                     selectedInfo={this.props.componentsdata?this.props.componentsdata:""} 
                                     title={form_list.title} 
+                                    postListGroup={this.editCardSuccess}
                                 />
                             :form_list.type_name==="HoldBtn"?
                                 <HoldBtn 
@@ -265,7 +277,9 @@ class ComponentsList extends Component {
                                     dataId={this.props.dataId}
                                     addButton={form_list.add_button}
                                     before_api_uri={form_list.before_api_uri}
+                                    afterApiUri={form_list.after_api_uri}
                                     key={form_list.id_name}
+                                    editCardSuccess={this.editCardSuccess}
                                 />
                             :form_list.type_name==="EditCardBtn"?
                                 <EditCardBtn
@@ -274,7 +288,7 @@ class ComponentsList extends Component {
                                     addButton={form_list.add_button}
                                     before_api_uri={form_list.before_api_uri}
                                     key={form_list.id_name}
-                                    editCardSuccess={this.editCardSuccess}
+                                    
                                 />
                             : ""
                        

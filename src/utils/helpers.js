@@ -21,7 +21,7 @@ function logout() {
             logout();
           }
           callback(router, data, args);
-         console.log(json)
+         
         }
         return data;
       }).catch(function (e) {

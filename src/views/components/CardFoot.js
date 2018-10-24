@@ -7,18 +7,22 @@
     // import CardItem from './CardItem'
     class CardFoot extends Component {
         state={
+            thisBtnState:0
 
         }
         handleTwoCardTitleItem=(thisBtnState)=>{
             var newState = {
                 cardTitleItem:thisBtnState.cardTitleItem
             }
+            this.setState({
+                thisBtnState:thisBtnState.cardTitleItem
+            })
             this.props.handlethreeCardTitleItem(newState);
           }
         render(){
             return (
-                <div className={this.props.openState===true?"none":"card-foot"}>
-                    <ComponentsList handleTwoCardTitleItem={this.handleTwoCardTitleItem} componentslist =  {this.props.addButton} componentsdata={this.props.message}></ComponentsList > 
+                <div className={"card-foot"}>
+                    <ComponentsList footItemState={this.state.thisBtnState} handleTwoCardTitleItem={this.handleTwoCardTitleItem} componentslist =  {this.props.addButton} componentsdata={this.props.message}></ComponentsList > 
               </div>
             )
         }

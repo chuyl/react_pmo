@@ -5,17 +5,20 @@
     import React, { Component } from 'react';
 
     class CardTitleItem extends Component {
-        state={
-        }
         handleStateClick=()=>{
+           
             var newState = {
                 cardTitleItem:this.props.index
             }
+            
             this.props.handleCardTitleItem(newState);//回调函数传递参数给父组件
         }
         render(){
             return (
-                <div onClick =  {this.handleStateClick} className="card-item">
+                <div onClick={()=>{
+                    
+                    this.handleStateClick()
+                }} className={this.props.footItemState===this.props.index?"card-item inverse active" : "card-item inverse"}>
                    {this.props.message} 
                 </div>
             )

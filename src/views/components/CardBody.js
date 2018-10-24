@@ -23,7 +23,7 @@
   }
         render(){
             return (
-                <div className={this.props.openState===true?"card-body open":"card-body"}>
+                <div className={"card-body"}>
                 <ComponentsList footState={this.props.footState} fourChange = {this.handleClick}  componentslist =  {this.props.addButton} componentsdata={this.props.message}></ComponentsList > 
           </div>
             )

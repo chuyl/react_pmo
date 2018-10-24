@@ -8,21 +8,6 @@ class Contact extends Component {
 		check_code:"",
 		list:[]
 	}
-	// login = () => {
-	// 	var cb = (route, message, arg) => {
-		  
-	// 	  if (message.code === 0) {
-	// 	    this.setState({
-	// 			list:message.data
-	// 		})
-		  
-	// 	  }
-	// 	}
-	
-		
-	// 	  getData(getRouter(STAFFSMALLLIST), {token:sessionStorage.token }, cb, { });
-		
-	//   }
 	  logins = () => {
 		var cb = (route, message, arg) => {
 		  
@@ -43,22 +28,22 @@ class Contact extends Component {
 		return (
             <div>
             联系人页
-			<ul>
-			<button onClick={()=>{
-				this.login()
-			}}>确定</button>
-			 <button onClick={()=>{
-				this.logins()
-			}}>确定</button>
+							<ul>
+								<button onClick={()=>{
+									this.login()
+								}}>确定</button>
+								<button onClick={()=>{
+									this.logins()
+								}}>确定</button>
 
-{this.state.list.map((info_lists) => {
-	return (
-		<li onClick={(e) => {
-		}} key={info_lists.id}>{info_lists.name}</li>
-	)
-})}
+								{this.state.list.map((info_lists) => {
+									return (
+										<li onClick={(e) => {
+										}} key={info_lists.id}>{info_lists.name}</li>
+									)
+								})}
 
-</ul>
+							</ul>
 			{/* <input onChange={event => this.setState({ name: event.target.value })}/>
 			<input onChange={event => this.setState({ password: event.target.value })}/>
 			<input onChange={event => this.setState({ check_code: event.target.value })}/>

@@ -11,7 +11,7 @@ import './css/style.css'
 import Lang from './language'
 import config from './config';
 import local from './local' 
-import LoginInput from '../src/views/components/LoginInput'
+import TextField from '../src/views/components/TextField'
 import {getData,getRouter } from './utils/helpers';
 
 // window.onresize = function(){
@@ -63,34 +63,25 @@ class TabComponent extends Component{
 		}
   }
   componentWillMount() {
-    this.langMangement(Lang.projectManagement)
-		this.langMangement(Lang.budgetAndFinalAccountsManagementcond)
-		this.langMangement(Lang.loanExpenditureManagement)
-		this.langMangement(Lang.receivablesManagement)
-		this.langMangement(Lang.lecturerManagement)
-		this.langMangement(Lang.implementationManagement)
+    // this.langMangement(Lang.projectManagement)
+		// this.langMangement(Lang.budgetAndFinalAccountsManagementcond)
+		// this.langMangement(Lang.loanExpenditureManagement)
+		// this.langMangement(Lang.receivablesManagement)
+		// this.langMangement(Lang.lecturerManagement)
+		// this.langMangement(Lang.implementationManagement)
 	  sessionStorage.getItem("logged")==false;
     this.getRoutes();
-    console.log(sessionStorage.logged)
-    if (!sessionStorage.logged || sessionStorage.logged === false) {
-        // window.location.href=window.location.origin
-      console.log(window.location)
-     // this.context.router.push("/");
-
-    } else {
-     
-  }
 }
-langMangement(lang){
-for(var x=0;x<lang.length;x++){
-  if(window.location.hash.split("#")[1]===lang[x].path){
-    console.log(lang[x].path)
-    this.setState({
-      currentIndex:lang[x].path
-    })
-  }
-}
-}
+// langMangement(lang){
+// for(var x=0;x<lang.length;x++){
+//   if(window.location.hash.split("#")[1]===lang[x].path){
+//     console.log(lang[x].path)
+//     this.setState({
+//       currentIndex:lang[x].path
+//     })
+//   }
+// }
+// }
   getRoutes = () => {
    
     var cb = (route, message, arg) => {
@@ -127,6 +118,7 @@ for(var x=0;x<lang.length;x++){
     var components = [];
     
        router_lists.map((router_list)=>{
+        //  console.log(router_lists)
         return(
           components.push(
             <li key={router_list.title} onClick={ () => { this.setState({ currentIndex :router_list.path}) } } className={ this.check_router_index(router_list.path)}><Link to={router_list.path}>{router_list.title}</Link></li>
@@ -174,6 +166,15 @@ for(var x=0;x<lang.length;x++){
     //   return url+pattern; 
     // }
 }
+handleLogout = () => {
+  if(window.location.hash.split("#")[1]!=="/"){
+    window.location.href=window.location.href.split("#/")[0]
+
+  }
+ 
+
+  this.setState({ logged: sessionStorage.getItem("logged"), apptype: 0 });
+}
   login = ()=>{
     var cb = (route, message, arg) => {
 			if (message.error === 0) {
@@ -200,7 +201,7 @@ for(var x=0;x<lang.length;x++){
     return  (
       <div className="login">
         <div className="login_window">
-          <LoginInput
+          <TextField
             id="login_account"
             labelValue="用户名"
             inputValue={this.state.login_account}
@@ -210,7 +211,7 @@ for(var x=0;x<lang.length;x++){
               })
             }}
           />
-          <LoginInput
+          <TextField
             id="login_password"
             labelValue="密码"
             type="password"
@@ -232,7 +233,6 @@ for(var x=0;x<lang.length;x++){
   }
 
 	render(  ){
-    console.log(sessionStorage.getItem("logged"))
 		return(
       sessionStorage.getItem("logged")==="true"?	<div className="sidebar">
      
@@ -390,9 +390,13 @@ for(var x=0;x<lang.length;x++){
             console.log("goutong")
           }} className="dialog_open">沟通
         </div>
-        <div style={{bottom:"0"}} onClick={()=>{
-         this.setState({logged:sessionStorage.getItem("logged")})
-         sessionStorage.logged = false;
+        <div style={{bottom:"100px"}} onClick={()=>{
+          sessionStorage.logged = false;
+          sessionStorage.token="";
+          this.handleLogout()
+        //   sessionStorage.logged = false;
+        //  this.setState({logged:sessionStorage.getItem("logged")})
+         
           }} className="dialog_open">退出
         </div>
         <div className={this.state.dialog_show?"dialog_window open":"dialog_window"}> 

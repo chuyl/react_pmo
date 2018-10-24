@@ -11,8 +11,7 @@
     import {getData,getRouter} from '../../utils/helpers'
     class CardGroup extends Component {
         state = {
-            addCondition: [],
-            //讲师安排获取数据list
+            addCondition: [],//讲师安排获取数据list
             data_group: [],  //获取到的数据
             view_list:this.props.beforeApiUri,    //获取到的视图
             card_list:[],    //点击新增
@@ -21,9 +20,14 @@
             alertState:false, //弹出框的状态
             alertMsg:"是否确定删除",
             parent_id:"",
-            // success_message:false,
             thisViewList:[]   //当前card数据list
         }
+        // shouldComponentUpdate(){
+        //     if(this.props.addCardGroupBtn===true){
+        //         this.listGroup(this.state.parent_id)
+        //     }
+        //    // 
+        // }
         // 子组件声明自己需要使用 context
             static contextTypes = {
                 color:PropTypes.string,
@@ -48,23 +52,21 @@
             this.context.callback(msg);
         }
           	/** 
-	 * @time 2018-10-11
-	 * @author xuesong
-	 * @param listGroup 函数 获取group列表
-	 */
-    listGroup(id){
-        var cb = (route, message, arg) => {
-            if (message.error === 0) {
-                
-                this.setState({
-                    view_list:message.data[this.props.uriName]
-                })
-            }
-        }
-        // console.log(this.props.isClick)
-        getData(getRouter(this.props.listButton), {id:id, token:sessionStorage.token }, cb, {});
+         * @time 2018-10-11
+         * @author xuesong
+         * @param listGroup 函数 获取group列表
+         */
+        postListGroup(id){
+            var newState={
+                success_message:true,
+                id:id,
+                freshName:this.props.listButton
 
-    }
+            }
+            // console.log(this.props.isClick)
+            this.props.postListGroup(newState);
+
+        }
         	/** 
 	 * @time 2018-10-11
 	 * @author xuesong
@@ -75,13 +77,13 @@
                 if (message.error === 0) {
                     this.setState({
                         add_card_state:false,
-                        alertState:false
+                        alertState:false,
+                        view_list:[]
                     })
-                     this.listGroup(this.state.parent_id)
+                     this.postListGroup(this.state.parent_id)
                 }
     
             }
-            console.log(this.props.delButton)
            getData(getRouter(this.props.delButton), {id,id,token:sessionStorage.token}, cb, {});
         }
         /** 
@@ -103,23 +105,31 @@
         this.del_group_button(this.state.thisViewList.id)
         
     }
+       /** 
+	 * @time 2018-10-22
+	 * @author xuesong
+	 * @param success_message 函数 编辑保存成功刷新数据
+	 */
     success_message=(state)=>{
         this.setState({
             add_card_state:false,
             view_list:[]
         })
         if(state.success_message===true){
-            this.listGroup(this.state.conditionAction.parent_id)
+            this.postListGroup(this.state.conditionAction.parent_id)
         }
        
         console.log(state)
     }
+    // addCardGroupBtn=()=>{
+    //     console.log("chenggong")
+    // }
         render() {
             return (
                 <div>
                     <p className="card_title">{this.props.title}</p>
                     <ul id = {this.props.idName}>
-                        {this.state.view_list?this.state.view_list.map((view_list,index)=>{
+                        {this.props.beforeApiUri?this.props.beforeApiUri.map((view_list,index)=>{
                             return  (
                                 <li
                                   key={index}  className="card_info_list_card"
@@ -142,10 +152,7 @@
                                                     parent_id:view_list.parent_id
                                                 })
 
-                                                //this.del_group_button(view_list.id)
-                                                console.log(view_list)
                                             }}
-                                        // onClick={this.removeFunEvent.bind(this)}
                                     >删除</button>
                                     <button className="label_delete_button"
                                             onClick={() => {

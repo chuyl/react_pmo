@@ -209,9 +209,9 @@
                     "before_api_uri": "lecturer_duty_list",
                     "after_api_uri": ""
                 }],
-                "descript": "",
+                "descript": "teacherCardGroup",
                 "before_api_uri":"lecturer_plan_add",
-                "after_api_uri": ""
+                "after_api_uri": "lecturer_plan_getByProjectId"
             }]
     }
 

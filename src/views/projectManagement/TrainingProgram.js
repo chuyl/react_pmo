@@ -1,87 +1,23 @@
 import React, {
 	Component
 } from 'react'
-//import Card from '../Card'
 import Cards from '../components/Cards'
-//import TextField from '../components/TextField'
-//import TextMoney from '../components/TextMoney'
-//import AddInfo from '../components/AddInfo'
-//import ListText from '../../components/ListText'
 import ComponentsList from '../components/ComponentsList'
-//import TextDatetime from '../components/TextDatetime'
-//import BudgetListTextSearchLink from './BudgetListTextSearchLink'
 import { getData, getRouter } from '../../utils/helpers'
 import {PROJECTMANAGELIST} from '../../enum'
-//import PropTypes from 'prop-types'; 
 
 class TrainingProgram extends Component {
    
 	state = {
-		//预算list内容
-		// card_list: [{
-		// 	    id:"94",
-		// 		project_customer_name:"客户44444",
-		// 		project_days:"2018-05-01",
-		// 		project_gather_name:"项目集1",
-		// 		project_gather_id:"1",
-		// 		project_name:"",
-		// 		project_person_in_charge_name:"负责人1",
-		// 		project_person_in_charge_id:"1",
-		// 		project_project_template_name:"公共培训部",
-		// 		project_project_template_id:"1",
-		// 		project_training_ares:"中软大厦",
-		// 		project_training_numbers:"1",
-		// 	}, {
-		// 		id:"2",
-		// 		project_customer_name:"客户2",
-		// 		project_days:"2018-06-01",
-		// 		project_gather_name:"项目集2",
-		// 		project_gather_id:"2",
-		// 		project_name:"课程2",
-		// 		project_person_in_charge_name:"负责人2",
-		// 		project_person_in_charge_id:"2",
-		// 		project_project_template_name:"公共培训部",
-		// 		project_project_template_id:"1",
-		// 		project_training_ares:"中软大厦",
-		// 		project_training_numbers:"3",
-		// 	},
-		// 	{
-		// 		id:"3",
-		// 		project_customer_name:"客户3",
-		// 		project_days:"2018-07-01",
-		// 		project_gather_name:"项目集3",
-		// 		project_gather_id:"3",
-		// 		project_name:"课程3",
-		// 		project_person_in_charge_name:"负责人1",
-		// 		project_person_in_charge_id:"1",
-		// 		project_project_template_name:"公共培训部",
-		// 		project_project_template_id:"1",
-		// 		project_training_ares:"中软大厦",
-		// 		project_training_numbers:"1",
-		// 	},
-		// 	{
-		// 		id:"4",
-		// 		project_customer_name:"客户4",
-		// 		project_days:"2018-08-01",
-		// 		project_gather_name:"项目集4",
-		// 		project_gather_id:"4",
-		// 		project_name:"课程1",
-		// 		project_person_in_charge_name:"负责人1",
-		// 		project_person_in_charge_id:"1",
-		// 		project_project_template_name:"公共培训部",
-		// 		project_project_template_id:"1",
-		// 		project_training_ares:"中软大厦",
-		// 		project_training_numbers:"1",
-		// 	}
-		// ],
-		card_list:[],
+		card_list:[],//项目信息列表
 		selected_card: [],
 		card_state: false,
 		edit_project_data:[],
 		form_temp_name: "",
 		projectCard:[],//card的json
 		dataId:"",//点击card按钮获取到的card的id值
-		projectList:[]
+		projectList:[],
+		addCardGroupState:""
 	};
 
 	componentWillMount() {
@@ -92,7 +28,6 @@ class TrainingProgram extends Component {
 	listProject(){
 		var cb = (route, message, arg) => {
 
-			
 			if (message.error === 0) {
 				this.setState({
 					card_list:message.data
@@ -171,17 +106,15 @@ class TrainingProgram extends Component {
 	 * @param handleChildChange 函数 出来Link返回的数据 
 	 */
 	handleChildChange=(newState)=>{ //处理子函数传回来的state,改变自身的state
-			
 		if(newState){
 			// this.setState(newState);
 			if(this.state.card_state){
 				setTimeout(function(){
 					document.getElementById("card_box").classList.remove("open")
-				},100)
+				},50)
 			}
 			setTimeout((e) => {
 				document.getElementById("card_box").classList.add("open")
-				console.log(newState)
 				this.setState({
 				  add_button:newState.add_button,
 				  card_state:true,
@@ -189,10 +122,36 @@ class TrainingProgram extends Component {
 				  edit_project_data:newState.data,
 				  form_temp_name:newState.form_temp_name,
 				})
-			},200)			
+			},100)			
 			  
 		}
 	  }
+	/** 
+	 * @time 2018-10-23
+	 * @author xuesong
+	 * @param freshCardGroup 函数 CardGroup添加Card的回调函数
+	 */
+	  freshCardGroup=(newState)=>{
+		this.setState({
+			edit_project_data:[]
+			
+		  })
+		var cb = (route, message, arg) =>  {
+            if (message.error === 0) {
+				this.setState({
+								// add_button:message.data["form-list"],
+					card_state:true,
+					edit_project_data:message.data,
+					dataId:this.state.dataId
+								
+				})
+			}
+		}
+					//获取数据接口
+		getData(getRouter(newState.freshName),  {token:sessionStorage.token, id:newState.id }, cb,  {}); 
+				
+			}
+		
 	 /** 
 	 * @time 2018-09-28
 	 * @author xuesong
@@ -247,7 +206,6 @@ class TrainingProgram extends Component {
 	//console.log(newState.before_api_uri)
 		getData(getRouter(newState.before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
 	  }
-	
 	render() {
 		return(
 			<div>
@@ -286,7 +244,7 @@ class TrainingProgram extends Component {
 							{/* paper详细内容 */}
 							{this.state.card_state ?//判断paper是否可见
 								<div key={this.state.dataId?this.state.dataId:"addComponents"} id="editComponents">
-								< ComponentsList dataId={this.state.dataId} holdClick={this.onHoldClicks} componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
+								< ComponentsList editCardGroupState={this.freshCardGroup} dataId={this.state.dataId} holdClick={this.onHoldClicks} componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
 						   </div>		
 								: ""}
 						</div>

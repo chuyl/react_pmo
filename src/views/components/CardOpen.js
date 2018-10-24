@@ -25,7 +25,7 @@
                     })
                     this.openCtrl()
                     // console.log(this.state.openCardState)
-                }} className="open-ctrl">切换</div>
+                }} className="open-ctrl"></div>
             )
         }
     }

@@ -1183,9 +1183,13 @@ html, body {
   width: 60%;
   float: left;
   margin: 0 auto;
-  background-color: #dedee3;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   height: 90vh; }
+
+.container::-webkit-scrollbar {
+  width: 4px;
+  height: 4px; }
 
 .overflow {
   height: 100%;
@@ -1440,7 +1444,7 @@ html, body {
     padding: 0;
     background: linear-gradient(to bottom right, #3f435e, #4b567f);
     overflow: hidden;
-    transition: all 0.25s 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.05s 0.01s cubic-bezier(0.165, 0.84, 0.44, 1);
     float: left;
     height: 0;
     width: 0%;
@@ -1945,6 +1949,176 @@ html, body {
   border: 1px solid #cccccc;
   height: 320px;
   margin: auto;
-  padding: 0; }
+  padding: 0;
+  background-color: #3f435e; }
+
+.card-project {
+  display: none;
+  opacity: 0; }
+
+.card {
+  display: none;
+  opacity: 0; }
+
+.crius-card-list .inverse {
+  color: #fff; }
+.crius-card-list .active {
+  display: block;
+  border-radius: 12px;
+  border: 2px solid #ccc;
+  border-left-width: 10px;
+  border-left-color: #2c4086; }
+  .crius-card-list .active .card-foot {
+    border-bottom-right-radius: 12px;
+    background: #2c4086;
+    height: 2em;
+    position: absolute;
+    bottom: 0;
+    width: 100%; }
+.crius-card-list::after {
+  content: ' ';
+  clear: both;
+  display: block;
+  visibility: hidden;
+  height: 0; }
+.crius-card-list .card-head {
+  text-align: center;
+  display: block;
+  height: 2em;
+  line-height: 2em;
+  border-bottom: 1px solid #ccc;
+  color: #2c4086;
+  overflow: hidden; }
+  .crius-card-list .card-head .card-item {
+    float: left;
+    text-align: center; }
+.crius-card-list .card-body {
+  display: block;
+  padding: 1em;
+  width: 100%; }
+.crius-card-list .card-foot {
+  display: block;
+  height: 2em;
+  overflow: hidden; }
+  .crius-card-list .card-foot input {
+    display: block;
+    outline: none;
+    width: 100%;
+    color: #fff;
+    border: none;
+    background-color: #2c4086;
+    height: 2em;
+    line-height: 2.7em; }
+.crius-card-list .active .card-head .inverse {
+  background-color: #2c4086; }
+.crius-card-list .open-ctrl {
+  height: 1em;
+  background-image: url(openline.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 90%;
+  position: absolute;
+  bottom: 2.1em;
+  width: 100%; }
+.crius-card-list .move-in {
+  display: block;
+  opacity: 0; }
+.crius-card-list .active {
+  display: block;
+  opacity: 1;
+  position: relative; }
+.crius-card-list .active .card-head .card-item:nth-of-type(1),
+.crius-card-list .active .card-foot .card-item:nth-of-type(1) {
+  width: 33.3333333333%;
+  left: 0; }
+.crius-card-list .active .card-head .card-item:nth-of-type(2),
+.crius-card-list .active .card-foot .card-item:nth-of-type(2) {
+  width: 33.3333333333%;
+  left: 0; }
+.crius-card-list .active .card-head .card-item:nth-of-type(3),
+.crius-card-list .active .card-foot .card-item:nth-of-type(3) {
+  width: 33.3333333333%;
+  left: 0; }
+.crius-card-list .card-body {
+  position: relative;
+  height: 10em;
+  transition: height 0.3s cubic-bezier(0.4, 0, 1, 1); }
+.crius-card-list .card-page {
+  border: none;
+  opacity: 0;
+  transition: opacity .3s ease; }
+.crius-card-list .card-page.active {
+  display: block;
+  opacity: 1;
+  height: auto;
+  transition: opacity .3s ease; }
+.crius-card-list .active .card-body .card-page {
+  position: absolute; }
+.crius-card-list .card-foot .card-item {
+  float: left;
+  text-align: center; }
+.crius-card-list .card-foot .active {
+  height: 2em;
+  border: none;
+  position: relative;
+  transition: border .3s ease; }
+.crius-card-list .open .card-foot {
+  height: 0; }
+.crius-card-list .open .card-body {
+  height: initial; }
+.crius-card-list .open .card-body .card-page {
+  transition: opacity .3s ease;
+  opacity: 1;
+  position: initial; }
+.crius-card-list .open .open-ctrl {
+  background-image: url(closeline.svg);
+  background-repeat: no-repeat;
+  bottom: 2px; }
+.crius-card-list .open.move-out .card-body {
+  height: 22em; }
+.crius-card-list .card-foot .active::before {
+  position: absolute;
+  content: ' ';
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-top: 10px solid #fff;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -4px; }
+.crius-card-list .card-foot .active::after {
+  position: absolute;
+  content: ' ';
+  bottom: 0px;
+  width: 10em;
+  left: 50%;
+  margin-left: -5em;
+  height: 2px;
+  background-color: #fff; }
+
+.input_list {
+  position: fixed;
+  bottom: 4em; }
+
+.date—style {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+  .date—style .card_day {
+    font-size: 28px;
+    color: #000;
+    padding-right: 5px;
+    display: inline-block; }
+  .date—style .card_month {
+    padding-left: 5px;
+    border-left: 2px solid #333;
+    font-size: 14px;
+    color: #000;
+    display: inline-block; }
+  .date—style .card_year {
+    font-size: 14px;
+    color: #000;
+    display: inline-block; }
 
 /*# sourceMappingURL=style.css.map */
