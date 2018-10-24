@@ -70,7 +70,7 @@ class Card extends Component {
 	render(){
         // console.log(this.state.openCtrlState)
         return (
-            <div id="card_id" className={this.state.openCtrlState===true?"card-project active move-out open":"card-project active"}>
+            <div id="card_id" className={this.state.openCtrlState===true?"card-project active open move-out":"card-project active"}>
                 {this.props.add_button.map((form_list) => {
                     return (
                         form_list.type_name === "Link"?

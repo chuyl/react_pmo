@@ -11,7 +11,7 @@ import './css/style.css'
 import Lang from './language'
 import config from './config';
 import local from './local' 
-import TextField from '../src/views/components/TextField'
+import LoginInput from '../src/views/components/LoginInput'
 import {getData,getRouter } from './utils/helpers';
 
 // window.onresize = function(){
@@ -201,7 +201,7 @@ handleLogout = () => {
     return  (
       <div className="login">
         <div className="login_window">
-          <TextField
+          <LoginInput
             id="login_account"
             labelValue="用户名"
             inputValue={this.state.login_account}
@@ -211,7 +211,7 @@ handleLogout = () => {
               })
             }}
           />
-          <TextField
+          <LoginInput
             id="login_password"
             labelValue="密码"
             type="password"

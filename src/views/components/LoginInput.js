@@ -16,9 +16,9 @@
         render(){
             const {id,disabled,inputValue,onClick,labelValue,name,type,onChange} =this.props;
             return (
-                <div>
-                    <label>{labelValue}</label>
-                    <input  type={type} onClick={onClick} name={name} defaultValue={inputValue} onChange={onChange} disabled={disabled} id={id}/>
+                <div className="text_field_div">
+                    <label className="search_info_list_label">{labelValue}</label>
+                    <input className={"text_field_input"} type={type} onClick={onClick} name={name} defaultValue={inputValue} onChange={onChange} disabled={disabled} id={id}/>
                     {/* <span className="text_field_remind"></span> */}
               </div>
             )
