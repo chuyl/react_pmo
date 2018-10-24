@@ -10,5 +10,6 @@
             "LightSkyBlue"
         ],
         "Red"
-    ]
+    ],
+    "git.ignoreLimitWarning": true
 }
