@@ -4,7 +4,7 @@
         "form-temp-name": "修改讲师安排",
         "form-list": [
             {
-                "id_name": "project_number",
+                "id_name": "unicode",
                 "type_name": "DisTextField",
                 "key": "",
                 "title": "项目编号",
@@ -15,7 +15,7 @@
                 "after_api_uri": ""
             },
             {
-                "id_name": "course_name",
+                "id_name": "project_name",
                 "type_name": "DisTextField",
                 "key": "",
                 "title": "课程名称",

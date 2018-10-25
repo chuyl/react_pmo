@@ -14,7 +14,7 @@
                         "type_name": "CardItem", 
                         "title": "项目类型"
                     },{
-                        "id_name": "id",
+                        "id_name": "unicode",
                         "type_name": "CardItem", 
                         "title": "班级编号"
                     },{

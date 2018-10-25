@@ -24,7 +24,7 @@
             if(cardIndex+","+index===cardIndex+","+footState){
                 var id="card_page"+cardIndex+index;
                 setTimeout(function(){
-                    document.getElementById(id).classList.remove("move-in")
+                    document.getElementById(id).classList!==null?document.getElementById(id).classList.remove("move-in"):""
                 },300)
             }
         //    if(footState===""&&index===0){

@@ -1,6 +1,5 @@
 //合同管理
 import React, { Component } from 'react';
-
 class Contract extends Component {
    state={
 	   change:"1111"
@@ -26,6 +25,7 @@ class Contract extends Component {
 // 	console.log("componentDidUpdate")
 // }
 	render(){
+		
 		return (
             <div>
             <input onChange={(e)=>{
@@ -36,6 +36,7 @@ class Contract extends Component {
 			<button
 			// 
 			>修改</button>
+			
         </div>
 		)
 	}

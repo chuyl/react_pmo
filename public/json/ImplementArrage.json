@@ -4,6 +4,29 @@
             "form-temp-name":"修改实施安排",
             "form-list":[
                 {
+                    "id_name": "unicode",
+                    "type_name": "DisTextField",
+                    "key": "",
+                    "title": "项目编号",
+                    "tip": "",
+                    "add_button": {},
+                    "descript": "",
+                    "before_api_uri": "",
+                    "after_api_uri": ""
+                },
+                {
+                    "id_name": "project_name",
+                    "type_name": "DisTextField",
+                    "key": "",
+                    "title": "课程名称",
+                    "tip": "",
+                    "add_button": {},
+                    "descript": "",
+                    "before_api_uri": "",
+                    "after_api_uri": ""
+                },
+    
+                {
                     "id_name": "venue_arrange",
                     "type_name": "CardGroup",
                     "title": "会场安排",

@@ -53,7 +53,7 @@ class TabComponent extends Component{
   constructor(  ){
 		super(  )
 		this.state = { 
-      currentIndex : "/trainingProgram",
+      currentIndex : 0,
       couter:false,
       show: false,
       dialog_show:false,
@@ -63,25 +63,25 @@ class TabComponent extends Component{
 		}
   }
   componentWillMount() {
-    // this.langMangement(Lang.projectManagement)
-		// this.langMangement(Lang.budgetAndFinalAccountsManagementcond)
-		// this.langMangement(Lang.loanExpenditureManagement)
-		// this.langMangement(Lang.receivablesManagement)
-		// this.langMangement(Lang.lecturerManagement)
-		// this.langMangement(Lang.implementationManagement)
+    this.langMangement(Lang.projectManagement)
+		this.langMangement(Lang.budgetAndFinalAccountsManagementcond)
+		this.langMangement(Lang.loanExpenditureManagement)
+		this.langMangement(Lang.receivablesManagement)
+		this.langMangement(Lang.lecturerManagement)
+		this.langMangement(Lang.implementationManagement)
 	  sessionStorage.getItem("logged")===false;
     this.getRoutes();
 }
-// langMangement(lang){
-// for(var x=0;x<lang.length;x++){
-//   if(window.location.hash.split("#")[1]===lang[x].path){
-//     console.log(lang[x].path)
-//     this.setState({
-//       currentIndex:lang[x].path
-//     })
-//   }
-// }
-// }
+langMangement(lang){
+for(var x=0;x<lang.length;x++){
+  if(window.location.hash.split("#")[1]===lang[x].path){
+    console.log(lang[x].path)
+    this.setState({
+      currentIndex:lang[x].path
+    })
+  }
+}
+}
   getRoutes = () => {
    
     var cb = (route, message, arg) => {
@@ -110,7 +110,7 @@ class TabComponent extends Component{
 
     //路由激活状态
     check_router_index( index ){
-      //console.log(index)
+      console.log(index)
       return index === this.state.currentIndex ? "tab_title active" : "tab_title"
     }
 
@@ -179,11 +179,15 @@ handleLogout = () => {
     var cb = (route, message, arg) => {
 			if (message.error === 0) {
         sessionStorage.logged = true;
+        this.setState({
+          currentIndex:"/trainingProgram"
+        })
         this.setState({logged:sessionStorage.getItem("logged")})
         sessionStorage.token=message.data.token;
         if(window.location.hash.indexOf("#")>=0){
           if(window.location.hash.split("#")[1]==="/"){
             　window.location.href = this.changeURLArg(window.location.href,'trainingProgram')
+             
              
           }
         }else{
