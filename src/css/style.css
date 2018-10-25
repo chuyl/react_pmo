@@ -2063,7 +2063,6 @@ html, body {
     background: #111111;
     opacity: 0.8;
     width: 480px;
-    border: 1px solid #ccc;
     height: 320px;
     margin: auto; }
     .login .login_window input {

@@ -76,10 +76,20 @@
                 "before_api_uri": "",
                 "after_api_uri": ""
             }, {
-                "id_name": "project_date",
+                "id_name": "project_start_date",
                 "type_name": "TextDate",
                 "key": "",
-                "title": "培训日期",
+                "title": "培训开始日期",
+                "tip": "",
+                "add_button": {},
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            }, {
+                "id_name": "project_end_date",
+                "type_name": "TextDate",
+                "key": "",
+                "title": "培训结束日期",
                 "tip": "",
                 "add_button": {},
                 "descript": "",
@@ -100,6 +110,26 @@
                 "type_name": "MutiText",
                 "key": "",
                 "title": "培训地点",
+                "tip": "",
+                "add_button": {},
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            }, {
+                "id_name": "project_income",
+                "type_name": "MutiText",
+                "key": "",
+                "title": "收入",
+                "tip": "",
+                "add_button": {},
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            }, {
+                "id_name": "project_tax_rate",
+                "type_name": "MutiText",
+                "key": "",
+                "title": "税率",
                 "tip": "",
                 "add_button": {},
                 "descript": "",

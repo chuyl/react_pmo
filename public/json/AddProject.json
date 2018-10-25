@@ -4,7 +4,7 @@
             "form-list": [
              {
                 "id_name": "project_project_template",
-                "type_name": "ListTextSearch", 
+                "type_name": "SelectList", 
                 "key": "",
                 "title": "项目模板",
                 "tip": "",
