@@ -69,7 +69,7 @@ class TabComponent extends Component{
 		// this.langMangement(Lang.receivablesManagement)
 		// this.langMangement(Lang.lecturerManagement)
 		// this.langMangement(Lang.implementationManagement)
-	  sessionStorage.getItem("logged")==false;
+	  sessionStorage.getItem("logged")===false;
     this.getRoutes();
 }
 // langMangement(lang){
@@ -201,27 +201,33 @@ handleLogout = () => {
     return  (
       <div className="login">
         <div className="login_window">
-          <LoginInput
+        <div className="user_name">
+          <input
             id="login_account"
-            labelValue="用户名"
-            inputValue={this.state.login_account}
+            // labelValue="用户名"
+            value={this.state.login_account}
+            // inputValue={this.state.login_account}
             onChange={(e)=>{
               this.setState({
                 login_account:e.target.value
               })
             }}
           />
-          <LoginInput
+          </div>
+          <div className="pass_word">
+          <input
             id="login_password"
-            labelValue="密码"
+            // labelValue="密码"
             type="password"
-            inputValue={this.state.login_password}
+            // inputValue={this.state.login_password}
+            value={this.state.login_password}
             onChange={(e)=>{
               this.setState({
                 login_password:e.target.value
               })
             }}
             />
+            </div>
             <button
               onClick={()=>{
                 this.login()

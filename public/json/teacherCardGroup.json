@@ -5,7 +5,7 @@
         "form-list": [
             {
                 "id_name": "project_number",
-                "type_name": "MutiText",
+                "type_name": "DisTextField",
                 "key": "",
                 "title": "项目编号",
                 "tip": "",
@@ -16,7 +16,7 @@
             },
             {
                 "id_name": "course_name",
-                "type_name": "MutiText",
+                "type_name": "DisTextField",
                 "key": "",
                 "title": "课程名称",
                 "tip": "",

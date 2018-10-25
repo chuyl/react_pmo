@@ -1,19 +1,51 @@
-.login{
+@mixin creat_login_style($bg_color, $padding, $set_height) {
     position: fixed;
+    display: -ms-flexbox;
     display: flex;
     height: 100vh;
     width: 100%;
+    background: linear-gradient(90deg, #3e2b7f, $bg_color);
     top: 0;
     right: 0;
-    bottom: 0;
+    bottom: 40px;
     left: 0;
-}
-.login_window{
-    width: 480px;
-    border: 1px solid #cccccc;
-    height: 320px;
-    margin: auto; 
-    padding: 0;
-    background-color: $bluePurple800;
-    
+    .login_window {
+        box-sizing: border-box;
+        padding: 4*$padding 2*$padding;
+        background: #111111;
+        opacity: 0.8;
+        width: 480px;
+        border: 1px solid #ccc;
+        height: 320px;
+        margin: auto;
+        input {
+            box-sizing: border-box;
+            display: block;
+            width: 100%;
+            outline: none;
+            background: #fff;
+            border: none;
+            height: $set_height;
+            padding-left: 10px;
+        }
+        button {
+            outline: none;
+            border: none;
+            width: 100%;
+            height: $set_height;
+            color: #fff;
+            background: $bg_color;
+        }
+    }
+    .user_name,
+    .pass_word,
+        {
+        padding-bottom: $padding;
+    }
+    @media screen and (max-width:768px) {
+        .login_window {
+            margin: auto 1em;
+            padding: 4 * $padding $padding;
+        }
+    }
 }

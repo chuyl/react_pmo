@@ -8,6 +8,7 @@
         border: 2px solid #ccc;
         border-left-width: $bor_left_width;
         border-left-color: $border_left_color;
+        margin-bottom: 1em;
         .card-foot {
             border-bottom-right-radius: $border_radius;
             background: $border_left_color;
@@ -39,6 +40,7 @@
     .card-body {
         display: block;
         padding: 1em;
+        overflow: hidden;
     }
     .card-foot {
         display: block;
@@ -152,7 +154,7 @@
         border-right: 16px solid transparent;
         border-top: 10px solid #fff;
         left: 50%;
-        margin-left: -10px;
+        margin-left: -23px;
         margin-top: -4px;
     }
     .card-foot .active::after {

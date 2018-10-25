@@ -125,6 +125,7 @@
     //     console.log("chenggong")
     // }
         render() {
+            console.log(this.props.beforeApiUri)
             return (
                 <div>
                     <p className="card_title">{this.props.title}</p>

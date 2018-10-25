@@ -16,14 +16,16 @@
 @import 'src/date';
 .crius-card-list {
     @include set_card( 10px, #2c4086, 12px);
-    @include set_active((1, 1, 1), 22em,10em);
+    @include set_active((1, 1, 1), 22em, 8em);
 }
 
 .input_list {
     position: fixed;
     bottom: 4em;
 }
-
+.login {
+    @include creat_login_style(#26216e, 20px, 40px);
+}
 .date—style {
     @include set-date(14px, #000, #000)
 }

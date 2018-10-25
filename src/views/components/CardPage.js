@@ -20,14 +20,13 @@
           this.props.threeChange(newState);//回调函数传递参数给父组件
       }
         render(){
-//this.props.footState===""?this.props.index===0?"card-page active" : "card-page":this.props.footState===this.props.index?"card-page active move-in" : "card-page"
             const {index,footState,cardIndex}=this.props;
-           if(cardIndex+","+index===cardIndex+","+footState){
-            var id="card_page"+cardIndex+index;
-            setTimeout(function(){
-                document.getElementById(id).classList.remove("move-in")
-            },300)
-           }
+            if(cardIndex+","+index===cardIndex+","+footState){
+                var id="card_page"+cardIndex+index;
+                setTimeout(function(){
+                    document.getElementById(id).classList.remove("move-in")
+                },300)
+            }
         //    if(footState===""&&index===0){
         //     setTimeout(function(){
         //             document.getElementById(id).classList.remove("move-out")

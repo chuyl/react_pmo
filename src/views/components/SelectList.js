@@ -55,7 +55,7 @@ class SelectList extends Component {
                         this.infos();
                      }}
                 >
-                    {selectedInfo === "" ? "-选择-" : selectedInfo}
+                    {selectedInfo === null ? "-选择-" : selectedInfo}
                 </div>
                 <div id={id+"_id"}  style={{display:"none"}}>{selectedIdInfo === "" ? "-选择-" : selectedIdInfo}</div>
                 <div className="search_info_position">
