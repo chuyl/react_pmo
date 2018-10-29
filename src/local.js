@@ -43,6 +43,7 @@ var local = {
                 "addTeacher":{"url":"../json/addTeacher.json","version":"1.0"},//新建讲师
                 "budgetManage":{"url":"../json/budgetManage.json","version":"1.0"},//预算
                 "editProject":{"url":"../json/editProject.json","version":"1.0"},//编辑项目
+                "projectAddressAdd":{"url":"../json/projectAddressAdd.json","version":"1.0"},//新增培训地点
                 "ImplementArrage":{"url":"../json/ImplementArrage.json","version":"1.0"},//实施安排
                 "ProjectCard":{"url":"../json/ProjectCard.json","version":"1.0"},//项目列表中的card
                 "projectTemplet":{"url":"../json/projectTemplet.json","version":"1.0"},//新建项目模板

@@ -5,6 +5,7 @@
     import React,  {Component }from 'react'; 
     // import ComponentsList from './ComponentsList'
     import {getData, getRouter }from '../../utils/helpers'
+    import Alert from './Remind'
     import PropTypes from 'prop-types'; 
     class Link extends Component {
         state =  {
@@ -15,7 +16,8 @@
             group_data_arr:[], 
             edit_linkCard_data:[], 
             linkListCardData:[], 
-            linkpage:this.props.linkpage
+            linkpage:this.props.linkpage,
+            remind_state:false
         }
         static contextTypes = {
             color:PropTypes.string,
@@ -69,6 +71,7 @@
     }
     message_list=()=> {
         var cb = (route, message, arg) =>  {
+            // console.log("bianji")
 			if (message.error===0) {
 				this.setState( {
 					linkListCardData:message.data
@@ -87,17 +90,27 @@
             if (message.error === 0) {
                 var cb = (route, messages, arg) =>  {
                     if (messages.error === 0) {
-                        console.log(message.data)
+                        // Alert.open({
+                        //     alertTip:"这是一个测试弹框",
+                        //     closeAlert:function(){
+                        //         console.log("关闭了...");
+                        //     }
+                        // });
                         var newState = {
                             add_button:message.data["form-list"]?message.data["form-list"]:[],
                             form_temp_name:message.data["form-temp-name"],
                             data:messages.data?messages.data:"",
                             dataId:this.props.dataId
                            }
+                    }else{
+                        this.setState({
+                            remind_state:true
+                        })
                     }
                      this.props.oneChange(newState);
                 }
                 //获取数据接口
+                console.log("获取数据")
                 getData(getRouter(this.props.messageList),  {token:sessionStorage.token, id:this.props.dataId }, cb,  {}); 
             }
         }
@@ -123,8 +136,10 @@
             //     }
             // }
             return ( 
-           
-                <button onClick =  {this.handleClick}>{button} </button >  
+                <div>
+                    <button onClick =  {this.handleClick}>{button} </button >  
+                    {/* <Remind state={this.state.remind_state}/> */}
+                </div>
              )
         }
     }

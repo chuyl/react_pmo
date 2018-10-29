@@ -32,9 +32,6 @@
            return (
                <div>
                    {this.props.componentslist.map((form_list) => {
-                        if(form_list.type_name==="SelectList"){
-                            console.log(form_list.before_api_uri)
-                        }
                        return <div key={form_list.id_name}>
                            {form_list.type_name === "ListTextSearch" ?
                                <ListTextSearch 

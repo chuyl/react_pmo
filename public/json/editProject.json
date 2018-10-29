@@ -105,15 +105,17 @@
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
-            }, {
+            },
+           
+            {
                 "id_name": "project_training_ares",
-                "type_name": "MutiText",
+                "type_name": "ListTextSearch",
                 "key": "",
                 "title": "培训地点",
                 "tip": "",
-                "add_button": {},
+                "add_button":"projectAddressAdd",
                 "descript": "",
-                "before_api_uri": "",
+                "before_api_uri": "project_address_list",
                 "after_api_uri": ""
             }, {
                 "id_name": "project_income",
@@ -130,6 +132,26 @@
                 "type_name": "MutiText",
                 "key": "",
                 "title": "税率",
+                "tip": "",
+                "add_button": {},
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            }, {
+                "id_name": "institutional_consulting_fees",
+                "type_name": "MutiText",
+                "key": "",
+                "title": "机构咨询费",
+                "tip": "",
+                "add_button": {},
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            }, {
+                "id_name": "personal_consulting_fees",
+                "type_name": "MutiText",
+                "key": "",
+                "title": "个人咨询费",
                 "tip": "",
                 "add_button": {},
                 "descript": "",

@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react';
 import TextField from './TextField';
+import TextArea from './TextArea'
 import DisTextField from './DisTextField'
 import TextMoney from './TextMoney'
 import TextDate from './TextDate'
@@ -27,6 +28,7 @@ import Invisible from './Invisible'
 //import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
 //import ProjectGather from '../budgetAndFinalAccountsManagementcond/budget/ProjectGather'
 import SelectList from './SelectList'
+import SelectListSearch from './SelectListSearch'
 import DepartmentList from './DepartmentList'
 class ComponentsList extends Component {
     constructor(props) {
@@ -243,13 +245,29 @@ class ComponentsList extends Component {
                                     selectedIdInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_id"]:"-选择-"} 
                                     selectedInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_name"]:"-选择-"} 
                                 /> 
-                            : form_list.type_name === "TextMoney" ? 
+                            :form_list.type_name==="SelectListSearch"?
+                                <SelectListSearch 
+                                    id={form_list.id_name}
+                                    labelValue={form_list.title}
+                                    key={form_list.id_name}
+                                    searchInfoLists={form_list.before_api_uri} 
+                                    selectedIdInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_id"]:"-选择-"} 
+                                    selectedInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_name"]:"-选择-"} 
+                                /> 
+                            :form_list.type_name === "TextMoney" ? 
                                 <TextMoney
                                     id={form_list.id_name}
                                     key={form_list.id_name}
                                     inputValue={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""}  
                                     labelValue={form_list.title} 
                                 /> 
+                            :form_list.type_name === "TextArea" ? 
+                            <TextArea 
+                                id={form_list.id_name} 
+                                inputValue={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""} 
+                                labelValue={form_list.title} 
+                                key={form_list.id_name}
+                            />
                             :form_list.type_name==="CardGroup"?
                                 <CardGroup 
                                     addButtonTitle={form_list.add_button_title} 

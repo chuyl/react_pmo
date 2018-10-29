@@ -128,7 +128,7 @@ export function postData(list_message,before_api_uri,dataId) {
                 }
                 for (var i = 0; i < list_message.length; i++) {
                         
-                    if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"){
+                    if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"||list_message[i].type_name==="SelectListSearch"){
                         value.push(list_message[i].id_name+"_name")
                         key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
                         value.push(list_message[i].id_name+"_id")

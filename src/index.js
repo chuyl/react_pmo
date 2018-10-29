@@ -110,7 +110,6 @@ for(var x=0;x<lang.length;x++){
 
     //路由激活状态
     check_router_index( index ){
-      console.log(index)
       return index === this.state.currentIndex ? "tab_title active" : "tab_title"
     }
 

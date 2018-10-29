@@ -2,6 +2,7 @@ import React, {
 	Component
 } from 'react'
 import Cards from '../components/Cards'
+import Remind from '../components/Remind'
 import ComponentsList from '../components/ComponentsList'
 import { getData, getRouter } from '../../utils/helpers'
 import {PROJECTMANAGELIST} from '../../enum'
@@ -17,7 +18,9 @@ class TrainingProgram extends Component {
 		projectCard:[],//card的json
 		dataId:"",//点击card按钮获取到的card的id值
 		projectList:[],
-		addCardGroupState:""
+		addCardGroupState:"",
+		remind_state:false
+
 	};
 
 	componentWillMount() {
@@ -167,7 +170,7 @@ class TrainingProgram extends Component {
 		}
 		for (var i = 0; i < list_message.length; i++) {
 			if(list_message[i].type_name!=="HoldBtn"){
-				if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"){
+				if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"||list_message[i].type_name==="SelectListSearch"){
 						value.push(list_message[i].id_name+"_name")
 						key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
 						value.push(list_message[i].id_name+"_id")

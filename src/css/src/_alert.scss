@@ -1,83 +1,145 @@
-@mixin set_prompt($btn_color, $padding, $prompt_main_color, $border_radius) {
-  width: 0;
-  height: 0;
-  .alert_box {
-      width: 0;
-      height: 0;
-      overflow: hidden;
-  }
-  &.open {
-      position: fixed;
-      display: flex;
-      height: 100vh;
-      width: 100%;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background-color: rgba($color: #000000, $alpha: 0.28);
-  }
-  .alert_box.open {
-      position: relative;
-      box-sizing: border-box;
-      width: 400px;
-      height: 300px;
-      background-color: $prompt_main_color;
-      margin: auto;
-      padding: 0.5 * $padding $padding $padding $padding;
-      border-radius: $border_radius;
-      h2 {
-          text-align: center;
-          color: #fff;
-          overflow: hidden;
-          padding: 0;
-          font-size: 16px;
-          margin-top: $padding;
-          margin-bottom: $padding;
-      }
-      p {
-          display: block;
-          height: 10em;
-          color: $prompt_main_color;
-          background-color: #fff;
-          padding: 10px 8px;
-          margin-bottom: $padding;
-          border-radius: $border_radius;
-          overflow: hidden;
-      }
-      button {
-          display: block;
-          height: 2em;
-          width: 4em;
-          background: $prompt_main_color;
-          color: $btn_color;
-          border-radius: 2px;
-          border: 1px solid $btn_color;
-          overflow: hidden;
-          outline: none;
-      }
-      & button:nth-of-type(1) {
-          position: absolute;
-          left: 2 * $padding;
-          bottom: $padding;
-      }
-      & button:nth-of-type(2) {
-          position: absolute;
-          right: 2* $padding;
-          bottom: $padding;
-      }
-      button.active {
-          background: $btn_color;
-          overflow: hidden;
-          color: $prompt_main_color;
-      }
-      button:hover {
-          background: $btn_color;
-          overflow: hidden;
-          color: $prompt_main_color;
-      }
-      @media screen and (max-width:768px) {
-          margin: auto 1em;
-      }
-  }
+@mixin set_prompt($screen_color, $content_color, $btn_color, $padding, $prompt_main_color, $border_radius) {
+    width: 0;
+    height: 0;
+    .alert_box {
+        width: 0;
+        height: 0;
+        overflow: hidden;
+    }
+    &.open {
+        position: fixed;
+        display: flex;
+        height: 100vh;
+        width: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba($color: $screen_color, $alpha: 0.3);
+    }
+    .alert_box {
+        position: relative;
+        box-sizing: border-box;
+        width: 400px;
+        height: 300px;
+        display: none;
+        background-color: $prompt_main_color;
+        margin: auto;
+        padding: 0.5 * $padding $padding $padding $padding;
+        border-radius: $border_radius;
+        h2 {
+            text-align: center;
+            color: $content_color;
+            overflow: hidden;
+            padding: 0;
+            font-size: 16px;
+            margin-bottom: $padding;
+        }
+        p {
+            display: block;
+            height: 10em;
+            color: $prompt_main_color;
+            background-color: $content_color;
+            padding: 10px 8px;
+            margin-bottom: $padding;
+            border-radius: $border_radius;
+            overflow: hidden;
+            box-shadow: inset 0 0 8px 8px rgba(0, 0, 0, 0.3);
+        }
+        button {
+            display: block;
+            height: 2em;
+            width: 4em;
+            background: $prompt_main_color;
+            color: $btn_color;
+            border-radius: 2px;
+            border: 1px solid $btn_color;
+            overflow: hidden;
+            outline: none;
+        }
+        & button:nth-of-type(1) {
+            position: absolute;
+            left: 2 * $padding;
+            bottom: 1.5 * $padding;
+        }
+        & button:nth-of-type(2) {
+            position: absolute;
+            right: 2 * $padding;
+            bottom: 1.5 * $padding;
+        }
+        button.active {
+            background: $btn_color;
+            overflow: hidden;
+            color: $prompt_main_color;
+        }
+        button:hover {
+            background: $btn_color;
+            overflow: hidden;
+            color: $prompt_main_color;
+        }
+        @media screen and (max-width:768px) {
+            margin: auto 1em;
+        }
+    }
+    .alert_box.open {
+        display: block;
+        opacity: 1;
+        transition: opacity .3s cubic-bezier(0.4, 0, 1, 1);
+    }
+    .move-in {
+        display: block;
+        opacity: 0;
+        transition: opacity .3s cubic-bezier(0.4, 0, 1, 1);
+    }
+    .move-out {
+        display: block;
+        opacity: 0;
+        transition: opacity .3s cubic-bezier(0.4, 0, 1, 1);
+    }
 }
+.alert-con {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 11;
+  }
+  .alert-context {
+    background-color: #fff;
+    border-radius: 16px;
+    height: 200px;
+    width: 80%;
+    margin: 40% auto 0;
+  }
+  .alert-context .alert-content-detail {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    height: 150px;
+    line-height: 150px;
+  }
+  .alert-context .comfirm {
+    border-top: 1PX solid #eee;
+    box-sizing: border-box;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 20px;
+    color: #666;
+  }
+  .alert-enter {
+    opacity: 0;
+  }
+  .alert-enter.alert-enter-active {
+    transition: all 300ms;
+    opacity: 1;
+  }
+  .alert-leave {
+    opacity: 1;
+  }
+  .alert-leave.alert-leave-active {
+    transition: all 300ms;
+    opacity: 0;
+  }

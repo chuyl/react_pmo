@@ -30,5 +30,5 @@
     @include set-date(14px, #000, #000)
 }
 .alert_back {
-    @include set_prompt(#fbb61d, 1em, #464d77, 10px);
+    @include set_prompt(#000, #fff, #fbb61d, 1em, #464d77, 10px);
 }
