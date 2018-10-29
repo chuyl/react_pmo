@@ -57,7 +57,7 @@
     }
 }
 
-@mixin set_active($width_list, $set_height, $set_minheight) {
+@mixin set_active($width_list, $set_height, $set_minheight,$set_head_itemheight) {
     .open-ctrl {
         height: 1em;
         background-image: url(openline.svg);
@@ -67,6 +67,9 @@
         position: absolute;
         bottom: 2.1em;
         width: 100%;
+    }
+    .card-head .card-item {
+        height: $set_head_itemheight;
     }
     .active {
         display: block;

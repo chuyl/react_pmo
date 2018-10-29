@@ -14,9 +14,10 @@
 @import 'src/main';
 @import 'src/font_style';
 @import 'src/date';
+@import 'src/button';
 .crius-card-list {
     @include set_card( 10px, #2c4086, 12px);
-    @include set_active((1, 1, 1), 22em, 8em);
+    @include set_active((1, 1, 1), 22em, 9em,2em);
 }
 
 .input_list {

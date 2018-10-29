@@ -18,7 +18,7 @@
             return (
                 <div className="text_field_div">
                     <label className="search_info_list_label">{labelValue}</label>
-                    <textarea  className={"text_field_input"} onClick={onClick}  onChange={this.handleChange.bind(this)} disabled={disabled} id={id}>
+                    <textarea rows="3" cols="30" className={"textarea_input"} onClick={onClick}  onChange={this.handleChange.bind(this)} disabled={disabled} id={id}>
                         {inputValue}
                     </textarea>
                     {/* <span className="text_field_remind"></span> */}

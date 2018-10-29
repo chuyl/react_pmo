@@ -43,6 +43,22 @@
                "hotel_expense_days":"3",
                "hotel_expense_people":"14",
                "hotel_expense_total":"64"}
+        ],
+        "meal":[
+            {  "parent_id":"94",
+               "id": "21",
+               "meal_fee_people_id":"2",
+               "meal_fee_people_name":"mingzi",
+               "meal_fee_days":"1",
+               "meal_fee":"6",
+               "meal_fee_remarks":"备注"},
+            {  "parent_id":"94",
+               "id": "22",
+               "meal_fee_people_id":"2",
+               "meal_fee_people_name":"mingzi",
+               "meal_fee_days":"1",
+               "meal_fee":"6",
+               "meal_fee_remarks":"备注"}
         ]
 
     }

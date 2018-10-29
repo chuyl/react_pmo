@@ -5,6 +5,7 @@
 
    import React, { Component } from 'react';
    import TextField from './TextField';
+   import TextArea from './TextArea';
    import DisTextField from './DisTextField'
    import TextMoney from './TextMoney'
    import TextDate from './TextDate'
@@ -92,6 +93,13 @@
                             //        />
                                : form_list.type_name === "MutiText" ? 
                                    <TextField 
+                                       id={form_list.id_name} 
+                                       inputValue={form_list.key} 
+                                       labelValue={form_list.title} 
+                                       key={form_list.id_name}
+                                   />
+                                : form_list.type_name === "TextArea" ? 
+                                   <TextArea 
                                        id={form_list.id_name} 
                                        inputValue={form_list.key} 
                                        labelValue={form_list.title} 

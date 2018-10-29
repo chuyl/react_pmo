@@ -136,10 +136,8 @@
             //     }
             // }
             return ( 
-                <div>
-                    <button onClick =  {this.handleClick}>{button} </button >  
-                    {/* <Remind state={this.state.remind_state}/> */}
-                </div>
+                    <button className="btn_list" onClick =  {this.handleClick}>{button} </button >  
+               
              )
         }
     }

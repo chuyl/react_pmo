@@ -1,0 +1,13 @@
+@mixin set_button_style($border_radius, $bg_color, $hover_color, $shadow:none) {
+    border-radius: $border_radius;
+    background-color: $bg_color;
+    color: $hover_color;
+    box-shadow: $shadow;
+    border: 1px solid $hover_color;
+    text-align: center;
+    outline: none;
+    &:hover {
+        background: $hover_color;
+        color: $bg_color;
+    }
+}

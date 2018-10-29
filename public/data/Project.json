@@ -68,7 +68,14 @@
         "hotel_expense_people":"人员",
         "hotel_expense_days":"天数",
         "hotel_expense_total":"费用总价"
-      }
+      },"餐费list":[
+        { 
+           "meal_fee_people_id":"2",
+           "meal_fee_people_name":"人员",
+           "meal_fee_days":"天数",
+           "meal_fee":"金额",
+           "meal_fee_remarks":"备注"}
+
   }
 
 }

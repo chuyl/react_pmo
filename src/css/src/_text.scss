@@ -13,7 +13,21 @@
     display: block;
     margin-left: 78px;
     width: calc(100% - 92px);
-    height: 24px;
+     height: 24px;
+    font: 14px "Microsoft YaHei";
+    line-height: 24px;
+    padding-left: 10px;
+    background: $white;
+    color: $gray600;
+    border-radius: 2px;
+   // position: relative;
+    border: 1px solid $gray400;
+}
+
+.textarea_input {
+    display: block;
+    margin-left: 78px;
+    width: calc(100% - 92px);
     font: 14px "Microsoft YaHei";
     line-height: 24px;
     padding-left: 10px;

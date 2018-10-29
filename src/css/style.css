@@ -1869,6 +1869,18 @@ html, body {
   border-radius: 2px;
   border: 1px solid #c6c8ce; }
 
+.textarea_input {
+  display: block;
+  margin-left: 78px;
+  width: calc(100% - 92px);
+  font: 14px "Microsoft YaHei";
+  line-height: 24px;
+  padding-left: 10px;
+  background: #fff;
+  color: #878e9f;
+  border-radius: 2px;
+  border: 1px solid #c6c8ce; }
+
 .text_field_remind {
   display: block;
   margin-left: 80px;
@@ -1953,6 +1965,21 @@ html, body {
   border: 1px solid #f4a931;
   outline: 0; }
 
+.btn_list {
+  height: 24px;
+  margin-right: 1em;
+  line-height: 22px;
+  border-radius: 2px;
+  background-color: #4b567f;
+  color: #f4a931;
+  box-shadow: none;
+  border: 1px solid #f4a931;
+  text-align: center;
+  outline: none; }
+  .btn_list:hover {
+    background: #f4a931;
+    color: #4b567f; }
+
 .crius-card-list .inverse {
   color: #fff; }
 .crius-card-list .active {
@@ -2009,6 +2036,8 @@ html, body {
   position: absolute;
   bottom: 2.1em;
   width: 100%; }
+.crius-card-list .card-head .card-item {
+  height: 2em; }
 .crius-card-list .active {
   display: block;
   opacity: 1;
@@ -2027,7 +2056,7 @@ html, body {
   left: 0; }
 .crius-card-list .card-body {
   position: relative;
-  height: 8em;
+  height: 9em;
   transition: height 0.3s cubic-bezier(0.4, 0, 1, 1); }
 .crius-card-list .card-page {
   border: none;
