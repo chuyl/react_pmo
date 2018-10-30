@@ -133,8 +133,10 @@ export function postData(list_message,before_api_uri,dataId) {
                         key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)
                         value.push(list_message[i].id_name+"_id")
                         key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML || document.getElementById(list_message[i].id_name+"_id").value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").value)
-                       }
-                    else{
+                       }else if(list_message[i].type_name==="TextArea"){
+                        value.push(list_message[i].id_name)
+                        key_name.push(document.getElementById(list_message[i].id_name).value)
+                    }else{
                         value.push(list_message[i].id_name)
                         key_name.push(document.getElementById(list_message[i].id_name).innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name).innerHTML || document.getElementById(list_message[i].id_name).value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name).value)
                       }			 

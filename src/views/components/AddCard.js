@@ -8,6 +8,7 @@
     import SelectList from './SelectList'
     import TextField from './TextField'
     import TextArea from './TextArea'
+    import DisTextArea from './DisTextArea'
     import Invisible from './Invisible'
     import TextMoney from './TextMoney'
     //import ListText from '../components/ListText'
@@ -64,13 +65,17 @@
                 key_name.push(this.props.conditionAction.parent_id)
             }
             for (var i = 0; i < list_message.length; i++) {
+               
                 if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"||list_message[i].type_name==="SelectListSearch"){
                     value.push(list_message[i].id_name+"_name")
                     key_name.push(document.getElementById(list_message[i].id_name+this.props.conditionAction.id+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+this.props.conditionAction.id+"_name").innerHTML)
                     value.push(list_message[i].id_name+"_id")
                     key_name.push(document.getElementById(list_message[i].id_name+this.props.conditionAction.id+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+this.props.conditionAction.id+"_id").innerHTML)
                    }
-                else{
+                else if(list_message[i].type_name==="TextArea"){
+                    value.push(list_message[i].id_name)
+                    key_name.push(document.getElementById(list_message[i].id_name+this.props.conditionAction.id).value)
+                }else{
                     value.push(list_message[i].id_name)
                     key_name.push(document.getElementById(list_message[i].id_name+this.props.conditionAction.id).innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+this.props.conditionAction.id).innerHTML || document.getElementById(list_message[i].id_name+this.props.conditionAction.id).value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+this.props.conditionAction.id).value)
                   }			 
@@ -89,11 +94,15 @@
            getData(getRouter(before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
         }
         render() {
+            console.log(this.props.conditionAction)
             return (
                 <div>
                     <div key={this.props.index} className="card_info_list_card">
                         {/* <ComponentsList componentslist={this.state.card_list}></ComponentsList> */}
                         {this.state.cardList?this.state.cardList.map((card_list, index) => {
+                            if(card_list.type_name==="TextArea"){
+                                 console.log(this.props.conditionAction[card_list.id_name])
+                            }
                             return (
                                 <div key={index} style={{marginBottom:"-6px"}}>
                                 {card_list.type_name === "ListTextSearch" ?
@@ -108,6 +117,9 @@
                                         id={card_list.id_name+this.props.conditionAction.id} inputValue={this.props.conditionAction[card_list.id_name]?this.props.conditionAction[card_list.id_name]:""} labelValue={card_list.title} />
                                 :card_list.type_name === "TextArea" ? 
                                     <TextArea
+                                        id={card_list.id_name+this.props.conditionAction.id} inputValue={this.props.conditionAction[card_list.id_name]?this.props.conditionAction[card_list.id_name]:""} labelValue={card_list.title} />
+                                :card_list.type_name === "DisTextArea" ? 
+                                    <DisTextArea
                                         id={card_list.id_name+this.props.conditionAction.id} inputValue={this.props.conditionAction[card_list.id_name]?this.props.conditionAction[card_list.id_name]:""} labelValue={card_list.title} />
                                 :card_list.type_name === "Invisible" ? 
                                     <Invisible

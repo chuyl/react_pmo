@@ -6,6 +6,7 @@
 import React, { Component } from 'react';
 import TextField from './TextField';
 import TextArea from './TextArea'
+import DisTextArea from './DisTextArea'
 import DisTextField from './DisTextField'
 import TextMoney from './TextMoney'
 import TextDate from './TextDate'
@@ -103,6 +104,7 @@ class ComponentsList extends Component {
                 //       console.log(this.props.componentsdata)
                 //       console.log(this.props.componentsdata[form_list.before_api_uri])
                 //   }
+                console.log(this.props.index)
                     return (
                       
                             form_list.type_name === "ListTextSearch" ?
@@ -177,7 +179,7 @@ class ComponentsList extends Component {
                                 />
                             :form_list.type_name === "DisTextField"?
                                 <DisTextField
-                                    id={form_list.id_name} 
+                                    id={form_list.id_name+this.props.index} 
                                     inputValue={this.props.componentsdata[form_list.id_name]!==null?this.props.componentsdata[form_list.id_name]:""} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
@@ -238,7 +240,7 @@ class ComponentsList extends Component {
                                 />
                             :form_list.type_name==="SelectList"?
                                 <SelectList 
-                                    id={form_list.id_name}
+                                    id={form_list.id_name+this.props.index}
                                     labelValue={form_list.title}
                                     key={form_list.id_name}
                                     searchInfoLists={form_list.before_api_uri} 
@@ -247,7 +249,7 @@ class ComponentsList extends Component {
                                 /> 
                             :form_list.type_name==="SelectListSearch"?
                                 <SelectListSearch 
-                                    id={form_list.id_name}
+                                    id={form_list.id_name+this.props.index}
                                     labelValue={form_list.title}
                                     key={form_list.id_name}
                                     searchInfoLists={form_list.before_api_uri} 
@@ -262,8 +264,15 @@ class ComponentsList extends Component {
                                     labelValue={form_list.title} 
                                 /> 
                             :form_list.type_name === "TextArea" ? 
-                            <TextArea 
-                                id={form_list.id_name} 
+                                <TextArea 
+                                id={form_list.id_name+this.props.index} 
+                                inputValue={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""} 
+                                labelValue={form_list.title} 
+                                key={form_list.id_name}
+                                />
+                            :form_list.type_name === "DisTextArea" ? 
+                                <DisTextArea 
+                                id={form_list.id_name+this.props.index} 
                                 inputValue={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""} 
                                 labelValue={form_list.title} 
                                 key={form_list.id_name}

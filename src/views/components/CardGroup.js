@@ -136,7 +136,7 @@
                                 <li
                                   key={index}  className="card_info_list_card"
                                 >
-                                < ComponentsList  componentslist =  {this.props.addButton.descript?this.props.addButton.descript:[]} componentsdata = {view_list} ></ComponentsList > 
+                                < ComponentsList index={index}  componentslist =  {this.props.addButton.descript?this.props.addButton.descript:[]} componentsdata = {view_list} ></ComponentsList > 
                                     {/* {this.props.addButton.descript.map((card_list, index) => {
                                         return (
                                         <div key={index} style={{marginBottom:"-6px"}}>

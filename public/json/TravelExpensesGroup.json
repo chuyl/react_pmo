@@ -605,7 +605,7 @@
                         ,
                         {
                             "id_name": "meal_fee_remarks",
-                            "type_name": "TextArea", 
+                            "type_name": "DisTextArea", 
                             "key": "",
                             "title": "备注",
                             "tip": "",

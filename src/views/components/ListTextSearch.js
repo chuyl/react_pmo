@@ -97,7 +97,10 @@ class ListTextSearch extends Component {
 						value.push(list_message[i].id_name+"_id")
 						key_name.push(document.getElementById(list_message[i].id_name+"_id").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_id").innerHTML)	
 					 }
-				else{
+                     else if(list_message[i].type_name==="TextArea"){
+                        value.push(list_message[i].id_name)
+                        key_name.push(document.getElementById(list_message[i].id_name).value)
+                    }else{
 					value.push(list_message[i].id_name)
 					key_name.push(document.getElementById(list_message[i].id_name).innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name).innerHTML || document.getElementById(list_message[i].id_name).value=== "-选择-" ? "" : document.getElementById(list_message[i].id_name).value)
 					}

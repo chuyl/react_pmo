@@ -1,10 +1,10 @@
 /** 
      * @author xuesong
-     * @param TextArea 组件  label+textarea
+     * @param DisTextArea 组件  label+textarea disable
      */
     import React, { Component } from 'react';
 
-    class TextArea extends Component {
+    class DisTextArea extends Component {
         state={
             inputValue:""
         }
@@ -19,7 +19,7 @@
             return (
                 <div className="text_field_div">
                     <label className="search_info_list_label">{labelValue}</label>
-                    <textarea  value={this.state.inputValue===""?inputValue:this.state.inputValue} rows="3" cols="30" className={"textarea_input"} onClick={onClick}  onChange={this.handleChange.bind(this)}  id={id}>
+                    <textarea disabled={true} value={this.state.inputValue===""?inputValue:this.state.inputValue} rows="3" cols="30" className={"textarea_input"} onClick={onClick}  onChange={this.handleChange.bind(this)}  id={id}>
                         
                     </textarea>
                     {/* <span className="text_field_remind"></span> */}
@@ -27,5 +27,5 @@
             )
         }
     }
-    export default TextArea;
+    export default DisTextArea;
     
