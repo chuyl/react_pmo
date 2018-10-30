@@ -6,7 +6,6 @@
 
     class TextArea extends Component {
         state={
-            inputValue:this.props.inputValue
         }
         handleChange(e) {
             this.setState({

@@ -5,6 +5,7 @@
     import React, { Component } from 'react';
     import AddCard from './AddCard';
     import DisTextField from './DisTextField'
+    import ComponentsList from './ComponentsList';
     import PropTypes from 'prop-types';
     import Alert from './Alert'
     //import {LECTURERADD} from '../../enum'
@@ -135,15 +136,17 @@
                                 <li
                                   key={index}  className="card_info_list_card"
                                 >
-                                    {this.props.addButton.descript.map((card_list, index) => {
+                                < ComponentsList  componentslist =  {this.props.addButton.descript?this.props.addButton.descript:[]} componentsdata = {view_list} ></ComponentsList > 
+                                    {/* {this.props.addButton.descript.map((card_list, index) => {
                                         return (
                                         <div key={index} style={{marginBottom:"-6px"}}>
                                             <DisTextField
                                                 inputValue={view_list[card_list.id_name]!==null?view_list[card_list.id_name]:""} 
                                                 labelValue={card_list.title} 
                                             />
-                                        </div>)
-                                    })}          
+                                        </div>
+                                        )
+                                    })}           */}
                                     {/* < ComponentsList componentslist =  {this.props.addButton.descript?this.props.addButton.descript:[]} componentsdata = {view_list} ></ComponentsList >  */}
                                     {this.props.delButton!==""?<button className="label_delete_button"
                                             onClick={()=>{

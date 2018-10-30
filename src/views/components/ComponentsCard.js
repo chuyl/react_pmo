@@ -101,7 +101,7 @@
                                 : form_list.type_name === "TextArea" ? 
                                    <TextArea 
                                        id={form_list.id_name} 
-                                       inputValue={form_list.key} 
+                                    //    inputValue={form_list.key} 
                                        labelValue={form_list.title} 
                                        key={form_list.id_name}
                                    />
