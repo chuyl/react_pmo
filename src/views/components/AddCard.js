@@ -7,6 +7,7 @@
     import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
     import SelectList from './SelectList'
     import TextField from './TextField'
+    import TextArea from './TextArea'
     import Invisible from './Invisible'
     import TextMoney from './TextMoney'
     //import ListText from '../components/ListText'
@@ -104,6 +105,9 @@
                                         selectedInfo={this.props.conditionAction[card_list.id_name+"_name"]?this.props.conditionAction[card_list.id_name+"_name"]:"-选择-"}  />
                                 :card_list.type_name === "MutiText" ? 
                                     <TextField
+                                        id={card_list.id_name+this.props.conditionAction.id} inputValue={this.props.conditionAction[card_list.id_name]?this.props.conditionAction[card_list.id_name]:""} labelValue={card_list.title} />
+                                :card_list.type_name === "TextArea" ? 
+                                    <TextArea
                                         id={card_list.id_name+this.props.conditionAction.id} inputValue={this.props.conditionAction[card_list.id_name]?this.props.conditionAction[card_list.id_name]:""} labelValue={card_list.title} />
                                 :card_list.type_name === "Invisible" ? 
                                     <Invisible
