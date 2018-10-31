@@ -36,27 +36,67 @@
                         "tip":"",
                         "add_button":[
                             {
-                                "id_name": "project_customer_name",
-                                "type_name": "LabelMessage", 
-                                "title": "客户名称:"
-                            },{
                                 "id_name": "project_name",
-                                "type_name": "LabelMessage", 
+                                "type_name": "TitleLeftCard", 
                                 "title": "课程名称:"
                             },{
-                                "id_name": "project_training_numbers",
-                                "type_name": "LabelMessage", 
-                                "title": "培训天数:"
+                                "id_name": "lecturer",
+                                "type_name": "TitleCardRightGroup", 
+                                "before_api_uri":"teacher_name_name",
+                                "title": ""
                             },{
                                 "id_name": "project_date",
-                                "type_name": "LabelMessage", 
-                                "title": "培训日期:"
+                                "type_name": "DateCard",
+                                "before_api_uri": "", 
+                                "title": ":"
                             
                             },{
                                 "id_name": "project_training_ares",
-                                "type_name": "LabelMessage", 
-                                "title": "培训地点:"
+                                "type_name": "ProvinceCity",
+                                "before_api_uri": "", 
+                                "title": ":"
+                            
+                            },{
+                                "id_name": "address",
+                                "type_name": "CardLeftBody",
+                                "title": ":"
+                            
+                            },{
+                                "id_name": "project_days",
+                                "type_name": "CardRightBody",
+                                "title": ":"
+                            
+                            },{
+                                "id_name": "project_customer_name",
+                                "type_name": "CardLeftBody",
+                                "title": ":"
+                            
+                            },{
+                                "id_name": "project_gather_name",
+                                "type_name": "CardRightBody",
+                                "title": ":"
+                            
+                            },{
+                                "id_name": "labor_cost",
+                                "type_name": "LabelMessage",
+                                "title": "人工成本"
+                            
+                            },{
+                                "id_name": "lecturer",
+                                "type_name": "SpellingCardGroup", 
+                                "before_api_uri":["teacher_name_name","teacher_duty_name"],
+                                "title": ""
+                            },{
+                                "id_name": "implementation_cost",
+                                "type_name": "LabelMessage",
+                                "title": "实施成本"
+                            
+                            },{
+                                "id_name": "venue",
+                                "type_name": "SpellingCardGroup", 
+                                "title": ""
                             }
+                            
                         ]}
                     ,{ "id_name": "project_edit_btns",
                         "type_name": "CardPage", 

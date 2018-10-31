@@ -1,33 +1,85 @@
-{
-    "data": [{
-			    "id":"94",
-				"project_customer_name":"客户44444",
-				"project_days":"2018-05-01",
-				"project_gather_name":"项目集1",
-				"project_gather_id":"1",
-				"project_name":"",
-				"project_person_in_charge_name":"负责人1",
-				"project_person_in_charge_id":"1",
-				"project_project_template_name":"公共培训部",
-				"project_project_template_id":"1",
-				"project_training_ares":"中软大厦",
-				"project_training_numbers":"1"
-			}, {
-				"id":"93",
-				"project_customer_name":"客户44444",
-				"project_days":"2018-05-01",
-				"project_gather_name":"项目集1",
-				"project_gather_id":"1",
-				"project_name":"",
-				"project_person_in_charge_name":"负责人1",
-				"project_person_in_charge_id":"1",
-				"project_project_template_name":"公共培训部",
-				"project_project_template_id":"1",
-				"project_training_ares":"中软大厦",
-				"project_training_numbers":"1"
+ {
+    "data":[ {
+				"id":"2", 
+				"project_project_template_name":"项目模板", 
+				"project_name":"课程名称", 
+				"unicode":"项目编号", 
+				"project_gather_name":"项目集", 
+				"project_person_in_charge_name":"实施负责人", 
+				"project_leader_name":"项目负责人", 
+				"project_customer_name":"客户名称", 
+				"project_days":"天数", 
+				"project_start_date":"2018-10-11", 
+				"project_end_date":"2018-10-14",
+				"project_date":{
+					"start":"2018-10-11",
+					"end":"2018-10-14"
+				},
+				
+				"project_training_numbers":"培训人数", 
+				"project_training_ares":{
+					"province":"黑龙江省",
+					"city":"哈尔滨市"
+					
+				}, 
+				"address":"香坊区红旗大街",
+				"project_income":"收入", 
+				"project_tax_rate":"税率", 
+				"institutional_consulting_fees":"机构咨询费", 
+				"personal_consulting_fees":"个人咨询费", 
+				"labor_cost":"人工成本",
+				"implementation_cost":"实施成本",
+				"travel_cost":"差旅成本",
+				"consulting_cost":"咨询成本",
+				"costing":"成本合计",
+				"expected_income":"预计收入",
+				"project_profit":"项目利润",
+				"gross_interest_rate":"毛利率",
+				"cooperative_gross_margin":"去合作费毛利率",
+				"lecturer":[ 
+					{   "id":"166",
+						"teacher_duty_name":"职责", 
+						"teacher_lecture_fee":"讲课费",
+						"teacher_income_tax":"所得税", 
+						"teacher_name_name":"宋丹"
+						},
+						{   "id":"166",
+							"teacher_duty_name":"职责", 
+							"teacher_lecture_fee":"讲课费",
+							"teacher_income_tax":"所得税", 
+							"teacher_name_name":"宋丹"
+							}
+					],
+				"implement":
+					{	"id":"45",
+						"venue_fee":"null",
+						"material_and_equipment_cost":"",
+						"examination_fee":"456",
+						"tea_break":"654",
+						"stationery":"654",
+						"hospitality":"564",
+						"postage":"456",
+						"parent_id":"2",
+						"state":"0",
+						"time":"2018-10-26 14:23:38",
+						"material_cost":"123456",
+						"equipment_cost":"456"},
+				"venue":[
+					{	"id":"12",
+						"total_price":"总价",
+						"meetingplace_name":"会议名称"
+						},
+					{	"id":"12",
+							"total_price":"总价",
+							"meetingplace_name":"会议名称"
+							}],
+				"stay":"总价",
+				"city":"总价",
+				"province":"总价",
+				"meal":"总价"
 			}
-        ],
-    "code":0,
-    "error":0,
+        ], 
+    "code":0, 
+    "error":0, 
     "msg":"查询成功"
 }

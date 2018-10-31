@@ -6,7 +6,7 @@
 
     class TextArea extends Component {
         state={
-            inputValue:""
+            inputValue:" "
         }
         handleChange(e) {
             this.setState({
@@ -19,7 +19,7 @@
             return (
                 <div className="text_field_div">
                     <label className="search_info_list_label">{labelValue}</label>
-                    <textarea  value={this.state.inputValue===""?inputValue:this.state.inputValue} rows="3" cols="30" className={"textarea_input"} onClick={onClick}  onChange={this.handleChange.bind(this)}  id={id}>
+                    <textarea  value={this.state.inputValue===" "?inputValue:this.state.inputValue} rows="3" cols="30" className={"textarea_input"} onClick={onClick}  onChange={this.handleChange.bind(this)}  id={id}>
                         
                     </textarea>
                     {/* <span className="text_field_remind"></span> */}

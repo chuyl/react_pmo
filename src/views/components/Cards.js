@@ -16,7 +16,7 @@ class Card extends Component {
         form_temp_name:"",
         formData:this.props.formData,
         cardTitleItem:"",
-        openCtrlState:false//openCard
+        openCtrlState:""//openCard
     }
   
     zoom_in = () => {
@@ -67,17 +67,26 @@ class Card extends Component {
             openCtrlState:state.openCardState,
             thisIndex:this.props.index
         })
-        if(this.state.openCtrlState===false){
-           var id="card_id"+this.props.index;
-            setTimeout(function(){
-                document.getElementById(id).classList.remove("move-out")
-            },300)
-        }
+        
       }
 	render(){
-     
+        if(this.state.openCtrlState===false){
+            console.log("false")
+           var id="card_id"+this.props.index;
+            setTimeout(function(){
+                document.getElementById(id).classList.remove("move-in")
+            },300)
+        }
+        if(this.state.openCtrlState===true){
+            console.log("true")
+            var id="card_id"+this.props.index;
+             setTimeout(function(){
+                 document.getElementById(id).classList.remove("move-out")
+             },300)
+         }
+     console.log(this.state.openCtrlState)
         return (
-            <div id={"card_id"+this.props.index} name={"card-project"} className={this.state.openCtrlState===true?"card-project active open move-out":"card-project active"}>
+            <div id={"card_id"+this.props.index} name={"card-project"} className={this.state.openCtrlState===""?"card-project active":this.state.openCtrlState===true?"card-project active open move-out":"card-project move-in active"}>
                 {this.props.add_button.map((form_list) => {
                     return (
                         form_list.type_name === "Link"?

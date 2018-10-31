@@ -14,8 +14,16 @@ import TextDatetime from './TextDatetime'
 import ListTextSearch from './ListTextSearch'
 import LinkCard from './LinkCard'
 import Link from './Link'
+import DateCard from './DateCard'
 import CardGroup from './CardGroup'
 import LabelMessage from './LabelMessage'
+import TitleLeftCard from './TitleLeftCard'
+import TitleRightCard from './TitleRightCard'
+import TitleCardRightGroup from './TitleCardRightGroup'
+import ProvinceCity from './ProvinceCity'
+import CardLeftBody from './CardLeftBody'
+import CardRightBody from './CardRightBody'
+import SpellingCardGroup from './SpellingCardGroup'
 import LabelSelectMessage from './LabelSelectMessage'
 import CardHead from './CardHead'
 import CardPage from './CardPage'
@@ -99,12 +107,6 @@ class ComponentsList extends Component {
         
         return (
                 this.props.componentslist.map((form_list,index) => {
-                //   if(form_list.type_name==="CardGroup"){
-                //       console.log(this.props.componentslist)
-                //       console.log(this.props.componentsdata)
-                //       console.log(this.props.componentsdata[form_list.before_api_uri])
-                //   }
-                console.log(this.props.index)
                     return (
                       
                             form_list.type_name === "ListTextSearch" ?
@@ -179,7 +181,7 @@ class ComponentsList extends Component {
                                 />
                             :form_list.type_name === "DisTextField"?
                                 <DisTextField
-                                    id={form_list.id_name+this.props.index} 
+                                    id={this.props.index?form_list.id_name+this.props.index:form_list.id_name} 
                                     inputValue={this.props.componentsdata[form_list.id_name]!==null?this.props.componentsdata[form_list.id_name]:""} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
@@ -191,6 +193,68 @@ class ComponentsList extends Component {
                                     key={form_list.id_name}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
+                            :form_list.type_name === "TitleLeftCard"?
+                                <TitleLeftCard
+                                    id={form_list.id_name}
+                                    labelValue={form_list.title} 
+                                    key={form_list.id_name}
+                                    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />
+                            :form_list.type_name === "TitleRightCard"?
+                                <TitleRightCard
+                                    id={form_list.id_name}
+                                    labelValue={form_list.title} 
+                                    key={form_list.id_name}
+                                    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />
+                            :form_list.type_name === "TitleCardRightGroup"?
+                                <TitleCardRightGroup
+                                    id={form_list.id_name}
+                                    labelValue={form_list.title} 
+                                    key={form_list.id_name}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />
+                                :form_list.type_name === "SpellingCardGroup"?
+                                <SpellingCardGroup
+                                    id={form_list.id_name}
+                                    labelValue={form_list.title} 
+                                    key={form_list.id_name}
+                                     beforeApiUri={form_list.before_api_uri}
+                                    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />
+                                
+                            :form_list.type_name === "DateCard"?
+                                <DateCard
+                                    id={form_list.id_name}
+                                    labelValue={form_list.title} 
+                                    key={form_list.id_name}
+                                    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />
+                            :form_list.type_name === "ProvinceCity"?
+                                <ProvinceCity
+                                    id={form_list.id_name}
+                                    labelValue={form_list.title} 
+                                    key={form_list.id_name}
+                                    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />
+                            :form_list.type_name === "CardLeftBody"?
+                                <CardLeftBody
+                                    id={form_list.id_name}
+                                    labelValue={form_list.title} 
+                                    key={form_list.id_name}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />
+                            :form_list.type_name === "CardRightBody"?
+                                <CardRightBody
+                                    id={form_list.id_name}
+                                    labelValue={form_list.title} 
+                                    key={form_list.id_name}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />
+                                
                             :form_list.type_name === "CardHead"?   
                                 <CardHead
                                     id={form_list.id_name} 
@@ -240,7 +304,7 @@ class ComponentsList extends Component {
                                 />
                             :form_list.type_name==="SelectList"?
                                 <SelectList 
-                                    id={form_list.id_name+this.props.index}
+                                    id={this.props.index?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title}
                                     key={form_list.id_name}
                                     searchInfoLists={form_list.before_api_uri} 
@@ -249,7 +313,7 @@ class ComponentsList extends Component {
                                 /> 
                             :form_list.type_name==="SelectListSearch"?
                                 <SelectListSearch 
-                                    id={form_list.id_name+this.props.index}
+                                    id={this.props.index?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title}
                                     key={form_list.id_name}
                                     searchInfoLists={form_list.before_api_uri} 
@@ -265,14 +329,14 @@ class ComponentsList extends Component {
                                 /> 
                             :form_list.type_name === "TextArea" ? 
                                 <TextArea 
-                                id={form_list.id_name+this.props.index} 
+                                id={this.props.index?form_list.id_name+this.props.index:form_list.id_name} 
                                 inputValue={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""} 
                                 labelValue={form_list.title} 
                                 key={form_list.id_name}
                                 />
                             :form_list.type_name === "DisTextArea" ? 
                                 <DisTextArea 
-                                id={form_list.id_name+this.props.index} 
+                                id={this.props.index?form_list.id_name+this.props.index:form_list.id_name} 
                                 inputValue={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""} 
                                 labelValue={form_list.title} 
                                 key={form_list.id_name}

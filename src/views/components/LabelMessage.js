@@ -16,7 +16,7 @@
         render(){
             const {message,labelValue} =this.props;
             return (
-                <div>
+                <div className="label_title_message">
                     <label>{labelValue}</label>
                    <span>{message}</span>
                     {/* <span className="text_field_remind"></span> */}

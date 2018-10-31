@@ -106,10 +106,78 @@
     outline: none;
     cursor: pointer;
 }
-.card_message{
+.card_left{
   
+  color: $gray600;
+  width: 66.6%;
+  height: 2.5em;
+  float: left;
+  p{font-size: 24px;}
+  //border: 1px solid $gray600;
 }
+.card_right{
+  color: $gray600;
+  width: 33.3%;
+  height: 2.5em;
+  float: left;
+  p{font-size: 24px;}
+}
+.title_card_right{
+  font-size: 24px;
+  color: $gray600;
+  width: 33.3%;
+  float: left;
+  //border: 1px solid $gray600;
+}
+.date_card{
+  width: 66.6%;
+  float: left;
+  height: 3.2em;
+  span{
+    font-size: 28px;
+  }
 
+}
+.province_city{
+  width: 33.3%;
+  float: left;
+  height: 3.2em;
+  p{
+    color: $gray600;
+  }
+}
+.label_title_message{
+  width: 100%;
+  float: left;
+  height: 2em;
+  font-size: 20px;
+  label{
+    width: 66.6%;
+    display: block;
+    float: left;
+  }
+  span{
+    width: 33.3%;
+    display: block;
+    float: left;
+  }
+}
+.label_message{
+  width: 100%;
+  float: left;
+  height: 2em;
+  color: $gray600;
+  label{
+    width: 66.6%;
+    display: block;
+    float: left;
+  }
+  span{
+    width: 33.3%;
+    display: block;
+    float: left;
+  }
+}
 @media only screen and (max-width:768px ){
     .select_card{
         position: relative;
