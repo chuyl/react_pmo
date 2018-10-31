@@ -27,13 +27,14 @@
                
             return (
                 <div className="date_card">
-                  <span>{start_month}</span>
-                  月
+                 {this.props.message.start?<span><span>{start_month}</span>
+                  <span>月</span>
                   <span>{start_date}</span>
-                  日- <span>{end_month}</span>
-                  月
+                  <span>日-</span></span>:""} 
+                  {this.props.message.end?<span><span>{end_date}</span>
+                  <span>月</span>
                   <span>{end_date}</span>
-                  日
+                  <span>日</span></span>:""} 
               </div>
             )
         }
