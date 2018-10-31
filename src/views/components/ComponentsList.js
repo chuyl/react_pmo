@@ -24,6 +24,7 @@ import ProvinceCity from './ProvinceCity'
 import CardLeftBody from './CardLeftBody'
 import CardRightBody from './CardRightBody'
 import SpellingCardGroup from './SpellingCardGroup'
+import LoopCardGroup from './LoopCardGroup'
 import LabelSelectMessage from './LabelSelectMessage'
 import CardHead from './CardHead'
 import CardPage from './CardPage'
@@ -215,8 +216,16 @@ class ComponentsList extends Component {
                                     beforeApiUri={form_list.before_api_uri}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
-                                :form_list.type_name === "SpellingCardGroup"?
+                            :form_list.type_name === "SpellingCardGroup"?
                                 <SpellingCardGroup
+                                    id={form_list.id_name}
+                                    labelValue={form_list.title} 
+                                    key={form_list.id_name}
+                                     beforeApiUri={form_list.before_api_uri}
+                                    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />
+                            :form_list.type_name === "LoopCardGroup"?
+                                <LoopCardGroup
                                     id={form_list.id_name}
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}

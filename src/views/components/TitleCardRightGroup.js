@@ -7,10 +7,10 @@
     class TitleCardRightGroup extends Component {
         render(){
             const {message,beforeApiUri} =this.props;
-            console.log(message)
+            console.log(message.length)
             return (
                 <div className="title_card_right">
-                    <p>{message[0][beforeApiUri]}等</p>
+                   {message.length>0? <p>{message[0][beforeApiUri]}等</p>:""}
                 </div>
             )
         }

@@ -10,8 +10,8 @@
             console.log(message)
             return (
               
-                message.map(message => {
-							return (<div>
+                message.map((message,index) => {
+							return (<div key={index}>
                                 <div className="label_message">
                                         <label> {message.teacher_name_name}-{message.teacher_duty_name}-{message.teacher_lecture_fee}
                                         </label>

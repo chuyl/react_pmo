@@ -91,6 +91,11 @@
                                 "type_name": "LabelMessage",
                                 "title": "实施成本"
                             
+                            },{
+                                "id_name": "venue",
+                                "type_name": "LoopCardGroup", 
+                                "before_api_uri":"",
+                                "title": ""
                             }
                             
                         ]}
