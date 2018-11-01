@@ -6,10 +6,10 @@
 
     class CardRightBody extends Component {
         render(){
-            const {message} =this.props;
+            const {message,beforeApiUri,defaultValue} =this.props;
             return (
                 <p className="card_right">
-                  {message}
+                  {message?message:defaultValue}
               </p>
             )
         }

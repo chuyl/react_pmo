@@ -15,7 +15,6 @@
           }
         render(){
             const {id,inputValue,onClick,labelValue,readOnly} =this.props;
-            console.log(inputValue)
             return (
                 <div className="text_field_div">
                     <label className="search_info_list_label">{labelValue}</label>

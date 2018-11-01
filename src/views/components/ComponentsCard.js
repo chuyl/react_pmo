@@ -15,7 +15,7 @@
    import LinkCard from './LinkCard'
    import Link from './Link'
    import CardGroup from './CardGroup'
-   import LabelMessage from './LabelMessage'
+   import LabelTitleMessage from './LabelTitleMessage'
    import LabelSelectMessage from './LabelSelectMessage'
    import HoldBtn from './HoldBtn'
    import AddCardBtn from './AddCardBtn'
@@ -127,8 +127,8 @@
                                        labelValue={form_list.title} 
                                        key={form_list.id_name}
                                    />
-                               :form_list.type_name === "LabelMessage"?
-                                   <LabelMessage
+                               :form_list.type_name === "LabelTitleMessage"?
+                                   <LabelTitleMessage
                                        id={form_list.id_name}
                                        labelValue={form_list.title} 
                                        key={form_list.id_name}

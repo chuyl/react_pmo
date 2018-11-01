@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Link from './Link'
-import LabelMessage from './LabelMessage'
+import LabelTitleMessage from './LabelTitleMessage'
 import LabelSelectMessage from './LabelSelectMessage'
 import CardHead from './CardHead'
 import CardBody from './CardBody'
@@ -71,20 +71,17 @@ class Card extends Component {
       }
 	render(){
         if(this.state.openCtrlState===false){
-            console.log("false")
            var id="card_id"+this.props.index;
             setTimeout(function(){
                 document.getElementById(id).classList.remove("move-in")
             },300)
         }
         if(this.state.openCtrlState===true){
-            console.log("true")
             var id="card_id"+this.props.index;
              setTimeout(function(){
                  document.getElementById(id).classList.remove("move-out")
              },300)
          }
-     console.log(this.state.openCtrlState)
         return (
             <div id={"card_id"+this.props.index} name={"card-project"} className={this.state.openCtrlState===""?"card-project active":this.state.openCtrlState===true?"card-project active open move-out":"card-project move-in active"}>
                 {this.props.add_button.map((form_list) => {
@@ -136,8 +133,8 @@ class Card extends Component {
                                     handlethreeCardTitleItem = {this.handlethreeCardTitleItem}
                                 />
                             
-                            :form_list.type_name === "LabelMessage"?
-                                <LabelMessage
+                            :form_list.type_name === "LabelTitleMessage"?
+                                <LabelTitleMessage
                                     id={form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}

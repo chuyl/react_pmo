@@ -7,11 +7,10 @@
     class LoopCardGroup extends Component {
         render(){
             const {message} =this.props;
-            console.log(message)
             return (
               
                 message.map((message,index) => {
-							return (<div>
+							return (<div key={index}>
                                 <div className="label_message">
                                         <label> 会议室{index+1}
                                         </label>

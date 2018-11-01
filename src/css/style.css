@@ -1479,12 +1479,27 @@ html, body {
   width: 100%;
   float: left;
   height: 2em;
+  font-size: 14px;
   color: #878e9f; }
   .label_message label {
     width: 66.6%;
     display: block;
     float: left; }
   .label_message span {
+    width: 33.3%;
+    display: block;
+    float: left; }
+
+.label_total_message {
+  width: 100%;
+  float: left;
+  height: 2em;
+  font-size: 16px; }
+  .label_total_message label {
+    width: 66.6%;
+    display: block;
+    float: left; }
+  .label_total_message span {
     width: 33.3%;
     display: block;
     float: left; }

@@ -6,10 +6,10 @@
 
     class CardLeftBody extends Component {
         render(){
-            const {message} =this.props;
+            const {message,defaultValue} =this.props;
             return (
                 <p className="card_left">
-                  {message}
+                  {message?message:defaultValue}
               </p>
             )
         }

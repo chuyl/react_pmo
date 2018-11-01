@@ -6,12 +6,11 @@
 
     class ProvinceCity extends Component {
         render(){
-            const {message,beforeApiUri} =this.props;
-            console.log(message,)
+            const {message,beforeApiUri,defaultValue} =this.props;
             return (
                 <div className="change_line">
-                  <p>{message.province}</p>
-                  <p>{message.city}</p>
+                  <p>{message.province?message.province:defaultValue}</p>
+                  <p>{message.city?message.city:defaultValue}</p>
               </div>
             )
         }

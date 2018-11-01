@@ -16,7 +16,7 @@
             if(this.props.message.start){
                  start_month_date=this.props.message.start.slice(5),
                 start_month=start_month_date.split("-")[0],
-                start_month=start_month_date.split("-")[1];
+                start_date=start_month_date.split("-")[1];
             }
             if(this.props.message.end){
                  end_month_date = this.props.message.end.slice(5),
@@ -34,7 +34,7 @@
                   {this.props.message.end?<span><span>{end_date}</span>
                   <span>月</span>
                   <span>{end_date}</span>
-                  <span>日</span></span>:""} 
+                  <span>日</span></span>:this.props.defaultValue} 
               </div>
             )
         }

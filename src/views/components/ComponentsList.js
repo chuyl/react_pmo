@@ -16,7 +16,10 @@ import LinkCard from './LinkCard'
 import Link from './Link'
 import DateCard from './DateCard'
 import CardGroup from './CardGroup'
+import LabelTitleMessage from './LabelTitleMessage'
+import LabelChildMessage from './LabelChildMessage'
 import LabelMessage from './LabelMessage'
+import LabelTotalMessage from './LabelTotalMessage'
 import TitleLeftCard from './TitleLeftCard'
 import TitleRightCard from './TitleRightCard'
 import TitleCardRightGroup from './TitleCardRightGroup'
@@ -187,11 +190,27 @@ class ComponentsList extends Component {
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
                                 />
+                            :form_list.type_name === "LabelTitleMessage"?
+                                <LabelTitleMessage
+                                    id={form_list.id_name}
+                                    labelValue={form_list.title} 
+                                    key={form_list.id_name}
+                                    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />
+                            :form_list.type_name === "LabelChildMessage"?
+                                <LabelChildMessage
+                                    id={form_list.id_name}
+                                    labelValue={form_list.title} 
+                                    key={form_list.id_name}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />
                             :form_list.type_name === "LabelMessage"?
                                 <LabelMessage
                                     id={form_list.id_name}
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
+                                    beforeApiUri={form_list.before_api_uri}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
                             :form_list.type_name === "TitleLeftCard"?
@@ -199,6 +218,7 @@ class ComponentsList extends Component {
                                     id={form_list.id_name}
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
+                                    defaultValue={form_list.default_value}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
                             :form_list.type_name === "TitleRightCard"?
@@ -206,6 +226,7 @@ class ComponentsList extends Component {
                                     id={form_list.id_name}
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
+                                    defaultValue={form_list.default_value}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
                             :form_list.type_name === "TitleCardRightGroup"?
@@ -213,14 +234,26 @@ class ComponentsList extends Component {
                                     id={form_list.id_name}
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
+                                    defaultValue={form_list.default_value}
                                     beforeApiUri={form_list.before_api_uri}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
+                            :form_list.type_name === "LabelTotalMessage"?
+                                <LabelTotalMessage
+                                    id={form_list.id_name}
+                                    labelValue={form_list.title} 
+                                    key={form_list.id_name}
+                                    defaultValue={form_list.default_value}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />
+                                
                             :form_list.type_name === "SpellingCardGroup"?
                                 <SpellingCardGroup
                                     id={form_list.id_name}
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
+                                    defaultValue={form_list.default_value}
                                      beforeApiUri={form_list.before_api_uri}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
@@ -229,6 +262,7 @@ class ComponentsList extends Component {
                                     id={form_list.id_name}
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
+                                    defaultValue={form_list.default_value}
                                      beforeApiUri={form_list.before_api_uri}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
@@ -238,6 +272,7 @@ class ComponentsList extends Component {
                                     id={form_list.id_name}
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
+                                    defaultValue={form_list.default_value}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
                             :form_list.type_name === "ProvinceCity"?
@@ -245,6 +280,7 @@ class ComponentsList extends Component {
                                     id={form_list.id_name}
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
+                                    defaultValue={form_list.default_value}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
                             :form_list.type_name === "CardLeftBody"?
@@ -253,6 +289,7 @@ class ComponentsList extends Component {
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
                                     beforeApiUri={form_list.before_api_uri}
+                                    defaultValue={form_list.default_value}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
                             :form_list.type_name === "CardRightBody"?
@@ -260,7 +297,7 @@ class ComponentsList extends Component {
                                     id={form_list.id_name}
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
-                                    beforeApiUri={form_list.before_api_uri}
+                                    defaultValue={form_list.default_value}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
                                 

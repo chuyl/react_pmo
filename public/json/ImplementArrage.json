@@ -255,7 +255,7 @@
                         "descript":[
                             {
                                 "id_name": "material_cost",
-                                "type_name": "TextMoney", 
+                                "type_name": "DisTextField", 
                                 "key": "",
                                 "title": "教材费用",
                                 "tip": "",
@@ -266,7 +266,7 @@
                             },
                             {
                                 "id_name": "equipment_cost",
-                                "type_name": "TextMoney", 
+                                "type_name": "DisTextField", 
                                 "key": "",
                                 "title": "设备费用",
                                 "tip": "",
@@ -278,7 +278,7 @@
                             
                             {
                                 "id_name": "examination_fee",
-                                "type_name": "TextMoney", 
+                                "type_name": "DisTextField", 
                                 "key": "",
                                 "title": "考试费",
                                 "tip": "",
@@ -289,7 +289,7 @@
                             },
                             {
                                 "id_name": "tea_break",
-                                "type_name": "TextMoney",
+                                "type_name": "DisTextField",
                                 "key": "",
                                 "title": "茶歇",
                                 "tip": "",
@@ -300,7 +300,7 @@
                             },
                             {
                                 "id_name": "stationery",
-                                "type_name": "TextMoney", 
+                                "type_name": "DisTextField", 
                                 "key": "",
                                 "title": "文具",
                                 "tip": "",
@@ -311,7 +311,7 @@
                             },
                              {
                                 "id_name": "hospitality",
-                                "type_name": "TextMoney", 
+                                "type_name": "DisTextField", 
                                 "key": "",
                                 "title": "招待费",
                                 "tip": "",
@@ -322,7 +322,7 @@
                             },
                             {
                                 "id_name": "postage",
-                                "type_name": "TextMoney",
+                                "type_name": "DisTextField",
                                 "key": "",
                                 "title": "邮寄快递",
                                 "tip": "",
