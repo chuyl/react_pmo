@@ -82,7 +82,6 @@ class Card extends Component {
                 document.getElementById(id).classList?document.getElementById(id).classList.remove("move-out"):""
              },300)
          }
-         console.log("这是card组件")
         return (
             
             <div id={"card_id"+this.props.index} name={"card-project"} className={this.state.openCtrlState===""?"card-project active":this.state.openCtrlState===true?"card-project active open move-out":"card-project move-in active"}>

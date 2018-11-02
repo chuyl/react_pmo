@@ -158,6 +158,7 @@ class TrainingProgram extends Component {
 					dataId:this.state.dataId
 								
 				})
+				this.listProject()  //刷新项目列表
 			}
 		}
 					//获取数据接口
@@ -222,32 +223,33 @@ class TrainingProgram extends Component {
 		getData(getRouter(newState.before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
 	  }
 	render() {
-		console.log("这是培训项目")
 		return(
 			<div>
 				<div id="" className="container">
-					<div className="add_button" onClick={(e) => {
-						this.fetchProjectData("AddProject")
-						this.card_box_concent([], e)
-						this.setState({
-							edit_project_data:[],
-							dataId:""
-						})
-					    }}
-					>
-						添加
+					<div>
+						<div className="add_button" onClick={(e) => {
+							this.fetchProjectData("AddProject")
+							this.card_box_concent([], e)
+							this.setState({
+								edit_project_data:[],
+								dataId:""
+							})
+							}}
+						>
+							添加
+						</div>
 					</div>
 					<div className="overflow crius-card-list">
 						{this.state.card_list!==null?this.state.card_list.map((card_list,index) => {
 							return <Cards 
-							    index={index}
-							    sixChange = {this.handleChildChange}
-								id={card_list.id}
-								card_list={card_list}
-								add_button={this.state.projectCard}
-								key={card_list.id} 
-								 />
-						}):""}
+										index={index}
+										sixChange = {this.handleChildChange}
+										id={card_list.id}
+										card_list={card_list}
+										add_button={this.state.projectCard}
+										key={card_list.id} 
+										/>
+								}):""}
 					</div>
 				</div>
 				<div className="paper_div">
