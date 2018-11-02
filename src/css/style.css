@@ -1225,7 +1225,7 @@ html, body {
   position: fixed;
   top: 0;
   background-color: #427881;
-  /* height: 600px; js浠ｆ浛 */
+  /* height: 600px; js代替 */
   left: 0;
   z-index: 10; }
 
@@ -1545,7 +1545,7 @@ html, body {
     top: 0;
     height: 95vh;
     background: linear-gradient(to bottom right, #3f435e, #4b567f);
-    /* height: 600px; js浠ｆ浛 */
+    /* height: 600px; js代替 */
     left: 0;
     z-index: 10; } }
 .dialog_open {
@@ -1575,7 +1575,7 @@ html, body {
   bottom: 5px;
   height: 500px;
   background-color: palevioletred;
-  /* height: 600px; js浠ｆ浛 */
+  /* height: 600px; js代替 */
   right: 5px;
   z-index: 20; }
 
@@ -1599,7 +1599,7 @@ html, body {
     bottom: 0;
     height: 100vh;
     background-color: palevioletred;
-    /* height: 600px; js浠ｆ浛 */
+    /* height: 600px; js代替 */
     right: 0;
     z-index: 20; } }
 .add_info_list {
@@ -2207,7 +2207,7 @@ html, body {
   transition: opacity .3s ease; }
 .crius-card-list .card-body .card-page {
   position: absolute;
-  padding: 1em;
+  padding: 0 0 0 0.5em;
   width: 100%;
   box-sizing: border-box; }
 .crius-card-list .card-foot .card-item {
@@ -2230,7 +2230,8 @@ html, body {
   position: initial; }
 .crius-card-list .open .open-ctrl {
   background-image: url(closeline.svg);
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  bottom: 0; }
 .crius-card-list .open.move-out .card-body {
   height: 24em;
   transition: height 0.3s cubic-bezier(0.4, 0, 1, 1); }

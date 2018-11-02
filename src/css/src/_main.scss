@@ -95,15 +95,15 @@
         position: relative;
         height: $set_minheight;
         transition: height .3s cubic-bezier(0.4, 0, 1, 1);
-        box-sizing:border-box;
+        box-sizing: border-box;
         padding-bottom: 1em;
     }
     .card-page {
         display: none;
         border: none;
         opacity: 0;
-
-    }    .card-page.active {
+    }
+    .card-page.active {
         display: block;
         opacity: 1;
         height: auto;
@@ -114,10 +114,9 @@
         opacity: 0;
         transition: opacity .3s ease;
     }
-
     .card-body .card-page {
         position: absolute;
-        padding: 1em;
+        padding: 0 0 0 0.5em;
         width: 100%;
         box-sizing: border-box;
     }
@@ -148,6 +147,7 @@
         .open-ctrl {
             background-image: url(closeline.svg);
             background-repeat: no-repeat;
+            bottom: 0;
         }
     }
     .open.move-out {
