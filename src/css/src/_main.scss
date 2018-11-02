@@ -2,7 +2,7 @@
     .inverse {
         color: #fff;
     }
-    .active {
+    .card-project.active {
         display: block;
         border-radius: $border_radius;
         border: 0px solid #ccc;
@@ -56,22 +56,34 @@
 }
 
 @mixin set_active($width_list, $set_height, $set_minheight, $set_head_itemheight) {
-    .open-ctrl {
-        height: 1em;
-        background-image: url(openline.svg);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 70%;
-        background-color: $bluePurple700;
-        position: absolute;
-        bottom: 2em;
-        width: 100%;
+    .card-project {
+        margin-bottom: 3em;
     }
-    .active {
+    .card-project {
+        position: relative;
+        .open-ctrl {
+            height: 1em;
+            background-image: url(openline.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 70%;
+            background-color: $bluePurple700;
+            position: absolute;
+            bottom: 2em;
+            width: 100%;
+        }
+        .card-body {
+            position: relative;
+            height: $set_minheight;
+            transition: height .3s cubic-bezier(0.4, 0, 1, 1);
+            box-sizing: border-box;
+            padding-bottom: 1em;
+        }
+    }
+    .card-page.active {
         display: block;
         opacity: 1;
         position: relative;
-        margin-bottom: 3em;
     }
     .card-head .card-item {
         height: $set_head_itemheight;
@@ -90,13 +102,6 @@
                 left: 0;
             }
         }
-    }
-    .card-body {
-        position: relative;
-        height: $set_minheight;
-        transition: height .3s cubic-bezier(0.4, 0, 1, 1);
-        box-sizing: border-box;
-        padding-bottom: 1em;
     }
     .card-page {
         display: none;
@@ -129,7 +134,7 @@
         position: relative;
         transition: border .3s ease;
     }
-    .open {
+    .card-project.open {
         .card-foot {
             height: 0;
         }
@@ -150,13 +155,13 @@
             bottom: 0;
         }
     }
-    .open.move-out {
+    .card-project.open.move-out {
         .card-body {
             height: $set_height;
             transition: height .3s cubic-bezier(0.4, 0, 1, 1);
         }
     }
-    .active.move-in {
+    .card-project.active.move-in {
         .card-body {
             height: $set_height;
             transition: height .3s cubic-bezier(0.4, 0, 1, 1);
