@@ -14,7 +14,7 @@
             })
           }
         render(){
-            const {id,inputValue,onClick,labelValue,readOnly} =this.props;
+            const {id,inputValue,onClick,labelValue} =this.props;
             console.log(inputValue)
             return (
                 <div className="text_field_div">

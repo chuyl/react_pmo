@@ -20,9 +20,11 @@
           this.props.threeChange(newState);//回调函数传递参数给父组件
       }
         render(){
+         
             const {index,footState,cardIndex}=this.props;
             if(cardIndex+","+index===cardIndex+","+footState){
                 var id="card_page"+cardIndex+index;
+                 console.log(document.getElementById(id).classList)
                 setTimeout(function(){
                     document.getElementById(id).classList!==null?document.getElementById(id).classList.remove("move-in"):""
                 },300)

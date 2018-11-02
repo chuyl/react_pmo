@@ -29,7 +29,7 @@
         display: block;
         height: 2em;
         line-height: 2em;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid $bluePurple700;
         color: $border_left_color;
         overflow: hidden;
         .card-item {
@@ -62,8 +62,9 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: 70%;
+        background-color: $bluePurple700;
         position: absolute;
-        bottom: 2.1em;
+        bottom: 2em;
         width: 100%;
     }
     .active {
@@ -95,23 +96,25 @@
         height: $set_minheight;
         transition: height .3s cubic-bezier(0.4, 0, 1, 1);
         box-sizing:border-box;
+        padding-bottom: 1em;
     }
     .card-page {
+        display: none;
         border: none;
         opacity: 0;
 
+    }    .card-page.active {
+        display: block;
+        opacity: 1;
+        height: auto;
+        transition: opacity .3s ease;
     }
     .card-page.move-in {
         display: block;
         opacity: 0;
         transition: opacity .3s ease;
     }
-    .card-page.active {
-        display: block;
-        opacity: 1;
-        height: auto;
-        transition: opacity .3s ease;
-    }
+
     .card-body .card-page {
         position: absolute;
         padding: 1em;
@@ -137,6 +140,7 @@
         }
         .card-body .card-page {
             transition: opacity .3s ease;
+            display: block;
             opacity: 1;
             clear: both;
             position: initial;
@@ -144,7 +148,6 @@
         .open-ctrl {
             background-image: url(closeline.svg);
             background-repeat: no-repeat;
-            bottom: 2px;
         }
     }
     .open.move-out {

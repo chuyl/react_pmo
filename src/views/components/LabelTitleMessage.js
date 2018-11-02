@@ -3,7 +3,7 @@
      * @param LabelTitleMessage 组件  label+message
      */
     import React, { Component } from 'react';
-
+    import {dealNumber} from '../../utils/helpers'
     class LabelTitleMessage extends Component {
         state={
             inputValue:this.props.inputValue
@@ -18,7 +18,7 @@
             return (
                 <div className="label_title_message">
                     <label>{labelValue}</label>
-                   <span>{message?message:0}</span>
+                   <span>{message?dealNumber(message):0}</span>
                     {/* <span className="text_field_remind"></span> */}
               </div>
             )

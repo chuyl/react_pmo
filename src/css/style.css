@@ -1175,7 +1175,7 @@ a {
 html, body {
   margin: 0;
   padding: 0;
-  font-size: 14px;
+  font-size: 16px;
   overflow: hidden;
   height: 100%; }
 
@@ -1286,7 +1286,8 @@ html, body {
   background-color: pink; }
 
 .router_screen {
-  display: block; }
+  display: block;
+  font-size: 14px; }
 
 .router_button {
   display: none; }
@@ -1431,7 +1432,7 @@ html, body {
   height: 2.5em;
   float: left; }
   .card_left p {
-    font-size: 24px; }
+    font-size: 2em; }
 
 .card_right {
   color: #878e9f;
@@ -1439,22 +1440,31 @@ html, body {
   height: 2.5em;
   float: left; }
   .card_right p {
-    font-size: 24px; }
+    font-size: 1.5em; }
 
 .title_card_right {
-  font-size: 24px;
+  font-size: 2em;
   color: #878e9f;
   width: 33.3%;
   float: left; }
 
+@media screen and (max-width: 768px) {
+  .card_left p,
+  .card_right p,
+  .title_card_right {
+    font-size: 1em; } }
 .date_card {
   width: 66.6%;
   float: left;
   height: 3.2em; }
-  .date_card span {
-    font-size: 28px; }
+  .date_card > span {
+    font-size: 2em; }
 
+@media screen and (max-width: 768px) {
+  .date_card > span {
+    font-size: 1em; } }
 .change_line {
+  box-sizing: border-box;
   width: 33.3%;
   float: left;
   height: 3.2em; }
@@ -2059,8 +2069,46 @@ html, body {
     background: #f4a931;
     color: #4b567f; }
 
-table {
-  width: 60%; }
+.label_title_message {
+  border-top: 2px solid #4b567f;
+  border-bottom: 2px solid #4b567f;
+  line-height: 2em; }
+  .label_title_message span,
+  .label_title_message label {
+    box-sizing: border-box;
+    padding-left: 0.7em;
+    padding-bottom: 0.25em;
+    overflow: hidden; }
+
+.label_message span {
+  box-sizing: border-box;
+  height: 2em;
+  border-left: 1px solid #4b567f; }
+.label_message span,
+.label_message label {
+  box-sizing: border-box;
+  padding-left: 1em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  overflow: hidden; }
+.label_message label {
+  text-align: right;
+  padding-right: 1em; }
+
+.label_total_message span {
+  box-sizing: border-box;
+  height: 2em;
+  border-left: 1px solid #4b567f; }
+.label_total_message span,
+.label_total_message label {
+  box-sizing: border-box;
+  padding-left: 0.8em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  overflow: hidden; }
+.label_total_message label {
+  text-align: right;
+  padding-right: 1em; }
 
 .crius-card-list .card-project {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); }
@@ -2071,10 +2119,10 @@ table {
   border-radius: 10px;
   border: 0px solid #ccc;
   border-left-width: 10px;
-  border-left-color: #2c4086; }
+  border-left-color: #4b567f; }
   .crius-card-list .active .card-foot {
     border-bottom-right-radius: 10px;
-    background: #2c4086;
+    background: #4b567f;
     height: 2em;
     position: absolute;
     bottom: 0;
@@ -2090,8 +2138,8 @@ table {
   display: block;
   height: 2em;
   line-height: 2em;
-  border-bottom: 1px solid #ccc;
-  color: #2c4086;
+  border-bottom: 1px solid #4b567f;
+  color: #4b567f;
   overflow: hidden; }
   .crius-card-list .card-head .card-item {
     float: left; }
@@ -2104,19 +2152,20 @@ table {
   overflow: hidden;
   color: #fff;
   text-align: center;
-  background-color: #2c4086;
+  background-color: #4b567f;
   height: 2em;
   line-height: 2em; }
 .crius-card-list .card-head .inverse {
-  background-color: #2c4086; }
+  background-color: #4b567f; }
 .crius-card-list .open-ctrl {
   height: 1em;
   background-image: url(openline.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 70%;
+  background-color: #4b567f;
   position: absolute;
-  bottom: 2.1em;
+  bottom: 2em;
   width: 100%; }
 .crius-card-list .active {
   display: block;
@@ -2141,18 +2190,20 @@ table {
   position: relative;
   height: 9em;
   transition: height 0.3s cubic-bezier(0.4, 0, 1, 1);
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  padding-bottom: 1em; }
 .crius-card-list .card-page {
+  display: none;
   border: none;
   opacity: 0; }
-.crius-card-list .card-page.move-in {
-  display: block;
-  opacity: 0;
-  transition: opacity .3s ease; }
 .crius-card-list .card-page.active {
   display: block;
   opacity: 1;
   height: auto;
+  transition: opacity .3s ease; }
+.crius-card-list .card-page.move-in {
+  display: block;
+  opacity: 0;
   transition: opacity .3s ease; }
 .crius-card-list .card-body .card-page {
   position: absolute;
@@ -2173,13 +2224,13 @@ table {
   transition: height 0.3s cubic-bezier(0.4, 0, 1, 1); }
 .crius-card-list .open .card-body .card-page {
   transition: opacity .3s ease;
+  display: block;
   opacity: 1;
   clear: both;
   position: initial; }
 .crius-card-list .open .open-ctrl {
   background-image: url(closeline.svg);
-  background-repeat: no-repeat;
-  bottom: 2px; }
+  background-repeat: no-repeat; }
 .crius-card-list .open.move-out .card-body {
   height: 24em;
   transition: height 0.3s cubic-bezier(0.4, 0, 1, 1); }
@@ -2359,34 +2410,5 @@ table {
     .login .login_window {
       margin: auto 1em;
       padding: 80px 20px; } }
-
-.art1 tr {
-  line-height: 1.5em;
-  text-align: left;
-  padding: 1em 0;
-  margin: 0; }
-.art1 td {
-  line-height: 1.5em;
-  text-align: left;
-  padding: 1em 0.5em;
-  margin: 0; }
-.art1 th {
-  line-height: 1.5em;
-  text-align: left;
-  padding: 1em 0.5em;
-  margin: 0; }
-.art1 thead:after {
-  content: " ";
-  display: table-row;
-  height: 1em;
-  background-color: transparent; }
-.art1 thead tr {
-  border-bottom: 1px solid #666; }
-.art1 tfoot tr {
-  border-top: 1px solid #666; }
-.art1 tbody th:first-child {
-  border-right: 1px solid #666; }
-.art1 tbody th:last-child {
-  border-left: 1px solid #666; }
 
 /*# sourceMappingURL=style.css.map */

@@ -99,13 +99,13 @@ class ComponentsList extends Component {
 	 * @param editCardSuccess 函数 CardGroup新建保存回调函数
 	 */
   editCardSuccess=(newState)=>{
-     var newState={
+     var newStates={
         success_message:newState.success_message,
         id:newState.id,
         freshName:newState.freshName,
      }
      
-     this.props.editCardGroupState(newState)
+     this.props.editCardGroupState(newStates)
   }
     render() {
         

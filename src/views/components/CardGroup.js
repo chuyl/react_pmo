@@ -4,7 +4,6 @@
      */
     import React, { Component } from 'react';
     import AddCard from './AddCard';
-    import DisTextField from './DisTextField'
     import ComponentsList from './ComponentsList';
     import PropTypes from 'prop-types';
     import Alert from './Alert'
@@ -83,6 +82,7 @@
                     })
                      this.postListGroup(this.state.parent_id)
                 }
+                
     
             }
            getData(getRouter(this.props.delButton), {id,id,token:sessionStorage.token}, cb, {});

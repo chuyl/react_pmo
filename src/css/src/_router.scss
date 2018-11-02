@@ -29,7 +29,7 @@
   html, body{
     margin: 0;
     padding: 0;
-    font-size: 14px;
+    font-size: 16px;
     overflow: hidden;
     height: 100%;
   }
@@ -150,7 +150,8 @@
   background-color: pink;
 }
 .router_screen{
-  display: block
+  display: block;
+  font-size: 14px;
   }
   .router_button{
     display: none

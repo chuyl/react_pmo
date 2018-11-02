@@ -2,7 +2,7 @@ import React, {
 	Component
 } from 'react'
 import Cards from '../components/Cards'
-import Remind from '../components/Remind'
+import Alert from '../components/Remind'
 import ComponentsList from '../components/ComponentsList'
 import { getData, getRouter } from '../../utils/helpers'
 import {PROJECTMANAGELIST} from '../../enum'
@@ -36,8 +36,18 @@ class TrainingProgram extends Component {
 					card_list:message.data
 				})
 
+			}else{
+			
+				Alert.open({
+					alertTip:message.msg
+					
+				});
+				setTimeout(function(){
+					Alert.close();
+				 },3000)
 			}
 		}
+		
 		getData(getRouter(PROJECTMANAGELIST), { token:sessionStorage.token }, cb, {});
 
 	}
@@ -209,10 +219,10 @@ class TrainingProgram extends Component {
 				this.listProject()  //刷新项目列表
 			}
 	}
-	//console.log(newState.before_api_uri)
 		getData(getRouter(newState.before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
 	  }
 	render() {
+		console.log("这是培训项目")
 		return(
 			<div>
 				<div id="" className="container">

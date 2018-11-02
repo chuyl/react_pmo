@@ -90,12 +90,7 @@
             if (message.error === 0) {
                 var cb = (route, messages, arg) =>  {
                     if (messages.error === 0) {
-                        // Alert.open({
-                        //     alertTip:"这是一个测试弹框",
-                        //     closeAlert:function(){
-                        //         console.log("关闭了...");
-                        //     }
-                        // });
+                        
                         var newState = {
                             add_button:message.data["form-list"]?message.data["form-list"]:[],
                             form_temp_name:message.data["form-temp-name"],
@@ -106,6 +101,14 @@
                         this.setState({
                             remind_state:true
                         })
+                        console.log(message)
+                        Alert.open({
+                            alertTip:messages.msg
+                            
+                        });
+                        setTimeout(function(){
+                            Alert.close();
+                         },3000)
                     }
                      this.props.oneChange(newState);
                 }

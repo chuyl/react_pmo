@@ -15,12 +15,13 @@
 @import 'src/font_style';
 @import 'src/date';
 @import 'src/button';
-@import 'src/table';
+@import 'src/mixins/table';
+@import 'src/new_table';
 .crius-card-list {
     .card-project {
         box-shadow:  0px 0px  5px rgba(0, 0, 0, 0.3);
     }
-    @include set_card( 10px, #2c4086, 10px);
+    @include set_card( 10px,$bluePurple700 , 10px);
     @include set_active((1, 1, 1), 24em, 9em, 2em);
 }
 
@@ -40,17 +41,4 @@
 .login {
     @include creat_login_style(#26216e, 20px, 40px);
 }
-.art1 {
-    $table_base_tr: 1.5em left (1em 0) (0);
-    $table_base_td: 1.5em left (1em 0.5em) (0);
-    $table_base_th: 1.5em left (1em 0.5em) (0);
-    $table_base: ( tr: $table_base_tr, td:$table_base_td, th: $table_base_th, );
-    @include creat_table($table_base); //
-    @include set_title_space(1em, 2); //设置格线
-    $table_title_line: 1px solid #666;
-    $table_content_line: 1px solid #ddd;
-    $table_out_line: 1px solid #000;
-    @include set_x_title_line($table_title_line, 2);
-    @include set_y_title_line($table_title_line, 1); //
-   
-}
+

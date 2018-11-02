@@ -11,7 +11,6 @@ import './css/style.css'
 import Lang from './language'
 import config from './config';
 import local from './local' 
-import LoginInput from '../src/views/components/LoginInput'
 import {getData,getRouter } from './utils/helpers';
 
 // window.onresize = function(){

@@ -81,7 +81,7 @@ export function notification() {
   };
 }
 export function dealNumber(money){
-  if(money && money!=null){
+ if(money && money!=null){
     money = String(money);
     var left=money.split('.')[0],right=money.split('.')[1];
     right = right ? (right.length>=2 ? '.'+right.substr(0,2) : '.'+right+'0') : '.00';

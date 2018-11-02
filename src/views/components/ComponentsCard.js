@@ -13,7 +13,6 @@
    import TextDatetime from './TextDatetime'
    import ListTextSearch from './ListTextSearch'
    import LinkCard from './LinkCard'
-   import Link from './Link'
    import CardGroup from './CardGroup'
    import LabelTitleMessage from './LabelTitleMessage'
    import LabelSelectMessage from './LabelSelectMessage'

@@ -6,6 +6,7 @@
     import AddTeacher from '../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
     import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
     import SelectList from './SelectList'
+    import Alert from './Remind'
     import TextField from './TextField'
     import TextArea from './TextArea'
     import DisTextArea from './DisTextArea'
@@ -88,6 +89,15 @@
                 if (message.error === 0) {
                    this.success_message()
                     //this.listGroup()
+                }else{
+			
+                    Alert.open({
+                        alertTip:message.msg
+                        
+                    });
+                    setTimeout(function(){
+                        Alert.close();
+                     },3000)
                 }
     
             }

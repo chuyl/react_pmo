@@ -41,13 +41,15 @@
                                 "title": "课程名称:",
                                 "default_value":"未设置课程名称"
 
-                            },{
+                            }
+                            ,{
                                 "id_name": "lecturer",
                                 "type_name": "TitleCardRightGroup", 
                                 "before_api_uri":"teacher_name_name",
                                 "title": "",
                                 "default_value":"未设置讲师"
-                            },{
+                            }
+                            ,{
                                 "id_name": "project_date",
                                 "type_name": "DateCard",
                                 "before_api_uri": "", 

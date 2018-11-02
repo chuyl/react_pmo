@@ -7,7 +7,6 @@
     class TitleCardRightGroup extends Component {
         render(){
             const {message,beforeApiUri,defaultValue} =this.props;
-            console.log(message.length)
             return (
                 <div className="title_card_right">
                    {message.length>0? <p>{message[0][beforeApiUri]}等</p>:defaultValue}

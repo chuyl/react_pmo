@@ -53,9 +53,9 @@ class Card extends Component {
     }
     //   获取cardOpen的状态
     handlethreeCardTitleItem=(thisBtnState)=>{
-        var newState = {
-            cardTitleItem:thisBtnState.cardTitleItem
-        }
+        // var newState = {
+        //     cardTitleItem:thisBtnState.cardTitleItem
+        // }
         this.setState({
             cardTitleItem:thisBtnState.cardTitleItem
         })
@@ -70,19 +70,21 @@ class Card extends Component {
         
       }
 	render(){
+        var id="card_id"+this.props.index;
         if(this.state.openCtrlState===false){
-           var id="card_id"+this.props.index;
             setTimeout(function(){
-                document.getElementById(id).classList.remove("move-in")
+                document.getElementById(id).classList?document.getElementById(id).classList.remove("move-in"):""
             },300)
         }
         if(this.state.openCtrlState===true){
-            var id="card_id"+this.props.index;
+          
              setTimeout(function(){
-                 document.getElementById(id).classList.remove("move-out")
+                document.getElementById(id).classList?document.getElementById(id).classList.remove("move-out"):""
              },300)
          }
+         console.log("这是card组件")
         return (
+            
             <div id={"card_id"+this.props.index} name={"card-project"} className={this.state.openCtrlState===""?"card-project active":this.state.openCtrlState===true?"card-project active open move-out":"card-project move-in active"}>
                 {this.props.add_button.map((form_list) => {
                     return (

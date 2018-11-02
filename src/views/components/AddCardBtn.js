@@ -4,6 +4,7 @@
      */
 import React, { Component } from 'react'
 import ComponentsCard from './ComponentsCard'
+import Alert from './Remind'
 import { getData, getRouter } from '../../utils/helpers'
     class AddCardBtn extends Component {
         state={
@@ -55,6 +56,15 @@ import { getData, getRouter } from '../../utils/helpers'
                         add_card_state:false
                     })
                     this.success_message()
+                }else{
+			
+                    Alert.open({
+                        alertTip:message.msg
+                        
+                    });
+                    setTimeout(function(){
+                        Alert.close();
+                     },3000)
                 }
     
             }

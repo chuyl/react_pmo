@@ -21,6 +21,7 @@ class Alert extends Component{
     this.state.closeAlert();
   }
   open =(options)=>{
+    console.log(options)
     options = options || {};
     options.alertStatus = true;
     this.setState({
@@ -39,14 +40,12 @@ class Alert extends Component{
 //   }
    
   render(){
-      console.log(this.state.alertStatus)
     return (
         <div className={this.state.alertStatus ?"alert_back open":"alert_back"}>
-        <div className={this.state.alertStatus ?"alert_box open":"alert_box"}>
-        <h2>{this.state.alertTip}</h2>
-        <p>{this.props.alertMsg}</p>
-        
-        </div>
+          <div className={this.state.alertStatus ?"alert_box open":"alert_box"}>
+            <h2>{this.state.alertTip}</h2>
+            <p>{this.props.alertMsg}</p>
+          </div>
      </div>
     );
   }

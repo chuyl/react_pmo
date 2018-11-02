@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
   import { getData, getRouter} from '../../utils/helpers'
-  import {STAFFSMALLLIST,STAFFOFDING} from '../../enum'
+  import {STAFFOFDING} from '../../enum'
 class Contact extends Component {
 	state = {
 		name:"",
