@@ -69,19 +69,32 @@ class Card extends Component {
         })
         
       }
-	render(){
+      componentDidUpdate(){
         var id="card_id"+this.props.index;
+        var dom = document.getElementById(id).classList;
         if(this.state.openCtrlState===false){
-            setTimeout(function(){
-                document.getElementById(id).classList?document.getElementById(id).classList.remove("move-in"):""
-            },300)
+            for(var i=0;i<dom.length;i++){
+                if(dom[i]=="move-in"){
+                   setTimeout(function(){
+                      dom.remove("move-in")
+                   },300)
+                }
+         
         }
+    }
         if(this.state.openCtrlState===true){
           
-             setTimeout(function(){
-                document.getElementById(id).classList?document.getElementById(id).classList.remove("move-out"):""
-             },300)
+            for(var i=0;i<dom.length;i++){
+                if(dom[i]=="move-out"){
+                   setTimeout(function(){
+                      dom.remove("move-out")
+                   },300)
+                }
          }
+      }
+    }
+	render(){
+       
         return (
             
             <div id={"card_id"+this.props.index} name={"card-project"} className={this.state.openCtrlState===""?"card-project active":this.state.openCtrlState===true?"card-project active open move-out":"card-project move-in active"}>
