@@ -85,7 +85,7 @@
                 
     
             }
-           getData(getRouter(this.props.delButton), {id,id,token:sessionStorage.token}, cb, {});
+           getData(getRouter(this.props.delButton), {id:id,token:sessionStorage.token}, cb, {});
         }
         /** 
 	 * @time 2018-10-14

@@ -1559,7 +1559,7 @@ html, body {
     top: 0;
     height: 95vh;
     background: linear-gradient(to bottom right, #3f435e, #4b567f);
-    /* height: 600px; js代替 */
+    /* height: 600px; js浠ｆ浛 */
     left: 0;
     z-index: 10; } }
 .dialog_open {
@@ -1589,7 +1589,7 @@ html, body {
   bottom: 5px;
   height: 500px;
   background-color: palevioletred;
-  /* height: 600px; js代替 */
+  /* height: 600px; js浠ｆ浛 */
   right: 5px;
   z-index: 20; }
 
@@ -1613,7 +1613,7 @@ html, body {
     bottom: 0;
     height: 100vh;
     background-color: palevioletred;
-    /* height: 600px; js代替 */
+    /* height: 600px; js浠ｆ浛 */
     right: 0;
     z-index: 20; } }
 .add_info_list {

@@ -18,7 +18,7 @@
             return (
                 <div className="label_title_message">
                     <label>{labelValue}</label>
-                   <span>{message?dealNumber(message):0}</span>
+                   <span>{message?dealNumber(message):"0.00"}</span>
                     {/* <span className="text_field_remind"></span> */}
               </div>
             )

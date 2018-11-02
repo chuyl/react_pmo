@@ -74,7 +74,7 @@ class Card extends Component {
         var dom = document.getElementById(id).classList;
         if(this.state.openCtrlState===false){
             for(var i=0;i<dom.length;i++){
-                if(dom[i]=="move-in"){
+                if(dom[i]==="move-in"){
                    setTimeout(function(){
                       dom.remove("move-in")
                    },300)
@@ -84,8 +84,8 @@ class Card extends Component {
     }
         if(this.state.openCtrlState===true){
           
-            for(var i=0;i<dom.length;i++){
-                if(dom[i]=="move-out"){
+            for(var m=0;m<dom.length;m++){
+                if(dom[m]==="move-out"){
                    setTimeout(function(){
                       dom.remove("move-out")
                    },300)

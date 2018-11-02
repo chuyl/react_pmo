@@ -252,7 +252,7 @@ class TrainingProgram extends Component {
 								}):""}
 					</div>
 				</div>
-				<div className="paper_div">
+				<div className={this.state.card_state?"paper_div open":"paper_div"}>
 					<div id="card_box" onClick={(event) => {
 						}} className={this.state.card_state ? "card_box overflow open" : "card_box"}>
 						<div style={this.state.card_state ? { display: "" } : { display: "none" }} className="paper_card_title">

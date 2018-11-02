@@ -25,7 +25,7 @@
             var id="card_page"+cardIndex+index;
             var dom = document.getElementById(id).classList;
              for(var i=0;i<dom.length;i++){
-                 if(dom[i]=="move-in"){
+                 if(dom[i]==="move-in"){
                     setTimeout(function(){
                        dom.remove("move-in")
                     },300)

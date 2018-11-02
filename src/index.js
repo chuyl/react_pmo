@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import TabsControl from './components/Tab'
 import Routers from './components/Routers'
+import Alert from '../src/views/components/Remind'
 import {
     HashRouter,
     Link,
@@ -74,7 +75,6 @@ class TabComponent extends Component{
 langMangement(lang){
 for(var x=0;x<lang.length;x++){
   if(window.location.hash.split("#")[1]===lang[x].path){
-    console.log(lang[x].path)
     this.setState({
       currentIndex:lang[x].path
     })
@@ -194,7 +194,16 @@ handleLogout = () => {
        // window.location.reload();
         //console.log(window.location.hash)
        //window.location.reload();
-			}
+			}else{
+
+				Alert.open({
+					alertTip:message.msg
+					
+				});
+				setTimeout(function(){
+					Alert.close();
+				 },3000)
+      }
 		}
 		getData(getRouter("user_account_login"), { account:this.state.login_account,password:this.state.login_password }, cb, {});		
     
@@ -234,6 +243,7 @@ handleLogout = () => {
               onClick={()=>{
                 this.login()
               }}
+
             >登录</button>
           </div>
       </div>

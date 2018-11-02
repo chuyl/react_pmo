@@ -119,7 +119,7 @@
                 "after_api_uri": ""
             }, {
                 "id_name": "project_income",
-                "type_name": "MutiText",
+                "type_name": "TextMoney",
                 "key": "",
                 "title": "收入",
                 "tip": "",
@@ -139,7 +139,7 @@
                 "after_api_uri": ""
             }, {
                 "id_name": "institutional_consulting_fees",
-                "type_name": "MutiText",
+                "type_name": "TextMoney",
                 "key": "",
                 "title": "机构咨询费",
                 "tip": "",
@@ -149,7 +149,7 @@
                 "after_api_uri": ""
             }, {
                 "id_name": "personal_consulting_fees",
-                "type_name": "MutiText",
+                "type_name": "TextMoney",
                 "key": "",
                 "title": "个人咨询费",
                 "tip": "",

@@ -190,7 +190,7 @@
                     },
                     {
                         "id_name": "long_fee_card_fee",
-                        "type_name": "MutiText",
+                        "type_name": "TextMoney",
                         "key": "",
                         "title": "金额",
                         "tip": "",
@@ -282,7 +282,7 @@
                 },
                 {
                     "id_name": "long_fee_card_fee",
-                    "type_name": "MutiText",
+                    "type_name": "TextMoney",
                     "key": "",
                     "title": "金额",
                     "tip": "",
@@ -645,7 +645,7 @@
                         },
                         {
                             "id_name": "meal_fee",
-                            "type_name": "MutiText", 
+                            "type_name": "TextMoney", 
                             "key": "",
                             "title": "金额",
                             "tip": "",
@@ -705,7 +705,7 @@
                     },
                     {
                         "id_name": "meal_fee",
-                        "type_name": "MutiText", 
+                        "type_name": "TextMoney", 
                         "key": "",
                         "title": "金额",
                         "tip": "",
