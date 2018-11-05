@@ -1,6 +1,6 @@
 /** 
     * @author xuesong
-    * @param ComponentsList 组件名 用于所有组件循环 
+    * @param ComponentsViewList 组件名 用于所有组件循环 
     */
 
    import React, { Component } from 'react';
@@ -25,26 +25,22 @@
    import SelectList from './SelectList'
    import Invisible from './Invisible'
    import DepartmentList from './DepartmentList'
-   class ComponentsCard extends Component {
-       constructor(props) {
-           super(props);
-           this.state = {
-               inputValue:"inputValue",
-               targetValue:"",
-               componentslist: this.props.componentslist,
-           }
-       }
-       handleChildClick=(newState)=>{
-           var newStates = {
-               before_api_uri:newState.before_api_uri
-              }
-          this.props.holdClick(newStates);//回调函数传递参数给父组件
-       }
+   class ComponentsViewList extends Component {
+    clickComponents(form_list,index){
+        var newState = {
+            form_list:form_list,
+            index:index
+        }
+        this.props.handleViewJson(newState);//回调函数传递参数给父组件
+    }
        render() {
            return (
-               this.props.componentslist.map((form_list) => {
+               this.props.componentslist.map((form_list,index) => {
                        return (
-                           form_list.type_name === "ListTextSearch" ?
+                           <div key={form_list.id_name} onClick={()=>{
+                               this.clickComponents(form_list,index)
+                           }}>
+                               {form_list.type_name === "ListTextSearch" ?
                                    <ListTextSearch id={form_list.id_name}
                                        addButton={form_list.add_button}
                                        labelValue={form_list.title}
@@ -181,6 +177,7 @@
                                    <HoldBtn 
                                        before_api_uri={form_list.before_api_uri}
                                        key={form_list.id_name}
+                                       view={true}
                                        onHoldClick={this.handleChildClick}
                                />
                                :form_list.type_name==="AddCardBtn"?
@@ -199,7 +196,8 @@
                                     before_api_uri={form_list.before_api_uri}
                                     key={form_list.id_name}
                                 />
-                               : ""
+                               : ""}
+                           </div>
    )
                    }
                    )
@@ -207,6 +205,6 @@
        }
    }
    
-   export default ComponentsCard;
+   export default ComponentsViewList;
    
    

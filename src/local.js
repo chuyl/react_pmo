@@ -37,19 +37,21 @@ var local = {
                 "travel_hotel_edit":{"url":"../data/travel_hotel_edit.json","version":"1.0"},//住宿费修改
                 "travel_hotel_del":{"url":"../data/travel_hotel_del.json","version":"1.0"},//住宿费删除
                 "Project":{"url":"../data/Project.json","version":"1.0"},//发送数据列表
+                "viewManagement":{"url":"../data/viewManagement.json","version":"1.0"},//视图管理表
                    //视图
-                "AddProject":{"url":"../json/AddProject.json","version":"1.0"},//新建项目
+               
+                "addProject":{"url":"../json/addProject.json","version":"1.0"},//新建项目
                 "addProjectGather":{"url":"../json/addProjectGather.json","version":"1.0"},//新建项目集
                 "addTeacher":{"url":"../json/addTeacher.json","version":"1.0"},//新建讲师
                 "budgetManage":{"url":"../json/budgetManage.json","version":"1.0"},//预算
                 "editProject":{"url":"../json/editProject.json","version":"1.0"},//编辑项目
-                "projectAddressAdd":{"url":"../json/projectAddressAdd.json","version":"1.0"},//新增培训地点
-                "ImplementArrage":{"url":"../json/ImplementArrage.json","version":"1.0"},//实施安排
-                "ProjectCard":{"url":"../json/ProjectCard.json","version":"1.0"},//项目列表中的card
+                "addProjectAddress":{"url":"../json/addProjectAddress.json","version":"1.0"},//新增培训地点
+                "implementArrage":{"url":"../json/implementArrage.json","version":"1.0"},//实施安排
+                "projectCard":{"url":"../json/projectCard.json","version":"1.0"},//项目列表中的card
                 "projectTemplet":{"url":"../json/projectTemplet.json","version":"1.0"},//新建项目模板
                 "teacherCardGroup":{"url":"../json/teacherCardGroup.json","version":"1.0"},//讲师安排
                 "teacherDuty":{"url":"../json/teacherDuty.json","version":"1.0"},//讲师职责
-                "TravelExpensesGroup":{"url":"../json/TravelExpensesGroup.json","version":"1.0"},//差旅安排
+                "travelExpensesGroup":{"url":"../json/travelExpensesGroup.json","version":"1.0"},//差旅安排
             };
              
              

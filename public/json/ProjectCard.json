@@ -158,10 +158,6 @@
                                 "id_name": "gross_interest_rate",
                                 "type_name": "LabelTotalMessage", 
                                 "title": "毛利率"
-                            },{
-                                "id_name": "cooperative_gross_margin",
-                                "type_name": "LabelTotalMessage", 
-                                "title": "去合作费毛利率"
                             }
                             
                         ]}
@@ -207,7 +203,7 @@
                                     "before_api_uri":"implement_plan_getByProjectId"
                                 },
                                 "descript": "讲课费",
-                                "before_api_uri": "ImplementArrage",
+                                "before_api_uri": "implementArrage",
                                 "after_api_uri": ""
                             },{
                                 "id_name": "project_travel_btn",
@@ -220,7 +216,7 @@
                                     "before_api_uri":"travel_plan_getByProjectId"
                                 },
                                 "descript": "",
-                                "before_api_uri": "TravelExpensesGroup",
+                                "before_api_uri": "travelExpensesGroup",
                                 "after_api_uri": ""
                             }
                         ]},{ "id_name": "project_approve_btns",

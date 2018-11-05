@@ -83,7 +83,7 @@ class ListTextSearchLink extends Component {
                 "key": "",
                 "title": "所得税",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
@@ -94,7 +94,7 @@ class ListTextSearchLink extends Component {
                 "key": "3000",
                 "title": "讲课费",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
@@ -105,7 +105,7 @@ class ListTextSearchLink extends Component {
                 "key": "5",
                 "title": "课程天数",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
@@ -192,7 +192,7 @@ class ListTextSearchLink extends Component {
                         "key": "",
                         "title": "所得税",
                         "tip": "",
-                        "add_button": {},
+                        "add_button": "",
                         "descript": "",
                         "before_api_uri": "",
                         "after_api_uri": ""
@@ -203,7 +203,7 @@ class ListTextSearchLink extends Component {
                         "key": "3000",
                         "title": "讲课费",
                         "tip": "",
-                        "add_button": {},
+                        "add_button": "",
                         "descript": "",
                         "before_api_uri": "",
                         "after_api_uri": ""
@@ -214,7 +214,7 @@ class ListTextSearchLink extends Component {
                         "key": "5",
                         "title": "课程天数",
                         "tip": "",
-                        "add_button": {},
+                        "add_button": "",
                         "descript": "",
                         "before_api_uri": "",
                         "after_api_uri": ""

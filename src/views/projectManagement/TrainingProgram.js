@@ -61,7 +61,7 @@ class TrainingProgram extends Component {
 
 			}
 		}
-		getData(getRouter("ProjectCard"), { token:sessionStorage.token }, cb, {});
+		getData(getRouter("projectCard"), { token:sessionStorage.token }, cb, {});
 	}
 	fetchProjectDataList() {
 		var cb = (route, message, arg) => {
@@ -228,7 +228,7 @@ class TrainingProgram extends Component {
 				<div id="" className="container">
 					<div>
 						<div className="add_button" onClick={(e) => {
-							this.fetchProjectData("AddProject")
+							this.fetchProjectData("addProject")
 							this.card_box_concent([], e)
 							this.setState({
 								edit_project_data:[],

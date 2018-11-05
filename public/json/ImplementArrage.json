@@ -9,7 +9,7 @@
                     "key": "",
                     "title": "项目编号",
                     "tip": "",
-                    "add_button": {},
+                    "add_button": "",
                     "descript": "",
                     "before_api_uri": "",
                     "after_api_uri": ""
@@ -20,7 +20,7 @@
                     "key": "",
                     "title": "课程名称",
                     "tip": "",
-                    "add_button": {},
+                    "add_button": "",
                     "descript": "",
                     "before_api_uri": "",
                     "after_api_uri": ""
@@ -51,7 +51,7 @@
                                 "key": "",
                                 "title": "单价",
                                 "tip": "",
-                                "add_button": {},
+                                "add_button": "",
                                 "descript": "",
                                 "before_api_uri": "",
                                 "after_api_uri": ""
@@ -62,7 +62,7 @@
                                 "key": "",
                                 "title": "天数",
                                 "tip": "",
-                                "add_button": {},
+                                "add_button": "",
                                 "descript": "",
                                 "before_api_uri": "",
                                 "after_api_uri": ""
@@ -73,7 +73,7 @@
                                 "key": "",
                                 "title": "总价",
                                 "tip": "",
-                                "add_button": {},
+                                "add_button": "",
                                 "descript": "",
                                 "before_api_uri": "",
                                 "after_api_uri": ""
@@ -120,7 +120,7 @@
                             "key": "",
                             "title": "单价",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""
@@ -131,7 +131,7 @@
                             "key": "",
                             "title": "天数",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""
@@ -142,7 +142,7 @@
                             "key": "",
                             "title": "总价",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""
@@ -193,7 +193,7 @@
                         "key": "",
                         "title": "单价",
                         "tip": "",
-                        "add_button": {},
+                        "add_button": "",
                         "descript": "",
                         "before_api_uri": "",
                         "after_api_uri": ""
@@ -204,7 +204,7 @@
                         "key": "",
                         "title": "天数",
                         "tip": "",
-                        "add_button": {},
+                        "add_button": "",
                         "descript": "",
                         "before_api_uri": "",
                         "after_api_uri": ""
@@ -215,7 +215,7 @@
                         "key": "",
                         "title": "总价",
                         "tip": "",
-                        "add_button": {},
+                        "add_button": "",
                         "descript": "",
                         "before_api_uri": "",
                         "after_api_uri": ""
@@ -241,7 +241,7 @@
                         "before_api_uri": "",
                         "after_api_uri": ""
                     }],
-                    "descript": "ImplementArrage",
+                    "descript": "implementArrage",
                     "before_api_uri":"implement_venue_add",
                     "after_api_uri": "implement_plan_getByProjectId"
                 },
@@ -259,7 +259,7 @@
                                 "key": "",
                                 "title": "教材费用",
                                 "tip": "",
-                                "add_button": {},
+                                "add_button": "",
                                 "descript": "",
                                 "before_api_uri": "",
                                 "after_api_uri": ""
@@ -270,7 +270,7 @@
                                 "key": "",
                                 "title": "设备费用",
                                 "tip": "",
-                                "add_button": {},
+                                "add_button": "",
                                 "descript": "",
                                 "before_api_uri": "",
                                 "after_api_uri": ""
@@ -282,7 +282,7 @@
                                 "key": "",
                                 "title": "考试费",
                                 "tip": "",
-                                "add_button": {},
+                                "add_button": "",
                                 "descript": "",
                                 "before_api_uri": "",
                                 "after_api_uri": ""
@@ -293,7 +293,7 @@
                                 "key": "",
                                 "title": "茶歇",
                                 "tip": "",
-                                "add_button": {},
+                                "add_button": "",
                                 "descript": "",
                                 "before_api_uri": "",
                                 "after_api_uri": ""
@@ -304,7 +304,7 @@
                                 "key": "",
                                 "title": "文具",
                                 "tip": "",
-                                "add_button": {},
+                                "add_button": "",
                                 "descript": "",
                                 "before_api_uri": "",
                                 "after_api_uri": ""
@@ -315,7 +315,7 @@
                                 "key": "",
                                 "title": "招待费",
                                 "tip": "",
-                                "add_button": {},
+                                "add_button": "",
                                 "descript": "",
                                 "before_api_uri": "",
                                 "after_api_uri": ""
@@ -326,7 +326,7 @@
                                 "key": "",
                                 "title": "邮寄快递",
                                 "tip": "",
-                                "add_button": {},
+                                "add_button": "",
                                 "descript": "",
                                 "before_api_uri": "",
                                 "after_api_uri": ""
@@ -342,7 +342,7 @@
                             "key": "",
                             "title": "教材费用",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""
@@ -353,7 +353,7 @@
                             "key": "",
                             "title": "设备费用",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""
@@ -365,7 +365,7 @@
                             "key": "",
                             "title": "考试费",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""
@@ -376,7 +376,7 @@
                             "key": "",
                             "title": "茶歇",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""
@@ -387,7 +387,7 @@
                             "key": "",
                             "title": "文具",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""
@@ -398,7 +398,7 @@
                             "key": "",
                             "title": "招待费",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""
@@ -409,7 +409,7 @@
                             "key": "",
                             "title": "邮寄快递",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""

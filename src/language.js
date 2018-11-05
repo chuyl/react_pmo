@@ -28,6 +28,8 @@ import TeachingArrangement from './views/lecturerManagement/TeachingArrangement'
 import RafficTravel from './views/implementationManagement/RafficTravel'
 import SegmenHotel from './views/implementationManagement/SegmenHotel'
 import ServiceConsumables from './views/implementationManagement/ServiceConsumables'
+//视图管理
+import View from './views/viewManagement/View'
 const Language = {
     // 项目管理
     projectManagement:[
@@ -137,5 +139,14 @@ const Language = {
                         path:"/serviceConsumables",
                         title:"服务耗材",
                         component:ServiceConsumables},],
+    //视图管理
+    viewManagement:[
+        {id:"1",
+         path:"/view",
+         title:"视图管理",
+         component:View}
+        
+    ]
     }
+    
     export default Language;

@@ -42,7 +42,7 @@
             "key": "",
             "title": "保存",
             "tip": "",
-            "add_button": {},
+            "add_button": "",
             "descript": "",
             "before_api_uri": "lecturer_manage_add",
             "after_api_uri": ""

@@ -9,7 +9,7 @@
                 "key": "",
                 "title": "项目编号",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
@@ -20,7 +20,7 @@
                 "key": "",
                 "title": "课程名称",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
@@ -50,7 +50,7 @@
                             "key": "",
                             "title": "所得税",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""
@@ -61,7 +61,7 @@
                             "key": "3000",
                             "title": "讲课费",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""
@@ -72,7 +72,7 @@
                             "key": "5",
                             "title": "课程天数",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""
@@ -109,7 +109,7 @@
                         "key": "",
                         "title": "所得税",
                         "tip": "",
-                        "add_button": {},
+                        "add_button": "",
                         "descript": "",
                         "before_api_uri": "",
                         "after_api_uri": ""
@@ -120,7 +120,7 @@
                         "key": "3000",
                         "title": "讲课费",
                         "tip": "",
-                        "add_button": {},
+                        "add_button": "",
                         "descript": "",
                         "before_api_uri": "",
                         "after_api_uri": ""
@@ -131,7 +131,7 @@
                         "key": "5",
                         "title": "课程天数",
                         "tip": "",
-                        "add_button": {},
+                        "add_button": "",
                         "descript": "",
                         "before_api_uri": "",
                         "after_api_uri": ""
@@ -171,7 +171,7 @@
                     "key": "",
                     "title": "所得税",
                     "tip": "",
-                    "add_button": {},
+                    "add_button": "",
                     "descript": "",
                     "before_api_uri": "",
                     "after_api_uri": ""
@@ -182,7 +182,7 @@
                     "key": "3000",
                     "title": "讲课费",
                     "tip": "",
-                    "add_button": {},
+                    "add_button": "",
                     "descript": "",
                     "before_api_uri": "",
                     "after_api_uri": ""
@@ -193,7 +193,7 @@
                     "key": "5",
                     "title": "课程天数",
                     "tip": "",
-                    "add_button": {},
+                    "add_button": "",
                     "descript": "",
                     "before_api_uri": "",
                     "after_api_uri": ""

@@ -32,6 +32,10 @@ class Routers extends Component{
             {Lang.implementationManagement.map((implementationManagement)=>{
               return( <Route key={implementationManagement.id} path={implementationManagement.path} component={implementationManagement.component} />)
             })}
+            {/* 视图管理 */}
+            {Lang.viewManagement.map((viewManagement)=>{
+              return( <Route key={viewManagement.id} path={viewManagement.path} component={viewManagement.component} />)
+            })}
           {/* <Route path="/customer" component={AppList} />
           <Route path="/contact" component={About} />
           <Route path="/training_program" component={Inbox} /> 

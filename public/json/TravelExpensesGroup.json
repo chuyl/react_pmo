@@ -9,7 +9,7 @@
                 "key": "",
                 "title": "项目编号",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
@@ -20,7 +20,7 @@
                 "key": "",
                 "title": "课程名称",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
@@ -97,7 +97,7 @@
                         "key": "",
                         "title": "交通工具",
                         "tip": "",
-                        "add_button": {},
+                        "add_button": "",
                         "descript": "",
                         "before_api_uri": "travelMode",
                         "after_api_uri": ""

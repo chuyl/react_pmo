@@ -68,7 +68,8 @@ class TabComponent extends Component{
 		this.langMangement(Lang.loanExpenditureManagement)
 		this.langMangement(Lang.receivablesManagement)
 		this.langMangement(Lang.lecturerManagement)
-		this.langMangement(Lang.implementationManagement)
+    this.langMangement(Lang.implementationManagement)
+    this.langMangement(Lang.viewManagement)
 	  sessionStorage.getItem("logged")===false;
     this.getRoutes();
 }
@@ -310,6 +311,15 @@ handleLogout = () => {
                   </App>
                 </HashRouter>
               </div>
+              <div name = "视图管理">
+                <HashRouter>
+                  <App>
+                    <ul>
+                      {this.router_lists(Lang.viewManagement)}
+                    </ul>  
+                  </App>
+                </HashRouter>
+              </div>
             </TabsControl>
           </div>
         <div style={this.state.show===true?{display:"none"}:{}}  className="router_button" onClick={this.changeShow.bind(this)}>
@@ -383,6 +393,15 @@ handleLogout = () => {
                       </App>
                     </HashRouter>
                   </div>
+                  <div name = "视图管理">
+                <HashRouter>
+                  <App>
+                    <ul>
+                      {this.router_lists(Lang.viewManagement)}
+                    </ul>  
+                  </App>
+                </HashRouter>
+              </div>
                 </TabsControl>
               </div>
           

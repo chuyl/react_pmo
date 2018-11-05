@@ -7,7 +7,7 @@
             "key": "",
             "title": "省",
             "tip": "",
-            "add_button": {},
+            "add_button": "",
             "descript": "",
             "before_api_uri": "project_address_province",
             "after_api_uri": ""
@@ -17,7 +17,7 @@
             "key": "",
             "title": "市",
             "tip": "",
-            "add_button": {},
+            "add_button": "",
             "descript": "",
             "before_api_uri": "project_address_city",
             "after_api_uri": ""
@@ -38,7 +38,7 @@
             "key": "",
             "title": "保存",
             "tip": "",
-            "add_button": {},
+            "add_button": "",
             "descript": "",
             "before_api_uri": "project_address_add",
             "after_api_uri": ""

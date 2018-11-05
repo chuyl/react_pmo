@@ -24,7 +24,7 @@ class TeacherArrange extends Component {
         //                 "key": "",
         //                 "title": "合同编号",
         //                 "tip": "",
-        //                 "add_button": {},
+        //                 "add_button": "",
         //                 "descript": "",
         //                 "before_api_uri": "",
         //                 "after_api_uri": ""
@@ -43,7 +43,7 @@ class TeacherArrange extends Component {
         //                             "key": "",
         //                             "title": "讲师姓名",
         //                             "tip": "",
-        //                             "add_button": {},
+        //                             "add_button": "",
         //                             "descript": "",
         //                             "before_api_uri": ""
         //                         }, 
@@ -53,7 +53,7 @@ class TeacherArrange extends Component {
         //                             "key": "",
         //                             "title": "所得税",
         //                             "tip": "",
-        //                             "add_button": {},
+        //                             "add_button": "",
         //                             "descript": "",
         //                             "before_api_uri": "",
         //                             "after_api_uri": ""
@@ -107,7 +107,7 @@ class TeacherArrange extends Component {
         //                     "key": "",
         //                     "title": "所得税",
         //                     "tip": "",
-        //                     "add_button": {},
+        //                     "add_button": "",
         //                     "descript": "",
         //                     "before_api_uri": "",
         //                     "after_api_uri": ""
@@ -118,7 +118,7 @@ class TeacherArrange extends Component {
         //                     "key": "3000",
         //                     "title": "讲课费",
         //                     "tip": "",
-        //                     "add_button": {},
+        //                     "add_button": "",
         //                     "descript": "",
         //                     "before_api_uri": "",
         //                     "after_api_uri": ""
@@ -129,7 +129,7 @@ class TeacherArrange extends Component {
         //                     "key": "5",
         //                     "title": "课程天数",
         //                     "tip": "",
-        //                     "add_button": {},
+        //                     "add_button": "",
         //                     "descript": "",
         //                     "before_api_uri": "",
         //                     "after_api_uri": ""
@@ -149,7 +149,7 @@ class TeacherArrange extends Component {
         //                                     "key": "",
         //                                     "title": "职责描述",
         //                                     "tip": "",
-        //                                     "add_button": {},
+        //                                     "add_button": "",
         //                                     "descript": "",
         //                                     "before_api_uri": "",
         //                                     "after_api_uri": ""
@@ -250,7 +250,7 @@ class TeacherArrange extends Component {
         //         "key": "",
         //         "title": "所得税",
         //         "tip": "",
-        //         "add_button": {},
+        //         "add_button": "",
         //         "descript": "",
         //         "before_api_uri": "",
         //         "after_api_uri": ""
@@ -261,7 +261,7 @@ class TeacherArrange extends Component {
         //         "key": "3000",
         //         "title": "讲课费",
         //         "tip": "",
-        //         "add_button": {},
+        //         "add_button": "",
         //         "descript": "",
         //         "before_api_uri": "",
         //         "after_api_uri": ""
@@ -272,7 +272,7 @@ class TeacherArrange extends Component {
         //         "key": "5",
         //         "title": "课程天数",
         //         "tip": "",
-        //         "add_button": {},
+        //         "add_button": "",
         //         "descript": "",
         //         "before_api_uri": "",
         //         "after_api_uri": ""
@@ -292,7 +292,7 @@ class TeacherArrange extends Component {
         //                         "key": "",
         //                         "title": "职责描述",
         //                         "tip": "",
-        //                         "add_button": {},
+        //                         "add_button": "",
         //                         "descript": "",
         //                         "before_api_uri": "",
         //                         "after_api_uri": ""

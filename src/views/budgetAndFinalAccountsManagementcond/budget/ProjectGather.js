@@ -21,7 +21,7 @@
                             "key": "",
                             "title": "项目集名称",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""

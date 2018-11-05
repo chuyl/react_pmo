@@ -16,6 +16,7 @@ class TabsControl extends Component{
 		this.langMangement(Lang.receivablesManagement,3)
 		this.langMangement(Lang.lecturerManagement,4)
 		this.langMangement(Lang.implementationManagement,5)
+		this.langMangement(Lang.viewManagement,6)
 	  }
 	  langMangement(lang,index){
 		for(var x=0;x<lang.length;x++){

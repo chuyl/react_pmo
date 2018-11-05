@@ -20,7 +20,7 @@
                 "key": "6%",
                 "title": "税率",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
@@ -31,7 +31,7 @@
                 "key": "",
                 "title": "咨询费用",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
@@ -42,7 +42,7 @@
                 "key": "",
                 "title": "预计收入",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""

@@ -17,9 +17,12 @@
            }
         this.props.onHoldClick(newState);
     }
+    holdViewClick=()=>{
+
+    }
         render(){
             return (
-                <button onClick={this.holdClick} className="hold_btn">保存</button>
+                <button onClick={this.props.view?this.holdViewClick:this.holdClick} className="hold_btn">保存</button>
             )
         }
     }

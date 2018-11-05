@@ -19,7 +19,7 @@
                             "key": "",
                             "title": "会场费",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""
@@ -30,7 +30,7 @@
                             "key": "",
                             "title": "教材与设备费用",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""
@@ -41,7 +41,7 @@
                             "key": "",
                             "title": "考试费",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""
@@ -52,7 +52,7 @@
                             "key": "",
                             "title": "茶歇",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""
@@ -63,7 +63,7 @@
                             "key": "",
                             "title": "文具",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""
@@ -74,7 +74,7 @@
                             "key": "",
                             "title": "招待费",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""
@@ -85,7 +85,7 @@
                             "key": "",
                             "title": "邮寄快递",
                             "tip": "",
-                            "add_button": {},
+                            "add_button": "",
                             "descript": "",
                             "before_api_uri": "",
                             "after_api_uri": ""

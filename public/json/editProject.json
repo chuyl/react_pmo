@@ -5,11 +5,11 @@
             "form-list": [
                 {
                     "id_name": "unicode",
-                    "type_name": "DisTextField",
+                    "type_name": "MutiText",
                     "key": "",
                     "title": "项目编号",
                     "tip": "",
-                    "add_button": {},
+                    "add_button": "",
                     "descript": "",
                     "before_api_uri": "",
                     "after_api_uri": ""
@@ -20,7 +20,7 @@
                 "key": "",
                 "title": "课程名称",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
@@ -41,7 +41,7 @@
                 "key": "",
                 "title": "实施负责人",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri":"staff_manage_list",
                 "after_api_uri": ""
@@ -51,7 +51,7 @@
                 "key": "",
                 "title": "项目负责人",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri":"staff_manage_list",
                 "after_api_uri": ""
@@ -61,7 +61,7 @@
                 "key": "",
                 "title": "客户名称",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
@@ -71,7 +71,7 @@
                 "key": "",
                 "title": "天数",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
@@ -81,7 +81,7 @@
                 "key": "",
                 "title": "培训开始日期",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
@@ -91,7 +91,7 @@
                 "key": "",
                 "title": "培训结束日期",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
@@ -101,7 +101,7 @@
                 "key": "",
                 "title": "培训人数",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
@@ -113,7 +113,7 @@
                 "key": "",
                 "title": "培训地点",
                 "tip": "",
-                "add_button":"projectAddressAdd",
+                "add_button":"addProjectAddress",
                 "descript": "",
                 "before_api_uri": "project_address_list",
                 "after_api_uri": ""
@@ -123,7 +123,7 @@
                 "key": "",
                 "title": "收入",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
@@ -133,7 +133,7 @@
                 "key": "",
                 "title": "税率",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
@@ -143,7 +143,7 @@
                 "key": "",
                 "title": "机构咨询费",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
@@ -153,7 +153,7 @@
                 "key": "",
                 "title": "个人咨询费",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "",
                 "after_api_uri": ""
@@ -163,7 +163,7 @@
                 "key": "",
                 "title": "保存",
                 "tip": "",
-                "add_button": {},
+                "add_button": "",
                 "descript": "",
                 "before_api_uri": "project_data_edit",
                 "after_api_uri": ""
