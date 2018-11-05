@@ -1538,6 +1538,9 @@ html, body {
     position: fixed;
     margin-left: 0; }
 
+  .paper_div.open {
+    height: 95vh; }
+
   .card_box {
     margin: 0;
     position: fixed;
@@ -2128,13 +2131,13 @@ html, body {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); }
 .crius-card-list .inverse {
   color: #fff; }
-.crius-card-list .active {
+.crius-card-list .card-project.active {
   display: block;
   border-radius: 10px;
   border: 0px solid #ccc;
   border-left-width: 10px;
   border-left-color: #4b567f; }
-  .crius-card-list .active .card-foot {
+  .crius-card-list .card-project.active .card-foot {
     border-bottom-right-radius: 10px;
     background: #4b567f;
     height: 2em;
@@ -2171,21 +2174,30 @@ html, body {
   line-height: 2em; }
 .crius-card-list .card-head .inverse {
   background-color: #4b567f; }
-.crius-card-list .open-ctrl {
-  height: 1em;
-  background-image: url(openline.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 70%;
-  background-color: #4b567f;
-  position: absolute;
-  bottom: 2em;
-  width: 100%; }
-.crius-card-list .active {
+.crius-card-list .card-project {
+  margin-bottom: 3em; }
+.crius-card-list .card-project {
+  position: relative; }
+  .crius-card-list .card-project .open-ctrl {
+    height: 1em;
+    background-image: url(openline.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;
+    background-color: #4b567f;
+    position: absolute;
+    bottom: 2em;
+    width: 100%; }
+  .crius-card-list .card-project .card-body {
+    position: relative;
+    height: 9em;
+    transition: height 0.3s cubic-bezier(0.4, 0, 1, 1);
+    box-sizing: border-box;
+    padding-bottom: 1em; }
+.crius-card-list .card-page.active {
   display: block;
   opacity: 1;
-  position: relative;
-  margin-bottom: 3em; }
+  position: relative; }
 .crius-card-list .card-head .card-item {
   height: 2em; }
 .crius-card-list .card-head .card-item:nth-of-type(1),
@@ -2200,12 +2212,6 @@ html, body {
 .crius-card-list .card-foot .card-item:nth-of-type(3) {
   width: 33.3333333333%;
   left: 0; }
-.crius-card-list .card-body {
-  position: relative;
-  height: 9em;
-  transition: height 0.3s cubic-bezier(0.4, 0, 1, 1);
-  box-sizing: border-box;
-  padding-bottom: 1em; }
 .crius-card-list .card-page {
   display: none;
   border: none;
@@ -2221,7 +2227,7 @@ html, body {
   transition: opacity .3s ease; }
 .crius-card-list .card-body .card-page {
   position: absolute;
-  padding: 0 0 0 0.5em;
+  padding: 0.5em 0 0 0.5em;
   width: 100%;
   box-sizing: border-box; }
 .crius-card-list .card-foot .card-item {
@@ -2231,25 +2237,25 @@ html, body {
   border: none;
   position: relative;
   transition: border .3s ease; }
-.crius-card-list .open .card-foot {
+.crius-card-list .card-project.open .card-foot {
   height: 0; }
-.crius-card-list .open .card-body {
+.crius-card-list .card-project.open .card-body {
   height: initial;
   transition: height 0.3s cubic-bezier(0.4, 0, 1, 1); }
-.crius-card-list .open .card-body .card-page {
+.crius-card-list .card-project.open .card-body .card-page {
   transition: opacity .3s ease;
   display: block;
   opacity: 1;
   clear: both;
   position: initial; }
-.crius-card-list .open .open-ctrl {
+.crius-card-list .card-project.open .open-ctrl {
   background-image: url(closeline.svg);
   background-repeat: no-repeat;
   bottom: 0; }
-.crius-card-list .open.move-out .card-body {
+.crius-card-list .card-project.open.move-out .card-body {
   height: 24em;
   transition: height 0.3s cubic-bezier(0.4, 0, 1, 1); }
-.crius-card-list .active.move-in .card-body {
+.crius-card-list .card-project.active.move-in .card-body {
   height: 24em;
   transition: height 0.3s cubic-bezier(0.4, 0, 1, 1); }
 .crius-card-list .card-foot .active::before {

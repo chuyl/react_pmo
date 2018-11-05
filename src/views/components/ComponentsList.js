@@ -189,6 +189,7 @@ class ComponentsList extends Component {
                                     inputValue={this.props.componentsdata[form_list.id_name]!==null?this.props.componentsdata[form_list.id_name]:""} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
+                                    index={index}
                                 />
                             :form_list.type_name === "LabelTitleMessage"?
                                 <LabelTitleMessage

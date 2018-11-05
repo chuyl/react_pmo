@@ -306,7 +306,7 @@
                     "descript":[
                         {
                             "id_name": "short_fee_card_people",
-                            "type_name": "MutiText", 
+                            "type_name": "DisTextField", 
                             "key": "",
                             "title": "人员",
                             "tip": "",
@@ -317,7 +317,7 @@
                             "after_api_uri": ""
                         }, {
                             "id_name": "short_fee_type",
-                            "type_name": "MutiText", 
+                            "type_name": "DisTextField", 
                             "key": "",
                             "title": "费用名称",
                             "tip": "",
@@ -329,7 +329,7 @@
                         },
                         {
                             "id_name": "short_fee",
-                            "type_name": "MutiText",
+                            "type_name": "DisTextField",
                             "key": "",
                             "title": "费用",
                             "tip": "",

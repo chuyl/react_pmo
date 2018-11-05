@@ -10,11 +10,11 @@
         }
       
         render(){
-            const {id,inputValue,labelValue,name} =this.props;
+            const {id,inputValue,labelValue,name,index} =this.props;
             return (
                 <div className="text_field_div">
                     <label className="search_info_list_label">{labelValue}</label>
-                    <input type={"text"} className={"text_field_input"} name={name} defaultValue={inputValue} disabled={true} id={id}/>
+                    <input type={"text"} className={"text_field_input"} name={name} defaultValue={inputValue} disabled={true} id={id+index}/>
                     {/* <span className="text_field_remind"></span> */}
               </div>
             )
