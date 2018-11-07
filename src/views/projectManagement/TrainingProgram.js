@@ -55,7 +55,7 @@ class TrainingProgram extends Component {
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
 				this.setState({
-					projectCard: message.data["card-list"],
+					projectCard: message.data["form-list"],
 		 			form_temp_name:message.data["form-temp-name"],
 				})
 

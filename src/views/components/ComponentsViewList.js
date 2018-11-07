@@ -14,11 +14,17 @@
    import ListTextSearch from './ListTextSearch'
    import LinkCard from './LinkCard'
    import CardGroup from './CardGroup'
+   import Link from './Link'
+   import CardHead from './CardHead'
+   import CardBody from './CardBody'
+   import CardOpen from './CardOpen'
+   import CardFoot from './CardFoot'
    import LabelTitleMessage from './LabelTitleMessage'
    import LabelSelectMessage from './LabelSelectMessage'
    import HoldBtn from './HoldBtn'
    import AddCardBtn from './AddCardBtn'
    import EditCardBtn from './EditCardBtn'
+   import CardItem from './CardItem'
    //import AddTeacher from '../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
    //import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
    //import ProjectGather from '../budgetAndFinalAccountsManagementcond/budget/ProjectGather'
@@ -195,6 +201,56 @@
                                     addButton={form_list.add_button}
                                     before_api_uri={form_list.before_api_uri}
                                     key={form_list.id_name}
+                                /> 
+                                :form_list.type_name === "Link"?
+                                <Link 
+                                    button={form_list.title}
+                                    buttonMessage={form_list}
+                                    dataId={this.props.card_list.id}
+                                    // isClick={this.props.card_list.id}
+                                    linkpage={form_list.before_api_uri}
+                                    key={form_list.id_name}
+                                    messageList={form_list.add_button.before_api_uri}
+                                    onChange = {this.handleClick}
+                                />
+                            :form_list.type_name === "CardHead"?
+                                <CardHead
+                                    id={form_list.id_name} 
+                                    addButton={form_list.add_button}
+                                    key={form_list.id_name}
+                                    message={form_list.default_value} 
+                                />
+                            // :form_list.type_name === "CardBody"?
+                            //     <CardBody
+                            //         openState={this.state.openCtrlState}
+                            //         cardIndex={this.props.index}
+                            //         id={form_list.id_name} 
+                            //         addButton={form_list.add_button}
+                            //         key={form_list.id_name}
+                            //         fiveChange = {this.handleClick}  
+                            //         footState={this.state.cardTitleItem}
+                            //         message={this.props.card_list?this.props.card_list:""} 
+                            //     />
+                            :form_list.type_name === "CardOpen"?
+                                <CardOpen 
+                                    id={form_list.id_name} 
+                                    addButton={form_list.add_button}
+                                    key={form_list.id_name}
+                                    openCtrlState={this.openCtrlState}
+                                    message={this.props.card_list?this.props.card_list:""} />
+                            :form_list.type_name === "CardFoot"?
+                                <CardFoot
+                                    id={form_list.id_name} 
+                                    addButton={form_list.add_button}
+                                    key={form_list.id_name}
+                                    // threeChange = {this.handleClick}
+                                    message={form_list.title} 
+                                />
+                            :form_list.type_name === "CardItem"?   
+                                <CardItem
+                                    id={form_list.id_name} 
+                                    key={form_list.id_name}
+                                    message={form_list.title}
                                 />
                                : ""}
                            </div>

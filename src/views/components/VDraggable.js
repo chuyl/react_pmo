@@ -115,7 +115,7 @@ export default class VDraggable extends Component {
                     onDragStart={this.domdrugstart.bind(this, item[sortKey], item[codeKey], uId, item)}
                     onDrop={this.drop.bind(this, item[sortKey], data, sortKey, uId,codeKey)}
                     onDragOver={this.allowDrop.bind(this)}
-                    style={{ ...style }}>{render(item)}</div>
+                    style={{ ...style }}>{item.content}</div>
             )
         })
     }

@@ -4,6 +4,7 @@ import React, {
 import { getData, getRouter } from '../../utils/helpers'
 import ComponentsViewList from '../components/ComponentsViewList'
 import ViewTextField from '../components/ViewTextField';
+import Popup from '../components/Popup'
 import VDraggable from '../components/VDraggable'
 class View extends Component {
    
@@ -15,7 +16,10 @@ class View extends Component {
 		is_view_list:false,//打开视图json状态
 		index_json_view:"",//组件在视图中的位置
 		componentsView:[],
+		alertState:false, //弹出框的状态
 		this_index_view_list:"",
+		view_china_name:"",
+		view_english_name:"",
 		id_name:"",
 		type_name:"",
 		key:"",
@@ -24,8 +28,33 @@ class View extends Component {
 		add_button: "",
 		descript: "",
 		before_api_uri: "",
-		after_api_uri: ""
-		
+		after_api_uri: "",
+		value: [
+			{
+				content: 'div55',
+				code: '01',
+				sort: 0,
+			},
+			{
+				content: 'div2',
+				code: '02',
+				sort: 1
+			},
+			{
+				content: 'div3',
+				code: '03',
+				sort: 2
+			},
+			{
+				content: 'div5',
+				code: '05',
+				sort: 5
+			},
+			{
+				content: 'div4',
+				code: '04',
+				sort: 4
+			}]
 
 	};
 
@@ -106,7 +135,8 @@ class View extends Component {
 	 */
 	editViewList=()=>{
 		console.log(this.state.this_view_list)
-	}/** 
+	}
+	/** 
 	 * @time 2018-11-05
 	 * @author xuesong
 	 * @param editJsonView 函数 编辑视图组件 
@@ -131,6 +161,37 @@ class View extends Component {
 		})
 		 
 	}
+	/** 
+	 * @time 2018-11-07
+	 * @author xuesong
+	 * @param cancelCallback 函数 弹出框取消
+	 */
+	cancelCallback(msg){
+		this.setState({
+			alertState:false
+		})
+	}
+	/** 
+	 * @time 2018-11-07
+	 * @author xuesong
+	 * @param sureCallback 函数 弹出框确定
+	 */
+	sureCallback(msg){
+		this.addViewName()
+        
+        
+	}
+	/** 
+	 * @time 2018-11-07
+	 * @author xuesong
+	 * @param sureCallback 函数 弹出框确定发送信息的接口
+	 */
+	addViewName(){
+		this.setState({
+			alertState:false
+		})
+		console.log(this.state.view_china_name+this.state.view_english_name)
+	}
 	render() {
 		return(
 			<div>
@@ -142,8 +203,12 @@ class View extends Component {
 							}} key={index}>{view.title}</li>
 						})}
 					</ul>
-					
-					{/* <VDraggable value={this.state.view_table_list}/> */}
+					<button className="add_card_btn" onClick={()=>{
+						this.setState({
+							alertState:true
+						})
+					}} >添加</button>
+					{/* <VDraggable value={this.state.value} isAcceptAdd={true}/> */}
 				</div>
 				<div className="view_list overflow">
 					<div className={this.state.is_view_list?"view_paper_list overflow open":"view_paper_list overflow"}>
@@ -176,6 +241,28 @@ class View extends Component {
 						}}>确定</button>
 					</div>
 				</div>
+				<Popup content={<div><h2>新增视图</h2>
+                        {/* <p>{this.props.alertMsg}</p> */}
+						<ViewTextField 
+						     onChange={(e)=>{
+								 this.setState({
+									 view_china_name:e.target.value
+								 })
+							 }}
+                            inputValue={""} 
+                            labelValue={"中文名称"} 
+
+                        />
+						<ViewTextField 
+						  onChange={(e)=>{
+							this.setState({
+								view_english_name:e.target.value
+							})
+						}}
+                            inputValue={""} 
+                            labelValue={"英文名称"} 
+                            
+                        /></div>} alertMsg = {this.state.alertMsg} sureCallback = {this.sureCallback.bind(this)} cancelCallback = { this.cancelCallback.bind(this) } alertState={this.state.alertState}/>
 				
 			</div>
 			

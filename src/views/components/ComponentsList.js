@@ -108,9 +108,10 @@ class ComponentsList extends Component {
      this.props.editCardGroupState(newStates)
   }
     render() {
-        
+       
         return (
                 this.props.componentslist.map((form_list,index) => {
+                    console.log(form_list.default_value)
                     return (
                       
                             form_list.type_name === "ListTextSearch" ?
@@ -323,7 +324,7 @@ class ComponentsList extends Component {
                                 <CardItem
                                     id={form_list.id_name} 
                                     key={form_list.id_name}
-                                    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                    message={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:form_list.default_value} 
                                 />
                             :form_list.type_name === "CardTitleItem"?   
                                 <CardTitleItem

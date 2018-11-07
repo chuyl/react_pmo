@@ -1,0 +1,17 @@
+{
+    "error":0,
+    "data": {
+        "form-temp-name": "项目card",
+        "form-list": [{
+            "id_name": "card_frame",
+            "type_name": "Cards", 
+            "key": "",
+            "title": "",
+            "tip": "",
+            "add_button":"projectCard",
+            "descript": "",
+            "before_api_uri": "",
+            "after_api_uri": ""
+        }]
+    }
+}
