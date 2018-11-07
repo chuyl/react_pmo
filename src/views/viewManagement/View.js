@@ -143,7 +143,7 @@ class View extends Component {
 						})}
 					</ul>
 					
-					<VDraggable value={this.state.view_table_list}/>
+					{/* <VDraggable value={this.state.view_table_list}/> */}
 				</div>
 				<div className="view_list overflow">
 					<div className={this.state.is_view_list?"view_paper_list overflow open":"view_paper_list overflow"}>
