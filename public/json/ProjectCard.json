@@ -43,7 +43,7 @@
 
                             }
                             ,{
-                                "id_name": "lecturer",
+                                "id_name": "lecturers",
                                 "type_name": "TitleCardRightGroup", 
                                 "before_api_uri":"teacher_name_name",
                                 "title": "",

@@ -2155,6 +2155,22 @@ html, body {
 .view_paper_list.open {
   display: inline-block; }
 
+.droppedcontent {
+  border: 1px solid rgba(240, 242, 245, 0.8);
+  margin-right: 10px;
+  padding: 6px 6px 6px 6px;
+  background-color: #fafafa;
+  border-radius: 5%;
+  box-shadow: 0 0 4px #d9d9d9; }
+
+.droppingContent {
+  border: 2px dashed #008dff;
+  box-shadow: 0 0 8px rgba(30, 144, 255, 0.8);
+  margin-right: 10px;
+  padding: 6px 6px 6px 6px;
+  background-color: #fafafa;
+  border-radius: 5%; }
+
 .crius-card-list .card-project {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); }
 .crius-card-list .inverse {

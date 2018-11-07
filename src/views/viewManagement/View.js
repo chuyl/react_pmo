@@ -4,6 +4,7 @@ import React, {
 import { getData, getRouter } from '../../utils/helpers'
 import ComponentsViewList from '../components/ComponentsViewList'
 import ViewTextField from '../components/ViewTextField';
+import VDraggable from '../components/VDraggable'
 class View extends Component {
    
 	state = {
@@ -13,7 +14,18 @@ class View extends Component {
 		isViewJson:false,//打开修改paper状态
 		is_view_list:false,//打开视图json状态
 		index_json_view:"",//组件在视图中的位置
-        title:"",
+		componentsView:[],
+		this_index_view_list:"",
+		id_name:"",
+		type_name:"",
+		key:"",
+		title:"",
+		tip: "",
+		add_button: "",
+		descript: "",
+		before_api_uri: "",
+		after_api_uri: ""
+		
 
 	};
 
@@ -42,13 +54,14 @@ class View extends Component {
 	 * @author xuesong
 	 * @param viewList 函数 获取某一个视图列表json 
 	 */
-	viewList=(name)=>{
+	viewList=(name,index)=>{
 		var cb = (route, message, arg) => {
 			
 			if (message.error === 0) {
 				this.setState({
 					this_view_list:message.data["form-list"],
-					is_view_list:true
+					is_view_list:true,
+					this_index_view_list:index
 				})
 				console.log(message.data["form-list"])
 			}
@@ -61,11 +74,29 @@ class View extends Component {
 	 * @param thisJsonView 函数 点击视图中数组获取详细json 
 	 */
 	thisJsonView=(newState)=>{
+		var componentsView=[]
+		//将组件的json数据变成数组
+		for(var i in newState.form_list){
+			componentsView.push(
+				{key:i,value:newState.form_list[i]}
+			 )
+		
+			
+		}
          this.setState({
+			componentsView:componentsView,
 			this_json_view:newState.form_list,
 			index_json_view:newState.index,
 			isViewJson:true,
-			title:newState.form_list.title
+			id_name:newState.form_list.id_name,
+			type_name:newState.form_list.type_name,
+			key:newState.form_list.key,
+			title:newState.form_list.title,
+			tip:newState.form_list.tip,
+			add_button:newState.form_list.add_button,
+			descript:newState.form_list.descript,
+			before_api_uri:newState.form_list.before_api_uri,
+			after_api_uri:newState.form_list.after_api_uri,
 		 })
 	}
 	/** 
@@ -81,23 +112,38 @@ class View extends Component {
 	 * @param editJsonView 函数 编辑视图组件 
 	 */
 	editJsonView=()=>{
-		// this.setState({
-			
-		// })
-		// console.log(this.state.this_view_list)
+		//重新编辑视图组件列表
+		var other_list=[];
+		for(var i=0;i<this.state.this_view_list.length;i++){
+			if(i!==this.state.index_json_view){
+				other_list.push(this.state.this_view_list[i])
+			}else{
+				other_list.push({id_name:this.state.id_name,type_name:this.state.type_name,
+					key:this.state.key,title:this.state.title,
+					tip:this.state.tip,add_button:this.state.add_button,
+					descript:this.state.descript,before_api_uri:this.state.before_api_uri,
+					after_api_uri:this.state.after_api_uri
+				})
+			}
+		}
+		this.setState({
+			this_view_list:other_list
+		})
+		 
 	}
 	render() {
-		console.log(this.state.index_json_view)
 		return(
 			<div>
-				{/* <div className="view_table_list">
+				<div className="view_table_list">
 					<ul>
 						{this.state.view_table_list.map((view,index)=>{
 							return <li onClick={()=>{
-								this.viewList(view.name)
+								this.viewList(view.name,index)
 							}} key={index}>{view.title}</li>
 						})}
 					</ul>
+					
+					<VDraggable value={this.state.view_table_list}/>
 				</div>
 				<div className="view_list overflow">
 					<div className={this.state.is_view_list?"view_paper_list overflow open":"view_paper_list overflow"}>
@@ -109,63 +155,30 @@ class View extends Component {
 				</div>
 				<div className="view_list overflow">
 					<div className={this.state.isViewJson?"view_paper_list overflow open":"view_paper_list overflow"}>
-						<ViewTextField 
-							// id={form_list.id_name} 
-							inputValue={this.state.this_json_view.title} 
-							labelValue={"title"} 
+					{this.state.componentsView.map((componentsView,index)=>{
+						return(
+							<ViewTextField 
+							// id={form_list.id_name}
+							key={this.state.this_index_view_list+""+this.state.index_json_view+""+index}
+							inputValue={componentsView.value} 
+							labelValue={componentsView.key} 
 							onChange={(event) => {
 								this.setState({
-									title:event.target.value 
+									[componentsView.key]:event.target.value 
 								});
-								}}
+								}} 
 						/>
-						<ViewTextField 
-							// id={form_list.id_name} 
-							inputValue={this.state.this_json_view.id_name} 
-							labelValue={"id_name"} 
-						/>
-						<ViewTextField 
-							// id={form_list.id_name} 
-							inputValue={this.state.this_json_view.type_name} 
-							labelValue={"type_name"} 
-						/>
-						<ViewTextField 
-							// id={form_list.id_name} 
-							inputValue={this.state.this_json_view.before_api_uri} 
-							labelValue={"before_api_uri"} 
-						/>
-						
-						<ViewTextField 
-							// id={form_list.id_name} 
-							inputValue={this.state.this_json_view.after_api_uri} 
-							labelValue={"after_api_uri"} 
-						/>
-						<ViewTextField 
-							// id={form_list.id_name} 
-							inputValue={this.state.this_json_view.add_button} 
-							labelValue={"add_button"} 
-						/>
-						<ViewTextField 
-							// id={form_list.id_name} 
-							inputValue={this.state.this_json_view.key} 
-							labelValue={"key"} 
-						/>
-						<ViewTextField 
-							// id={form_list.id_name} 
-							inputValue={this.state.this_json_view.descript} 
-							labelValue={"descript"} 
-						/>
-						<ViewTextField 
-							// id={form_list.id_name} 
-							inputValue={this.state.this_json_view.tip} 
-							labelValue={"tip"} 
-						/>
+						)
+					})}
 						<button onClick={()=>{
+						
 							this.editJsonView()
 						}}>确定</button>
 					</div>
-				</div> */}
+				</div>
+				
 			</div>
+			
 		);
 	}
 }

@@ -18,6 +18,7 @@
 @import 'src/mixins/table';
 @import 'src/new_table';
 @import 'src/view';
+@import 'src/draggable';
 .crius-card-list {
     .card-project {
         box-shadow:  0px 0px  5px rgba(0, 0, 0, 0.3);
