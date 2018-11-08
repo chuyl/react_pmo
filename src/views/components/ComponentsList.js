@@ -4,6 +4,7 @@
     */
 
 import React, { Component } from 'react';
+import Cards from './Cards'
 import TextField from './TextField';
 import TextArea from './TextArea'
 import DisTextArea from './DisTextArea'
@@ -43,6 +44,7 @@ import Invisible from './Invisible'
 import SelectList from './SelectList'
 import SelectListSearch from './SelectListSearch'
 import DepartmentList from './DepartmentList'
+
 class ComponentsList extends Component {
     constructor(props) {
         super(props);
@@ -87,6 +89,15 @@ class ComponentsList extends Component {
   }
   this.props.fiveChange(newState);//回调函数传递参数给父组件
 }
+handleChildChange=(formData)=>{
+    var newState = {
+        add_button:formData.add_button,
+        data:formData.data,
+        dataId:formData.dataId,
+        form_temp_name:formData.form_temp_name
+    }
+    this.props.sevenChange(newState);//回调函数传递参数给父组件
+  }
   handleThisCardTitleItem=(thisBtnState)=>{
     var newState = {
         cardTitleItem:thisBtnState.cardTitleItem
@@ -111,10 +122,16 @@ class ComponentsList extends Component {
        
         return (
                 this.props.componentslist.map((form_list,index) => {
-                    console.log(form_list.default_value)
                     return (
-                      
-                            form_list.type_name === "ListTextSearch" ?
+                            form_list.type_name === "Cards" ?
+                                <Cards id={form_list.id_name}
+                                    index={this.props.index}
+                                    key={form_list.id_name}
+                                    sixChange = {this.handleChildChange}
+                                    addButton={form_list.add_button}
+                                    card_list={this.props.componentsdata}
+                                />
+                            :form_list.type_name === "ListTextSearch" ?
                                 <ListTextSearch id={form_list.id_name}
                                     addButton={form_list.add_button}
                                     labelValue={form_list.title}

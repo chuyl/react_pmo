@@ -9,8 +9,12 @@
         {"id": "6", "name": "addProjectAddress","title":"新增培训地点"},
         {"id": "7", "name": "implementArrage","title":"实施安排"},
         {"id": "8", "name": "projectCard","title":"项目列表中的card"},
+        {"id": "9", "name": "travelExpensesGroup","title":"差旅安排"},
         {"id": "10", "name": "teacherCardGroup","title":"讲师安排"},
-        {"id": "12", "name": "travelExpensesGroup","title":"差旅安排"}
+        {"id": "11", "name": "teacherCardGroup","title":"讲师安排group" ,"type":"group"},
+        {"id": "12", "name": "teacherCardGroup","title":"讲师安排addform" ,"type":"formlist"},
+        {"id": "13", "name": "teacherCardGroup","title":"讲师安排editform" ,"type":"formlist"},
+        {"id": "14", "name": "teacherCardGroup","title":"讲师安排selectform" ,"type":"formlist"}
             ],
     "during_time":27,
     "end_time":1539500978642,

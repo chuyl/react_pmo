@@ -11,7 +11,6 @@
         }
         
         render(){
-            console.log(this.props.message)
             // const {id,disabled,inputValue,onClick,labelValue,name} =this.props;
             return (
                 <div className="card-head">

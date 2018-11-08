@@ -4,6 +4,7 @@
     */
 
    import React, { Component } from 'react';
+   import Cards from './Cards'
    import TextField from './TextField';
    import TextArea from './TextArea';
    import DisTextArea from './DisTextArea';
@@ -46,7 +47,15 @@
                            <div key={form_list.id_name} onClick={()=>{
                                this.clickComponents(form_list,index)
                            }}>
-                               {form_list.type_name === "ListTextSearch" ?
+                            {form_list.type_name === "Cards" ?
+                                <Cards id={form_list.id_name}
+                                    index={this.props.index}
+                                    key={form_list.id_name}
+                                    //sixChange = {this.handleChildChange}
+                                    addButton={form_list.add_button}
+                                    card_list={this.props.componentsdata}
+                                />
+                                :form_list.type_name === "ListTextSearch" ?
                                    <ListTextSearch id={form_list.id_name}
                                        addButton={form_list.add_button}
                                        labelValue={form_list.title}
@@ -216,21 +225,19 @@
                             :form_list.type_name === "CardHead"?
                                 <CardHead
                                     id={form_list.id_name} 
+                                    viewState={true}
                                     addButton={form_list.add_button}
                                     key={form_list.id_name}
                                     message={form_list.default_value} 
                                 />
-                            // :form_list.type_name === "CardBody"?
-                            //     <CardBody
-                            //         openState={this.state.openCtrlState}
-                            //         cardIndex={this.props.index}
-                            //         id={form_list.id_name} 
-                            //         addButton={form_list.add_button}
-                            //         key={form_list.id_name}
-                            //         fiveChange = {this.handleClick}  
-                            //         footState={this.state.cardTitleItem}
-                            //         message={this.props.card_list?this.props.card_list:""} 
-                            //     />
+                            :form_list.type_name === "CardBody"?
+                                <CardBody
+                                    cardIndex={this.props.index}
+                                    id={form_list.id_name} 
+                                    addButton={form_list.add_button}
+                                    key={form_list.id_name}
+                                    message={form_list.title} 
+                                />
                             :form_list.type_name === "CardOpen"?
                                 <CardOpen 
                                     id={form_list.id_name} 

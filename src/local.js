@@ -47,6 +47,7 @@ var local = {
                 "editProject":{"url":"../json/editProject.json","version":"1.0"},//编辑项目
                 "addProjectAddress":{"url":"../json/addProjectAddress.json","version":"1.0"},//新增培训地点
                 "implementArrage":{"url":"../json/implementArrage.json","version":"1.0"},//实施安排
+                "newCard":{"url":"../json/newCard.json","version":"1.0"},//项目列表中的card
                 "projectCard":{"url":"../json/projectCard.json","version":"1.0"},//项目列表中的card
                 "projectTemplet":{"url":"../json/projectTemplet.json","version":"1.0"},//新建项目模板
                 "teacherCardGroup":{"url":"../json/teacherCardGroup.json","version":"1.0"},//讲师安排

@@ -223,15 +223,15 @@ class View extends Component {
 					{this.state.componentsView.map((componentsView,index)=>{
 						return(
 							<ViewTextField 
-							// id={form_list.id_name}
-							key={this.state.this_index_view_list+""+this.state.index_json_view+""+index}
-							inputValue={componentsView.value} 
-							labelValue={componentsView.key} 
-							onChange={(event) => {
-								this.setState({
-									[componentsView.key]:event.target.value 
-								});
-								}} 
+								// id={form_list.id_name}
+								key={this.state.this_index_view_list+""+this.state.index_json_view+""+index}
+								inputValue={componentsView.value} 
+								labelValue={componentsView.key} 
+								onChange={(event) => {
+									this.setState({
+										[componentsView.key]:event.target.value 
+									});
+									}} 
 						/>
 						)
 					})}

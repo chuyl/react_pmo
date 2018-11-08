@@ -9,7 +9,7 @@
             const {message} =this.props;
             return (
               
-                message.map((message,index) => {
+                message?message.map((message,index) => {
 							return (<div key={index}>
                                 <div className="label_message">
                                         <label> 会议室{index+1}
@@ -17,7 +17,7 @@
                                         <span>{message.total_price?dealNumber(message.total_price):"0.00"}</span>
                             </div>
                            
-                            </div>)})
+                            </div>)}):""
             )
         }
     }

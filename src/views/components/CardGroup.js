@@ -125,6 +125,18 @@
     // addCardGroupBtn=()=>{
     //     console.log("chenggong")
     // }
+    //获取组件中add_button里面的视图
+    fetchCardsContent() {
+		var cb = (route, message, arg) => {
+			if (message.error === 0) {
+				this.setState({
+					add_button: message.data["form-list"],
+				})
+
+			}
+		}
+		getData(getRouter(this.props.addButton), { token:sessionStorage.token }, cb, {});		
+	}
         render() {
             return (
                 <div>
