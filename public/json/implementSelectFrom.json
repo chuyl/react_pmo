@@ -1,0 +1,87 @@
+{
+    "error":0,
+    "data": {
+        "form-temp-name": "",
+        "form-list": [
+            {
+                "id_name": "material_cost",
+                "type_name": "DisTextField", 
+                "key": "",
+                "title": "教材费用",
+                "tip": "",
+                "add_button": "",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            },
+            {
+                "id_name": "equipment_cost",
+                "type_name": "DisTextField", 
+                "key": "",
+                "title": "设备费用",
+                "tip": "",
+                "add_button": "",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            },
+            
+            {
+                "id_name": "examination_fee",
+                "type_name": "DisTextField", 
+                "key": "",
+                "title": "考试费",
+                "tip": "",
+                "add_button": "",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            },
+            {
+                "id_name": "tea_break",
+                "type_name": "DisTextField",
+                "key": "",
+                "title": "茶歇",
+                "tip": "",
+                "add_button": "",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            },
+            {
+                "id_name": "stationery",
+                "type_name": "DisTextField", 
+                "key": "",
+                "title": "文具",
+                "tip": "",
+                "add_button": "",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            },
+             {
+                "id_name": "hospitality",
+                "type_name": "DisTextField", 
+                "key": "",
+                "title": "招待费",
+                "tip": "",
+                "add_button": "",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            },
+            {
+                "id_name": "postage",
+                "type_name": "DisTextField",
+                "key": "",
+                "title": "邮寄快递",
+                "tip": "",
+                "add_button": "",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            }
+            
+        ]
+    }
+}

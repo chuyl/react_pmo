@@ -4,17 +4,33 @@
      */
     import React, { Component } from 'react';
     import ComponentsList from './ComponentsList'
+    import {getData,getRouter} from '../../utils/helpers'
     // import CardItem from './CardItem'
     class CardHead extends Component {
         state={
-
+            add_button:[]
         }
-        
+        componentWillMount(){
+        this.fetchHeadContent()
+        }
+        //获取组件中add_button里面的编辑视图
+        fetchHeadContent() {
+            var cb = (route, message, arg) => {
+                if (message.error === 0) {
+                    this.setState({
+                        add_button: message.data["form-list"],
+                    })
+
+                }
+               
+            }
+            getData(getRouter(this.props.addButton), { token:sessionStorage.token }, cb, {});		
+        }
         render(){
             // const {id,disabled,inputValue,onClick,labelValue,name} =this.props;
             return (
                 <div className="card-head">
-                    <ComponentsList  componentslist =  {this.props.addButton} componentsdata={this.props.message}></ComponentsList > 
+                    <ComponentsList  componentslist =  {this.state.add_button} componentsdata={this.props.message}></ComponentsList > 
               </div>
             )
         }

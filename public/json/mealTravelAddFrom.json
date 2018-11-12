@@ -1,0 +1,52 @@
+{
+    "error":0,
+    "data": {
+        "form-temp-name": "",
+        "form-list": [
+            {
+                "id_name": "meal_fee_people",
+                "type_name": "SelectList",
+                "key": "",
+                "title": "人员",
+                "tip": "",
+                "add_button":"",
+                "descript": "",
+                "before_api_uri": "travel_meal_people",
+                "after_api_uri": ""
+            }, {
+                "id_name": "meal_fee_days",
+                "type_name": "MutiText", 
+                "key": "",
+                "title": "天数",
+                "tip": "",
+                "add_button":"",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            },
+            {
+                "id_name": "meal_fee",
+                "type_name": "TextMoney", 
+                "key": "",
+                "title": "金额",
+                "tip": "",
+                "add_button":"",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            }
+            ,
+            {
+                "id_name": "meal_fee_remarks",
+                "type_name": "TextArea", 
+                "key": "",
+                "title": "备注",
+                "tip": "",
+                "add_button":"",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            }
+        ]
+    }
+}

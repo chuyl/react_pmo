@@ -8,8 +8,12 @@ import Alert from './Remind'
 import { getData, getRouter } from '../../utils/helpers'
     class AddCardBtn extends Component {
         state={
-            add_card_state:false
+            add_card_state:false,
+            add_button:[]
         }
+        // componentWillMount(){
+           
+        // }
       /** 
 	 * @time 2018-10-22
 	 * @author xuesong
@@ -70,6 +74,18 @@ import { getData, getRouter } from '../../utils/helpers'
             }
             getData(getRouter(before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
         }
+        //获取组件中add_button里面的编辑视图
+        fetchAddContent() {
+            var cb = (route, message, arg) => {
+                if (message.error === 0) {
+                    this.setState({
+                        add_button: message.data["form-list"],
+                    })
+
+                }
+            }
+            getData(getRouter(this.props.addButton), { token:sessionStorage.token }, cb, {});		
+        }
         render(){
             return (
                 <div>
@@ -78,6 +94,7 @@ import { getData, getRouter } from '../../utils/helpers'
                             this.setState({
                                 add_card_state: true,
                             })
+                            this.fetchAddContent()
                         }}
                     >
                         {this.props.title}
@@ -94,11 +111,11 @@ import { getData, getRouter } from '../../utils/helpers'
                             {this.props.title}
                         </div>
                         <div className="selected_scroll_div">
-                            <ComponentsCard  componentslist={this.props.addButton}></ComponentsCard>
+                            <ComponentsCard  componentslist={this.state.add_button}></ComponentsCard>
                             <button className="hold_btn"
                                     onClick={(e) => {
                                         console.log(this.props.dataId)
-                                        this.project_index_add(this.props.addButton,this.props.before_api_uri)
+                                        this.project_index_add(this.state.add_button,this.props.before_api_uri)
                                     }}
                             >保存
                             </button>  

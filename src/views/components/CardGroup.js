@@ -20,7 +20,9 @@
             alertState:false, //弹出框的状态
             alertMsg:"是否确定删除",
             parent_id:"",
-            thisViewList:[]   //当前card数据list
+            thisViewList:[] ,  //当前card数据list
+            edit_list:[],  //group视图的编辑页面
+            descript_list:[] //group视图的显示页面
         }
         // shouldComponentUpdate(){
         //     if(this.props.addCardGroupBtn===true){
@@ -33,6 +35,10 @@
                 color:PropTypes.string,
                 callback:PropTypes.func,
             }
+        componentWillMount(){
+            this.fetchDescriptContent()
+            this.fetchEditContent()
+        }
         /** 
          * @author xuesong
          * @param removeEvent 函数名 删除添加组件
@@ -125,17 +131,31 @@
     // addCardGroupBtn=()=>{
     //     console.log("chenggong")
     // }
-    //获取组件中add_button里面的视图
-    fetchCardsContent() {
+    //获取组件中add_button里面的编辑视图
+    fetchEditContent() {
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
 				this.setState({
-					add_button: message.data["form-list"],
+					edit_list: message.data["form-list"],
 				})
 
 			}
 		}
-		getData(getRouter(this.props.addButton), { token:sessionStorage.token }, cb, {});		
+		getData(getRouter(this.props.addButton.add_button), { token:sessionStorage.token }, cb, {});		
+    }
+     //获取组件中add_button里面的查看视图
+     fetchDescriptContent() {
+		var cb = (route, message, arg) => {
+			if (message.error === 0) {
+				this.setState({
+					descript_list: message.data["form-list"],
+                })
+                console.log(message)
+
+			}
+        }
+        
+		getData(getRouter(this.props.addButton.descript), { token:sessionStorage.token }, cb, {});		
 	}
         render() {
             return (
@@ -147,7 +167,7 @@
                                 <li
                                   key={index}  className="card_info_list_card"
                                 >
-                                < ComponentsList index={index}  componentslist =  {this.props.addButton.descript?this.props.addButton.descript:[]} componentsdata = {view_list} ></ComponentsList > 
+                                < ComponentsList index={index}  componentslist =  {this.state.descript_list?this.state.descript_list:[]} componentsdata = {view_list} ></ComponentsList > 
                                     {/* {this.props.addButton.descript.map((card_list, index) => {
                                         return (
                                         <div key={index} style={{marginBottom:"-6px"}}>
@@ -201,7 +221,7 @@
                                 key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                                 remove={this.removeEvent.bind(this)}
                                 index={this.state.addCondition.length}
-                                cardList={this.props.addButton.add_button}
+                                cardList={this.state.edit_list}
                                 addButtonTitle ={this.props.addButtonTitle}
                                 editButton = {this.props.editButton}
                                 delButton = {this.props.delButton}

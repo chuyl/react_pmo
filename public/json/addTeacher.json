@@ -8,8 +8,7 @@
             "key": "",
             "title": "讲师姓名",
             "tip": "",
-            "add_button": {
-            },
+            "add_button":"",
             "descript": "",
             "before_api_uri": "",
             "after_api_uri": ""
@@ -19,8 +18,7 @@
             "key": "",
             "title": "常用单价",
             "tip": "",
-            "add_button": {
-            },
+            "add_button":"",
             "descript": "",
             "before_api_uri": "",
             "after_api_uri": ""
@@ -31,8 +29,7 @@
             "key": "",
             "title": "合作模式",
             "tip": "",
-            "add_button": {
-            },
+            "add_button":"",
             "descript": "",
             "before_api_uri": "lecturer_manage_cooperation",
             "after_api_uri": ""

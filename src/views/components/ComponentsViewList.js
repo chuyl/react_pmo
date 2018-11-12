@@ -15,6 +15,8 @@
    import ListTextSearch from './ListTextSearch'
    import LinkCard from './LinkCard'
    import CardGroup from './CardGroup'
+   import GroupButtonView from './GroupButtonView'
+   import GroupAddButtonView from './GroupAddButtonView'
    import Link from './Link'
    import CardHead from './CardHead'
    import CardBody from './CardBody'
@@ -33,12 +35,51 @@
    import Invisible from './Invisible'
    import DepartmentList from './DepartmentList'
    class ComponentsViewList extends Component {
-    clickComponents(form_list,index){
+    /** 
+     * @time 2018-11-09 
+     * @author xuesong
+     * @param clickComponents 函数  获取视图json
+     */
+    clickComponents=(form_list,index)=>{
+        console.log(form_list)
         var newState = {
             form_list:form_list,
             index:index
         }
         this.props.handleViewJson(newState);//回调函数传递参数给父组件
+    }
+    /** 
+     * @time 2018-11-09 
+     * @author xuesong
+     * @param addViewButton 函数  group添加按钮传值
+     */
+    addViewButton=(newState)=>{
+        var states={
+            name:newState.name
+        }
+        this.props.addViewonClickButton(states)
+    }
+      /** 
+     * @time 2018-11-09 
+     * @author xuesong
+     * @param editViewButton 函数  group编辑按钮传值
+     */
+    editViewButton=(newState)=>{
+        var states={
+            name:newState.name
+        }
+        this.props.editViewonClickButton(states)
+    }
+      /** 
+     * @time 2018-11-09 
+     * @author xuesong
+     * @param descriptViewButton 函数  group展示按钮传值
+     */
+    descriptViewButton=(newState)=>{
+        var states={
+            name:newState.name
+        }
+        this.props.descriptViewonClickButton(states)
     }
        render() {
            return (
@@ -176,17 +217,19 @@
                                        key={form_list.id_name}
                                    /> 
                                :form_list.type_name==="CardGroup"?
-                                   <CardGroup 
+                                   <GroupButtonView 
                                        addButtonTitle={form_list.add_button_title} 
-                                       addButton={form_list.add_button} 
-                                       uriName={form_list.before_api_uri}
-                                       delButton = {form_list.add_button.del_button}
-                                       editButton={form_list.add_button.edit_button}
-                                       listButton = {form_list.add_button.list_button}
-                                       idName={form_list.id_name}
-                                       key={form_list.id_name}
+                                       editViewClickButton={this.editViewButton}
+                                       descriptViewClickButton={this.descriptViewButton}
+                                    //    addButton={form_list.add_button} 
+                                    //    uriName={form_list.before_api_uri}
+                                    //    delButton = {form_list.add_button.del_button}
+                                    //    editButton={form_list.add_button.edit_button}
+                                    //    listButton = {form_list.add_button.list_button}
+                                    //    idName={form_list.id_name}
+                                    //    key={form_list.id_name}
                                        title={form_list.title} 
-                                        postListGroup={this.editCardSuccess}
+                                       // postListGroup={this.editCardSuccess}
                                    />
                                :form_list.type_name==="HoldBtn"?
                                    <HoldBtn 
@@ -196,12 +239,13 @@
                                        onHoldClick={this.handleChildClick}
                                />
                                :form_list.type_name==="AddCardBtn"?
-                                   <AddCardBtn
-                                        addButton={form_list.add_button}
+                                   <GroupAddButtonView
+                                        addViewClickButton={this.addViewButton}
+                                        // addButton={form_list.add_button}
                                         title={form_list.title}
-                                        dataId={this.props.dataId}
-                                        before_api_uri={form_list.before_api_uri}
-                                        key={form_list.id_name}
+                                        // dataId={this.props.dataId}
+                                        // before_api_uri={form_list.before_api_uri}
+                                        // key={form_list.id_name}
                                    />
                                    :form_list.type_name==="EditCardBtn"?
                                 <EditCardBtn

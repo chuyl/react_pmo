@@ -1,0 +1,52 @@
+{
+    "error":0,
+    "data": {
+        "form-temp-name": "",
+        "form-list": [
+            {
+                "id_name": "meal_fee_people_name",
+                "type_name": "DisTextField",
+                "key": "",
+                "title": "人员",
+                "tip": "",
+                "add_button":"",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            }, {
+                "id_name": "meal_fee_days",
+                "type_name": "DisTextField", 
+                "key": "",
+                "title": "天数",
+                "tip": "",
+                "add_button":"",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            },
+            {
+                "id_name": "meal_fee",
+                "type_name": "DisTextField", 
+                "key": "",
+                "title": "金额",
+                "tip": "",
+                "add_button":"",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            }
+            ,
+            {
+                "id_name": "meal_fee_remarks",
+                "type_name": "DisTextArea", 
+                "key": "",
+                "title": "备注",
+                "tip": "",
+                "add_button":"",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            }
+        ]
+    }
+}

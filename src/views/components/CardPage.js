@@ -4,11 +4,16 @@
      */
     import React, { Component } from 'react';
     import ComponentsList from './ComponentsList'
+    import {getData,getRouter} from '../../utils/helpers'
     // import CardItem from './CardItem'
     class CardPage extends Component {
         state={
-            currentIndex:this.props.footState===""?0:this.props.footState
+            currentIndex:this.props.footState===""?0:this.props.footState,
+            add_button:[]
         }
+        componentWillMount(){
+            this.fetchPageContent()
+            }
         handleClick=(formData)=>{
           var newState = {
               add_button:formData.add_button,
@@ -34,11 +39,26 @@
            
         }
       }
+
+   
+    //获取组件中add_button里面的编辑视图
+    fetchPageContent() {
+        var cb = (route, message, arg) => {
+            if (message.error === 0) {
+                this.setState({
+                    add_button: message.data["form-list"],
+                })
+
+            }
+           
+        }
+        getData(getRouter(this.props.addButton), { token:sessionStorage.token }, cb, {});		
+    }
         render(){
             const {index,cardIndex}=this.props;
             return (
                 <div id={"card_page"+cardIndex+index} className={this.props.footState===""?this.props.index===0?"card-page move-out active" : "card-page":this.props.footState===this.props.index?"card-page active move-in" : "card-page"}>
-                    <ComponentsList  twoChange = {this.handleClick}  componentslist =  {this.props.addButton} componentsdata={this.props.message}></ComponentsList > 
+                    <ComponentsList  twoChange = {this.handleClick}  componentslist =  {this.state.add_button} componentsdata={this.props.message}></ComponentsList > 
               </div>
             )
         }

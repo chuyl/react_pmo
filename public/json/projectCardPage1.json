@@ -1,0 +1,133 @@
+{
+    "error":0,
+    "data": {
+        "form-temp-name": "",
+        "form-list": [
+            {
+                "id_name": "project_name",
+                "type_name": "TitleLeftCard", 
+                "title": "课程名称:",
+                "default_value":"未设置课程名称"
+
+            }
+            ,{
+                "id_name": "lecturers",
+                "type_name": "TitleCardRightGroup", 
+                "before_api_uri":"teacher_name_name",
+                "title": "",
+                "default_value":"未设置讲师"
+            }
+            ,{
+                "id_name": "project_date",
+                "type_name": "DateCard",
+                "before_api_uri": "", 
+                "title": ":",
+                "default_value":"未设置日期"
+            
+            },{
+                "id_name": "project_traing_ares",
+                "type_name": "ProvinceCity",
+                "before_api_uri": "", 
+                "title": ":",
+                "default_value":"未设置地区"
+            
+            },{
+                "id_name": "address",
+                "type_name": "CardLeftBody",
+                "title": ":",
+                "default_value":"未设置地址"
+            
+            },{
+                "id_name": "project_days",
+                "type_name": "CardRightBody",
+                "title": ":" ,
+                "default_value":"未设置天数"
+            
+            },{
+                "id_name": "project_customer_name",
+                "type_name": "CardLeftBody",
+                "title": ":",
+                "default_value":"未设置客户"
+            
+            },{
+                "id_name": "project_gather_name",
+                "type_name": "CardRightBody",
+                "title": ":",
+                "default_value":"未设置项目集"
+            
+            },{
+                "id_name": "labor_cost",
+                "type_name": "LabelTitleMessage",
+                "title": "人工成本"
+            
+            },{
+                "id_name": "lecturer",
+                "type_name": "SpellingCardGroup", 
+                "before_api_uri":["teacher_name_name","teacher_duty_name"],
+                "title": ""
+            },{
+                "id_name": "implementation_cost",
+                "type_name": "LabelTitleMessage",
+                "title": "实施成本"
+            
+            },{
+                "id_name": "venue",
+                "type_name": "LoopCardGroup", 
+                "before_api_uri":"",
+                "title": ""
+            },{
+                "id_name": "implement",
+                "type_name": "LabelChildMessage", 
+                "before_api_uri":["material_cost","equipment_cost","examination_fee","tea_break","stationery","hospitality","postage"],
+                "title":[ "教材费用","设备费用","考试费","茶歇","文具","招待费","邮寄快递"]
+            },{
+                "id_name": "travel_cost",
+                "type_name": "LabelTitleMessage",
+                "title": "差旅成本"
+            
+            },{
+                "id_name": "city",
+                "type_name": "LabelMessage", 
+                "title": "市内交通"
+            },{
+                "id_name": "province",
+                "type_name": "LabelMessage", 
+                "title": "长途交通"
+            },{
+                "id_name": "stay",
+                "type_name": "LabelMessage", 
+                "title": "住宿"
+            },{
+                "id_name": "meal",
+                "type_name": "LabelMessage", 
+                "title": "餐费"
+            },{
+                "id_name": "consulting_cost",
+                "type_name": "LabelTitleMessage",
+                "title": "咨询成本"
+            
+            },{
+                "id_name": "institutional_consulting_fees",
+                "type_name": "LabelMessage", 
+                "title": "机构咨询费"
+            },{
+                "id_name": "personal_consulting_fees",
+                "type_name": "LabelMessage", 
+                "title": "个人咨询费"
+            },{
+                "id_name": "expected_income",
+                "type_name": "LabelTotalMessage", 
+                "title": "预计收入"
+            },{
+                "id_name": "project_profit",
+                "type_name": "LabelTotalMessage", 
+                "title": "项目利润"
+            },{
+                "id_name": "gross_interest_rate",
+                "type_name": "LabelTotalMessage", 
+                "title": "毛利率"
+            }
+            
+        ]
+    }
+}

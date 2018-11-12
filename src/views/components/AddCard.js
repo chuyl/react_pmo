@@ -104,12 +104,12 @@
            getData(getRouter(before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
         }
         render() {
-            console.log(this.props.conditionAction)
+            console.log(this.props.cardList)
             return (
                 <div>
                     <div key={this.props.index} className="card_info_list_card">
                         {/* <ComponentsList componentslist={this.state.card_list}></ComponentsList> */}
-                        {this.state.cardList?this.state.cardList.map((card_list, index) => {
+                        {this.props.cardList?this.props.cardList.map((card_list, index) => {
                             if(card_list.type_name==="TextArea"){
                                  console.log(this.props.conditionAction[card_list.id_name])
                             }
@@ -158,7 +158,7 @@
                     </div>
                     <button className="hold_btn"
                         onClick={(e) => {
-                            this.project_index_add(this.state.cardList,this.props.editButton)
+                            this.project_index_add(this.props.cardList,this.props.editButton)
                         }}
                     >保存
                     </button>

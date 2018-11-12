@@ -1,0 +1,71 @@
+{
+    "error":0,
+    "data": {
+        "form-temp-name": "",
+        "form-list": [{
+            "id_name": "room_number",
+            "type_name": "MutiText", 
+            "key": "",
+            "title": "会议室编号",
+            "tip": "",
+            "add_button": "",
+            "descript": "",
+            "before_api_uri": "",
+            "after_api_uri": ""
+        },
+        {
+            "id_name": "unit_price",
+            "type_name": "MutiText", 
+            "key": "",
+            "title": "单价",
+            "tip": "",
+            "add_button": "",
+            "descript": "",
+            "before_api_uri": "",
+            "after_api_uri": ""
+        },
+        {
+            "id_name": "days",
+            "type_name": "MutiText",
+            "key": "",
+            "title": "天数",
+            "tip": "",
+            "add_button": "",
+            "descript": "",
+            "before_api_uri": "",
+            "after_api_uri": ""
+        },
+        {
+            "id_name": "total_price",
+            "type_name": "MutiText", 
+            "key": "",
+            "title": "总价",
+            "tip": "",
+            "add_button": "",
+            "descript": "",
+            "before_api_uri": "",
+            "after_api_uri": ""
+        },
+        {
+            "id_name": "meetingplace_name",
+            "type_name": "MutiText", 
+            "key": "",
+            "title": "会议名称",
+            "tip": "",
+            "add_button": "",
+            "descript": "",
+            "before_api_uri": "",
+            "after_api_uri": ""
+        },{
+            "id_name": "meetingplace_address",
+            "type_name": "MutiText", 
+            "key": "",
+            "title": "会议地址",
+            "tip": "",
+            "add_button": "",
+            "descript": "",
+            "before_api_uri": "",
+            "after_api_uri": ""
+        }]
+    }
+}

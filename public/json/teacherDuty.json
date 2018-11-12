@@ -20,11 +20,7 @@
                 "key": "",
                 "title": "项目模板",
                 "tip": "",
-                "add_button": {
-                    "data": {
-                        "from-list": [{}]
-                    }
-                },
+                "add_button":"",
                 "descript": "",
                 "before_api_uri":"",
                 "after_api_uri": ""

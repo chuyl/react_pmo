@@ -43,16 +43,36 @@ var local = {
                 "addProject":{"url":"../json/addProject.json","version":"1.0"},//新建项目
                 "addProjectGather":{"url":"../json/addProjectGather.json","version":"1.0"},//新建项目集
                 "addTeacher":{"url":"../json/addTeacher.json","version":"1.0"},//新建讲师
+                "addProjectAddress":{"url":"../json/addProjectAddress.json","version":"1.0"},//新增培训地点
                 "budgetManage":{"url":"../json/budgetManage.json","version":"1.0"},//预算
                 "editProject":{"url":"../json/editProject.json","version":"1.0"},//编辑项目
-                "addProjectAddress":{"url":"../json/addProjectAddress.json","version":"1.0"},//新增培训地点
+                "hotelTravelAddFrom":{"url":"../json/hotelTravelAddFrom.json","version":"1.0"},
+                "hotelTravelSelectFrom":{"url":"../json/hotelTravelSelectFrom.json","version":"1.0"},
                 "implementArrage":{"url":"../json/implementArrage.json","version":"1.0"},//实施安排
+                "implementAddFrom":{"url":"../json/implementAddFrom.json","version":"1.0"},//实施安排修改，新增视图
+                "implementSelectFrom":{"url":"../json/implementSelectFrom.json","version":"1.0"},//实施安排查看视图
+                "longTravelAddFrom":{"url":"../json/longTravelAddFrom.json","version":"1.0"},
+                "longTravelSelectFrom":{"url":"../json/longTravelSelectFrom.json","version":"1.0"},
+                "mealTravelAddFrom":{"url":"../json/mealTravelAddFrom.json","version":"1.0"},
+                "mealTravelSelectFrom":{"url":"../json/mealTravelSelectFrom.json","version":"1.0"},
                 "newCard":{"url":"../json/newCard.json","version":"1.0"},//项目列表中的card
                 "projectCard":{"url":"../json/projectCard.json","version":"1.0"},//项目列表中的card
                 "projectTemplet":{"url":"../json/projectTemplet.json","version":"1.0"},//新建项目模板
+                "projectCardHead":{"url":"../json/projectCardHead.json","version":"1.0"},
+                "projectCardPage1":{"url":"../json/projectCardPage1.json","version":"1.0"},
+                "projectCardPage2":{"url":"../json/projectCardPage2.json","version":"1.0"},
+                "projectCardPage3":{"url":"../json/projectCardPage3.json","version":"1.0"},
+                "projectCardFoot":{"url":"../json/projectCardFoot.json","version":"1.0"},
+               
+                "shortTravelAddFrom":{"url":"../json/shortTravelAddFrom.json","version":"1.0"},
+                "shortTravelSelectFrom":{"url":"../json/shortTravelSelectFrom.json","version":"1.0"},
                 "teacherCardGroup":{"url":"../json/teacherCardGroup.json","version":"1.0"},//讲师安排
+                "teacherAddForm":{"url":"../json/teacherAddForm.json","version":"1.0"},//讲师安排修改，新增视图
+                "teacherSelectFrom":{"url":"../json/teacherSelectFrom.json","version":"1.0"},//讲师安排查看视图
                 "teacherDuty":{"url":"../json/teacherDuty.json","version":"1.0"},//讲师职责
                 "travelExpensesGroup":{"url":"../json/travelExpensesGroup.json","version":"1.0"},//差旅安排
+                "venueAddFrom":{"url":"../json/venueAddFrom.json","version":"1.0"},//会议室修改，新增视图
+                "venueSelectFrom":{"url":"../json/venueSelectFrom.json","version":"1.0"}//会议室查看视图
             };
              
              

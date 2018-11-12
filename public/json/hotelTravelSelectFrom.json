@@ -1,0 +1,40 @@
+{
+    "error":0,
+    "data": {
+        "form-temp-name": "",
+        "form-list": [
+            {
+                "id_name": "hotel_expense_people",
+                "type_name": "DisTextField",
+                "key": "",
+                "title": "人员",
+                "tip": "",
+                "add_button":"",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            }, {
+                "id_name": "hotel_expense_days",
+                "type_name": "DisTextField", 
+                "key": "",
+                "title": "天数",
+                "tip": "",
+                "add_button":"",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            },
+            {
+                "id_name": "hotel_expense_total",
+                "type_name": "DisTextField", 
+                "key": "",
+                "title": "费用总价",
+                "tip": "",
+                "add_button":"",
+                "descript": "",
+                "before_api_uri": "",
+                "after_api_uri": ""
+            }
+        ]
+    }
+}

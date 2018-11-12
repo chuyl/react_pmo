@@ -1,0 +1,24 @@
+{
+    "error":0,
+    "data": {
+        "form-temp-name": "",
+        "form-list": [
+            {
+                "id_name": "project_project_template_name",
+                "type_name": "CardItem", 
+                "title": "项目类型",
+                "default_value":"未设置项目类型"
+                
+            },{
+                "id_name": "unicode",
+                "type_name": "CardItem", 
+                "title": "班级编号",
+                "default_value":"未设置班级编号"
+            },{
+                "id_name": "project_person_in_charge_name",
+                "type_name": "CardItem", 
+                "title": "班主任",
+                "default_value":"未设置班主任"
+            }]
+    }
+}

@@ -32,174 +32,11 @@
                 "title": "长途交通费",
                 "before_api_uri": "province",
                 "add_button": {
-                    "descript":[{
-                        "id_name": "long_fee_card_people",
-                        "type_name": "DisTextField", 
-                        "key": "",
-                        "title": "人员",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    }, {
-                        "id_name": "long_fee_card_start_time",
-                        "type_name": "DisTextField",
-                        "key": "",
-                        "title": "出发时间",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    },
-                    {
-                        "id_name": "long_fee_card_start_place",
-                        "type_name": "DisTextField",
-                        "key": "",
-                        "title": "出发地点",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    },
-                    {
-                        "id_name": "long_fee_card_end_time",
-                        "type_name": "DisTextField",
-                        "key": "",
-                        "title": "结束时间",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    },
-                    {
-                        "id_name": "long_fee_card_end_place",
-                        "type_name": "DisTextField",
-                        "key": "",
-                        "title": "结束地点",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    },
-                    {
-                        "id_name": "long_fee_card_vehicle_name",
-                        "type_name": "DisTextField", 
-                        "key": "",
-                        "title": "交通工具",
-                        "tip": "",
-                        "add_button": "",
-                        "descript": "",
-                        "before_api_uri": "travelMode",
-                        "after_api_uri": ""
-                    },{
-                        "id_name": "long_fee_card_fee",
-                        "type_name": "DisTextField",
-                        "key": "",
-                        "title": "金额",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    }],
+                    "descript":"longTravelSelectFrom",
                     "edit_button":"travel_longTraffic_edit",
                     "del_button":"travel_longTraffic_del",
                     "list_button": "travel_plan_getByProjectId",
-                    "add_button":[{
-                        "id_name": "long_fee_card_people",
-                        "type_name": "MutiText", 
-                        "key": "",
-                        "title": "人员",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    }, {
-                        "id_name": "long_fee_card_start_time",
-                        "type_name": "TextDatetime",
-                        "key": "",
-                        "title": "出发时间",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    },
-                    {
-                        "id_name": "long_fee_card_start_place",
-                        "type_name": "MutiText",
-                        "key": "",
-                        "title": "出发地点",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    },
-                    {
-                        "id_name": "long_fee_card_end_time",
-                        "type_name": "TextDatetime",
-                        "key": "",
-                        "title": "结束时间",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    },
-                    {
-                        "id_name": "long_fee_card_end_place",
-                        "type_name": "MutiText",
-                        "key": "",
-                        "title": "结束地点",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    },
-                    {
-                        "id_name": "long_fee_card_vehicle",
-                        "type_name": "SelectList", 
-                        "key": "",
-                        "title": "交通工具",
-                        "tip": "",
-                        "add_button": {
-                           
-                        },
-                        "descript": "",
-                        "before_api_uri": "travel_longTrafficType_list",
-                        "after_api_uri": ""
-                    },
-                    {
-                        "id_name": "long_fee_card_fee",
-                        "type_name": "TextMoney",
-                        "key": "",
-                        "title": "金额",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    }]
+                    "add_button":"longTravelAddFrom"
                 }
             }
             ,{
@@ -208,90 +45,7 @@
                 "key": "",
                 "title": "添加行程安排",
                 "tip": "",
-                "add_button":[{
-                    "id_name": "long_fee_card_people",
-                    "type_name": "MutiText", 
-                    "key": "",
-                    "title": "人员",
-                    "tip": "",
-                    "add_button": {
-                    },
-                    "descript": "",
-                    "before_api_uri": "",
-                    "after_api_uri": ""
-                }, {
-                    "id_name": "long_fee_card_start_time",
-                    "type_name": "TextDatetime",
-                    "key": "",
-                    "title": "出发时间",
-                    "tip": "",
-                    "add_button": {
-                    },
-                    "descript": "",
-                    "before_api_uri": "",
-                    "after_api_uri": ""
-                },
-                {
-                    "id_name": "long_fee_card_start_place",
-                    "type_name": "MutiText",
-                    "key": "",
-                    "title": "出发地点",
-                    "tip": "",
-                    "add_button": {
-                    },
-                    "descript": "",
-                    "before_api_uri": "",
-                    "after_api_uri": ""
-                },
-                {
-                    "id_name": "long_fee_card_end_time",
-                    "type_name": "TextDatetime",
-                    "key": "",
-                    "title": "结束时间",
-                    "tip": "",
-                    "add_button": {
-                    },
-                    "descript": "",
-                    "before_api_uri": "",
-                    "after_api_uri": ""
-                },
-                {
-                    "id_name": "long_fee_card_end_place",
-                    "type_name": "MutiText",
-                    "key": "",
-                    "title": "结束地点",
-                    "tip": "",
-                    "add_button": {
-                    },
-                    "descript": "",
-                    "before_api_uri": "",
-                    "after_api_uri": ""
-                },
-                {
-                    "id_name": "long_fee_card_vehicle",
-                    "type_name": "SelectList", 
-                    "key": "",
-                    "title": "交通工具",
-                    "tip": "",
-                    "add_button": {
-                       
-                    },
-                    "descript": "",
-                    "before_api_uri": "travel_longTrafficType_list",
-                    "after_api_uri": "travel_plan_getByProjectId"
-                },
-                {
-                    "id_name": "long_fee_card_fee",
-                    "type_name": "TextMoney",
-                    "key": "",
-                    "title": "金额",
-                    "tip": "",
-                    "add_button": {
-                    },
-                    "descript": "",
-                    "before_api_uri": "",
-                    "after_api_uri": ""
-                }],
+                "add_button":"longTravelAddFrom",
                 "descript": "",
                 "before_api_uri":"travel_longTraffic_add",
                 "after_api_uri": "travel_plan_getByProjectId"
@@ -303,81 +57,11 @@
                 "add_button_title": "添加市内交通费",
                 "before_api_uri":"city",
                 "add_button": {
-                    "descript":[
-                        {
-                            "id_name": "short_fee_card_people",
-                            "type_name": "DisTextField", 
-                            "key": "",
-                            "title": "人员",
-                            "tip": "",
-                            "add_button": {
-                            },
-                            "descript": "",
-                            "before_api_uri": "",
-                            "after_api_uri": ""
-                        }, {
-                            "id_name": "short_fee_type",
-                            "type_name": "DisTextField", 
-                            "key": "",
-                            "title": "费用名称",
-                            "tip": "",
-                            "add_button": {
-                            },
-                            "descript": "",
-                            "before_api_uri": "",
-                            "after_api_uri": ""
-                        },
-                        {
-                            "id_name": "short_fee",
-                            "type_name": "DisTextField",
-                            "key": "",
-                            "title": "费用",
-                            "tip": "",
-                            "add_button": {
-                            },
-                            "descript": "",
-                            "before_api_uri": "",
-                            "after_api_uri": ""
-                        }],
+                    "descript":"shortTravelSelectFrom",
                         "edit_button":"travel_inCityTraffic_edit",
                         "del_button":"travel_inCityTraffic_del",
                         "list_button": "travel_plan_getByProjectId",
-                        "add_button":[
-                            {
-                                "id_name": "short_fee_card_people",
-                                "type_name": "MutiText", 
-                                "key": "",
-                                "title": "人员",
-                                "tip": "",
-                                "add_button": {
-                                },
-                                "descript": "",
-                                "before_api_uri": "",
-                                "after_api_uri": ""
-                            }, {
-                                "id_name": "short_fee_type",
-                                "type_name": "MutiText", 
-                                "key": "",
-                                "title": "费用名称",
-                                "tip": "",
-                                "add_button": {
-                                },
-                                "descript": "",
-                                "before_api_uri": "",
-                                "after_api_uri": ""
-                            },
-                            {
-                                "id_name": "short_fee",
-                                "type_name": "MutiText",
-                                "key": "",
-                                "title": "费用",
-                                "tip": "",
-                                "add_button": {
-                                },
-                                "descript": "",
-                                "before_api_uri": "",
-                                "after_api_uri": ""
-                            }]
+                        "add_button":"shortTravelAddFrom"
                 }
                 
             },{
@@ -386,42 +70,7 @@
                 "key": "",
                 "title": "添加行程安排",
                 "tip": "",
-                "add_button":[
-                    {
-                        "id_name": "short_fee_card_people",
-                        "type_name": "MutiText", 
-                        "key": "",
-                        "title": "人员",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    }, {
-                        "id_name": "short_fee_type",
-                        "type_name": "MutiText", 
-                        "key": "",
-                        "title": "费用名称",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    },
-                    {
-                        "id_name": "short_fee",
-                        "type_name": "MutiText",
-                        "key": "",
-                        "title": "费用",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    }],
+                "add_button":"shortTravelAddFrom",
                 "descript": "",
                 "before_api_uri":"travel_inCityTraffic_add",
                 "after_api_uri": "travel_plan_getByProjectId"
@@ -432,83 +81,11 @@
                 "add_button_title": "添加住宿费",
                 "before_api_uri": "stay",
                 "add_button": {
-                    "descript":[
-                        {
-                            "id_name": "hotel_expense_people",
-                            "type_name": "DisTextField",
-                            "key": "",
-                            "title": "人员",
-                            "tip": "",
-                            "add_button": {
-                            },
-                            "descript": "",
-                            "before_api_uri": "",
-                            "after_api_uri": ""
-                        }, {
-                            "id_name": "hotel_expense_days",
-                            "type_name": "DisTextField", 
-                            "key": "",
-                            "title": "天数",
-                            "tip": "",
-                            "add_button": {
-                            },
-                            "descript": "",
-                            "before_api_uri": "",
-                            "after_api_uri": ""
-                        },
-                        {
-                            "id_name": "hotel_expense_total",
-                            "type_name": "DisTextField", 
-                            "key": "",
-                            "title": "费用总价",
-                            "tip": "",
-                            "add_button": {
-                            },
-                            "descript": "",
-                            "before_api_uri": "",
-                            "after_api_uri": ""
-                        }
-                    ],
+                    "descript":"hotelTravelSelectFrom",
                     "edit_button":"travel_hotel_edit",
                     "del_button":"travel_hotel_del",
                     "list_button": "travel_plan_getByProjectId",
-                    "add_button":[
-                        {
-                            "id_name": "hotel_expense_people",
-                            "type_name": "MutiText",
-                            "key": "",
-                            "title": "人员",
-                            "tip": "",
-                            "add_button": {
-                            },
-                            "descript": "",
-                            "before_api_uri": "",
-                            "after_api_uri": ""
-                        }, {
-                            "id_name": "hotel_expense_days",
-                            "type_name": "MutiText", 
-                            "key": "",
-                            "title": "天数",
-                            "tip": "",
-                            "add_button": {
-                            },
-                            "descript": "",
-                            "before_api_uri": "",
-                            "after_api_uri": ""
-                        },
-                        {
-                            "id_name": "hotel_expense_total",
-                            "type_name": "MutiText", 
-                            "key": "",
-                            "title": "费用总价",
-                            "tip": "",
-                            "add_button": {
-                            },
-                            "descript": "",
-                            "before_api_uri": "",
-                            "after_api_uri": ""
-                        }
-                    ]
+                    "add_button":"hotelTravelAddFrom"
 
 
                 }
@@ -519,43 +96,7 @@
                 "key": "",
                 "title": "添加住宿费",
                 "tip": "",
-                "add_button":[
-                    {
-                        "id_name": "hotel_expense_people",
-                        "type_name": "MutiText",
-                        "key": "",
-                        "title": "人员",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    }, {
-                        "id_name": "hotel_expense_days",
-                        "type_name": "MutiText", 
-                        "key": "",
-                        "title": "天数",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    },
-                    {
-                        "id_name": "hotel_expense_total",
-                        "type_name": "MutiText", 
-                        "key": "",
-                        "title": "费用总价",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    }
-                ],
+                "add_button":"hotelTravelAddFrom",
                 "descript": "",
                 "before_api_uri":"travel_hotel_add",
                 "after_api_uri": "travel_plan_getByProjectId"
@@ -566,109 +107,11 @@
                 "add_button_title": "添加餐费",
                 "before_api_uri": "meal",
                 "add_button": {
-                    "descript":[
-                        {
-                            "id_name": "meal_fee_people_name",
-                            "type_name": "DisTextField",
-                            "key": "",
-                            "title": "人员",
-                            "tip": "",
-                            "add_button": {
-                            },
-                            "descript": "",
-                            "before_api_uri": "",
-                            "after_api_uri": ""
-                        }, {
-                            "id_name": "meal_fee_days",
-                            "type_name": "DisTextField", 
-                            "key": "",
-                            "title": "天数",
-                            "tip": "",
-                            "add_button": {
-                            },
-                            "descript": "",
-                            "before_api_uri": "",
-                            "after_api_uri": ""
-                        },
-                        {
-                            "id_name": "meal_fee",
-                            "type_name": "DisTextField", 
-                            "key": "",
-                            "title": "金额",
-                            "tip": "",
-                            "add_button": {
-                            },
-                            "descript": "",
-                            "before_api_uri": "",
-                            "after_api_uri": ""
-                        }
-                        ,
-                        {
-                            "id_name": "meal_fee_remarks",
-                            "type_name": "DisTextArea", 
-                            "key": "",
-                            "title": "备注",
-                            "tip": "",
-                            "add_button": {
-                            },
-                            "descript": "",
-                            "before_api_uri": "",
-                            "after_api_uri": ""
-                        }
-                    ],
+                    "descript":"mealTravelSelectFrom",
                     "edit_button":"travel_meal_edit",
                     "del_button":"travel_meal_del",
                     "list_button": "travel_plan_getByProjectId",
-                    "add_button":[
-                        {
-                            "id_name": "meal_fee_people",
-                            "type_name": "SelectList",
-                            "key": "",
-                            "title": "人员",
-                            "tip": "",
-                            "add_button": {
-                            },
-                            "descript": "",
-                            "before_api_uri": "travel_meal_people",
-                            "after_api_uri": ""
-                        }, {
-                            "id_name": "meal_fee_days",
-                            "type_name": "MutiText", 
-                            "key": "",
-                            "title": "天数",
-                            "tip": "",
-                            "add_button": {
-                            },
-                            "descript": "",
-                            "before_api_uri": "",
-                            "after_api_uri": ""
-                        },
-                        {
-                            "id_name": "meal_fee",
-                            "type_name": "TextMoney", 
-                            "key": "",
-                            "title": "金额",
-                            "tip": "",
-                            "add_button": {
-                            },
-                            "descript": "",
-                            "before_api_uri": "",
-                            "after_api_uri": ""
-                        }
-                        ,
-                        {
-                            "id_name": "meal_fee_remarks",
-                            "type_name": "TextArea", 
-                            "key": "",
-                            "title": "备注",
-                            "tip": "",
-                            "add_button": {
-                            },
-                            "descript": "",
-                            "before_api_uri": "",
-                            "after_api_uri": ""
-                        }
-                    ]
+                    "add_button":"mealTravelAddFrom"
 
 
                 }
@@ -679,56 +122,7 @@
                 "key": "",
                 "title": "添加餐费",
                 "tip": "",
-                "add_button":[
-                    {
-                        "id_name": "meal_fee_people",
-                        "type_name": "SelectList",
-                        "key": "",
-                        "title": "人员",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "travel_meal_people",
-                        "after_api_uri": ""
-                    }, {
-                        "id_name": "meal_fee_days",
-                        "type_name": "MutiText", 
-                        "key": "",
-                        "title": "天数",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    },
-                    {
-                        "id_name": "meal_fee",
-                        "type_name": "TextMoney", 
-                        "key": "",
-                        "title": "金额",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    }
-                    ,
-                    {
-                        "id_name": "meal_fee_remarks",
-                        "type_name": "TextArea", 
-                        "key": "",
-                        "title": "备注",
-                        "tip": "",
-                        "add_button": {
-                        },
-                        "descript": "",
-                        "before_api_uri": "",
-                        "after_api_uri": ""
-                    }
-                ],
+                "add_button":"mealTravelAddFrom",
                 "descript": "",
                 "before_api_uri":"travel_meal_add",
                 "after_api_uri": "travel_plan_getByProjectId"
