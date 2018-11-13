@@ -13,16 +13,19 @@
      */
       addViewButton=()=>{
           var newState={
-              name:"add_button"
+              name:"add_button",
+              title:"add_button_title",
+              view:this.props.addNameButton,
+              addButtonTitle:this.props.addButtonTitle
           }
           this.props.addViewClickButton(newState)
       }
         render(){
-            const {title}=this.props;
+            const  {addButtonTitle}=this.props;
             return (
                 <div>
                      <p onClick={this.addViewButton}>
-                         {title}
+                     {addButtonTitle}
                      </p>
                 </div>
             )

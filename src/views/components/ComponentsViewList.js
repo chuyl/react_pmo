@@ -55,7 +55,10 @@
      */
     addViewButton=(newState)=>{
         var states={
-            name:newState.name
+            name:newState.name,
+            view:newState.view,
+            title:newState.title,
+            addButtonTitle:newState.addButtonTitle
         }
         this.props.addViewonClickButton(states)
     }
@@ -66,7 +69,10 @@
      */
     editViewButton=(newState)=>{
         var states={
-            name:newState.name
+            name:newState.name,
+            view:newState.view,
+            title:newState.title,
+            addButtonTitle:newState.addButtonTitle
         }
         this.props.editViewonClickButton(states)
     }
@@ -77,7 +83,10 @@
      */
     descriptViewButton=(newState)=>{
         var states={
-            name:newState.name
+            name:newState.name,
+            view:newState.view,
+            title:newState.title,
+            addButtonTitle:newState.addButtonTitle
         }
         this.props.descriptViewonClickButton(states)
     }
@@ -218,17 +227,13 @@
                                    /> 
                                :form_list.type_name==="CardGroup"?
                                    <GroupButtonView 
-                                       addButtonTitle={form_list.add_button_title} 
+                                       addButtonTitle={form_list.add_button_title}
+                                       editNameButton={form_list.add_button.add_button} 
+                                       descriptNameButton={form_list.add_button.descript}
                                        editViewClickButton={this.editViewButton}
                                        descriptViewClickButton={this.descriptViewButton}
-                                    //    addButton={form_list.add_button} 
-                                    //    uriName={form_list.before_api_uri}
-                                    //    delButton = {form_list.add_button.del_button}
-                                    //    editButton={form_list.add_button.edit_button}
-                                    //    listButton = {form_list.add_button.list_button}
-                                    //    idName={form_list.id_name}
-                                    //    key={form_list.id_name}
-                                       title={form_list.title} 
+                                       descriptTitle={form_list.add_button.descript_title} 
+                                       addButtonTitle={form_list.add_button.add_button_title}
                                        // postListGroup={this.editCardSuccess}
                                    />
                                :form_list.type_name==="HoldBtn"?
@@ -241,8 +246,9 @@
                                :form_list.type_name==="AddCardBtn"?
                                    <GroupAddButtonView
                                         addViewClickButton={this.addViewButton}
+                                        addNameButton={form_list.add_button.add_button} 
                                         // addButton={form_list.add_button}
-                                        title={form_list.title}
+                                        addButtonTitle={form_list.add_button.add_button_title}
                                         // dataId={this.props.dataId}
                                         // before_api_uri={form_list.before_api_uri}
                                         // key={form_list.id_name}

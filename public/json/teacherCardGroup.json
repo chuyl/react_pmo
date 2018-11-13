@@ -33,6 +33,8 @@
                 "add_button": {
                    
                     "descript":"teacherSelectFrom",
+                    "add_button_title":"讲师安排修改",
+                    "descript_title":"讲师安排展示",
                     "edit_button":"lecturer_plan_edit",
                     "del_button":"lecturer_plan_del",
                     "list_button": "lecturer_plan_getByProjectId",
@@ -44,7 +46,10 @@
                 "key": "",
                 "title": "添加讲师安排",
                 "tip": "",
-                "add_button":"teacherAddForm",
+                "add_button":{
+                    "add_button":"teacherAddForm",
+                    "add_button_title":"添加讲师安排"
+                },
                 "descript": "teacherCardGroup",
                 "before_api_uri":"lecturer_plan_add",
                 "after_api_uri": "lecturer_plan_getByProjectId"

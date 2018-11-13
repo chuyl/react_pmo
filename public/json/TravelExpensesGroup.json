@@ -32,11 +32,14 @@
                 "title": "长途交通费",
                 "before_api_uri": "province",
                 "add_button": {
+                    "add_button":"longTravelAddFrom",
                     "descript":"longTravelSelectFrom",
+                    "add_button_title":"长途交通费修改",
+                    "descript_title":"长途交通费展示",
                     "edit_button":"travel_longTraffic_edit",
                     "del_button":"travel_longTraffic_del",
-                    "list_button": "travel_plan_getByProjectId",
-                    "add_button":"longTravelAddFrom"
+                    "list_button": "travel_plan_getByProjectId"
+                   
                 }
             }
             ,{
@@ -45,7 +48,10 @@
                 "key": "",
                 "title": "添加行程安排",
                 "tip": "",
-                "add_button":"longTravelAddFrom",
+                "add_button":{
+                    "add_button":"longTravelAddFrom",
+                    "add_button_title":"添加长途交通费"
+                },
                 "descript": "",
                 "before_api_uri":"travel_longTraffic_add",
                 "after_api_uri": "travel_plan_getByProjectId"
@@ -58,10 +64,12 @@
                 "before_api_uri":"city",
                 "add_button": {
                     "descript":"shortTravelSelectFrom",
-                        "edit_button":"travel_inCityTraffic_edit",
-                        "del_button":"travel_inCityTraffic_del",
-                        "list_button": "travel_plan_getByProjectId",
-                        "add_button":"shortTravelAddFrom"
+                    "add_button_title":"市内交通费修改",
+                    "descript_title":"市内交通费展示",
+                    "edit_button":"travel_inCityTraffic_edit",
+                    "del_button":"travel_inCityTraffic_del",
+                    "list_button": "travel_plan_getByProjectId",
+                    "add_button":"shortTravelAddFrom"
                 }
                 
             },{
@@ -70,7 +78,10 @@
                 "key": "",
                 "title": "添加行程安排",
                 "tip": "",
-                "add_button":"shortTravelAddFrom",
+                "add_button":{
+                    "add_button":"shortTravelAddFrom",
+                    "add_button_title":"添加市内交通费"
+                },
                 "descript": "",
                 "before_api_uri":"travel_inCityTraffic_add",
                 "after_api_uri": "travel_plan_getByProjectId"
@@ -82,6 +93,8 @@
                 "before_api_uri": "stay",
                 "add_button": {
                     "descript":"hotelTravelSelectFrom",
+                    "add_button_title":"住宿费修改",
+                    "descript_title":"住宿费展示",
                     "edit_button":"travel_hotel_edit",
                     "del_button":"travel_hotel_del",
                     "list_button": "travel_plan_getByProjectId",
@@ -96,7 +109,10 @@
                 "key": "",
                 "title": "添加住宿费",
                 "tip": "",
-                "add_button":"hotelTravelAddFrom",
+                "add_button":{
+                    "add_button":"hotelTravelAddFrom",
+                    "add_button_title":"添加住宿费"
+                },
                 "descript": "",
                 "before_api_uri":"travel_hotel_add",
                 "after_api_uri": "travel_plan_getByProjectId"
@@ -108,6 +124,8 @@
                 "before_api_uri": "meal",
                 "add_button": {
                     "descript":"mealTravelSelectFrom",
+                    "add_button_title":"餐费修改",
+                    "descript_title":"餐费展示",
                     "edit_button":"travel_meal_edit",
                     "del_button":"travel_meal_del",
                     "list_button": "travel_plan_getByProjectId",
@@ -122,7 +140,10 @@
                 "key": "",
                 "title": "添加餐费",
                 "tip": "",
-                "add_button":"mealTravelAddFrom",
+                "add_button":{
+                    "add_button":"mealTravelAddFrom",
+                    "add_button_title":"添加餐费"
+                },
                 "descript": "",
                 "before_api_uri":"travel_meal_add",
                 "after_api_uri": "travel_plan_getByProjectId"

@@ -3,6 +3,7 @@ import React, {
 } from 'react'
 import { getData, getRouter } from '../../utils/helpers'
 import ComponentsViewList from '../components/ComponentsViewList'
+import SelectViewListSearch from '../components/SelectViewListSearch'
 import ViewTextField from '../components/ViewTextField';
 import Popup from '../components/Popup'
 import VDraggable from '../components/VDraggable'
@@ -15,10 +16,15 @@ class View extends Component {
 		isViewJson:false,//打开修改paper状态
 		is_view_list:false,//打开视图json状态
 		index_json_view:"",//组件在视图中的位置
+		selectedViewAddTitle:"",//在group里面修改的add_button里面的title
 		componentsView:[],
 		componentsComplexView:[],
 		alertState:false, //弹出框的状态
 		this_index_view_list:"",
+		selectedViewValue:"",
+		selectedViewTitle:"",//复杂视图更改时的默认视图
+		selectComplexView:"",//复杂视图更改时的选择的视图
+		selectedViewName:"",//group修改的名称
 		view_type:"",//视图的类型
 		view_china_name:"",
 		view_english_name:"",
@@ -94,7 +100,7 @@ class View extends Component {
 	thisJsonView=(newState)=>{
 
 		console.log(newState)
-		 if(newState.form_list.type_name!=="CardGroup"){
+		 if(newState.form_list.type_name!=="CardGroup"&&newState.form_list.type_name!=="AddCardBtn"){
 		var componentsView=[]
 		//将组件的json数据变成数组
 		for(var i in newState.form_list){
@@ -119,16 +125,19 @@ class View extends Component {
 			after_api_uri:newState.form_list.after_api_uri,
 		 })
 		}else{
+			console.log(newState.form_list)
 			var componentsComplexView=[];
-			for(var i=0;i<this.state.view_table_list.length;i++){
-				if(this.state.view_table_list[i].type==="formlist"){
-					componentsComplexView.push(this.state.view_table_list[i])
+			for(var m=0;m<this.state.view_table_list.length;m++){
+				if(this.state.view_table_list[m].type==="formlist"){
+					componentsComplexView.push(this.state.view_table_list[m])
 				}
+				
 			}
 			this.setState({
 				componentsView:[],
 				componentsComplexView:componentsComplexView,
 				isViewJson:true,
+				index_json_view:newState.index,
 			})
 		}
 
@@ -148,23 +157,50 @@ class View extends Component {
 	 */
 	editJsonView=()=>{
 		//重新编辑视图组件列表
-		var other_list=[];
-		for(var i=0;i<this.state.this_view_list.length;i++){
-			if(i!==this.state.index_json_view){
-				other_list.push(this.state.this_view_list[i])
-			}else{
-				other_list.push({id_name:this.state.id_name,type_name:this.state.type_name,
-					key:this.state.key,title:this.state.title,
-					tip:this.state.tip,add_button:this.state.add_button,
-					descript:this.state.descript,before_api_uri:this.state.before_api_uri,
-					after_api_uri:this.state.after_api_uri
+		 
+		if(this.state.componentsComplexView.length>1){//判断是否为复杂视图的修改
+		 var selectComplexView = document.getElementById("selectComplexView").innerHTML;
+		 this.setState({
+			selectComplexView:selectComplexView
+		 })
+		 var other_complex_list=[];
+		
+		 for(var m=0;m<this.state.this_view_list.length;m++){
+			if(m!==this.state.index_json_view){
+				other_complex_list.push(this.state.this_view_list[m])
+			}
+			else
+			{
+				var view_change_list=this.state.this_view_list[m];
+				//修改视图中add_button里面的修改视图或者展示视图名称
+				view_change_list.add_button[this.state.selectedViewName]=this.state.selectedViewValue;
+				//修改视图中add_button里面的修改视图或者展示视图title名称
+				view_change_list.add_button[this.state.selectedViewAddTitle]=selectComplexView;
+				other_complex_list.push(view_change_list)
+				this.setState({
+					this_view_list:other_complex_list
 				})
 			}
-		}
-		this.setState({
-			this_view_list:other_list
-		})
+			 }
 		 
+		}else{
+			var other_list=[];
+			for(var i=0;i<this.state.this_view_list.length;i++){
+				if(i!==this.state.index_json_view){
+					other_list.push(this.state.this_view_list[i])
+				}else{
+					other_list.push({id_name:this.state.id_name,type_name:this.state.type_name,
+						key:this.state.key,title:this.state.title,
+						tip:this.state.tip,add_button:this.state.add_button,
+						descript:this.state.descript,before_api_uri:this.state.before_api_uri,
+						after_api_uri:this.state.after_api_uri
+					})
+				}
+			}
+			this.setState({
+				this_view_list:other_list
+			})
+	}
 	}
 	/** 
 	 * @time 2018-11-07
@@ -204,6 +240,7 @@ class View extends Component {
 	 */
 	addViewButton=(newState)=>{
 		console.log(newState)
+		this.getViewButtomTitle(newState)
 	}
 	/** 
 	 * @time 2018-11-09
@@ -211,7 +248,8 @@ class View extends Component {
 	 * @param editViewButton 函数 Group修改按钮
 	 */
 	editViewButton=(newState)=>{
-		console.log(newState)
+		
+		this.getViewButtomTitle(newState)
 	}
 	/** 
 	 * @time 2018-11-09
@@ -219,7 +257,41 @@ class View extends Component {
 	 * @param descriptViewButton 函数 Group展示按钮
 	 */
 	descriptViewButton=(newState)=>{
-		console.log(newState)
+		
+		this.getViewButtomTitle(newState)
+	}
+	/** 
+	 * @time 2018-11-12
+	 * @author xuesong
+	 * @param getViewButtomTitle 函数 获取group相应的view名称显示在选择修改视图的位置
+	 */
+	getViewButtomTitle=(newState)=>{
+		
+		for(var i=0;i<this.state.view_table_list.length;i++){
+		
+			
+			if(newState.view===this.state.view_table_list[i].name&&newState.addButtonTitle===this.state.view_table_list[i].title){
+				console.log(newState)
+				console.log(this.state.view_table_list[i].title)
+				this.setState({
+					selectedViewTitle:this.state.view_table_list[i].title,
+					selectedViewValue:newState.view,
+					selectedViewName:newState.name,
+					selectedViewAddTitle:newState.title
+				})
+			}
+		}
+	}
+	/** 
+	 * @time 2018-11-12
+	 * @author xuesong
+	 * @param descriptViewButton 函数 Group展示按钮
+	 */
+	selectViewGetValue=(newState)=>{
+		this.setState({
+			selectedViewValue:newState.name
+		})
+		 console.log(newState)
 	}
 	render() {
 		return(
@@ -252,7 +324,8 @@ class View extends Component {
 							addViewonClickButton={this.addViewButton}
 							editViewonClickButton={this.editViewButton} 
 							descriptViewonClickButton={this.descriptViewButton}
-							handleViewJson={this.thisJsonView} componentslist =  {this.state.this_view_list?this.state.this_view_list:[]}  ></ComponentsViewList > 
+							handleViewJson={this.thisJsonView} 
+							componentslist = {this.state.this_view_list?this.state.this_view_list:[]}  ></ComponentsViewList > 
 						<button onClick={()=>{
 							this.editViewList()
 						}}>确定</button>
@@ -267,6 +340,7 @@ class View extends Component {
 								key={this.state.this_index_view_list+""+this.state.index_json_view+""+index}
 								inputValue={componentsView.value} 
 								labelValue={componentsView.key} 
+								
 								onChange={(event) => {
 									this.setState({
 										[componentsView.key]:event.target.value 
@@ -276,23 +350,14 @@ class View extends Component {
 						)
 					})}
 					{this.state.componentsComplexView.length>1?
-					// <SelectListSearch 
-					// 	id={this.props.index?form_list.id_name+this.props.index:form_list.id_name} 
-					// 	labelValue={"更改视图"}
-					// 	searchInfoLists={form_list.before_api_uri} 
-					// 	selectedIdInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_id"]:"-选择-"} 
-					// 	selectedInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_name"]:"-选择-"} 
-					// /> 
-					<select>
-						<option>选择</option>
-					{this.state.componentsComplexView.map((componentsComplexView,index)=>{
-						return(
-							<option key={index}>
-								{componentsComplexView.title}
-							</option>
-														)
-					})}
-					</select>:""}
+							<SelectViewListSearch
+								labelValue={"更改视图"}
+								id={"selectComplexView"}
+								selectedInfo={this.state.selectedViewTitle}
+								selectViewValue={this.selectViewGetValue}
+								selectLists={this.state.componentsComplexView}
+							/>
+					:""}
 						<button onClick={()=>{
 						
 							this.editJsonView()

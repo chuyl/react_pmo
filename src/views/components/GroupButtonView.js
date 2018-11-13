@@ -13,7 +13,10 @@
      */
     editViewButton=()=>{
         var newState={
-            name:"add_button"
+            name:"add_button",
+            title:"add_button_title",
+            view:this.props.editNameButton,
+            addButtonTitle:this.props.addButtonTitle
         }
         this.props.editViewClickButton(newState)
     }
@@ -24,19 +27,23 @@
      */
     descriptViewButton=()=>{
         var newState={
-            name:"descript"
+            name:"descript",
+            title:"descript_title",
+            view:this.props.descriptNameButton,
+            addButtonTitle:this.props.descriptTitle
         }
         this.props.descriptViewClickButton(newState)
     }
         render(){
-            const {title}=this.props;
+            
+            const {descriptTitle,addButtonTitle}=this.props;
             return (
                 <div>
                      <p onClick={this.descriptViewButton}>
-                         {"展示"+title}
+                         {descriptTitle}
                      </p>
                      <p onClick={this.editViewButton}>
-                         {"修改"+title}
+                         {addButtonTitle}
                      </p>
                 </div>
             )

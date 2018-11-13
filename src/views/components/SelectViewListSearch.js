@@ -10,7 +10,7 @@
             search_name: "",
             search_info_list: [],
             searchInfoLists: this.props.selectLists,
-            info_lists: []
+            info_lists: this.props.selectLists
         }
        
         searchShow() {
@@ -18,8 +18,16 @@
                 search_state: !this.state.search_state
             })
         }
+        getValue=(info_lists,id)=>{
+            document.getElementById(id).innerHTML = info_lists.title;
+            this.searchShow()
+            this.props.selectViewValue(info_lists)
+                                            
+        }
         render() {
+     
             const { selectedInfo, id, labelValue,disabled } = this.props;
+            console.log(selectedInfo)
             return (
                 <div className="search_info_list_card">
                     <div 
@@ -61,7 +69,7 @@
                                         search_info_list: [],
                                         })
                                         for (var i = 0; i < this.state.info_lists.length; i++) {
-                                            if (this.state.info_lists[i].name.indexOf(this.state.search_name) >= 0) {
+                                            if (this.state.info_lists[i].title.indexOf(this.state.search_name) >= 0) {
                                                 this.state.search_info_list.push(this.state.info_lists[i])
     
                                                     }
@@ -74,12 +82,11 @@
                                 >搜索</button>
                             </div>
                             <ul className="search_info_list_ul">
-                                {this.state.searchInfoLists.map((info_lists) => {
+                                {this.state.searchInfoLists.map((info_lists,index) => {
                                     return (
-                                    <li onClick={(e) => {
-                                            document.getElementById(id).innerHTML = info_lists.name;
-                                            this.searchShow()
-                                            }} key={info_lists.id} value={info_lists.id}>{info_lists.name}</li>
+                                    <li onClick={()=>{
+                                        this.getValue(info_lists,id)
+                                    }} key={index} value={info_lists.id}>{info_lists.title}</li>
                                         )
                                     })}
                             </ul>
