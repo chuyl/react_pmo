@@ -5,7 +5,7 @@
             {
                 "id_name": "project_card_head",
                 "type_name": "CardHead", 
-                "title": "",
+                "title": "项目列表中的卡片头",
                 "key":"",
                 "tip":"",
                 "add_button":"projectCardHead"
@@ -18,19 +18,19 @@
                 "add_button":[
                     { "id_name": "project_show_manage",
                         "type_name": "CardPage", 
-                        "title": "",
+                        "title": "项目列表中的页面1",
                         "key":"",
                         "tip":"",
                         "add_button":"projectCardPage1"}
                     ,{ "id_name": "project_edit_btns",
                         "type_name": "CardPage", 
-                        "title": "",
+                        "title": "项目列表中的页面2",
                         "key":"",
                         "tip":"",
                         "add_button":"projectCardPage2"},
                     { "id_name": "project_approve_btns",
                             "type_name": "CardPage", 
-                            "title": "",
+                            "title": "项目列表中的页面3",
                             "key":"",
                             "tip":"",
                             "add_button":"projectCardPage3"
@@ -40,24 +40,11 @@
                 "title": "",
                 "key":"",
                 "tip":"",
-                "add_button":[
-                    {
-                        "id_name": "project_project_template_name",
-                        "type_name": "CardItem", 
-                        "title": "项目类型"
-                    },{
-                        "id_name": "id",
-                        "type_name": "CardItem", 
-                        "title": "班级编号"
-                    },{
-                        "id_name": "project_person_in_charge_name",
-                        "type_name": "CardItem", 
-                        "title": "班主任"
-                    }]
+                "add_button":""
             },{
                 "id_name": "project_card_foot",
                 "type_name": "CardFoot", 
-                "title": "",
+                "title": "项目列表中的卡片尾",
                 "key":"",
                 "tip":"",
                 "add_button":"projectCardFoot"

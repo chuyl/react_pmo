@@ -93,7 +93,9 @@
                     <label className="search_info_list_label">{labelValue}</label>
                     <div
                         onClick={() => {
-                            if(disabled!==true){
+                            if(disabled===true){
+                               return false
+                            }else{
                                 this.searchShow()
                                 this.infos();
                             }

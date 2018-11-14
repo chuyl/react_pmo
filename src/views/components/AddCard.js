@@ -104,7 +104,6 @@
            getData(getRouter(before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
         }
         render() {
-            console.log(this.props.cardList)
             return (
                 <div>
                     <div key={this.props.index} className="card_info_list_card">

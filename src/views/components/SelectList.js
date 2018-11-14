@@ -40,7 +40,7 @@ class SelectList extends Component {
         })
     }
     render() {
-        const { selectedInfo,selectedIdInfo, id, labelValue } = this.props;
+        const { selectedInfo,selectedIdInfo, id, labelValue,disabled } = this.props;
         return (
             <div className="search_info_list_card">
                 <div onClick={() => {
@@ -51,8 +51,13 @@ class SelectList extends Component {
                 <label className="search_info_list_label">{labelValue}</label>
                 <div className="selectedInfo" id={id+"_name"}
                      onClick={() => {
-                        this.searchShow()
-                        this.infos();
+                         if(disabled===true){
+                             return false;
+                         }else{
+                            this.searchShow()
+                            this.infos();
+                         }
+                        
                      }}
                 >
                     {selectedInfo === null||selectedInfo===undefined ? "-选择-" : selectedInfo}

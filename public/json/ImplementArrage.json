@@ -33,28 +33,15 @@
                     "before_api_uri": "venue",
                     "add_button": {
                        
-                        "descript":"venueSelectFrom",
+                        "descript":"venueAddFrom",
                         "add_button_title":"会场安排修改",
                         "descript_title":"会场安排展示",
+                        "add_title":"添加会场安排",
                         "edit_button":"implement_venue_edit",
                         "del_button":"implement_venue_del",
                         "list_button": "implement_plan_getByProjectId",
-                        "add_button":"venueAddFrom"
+                        "add_button":"implement_venue_add"
                     }
-                },
-                {
-                    "id_name": "add_venue_btn",
-                    "type_name": "AddCardBtn",
-                    "key": "",
-                    "title": "添加会场安排",
-                    "tip": "",
-                    "add_button":{
-                        "add_button":"venueAddFrom",
-                        "add_button_title":"添加会场安排"
-                    },
-                    "descript": "implementArrage",
-                    "before_api_uri":"implement_venue_add",
-                    "after_api_uri": "implement_plan_getByProjectId"
                 },
                 {
                     "id_name": "implement_arrange",
@@ -63,13 +50,13 @@
                     "before_api_uri": "implement",
                     "add_button": {
                        
-                        "descript":"implementSelectFrom",
+                        "descript":"implementAddFrom",
                         "add_button_title":"实施安排修改",
                         "descript_title":"实施安排展示",
                         "edit_button":"implement_plan_edit",
                         "del_button":"",
                         "list_button": "implement_plan_getByProjectId",
-                        "add_button":"implementAddFrom"
+                        "add_button":""
                     }
                 }
                 

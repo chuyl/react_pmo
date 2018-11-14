@@ -243,7 +243,7 @@ class TrainingProgram extends Component {
 					<div className="overflow crius-card-list">
 						{this.state.card_list!==null?this.state.card_list.map((card_list,index) => {
 							return (
-								<ComponentsList index={index} sevenChange = {this.handleChildChange} key={index} componentslist =  {this.state.projectCard} componentsdata = {card_list} ></ComponentsList > 
+								<ComponentsList  sevenChange = {this.handleChildChange} key={index} componentslist =  {this.state.projectCard} componentsdata = {card_list} ></ComponentsList > 
 
 								// <Cards 
 								// 		index={index}
@@ -268,7 +268,7 @@ class TrainingProgram extends Component {
 							{/* paper详细内容 */}
 							{this.state.card_state ?//判断paper是否可见
 								<div key={this.state.dataId?this.state.dataId:"addComponents"} id="editComponents">
-								<ComponentsList editCardGroupState={this.freshCardGroup} dataId={this.state.dataId} holdClick={this.onHoldClicks} componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
+								<ComponentsList editCardGroupState={this.freshCardGroup} editCardGroupStates={this.freshCardGroup} dataId={this.state.dataId} holdClick={this.onHoldClicks} componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
 						   </div>		
 								: ""}
 						</div>

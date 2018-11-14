@@ -7,6 +7,7 @@
     import ComponentsList from './ComponentsList';
     import PropTypes from 'prop-types';
     import Alert from './Alert'
+    import AddCardBtn from './AddCardBtn'
     //import {LECTURERADD} from '../../enum'
     import {getData,getRouter} from '../../utils/helpers'
     class CardGroup extends Component {
@@ -141,7 +142,7 @@
 
 			}
 		}
-		getData(getRouter(this.props.addButton.add_button), { token:sessionStorage.token }, cb, {});		
+		getData(getRouter(this.props.addButton.descript), { token:sessionStorage.token }, cb, {});		
     }
      //获取组件中add_button里面的查看视图
      fetchDescriptContent() {
@@ -150,15 +151,26 @@
 				this.setState({
 					descript_list: message.data["form-list"],
                 })
-                console.log(message)
 
 			}
         }
         
 		getData(getRouter(this.props.addButton.descript), { token:sessionStorage.token }, cb, {});		
-	}
+    }
+    //新增group中保存按钮传值
+    addCardSuccess=(newState)=>{
+        var newStates={
+           success_message:newState.success_message,
+           id:newState.id,
+           freshName:newState.freshName,
+        }
+        
+        this.props.editCardGroupState(newStates)
+     }
         render() {
+            console.log(this.props.dataId)
             return (
+
                 <div>
                     <p className="card_title">{this.props.title}</p>
                     <ul id = {this.props.idName}>
@@ -167,7 +179,7 @@
                                 <li
                                   key={index}  className="card_info_list_card"
                                 >
-                                < ComponentsList index={index}  componentslist =  {this.state.descript_list?this.state.descript_list:[]} componentsdata = {view_list} ></ComponentsList > 
+                                < ComponentsList index={index} disabled={true}  componentslist =  {this.state.descript_list?this.state.descript_list:[]} componentsdata = {view_list} ></ComponentsList > 
                                     {/* {this.props.addButton.descript.map((card_list, index) => {
                                         return (
                                         <div key={index} style={{marginBottom:"-6px"}}>
@@ -204,7 +216,18 @@
                             )
                         }):""
                          }
-                    </ul>    
+                    </ul>
+                      {this.props.addButton.add_button!==""? <AddCardBtn
+                        addButton={this.props.addButton}
+                         title={this.props.addButton.add_title}
+                         afterApiUri={this.props.addButton.list_button}
+                          dataId={this.props.dataId}
+                          editCardSuccess={this.addCardSuccess}
+                          before_api_uri={this.props.addButton.add_button}
+                          
+                        // key={form_list.id_name}
+                     />  :""}
+                   
                     <div className={this.state.add_card_state ? "add_info_list open" : "add_info_list"}>
                         <div className="paper_card_title">
                             <div onClick={() => {

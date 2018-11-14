@@ -4,7 +4,7 @@
         "form-temp-name": "",
         "form-list": [{
             "id_name": "long_fee_card_people",
-            "type_name": "DisTextField", 
+            "type_name": "MutiText", 
             "key": "",
             "title": "人员",
             "tip": "",
@@ -14,7 +14,7 @@
             "after_api_uri": ""
         }, {
             "id_name": "long_fee_card_start_time",
-            "type_name": "DisTextField",
+            "type_name": "TextDatetime",
             "key": "",
             "title": "出发时间",
             "tip": "",
@@ -25,7 +25,7 @@
         },
         {
             "id_name": "long_fee_card_start_place",
-            "type_name": "DisTextField",
+            "type_name": "MutiText",
             "key": "",
             "title": "出发地点",
             "tip": "",
@@ -36,7 +36,7 @@
         },
         {
             "id_name": "long_fee_card_end_time",
-            "type_name": "DisTextField",
+            "type_name": "TextDatetime",
             "key": "",
             "title": "结束时间",
             "tip": "",
@@ -47,7 +47,7 @@
         },
         {
             "id_name": "long_fee_card_end_place",
-            "type_name": "DisTextField",
+            "type_name": "MutiText",
             "key": "",
             "title": "结束地点",
             "tip": "",
@@ -58,17 +58,17 @@
         },
         {
             "id_name": "long_fee_card_vehicle_name",
-            "type_name": "DisTextField", 
+            "type_name": "SelectList", 
             "key": "",
             "title": "交通工具",
             "tip": "",
             "add_button": "",
             "descript": "",
-            "before_api_uri": "travelMode",
+            "before_api_uri": "travel_longTrafficType_list",
             "after_api_uri": ""
         },{
             "id_name": "long_fee_card_fee",
-            "type_name": "DisTextField",
+            "type_name": "TextMoney",
             "key": "",
             "title": "金额",
             "tip": "",

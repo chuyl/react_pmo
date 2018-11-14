@@ -28,6 +28,7 @@ class View extends Component {
 		view_type:"",//视图的类型
 		view_china_name:"",
 		view_english_name:"",
+		view_type_name:"",
 		id_name:"",
 		type_name:"",
 		key:"",
@@ -231,7 +232,7 @@ class View extends Component {
 		this.setState({
 			alertState:false
 		})
-		console.log(this.state.view_china_name+this.state.view_english_name)
+		console.log(this.state.view_china_name+this.state.view_english_name+this.state.view_type_name)
 	}
 	/** 
 	 * @time 2018-11-09
@@ -271,8 +272,7 @@ class View extends Component {
 		
 			
 			if(newState.view===this.state.view_table_list[i].name&&newState.addButtonTitle===this.state.view_table_list[i].title){
-				console.log(newState)
-				console.log(this.state.view_table_list[i].title)
+				
 				this.setState({
 					selectedViewTitle:this.state.view_table_list[i].title,
 					selectedViewValue:newState.view,
@@ -296,8 +296,13 @@ class View extends Component {
 	render() {
 		return(
 			<div>
-				<div className="view_table_list">
-					<ul>
+				<div style={{overflow:"hidden"}} className="view_table_list ">
+				<button style={{marginBottom:"5px"}} className="add_card_btn" onClick={()=>{
+						this.setState({
+							alertState:true
+						})
+					}} >添加</button>
+					<ul style={{height:"90vh",paddingBottom:"1em"}} className="overflow">
 						{this.state.view_table_list.map((view,index)=>{
 							return <li onClick={()=>{
 								// if(view.type==="formlist"){
@@ -310,11 +315,7 @@ class View extends Component {
 							}} key={index}>{view.title}</li>
 						})}
 					</ul>
-					<button className="add_card_btn" onClick={()=>{
-						this.setState({
-							alertState:true
-						})
-					}} >添加</button>
+					
 					{/* <VDraggable value={this.state.value} isAcceptAdd={true}/> */}
 				</div>
 				<div  className="view_list overflow">
@@ -384,6 +385,16 @@ class View extends Component {
 						}}
                             inputValue={""} 
                             labelValue={"英文名称"} 
+                            
+                        />
+						<ViewTextField 
+						  onChange={(e)=>{
+							this.setState({
+								view_type_name:e.target.value
+							})
+						}}
+                            inputValue={""} 
+                            labelValue={"类型"} 
                             
                         /></div>} alertMsg = {this.state.alertMsg} sureCallback = {this.sureCallback.bind(this)} cancelCallback = { this.cancelCallback.bind(this) } alertState={this.state.alertState}/>
 				

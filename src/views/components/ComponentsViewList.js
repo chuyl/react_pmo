@@ -4,7 +4,7 @@
     */
 
    import React, { Component } from 'react';
-   import Cards from './Cards'
+   import CardView from './CardView'
    import TextField from './TextField';
    import TextArea from './TextArea';
    import DisTextArea from './DisTextArea';
@@ -14,6 +14,7 @@
    import TextDatetime from './TextDatetime'
    import ListTextSearch from './ListTextSearch'
    import LinkCard from './LinkCard'
+   import CardTitleItem from './CardTitleItem'
    import CardGroup from './CardGroup'
    import GroupButtonView from './GroupButtonView'
    import GroupAddButtonView from './GroupAddButtonView'
@@ -98,12 +99,13 @@
                                this.clickComponents(form_list,index)
                            }}>
                             {form_list.type_name === "Cards" ?
-                                <Cards id={form_list.id_name}
+                                <CardView 
+                                    id={form_list.id_name}
                                     index={this.props.index}
                                     key={form_list.id_name}
                                     //sixChange = {this.handleChildChange}
-                                    addButton={form_list.add_button}
-                                    card_list={this.props.componentsdata}
+                                   addButton={form_list.add_button}
+                                    // card_list={this.props.componentsdata}
                                 />
                                 :form_list.type_name === "ListTextSearch" ?
                                    <ListTextSearch id={form_list.id_name}
@@ -192,15 +194,22 @@
                                        id={form_list.id_name}
                                        labelValue={form_list.title} 
                                        key={form_list.id_name}
-                                       message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                    //    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                    />
                                 :form_list.type_name === "LabelSelectMessage"?
                                    <LabelSelectMessage
                                        id={form_list.id_name} 
                                        labelValue={form_list.title} 
                                        key={form_list.id_name}
-                                       message={this.props.card_list[form_list.id_name+"_name"]?this.props.card_list[form_list.id_name+"_name"]:""} 
+                                    //    message={this.props.card_list[form_list.id_name+"_name"]?this.props.card_list[form_list.id_name+"_name"]:""} 
                                    />
+                                :form_list.type_name==="CardTitleItem"?
+                                    <CardTitleItem
+                                    id={form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    key={form_list.id_name}
+                                    message={form_list.title} 
+                                />
                                :form_list.type_name==="DepartmentList"?
                                    <DepartmentList 
                                        id={form_list.id_name}
@@ -265,11 +274,11 @@
                                 <Link 
                                     button={form_list.title}
                                     buttonMessage={form_list}
-                                    dataId={this.props.card_list.id}
+                                    // dataId={this.props.card_list.id}
                                     // isClick={this.props.card_list.id}
                                     linkpage={form_list.before_api_uri}
                                     key={form_list.id_name}
-                                    messageList={form_list.add_button.before_api_uri}
+                                    // messageList={form_list.add_button.before_api_uri}
                                     onChange = {this.handleClick}
                                 />
                             :form_list.type_name === "CardHead"?

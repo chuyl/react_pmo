@@ -118,13 +118,24 @@ handleChildChange=(formData)=>{
      
      this.props.editCardGroupState(newStates)
   }
+  addCardGroupState=(newState)=>{
+    var newStates={
+       success_message:newState.success_message,
+       id:newState.id,
+       freshName:newState.freshName,
+    }
+    
+    this.props.editCardGroupStates(newStates)
+ }
     render() {
        
         return (
                 this.props.componentslist.map((form_list,index) => {
+                    
                     return (
                             form_list.type_name === "Cards" ?
-                                <Cards id={form_list.id_name}
+                                <Cards  
+                                    id={form_list.id_name} 
                                     index={this.props.index}
                                     key={form_list.id_name}
                                     sixChange = {this.handleChildChange}
@@ -132,8 +143,10 @@ handleChildChange=(formData)=>{
                                     card_list={this.props.componentsdata}
                                 />
                             :form_list.type_name === "ListTextSearch" ?
-                                <ListTextSearch id={form_list.id_name}
+                                <ListTextSearch 
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     addButton={form_list.add_button}
+                                    disabled={this.props.disabled}
                                     labelValue={form_list.title}
                                     key={form_list.id_name}
                                     searchInfoLists={form_list.before_api_uri}
@@ -142,15 +155,16 @@ handleChildChange=(formData)=>{
                                 />
                             :form_list.type_name === "TextDatetime" ? 
                                 <TextDatetime
-                                    id={form_list.id_name} 
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     inputValue={form_list.key}
                                     key={form_list.id_name}
-                                    //inputValue={this.props.componentsdata[form_list.id_name]} 
+                                    disabled={this.props.disabled}
+                                    inputValue={this.props.componentsdata[form_list.id_name]} 
                                     labelValue={form_list.title} 
                                 />
                             : form_list.type_name === "TextDate" ? 
                                 <TextDate
-                                    id={form_list.id_name} 
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     key={form_list.id_name}
                                     //inputValue={form_list.key}
                                     inputValue={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
@@ -180,7 +194,7 @@ handleChildChange=(formData)=>{
                             //     <Link 
                             //     button={form_list.add_button.descript} 
                             //     handleClick = {this.props.handleClick}
-                            //     id={form_list.id_name}
+                            //     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                             //     isClick={this.props.componentsdata.id}
                             //     label={form_list.add_button.descript} 
                             //     linkpage={form_list.before_api_uri}   
@@ -189,21 +203,22 @@ handleChildChange=(formData)=>{
                             // />
                             : form_list.type_name === "MutiText" ? 
                                 <TextField 
-                                    id={form_list.id_name} 
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
+                                    disabled={this.props.disabled}
                                     inputValue={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
                                 />
                             : form_list.type_name === "Invisible" ? 
                                 <Invisible 
-                                    id={form_list.id_name} 
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     inputValue={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
                                 />
                             :form_list.type_name === "DisTextField"?
                                 <DisTextField
-                                    id={this.props.index?form_list.id_name+this.props.index:form_list.id_name} 
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     inputValue={this.props.componentsdata[form_list.id_name]!==null?this.props.componentsdata[form_list.id_name]:""} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
@@ -211,14 +226,14 @@ handleChildChange=(formData)=>{
                                 />
                             :form_list.type_name === "LabelTitleMessage"?
                                 <LabelTitleMessage
-                                    id={form_list.id_name}
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
                             :form_list.type_name === "LabelChildMessage"?
                                 <LabelChildMessage
-                                    id={form_list.id_name}
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
                                     beforeApiUri={form_list.before_api_uri}
@@ -226,7 +241,7 @@ handleChildChange=(formData)=>{
                                 />
                             :form_list.type_name === "LabelMessage"?
                                 <LabelMessage
-                                    id={form_list.id_name}
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
                                     beforeApiUri={form_list.before_api_uri}
@@ -234,7 +249,7 @@ handleChildChange=(formData)=>{
                                 />
                             :form_list.type_name === "TitleLeftCard"?
                                 <TitleLeftCard
-                                    id={form_list.id_name}
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
                                     defaultValue={form_list.default_value}
@@ -242,7 +257,7 @@ handleChildChange=(formData)=>{
                                 />
                             :form_list.type_name === "TitleRightCard"?
                                 <TitleRightCard
-                                    id={form_list.id_name}
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
                                     defaultValue={form_list.default_value}
@@ -250,7 +265,7 @@ handleChildChange=(formData)=>{
                                 />
                             :form_list.type_name === "TitleCardRightGroup"?
                                 <TitleCardRightGroup
-                                    id={form_list.id_name}
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
                                     defaultValue={form_list.default_value}
@@ -259,7 +274,7 @@ handleChildChange=(formData)=>{
                                 />
                             :form_list.type_name === "LabelTotalMessage"?
                                 <LabelTotalMessage
-                                    id={form_list.id_name}
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
                                     defaultValue={form_list.default_value}
@@ -269,7 +284,7 @@ handleChildChange=(formData)=>{
                                 
                             :form_list.type_name === "SpellingCardGroup"?
                                 <SpellingCardGroup
-                                    id={form_list.id_name}
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
                                     defaultValue={form_list.default_value}
@@ -278,7 +293,7 @@ handleChildChange=(formData)=>{
                                 />
                             :form_list.type_name === "LoopCardGroup"?
                                 <LoopCardGroup
-                                    id={form_list.id_name}
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
                                     defaultValue={form_list.default_value}
@@ -288,7 +303,7 @@ handleChildChange=(formData)=>{
                                 
                             :form_list.type_name === "DateCard"?
                                 <DateCard
-                                    id={form_list.id_name}
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
                                     defaultValue={form_list.default_value}
@@ -296,7 +311,7 @@ handleChildChange=(formData)=>{
                                 />
                             :form_list.type_name === "ProvinceCity"?
                                 <ProvinceCity
-                                    id={form_list.id_name}
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
                                     defaultValue={form_list.default_value}
@@ -304,7 +319,7 @@ handleChildChange=(formData)=>{
                                 />
                             :form_list.type_name === "CardLeftBody"?
                                 <CardLeftBody
-                                    id={form_list.id_name}
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
                                     beforeApiUri={form_list.before_api_uri}
@@ -313,7 +328,7 @@ handleChildChange=(formData)=>{
                                 />
                             :form_list.type_name === "CardRightBody"?
                                 <CardRightBody
-                                    id={form_list.id_name}
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
                                     defaultValue={form_list.default_value}
@@ -322,13 +337,13 @@ handleChildChange=(formData)=>{
                                 
                             :form_list.type_name === "CardHead"?   
                                 <CardHead
-                                    id={form_list.id_name} 
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name}  
                                     addButton={form_list.add_button}
                                     key={form_list.id_name}
                                 />
                             :form_list.type_name === "CardPage"?   
                                 <CardPage
-                                    id={form_list.id_name} 
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name}  
                                     cardIndex={this.props.cardIndex}
                                     addButton={form_list.add_button}
                                     key={form_list.id_name}
@@ -339,13 +354,13 @@ handleChildChange=(formData)=>{
                                 />
                             :form_list.type_name === "CardItem"?   
                                 <CardItem
-                                    id={form_list.id_name} 
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name}  
                                     key={form_list.id_name}
                                     message={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:form_list.default_value} 
                                 />
                             :form_list.type_name === "CardTitleItem"?   
                                 <CardTitleItem
-                                    id={form_list.id_name} 
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name}  
                                     key={form_list.id_name}
                                     index={index}
                                     message={form_list.title} 
@@ -354,14 +369,14 @@ handleChildChange=(formData)=>{
                                 />
                             :form_list.type_name === "LabelSelectMessage"?
                                 <LabelSelectMessage
-                                    id={form_list.id_name} 
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name}  
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
                                     message={this.props.card_list[form_list.id_name+"_name"]?this.props.card_list[form_list.id_name+"_name"]:""} 
                                 />
                             :form_list.type_name==="DepartmentList"?
                                 <DepartmentList 
-                                    id={form_list.id_name}
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title}
                                     key={form_list.id_name}
                                     searchInfoLists={form_list.before_api_uri} 
@@ -369,39 +384,43 @@ handleChildChange=(formData)=>{
                                 />
                             :form_list.type_name==="SelectList"?
                                 <SelectList 
-                                    id={this.props.index?form_list.id_name+this.props.index:form_list.id_name} 
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title}
                                     key={form_list.id_name}
+                                    disabled={this.props.disabled}
                                     searchInfoLists={form_list.before_api_uri} 
                                     selectedIdInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_id"]:"-选择-"} 
                                     selectedInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_name"]:"-选择-"} 
                                 /> 
                             :form_list.type_name==="SelectListSearch"?
                                 <SelectListSearch 
-                                    id={this.props.index?form_list.id_name+this.props.index:form_list.id_name} 
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title}
                                     key={form_list.id_name}
+                                    disabled={this.props.disabled}
                                     searchInfoLists={form_list.before_api_uri} 
                                     selectedIdInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_id"]:"-选择-"} 
                                     selectedInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_name"]:"-选择-"} 
                                 /> 
                             :form_list.type_name === "TextMoney" ? 
                                 <TextMoney
-                                    id={form_list.id_name}
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     key={form_list.id_name}
+                                    disabled={this.props.disabled}
                                     inputValue={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""}  
                                     labelValue={form_list.title} 
                                 /> 
                             :form_list.type_name === "TextArea" ? 
                                 <TextArea 
-                                id={this.props.index?form_list.id_name+this.props.index:form_list.id_name} 
+                                id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                 inputValue={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""} 
                                 labelValue={form_list.title} 
+                                disabled={this.props.disabled}
                                 key={form_list.id_name}
                                 />
                             :form_list.type_name === "DisTextArea" ? 
                                 <DisTextArea 
-                                id={this.props.index?form_list.id_name+this.props.index:form_list.id_name} 
+                                id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                 inputValue={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""} 
                                 labelValue={form_list.title} 
                                 key={form_list.id_name}
@@ -416,11 +435,13 @@ handleChildChange=(formData)=>{
                                     editButton={form_list.add_button.edit_button}
                                     listButton = {form_list.add_button.list_button}
                                     idName={form_list.id_name}
-                                    isClick={this.props.componentsdata.id}
+                                    dataId={this.props.dataId}
                                     key={form_list.id_name}
                                     selectedInfo={this.props.componentsdata?this.props.componentsdata:""} 
                                     title={form_list.title} 
                                     postListGroup={this.editCardSuccess}
+                                    editCardGroupState={this.addCardGroupState}
+                                    
                                 />
                             :form_list.type_name==="HoldBtn"?
                                 <HoldBtn 

@@ -133,7 +133,11 @@ class ListTextSearch extends Component {
             <div className="search_info_list_card">
                 <div 
                     onClick={() => {
-                        this.searchShow()
+                        if(disabled===true){
+                            return false
+                         }else{
+                             this.searchShow()
+                         }
                     }} 
                     className={this.state.search_state ? "add_list_close" : ""}>
                 </div>

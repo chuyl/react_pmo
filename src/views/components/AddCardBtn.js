@@ -29,6 +29,8 @@ import { getData, getRouter } from '../../utils/helpers'
             this.props.editCardSuccess(newState);//回调函数传递参数给父组件
         }
         project_index_add = (list_message,before_api_uri)=>{
+            console.log(this.props.dataId)
+            console.log(before_api_uri)
             var key_name = [];
             var value = [];
             if(this.props.dataId){
@@ -84,9 +86,11 @@ import { getData, getRouter } from '../../utils/helpers'
 
                 }
             }
-            getData(getRouter(this.props.addButton), { token:sessionStorage.token }, cb, {});		
+            console.log(this.props.addButton)
+            getData(getRouter(this.props.addButton.descript), { token:sessionStorage.token }, cb, {});		
         }
         render(){
+            //console.log(this.state.add_button)
             return (
                 <div>
                     <button className="add_card_btn"  
@@ -114,7 +118,6 @@ import { getData, getRouter } from '../../utils/helpers'
                             <ComponentsCard  componentslist={this.state.add_button}></ComponentsCard>
                             <button className="hold_btn"
                                     onClick={(e) => {
-                                        console.log(this.props.dataId)
                                         this.project_index_add(this.state.add_button,this.props.before_api_uri)
                                     }}
                             >保存
