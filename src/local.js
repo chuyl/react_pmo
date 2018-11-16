@@ -55,7 +55,7 @@ var local = {
                 "longTravelSelectFrom":{"url":"../json/longTravelSelectFrom.json","version":"1.0"},
                 "mealTravelAddFrom":{"url":"../json/mealTravelAddFrom.json","version":"1.0"},
                 "mealTravelSelectFrom":{"url":"../json/mealTravelSelectFrom.json","version":"1.0"},
-                "newCard":{"url":"../json/newCard.json","version":"1.0"},//项目列表中的card
+                "projectViewCard":{"url":"../json/projectViewCard.json","version":"1.0"},//项目列表中的card
                 "projectCard":{"url":"../json/projectCard.json","version":"1.0"},//项目列表中的card
                 "projectTemplet":{"url":"../json/projectTemplet.json","version":"1.0"},//新建项目模板
                 "projectCardHead":{"url":"../json/projectCardHead.json","version":"1.0"},

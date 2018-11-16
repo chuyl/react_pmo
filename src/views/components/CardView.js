@@ -9,90 +9,90 @@
         state={
             add_button:[],
         }
-        componentWillMount(){
-            this.fetchCardsContent()
+  
+    /** 
+     * @time 2018-11-09 
+     * @author xuesong
+     * @param headViewButton 函数  group展示视图按钮
+     */
+    headViewButton=()=>{
+        var newState={
+            name:"add_button",
+            view:this.props.addButton[0].add_button,
+            title:"title",
+            addButtonTitle:this.props.addButton[0].title,
+            index:0,
+            arrIndex:""
+           
         }
-        /** 
-     * @time 2018-11-09 
-     * @author xuesong
-     * @param editViewButton 函数  group修改视图按钮
-     */
-    // editViewButton=()=>{
-    //     var newState={
-    //         name:"add_button",
-    //         title:"add_button_title",
-    //         view:this.props.editNameButton,
-    //         addButtonTitle:this.props.addButtonTitle
-    //     }
-    //     this.props.editViewClickButton(newState)
-    // }
-       /** 
-     * @time 2018-11-09 
-     * @author xuesong
-     * @param descriptViewButton 函数  group展示视图按钮
-     */
-    // descriptViewButton=()=>{
-    //     var newState={
-    //         name:"descript",
-    //         title:"descript_title",
-    //         view:this.props.descriptNameButton,
-    //         addButtonTitle:this.props.descriptTitle
-    //     }
-    //     this.props.descriptViewClickButton(newState)
-    // }
-      //获取cards组件中add_button里面的视图
-    fetchCardsContent() {
-		var cb = (route, message, arg) => {
-			if (message.error === 0) {
-				this.setState({
-					add_button: message.data["form-list"],
-					// form_temp_name:message.data["form-temp-name"],
-				})
-
-			}
-		}
-		getData(getRouter(this.props.addButton), { token:sessionStorage.token }, cb, {});		
-	}
+        this.props.cardViewClickButton(newState)
+    }
+    page1ViewButton=()=>{
+        var newState={
+            name:"add_button",
+            view:this.props.addButton[1].add_button[0].add_button,
+            title:"title",
+            addButtonTitle:this.props.addButton[1].add_button[0].title,
+            index:1,
+            arrIndex:0
+           
+        }
+        this.props.cardViewClickButton(newState)
+    }
+    page2ViewButton=()=>{
+        var newState={
+            name:"add_button",
+            view:this.props.addButton[1].add_button[1].add_button,
+            title:"title",
+            addButtonTitle:this.props.addButton[1].add_button[1].title,
+            index:1,
+            arrIndex:1
+           
+        }
+        this.props.cardViewClickButton(newState)
+    }
+    page3ViewButton=()=>{
+        var newState={
+            name:"add_button",
+            view:this.props.addButton[1].add_button[2].add_button,
+            title:"title",
+            addButtonTitle:this.props.addButton[1].add_button[2].title,
+            index:1,
+            arrIndex:2
+           
+        }
+        this.props.cardViewClickButton(newState)
+    }
+    footViewButton=()=>{
+        var newState={
+            name:"add_button",
+            view:this.props.addButton[3].add_button,
+            title:"title",
+            addButtonTitle:this.props.addButton[3].title,
+            index:3,
+            arrIndex:""
+           
+        }
+        this.props.cardViewClickButton(newState)
+    }
         render(){
-            console.log(this.state.add_button)
-            // const {headTitle,page1Title,page2Title,page3Title,footTitle}=this.props;
             return (
                 <div>
-                    {this.state.add_button.map((form_list,index) => {
-                        return (
-                            form_list.type_name === "CardHead"?//card的头
-                                <p key={index} onClick={this.headViewButton}>
-                                {form_list.title}
-                                </p>:
-                             form_list.type_name === "CardBody"?
-                             form_list.add_button.map((cardBody,index)=>{
-                                 console.log(cardBody)
-                                 return(
-                                    <p key={"body"+index} onClick={this.headViewButton}>
-                                    {cardBody.title}
-                                    </p>
-                                 )
-                             })
-                               :
-                             ""
-                            )
-                        })
-                }
-                     {/* <p onClick={this.headViewButton}>
-                         {headTitle}
+                     <p onClick={this.headViewButton}>
+                         {this.props.addButton[0].title===""?"":this.props.addButton[0].title}
                      </p>
                      <p onClick={this.page1ViewButton}>
-                         {page1Title}
+                     {this.props.addButton[1].add_button[0].title===""?"":this.props.addButton[1].add_button[0].title}
                      </p>
                      <p onClick={this.page2ViewButton}>
-                         {page2Title}
+                     {this.props.addButton[1].add_button[1].title===""?"":this.props.addButton[1].add_button[1].title}
                      </p>
                      <p onClick={this.page3ViewButton}>
-                         {page3Title}
+                     {this.props.addButton[1].add_button[2].title===""?"":this.props.addButton[1].add_button[2].title}
                      </p>
                      <p onClick={this.footViewButton}>
-                         {footTitle}
-                     </p> */}
+                     {this.props.addButton[3].title===""?"":this.props.addButton[3].title}
+                     </p>
                 </div>
             )
         }

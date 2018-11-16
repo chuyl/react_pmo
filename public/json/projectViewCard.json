@@ -1,7 +1,7 @@
 {
     "error":0,
     "data": {
-        "form-temp-name": "项目card",
+        "form-temp-name": "项目列表",
         "form-list": [{
             "id_name": "card_frame",
             "type_name": "Cards", 
@@ -9,51 +9,51 @@
             "title": "",
             "tip": "",
             "add_button":[{
-                "id_name": "",
+                "id_name": "project_card_head",
                 "type_name": "CardHead", 
-                "title": "",
+                "title": "项目列表-卡片头",
                 "key":"",
                 "tip":"",
                 "add_button":"projectCardHead"
             }, {
-                "id_name": "",
+                "id_name": "project_card_body",
                 "type_name": "CardBody", 
                 "title": "",
                 "key":"",
                 "tip":"",
                 "add_button":[
-                    { "id_name": "",
+                    { "id_name": "project_show_manage",
                         "type_name": "CardPage", 
-                        "title": "",
+                        "title": "项目列表-页面1",
                         "key":"",
                         "tip":"",
-                        "add_button":""}
-                    ,{ "id_name": "",
+                        "add_button":"projectCardPage1"}
+                    ,{ "id_name": "project_edit_btns",
                         "type_name": "CardPage", 
-                        "title": "",
+                        "title": "项目列表-页面2",
                         "key":"",
                         "tip":"",
-                        "add_button":""},
+                        "add_button":"projectCardPage2"},
                     { "id_name": "project_approve_btns",
                             "type_name": "CardPage", 
-                            "title": "",
+                            "title": "项目列表-页面3",
                             "key":"",
                             "tip":"",
-                            "add_button":""
+                            "add_button":"projectCardPage3"
             }]},{
-                "id_name": "",
+                "id_name": "project_card_open",
                 "type_name": "CardOpen", 
                 "title": "",
                 "key":"",
                 "tip":"",
                 "add_button":""
             },{
-                "id_name": "",
+                "id_name": "project_card_foot",
                 "type_name": "CardFoot", 
-                "title": "",
+                "title": "项目列表-卡片尾",
                 "key":"",
                 "tip":"",
-                "add_button":""
+                "add_button":"projectCardFoot"
             }],
             "descript": "",
             "before_api_uri": "",

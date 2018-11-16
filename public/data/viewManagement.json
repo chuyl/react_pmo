@@ -17,7 +17,7 @@
         {"id": "23", "name": "shortTravelAddFrom","title":"市内交通费-组" ,"type":"formlist"},
         {"id": "26", "name": "hotelTravelAddFrom","title":"住宿费-组" ,"type":"formlist"},
         {"id": "29", "name": "mealTravelAddFrom","title":"餐费-组" ,"type":"formlist"},
-        {"id": "32", "name": "newCard","title":"项目列表-卡片" ,"type":"cards"},
+        {"id": "32", "name": "projectViewCard","title":"项目列表-卡片" ,"type":"cards","data":""},
         {"id": "33", "name": "projectCardHead","title":"项目列表-卡片头","type":"formlist"},
         {"id": "34", "name": "projectCardPage1","title":"项目列表-页面1","type":"formlist"},
         {"id": "35", "name": "projectCardPage2","title":"项目列表-页面2","type":"formlist"},

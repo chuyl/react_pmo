@@ -19,9 +19,9 @@ class Card extends Component {
         cardTitleItem:"",
         openCtrlState:""//openCard
     }
-    componentWillMount(){
-        this.fetchCardsContent()
-    }
+    // componentWillMount(){
+    //     this.fetchCardsContent()
+    // }
   
     zoom_in = () => {
         this.setState({
@@ -98,25 +98,25 @@ class Card extends Component {
       }
     }
     //获取cards组件中add_button里面的视图
-    fetchCardsContent() {
-		var cb = (route, message, arg) => {
-			if (message.error === 0) {
-				this.setState({
-					add_button: message.data["form-list"],
-					// form_temp_name:message.data["form-temp-name"],
-				})
+    // fetchCardsContent() {
+	// 	var cb = (route, message, arg) => {
+	// 		if (message.error === 0) {
+	// 			this.setState({
+	// 				add_button: message.data["form-list"],
+	// 				// form_temp_name:message.data["form-temp-name"],
+	// 			})
 
-			}
-		}
-		getData(getRouter(this.props.addButton), { token:sessionStorage.token }, cb, {});		
-	}
+	// 		}
+	// 	}
+	// 	getData(getRouter(this.props.addButton), { token:sessionStorage.token }, cb, {});		
+	// }
 
 	render(){
        
         return (
             
             <div id={"card_id"+this.props.index} name={"card-project"} className={this.state.openCtrlState===""?"card-project active":this.state.openCtrlState===true?"card-project active open move-out":"card-project move-in active"}>
-                {this.state.add_button.map((form_list) => {
+                {this.props.addButton.map((form_list) => {
                     return (
                         form_list.type_name === "Link"?
                                 <Link 
@@ -183,7 +183,7 @@ class Card extends Component {
                                 <CardGroup 
                                     addButton={form_list.add_button}
                                     addButtonTitle={form_list.add_button_title} 
-                                    beforeApiUri={this.props.card_list[form_list.before_api_uri]} 
+                                    beforeApiUri={this.props.card_list[form_list.add_button.before_api_uri]} 
                                     idName={form_list.id_name}
                                     key={form_list.id_name}
                                     title={form_list.title} 

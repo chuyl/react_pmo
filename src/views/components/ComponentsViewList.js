@@ -42,41 +42,14 @@
      * @param clickComponents 函数  获取视图json
      */
     clickComponents=(form_list,index)=>{
-        console.log(form_list)
+        // console.log(form_list)
         var newState = {
             form_list:form_list,
             index:index
         }
         this.props.handleViewJson(newState);//回调函数传递参数给父组件
     }
-    /** 
-     * @time 2018-11-09 
-     * @author xuesong
-     * @param addViewButton 函数  group添加按钮传值
-     */
-    addViewButton=(newState)=>{
-        var states={
-            name:newState.name,
-            view:newState.view,
-            title:newState.title,
-            addButtonTitle:newState.addButtonTitle
-        }
-        this.props.addViewonClickButton(states)
-    }
-      /** 
-     * @time 2018-11-09 
-     * @author xuesong
-     * @param editViewButton 函数  group编辑按钮传值
-     */
-    editViewButton=(newState)=>{
-        var states={
-            name:newState.name,
-            view:newState.view,
-            title:newState.title,
-            addButtonTitle:newState.addButtonTitle
-        }
-        this.props.editViewonClickButton(states)
-    }
+
       /** 
      * @time 2018-11-09 
      * @author xuesong
@@ -87,15 +60,26 @@
             name:newState.name,
             view:newState.view,
             title:newState.title,
-            addButtonTitle:newState.addButtonTitle
+            addButtonTitle:newState.addButtonTitle,
+            index:newState.index,
+            arrIndex:newState.arrIndex
         }
         this.props.descriptViewonClickButton(states)
+    }
+    interfaceViewData=(newState)=>{
+        var states={
+            name:newState.name,
+            data:newState.data,
+            // addButtonTitle:newState.addButtonTitle
+        }
+        this.props.interfaceViewDataButton(states) 
     }
        render() {
            return (
                this.props.componentslist.map((form_list,index) => {
                        return (
-                           <div key={form_list.id_name} onClick={()=>{
+                           <div  key={form_list.id_name}>
+                               <div onClick={()=>{
                                this.clickComponents(form_list,index)
                            }}>
                             {form_list.type_name === "Cards" ?
@@ -103,8 +87,9 @@
                                     id={form_list.id_name}
                                     index={this.props.index}
                                     key={form_list.id_name}
+                                    cardViewClickButton={this.descriptViewButton}
                                     //sixChange = {this.handleChildChange}
-                                   addButton={form_list.add_button}
+                                    addButton={form_list.add_button}
                                     // card_list={this.props.componentsdata}
                                 />
                                 :form_list.type_name === "ListTextSearch" ?
@@ -236,14 +221,11 @@
                                    /> 
                                :form_list.type_name==="CardGroup"?
                                    <GroupButtonView 
-                                       addButtonTitle={form_list.add_button_title}
-                                       editNameButton={form_list.add_button.add_button} 
-                                       descriptNameButton={form_list.add_button.descript}
-                                       editViewClickButton={this.editViewButton}
-                                       descriptViewClickButton={this.descriptViewButton}
-                                       descriptTitle={form_list.add_button.descript_title} 
-                                       addButtonTitle={form_list.add_button.add_button_title}
-                                       // postListGroup={this.editCardSuccess}
+                                        addButton={form_list.add_button}
+                                        beforeApiUri={form_list.before_api_uri}
+                                        interfaceData={this.interfaceViewData}
+                                        descriptViewClickButton={this.descriptViewButton}
+                                        descriptTitle={form_list.add_button.descript_title} 
                                    />
                                :form_list.type_name==="HoldBtn"?
                                    <HoldBtn 
@@ -252,35 +234,26 @@
                                        view={true}
                                        onHoldClick={this.handleChildClick}
                                />
-                               :form_list.type_name==="AddCardBtn"?
-                                   <GroupAddButtonView
-                                        addViewClickButton={this.addViewButton}
-                                        addNameButton={form_list.add_button.add_button} 
-                                        // addButton={form_list.add_button}
-                                        addButtonTitle={form_list.add_button.add_button_title}
-                                        // dataId={this.props.dataId}
-                                        // before_api_uri={form_list.before_api_uri}
-                                        // key={form_list.id_name}
-                                   />
-                                   :form_list.type_name==="EditCardBtn"?
-                                <EditCardBtn
-                                    title={form_list.title}
-                                    dataId={this.props.dataId}
-                                    addButton={form_list.add_button}
-                                    before_api_uri={form_list.before_api_uri}
-                                    key={form_list.id_name}
-                                /> 
+                              
+                                :form_list.type_name==="EditCardBtn"?
+                                    <EditCardBtn
+                                        title={form_list.title}
+                                        dataId={this.props.dataId}
+                                        addButton={form_list.add_button}
+                                        before_api_uri={form_list.before_api_uri}
+                                        key={form_list.id_name}
+                                    /> 
                                 :form_list.type_name === "Link"?
-                                <Link 
-                                    button={form_list.title}
-                                    buttonMessage={form_list}
-                                    // dataId={this.props.card_list.id}
-                                    // isClick={this.props.card_list.id}
-                                    linkpage={form_list.before_api_uri}
-                                    key={form_list.id_name}
-                                    // messageList={form_list.add_button.before_api_uri}
-                                    onChange = {this.handleClick}
-                                />
+                                    <Link 
+                                        button={form_list.title}
+                                        buttonMessage={form_list}
+                                        // dataId={this.props.card_list.id}
+                                        // isClick={this.props.card_list.id}
+                                        linkpage={form_list.before_api_uri}
+                                        key={form_list.id_name}
+                                        // messageList={form_list.add_button.before_api_uri}
+                                        onChange = {this.handleClick}
+                                    />
                             :form_list.type_name === "CardHead"?
                                 <CardHead
                                     id={form_list.id_name} 
@@ -319,6 +292,8 @@
                                     message={form_list.title}
                                 />
                                : ""}
+                           </div>
+                           {/* <button>删除</button> */}
                            </div>
    )
                    }

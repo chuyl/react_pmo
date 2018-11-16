@@ -61,7 +61,7 @@ class TrainingProgram extends Component {
 
 			}
 		}
-		getData(getRouter("newCard"), { token:sessionStorage.token }, cb, {});
+		getData(getRouter("projectViewCard"), { token:sessionStorage.token }, cb, {});
 	}
 	fetchProjectDataList() {
 		var cb = (route, message, arg) => {

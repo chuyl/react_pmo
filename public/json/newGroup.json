@@ -1,0 +1,22 @@
+{
+    "error":0,
+    "data": {
+        "form-temp-name": "",
+        "form-list": [{
+            "id_name": "",
+            "type_name": "CardGroup",
+            "title": "",
+            "before_api_uri": "",
+            "add_button": {
+                "before_api_uri": "",
+                "descript":"",
+                "descript_title":"",
+                "add_title":"",
+                "edit_button":"",
+                "del_button":"",
+                "list_button": "",
+                "add_button":""
+            }
+        }]
+    }
+}

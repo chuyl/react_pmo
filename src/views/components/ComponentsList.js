@@ -429,8 +429,8 @@ handleChildChange=(formData)=>{
                                 <CardGroup 
                                     addButtonTitle={form_list.add_button_title} 
                                     addButton={form_list.add_button} 
-                                    beforeApiUri={this.props.componentsdata[form_list.before_api_uri]} 
-                                    uriName={form_list.before_api_uri}
+                                    beforeApiUri={this.props.componentsdata[form_list.add_button.before_api_uri]} 
+                                    uriName={form_list.add_button.before_api_uri}
                                     delButton = {form_list.add_button.del_button}
                                     editButton={form_list.add_button.edit_button}
                                     listButton = {form_list.add_button.list_button}

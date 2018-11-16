@@ -30,12 +30,12 @@
                     "id_name": "venue_arrange",
                     "type_name": "CardGroup",
                     "title": "会场安排",
-                    "before_api_uri": "venue",
+                    "before_api_uri": "",
                     "add_button": {
-                       
+                        "before_api_uri": "venue",
                         "descript":"venueAddFrom",
                         "add_button_title":"会场安排修改",
-                        "descript_title":"会场安排展示",
+                        "descript_title":"会场安排-组",
                         "add_title":"添加会场安排",
                         "edit_button":"implement_venue_edit",
                         "del_button":"implement_venue_del",
@@ -47,12 +47,12 @@
                     "id_name": "implement_arrange",
                     "type_name": "CardGroup",
                     "title": "实施安排",
-                    "before_api_uri": "implement",
+                    "before_api_uri": "",
                     "add_button": {
-                       
+                        "before_api_uri": "implement",
                         "descript":"implementAddFrom",
                         "add_button_title":"实施安排修改",
-                        "descript_title":"实施安排展示",
+                        "descript_title":"实施安排-组",
                         "edit_button":"implement_plan_edit",
                         "del_button":"",
                         "list_button": "implement_plan_getByProjectId",
