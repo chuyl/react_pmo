@@ -243,7 +243,7 @@ class TrainingProgram extends Component {
 					<div className="overflow crius-card-list">
 						{this.state.card_list!==null?this.state.card_list.map((card_list,index) => {
 							return (
-								<ComponentsList  sevenChange = {this.handleChildChange} key={index} componentslist =  {this.state.projectCard} componentsdata = {card_list} ></ComponentsList > 
+								<ComponentsList index={index}  sevenChange = {this.handleChildChange} key={index} componentslist =  {this.state.projectCard} componentsdata = {card_list} ></ComponentsList > 
 
 								// <Cards 
 								// 		index={index}

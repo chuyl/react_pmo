@@ -64,8 +64,14 @@
             index:newState.index,
             arrIndex:newState.arrIndex
         }
+        console.log(states)
         this.props.descriptViewonClickButton(states)
     }
+    /** 
+     * @time 2018-11-16
+     * @author xuesong
+     * @param interfaceViewData 函数  group接口名称点击回调函数
+     */
     interfaceViewData=(newState)=>{
         var states={
             name:newState.name,
@@ -73,6 +79,9 @@
             // addButtonTitle:newState.addButtonTitle
         }
         this.props.interfaceViewDataButton(states) 
+    }
+    delViewContent=(index)=>{
+        this.props.delViewIndexContent(index) 
     }
        render() {
            return (
@@ -293,7 +302,9 @@
                                 />
                                : ""}
                            </div>
-                           {/* <button>删除</button> */}
+                           <button onClick={()=>{
+                               this.delViewContent(index)
+                           }}>删除</button>
                            </div>
    )
                    }

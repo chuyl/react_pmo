@@ -1,0 +1,14 @@
+{
+    "error":0,
+    "data":{
+        "id_name": "",
+        "type_name": "MutiText",
+        "key": "",
+        "title": "未设置名称",
+        "tip": "",
+        "add_button": "",
+        "descript": "",
+        "before_api_uri": "",
+        "after_api_uri": ""
+    }
+}

@@ -26,3 +26,14 @@
 .view_paper_list.open{
     display: inline-block;
 }
+.view_message_div{
+    line-height: 30px;
+    div{
+        display: inline-block;
+    }
+    button{
+        display: inline-block; 
+        float: right;
+        margin-top: 3px;
+    }
+}

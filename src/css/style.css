@@ -1686,6 +1686,7 @@ html, body {
   background: #fff;
   position: relative;
   margin-left: 80px;
+  z-index: 1;
   border-radius: 2px;
   position: absolute;
   overflow: hidden;
@@ -2154,6 +2155,15 @@ html, body {
 
 .view_paper_list.open {
   display: inline-block; }
+
+.view_message_div {
+  line-height: 30px; }
+  .view_message_div div {
+    display: inline-block; }
+  .view_message_div button {
+    display: inline-block;
+    float: right;
+    margin-top: 3px; }
 
 .droppedcontent {
   border: 1px solid rgba(240, 242, 245, 0.8);

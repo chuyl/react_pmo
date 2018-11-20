@@ -1,7 +1,7 @@
 {
     "error":0,
     "data": {
-        "form-temp-name": "项目card",
+        "form-temp-name": "未设置标题",
         "form-list": [{
             "id_name": "card_frame",
             "type_name": "Cards", 
@@ -11,10 +11,10 @@
             "add_button":[{
                 "id_name": "",
                 "type_name": "CardHead", 
-                "title": "",
+                "title": "未设置-卡片头",
                 "key":"",
                 "tip":"",
-                "add_button":"projectCardHead"
+                "add_button":""
             }, {
                 "id_name": "",
                 "type_name": "CardBody", 
@@ -24,19 +24,19 @@
                 "add_button":[
                     { "id_name": "",
                         "type_name": "CardPage", 
-                        "title": "",
+                        "title": "未设置-页面1",
                         "key":"",
                         "tip":"",
                         "add_button":""}
                     ,{ "id_name": "",
                         "type_name": "CardPage", 
-                        "title": "",
+                        "title": "未设置-页面2",
                         "key":"",
                         "tip":"",
                         "add_button":""},
                     { "id_name": "project_approve_btns",
                             "type_name": "CardPage", 
-                            "title": "",
+                            "title": "未设置-页面3",
                             "key":"",
                             "tip":"",
                             "add_button":""
@@ -50,7 +50,7 @@
             },{
                 "id_name": "",
                 "type_name": "CardFoot", 
-                "title": "",
+                "title": "未设置-卡片尾",
                 "key":"",
                 "tip":"",
                 "add_button":""

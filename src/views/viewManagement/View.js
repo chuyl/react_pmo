@@ -6,7 +6,7 @@ import ComponentsViewList from '../components/ComponentsViewList'
 import SelectViewListSearch from '../components/SelectViewListSearch'
 import ViewTextField from '../components/ViewTextField';
 import Popup from '../components/Popup'
-import VDraggable from '../components/VDraggable'
+import SelectList from '../components/SelectList'
 class View extends Component {
    
 	state = {
@@ -20,7 +20,7 @@ class View extends Component {
 		selectedViewAddTitle:"",//在group里面修改的add_button里面的title
 		componentsView:[],
 		componentsComplexView:[],
-		alertState:false, //弹出框的状态
+		alertAddViewState:false, //弹出框的状态
 		changeInterfaceState:false,//修改接口名称状态
 		this_index_view_list:"",
 		selectedViewTitle:"",//复杂视图更改时的默认视图
@@ -28,6 +28,8 @@ class View extends Component {
 		selectedViewIndex:"",//card子组件位置
 		selectedViewarrIndex:"",
 		view_type:"",//视图的类型
+		view_id:"",
+		initializationData:[],//初始化cards的json结构
 		change_interface:"",//修改接口名称
 		change_key_interface:"",//修改接口key名称
 		view_china_name:"",
@@ -86,19 +88,25 @@ class View extends Component {
 		}
 		getData(getRouter(list.name), { token:sessionStorage.token }, cb, {});
 	}
-	ViewComplexList=(list,index)=>{
-		var cb = (route, message, arg) => {
+	/** 
+	 * @time 2018-11-05
+	 * @author xuesong
+	 * @param ViewComplexList 函数 获取视图列表 
+	 */
+	// ViewComplexList=(list,index)=>{
+	// 	var cb = (route, message, arg) => {
 			
-			if (message.error === 0) {
-				this.setState({
-					this_view_list:message.data,
-					is_view_list:true,
-					this_index_view_list:index
-				})
-			}
-		}
-		getData(getRouter("viewManagement"), { token:sessionStorage.token }, cb, {});
-	}
+	// 		if (message.error === 0) {
+	// 			this.setState({
+	// 				this_view_list:message.data,
+	// 				is_view_list:true,
+	// 				this_index_view_list:index,
+	// 				view_table_list:message.data	
+	// 			})
+	// 		}
+	// 	}
+	// 	getData(getRouter("viewManagement"), { token:sessionStorage.token }, cb, {});
+	// }
 	/** 
 	 * @time 2018-11-05
 	 * @author xuesong
@@ -177,6 +185,8 @@ class View extends Component {
 			   var view_change_list=this.state.this_view_list[m];
 			   //判断修改的组件是否为cards
 			   if(this.state.this_view_list[m].type_name==="Cards"){
+				   console.log(this.state.selectedViewIndex)
+				   console.log(view_change_list.add_button[this.state.selectedViewIndex])
 				   if(this.state.selectedViewIndex===1){ 
 					   //selectedViewarrIndex card的body中页面的位置 selectedViewIndex card中子组件位置
 					   view_change_list.add_button[this.state.selectedViewIndex].add_button[this.state.selectedViewarrIndex].add_button=newState.name;
@@ -252,63 +262,75 @@ class View extends Component {
 		})
 	}
 	/** 
-	 * @time 2018-11-05
-	 * @author xuesong
-	 * @param editJsonView 函数 编辑视图组件 
-	 */
-	// editJsonView=()=>{
-	// 	//重新编辑视图组件列表
-	// 	if(this.state.componentsComplexView.length>1){//判断是否为复杂视图的修改
-	// 	 this.state.changeInterfaceState===false?this.changeGroupView():this.changeInterfaceMessage()
-		 
-	// 	}else{
-	// 		var other_list=[];
-	// 		for(var i=0;i<this.state.this_view_list.length;i++){
-	// 			if(i!==this.state.index_json_view){
-	// 				other_list.push(this.state.this_view_list[i])
-	// 			}else{
-	// 				other_list.push({id_name:this.state.id_name,type_name:this.state.type_name,
-	// 					key:this.state.key,title:this.state.title,
-	// 					tip:this.state.tip,add_button:this.state.add_button,
-	// 					descript:this.state.descript,before_api_uri:this.state.before_api_uri,
-	// 					after_api_uri:this.state.after_api_uri
-	// 				})
-	// 			}
-	// 		}
-	// 		this.setState({
-	// 			this_view_list:other_list
-	// 		})
-	// }
-	// }
-	/** 
 	 * @time 2018-11-07
 	 * @author xuesong
-	 * @param cancelCallback 函数 弹出框取消
+	 * @param cancelAddViewCallback 函数 弹出框取消
 	 */
-	cancelCallback(msg){
+	cancelAddViewCallback(msg){
 		this.setState({
-			alertState:false
+			alertAddViewState:false
 		})
 	}
 	/** 
 	 * @time 2018-11-07
 	 * @author xuesong
-	 * @param sureCallback 函数 弹出框确定
+	 * @param sureAddViewCallback 函数 弹出框确定
 	 */
-	sureCallback(msg){
+	sureAddViewCallback(msg){
 		this.addViewName()
-        
-        
 	}
 	/** 
 	 * @time 2018-11-07
 	 * @author xuesong
-	 * @param sureCallback 函数 弹出框确定发送信息的接口
+	 * @param sureAddViewCallback 函数 弹出框确定发送信息的接口
 	 */
 	addViewName=()=>{
-		this.setState({
-			alertState:false
-		})
+		console.log(this.state.view_china_name)
+		console.log(this.state.view_english_name)
+		console.log(this.state.view_id)
+		console.log(document.getElementById("view_type_name").innerHTML)
+		// var InitializationData ;
+		var select_type =  document.getElementById("view_type_name").innerHTML;
+		if(this.state.view_id===""){
+			// select_type==="formlist"?InitializationData="newFormlist":select_type==="group"?InitializationData="newGroup":select_type==="cards"?InitializationData="newCard":""
+			// if(select_type==="formlist"){
+			// 	InitializationData="newFormlist";
+			// }
+			//  if(select_type==="group"){
+			// 	InitializationData="newGroup";
+			// }
+			if(select_type==="cards"){
+				var cb = (route, message, arg) => {
+					if (message.error === 0) {
+						this.setState({
+							alertAddViewState:false,
+							initializationData:message.data
+						})
+					}
+				}
+				getData(getRouter("newCard"), { token:sessionStorage.token }, cb, {});
+			}
+			var cb = (route, message, arg) => {
+				if (message.error === 0) {
+					console.log(message)
+					this.setState({
+						alertAddViewState:false
+					})
+				}
+			}
+			getData(getRouter("viewManagement"), { token:sessionStorage.token }, cb, {});
+			
+		}
+		
+		// var cb = (route, message, arg) => {
+		// 	if (message.error === 0) {
+		// 		console.log(message)
+		// 		this.setState({
+		// 			alertAddViewState:false
+		// 		})
+		// 	}
+		// }
+		// getData(getRouter(InitializationData), { token:sessionStorage.token }, cb, {});
 	}
 
 	/** 
@@ -317,22 +339,20 @@ class View extends Component {
 	 * @param descriptViewButton 函数 Group展示按钮
 	 */
 	descriptViewButton=(newState)=>{
-		console.log(newState)
 		this.getViewButtomTitle(newState)
 	}
-	// headViewButton=(newState)=>{
-	// 	console.log(newState)
-	// 	// this.getViewButtomTitle(newState)
-	// }
+	/** 
+	 * @time 2018-11-16
+	 * @author xuesong
+	 * @param interfaceViewData 函数 获取group接口名称修改点击事件
+	 */
 	interfaceViewData=(newState)=>{
-		console.log(newState.data)
          this.setState({
 			changeInterfaceState:true,//修改接口的状态
 			change_key_interface:newState.name,
-			change_interface:newState.data
-
+			change_interface:newState.data,
+		
 		 })
-		console.log(this.state.index_json_view)
 	}
 	/** 
 	 * @time 2018-11-12
@@ -342,16 +362,17 @@ class View extends Component {
 	getViewButtomTitle=(newState)=>{
 		
 		for(var i=0;i<this.state.view_table_list.length;i++){
-		
-			
+			this.setState({
+				selectedViewIndex:newState.index,
+				selectedViewarrIndex:newState.arrIndex,
+				// selectedViewTitle:this.state.view_table_list[i].title,
+			})
+			console.log(this.state.selectedViewTitle)
 			if(newState.view===this.state.view_table_list[i].name&&newState.addButtonTitle===this.state.view_table_list[i].title){
-				
 				this.setState({
 					selectedViewTitle:this.state.view_table_list[i].title,
 					selectedViewName:newState.name,
 					selectedViewAddTitle:newState.title,
-					selectedViewIndex:newState.index,
-					selectedViewarrIndex:newState.arrIndex,
 					changeInterfaceState:false,//修改接口的状态
 				})
 			}
@@ -363,9 +384,79 @@ class View extends Component {
 	 * @param descriptViewButton 函数 Group展示按钮
 	 */
 	selectViewGetValue=(newState)=>{
-		
 		this.changeGroupView(newState)
-		console.log(newState)
+	}
+	/** 
+	 * @time 2018-11-16
+	 * @author xuesong
+	 * @param delViewContent 函数 删除视图内容
+	 */
+	delViewContent=(index)=>{
+		var newList=[];
+		for(var i = 0;i<this.state.this_view_list.length;i++){
+			if(i!==index){
+				newList.push(this.state.this_view_list[i])
+			}
+		}
+		this.setState({
+			this_view_list:newList
+		})
+		console.log(this.state.this_view_list)
+	}
+	/** 
+	 * @time 2018-11-16
+	 * @author xuesong
+	 * @param changeViewMessage 函数 修改视图列表信息
+	 */
+	changeViewMessage=(message)=>{
+		console.log(message)
+		this.setState({
+			alertAddViewState:true,
+			view_china_name:message.title,
+			view_english_name:message.name,
+			view_type_name:message.type,
+			view_id:message.id
+
+		})
+	}
+	/** 
+	 * @time 2018-11-20
+	 * @author xuesong
+	 * @param add_formlist 函数 添加一个formlist组件
+	 */
+	add_formlist=()=>{
+		var cb = (route, message, arg) => {
+			if (message.error === 0) {
+				var formlist=this.state.this_view_list;
+				formlist.push(message.data)
+				this.setState({
+					this_view_list:formlist
+				})
+			}
+		}
+		getData(getRouter("newFormlist"), { token:sessionStorage.token }, cb, {});
+	}
+	/** 
+	 * @time 2018-11-20
+	 * @author xuesong
+	 * @param add_group 函数 添加一个group组件
+	 */
+	add_group=()=>{
+		var cb = (route, message, arg) => {
+			if (message.error === 0) {
+				var cb = (route, message, arg) => {
+					if (message.error === 0) {
+						var formlist=this.state.this_view_list;
+						formlist.push(message.data)
+						this.setState({
+							this_view_list:formlist
+						})
+					}
+				}
+				getData(getRouter("newGroup"), { token:sessionStorage.token }, cb, {});
+			}
+		}
+		getData(getRouter("newGroup"), { token:sessionStorage.token }, cb, {});
 	}
 	render() {
 		return(
@@ -373,25 +464,43 @@ class View extends Component {
 				<div style={{overflow:"hidden"}} className="view_table_list ">
 				<button style={{marginBottom:"5px"}} className="add_card_btn" onClick={()=>{
 						this.setState({
-							alertState:true
+							alertAddViewState:true,
+							view_type_name:"",
+							view_china_name:"",
+							view_english_name:"",
+							view_id:""
+
 						})
 					}} >添加</button>
 					<ul style={{height:"90vh",paddingBottom:"1em"}} className="overflow">
 						{this.state.view_table_list.map((view,index)=>{
-							return <li onClick={()=>{
+							return <li className="view_message_div" key={index}><div onClick={()=>{
 								this.viewList(view,index)
 								
-							}} key={index}>{view.title}</li>
+							}} >{view.title}</div><button onClick={()=>{
+								this.changeViewMessage(view)
+								
+							}}>修改名称</button></li>
 						})}
 					</ul>
 					
 				</div>
 				<div  className="view_list overflow">
+					<button style={{marginBottom:"5px",width:"100px"}} className="label_delete_button" onClick={()=>{
+						this.add_formlist()
+						}} >添加formlist
+					</button>
+					<button style={{marginBottom:"5px",width:"100px"}} className="label_delete_button" onClick={()=>{
+						this.add_group()
+						}} >添加group
+					</button>
+					
 					<div className={this.state.is_view_list?"view_paper_list overflow open":"view_paper_list overflow"}>
 						< ComponentsViewList 
 							descriptViewonClickButton={this.descriptViewButton}
 							// headViewonClickButton={this.headViewButton}
 							handleViewJson={this.thisJsonView} 
+							delViewIndexContent={this.delViewContent}
 							interfaceViewDataButton={this.interfaceViewData}
 							componentslist = {this.state.this_view_list?this.state.this_view_list:[]}  ></ComponentsViewList > 
 						<button onClick={()=>{
@@ -400,10 +509,9 @@ class View extends Component {
 					</div>
 				</div>
 				<div className="view_list overflow">
+				
 					<div className={this.state.isViewJson?"view_paper_list overflow open":"view_paper_list overflow"}>
 					{this.state.componentsView.map((componentsView,index)=>{
-						
-						
 						return(
 							<ViewTextField 
 								// id={form_list.id_name}
@@ -421,7 +529,7 @@ class View extends Component {
 							this.state.changeInterfaceState===false?<SelectViewListSearch
 								labelValue={"更改视图"}
 								id={"selectComplexView"}
-								selectedInfo={this.state.selectedViewTitle}
+								selectedInfo={this.state.selectedViewTitle===""?"-选择-":this.state.selectedViewTitle}
 								selectViewValue={this.selectViewGetValue}
 								selectLists={this.state.componentsComplexView}
 							/>:<ViewTextField 
@@ -439,39 +547,43 @@ class View extends Component {
 						}}>确定</button> */}
 					</div>
 				</div>
-				<Popup content={<div><h2>新增视图</h2>
-                        {/* <p>{this.props.alertMsg}</p> */}
-						<ViewTextField 
-						     onChange={(e)=>{
-								 this.setState({
-									 view_china_name:e.target.value
-								 })
-							 }}
-                            inputValue={""} 
-                            labelValue={"中文名称"} 
-
-                        />
-						<ViewTextField 
-						  onChange={(e)=>{
-							this.setState({
-								view_english_name:e.target.value
-							})
-						}}
-                            inputValue={""} 
-                            labelValue={"英文名称"} 
-                            
-                        />
-						<ViewTextField 
-						  onChange={(e)=>{
-							this.setState({
-								view_type_name:e.target.value
-							})
-						}}
-                            inputValue={""} 
-                            labelValue={"类型"} 
-                            
-                        />
-						</div>} alertMsg = {this.state.alertMsg} sureCallback = {this.sureCallback.bind(this)} cancelCallback = { this.cancelCallback.bind(this) } alertState={this.state.alertState}/>
+				<Popup 
+					content={
+						<div>
+							<h2>视图</h2>
+								{/* <p>{this.props.alertMsg}</p> */}
+							<ViewTextField 
+								onChange={(e)=>{
+									this.setState({
+										view_china_name:e.target.value
+										})
+								}}
+								value={this.state.view_china_name} 
+								labelValue={"中文名称"} 
+							/>
+							<ViewTextField 
+								onChange={(e)=>{
+									this.setState({
+										view_english_name:e.target.value
+									})
+								}}
+								value={this.state.view_english_name} 
+								labelValue={"英文名称"} 
+							/>
+							<SelectList 
+								id={"view_type"} 
+								labelValue={"类型"}
+								searchInfoLists={"view_type"} 
+								selectedIdInfo={this.state.view_type_name===""?"-选择-":this.state.view_type_name} 
+								selectedInfo={this.state.view_type_name===""?"-选择-":this.state.view_type_name} 
+							/> 
+						</div>
+					}	 
+						// alertMsg = {this.state.alertMsg} 
+					sureCallback = {this.sureAddViewCallback.bind(this)} 
+					cancelCallback = { this.cancelAddViewCallback.bind(this) } 
+					alertState={this.state.alertAddViewState}
+				/>
 				
 			</div>
 			
