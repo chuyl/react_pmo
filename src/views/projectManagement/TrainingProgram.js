@@ -54,14 +54,15 @@ class TrainingProgram extends Component {
 	fetchListData() {
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
+				var json_message=JSON.parse(message.data);
 				this.setState({
-					projectCard: message.data["form-list"],
-		 			form_temp_name:message.data["form-temp-name"],
+					projectCard: json_message["form-list"],
+		 			form_temp_name:json_message["form-temp-name"],
 				})
 
 			}
 		}
-		getData(getRouter("projectViewCard"), { name:"projectViewCard",token:sessionStorage.token }, cb, {});
+		getData(getRouter("view_json_name"), { name:"projectViewCard",token:sessionStorage.token }, cb, {});
 	}
 	fetchProjectDataList() {
 		var cb = (route, message, arg) => {
@@ -75,15 +76,16 @@ class TrainingProgram extends Component {
 	fetchProjectData(url) {
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
+				var json_message=JSON.parse(message.data);
 				this.setState({
-					add_button: message.data["form-list"],
-					form_temp_name:message.data["form-temp-name"],
+					add_button: json_message["form-list"],
+					form_temp_name:json_message["form-temp-name"],
 				})
 
 			}
 		}
 		console.log(url)
-		getData(getRouter(url), { token:sessionStorage.token }, cb, {});		
+		getData(getRouter("view_json_name"), { name:url,token:sessionStorage.token }, cb, {});		
 	}
 
 	/** 

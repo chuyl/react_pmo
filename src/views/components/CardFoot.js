@@ -30,14 +30,15 @@
         fetchFootContent() {
             var cb = (route, message, arg) => {
                 if (message.error === 0) {
+                    var json_message=JSON.parse(message.data);
                     this.setState({
-                        add_button: message.data["form-list"],
+                        add_button: json_message["form-list"],
                     })
 
                 }
                
             }
-            getData(getRouter(this.props.addButton), { token:sessionStorage.token }, cb, {});		
+            getData(getRouter("view_json_name"), { name:this.props.addButton,token:sessionStorage.token }, cb, {});
         }
         render(){
             return (

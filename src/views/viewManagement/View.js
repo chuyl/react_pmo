@@ -78,9 +78,10 @@ class View extends Component {
 		var cb = (route, message, arg) => {
 			
 			if (message.error === 0) {
+				var json_message=JSON.parse(message.data);
 				this.setState({
-					this_view_list:message.data["form-list"],
-					form_temp_name:message.data["form-temp-name"],
+					this_view_list:json_message["form-list"],
+					form_temp_name:json_message["form-temp-name"],
 					is_view_list:true,
 					isViewJson:false,
 					view_type:list.type,

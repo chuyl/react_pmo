@@ -44,15 +44,16 @@
     //获取组件中add_button里面的编辑视图
     fetchPageContent() {
         var cb = (route, message, arg) => {
+            var json_message=JSON.parse(message.data);
             if (message.error === 0) {
                 this.setState({
-                    add_button: message.data["form-list"],
+                    add_button: json_message["form-list"],
                 })
 
             }
            
         }
-        getData(getRouter(this.props.addButton), { token:sessionStorage.token }, cb, {});		
+        getData(getRouter("view_json_name"), { name:this.props.addButton,token:sessionStorage.token }, cb, {});
     }
         render(){
             const {index,cardIndex}=this.props;

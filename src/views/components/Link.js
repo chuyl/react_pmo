@@ -40,13 +40,14 @@
             //         console.log("error")
             //     })
             var cb = (route, message, arg) => {
+                var json_message=JSON.parse(message.data);
                 if (message.error === 0) {
                     this.setState({
-                        add_button:message.data["form-list"], 
+                        add_button:json_message["form-list"], 
                     })
                 }
             }
-            getData(getRouter(this.state.linkpage), { token:sessionStorage.token }, cb, {});
+            getData(getRouter("view_json_name"), {name:this.state.linkpage,token:sessionStorage.token }, cb, {});
         }
         /** 
         * @author xuesong
@@ -90,10 +91,10 @@
             if (message.error === 0) {
                 var cb = (route, messages, arg) =>  {
                     if (messages.error === 0) {
-                        
+                        var json_message=JSON.parse(message.data);
                         var newState = {
-                            add_button:message.data["form-list"]?message.data["form-list"]:[],
-                            form_temp_name:message.data["form-temp-name"],
+                            add_button:json_message["form-list"]?json_message["form-list"]:[],
+                            form_temp_name:json_message["form-temp-name"],
                             data:messages.data?messages.data:"",
                             dataId:this.props.dataId
                            }
@@ -101,7 +102,6 @@
                         this.setState({
                             remind_state:true
                         })
-                        console.log(message)
                         Alert.open({
                             alertTip:messages.msg
                             
@@ -117,7 +117,7 @@
             }
         }
         //获取视图接口
-        getData(getRouter(this.props.linkpage),  {token:sessionStorage.token}, cb,  {}); 
+        getData(getRouter("view_json_name"),  {name:this.props.linkpage,token:sessionStorage.token}, cb,  {}); 
         
     }
     /** 

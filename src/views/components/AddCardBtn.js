@@ -79,15 +79,15 @@ import { getData, getRouter } from '../../utils/helpers'
         //获取组件中add_button里面的编辑视图
         fetchAddContent() {
             var cb = (route, message, arg) => {
+                var json_message=JSON.parse(message.data);
                 if (message.error === 0) {
                     this.setState({
-                        add_button: message.data["form-list"],
+                        add_button: json_message["form-list"],
                     })
 
                 }
             }
-            console.log(this.props.addButton)
-            getData(getRouter(this.props.addButton.descript), { token:sessionStorage.token }, cb, {});		
+            getData(getRouter("view_json_name"), {name:this.props.addButton.descript, token:sessionStorage.token }, cb, {});		
         }
         render(){
             //console.log(this.state.add_button)

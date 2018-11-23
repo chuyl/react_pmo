@@ -29,14 +29,14 @@
         fetchData() {
             var cb = (route, message, arg) =>  {
                 if (message.error===0) {
-                    console.log(message)
+                    var json_message=JSON.parse(message.data);
                     this.setState( {
-                        add_button: message.data["form-list"],
-                        form_temp_name: message.data["form-temp-name"],
+                        add_button: json_message["form-list"],
+                        form_temp_name: json_message["form-temp-name"],
                     })
                 }
             }
-            getData(getRouter(this.state.add_uri_button),  {token:sessionStorage.token}, cb,  {});
+            getData(getRouter("view_json_name"), { name:this.state.add_uri_button,token:sessionStorage.token }, cb, {});
              
             // fetch('../json/'+this.state.add_uri_button+'.json')
             // 	.then(response => response.json())

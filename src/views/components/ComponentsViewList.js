@@ -33,6 +33,7 @@
    //import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
    //import ProjectGather from '../budgetAndFinalAccountsManagementcond/budget/ProjectGather'
    import SelectList from './SelectList'
+   import SelectListSearch from './SelectListSearch'
    import Invisible from './Invisible'
    import DepartmentList from './DepartmentList'
    import TitleLeftCard from './TitleLeftCard'
@@ -213,6 +214,14 @@
                                    />
                                :form_list.type_name==="SelectList"?
                                    <SelectList 
+                                       id={form_list.id_name}
+                                       labelValue={form_list.title}
+                                       searchInfoLists={form_list.before_api_uri} 
+                                       selectedIdInfo={"-选择-"} 
+                                       selectedInfo={"-选择-"} 
+                                   /> 
+                                :form_list.type_name==="SelectListSearch"?
+                                   <SelectListSearch 
                                        id={form_list.id_name}
                                        labelValue={form_list.title}
                                        searchInfoLists={form_list.before_api_uri} 

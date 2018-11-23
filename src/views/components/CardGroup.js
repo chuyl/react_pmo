@@ -135,27 +135,28 @@
     //获取组件中add_button里面的编辑视图
     fetchEditContent() {
 		var cb = (route, message, arg) => {
+            var json_message=JSON.parse(message.data);
 			if (message.error === 0) {
 				this.setState({
-					edit_list: message.data["form-list"],
+					edit_list: json_message["form-list"],
 				})
 
 			}
-		}
-		getData(getRouter(this.props.addButton.descript), { token:sessionStorage.token }, cb, {});		
+        }
+        getData(getRouter("view_json_name"), { name:this.props.addButton.descript,token:sessionStorage.token }, cb, {});
     }
      //获取组件中add_button里面的查看视图
      fetchDescriptContent() {
 		var cb = (route, message, arg) => {
+            var json_message=JSON.parse(message.data);
 			if (message.error === 0) {
 				this.setState({
-					descript_list: message.data["form-list"],
+					descript_list: json_message["form-list"],
                 })
 
 			}
         }
-        
-		getData(getRouter(this.props.addButton.descript), { token:sessionStorage.token }, cb, {});		
+        getData(getRouter("view_json_name"), { name:this.props.addButton.descript,token:sessionStorage.token }, cb, {});
     }
     //新增group中保存按钮传值
     addCardSuccess=(newState)=>{
