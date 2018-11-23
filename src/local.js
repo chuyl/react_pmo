@@ -38,6 +38,7 @@ var local = {
                 "travel_hotel_del":{"url":"../data/travel_hotel_del.json","version":"1.0"},//住宿费删除
                 "Project":{"url":"../data/Project.json","version":"1.0"},//发送数据列表
                 "view_json_list":{"url":"../data/view_json_list.json","version":"1.0"},//视图管理表
+                "view_json_name":{"url":"../data/view_json_name.json","version":"1.0"},//通过名称找视图数据
                 "view_type":{"url":"../data/view_type.json","version":"1.0"},//视图类型
                 "new_view":{"url":"../data/new_view.json","version":"1.0"},//新增视图
                 //视图

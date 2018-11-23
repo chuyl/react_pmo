@@ -98,8 +98,8 @@
            return (
                this.props.componentslist.map((form_list,index) => {
                        return (
-                           <div  key={index}>
-                               <div onClick={()=>{
+                           <div className="view_component_div" key={index}>
+                               <div style={{minHeight:"2.5em"}} onClick={()=>{
                                this.clickComponents(form_list,index)
                            }}>
                             {form_list.type_name === "Cards" ?
@@ -376,9 +376,11 @@
                             : ""}
                             
                            </div>
-                           <button onClick={()=>{
+                          <div className="view_component_function">
+                          <button className="label_delete_button" onClick={()=>{
                                this.delViewContent(index)
                            }}>删除</button>
+                          </div>
                            </div>
    )
                    }

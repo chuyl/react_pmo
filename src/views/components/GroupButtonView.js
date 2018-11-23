@@ -85,7 +85,7 @@
         render(){
             const {descriptTitle}=this.props;
             return (
-                <div>
+                <div className="complex_message">
                      <p onClick={this.descriptViewButton}>
                          {descriptTitle}
                      </p>

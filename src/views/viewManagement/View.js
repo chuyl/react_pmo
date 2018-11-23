@@ -88,7 +88,7 @@ class View extends Component {
 				})
 			}
 		}
-		getData(getRouter(list.name), { token:sessionStorage.token }, cb, {});
+		getData(getRouter("view_json_name"), { name:list.name,token:sessionStorage.token }, cb, {});
 	}
 	/** 
 	 * @time 2018-11-05
@@ -121,21 +121,8 @@ class View extends Component {
 			//将组件的json数据变成数组
 			var chinesize;
 			for(var i in newState.form_list){
-				//汉化组件属性
-				{i==="id_name"?chinesize="组件名称"
-					:i==="type_name"?chinesize="组件类型"
-					:i==="title"?chinesize="输入框标题"
-					:i==="default_value"?chinesize="显示默认值"
-					:i==="key"?chinesize="输入框默认值"
-					:i==="tip"?chinesize="提示"
-					:i==="add_button"?chinesize="关联"
-					:i==="descript"?chinesize="描述"
-					:i==="before_api_uri"?chinesize="数据接口"
-					:i==="after_api_uri"?chinesize="发送接口"
-					:""}
-					console.log(chinesize)
 				componentsView.push(
-					{key:chinesize,value:newState.form_list[i]}
+					{key:i,value:newState.form_list[i]}
 				)
 			}
 			if(this.state.isViewJson){
@@ -234,8 +221,6 @@ class View extends Component {
 					   this_view_list:other_complex_list
 				   })
 			   }else{
-				   console.log(selectComplexView)
-				   console.log(this.state.selectedViewAddTitle)
 			   //修改视图中add_button里面的修改视图或者展示视图名称
 			   view_change_list.add_button.descript=newState.name;
 			   view_change_list.add_button.add_title="添加"+selectComplexView;
@@ -321,12 +306,11 @@ class View extends Component {
 	 * @param sureAddViewCallback 函数 弹出框确定发送信息的接口
 	 */
 	addViewName=()=>{
-		console.log(this.state.view_china_name)
-		console.log(this.state.view_english_name)
-		console.log(this.state.view_id)
-		console.log(document.getElementById("view_type_name").innerHTML)
+		// console.log(this.state.view_china_name)
+		// console.log(this.state.view_english_name)
+		// console.log(this.state.view_id)
+		// console.log(document.getElementById("view_type_name").innerHTML)
 		var select_type =  document.getElementById("view_type_name").innerHTML;
-		
 				var cb = (route, message, arg) => {
 					if (message.error === 0) {
 						this.setState({
@@ -337,35 +321,14 @@ class View extends Component {
 						message_temp["form-temp-name"]=this.state.view_china_name;
 					var add_cb = (route, messages, arg) => {
 						if (messages.error === 0) {
-							
+							this.fetchListData()
 						}
 					}
-					getData(getRouter("view_json_add"), { token:sessionStorage.token,data:{name:this.state.view_english_name,title:this.state.view_china_name,type:this.state.view_type_name,data:message_temp} }, add_cb, {});
+					getData(getRouter("view_json_add"), { token:sessionStorage.token,data:{name:this.state.view_english_name,title:this.state.view_china_name,type:select_type,data:JSON.stringify(message_temp)} }, add_cb, {});
 					
 					}
 				}
 				getData(getRouter(select_type==="cards"?"newCard":"newFormlistGroup"), { token:sessionStorage.token }, cb, {});
-			
-			// var cb = (route, message, arg) => {
-			// 	if (message.error === 0) {
-			// 		this.setState({
-			// 			alertAddViewState:false
-			// 		})
-			// 	}
-			// }
-			// getData(getRouter("viewManagement"), { token:sessionStorage.token }, cb, {});
-			
-		
-		
-		// var cb = (route, message, arg) => {
-		// 	if (message.error === 0) {
-		// 		console.log(message)
-		// 		this.setState({
-		// 			alertAddViewState:false
-		// 		})
-		// 	}
-		// }
-		// getData(getRouter(InitializationData), { token:sessionStorage.token }, cb, {});
 	}
 		/** 
 	 * @time 2018-11-07
@@ -373,6 +336,32 @@ class View extends Component {
 	 * @param editViewName 函数 弹出框确定发送修改信息的接口
 	 */
 	editViewName=()=>{
+		var select_type =  document.getElementById("view_type_name").innerHTML;
+		var cb = (route, message, arg) => {
+			if (message.error === 0) {
+				this.setState({
+					alertAddViewState:false,
+					initializationData:message.data
+				})
+				var message_temp=message.data;
+				message_temp["form-temp-name"]=this.state.view_china_name;
+				var add_cb = (route, messages, arg) => {
+					if (messages.error === 0) {
+						this.fetchListData()
+					}
+				}
+				getData(getRouter("view_json_edit"), 
+				{ token:sessionStorage.token,
+					data:{  id:this.state.view_id, 
+							name:this.state.view_english_name,
+							title:this.state.view_china_name,
+							type:select_type,
+							data:JSON.stringify(message.data)} 
+						}, add_cb, {});
+			}
+		}
+		getData(getRouter(this.state.view_english_name), { token:sessionStorage.token }, cb, {});
+		
 
 	}
 
@@ -457,6 +446,7 @@ class View extends Component {
 	 * @param changeViewMessage 函数 修改视图列表信息
 	 */
 	changeViewMessage=(message)=>{
+		console.log(message)
 		this.setState({
 			alertAddViewState:true,
 			view_china_name:message.title,
@@ -518,15 +508,15 @@ class View extends Component {
 							view_id:""
 						})
 					}} >添加</button>
-					<button onClick={()=>{
+					{/* <button onClick={()=>{
 						var cb = (route, message, arg) => {
 							if (message.error === 0) {
 							
 								}
 						}
 						getData(getRouter("json_add"), { token:sessionStorage.token,data: this.state.view_table_list}, cb, {});
-					}}>发送data</button>
-					<ul style={{height:"90vh",paddingBottom:"1em"}} className="overflow">
+					}}>发送data</button> */}
+					<ul style={{height:"88vh",paddingBottom:"1em"}} className="overflow">
 						{this.state.view_table_list.map((view,index)=>{
 							return <li className="view_message_div" key={index}><div onClick={()=>{
 								this.viewList(view,index)
@@ -559,7 +549,8 @@ class View extends Component {
 							delViewIndexContent={this.delViewContent}
 							interfaceViewDataButton={this.interfaceViewData}
 							componentslist = {this.state.this_view_list?this.state.this_view_list:[]}  ></ComponentsViewList > 
-						<button onClick={()=>{
+						<hr className="view_change_hr"></hr>
+						<button className="view_change_btn" onClick={()=>{
 							this.editViewList()
 						}}>确定</button>
 					</div>
@@ -570,11 +561,22 @@ class View extends Component {
 					{this.state.componentsView.map((componentsView,index)=>{
 						return(
 							<ViewTextField 
-								// id={form_list.id_name}
 								key={this.state.this_index_view_list+""+this.state.index_json_view+""+index}
 								inputValue={componentsView.value} 
-								// labelValue={componentsView.key==="id_name"?"组件id":componentsView.key} 
-								labelValue={componentsView.key} 
+								 labelValue={componentsView.key==="id_name"?"组件名称"
+											 :componentsView.key==="type_name"?"组件类型"
+											 :componentsView.key==="title"?"输入框标题"
+											 :componentsView.key==="default_value"?"显示默认值"
+											 :componentsView.key==="key"?"输入框默认值"
+											 :componentsView.key==="tip"?"提示"
+											 :componentsView.key==="add_button"?"关联"
+											 :componentsView.key==="descript"?"描述"
+											 :componentsView.key==="before_api_uri"?"数据接口"
+											 :componentsView.key==="after_api_uri"?"发送接口"
+											 :""} 
+											 
+
+								//labelValue={componentsView.key} 
 								onChange={(event) => {
 									this.changeformlistMessage(event,componentsView)
 									}} 
