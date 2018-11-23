@@ -7,7 +7,7 @@ import CardBody from './CardBody'
 import CardOpen from './CardOpen'
 import CardFoot from './CardFoot'
 import CardGroup from './CardGroup'
-import {getData,getRouter} from '../../utils/helpers'
+// import {getData,getRouter} from '../../utils/helpers'
 class Card extends Component {
     state={
         action:[],
@@ -126,7 +126,7 @@ class Card extends Component {
                                     // isClick={this.props.card_list.id}
                                     linkpage={form_list.before_api_uri}
                                     key={form_list.id_name}
-                                    messageList={form_list.add_button.before_api_uri}
+                                    messageList={form_list.add_button}
                                     onChange = {this.handleClick}
                                 />
                             :form_list.type_name === "CardHead"?

@@ -16,8 +16,9 @@
         render(){
             return (
                 <div onClick={()=>{
-                    
-                    this.handleStateClick()
+                    console.log(this.props.view)
+                    this.props.view===true? "":this.handleStateClick()
+                   
                 }} className={this.props.footItemState===this.props.index?"card-item inverse active" : "card-item inverse"}>
                    {this.props.message} 
                 </div>

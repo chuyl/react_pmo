@@ -7,8 +7,9 @@
     class SpellingCardGroup extends Component {
         render(){
             const {message} =this.props;
+            console.log(message)
             return (
-              
+             
                 message?message.map((message,index) => {
 							return (<div key={index}>
                                 <div className="label_message">
@@ -21,7 +22,10 @@
                                         </label>
                                         <span>{message.teacher_income_tax?dealNumber(message.teacher_income_tax):"0.00"}</span>
                             </div>
-                            </div>)}):""
+                            </div>)}):
+                            <div>
+                            讲师成本
+                            </div>
             )
         }
     }

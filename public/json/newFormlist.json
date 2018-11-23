@@ -5,6 +5,7 @@
         "type_name": "MutiText",
         "key": "",
         "title": "未设置名称",
+        "default_value":"默认值",
         "tip": "",
         "add_button": "",
         "descript": "",

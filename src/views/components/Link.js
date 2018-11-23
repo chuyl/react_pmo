@@ -113,12 +113,10 @@
                      this.props.oneChange(newState);
                 }
                 //获取数据接口
-                console.log("获取数据")
                 getData(getRouter(this.props.messageList),  {token:sessionStorage.token, id:this.props.dataId }, cb,  {}); 
             }
         }
         //获取视图接口
-        console.log(this.props.linkpage)
         getData(getRouter(this.props.linkpage),  {token:sessionStorage.token}, cb,  {}); 
         
     }

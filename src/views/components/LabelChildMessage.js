@@ -10,12 +10,14 @@
         }
         add_lists_components = () => {
             var components = [];
-            var list = this.props.beforeApiUri;
+            var labelValue = this.props.labelValue.split(",");
+            var beforeApiUri = this.props.beforeApiUri.split(",");
+            var list = beforeApiUri;
             for (var i = 0; i <list.length; i++) {
                 components.push(
                         <div key={i} className="label_message">
-                          <label>{this.props.labelValue[i]}</label>
-                          <span>{this.props.message[this.props.beforeApiUri[i]]?dealNumber(this.props.message[this.props.beforeApiUri[i]]):"0.00"}</span>
+                          <label>{labelValue[i]}</label>
+                          <span>{this.props.message[beforeApiUri[i]]?dealNumber(this.props.message[beforeApiUri[i]]):"0.00"}</span>
                           {/* <span className="text_field_remind"></span> */}
                       </div>
                  )

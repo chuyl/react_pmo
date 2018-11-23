@@ -26,7 +26,7 @@
                 "after_api_uri": ""
             },
             {
-                "id_name": "teacher_arrange",
+                "id_name": "",
                 "type_name": "CardGroup",
                 "title": "讲师安排",
                 "before_api_uri": "",

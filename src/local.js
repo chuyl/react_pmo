@@ -37,7 +37,7 @@ var local = {
                 "travel_hotel_edit":{"url":"../data/travel_hotel_edit.json","version":"1.0"},//住宿费修改
                 "travel_hotel_del":{"url":"../data/travel_hotel_del.json","version":"1.0"},//住宿费删除
                 "Project":{"url":"../data/Project.json","version":"1.0"},//发送数据列表
-                "viewManagement":{"url":"../data/viewManagement.json","version":"1.0"},//视图管理表
+                "view_json_list":{"url":"../data/view_json_list.json","version":"1.0"},//视图管理表
                 "view_type":{"url":"../data/view_type.json","version":"1.0"},//视图类型
                 "new_view":{"url":"../data/new_view.json","version":"1.0"},//新增视图
                 //视图
@@ -60,6 +60,7 @@ var local = {
                 "newCard":{"url":"../json/newCard.json","version":"1.0"},
                 "newFormlist":{"url":"../json/newFormlist.json","version":"1.0"},
                 "newGroup":{"url":"../json/newGroup.json","version":"1.0"},
+                "newFormlistGroup":{"url":"../json/newFormlistGroup.json","version":"1.0"},
                 "projectViewCard":{"url":"../json/projectViewCard.json","version":"1.0"},//项目列表中的card
                 "projectCard":{"url":"../json/projectCard.json","version":"1.0"},//项目列表中的card
                 "projectTemplet":{"url":"../json/projectTemplet.json","version":"1.0"},//新建项目模板

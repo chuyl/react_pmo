@@ -20,7 +20,6 @@
             index:"",
             arrIndex:""
         }
-        console.log(newState)
         this.props.descriptViewClickButton(newState)
     }
      /** 

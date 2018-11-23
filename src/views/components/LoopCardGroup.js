@@ -17,7 +17,7 @@
                                         <span>{message.total_price?dealNumber(message.total_price):"0.00"}</span>
                             </div>
                            
-                            </div>)}):""
+                            </div>)}):"会议室成本"
             )
         }
     }

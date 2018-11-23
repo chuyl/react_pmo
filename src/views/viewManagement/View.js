@@ -23,7 +23,7 @@ class View extends Component {
 		alertAddViewState:false, //弹出框的状态
 		changeInterfaceState:false,//修改接口名称状态
 		this_index_view_list:"",
-		selectedViewTitle:"",//复杂视图更改时的默认视图
+		selectedViewTitle:"-选择-",//复杂视图更改时的默认视图
 		selectedViewName:"",//group修改的名称
 		selectedViewIndex:"",//card子组件位置
 		selectedViewarrIndex:"",
@@ -32,9 +32,10 @@ class View extends Component {
 		initializationData:[],//初始化cards的json结构
 		change_interface:"",//修改接口名称
 		change_key_interface:"",//修改接口key名称
+		isShowAddButton:false,
 		view_china_name:"",
 		view_english_name:"",
-		view_type_name:"",
+		view_type_name:"formlist",
 		id_name:"",
 		type_name:"",
 		key:"",
@@ -44,6 +45,7 @@ class View extends Component {
 		descript: "",
 		before_api_uri: "",
 		after_api_uri: "",
+		pleaseSelect:"-选择-"
 	};
 
 	componentWillMount() {
@@ -64,7 +66,7 @@ class View extends Component {
 
 			}
 		}
-		getData(getRouter("viewManagement"), { token:sessionStorage.token }, cb, {});
+		getData(getRouter("view_json_list"), { token:sessionStorage.token }, cb, {});
 	}
 	/** 
 	 * @time 2018-11-05
@@ -115,44 +117,77 @@ class View extends Component {
 	thisJsonView=(newState)=>{
 
 		 if(newState.form_list.type_name!=="CardGroup"&&newState.form_list.type_name!=="Cards"){
-		var componentsView=[]
-		//将组件的json数据变成数组
-		for(var i in newState.form_list){
-			componentsView.push(
-				{key:i,value:newState.form_list[i]}
-			 )
-		}
-         this.setState({
-			componentsComplexView:[],
-			componentsView:componentsView,
-			this_json_view:newState.form_list,
-			index_json_view:newState.index,
-			isViewJson:true,
-			id_name:newState.form_list.id_name,
-			type_name:newState.form_list.type_name,
-			key:newState.form_list.key,
-			title:newState.form_list.title,
-			tip:newState.form_list.tip,
-			add_button:newState.form_list.add_button,
-			descript:newState.form_list.descript,
-			before_api_uri:newState.form_list.before_api_uri,
-			after_api_uri:newState.form_list.after_api_uri,
-		 })
+			var componentsView=[]
+			//将组件的json数据变成数组
+			var chinesize;
+			for(var i in newState.form_list){
+				//汉化组件属性
+				{i==="id_name"?chinesize="组件名称"
+					:i==="type_name"?chinesize="组件类型"
+					:i==="title"?chinesize="输入框标题"
+					:i==="default_value"?chinesize="显示默认值"
+					:i==="key"?chinesize="输入框默认值"
+					:i==="tip"?chinesize="提示"
+					:i==="add_button"?chinesize="关联"
+					:i==="descript"?chinesize="描述"
+					:i==="before_api_uri"?chinesize="数据接口"
+					:i==="after_api_uri"?chinesize="发送接口"
+					:""}
+					console.log(chinesize)
+				componentsView.push(
+					{key:chinesize,value:newState.form_list[i]}
+				)
+			}
+			if(this.state.isViewJson){
+				setTimeout(function(){
+					document.getElementById("isViewJson").classList.remove("open")
+				},50)
+			}
+			setTimeout((e) => {
+				document.getElementById("isViewJson").classList.add("open")
+				this.setState({
+					componentsComplexView:[],
+					componentsView:componentsView,
+					this_json_view:newState.form_list,
+					index_json_view:newState.index,
+					isViewJson:true,
+					id_name:newState.form_list.id_name,
+					type_name:newState.form_list.type_name,
+					key:newState.form_list.key,
+					title:newState.form_list.title,
+					tip:newState.form_list.tip,
+					add_button:newState.form_list.add_button,
+					descript:newState.form_list.descript,
+					before_api_uri:newState.form_list.before_api_uri,
+					after_api_uri:newState.form_list.after_api_uri,
+				})
+			},100)	
+         
 		}else{
 			var componentsComplexView=[];
 			for(var m=0;m<this.state.view_table_list.length;m++){
 				componentsComplexView.push(this.state.view_table_list[m])
-				// if(this.state.view_table_list[m].type==="formlist"){
-				// 	componentsComplexView.push(this.state.view_table_list[m])
-				// }
-				
 			}
-			this.setState({
-				componentsView:[],
-				componentsComplexView:componentsComplexView,
-				isViewJson:true,
-				index_json_view:newState.index,
-			})
+			if(this.state.isViewJson){
+				setTimeout(function(){
+					document.getElementById("isViewJson").classList.remove("open")
+				},50)
+			}
+			setTimeout((e) => {
+				document.getElementById("isViewJson").classList.add("open")
+				this.setState({
+					componentsView:[],
+					componentsComplexView:componentsComplexView,
+					isViewJson:true,
+					index_json_view:newState.index,
+				})
+			},100)
+			if(this.state.selectedViewTitle!=="-选择-"){
+				this.setState({
+					selectedViewTitle:"-选择-"
+				})
+			}
+			
 		}
 
 	}
@@ -185,8 +220,6 @@ class View extends Component {
 			   var view_change_list=this.state.this_view_list[m];
 			   //判断修改的组件是否为cards
 			   if(this.state.this_view_list[m].type_name==="Cards"){
-				   console.log(this.state.selectedViewIndex)
-				   console.log(view_change_list.add_button[this.state.selectedViewIndex])
 				   if(this.state.selectedViewIndex===1){ 
 					   //selectedViewarrIndex card的body中页面的位置 selectedViewIndex card中子组件位置
 					   view_change_list.add_button[this.state.selectedViewIndex].add_button[this.state.selectedViewarrIndex].add_button=newState.name;
@@ -201,18 +234,20 @@ class View extends Component {
 					   this_view_list:other_complex_list
 				   })
 			   }else{
-				   
+				   console.log(selectComplexView)
+				   console.log(this.state.selectedViewAddTitle)
 			   //修改视图中add_button里面的修改视图或者展示视图名称
 			   view_change_list.add_button.descript=newState.name;
 			   view_change_list.add_button.add_title="添加"+selectComplexView;
 			   
 			   //修改视图中add_button里面的修改视图或者展示视图title名称
-			   view_change_list.add_button[this.state.selectedViewAddTitle]=selectComplexView;
-			   other_complex_list.push(view_change_list)
-			   this.setState({
-				   this_view_list:other_complex_list
-			   })
-			   }
+			//    view_change_list.add_button[this.state.selectedViewAddTitle]=selectComplexView;
+				view_change_list.add_button.descript_title=selectComplexView;  
+				other_complex_list.push(view_change_list)
+				this.setState({
+					this_view_list:other_complex_list
+				})
+				}
 			   
 			   
 		   }
@@ -277,7 +312,8 @@ class View extends Component {
 	 * @param sureAddViewCallback 函数 弹出框确定
 	 */
 	sureAddViewCallback(msg){
-		this.addViewName()
+		this.state.view_id===""?this.addViewName():this.editViewName()
+		
 	}
 	/** 
 	 * @time 2018-11-07
@@ -289,38 +325,37 @@ class View extends Component {
 		console.log(this.state.view_english_name)
 		console.log(this.state.view_id)
 		console.log(document.getElementById("view_type_name").innerHTML)
-		// var InitializationData ;
 		var select_type =  document.getElementById("view_type_name").innerHTML;
-		if(this.state.view_id===""){
-			// select_type==="formlist"?InitializationData="newFormlist":select_type==="group"?InitializationData="newGroup":select_type==="cards"?InitializationData="newCard":""
-			// if(select_type==="formlist"){
-			// 	InitializationData="newFormlist";
-			// }
-			//  if(select_type==="group"){
-			// 	InitializationData="newGroup";
-			// }
-			if(select_type==="cards"){
+		
 				var cb = (route, message, arg) => {
 					if (message.error === 0) {
 						this.setState({
 							alertAddViewState:false,
 							initializationData:message.data
 						})
+						var message_temp=message.data;
+						message_temp["form-temp-name"]=this.state.view_china_name;
+					var add_cb = (route, messages, arg) => {
+						if (messages.error === 0) {
+							
+						}
+					}
+					getData(getRouter("view_json_add"), { token:sessionStorage.token,data:{name:this.state.view_english_name,title:this.state.view_china_name,type:this.state.view_type_name,data:message_temp} }, add_cb, {});
+					
 					}
 				}
-				getData(getRouter("newCard"), { token:sessionStorage.token }, cb, {});
-			}
-			var cb = (route, message, arg) => {
-				if (message.error === 0) {
-					console.log(message)
-					this.setState({
-						alertAddViewState:false
-					})
-				}
-			}
-			getData(getRouter("viewManagement"), { token:sessionStorage.token }, cb, {});
+				getData(getRouter(select_type==="cards"?"newCard":"newFormlistGroup"), { token:sessionStorage.token }, cb, {});
 			
-		}
+			// var cb = (route, message, arg) => {
+			// 	if (message.error === 0) {
+			// 		this.setState({
+			// 			alertAddViewState:false
+			// 		})
+			// 	}
+			// }
+			// getData(getRouter("viewManagement"), { token:sessionStorage.token }, cb, {});
+			
+		
 		
 		// var cb = (route, message, arg) => {
 		// 	if (message.error === 0) {
@@ -331,6 +366,14 @@ class View extends Component {
 		// 	}
 		// }
 		// getData(getRouter(InitializationData), { token:sessionStorage.token }, cb, {});
+	}
+		/** 
+	 * @time 2018-11-07
+	 * @author xuesong
+	 * @param editViewName 函数 弹出框确定发送修改信息的接口
+	 */
+	editViewName=()=>{
+
 	}
 
 	/** 
@@ -365,17 +408,23 @@ class View extends Component {
 			this.setState({
 				selectedViewIndex:newState.index,
 				selectedViewarrIndex:newState.arrIndex,
-				// selectedViewTitle:this.state.view_table_list[i].title,
+				changeInterfaceState:false,//修改接口的状态
 			})
-			console.log(this.state.selectedViewTitle)
+			
 			if(newState.view===this.state.view_table_list[i].name&&newState.addButtonTitle===this.state.view_table_list[i].title){
 				this.setState({
 					selectedViewTitle:this.state.view_table_list[i].title,
 					selectedViewName:newState.name,
 					selectedViewAddTitle:newState.title,
-					changeInterfaceState:false,//修改接口的状态
+					
 				})
 			}
+			
+		}
+		if(newState.addButtonTitle.indexOf("未设置")>=0){
+			this.setState({
+				selectedViewTitle:"选择"
+			})
 		}
 	}
 	/** 
@@ -401,7 +450,6 @@ class View extends Component {
 		this.setState({
 			this_view_list:newList
 		})
-		console.log(this.state.this_view_list)
 	}
 	/** 
 	 * @time 2018-11-16
@@ -409,7 +457,6 @@ class View extends Component {
 	 * @param changeViewMessage 函数 修改视图列表信息
 	 */
 	changeViewMessage=(message)=>{
-		console.log(message)
 		this.setState({
 			alertAddViewState:true,
 			view_china_name:message.title,
@@ -465,13 +512,20 @@ class View extends Component {
 				<button style={{marginBottom:"5px"}} className="add_card_btn" onClick={()=>{
 						this.setState({
 							alertAddViewState:true,
-							view_type_name:"",
+							view_type_name:"formlist",
 							view_china_name:"",
 							view_english_name:"",
 							view_id:""
-
 						})
 					}} >添加</button>
+					<button onClick={()=>{
+						var cb = (route, message, arg) => {
+							if (message.error === 0) {
+							
+								}
+						}
+						getData(getRouter("json_add"), { token:sessionStorage.token,data: this.state.view_table_list}, cb, {});
+					}}>发送data</button>
 					<ul style={{height:"90vh",paddingBottom:"1em"}} className="overflow">
 						{this.state.view_table_list.map((view,index)=>{
 							return <li className="view_message_div" key={index}><div onClick={()=>{
@@ -486,6 +540,7 @@ class View extends Component {
 					
 				</div>
 				<div  className="view_list overflow">
+				{this.state.view_type==="cards"||this.state.view_type===""?"":<div>
 					<button style={{marginBottom:"5px",width:"100px"}} className="label_delete_button" onClick={()=>{
 						this.add_formlist()
 						}} >添加formlist
@@ -494,11 +549,12 @@ class View extends Component {
 						this.add_group()
 						}} >添加group
 					</button>
+				</div>}
+					
 					
 					<div className={this.state.is_view_list?"view_paper_list overflow open":"view_paper_list overflow"}>
 						< ComponentsViewList 
 							descriptViewonClickButton={this.descriptViewButton}
-							// headViewonClickButton={this.headViewButton}
 							handleViewJson={this.thisJsonView} 
 							delViewIndexContent={this.delViewContent}
 							interfaceViewDataButton={this.interfaceViewData}
@@ -510,15 +566,15 @@ class View extends Component {
 				</div>
 				<div className="view_list overflow">
 				
-					<div className={this.state.isViewJson?"view_paper_list overflow open":"view_paper_list overflow"}>
+					<div id="isViewJson" className={this.state.isViewJson?"view_paper_list overflow open":"view_paper_list overflow"}>
 					{this.state.componentsView.map((componentsView,index)=>{
 						return(
 							<ViewTextField 
 								// id={form_list.id_name}
 								key={this.state.this_index_view_list+""+this.state.index_json_view+""+index}
 								inputValue={componentsView.value} 
+								// labelValue={componentsView.key==="id_name"?"组件id":componentsView.key} 
 								labelValue={componentsView.key} 
-								
 								onChange={(event) => {
 									this.changeformlistMessage(event,componentsView)
 									}} 
@@ -529,7 +585,7 @@ class View extends Component {
 							this.state.changeInterfaceState===false?<SelectViewListSearch
 								labelValue={"更改视图"}
 								id={"selectComplexView"}
-								selectedInfo={this.state.selectedViewTitle===""?"-选择-":this.state.selectedViewTitle}
+								selectedInfo={this.state.selectedViewTitle}
 								selectViewValue={this.selectViewGetValue}
 								selectLists={this.state.componentsComplexView}
 							/>:<ViewTextField 
@@ -574,8 +630,8 @@ class View extends Component {
 								id={"view_type"} 
 								labelValue={"类型"}
 								searchInfoLists={"view_type"} 
-								selectedIdInfo={this.state.view_type_name===""?"-选择-":this.state.view_type_name} 
-								selectedInfo={this.state.view_type_name===""?"-选择-":this.state.view_type_name} 
+								selectedIdInfo={this.state.view_type_name} 
+								selectedInfo={this.state.view_type_name} 
 							/> 
 						</div>
 					}	 

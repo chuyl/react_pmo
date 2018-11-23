@@ -27,7 +27,6 @@
         render() {
      
             const { selectedInfo, id, labelValue,disabled } = this.props;
-            console.log(selectedInfo)
             return (
                 <div className="search_info_list_card">
                     <div 
@@ -47,7 +46,7 @@
                         disabled={disabled}
                         id={id}
                     >
-                        {selectedInfo === "" ? "-选择-" : selectedInfo}
+                        {selectedInfo}
                     </div>
                    
                     <div className="search_info_position">

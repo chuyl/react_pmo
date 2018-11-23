@@ -1,7 +1,7 @@
 import React, {
 	Component
 } from 'react'
-import Cards from '../components/Cards'
+// import Cards from '../components/Cards'
 import Alert from '../components/Remind'
 import ComponentsList from '../components/ComponentsList'
 import { getData, getRouter } from '../../utils/helpers'
@@ -208,7 +208,6 @@ class TrainingProgram extends Component {
 			if(newState.before_api_uri==="project_manage_add"){
 				if (message.error === 0) {
 					this.fetchProjectData("editProject")
-					console.log(message.data.id)//项目创建成功,生成的id
 					this.setState({    //  项目创建成功,打开编辑页面。更新view
 						dataId:message.data.id,
 					}) 

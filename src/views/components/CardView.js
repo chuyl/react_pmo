@@ -4,7 +4,7 @@
      * @param CardView 组件  视图管理中Cards组件
      */
     import React, { Component } from 'react';
-    import {getData,getRouter} from '../../utils/helpers'
+    // import {getData,getRouter} from '../../utils/helpers'
     class CardView extends Component {
         state={
             add_button:[],

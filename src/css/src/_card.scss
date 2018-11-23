@@ -112,7 +112,8 @@
     color: $gray600;
     width: 66.6%;
     height: 2.5em;
-    float: left;
+    display: inline-block;
+    // float: left;
     p {
         font-size: 2em;
     } //border: 1px solid $gray600;
@@ -122,7 +123,8 @@
     color: $gray600;
     width: 33.3%;
     height: 2.5em;
-    float: left;
+    //float: left;
+    display: inline-block;
     p {
         font-size: 1.5em;
     }
@@ -132,7 +134,8 @@
     font-size: 2em;
     color: $gray600;
     width: 33.3%;
-    float: left; //border: 1px solid $gray600;
+    display: inline-block;
+    // float: left; //border: 1px solid $gray600;
 }
 
 @media screen and (max-width:768px) {
@@ -145,7 +148,8 @@
 
 .date_card {
     width: 66.6%;
-    float: left;
+    display: inline-block;
+    // float: left;
     height: 3.2em;
     p {
         display: inline-block;
@@ -169,7 +173,8 @@
 .change_line {
     box-sizing: border-box;
     width: 33.3%;
-    float: left;
+    // float: left;
+    display: inline-block;
     height: 3.2em;
     p {
         color: $gray600;

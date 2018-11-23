@@ -4,7 +4,7 @@
 	 * @param Popup 组件 弹出框
 	 */
 import React, { Component } from 'react';
-import TextField from './TextField'
+// import TextField from './TextField'
 class Popup extends Component {
     state={
         alertState:false
