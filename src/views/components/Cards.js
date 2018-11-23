@@ -97,24 +97,8 @@ class Card extends Component {
          }
       }
     }
-    //获取cards组件中add_button里面的视图
-    // fetchCardsContent() {
-	// 	var cb = (route, message, arg) => {
-	// 		if (message.error === 0) {
-	// 			this.setState({
-	// 				add_button: message.data["form-list"],
-	// 				// form_temp_name:message.data["form-temp-name"],
-	// 			})
-
-	// 		}
-	// 	}
-	// 	getData(getRouter(this.props.addButton), { token:sessionStorage.token }, cb, {});		
-	// }
-
 	render(){
-       
         return (
-            
             <div id={"card_id"+this.props.index} name={"card-project"} className={this.state.openCtrlState===""?"card-project active":this.state.openCtrlState===true?"card-project active open move-out":"card-project move-in active"}>
                 {this.props.addButton.map((form_list) => {
                     return (
@@ -164,7 +148,6 @@ class Card extends Component {
                                     message={form_list.title} 
                                     handlethreeCardTitleItem = {this.handlethreeCardTitleItem}
                                 />
-                            
                             :form_list.type_name === "LabelTitleMessage"?
                                 <LabelTitleMessage
                                     id={form_list.id_name} 

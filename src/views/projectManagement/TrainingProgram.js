@@ -61,7 +61,7 @@ class TrainingProgram extends Component {
 
 			}
 		}
-		getData(getRouter("projectViewCard"), { token:sessionStorage.token }, cb, {});
+		getData(getRouter("projectViewCard"), { name:"projectViewCard",token:sessionStorage.token }, cb, {});
 	}
 	fetchProjectDataList() {
 		var cb = (route, message, arg) => {
@@ -82,6 +82,7 @@ class TrainingProgram extends Component {
 
 			}
 		}
+		console.log(url)
 		getData(getRouter(url), { token:sessionStorage.token }, cb, {});		
 	}
 

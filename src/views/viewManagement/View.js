@@ -324,7 +324,7 @@ class View extends Component {
 							this.fetchListData()
 						}
 					}
-					getData(getRouter("view_json_add"), { token:sessionStorage.token,data:{name:this.state.view_english_name,title:this.state.view_china_name,type:select_type,data:JSON.stringify(message_temp)} }, add_cb, {});
+					getData(getRouter("view_json_add"), { token:sessionStorage.token,data:{name:this.state.view_english_name,title:this.state.view_china_name,type:select_type,data:message_temp} }, add_cb, {});
 					
 					}
 				}
@@ -356,7 +356,7 @@ class View extends Component {
 							name:this.state.view_english_name,
 							title:this.state.view_china_name,
 							type:select_type,
-							data:JSON.stringify(message.data)} 
+							data:message.data} 
 						}, add_cb, {});
 			}
 		}
