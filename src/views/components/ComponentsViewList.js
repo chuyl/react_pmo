@@ -96,6 +96,7 @@
         this.props.delViewIndexContent(index) 
     }
        render() {
+           console.log(this.props.componentslist)
            return (
                this.props.componentslist.map((form_list,index) => {
                        return (

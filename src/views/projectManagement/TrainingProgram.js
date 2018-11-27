@@ -23,7 +23,7 @@ class TrainingProgram extends Component {
 
 	};
 
-	componentWillMount() {
+	componentDidMount() {
 		this.listProject()
 		this.fetchListData()
         this.fetchProjectDataList()
@@ -35,19 +35,15 @@ class TrainingProgram extends Component {
 				this.setState({
 					card_list:message.data
 				})
-
 			}else{
-			
 				Alert.open({
 					alertTip:message.msg
-					
 				});
 				setTimeout(function(){
 					Alert.close();
 				 },3000)
 			}
 		}
-		
 		getData(getRouter(PROJECTMANAGELIST), { token:sessionStorage.token }, cb, {});
 
 	}
@@ -62,6 +58,7 @@ class TrainingProgram extends Component {
 
 			}
 		}
+		
 		getData(getRouter("view_json_name"), { name:"projectViewCard",token:sessionStorage.token }, cb, {});
 	}
 	fetchProjectDataList() {
@@ -84,7 +81,6 @@ class TrainingProgram extends Component {
 
 			}
 		}
-		console.log(url)
 		getData(getRouter("view_json_name"), { name:url,token:sessionStorage.token }, cb, {});		
 	}
 

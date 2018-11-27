@@ -43,7 +43,7 @@ var local = {
                 "new_view":{"url":"../data/new_view.json","version":"1.0"},//新增视图
                 //视图
                
-                "addProject":{"url":"../json/addProject.json","version":"1.0"},//新建项目
+                // "addProject":{"url":"../json/addProject.json","version":"1.0"},//新建项目
                 "addProjectGather":{"url":"../json/addProjectGather.json","version":"1.0"},//新建项目集
                 "addTeacher":{"url":"../json/addTeacher.json","version":"1.0"},//新建讲师
                 "addProjectAddress":{"url":"../json/addProjectAddress.json","version":"1.0"},//新增培训地点

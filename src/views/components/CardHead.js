@@ -10,7 +10,7 @@
         state={
             add_button:[]
         }
-        componentWillMount(){
+        componentDidMount(){
         this.fetchHeadContent()
         }
         //获取组件中add_button里面的编辑视图

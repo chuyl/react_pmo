@@ -29,6 +29,7 @@ class View extends Component {
 		selectedViewarrIndex:"",
 		view_type:"",//视图的类型
 		view_id:"",
+		view_data:{},
 		initializationData:[],//初始化cards的json结构
 		change_interface:"",//修改接口名称
 		change_key_interface:"",//修改接口key名称
@@ -76,7 +77,7 @@ class View extends Component {
 	viewList=(list,index)=>{
 
 		var cb = (route, message, arg) => {
-			
+			console.log(list)
 			if (message.error === 0) {
 				var json_message=JSON.parse(message.data);
 				this.setState({
@@ -85,7 +86,11 @@ class View extends Component {
 					is_view_list:true,
 					isViewJson:false,
 					view_type:list.type,
-					this_index_view_list:index
+					this_index_view_list:index,
+					view_china_name:list.title,
+					view_english_name:list.name,
+					view_id:list.id,
+					view_data:json_message
 				})
 			}
 		}
@@ -118,9 +123,8 @@ class View extends Component {
 	thisJsonView=(newState)=>{
 
 		 if(newState.form_list.type_name!=="CardGroup"&&newState.form_list.type_name!=="Cards"){
-			var componentsView=[]
+			var componentsView=[];
 			//将组件的json数据变成数组
-			var chinesize;
 			for(var i in newState.form_list){
 				componentsView.push(
 					{key:i,value:newState.form_list[i]}
@@ -170,6 +174,7 @@ class View extends Component {
 					index_json_view:newState.index,
 				})
 			},100)
+			console.log(componentsComplexView)
 			if(this.state.selectedViewTitle!=="-选择-"){
 				this.setState({
 					selectedViewTitle:"-选择-"
@@ -185,7 +190,28 @@ class View extends Component {
 	 * @param editViewList 函数 编辑视图列表 
 	 */
 	editViewList=()=>{
-		console.log(this.state.this_view_list)
+		var select_type =  document.getElementById("view_type_name").innerHTML;
+		var view_data=this.state.view_data;
+		view_data["form-list"]=this.state.this_view_list;
+
+		var add_cb = (route, messages, arg) => {
+			if (messages.error === 0) {
+				this.setState({
+					is_view_list:false,
+					isViewJson:false,
+					view_type:""
+				})
+				this.fetchListData()
+			}
+		}
+		getData(getRouter("view_json_edit"), 
+		{ token:sessionStorage.token,
+			data:{  id:this.state.view_id, 
+					name:this.state.view_english_name,
+					title:this.state.view_china_name,
+					type:select_type,
+					data:JSON.stringify(view_data)} 
+				}, add_cb, {});
 	}
 	
 	/** 
@@ -316,7 +342,7 @@ class View extends Component {
 					if (message.error === 0) {
 						this.setState({
 							alertAddViewState:false,
-							initializationData:message.data
+							initializationData:message.data,
 						})
 						var message_temp=message.data;
 						message_temp["form-temp-name"]=this.state.view_china_name;
@@ -342,9 +368,10 @@ class View extends Component {
 			if (message.error === 0) {
 				this.setState({
 					alertAddViewState:false,
-					initializationData:message.data
+					initializationData:JSON.parse(message.data),
+					
 				})
-				var message_temp=message.data;
+				var message_temp=JSON.parse(message.data);
 				message_temp["form-temp-name"]=this.state.view_china_name;
 				var add_cb = (route, messages, arg) => {
 					if (messages.error === 0) {
@@ -357,11 +384,11 @@ class View extends Component {
 							name:this.state.view_english_name,
 							title:this.state.view_china_name,
 							type:select_type,
-							data:JSON.stringify(message.data)} 
+							data:JSON.stringify(this.state.initializationData)} 
 						}, add_cb, {});
 			}
 		}
-		getData(getRouter(this.state.view_english_name), { token:sessionStorage.token }, cb, {});
+		getData(getRouter("view_json_name"), { name:this.state.view_english_name,token:sessionStorage.token }, cb, {});
 		
 
 	}
@@ -423,7 +450,9 @@ class View extends Component {
 	 * @param descriptViewButton 函数 Group展示按钮
 	 */
 	selectViewGetValue=(newState)=>{
+		
 		this.changeGroupView(newState)
+
 	}
 	/** 
 	 * @time 2018-11-16
@@ -472,6 +501,7 @@ class View extends Component {
 				})
 			}
 		}
+		
 		getData(getRouter("newFormlist"), { token:sessionStorage.token }, cb, {});
 	}
 	/** 
@@ -520,31 +550,35 @@ class View extends Component {
 					<ul style={{height:"88vh",paddingBottom:"1em"}} className="overflow">
 						{this.state.view_table_list.map((view,index)=>{
 							return <li className="view_message_div" key={index}><div onClick={()=>{
-								this.viewList(view,index)
-								
-							}} >{view.title}</div><button onClick={()=>{
-								this.changeViewMessage(view)
-								
-							}}>修改名称</button></li>
-						})}
+										this.viewList(view,index)
+										
+									}} >{view.title}</div>
+									<button style={{width:"80px"}} className="label_delete_button" onClick={()=>{
+										this.changeViewMessage(view)
+										
+									}}>修改名称</button></li>
+								})}
 					</ul>
 					
 				</div>
 				<div  className="view_list overflow">
-				{this.state.view_type==="cards"||this.state.view_type===""?"":<div>
-					<button style={{marginBottom:"5px",width:"100px"}} className="label_delete_button" onClick={()=>{
-						this.add_formlist()
-						}} >添加formlist
-					</button>
-					<button style={{marginBottom:"5px",width:"100px"}} className="label_delete_button" onClick={()=>{
-						this.add_group()
-						}} >添加group
-					</button>
-				</div>}
-					
+				
+				{this.state.view_type==="cards"||this.state.view_type===""?"":
+							<div className="add_component_btns">
+								<button style={{marginBottom:"5px",width:"100px"}} className="label_delete_button" onClick={()=>{
+									this.add_formlist()
+									}} >添加formlist
+								</button>
+								<button style={{marginBottom:"5px",width:"100px"}} className="label_delete_button" onClick={()=>{
+									this.add_group()
+									}} >添加group
+								</button>
+							</div>}
 					
 					<div className={this.state.is_view_list?"view_paper_list overflow open":"view_paper_list overflow"}>
+						
 						< ComponentsViewList 
+						   
 							descriptViewonClickButton={this.descriptViewButton}
 							handleViewJson={this.thisJsonView} 
 							delViewIndexContent={this.delViewContent}
@@ -553,12 +587,12 @@ class View extends Component {
 						<hr className="view_change_hr"></hr>
 						<button className="view_change_btn" onClick={()=>{
 							this.editViewList()
-						}}>确定</button>
+						}}>保存</button>
 					</div>
 				</div>
 				<div className="view_list overflow">
 				
-					<div id="isViewJson" className={this.state.isViewJson?"view_paper_list overflow open":"view_paper_list overflow"}>
+					<div id="isViewJson" style={{marginTop:"2em"}} className={this.state.isViewJson?"view_paper_list overflow open":"view_paper_list overflow"}>
 					{this.state.componentsView.map((componentsView,index)=>{
 						return(
 							<ViewTextField 
@@ -590,7 +624,7 @@ class View extends Component {
 								id={"selectComplexView"}
 								selectedInfo={this.state.selectedViewTitle}
 								selectViewValue={this.selectViewGetValue}
-								selectLists={this.state.componentsComplexView}
+								selectLists={this.state.view_table_list}
 							/>:<ViewTextField 
 									value={this.state.change_interface} 
 									labelValue={"名称"} 

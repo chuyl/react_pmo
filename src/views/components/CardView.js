@@ -77,7 +77,7 @@
     }
         render(){
             return (
-                <div>
+                <div className="complex_message">
                      <p onClick={this.headViewButton}>
                          {this.props.addButton[0].title===""?"":this.props.addButton[0].title}
                      </p>

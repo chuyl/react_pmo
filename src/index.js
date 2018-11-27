@@ -120,7 +120,10 @@ for(var x=0;x<lang.length;x++){
         //  console.log(router_lists)
         return(
           components.push(
-            <li key={router_list.title} onClick={ () => { this.setState({ currentIndex :router_list.path}) } } className={ this.check_router_index(router_list.path)}><Link to={router_list.path}>{router_list.title}</Link></li>
+            <li key={router_list.title} onClick={ () => { 
+              this.setState({ currentIndex :router_list.path})  
+              console.log(router_list.data)
+            } } className={ this.check_router_index(router_list.path)}><Link to={router_list.path}>{router_list.title}</Link></li>
          )
         )
        }

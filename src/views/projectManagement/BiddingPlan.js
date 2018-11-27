@@ -1,4 +1,4 @@
-//招投标计划
+//所属项目集
 import React, { Component } from 'react';
 
 class BiddingPlan extends Component {
@@ -6,7 +6,7 @@ class BiddingPlan extends Component {
 	render(){
 		return (
             <div>
-        招投标计划
+        所属项目集
         </div>
 		)
 	}

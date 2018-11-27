@@ -7,7 +7,6 @@
     class SpellingCardGroup extends Component {
         render(){
             const {message} =this.props;
-            console.log(message)
             return (
              
                 message?message.map((message,index) => {

@@ -62,6 +62,7 @@ const Language = {
                         {id:"1",
                         path:"/budget",
                         title:"预算",
+                        data:"list",
                         component:Budget},
                         {id:"2",
                         path:"/finalAccounts",
