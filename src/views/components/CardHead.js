@@ -28,6 +28,7 @@
             getData(getRouter("view_json_name"), { name:this.props.addButton,token:sessionStorage.token }, cb, {});
         }
         render(){
+            console.log("head")
             // const {id,disabled,inputValue,onClick,labelValue,name} =this.props;
             return (
                 <div className="card-head">

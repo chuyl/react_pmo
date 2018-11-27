@@ -128,10 +128,11 @@ handleChildChange=(formData)=>{
     this.props.editCardGroupStates(newStates)
  }
     render() {
-       
+     
         return (
                 this.props.componentslist.map((form_list,index) => {
                     
+                   
                     return (
                             form_list.type_name === "Cards" ?
                                 <Cards  

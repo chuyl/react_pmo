@@ -242,7 +242,6 @@ class TrainingProgram extends Component {
 						{this.state.card_list!==null?this.state.card_list.map((card_list,index) => {
 							return (
 								<ComponentsList index={index}  sevenChange = {this.handleChildChange} key={index} componentslist =  {this.state.projectCard} componentsdata = {card_list} ></ComponentsList > 
-
 								// <Cards 
 								// 		index={index}
 								// 		sixChange = {this.handleChildChange}

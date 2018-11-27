@@ -80,6 +80,7 @@ class View extends Component {
 			console.log(list)
 			if (message.error === 0) {
 				var json_message=JSON.parse(message.data);
+				console.log(json_message)
 				this.setState({
 					this_view_list:json_message["form-list"],
 					form_temp_name:json_message["form-temp-name"],
@@ -357,6 +358,21 @@ class View extends Component {
 				}
 				getData(getRouter(select_type==="cards"?"newCard":"newFormlistGroup"), { token:sessionStorage.token }, cb, {});
 	}
+    editViewMessage=(name)=>{
+		var cb = (route, message, arg) => {
+			if (message.error === 0) {
+				this.setState({
+					// alertAddViewState:false,
+					initializationData:JSON.parse(message.data),
+					
+				})
+				var message_temp=JSON.parse(message.data);
+				message_temp["form-temp-name"]=this.state.view_china_name;
+						}
+		 }
+		 getData(getRouter("view_json_name"), { name:name,token:sessionStorage.token }, cb, {});
+	}
+
 		/** 
 	 * @time 2018-11-07
 	 * @author xuesong
@@ -364,18 +380,13 @@ class View extends Component {
 	 */
 	editViewName=()=>{
 		var select_type =  document.getElementById("view_type_name").innerHTML;
-		var cb = (route, message, arg) => {
-			if (message.error === 0) {
+	
+		var add_cb = (route, messages, arg) => {
+			if (messages.error === 0) {
+				this.fetchListData()
 				this.setState({
 					alertAddViewState:false,
-					initializationData:JSON.parse(message.data),
-					
 				})
-				var message_temp=JSON.parse(message.data);
-				message_temp["form-temp-name"]=this.state.view_china_name;
-				var add_cb = (route, messages, arg) => {
-					if (messages.error === 0) {
-						this.fetchListData()
 					}
 				}
 				getData(getRouter("view_json_edit"), 
@@ -386,9 +397,7 @@ class View extends Component {
 							type:select_type,
 							data:JSON.stringify(this.state.initializationData)} 
 						}, add_cb, {});
-			}
-		}
-		getData(getRouter("view_json_name"), { name:this.state.view_english_name,token:sessionStorage.token }, cb, {});
+	
 		
 
 	}
@@ -450,7 +459,7 @@ class View extends Component {
 	 * @param descriptViewButton 函数 Group展示按钮
 	 */
 	selectViewGetValue=(newState)=>{
-		
+
 		this.changeGroupView(newState)
 
 	}
@@ -477,6 +486,7 @@ class View extends Component {
 	 */
 	changeViewMessage=(message)=>{
 		console.log(message)
+		this.editViewMessage(message.name)
 		this.setState({
 			alertAddViewState:true,
 			view_china_name:message.title,
@@ -495,6 +505,7 @@ class View extends Component {
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
 				var formlist=this.state.this_view_list;
+				console.log(formlist)
 				formlist.push(message.data)
 				this.setState({
 					this_view_list:formlist
@@ -552,11 +563,13 @@ class View extends Component {
 							return <li className="view_message_div" key={index}><div onClick={()=>{
 										this.viewList(view,index)
 										
-									}} >{view.title}</div>
-									<button style={{width:"80px"}} className="label_delete_button" onClick={()=>{
-										this.changeViewMessage(view)
-										
-									}}>修改名称</button></li>
+										}} >{view.title}</div>
+										<button style={{width:"80px"}} className="label_delete_button" onClick={()=>{
+											this.changeViewMessage(view)
+											
+										}}>修改名称
+										</button>
+									</li>
 								})}
 					</ul>
 					

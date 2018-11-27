@@ -45,6 +45,7 @@
     fetchPageContent() {
         var cb = (route, message, arg) => {
             var json_message=JSON.parse(message.data);
+           
             if (message.error === 0) {
                 this.setState({
                     add_button: json_message["form-list"],
