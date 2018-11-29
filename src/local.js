@@ -9,6 +9,7 @@ var local = {
                 "staff_manage_list":{"url":"../data/staff_manage_list.json","version":"1.0"},//实施负责人
                 "program_manage_list":{"url":"../data/program_manage_list.json","version":"1.0"},// 项目集列表
                 "program_manage_add":{"url":"../data/program_manage_add.json","version":"1.0"},//项目集新增
+                "program_data_getByProjectId":{"url":"../data/program_data_getByProjectId.json","version":"1.0"},
                 "lecturer_manage_list":{"url":"../data/lecturer_manage_list.json","version":"1.0"},//讲师列表
                 "lecturer_manage_add":{"url":"../data/lecturer_manage_add.json","version":"1.0"},//讲师新增
                 "lecturer_duty_list":{"url":"../data/lecturer_duty_list.json","version":"1.0"},//讲师职责列表

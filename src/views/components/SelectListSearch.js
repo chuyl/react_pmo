@@ -27,16 +27,27 @@
          * @param fetchData 函数名  获取本地编辑项目json
          */
         fetchData() {
-            var cb = (route, message, arg) =>  {
-                if (message.error===0) {
-                    var json_message=JSON.parse(message.data);
-                    this.setState( {
+            var json_view=JSON.parse(sessionStorage.view)
+            for(var i=0;i<json_view.length;i++){
+                if(json_view[i].name===this.state.add_uri_button){
+                    var json_message=JSON.parse(json_view[i].data);
+                    this.setState({
                         add_button: json_message["form-list"],
                         form_temp_name: json_message["form-temp-name"],
                     })
+    
                 }
             }
-            getData(getRouter("view_json_name"), { name:this.state.add_uri_button,token:sessionStorage.token }, cb, {});
+            // var cb = (route, message, arg) =>  {
+            //     if (message.error===0) {
+            //         var json_message=JSON.parse(message.data);
+            //         this.setState( {
+            //             add_button: json_message["form-list"],
+            //             form_temp_name: json_message["form-temp-name"],
+            //         })
+            //     }
+            // }
+            // getData(getRouter("view_json_name"), { name:this.state.add_uri_button,token:sessionStorage.token }, cb, {});
              
             // fetch('../json/'+this.state.add_uri_button+'.json')
             // 	.then(response => response.json())

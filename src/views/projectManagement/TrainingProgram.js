@@ -48,18 +48,30 @@ class TrainingProgram extends Component {
 
 	}
 	fetchListData() {
-		var cb = (route, message, arg) => {
-			if (message.error === 0) {
-				var json_message=JSON.parse(message.data);
+		var json_view=JSON.parse(sessionStorage.view)
+		for(var i=0;i<json_view.length;i++){
+			if(json_view[i].name==="projectViewCard"){
+				
+				var json_message=JSON.parse(json_view[i].data);
 				this.setState({
 					projectCard: json_message["form-list"],
-		 			form_temp_name:json_message["form-temp-name"],
+					form_temp_name: json_message["form-temp-name"],
 				})
 
 			}
 		}
+		// var cb = (route, message, arg) => {
+		// 	if (message.error === 0) {
+		// 		var json_message=JSON.parse(message.data);
+		// 		this.setState({
+		// 			projectCard: json_message["form-list"],
+		//  			form_temp_name:json_message["form-temp-name"],
+		// 		})
+
+		// 	}
+		// }
 		
-		getData(getRouter("view_json_name"), { name:"projectViewCard",token:sessionStorage.token }, cb, {});
+		// getData(getRouter("view_json_name"), { name:"projectViewCard",token:sessionStorage.token }, cb, {});
 	}
 	fetchProjectDataList() {
 		var cb = (route, message, arg) => {
@@ -71,17 +83,29 @@ class TrainingProgram extends Component {
 	 * @param card_box_close 函数  关闭paper
 	 */
 	fetchProjectData(url) {
-		var cb = (route, message, arg) => {
-			if (message.error === 0) {
-				var json_message=JSON.parse(message.data);
+		var json_view=JSON.parse(sessionStorage.view)
+		for(var i=0;i<json_view.length;i++){
+			if(json_view[i].name===url){
+				
+				var json_message=JSON.parse(json_view[i].data);
 				this.setState({
 					add_button: json_message["form-list"],
-					form_temp_name:json_message["form-temp-name"],
+					form_temp_name: json_message["form-temp-name"],
 				})
 
 			}
 		}
-		getData(getRouter("view_json_name"), { name:url,token:sessionStorage.token }, cb, {});		
+		// var cb = (route, message, arg) => {
+		// 	if (message.error === 0) {
+		// 		var json_message=JSON.parse(message.data);
+		// 		this.setState({
+		// 			add_button: json_message["form-list"],
+		// 			form_temp_name:json_message["form-temp-name"],
+		// 		})
+
+		// 	}
+		// }
+		// getData(getRouter("view_json_name"), { name:url,token:sessionStorage.token }, cb, {});		
 	}
 
 	/** 

@@ -28,26 +28,26 @@
          * @param fetchData 函数名  获取本地编辑项目json
          */
         fetchData=()=> {
-            // fetch('../json/' + this.state.linkpage + '.json')
-            //     .then(response => response.json())
-            //     .then(data =>  {
-            //         this.setState( {
-            //             add_button:data.data["form-list"], 
-            //         })
+            var json_view=JSON.parse(sessionStorage.view)
+            for(var i=0;i<json_view.length;i++){
+                if(json_view[i].name===this.state.linkpage){
                     
-            //     })
-            //     .catch(e =>  {
-            //         console.log("error")
-            //     })
-            var cb = (route, message, arg) => {
-                var json_message=JSON.parse(message.data);
-                if (message.error === 0) {
+                    var json_message=JSON.parse(json_view[i].data);
                     this.setState({
-                        add_button:json_message["form-list"], 
+                        add_button: json_message["form-list"],
                     })
+    
                 }
             }
-            getData(getRouter("view_json_name"), {name:this.state.linkpage,token:sessionStorage.token }, cb, {});
+            // var cb = (route, message, arg) => {
+            //     var json_message=JSON.parse(message.data);
+            //     if (message.error === 0) {
+            //         this.setState({
+            //             add_button:json_message["form-list"], 
+            //         })
+            //     }
+            // }
+            // getData(getRouter("view_json_name"), {name:this.state.linkpage,token:sessionStorage.token }, cb, {});
         }
         /** 
         * @author xuesong
@@ -87,17 +87,24 @@
 	 * @param handleClick 函数 点击link组件获取视图和对应的数据
 	 */
     handleClick=()=>{
-        var cb = (route, message, arg) =>  {
-            if (message.error === 0) {
+       // var cb = (route, message, arg) =>  {
+           // if (message.error === 0) {
                 var cb = (route, messages, arg) =>  {
                     if (messages.error === 0) {
-                        var json_message=JSON.parse(message.data);
-                        var newState = {
-                            add_button:json_message["form-list"]?json_message["form-list"]:[],
-                            form_temp_name:json_message["form-temp-name"],
-                            data:messages.data?messages.data:"",
-                            dataId:this.props.dataId
-                           }
+                        var json_view=JSON.parse(sessionStorage.view)
+                        for(var i=0;i<json_view.length;i++){
+
+                            if(json_view[i].name===this.props.linkpage){
+                                var json_message=JSON.parse(json_view[i].data);
+                                var newState = {
+                                    add_button:json_message["form-list"]?json_message["form-list"]:[],
+                                    form_temp_name:json_message["form-temp-name"],
+                                    data:messages.data?messages.data:"",
+                                    dataId:this.props.dataId
+                            }
+                            }
+                        }
+                        
                     }else{
                         this.setState({
                             remind_state:true
@@ -112,14 +119,15 @@
                     }
                      this.props.oneChange(newState);
                 }
+                console.log(this.props.messageList)
                 //获取数据接口
                 getData(getRouter(this.props.messageList),  {token:sessionStorage.token, id:this.props.dataId }, cb,  {}); 
-            }
+            //}
         }
         //获取视图接口
-        getData(getRouter("view_json_name"),  {name:this.props.linkpage,token:sessionStorage.token}, cb,  {}); 
+      //  getData(getRouter("view_json_name"),  {name:this.props.linkpage,token:sessionStorage.token}, cb,  {}); 
         
-    }
+    //}
     /** 
 	 * @time 2018-10-16
 	 * @author xuesong

@@ -72,6 +72,20 @@ class TabComponent extends Component{
     this.langMangement(Lang.viewManagement)
 	  sessionStorage.getItem("logged")===false;
     this.getRoutes();
+    
+}
+
+getViewJsonList() {
+  var cb = (route, message, arg) => {
+    if (message.error === 0) {
+      sessionStorage.view=JSON.stringify(message.data);
+      // this.setState({
+      //   view_table_list:
+      // })
+
+    }
+  }
+  getData(getRouter("view_json_list"), { token:sessionStorage.token }, cb, {});
 }
 langMangement(lang){
 for(var x=0;x<lang.length;x++){
@@ -208,7 +222,8 @@ handleLogout = () => {
 					Alert.close();
 				 },3000)
       }
-		}
+    }
+    this.getViewJsonList()
 		getData(getRouter("user_account_login"), { account:this.state.login_account,password:this.state.login_password }, cb, {});		
     
   }

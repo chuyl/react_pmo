@@ -24,6 +24,7 @@
    import CardOpen from './CardOpen'
    import CardFoot from './CardFoot'
    import LabelTitleMessage from './LabelTitleMessage'
+   import TitleMessage from './TitleMessage'
    import LabelSelectMessage from './LabelSelectMessage'
    import HoldBtn from './HoldBtn'
 //    import AddCardBtn from './AddCardBtn'
@@ -192,6 +193,11 @@
                                        id={form_list.id_name}
                                        labelValue={form_list.title} 
                                     //    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                   />
+                                :form_list.type_name === "TitleMessage"?
+                                   <TitleMessage
+                                       id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
+                                       labelValue={form_list.title} 
                                    />
                                 :form_list.type_name === "LabelSelectMessage"?
                                    <LabelSelectMessage

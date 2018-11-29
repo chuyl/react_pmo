@@ -6,6 +6,7 @@ import ComponentsViewList from '../components/ComponentsViewList'
 import SelectViewListSearch from '../components/SelectViewListSearch'
 import ViewTextField from '../components/ViewTextField';
 import Popup from '../components/Popup'
+import Alert from '../components/Alert'
 import SelectList from '../components/SelectList'
 class View extends Component {
    
@@ -34,6 +35,9 @@ class View extends Component {
 		change_interface:"",//修改接口名称
 		change_key_interface:"",//修改接口key名称
 		isShowAddButton:false,
+		copy_message:"",
+		alertCopyMsg:"是否确认复制",
+		alertCopyStat:false,
 		view_china_name:"",
 		view_english_name:"",
 		view_type_name:"formlist",
@@ -60,10 +64,11 @@ class View extends Component {
 	fetchListData() {
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
-
+				sessionStorage.view=JSON.stringify(message.data);
 				this.setState({
 					view_table_list:message.data	
 				})
+
 
 			}
 		}
@@ -75,27 +80,46 @@ class View extends Component {
 	 * @param viewList 函数 获取某一个视图列表json (简单的formlist)
 	 */
 	viewList=(list,index)=>{
-
-		var cb = (route, message, arg) => {
-			console.log(list)
-			if (message.error === 0) {
-				var json_message=JSON.parse(message.data);
-				console.log(json_message)
-				this.setState({
-					this_view_list:json_message["form-list"],
-					form_temp_name:json_message["form-temp-name"],
-					is_view_list:true,
-					isViewJson:false,
-					view_type:list.type,
-					this_index_view_list:index,
-					view_china_name:list.title,
-					view_english_name:list.name,
-					view_id:list.id,
-					view_data:json_message
+	
+	var json_view=JSON.parse(sessionStorage.view)
+	for(var i=0;i<json_view.length;i++){
+		if(json_view[i].name===list.name){
+			
+			var json_message=JSON.parse(json_view[i].data);
+			this.setState({
+				this_view_list:json_message["form-list"],
+				form_temp_name:json_message["form-temp-name"],
+				is_view_list:true,
+				isViewJson:false,
+				view_type:list.type,
+				this_index_view_list:index,
+				view_china_name:list.title,
+				view_english_name:list.name,
+				view_id:list.id,
+				view_data:json_message
 				})
-			}
 		}
-		getData(getRouter("view_json_name"), { name:list.name,token:sessionStorage.token }, cb, {});
+	}
+		// var cb = (route, message, arg) => {
+		// 	console.log(list)
+		// 	if (message.error === 0) {
+		// 		var json_message=JSON.parse(message.data);
+		// 		console.log(json_message)
+		// 		this.setState({
+		// 			this_view_list:json_message["form-list"],
+		// 			form_temp_name:json_message["form-temp-name"],
+		// 			is_view_list:true,
+		// 			isViewJson:false,
+		// 			view_type:list.type,
+		// 			this_index_view_list:index,
+		// 			view_china_name:list.title,
+		// 			view_english_name:list.name,
+		// 			view_id:list.id,
+		// 			view_data:json_message
+		// 		})
+		// 	}
+		// }
+		// getData(getRouter("view_json_name"), { name:list.name,token:sessionStorage.token }, cb, {});
 	}
 	/** 
 	 * @time 2018-11-05
@@ -334,10 +358,6 @@ class View extends Component {
 	 * @param sureAddViewCallback 函数 弹出框确定发送信息的接口
 	 */
 	addViewName=()=>{
-		// console.log(this.state.view_china_name)
-		// console.log(this.state.view_english_name)
-		// console.log(this.state.view_id)
-		// console.log(document.getElementById("view_type_name").innerHTML)
 		var select_type =  document.getElementById("view_type_name").innerHTML;
 				var cb = (route, message, arg) => {
 					if (message.error === 0) {
@@ -347,30 +367,49 @@ class View extends Component {
 						})
 						var message_temp=message.data;
 						message_temp["form-temp-name"]=this.state.view_china_name;
-					var add_cb = (route, messages, arg) => {
-						if (messages.error === 0) {
-							this.fetchListData()
-						}
+					// if(select_type==="cards"){
+					// 	var view_english_name=this.state.view_english_name;
+					// 	var name=[view_english_name+"Card",view_english_name+"Head",view_english_name+"Page1",view_english_name+"Page2",view_english_name+"Page3",]
+					// }else{
+						var add_cb = (route, messages, arg) => {
+							if (messages.error === 0) {
+								this.fetchListData()
+							}
+						// }
+						getData(getRouter("view_json_add"), { token:sessionStorage.token,data:{name:this.state.view_english_name,title:this.state.view_china_name,type:select_type,data:JSON.stringify(message_temp)} }, add_cb, {});
 					}
-					getData(getRouter("view_json_add"), { token:sessionStorage.token,data:{name:this.state.view_english_name,title:this.state.view_china_name,type:select_type,data:JSON.stringify(message_temp)} }, add_cb, {});
+						
 					
 					}
 				}
 				getData(getRouter(select_type==="cards"?"newCard":"newFormlistGroup"), { token:sessionStorage.token }, cb, {});
 	}
     editViewMessage=(name)=>{
-		var cb = (route, message, arg) => {
-			if (message.error === 0) {
+		var json_view=JSON.parse(sessionStorage.view)
+		for(var i=0;i<json_view.length;i++){
+			if(json_view[i].name===name){
+				var json_message=JSON.parse(json_view[i].data);
+				json_message["form-temp-name"]=this.state.view_china_name;
 				this.setState({
-					// alertAddViewState:false,
-					initializationData:JSON.parse(message.data),
+					initializationData:json_message,
 					
 				})
-				var message_temp=JSON.parse(message.data);
+				var message_temp=JSON.parse(json_view[i].data);
 				message_temp["form-temp-name"]=this.state.view_china_name;
-						}
-		 }
-		 getData(getRouter("view_json_name"), { name:name,token:sessionStorage.token }, cb, {});
+			}
+		}
+		// var cb = (route, message, arg) => {
+		// 	if (message.error === 0) {
+		// 		this.setState({
+		// 			// alertAddViewState:false,
+		// 			initializationData:JSON.parse(message.data),
+					
+		// 		})
+		// 		var message_temp=JSON.parse(message.data);
+		// 		message_temp["form-temp-name"]=this.state.view_china_name;
+		// 				}
+		//  }
+		//  getData(getRouter("view_json_name"), { name:name,token:sessionStorage.token }, cb, {});
 	}
 
 		/** 
@@ -496,6 +535,51 @@ class View extends Component {
 
 		})
 	}
+		/** 
+	 * @time 2018-11-29
+	 * @author xuesong
+	 * @param copyViewMessage 函数 一键复制视图
+	 */
+	copyViewMessage=(message)=>{
+		console.log(message)
+		var name = message.name+"copy",
+			title = message.title+"复制",
+			type = message.type,
+			data = message.data;
+			var cb = (route, messages, arg) => {
+				if (messages.error === 0) {
+					this.setState({
+						alertCopyState:false
+					})
+					this.fetchListData()
+				}
+			}
+			getData(getRouter("view_json_add"), { token:sessionStorage.token,data:{name:name,title:title,type:type,data:data} }, cb, {});
+			
+
+	}
+	/** 
+	 * @time 2018-11-29
+	 * @author xuesong
+	 * @param sureCopyCallback 函数 一键复制视图
+	 */
+	sureCopyCallback=()=>{
+		// console.log(this.state.copy_message.name)
+		this.copyViewMessage(this.state.copy_message)
+
+	}
+			/** 
+	 * @time 2018-11-29
+	 * @author xuesong
+	 * @param cancelCopyCallback 函数 一键复制视图
+	 */
+	cancelCopyCallback=()=>{
+		this.setState({
+			alertCopyState:false
+		})		
+	}
+			
+
 	/** 
 	 * @time 2018-11-20
 	 * @author xuesong
@@ -564,10 +648,19 @@ class View extends Component {
 										this.viewList(view,index)
 										
 										}} >{view.title}</div>
-										<button style={{width:"80px"}} className="label_delete_button" onClick={()=>{
+										<button style={{width:"70px"}} className="label_delete_button" onClick={()=>{
 											this.changeViewMessage(view)
 											
 										}}>修改名称
+										</button>
+										<button style={{width:"40px"}} className="label_delete_button" onClick={()=>{
+											this.setState({
+												copy_message:view,
+												alertCopyState:true
+											})
+											// this.copyViewMessage(view)
+											
+										}}>复制
 										</button>
 									</li>
 								})}
@@ -690,7 +783,7 @@ class View extends Component {
 					cancelCallback = { this.cancelAddViewCallback.bind(this) } 
 					alertState={this.state.alertAddViewState}
 				/>
-				
+				<Alert alertTitle={"一键复制"} alertMsg = {this.state.alertCopyMsg} sureCallback = {this.sureCopyCallback.bind(this)} cancelCallback = { this.cancelCopyCallback.bind(this) } alertState={this.state.alertCopyState}/>
 			</div>
 			
 		);

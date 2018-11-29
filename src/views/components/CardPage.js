@@ -43,18 +43,29 @@
    
     //获取组件中add_button里面的编辑视图
     fetchPageContent() {
-        var cb = (route, message, arg) => {
-            var json_message=JSON.parse(message.data);
-           
-            if (message.error === 0) {
+        var json_view=JSON.parse(sessionStorage.view)
+        for(var i=0;i<json_view.length;i++){
+            if(json_view[i].name===this.props.addButton){
+                
+                var json_message=JSON.parse(json_view[i].data);
                 this.setState({
                     add_button: json_message["form-list"],
                 })
 
             }
-           
         }
-        getData(getRouter("view_json_name"), { name:this.props.addButton,token:sessionStorage.token }, cb, {});
+        // var cb = (route, message, arg) => {
+        //     var json_message=JSON.parse(message.data);
+           
+        //     if (message.error === 0) {
+        //         this.setState({
+        //             add_button: json_message["form-list"],
+        //         })
+
+        //     }
+           
+        // }
+        // getData(getRouter("view_json_name"), { name:this.props.addButton,token:sessionStorage.token }, cb, {});
     }
         render(){
             const {index,cardIndex}=this.props;

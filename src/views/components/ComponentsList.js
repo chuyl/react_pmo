@@ -18,6 +18,7 @@ import Link from './Link'
 import DateCard from './DateCard'
 import CardGroup from './CardGroup'
 import LabelTitleMessage from './LabelTitleMessage'
+import TitleMessage from './TitleMessage'
 import LabelChildMessage from './LabelChildMessage'
 import LabelMessage from './LabelMessage'
 import LabelTotalMessage from './LabelTotalMessage'
@@ -231,6 +232,12 @@ handleChildChange=(formData)=>{
                                     labelValue={form_list.title} 
                                     key={index}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />
+                            :form_list.type_name === "TitleMessage"?
+                                <TitleMessage
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    key={index}
                                 />
                             :form_list.type_name === "LabelChildMessage"?
                                 <LabelChildMessage

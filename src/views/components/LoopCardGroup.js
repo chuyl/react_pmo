@@ -11,13 +11,13 @@
               
                 message?message.map((message,index) => {
 							return (<div key={index}>
-                                <div className="label_message">
-                                        <label> 会议室{index+1}
-                                        </label>
-                                        <span>{message.total_price?dealNumber(message.total_price):"0.00"}</span>
-                            </div>
-                           
-                            </div>)}):"会议室成本"
+                                        <div className="label_message">
+                                                <label> 会议室{index+1}
+                                                </label>
+                                                <span>{message.total_price?dealNumber(message.total_price):"0.00"}</span>
+                                        </div>
+                                
+                                    </div>)}):"列表"
             )
         }
     }

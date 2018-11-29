@@ -1,0 +1,11 @@
+{
+    "data": {"id": "1",
+				"name": "项目集名称1",
+				"program_type":"项目集类型",
+				"program_manage_sale":"销售负责人",
+				"program_customer":"客户名称",
+				"program_training_ares":"培训地址"}, 
+    "code":0,
+    "error":0,
+    "msg":"查询成功"
+}

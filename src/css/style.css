@@ -1441,7 +1441,7 @@ html, body {
   height: 2.5em;
   display: inline-block; }
   .card_left p {
-    font-size: 2em; }
+    font-size: 1.5em; }
 
 .card_right {
   color: #878e9f;
@@ -1452,7 +1452,7 @@ html, body {
     font-size: 1.5em; }
 
 .title_card_right {
-  font-size: 2em;
+  font-size: 1.5em;
   color: #878e9f;
   width: 33.3%;
   display: inline-block; }
@@ -1469,7 +1469,7 @@ html, body {
   .date_card p {
     display: inline-block; }
   .date_card p > span {
-    font-size: 2em; }
+    font-size: 1.5em; }
 
 @media screen and (max-width: 768px) {
   .date_card p {
@@ -2161,7 +2161,7 @@ html, body {
   line-height: 30px; }
   .view_message_div div {
     display: inline-block;
-    width: 65%; }
+    width: 50%; }
   .view_message_div button {
     display: inline-block;
     float: right;

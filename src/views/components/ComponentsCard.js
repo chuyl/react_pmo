@@ -15,6 +15,7 @@
    import LinkCard from './LinkCard'
    import CardGroup from './CardGroup'
    import LabelTitleMessage from './LabelTitleMessage'
+   import TitleMessage from './TitleMessage'
    import LabelSelectMessage from './LabelSelectMessage'
    import HoldBtn from './HoldBtn'
    import AddCardBtn from './AddCardBtn'
@@ -133,6 +134,12 @@
                                        key={form_list.id_name}
                                        message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                    />
+                                :form_list.type_name === "TitleMessage"?
+                                   <TitleMessage
+                                       id={form_list.id_name} 
+                                       labelValue={form_list.title} 
+                                       key={form_list.id_name}
+                                   />   
                                 :form_list.type_name === "LabelSelectMessage"?
                                    <LabelSelectMessage
                                        id={form_list.id_name} 

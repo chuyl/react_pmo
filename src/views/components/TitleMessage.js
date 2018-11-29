@@ -1,10 +1,10 @@
 /** 
      * @author xuesong
-     * @param LabelTitleMessage 组件  label+message
+     * @param TitleMessage 组件  label
      */
     import React, { Component } from 'react';
     import {dealNumber} from '../../utils/helpers'
-    class LabelTitleMessage extends Component {
+    class TitleMessage extends Component {
         state={
             inputValue:this.props.inputValue
         }
@@ -14,16 +14,14 @@
             })
           }
         render(){
-            const {message,labelValue} =this.props;
+            const {labelValue} =this.props;
             
             return (
                 <div className="label_title_message">
                     <label>{labelValue}</label>
-                   <span>{message?dealNumber(message):"0.00"}</span>
-                    {/* <span className="text_field_remind"></span> */}
               </div>
             )
         }
     }
-    export default LabelTitleMessage;
+    export default TitleMessage;
     

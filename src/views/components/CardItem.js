@@ -11,7 +11,7 @@
         render(){
             return (
                 <div className="card-item">
-                   {this.props.message} 
+                   {this.props.message?this.props.message:this.props.defaultValue} 
                 </div>
             )
         }

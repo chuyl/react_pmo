@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Link from './Link'
 import LabelTitleMessage from './LabelTitleMessage'
+import TitleMessage from './TitleMessage'
 import LabelSelectMessage from './LabelSelectMessage'
 import CardHead from './CardHead'
 import CardBody from './CardBody'
@@ -102,7 +103,6 @@ class Card extends Component {
             <div id={"card_id"+this.props.index} name={"card-project"} className={this.state.openCtrlState===""?"card-project active":this.state.openCtrlState===true?"card-project active open move-out":"card-project move-in active"}>
                
                 {this.props.addButton.map((form_list) => {
-                    console.log(this.props.addButton)
                     return (
                         form_list.type_name === "Link"?
                                 <Link 
@@ -156,6 +156,12 @@ class Card extends Component {
                                     labelValue={form_list.title} 
                                     key={form_list.id_name}
                                     message={this.props.card_list[form_list.id_name]?this.props.card_list[form_list.id_name]:""} 
+                                />
+                                :form_list.type_name === "TitleMessage"?
+                                <TitleMessage
+                                    id={form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    key={form_list.id_name}
                                 />
                             :form_list.type_name === "LabelSelectMessage"?
                                 <LabelSelectMessage
