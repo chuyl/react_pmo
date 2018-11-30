@@ -154,7 +154,7 @@
 
 		// 	}
         // }
-        // getData(getRouter("view_json_name"), { name:this.props.addButton.descript,token:sessionStorage.token }, cb, {});
+        // getData(getRouter("json_manage_name"), { name:this.props.addButton.descript,token:sessionStorage.token }, cb, {});
     }
      //获取组件中add_button里面的查看视图
      fetchDescriptContent() {
@@ -178,7 +178,7 @@
 
 		// 	}
         // }
-        // getData(getRouter("view_json_name"), { name:this.props.addButton.descript,token:sessionStorage.token }, cb, {});
+        // getData(getRouter("json_manage_name"), { name:this.props.addButton.descript,token:sessionStorage.token }, cb, {});
     }
     //新增group中保存按钮传值
     addCardSuccess=(newState)=>{

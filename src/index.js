@@ -9,11 +9,11 @@ import {
     Link,
   } from 'react-router-dom';
 import './css/style.css'
-import Lang from './language'
+ import Lang from './language'
 import config from './config';
 import local from './local' 
 import {getData,getRouter } from './utils/helpers';
-
+// const Lang = JSON.parse(sessionStorage.Language);
 // window.onresize = function(){
 //   console.log(document.body.clientWidth)
   
@@ -59,17 +59,22 @@ class TabComponent extends Component{
       dialog_show:false,
       logged: Boolean(sessionStorage.getItem("logged")),
       login_account:"测试",
-      login_password:"123456"
+      login_password:"123456",
 		}
   }
   componentWillMount() {
-    this.langMangement(Lang.projectManagement)
-		this.langMangement(Lang.budgetAndFinalAccountsManagementcond)
-		this.langMangement(Lang.loanExpenditureManagement)
-		this.langMangement(Lang.receivablesManagement)
-		this.langMangement(Lang.lecturerManagement)
-    this.langMangement(Lang.implementationManagement)
-    this.langMangement(Lang.viewManagement)
+    
+    for(var i in Lang){
+      console.log(Lang[i].data)
+			this.langMangement(Lang[i].data)
+		}
+    // this.langMangement(Lang.projectManagement)
+		// this.langMangement(Lang.budgetAndFinalAccountsManagementcond)
+		// this.langMangement(Lang.loanExpenditureManagement)
+		// this.langMangement(Lang.receivablesManagement)
+		// this.langMangement(Lang.lecturerManagement)
+    // this.langMangement(Lang.implementationManagement)
+    // this.langMangement(Lang.viewManagement)
 	  sessionStorage.getItem("logged")===false;
     this.getRoutes();
     
@@ -85,7 +90,7 @@ getViewJsonList() {
 
     }
   }
-  getData(getRouter("view_json_list"), { token:sessionStorage.token }, cb, {});
+  getData(getRouter("json_manage_list"), { token:sessionStorage.token }, cb, {});
 }
 langMangement(lang){
 for(var x=0;x<lang.length;x++){
@@ -247,9 +252,7 @@ handleLogout = () => {
           <div className="pass_word">
           <input
             id="login_password"
-            // labelValue="密码"
             type="password"
-            // inputValue={this.state.login_password}
             value={this.state.login_password}
             onChange={(e)=>{
               this.setState({
@@ -270,25 +273,35 @@ handleLogout = () => {
   }
 
 	render(  ){
+   const menuView = [];
+    for(var i in Lang){
+     menuView.push({name:Lang[i].name,data:Lang[i].data})
+    }
+    console.log(menuView)
 		return(
       sessionStorage.getItem("logged")==="true"?	<div className="sidebar">
      
         <div  style={this.state.show===true?{display:"none"}:{}} className="router_screen nav_lists">
           <TabsControl>
-              <div  name = {"项目管理"}>
+            {menuView.map((menuView,index)=>{
+               return(
+                <div key={index} name = {menuView.name}>
                 <HashRouter>
                   <App>
                     <ul>
-                      {this.router_lists(Lang.projectManagement)}
+                      {this.router_lists(menuView.data)}
                     </ul>  
                   </App>
-                </HashRouter>        
+                </HashRouter>
               </div>
-              <div name = "预决算管理">
+               )
+            })}
+              {/* {this.menuView()} */}
+              {/* <div name = "预决算管理">
                 <HashRouter>
                   <App>
                     <ul>
-                      {this.router_lists(Lang.budgetAndFinalAccountsManagementcond)}
+                      {this.router_lists(Lang.budgetAndFinalAccountsManagementcond.data)}
                     </ul>  
                   </App>
                 </HashRouter>
@@ -297,7 +310,7 @@ handleLogout = () => {
                 <HashRouter>
                   <App>
                     <ul>
-                      {this.router_lists(Lang.loanExpenditureManagement)}
+                      {this.router_lists(Lang.loanExpenditureManagement.data)}
                     </ul>  
                   </App>
                 </HashRouter>
@@ -306,7 +319,7 @@ handleLogout = () => {
                 <HashRouter>
                   <App>
                     <ul>
-                      {this.router_lists(Lang.receivablesManagement)}
+                      {this.router_lists(Lang.receivablesManagement.data)}
                     </ul>  
                   </App>
                 </HashRouter>
@@ -315,7 +328,7 @@ handleLogout = () => {
                 <HashRouter>
                   <App>
                     <ul>
-                      {this.router_lists(Lang.lecturerManagement)}
+                      {this.router_lists(Lang.lecturerManagement.data)}
                     </ul>  
                   </App>
                 </HashRouter>
@@ -324,7 +337,7 @@ handleLogout = () => {
                 <HashRouter>
                   <App>
                     <ul>
-                      {this.router_lists(Lang.implementationManagement)}
+                      {this.router_lists(Lang.implementationManagement.data)}
                     </ul>  
                   </App>
                 </HashRouter>
@@ -333,11 +346,11 @@ handleLogout = () => {
                 <HashRouter>
                   <App>
                     <ul>
-                      {this.router_lists(Lang.viewManagement)}
+                      {this.router_lists(Lang.viewManagement.data)}
                     </ul>  
                   </App>
                 </HashRouter>
-              </div>
+              </div> */}
             </TabsControl>
           </div>
         <div style={this.state.show===true?{display:"none"}:{}}  className="router_button" onClick={this.changeShow.bind(this)}>
@@ -357,11 +370,24 @@ handleLogout = () => {
               
               <div style={this.state.show===false?{display:"none"}:{}}  className="couter_control">
                 <TabsControl>
-                  <div name = "项目管理">
+                {menuView.map((menuView,index)=>{
+                    return(
+                      <div key={index} name = {menuView.name}>
+                        <HashRouter>
+                          <App>
+                            <ul>
+                              {this.router_lists(menuView.data)}
+                            </ul>  
+                          </App>
+                        </HashRouter>
+                    </div>
+                    )
+                  })}
+                  {/* <div name = "项目管理">
                     <HashRouter>
                       <App>
                         <ul>
-                          {this.router_lists(Lang.projectManagement)}
+                          {this.router_lists(Lang.projectManagement.data)}
                         </ul>  
                       </App>
                     </HashRouter>
@@ -370,7 +396,7 @@ handleLogout = () => {
                     <HashRouter>
                       <App>
                         <ul>
-                          {this.router_lists(Lang.budgetAndFinalAccountsManagementcond)}
+                          {this.router_lists(Lang.budgetAndFinalAccountsManagementcond.data)}
                         </ul>  
                       </App>
                     </HashRouter>
@@ -379,7 +405,7 @@ handleLogout = () => {
                     <HashRouter>
                       <App>
                         <ul>
-                          {this.router_lists(Lang.loanExpenditureManagement)}
+                          {this.router_lists(Lang.loanExpenditureManagement.data)}
                         </ul>  
                       </App>
                     </HashRouter>
@@ -388,7 +414,7 @@ handleLogout = () => {
                     <HashRouter>
                       <App>
                         <ul>
-                          {this.router_lists(Lang.receivablesManagement)}
+                          {this.router_lists(Lang.receivablesManagement.data)}
                         </ul>  
                       </App>
                     </HashRouter>
@@ -397,7 +423,7 @@ handleLogout = () => {
                     <HashRouter>
                       <App>
                         <ul>
-                          {this.router_lists(Lang.lecturerManagement)}
+                          {this.router_lists(Lang.lecturerManagement.data)}
                         </ul>  
                       </App>
                     </HashRouter>
@@ -406,7 +432,7 @@ handleLogout = () => {
                     <HashRouter>
                       <App>
                         <ul>
-                          {this.router_lists(Lang.implementationManagement)}
+                          {this.router_lists(Lang.implementationManagement.data)}
                         </ul>  
                       </App>
                     </HashRouter>
@@ -415,11 +441,11 @@ handleLogout = () => {
                 <HashRouter>
                   <App>
                     <ul>
-                      {this.router_lists(Lang.viewManagement)}
+                      {this.router_lists(Lang.viewManagement.data)}
                     </ul>  
                   </App>
                 </HashRouter>
-              </div>
+              </div> */}
                 </TabsControl>
               </div>
           
@@ -433,7 +459,7 @@ handleLogout = () => {
           <HashRouter >
             <App>
               <ul>
-                {this.footer_router_lists(Lang.budgetAndFinalAccountsManagementcond)}
+                {this.footer_router_lists(Lang.budgetAndFinalAccountsManagementcond.data)}
               </ul>  
             </App>
           </HashRouter>

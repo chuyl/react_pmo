@@ -71,7 +71,7 @@ class BiddingPlan extends Component {
 		// 	}
 		// }
 		
-		// getData(getRouter("view_json_name"), { name:"projectGatherCards",token:sessionStorage.token }, cb, {});
+		// getData(getRouter("json_manage_name"), { name:"projectGatherCards",token:sessionStorage.token }, cb, {});
 	}
 	fetchProjectDataList() {
 		var cb = (route, message, arg) => {
@@ -104,7 +104,7 @@ class BiddingPlan extends Component {
 
 		// 	}
 		// }
-		// getData(getRouter("view_json_name"), { name:url,token:sessionStorage.token }, cb, {});		
+		// getData(getRouter("json_manage_name"), { name:url,token:sessionStorage.token }, cb, {});		
 	}
 
 	/** 

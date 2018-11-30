@@ -49,7 +49,7 @@
             //     }
                
             // }
-            // getData(getRouter("view_json_name"), { name:this.props.addButton,token:sessionStorage.token }, cb, {});
+            // getData(getRouter("json_manage_name"), { name:this.props.addButton,token:sessionStorage.token }, cb, {});
         }
         render(){
             return (

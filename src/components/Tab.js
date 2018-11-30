@@ -1,5 +1,5 @@
 import React, { Component }  from "react"
-import Lang from "../language"
+// import Lang from "../language"
 
 
 class TabsControl extends Component{
@@ -10,13 +10,19 @@ class TabsControl extends Component{
 		}
 	}
 	componentDidMount() {
-		this.langMangement(Lang.projectManagement,0)
-		this.langMangement(Lang.budgetAndFinalAccountsManagementcond,1)
-		this.langMangement(Lang.loanExpenditureManagement,2)
-		this.langMangement(Lang.receivablesManagement,3)
-		this.langMangement(Lang.lecturerManagement,4)
-		this.langMangement(Lang.implementationManagement,5)
-		this.langMangement(Lang.viewManagement,6)
+		const Lang = JSON.parse(sessionStorage.Language);
+		var m=-1;
+		for(var i in Lang){
+			m++;
+			this.langMangement(Lang[i].data,m)
+		}
+		// this.langMangement(Lang.projectManagement,0)
+		// this.langMangement(Lang.budgetAndFinalAccountsManagementcond,1)
+		// this.langMangement(Lang.loanExpenditureManagement,2)
+		// this.langMangement(Lang.receivablesManagement,3)
+		// this.langMangement(Lang.lecturerManagement,4)
+		// this.langMangement(Lang.implementationManagement,5)
+		// this.langMangement(Lang.viewManagement,6)
 	  }
 	  langMangement(lang,index){
 		for(var x=0;x<lang.length;x++){

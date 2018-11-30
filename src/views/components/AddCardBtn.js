@@ -98,7 +98,7 @@ import { getData, getRouter } from '../../utils/helpers'
 
             //     }
             // }
-            // getData(getRouter("view_json_name"), {name:this.props.addButton.descript, token:sessionStorage.token }, cb, {});		
+            // getData(getRouter("json_manage_name"), {name:this.props.addButton.descript, token:sessionStorage.token }, cb, {});		
         }
         render(){
             //console.log(this.state.add_button)

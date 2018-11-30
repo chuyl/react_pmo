@@ -29,7 +29,7 @@ import ProvinceCity from './ProvinceCity'
 import CardLeftBody from './CardLeftBody'
 import CardRightBody from './CardRightBody'
 import SpellingCardGroup from './SpellingCardGroup'
-import LoopCardGroup from './LoopCardGroup'
+import LoopCardMoneyGroup from './LoopCardMoneyGroup'
 import LabelSelectMessage from './LabelSelectMessage'
 import CardHead from './CardHead'
 import CardPage from './CardPage'
@@ -299,8 +299,8 @@ handleChildChange=(formData)=>{
                                      beforeApiUri={form_list.before_api_uri}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
-                            :form_list.type_name === "LoopCardGroup"?
-                                <LoopCardGroup
+                            :form_list.type_name === "LoopCardMoneyGroup"?
+                                <LoopCardMoneyGroup
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={index}

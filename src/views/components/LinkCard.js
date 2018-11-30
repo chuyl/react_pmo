@@ -64,7 +64,7 @@
             //         })
             //     }
             // }
-            // getData(getRouter("view_json_name"), { name:this.state.linkpage,token:sessionStorage.token }, cb, {});
+            // getData(getRouter("json_manage_name"), { name:this.state.linkpage,token:sessionStorage.token }, cb, {});
         }
         /** 
         * @author xuesong

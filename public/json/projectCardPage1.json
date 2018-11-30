@@ -133,7 +133,7 @@
             
             },{
                 "id_name": "venue",
-                "type_name": "LoopCardGroup", 
+                "type_name": "LoopCardMoneyGroup", 
                 "title": "会议室成本",
                 "key": "",
                 "tip": "",

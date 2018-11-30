@@ -8,6 +8,7 @@ import ViewTextField from '../components/ViewTextField';
 import Popup from '../components/Popup'
 import Alert from '../components/Alert'
 import SelectList from '../components/SelectList'
+import Lang from '../../language'
 class View extends Component {
    
 	state = {
@@ -72,7 +73,7 @@ class View extends Component {
 
 			}
 		}
-		getData(getRouter("view_json_list"), { token:sessionStorage.token }, cb, {});
+		getData(getRouter("json_manage_list"), { token:sessionStorage.token }, cb, {});
 	}
 	/** 
 	 * @time 2018-11-05
@@ -119,7 +120,7 @@ class View extends Component {
 		// 		})
 		// 	}
 		// }
-		// getData(getRouter("view_json_name"), { name:list.name,token:sessionStorage.token }, cb, {});
+		// getData(getRouter("json_manage_name"), { name:list.name,token:sessionStorage.token }, cb, {});
 	}
 	/** 
 	 * @time 2018-11-05
@@ -229,7 +230,7 @@ class View extends Component {
 				this.fetchListData()
 			}
 		}
-		getData(getRouter("view_json_edit"), 
+		getData(getRouter("json_manage_edit"), 
 		{ token:sessionStorage.token,
 			data:{  id:this.state.view_id, 
 					name:this.state.view_english_name,
@@ -376,7 +377,7 @@ class View extends Component {
 								this.fetchListData()
 							}
 						// }
-						getData(getRouter("view_json_add"), { token:sessionStorage.token,data:{name:this.state.view_english_name,title:this.state.view_china_name,type:select_type,data:JSON.stringify(message_temp)} }, add_cb, {});
+						getData(getRouter("json_manage_add"), { token:sessionStorage.token,data:{name:this.state.view_english_name,title:this.state.view_china_name,type:select_type,data:JSON.stringify(message_temp)} }, add_cb, {});
 					}
 						
 					
@@ -409,7 +410,7 @@ class View extends Component {
 		// 		message_temp["form-temp-name"]=this.state.view_china_name;
 		// 				}
 		//  }
-		//  getData(getRouter("view_json_name"), { name:name,token:sessionStorage.token }, cb, {});
+		//  getData(getRouter("json_manage_name"), { name:name,token:sessionStorage.token }, cb, {});
 	}
 
 		/** 
@@ -428,7 +429,7 @@ class View extends Component {
 				})
 					}
 				}
-				getData(getRouter("view_json_edit"), 
+				getData(getRouter("json_manage_edit"), 
 				{ token:sessionStorage.token,
 					data:{  id:this.state.view_id, 
 							name:this.state.view_english_name,
@@ -554,7 +555,7 @@ class View extends Component {
 					this.fetchListData()
 				}
 			}
-			getData(getRouter("view_json_add"), { token:sessionStorage.token,data:{name:name,title:title,type:type,data:data} }, cb, {});
+			getData(getRouter("json_manage_add"), { token:sessionStorage.token,data:{name:name,title:title,type:type,data:data} }, cb, {});
 			
 
 	}
@@ -634,6 +635,13 @@ class View extends Component {
 							view_id:""
 						})
 					}} >添加</button>
+					<button onClick={()=>{
+						var cb = (route, message, arg) => {
+							
+						}
+						console.log(Lang)
+						getData(getRouter("menu_manage_add"), { token:sessionStorage.token,data:Lang }, cb, {});
+					}}>添加</button>
 					{/* <button onClick={()=>{
 						var cb = (route, message, arg) => {
 							if (message.error === 0) {

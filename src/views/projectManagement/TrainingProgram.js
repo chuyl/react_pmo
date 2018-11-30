@@ -71,7 +71,7 @@ class TrainingProgram extends Component {
 		// 	}
 		// }
 		
-		// getData(getRouter("view_json_name"), { name:"projectViewCard",token:sessionStorage.token }, cb, {});
+		// getData(getRouter("json_manage_name"), { name:"projectViewCard",token:sessionStorage.token }, cb, {});
 	}
 	fetchProjectDataList() {
 		var cb = (route, message, arg) => {
@@ -105,7 +105,7 @@ class TrainingProgram extends Component {
 
 		// 	}
 		// }
-		// getData(getRouter("view_json_name"), { name:url,token:sessionStorage.token }, cb, {});		
+		// getData(getRouter("json_manage_name"), { name:url,token:sessionStorage.token }, cb, {});		
 	}
 
 	/** 

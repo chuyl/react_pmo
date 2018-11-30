@@ -47,7 +47,7 @@
             //         })
             //     }
             // }
-            // getData(getRouter("view_json_name"), { name:this.state.add_uri_button,token:sessionStorage.token }, cb, {});
+            // getData(getRouter("json_manage_name"), { name:this.state.add_uri_button,token:sessionStorage.token }, cb, {});
              
             // fetch('../json/'+this.state.add_uri_button+'.json')
             // 	.then(response => response.json())
