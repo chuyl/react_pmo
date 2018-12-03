@@ -9,11 +9,11 @@ import {
     Link,
   } from 'react-router-dom';
 import './css/style.css'
- import Lang from './language'
+  import Lang from './language'
 import config from './config';
 import local from './local' 
 import {getData,getRouter } from './utils/helpers';
-// const Lang = JSON.parse(sessionStorage.Language);
+ //const Lang = sessionStorage.Language?JSON.parse(sessionStorage.Language):"";
 // window.onresize = function(){
 //   console.log(document.body.clientWidth)
   
@@ -58,16 +58,17 @@ class TabComponent extends Component{
       show: false,
       dialog_show:false,
       logged: Boolean(sessionStorage.getItem("logged")),
+      message_state:false,
       login_account:"测试",
       login_password:"123456",
+      menu_list:""
 		}
   }
   componentWillMount() {
     
     for(var i in Lang){
-      console.log(Lang[i].data)
-			this.langMangement(Lang[i].data)
-		}
+      this.langMangement(Lang[i].data)
+    }
     // this.langMangement(Lang.projectManagement)
 		// this.langMangement(Lang.budgetAndFinalAccountsManagementcond)
 		// this.langMangement(Lang.loanExpenditureManagement)
@@ -75,7 +76,7 @@ class TabComponent extends Component{
 		// this.langMangement(Lang.lecturerManagement)
     // this.langMangement(Lang.implementationManagement)
     // this.langMangement(Lang.viewManagement)
-	  sessionStorage.getItem("logged")===false;
+    sessionStorage.getItem("logged")===false;
     this.getRoutes();
     
 }
@@ -90,7 +91,26 @@ getViewJsonList() {
 
     }
   }
+  console.log("json_manage_list")
   getData(getRouter("json_manage_list"), { token:sessionStorage.token }, cb, {});
+}
+getMenuJsonList() {
+  var cb = (route, message, arg) => {
+    console.log(message)
+    if (message.error === 0) {
+      console.log(message.data)
+      sessionStorage.Language=JSON.stringify(message.data);
+      this.setState({
+        menu_list:message.data
+      })
+      for(var i in message.data){
+        this.langMangement(message.data[i].data)
+      }
+     
+    }
+  }
+  console.log("menu_manage_list")
+  getData(getRouter("menu_manage_list"), { token:sessionStorage.token }, cb, {});
 }
 langMangement(lang){
 for(var x=0;x<lang.length;x++){
@@ -199,21 +219,36 @@ handleLogout = () => {
   login = ()=>{
     var cb = (route, message, arg) => {
 			if (message.error === 0) {
+        debugger;
+        console.log("登录成功")
+        
+        var cb_menu = (route, message, arg) => {
+          if (message.error === 0) {
+            sessionStorage.Language=JSON.stringify(message.data);
+           
+          }
+        }
+        getData(getRouter("menu_manage_list"), { token:sessionStorage.token }, cb_menu, {});
+        this.getViewJsonList()
+      
         sessionStorage.logged = true;
         this.setState({
           currentIndex:"/trainingProgram"
         })
-        this.setState({logged:sessionStorage.getItem("logged")})
+        this.setState({logged:sessionStorage.getItem("logged"),message_state:true})
+       
         sessionStorage.token=message.data.token;
+       
         if(window.location.hash.indexOf("#")>=0){
           if(window.location.hash.split("#")[1]==="/"){
             　window.location.href = this.changeURLArg(window.location.href,'trainingProgram')
              
-             
           }
+        
         }else{
           //window.location.href = this.changeURLArg(window.location.href,'trainingProgram')
         }
+       
        // window.location.reload();
         //console.log(window.location.hash)
        //window.location.reload();
@@ -228,7 +263,7 @@ handleLogout = () => {
 				 },3000)
       }
     }
-    this.getViewJsonList()
+    
 		getData(getRouter("user_account_login"), { account:this.state.login_account,password:this.state.login_password }, cb, {});		
     
   }
@@ -277,12 +312,12 @@ handleLogout = () => {
     for(var i in Lang){
      menuView.push({name:Lang[i].name,data:Lang[i].data})
     }
-    console.log(menuView)
+    console.log(this.state.menu_list)
 		return(
       sessionStorage.getItem("logged")==="true"?	<div className="sidebar">
      
         <div  style={this.state.show===true?{display:"none"}:{}} className="router_screen nav_lists">
-          <TabsControl>
+         <TabsControl menuList={this.state.menu_list}>
             {menuView.map((menuView,index)=>{
                return(
                 <div key={index} name = {menuView.name}>
@@ -459,7 +494,7 @@ handleLogout = () => {
           <HashRouter >
             <App>
               <ul>
-                {this.footer_router_lists(Lang.budgetAndFinalAccountsManagementcond.data)}
+                {Lang!==""?this.footer_router_lists(Lang.budgetAndFinalAccountsManagementcond.data):""}
               </ul>  
             </App>
           </HashRouter>

@@ -308,5 +308,6 @@ const Language = {
     //         ]
     //     }
     //     }
-    sessionStorage.Language=JSON.stringify(Language); 
+    console.log("Language")
+    // sessionStorage.Language=JSON.stringify(Language); 
     export default Language;

@@ -137,7 +137,7 @@
         for(var i=0;i<json_view.length;i++){
             if(json_view[i].name===this.props.addButton.descript){
                 
-                var json_message=JSON.parse(json_view[i].data);
+                var json_message=json_view[i].data;
                 this.setState({
                     add_button: json_message["form-list"],
                 })
@@ -162,7 +162,7 @@
         for(var i=0;i<json_view.length;i++){
             if(json_view[i].name===this.props.addButton.descript){
                 
-                var json_message=JSON.parse(json_view[i].data);
+                var json_message=json_view[i].data;
                 this.setState({
                     add_button: json_message["form-list"],
                 })

@@ -41,7 +41,6 @@ class Routers extends Component{
  message=()=>{
     var components = [];
     for(var i in Langs){
-      console.log(i)
       {Langs[i].data.map((message,index)=>{
         return(
           components.push(

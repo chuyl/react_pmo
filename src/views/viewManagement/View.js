@@ -86,7 +86,7 @@ class View extends Component {
 	for(var i=0;i<json_view.length;i++){
 		if(json_view[i].name===list.name){
 			
-			var json_message=JSON.parse(json_view[i].data);
+			var json_message=json_view[i].data;
 			this.setState({
 				this_view_list:json_message["form-list"],
 				form_temp_name:json_message["form-temp-name"],
@@ -389,7 +389,7 @@ class View extends Component {
 		var json_view=JSON.parse(sessionStorage.view)
 		for(var i=0;i<json_view.length;i++){
 			if(json_view[i].name===name){
-				var json_message=JSON.parse(json_view[i].data);
+				var json_message=json_view[i].data;
 				json_message["form-temp-name"]=this.state.view_china_name;
 				this.setState({
 					initializationData:json_message,
@@ -635,13 +635,13 @@ class View extends Component {
 							view_id:""
 						})
 					}} >添加</button>
-					<button onClick={()=>{
+					{/* <button onClick={()=>{
 						var cb = (route, message, arg) => {
 							
 						}
 						console.log(Lang)
 						getData(getRouter("menu_manage_add"), { token:sessionStorage.token,data:Lang }, cb, {});
-					}}>添加</button>
+					}}>添加</button> */}
 					{/* <button onClick={()=>{
 						var cb = (route, message, arg) => {
 							if (message.error === 0) {

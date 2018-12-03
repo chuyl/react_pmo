@@ -31,7 +31,7 @@ class ListTextSearch extends Component {
         for(var i=0;i<json_view.length;i++){
             if(json_view[i].name===this.state.add_uri_button){
                 
-                var json_message=JSON.parse(json_view[i].data);
+                var json_message=json_view[i].data;
                 this.setState({
                     add_button: json_message["form-list"],
                     form_temp_name: json_message["form-temp-name"],

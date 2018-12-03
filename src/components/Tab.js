@@ -1,5 +1,5 @@
 import React, { Component }  from "react"
-// import Lang from "../language"
+ import Lang from "../language"
 
 
 class TabsControl extends Component{
@@ -9,8 +9,9 @@ class TabsControl extends Component{
 			currentIndex : 0
 		}
 	}
-	componentDidMount() {
-		const Lang = JSON.parse(sessionStorage.Language);
+	componentWillMount() {
+		console.log(sessionStorage.Language)
+		//const Lang = JSON.parse(sessionStorage.Language);
 		var m=-1;
 		for(var i in Lang){
 			m++;

@@ -42,6 +42,7 @@ var local = {
                 "json_manage_name":{"url":"../data/json_manage_name.json","version":"1.0"},//通过名称找视图数据
                 "view_type":{"url":"../data/view_type.json","version":"1.0"},//视图类型
                 "new_view":{"url":"../data/new_view.json","version":"1.0"},//新增视图
+                "menu_manage_list":{"url":"../data/menu_manage_list.json","version":"1.0"},//菜单管理
                 //视图
                
                 // "addProject":{"url":"../json/addProject.json","version":"1.0"},//新建项目
