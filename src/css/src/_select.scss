@@ -12,7 +12,7 @@
 }
 .card_info_list_card {
     border-radius: 4px;
-    background-color: $bluePurple700;
+    background-color: $primary-color;
     padding: 18px;
     margin-bottom: 18px;
     padding-bottom:38px;
@@ -21,7 +21,7 @@
     float: left;
     display: inline-block;
     width: 59px;
-    color:$white;
+    color:$primary-color;
     font-size: 14px;
     text-align: left;
     position: relative;
@@ -38,7 +38,7 @@
     display: block;
     width: 2px;
     height: 12px;
-    background: $orange500;
+    background: $accent-color;
     position: absolute;
     top: 7px;
     left: 0;
@@ -54,7 +54,7 @@
     overflow: hidden;
     top: 0;
     z-index: 1;
-    background: linear-gradient(to bottom right,  $bluePurple800, $bluePurple700);;
+    background: linear-gradient(to bottom right,  $primary-color-dark, $primary-color);;
 }
   .search_info_list{
       width: 0;
@@ -66,7 +66,7 @@
   }
   .search_info_list.open{
     min-height: 156px;
-    background: $white;
+    background: $background-color;
     position: relative;
     margin-left: 80px;
     z-index: 1;
@@ -74,7 +74,7 @@
     position: absolute;
     overflow: hidden;
     box-shadow:0px 1px 2px rgba(46, 50, 71, 0.7);
-    // border: 1px solid $gray400;
+    // border: 1px solid $divider-color;
     width: calc(100% - 80px);
   }
   .selected_scroll_div{
@@ -93,10 +93,10 @@
         font: 14px "Microsoft YaHei";
         line-height: 24px;
         padding-left: 10px;
-        background: $white;
-        color: $gray600;
+        background: $background-color;
+        color: $secondary-text-color;
         border-radius: 2px;
-        border: 1px solid $gray400;
+        border: 1px solid $divider-color;
         //margin-bottom: 26px;
 }
 
@@ -107,7 +107,7 @@
     height: 0;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
-    border-top: 6px solid $gray600;
+    border-top: 6px solid $secondary-text-color;
     float: right;
     margin-right: 10px;
     margin-top: 9px;
@@ -119,10 +119,10 @@
     font: 14px "Microsoft YaHei";
     line-height: 24px;
     padding-left: 10px;
-    background: $white;
-    color:$bluePurple900;
+    background: $background-color;
+    color:$primary-text-color;
     border-radius: 2px;
-    border: 1px solid $gray400;
+    border: 1px solid $divider-color;
     //margin-bottom: 26px;
 }
 
@@ -133,7 +133,7 @@ width: 0;
 height: 0;
 border-left: 4px solid transparent;
 border-right: 4px solid transparent;
-border-top: 6px solid $gray600;
+border-top: 6px solid $secondary-text-color;
 float: right;
 margin-right: 10px;
 margin-top: 9px;
@@ -144,7 +144,7 @@ margin-top: 9px;
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: $black;
+    background-color: $primary-text-color;
     opacity: 0;
   }
 /* select ul part */
@@ -157,7 +157,7 @@ margin-top: 9px;
     width: 100%; 
    border-radius: 2px;
     position: relative;
-    color: $gray600;
+    color: $secondary-text-color;
 }
 .search_info_list_ul::-webkit-scrollbar {
     width: 4px;
@@ -178,8 +178,8 @@ margin-top: 9px;
     text-align: left;
 }
 .search_info_list_ul li:hover {
-    background-color: $orange400;
-    color: $white;
+    background-color: $accent-color;
+    color: $background-color;
 }
 // .nohover{
 //     display: block;
@@ -196,7 +196,7 @@ margin-top: 9px;
 // }
 // .nohover:hover{
 //     background-color: transparent;
-//     color: $gray600;
+//     color: $secondary-text-color;
 // }
 .select_info_list_ul {
    height: 156px;
@@ -228,7 +228,7 @@ margin-top: 9px;
     padding-right: 60px;
     outline: medium;
     padding-left: 9px;
-    border: 1px solid $gray400;
+    border: 1px solid $divider-color;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -237,7 +237,7 @@ margin-top: 9px;
 }
 
 .select_search_input::placeholder {
-    color: $black;
+    color: $primary-text-color;
 }
 
 .select_search_button {
@@ -249,9 +249,9 @@ margin-top: 9px;
     margin-top: -25px;
     right: 10px;
     font-size: 12px;
-    color: $orange400;
+    color: $accent-color;
     text-align: center;
-    background: $white;
+    background: $background-color;
     outline: none;
     border: 0;
     font-weight: bold;
@@ -264,7 +264,7 @@ margin-top: 9px;
     float: left;
     width: 1px;
     height: 14px;
-    background: $gray400;
+    background: $divider-color;
     margin-right: 5px;
     content: '';
     /* left: -4px; */
@@ -276,7 +276,7 @@ margin-top: 9px;
     // margin-top: 11px;
     height: 30px;
     margin-left: 14px;
-    color: $orange400;
+    color: $accent-color;
     font: 14px "Microsoft";
     font-weight: bold;
     width:  calc(100% - 20px);
@@ -291,7 +291,7 @@ margin-top: 9px;
     margin-top: 14px;
     margin-left: 78px;
     font-size: 14px;
-    color: $white;
+    color: $background-color;
     span{
         display: inline-block;
         font-size: 14px;
@@ -301,7 +301,7 @@ margin-top: 9px;
         word-wrap: break-word;
         padding-right: 14px;
         word-break: break-all;
-        color:$orange500;
+        color:$accent-color;
     }
 }
   @media only screen and (max-width:768px ){
@@ -318,7 +318,7 @@ margin-top: 9px;
           width: 100%;
           position: fixed;
           top: 0;
-          background: linear-gradient(to bottom right, $bluePurple800, $bluePurple700);
+          background: linear-gradient(to bottom right, $primary-color-dark, $primary-color);
         } 
        .selected_scroll_div{
         height: 84vh;

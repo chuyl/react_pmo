@@ -1,0 +1,206 @@
+$primary-text-color:#2e3247;
+$primary-color-dark:#3f435e;
+$primary-color:#4b567f;
+$bluePurple400:#4d5a82;
+$primary-color-light:#aec1ed;
+$secondary-text-color:#878e9f;
+$accent-color:#f4a931;
+$accent-color:#ff5722;
+$divider-color:#c6c8ce;
+$background-color:#fff;
+$primary-text-color:#000;
+// router
+.App-header {
+    background-color: #222;
+    color: white;
+}
+
+.img {
+    background-color: blueviolet;
+}
+
+.card {
+    background-color: darkseagreen;
+}
+
+.card.open {
+    background-color: #427881;
+}
+
+.bar {
+    background-color: black;
+}
+
+.bar .btn {
+    color: $background-color;
+}
+
+.bar .btn:hover {
+    background-color: $background-color;
+    color: $primary-text-color;
+}
+
+.modal_backdrop {
+    background-color: $primary-text-color;
+}
+
+.couter_control {
+    background-color: $background-color;
+}
+
+.footer_position {
+    background-color: pink;
+}
+
+.box1 {
+    background-color: green;
+}
+
+// dialog
+.dialog_open {
+    background-color: yellow;
+}
+
+@media only screen and (max-width:768px) {
+    .dialog_window {
+        background-color: palevioletred;
+    }
+    .dialog_window.open {
+        background-color: palevioletred;
+    }
+}
+
+// select
+.card_info_list_card {
+    background-color: $primary-color;
+}
+
+.search_info_list_label {
+    color: $background-color;
+}
+
+.selectedInfo {
+    color: $secondary-text-color;
+}
+
+.selectedInfoFont {
+    background: $background-color;
+    color: $primary-text-color;
+}
+
+.add_list_close {
+    background-color: $primary-text-color;
+}
+
+.search_info_list_ul {
+    color: $secondary-text-color;
+}
+
+.search_info_list_ul li:hover {
+    background-color: $accent-color;
+    color: $background-color;
+}
+
+.select_search_input::placeholder {
+    color: $primary-text-color;
+}
+
+.select_search_button {
+    color: $accent-color;
+}
+
+.add_project_new {
+    color: $accent-color;
+}
+
+.select_result_msg {
+    color: $background-color;
+    span {
+        color: $accent-color;
+    }
+}
+
+// text
+.text_field_div {
+    color: $background-color;
+}
+
+.text_field_input {
+    color: $secondary-text-color;
+}
+
+.textarea_input {
+    color: $secondary-text-color;
+}
+
+.label_button_title {
+    color: $accent-color;
+}
+
+.label_button_label {
+    color: $background-color;
+}
+
+.button_md {
+    background: $accent-color;
+    color: $background-color;
+}
+
+.button_sm {
+    background: $accent-color;
+    color: $background-color;
+}
+
+.card_title {
+    color: $accent-color;
+}
+
+.label_delete_button {
+    color: $accent-color;
+    border-color: $accent-color;
+}
+
+// 卡片内部字体样式
+@include set-font-style($width:6em, $line-height:1.5em, $height:1em, $color:#fff);
+// 卡片颜色样式
+.crius-card-list {      background-color: $background-color;
+    .card-project {
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  
+    }
+    @include set_card( 10px, $primary-color, 10px); // open-ctrl bg—color
+    @include set_active((1, 1, 1), 24em, 9em, 2em, $primary-color);
+}
+
+// table样式
+.label_title_message {
+    @include title_border(2px, $primary-color);
+}
+
+.label_message {
+    @include content_border(1px, $primary-color);
+}
+
+.label_total_message {
+    @include content_border(1px, $primary-color);
+}
+
+// 按钮颜色
+.btn_list {
+    @include set_button_style(2px, #4b567f, #f4a931, $shadow: none);
+}
+
+// 日期控件
+.date—style {
+    @include set-date(14px, #000, #000)
+}
+
+//弹出框
+.alert_back {
+    @include set_prompt(#000, #fff, #fbb61d, 1em, #464d77, 10px);
+}
+
+//登录页面
+.login {
+    @include creat_login_style(#26216e, 20px, 40px);
+}

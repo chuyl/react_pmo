@@ -1,7 +1,7 @@
 @import 'mixins/color';
 @import 'mixins/table';
 .label_title_message {
-    @include title_border(2px, $bluePurple700);
+    @include title_border(2px, $primary-color);
     span,
     label {
         box-sizing: border-box;
@@ -12,7 +12,7 @@
 }
 
 .label_message {
-    @include content_border(1px, $bluePurple700);
+    @include content_border(1px, $primary-color);
     span,
     label {
         box-sizing: border-box;
@@ -28,7 +28,7 @@
 }
 
 .label_total_message {
-    @include content_border(1px, $bluePurple700);
+    @include content_border(1px, $primary-color);
     span,
     label {
         box-sizing: border-box;

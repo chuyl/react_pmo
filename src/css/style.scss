@@ -21,10 +21,10 @@
 @import 'src/draggable';
 .crius-card-list {
     .card-project {
-        box-shadow:  0px 0px  5px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
     }
-    @include set_card( 10px,$bluePurple700 , 10px);
-    @include set_active((1, 1, 1), 24em, 9em, 2em);
+    @include set_card( 10px, $primary-color, 10px);
+    @include set_active((1, 1, 1), 24em, 9em, 2em, $background-color);
 }
 
 .input_list {
@@ -33,14 +33,15 @@
 }
 
 .date—style {
-    @include set-date(14px, #000, #000)
-}
-//弹出框
-.alert_back {
-    @include set_prompt(#000, #fff, #fbb61d, 1em, #464d77, 10px);
-}
-//登录页面
-.login {
-    @include creat_login_style(#26216e, 20px, 40px);
+    @include set-date(14px, $primary-text-color, $primary-text-color)
 }
 
+//弹出框
+.alert_back {
+    @include set_prompt($primary-text-color, $primary-color, $accent-color, 1em, $background-color, 10px);
+}
+
+//登录页面
+.login {
+    @include creat_login_style($primary-color, 20px, 40px);
+}

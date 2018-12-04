@@ -1,7 +1,7 @@
 @import 'mixins/btn';
 .paper_div {
     width: 35%;
-    background: linear-gradient(to bottom right, $bluePurple800, $bluePurple700); // height: 90vh;
+    background: linear-gradient(to bottom right, $primary-color-dark, $primary-color); // height: 90vh;
     margin-left: 1rem;
     padding: 0;
     overflow: hidden;
@@ -10,7 +10,7 @@
 }
 .card_box {
     padding: 0;
-    transition: all 0.3s; //  background:linear-gradient(to bottom right, $bluePurple800, $bluePurple700);
+    transition: all 0.3s; //  background:linear-gradient(to bottom right, $primary-color-dark, $primary-color);
     height: 90vh;
     overflow: hidden;
     overflow-y: auto; //transition: all .1s;
@@ -29,17 +29,19 @@
     //position: absolute;
     margin: 0 1rem;
     top: 0rem;
-    height: 24px;
+    height: 2em;
+    line-height: 2em;
     text-align: center;
+    color:$primary-color-text;
     cursor: pointer; //background-color: #fff;
-    @include set_button_style(2px, $bluePurple700, $orange400, $shadow: none);
+    // @include set_button_style(2px, $primary-color, $accent-color, $shadow: none);
 }
 
 .paper_card_title {
     padding-top: 15px;
     height: 47px;
     text-align: center;
-    color: $white;
+    color: $background-color;
 }
 
 .return_btn {
@@ -60,7 +62,7 @@
     font-size: 14px;
     position: relative;
     left: 0;
-    color: $white;
+    color: $background-color;
     font-family: icon;
     margin-top: -1px;
 }
@@ -75,7 +77,7 @@
     height: 28px;
     margin-bottom: 28px;
     font-weight: bold;
-    color: $orange400;
+    color: $accent-color;
     background: $bluePurple400;
     border-radius: 4px;
     line-height: 20px;
@@ -86,7 +88,7 @@
     content: '\e039';
     font-size: 14px;
     font-family: icon;
-    color: $orange400;
+    color: $accent-color;
     padding-right: 10px;
     text-align: center;
 }
@@ -100,8 +102,8 @@
     height: 28px;
     margin-bottom: 28px;
     // font-weight: bold;
-    color: $white;
-    background-color: $orange400;
+    color: $background-color;
+    background-color: $accent-color;
     border-radius: 4px;
     line-height: 20px;
     outline: none;
@@ -109,18 +111,18 @@
 }
 
 .card_left {
-    color: $gray600;
+    color: $secondary-text-color;
     width: 66.6%;
     height: 2.5em;
     display: inline-block;
     // float: left;
     p {
         font-size: 1.5em;
-    } //border: 1px solid $gray600;
+    } //border: 1px solid $secondary-text-color;
 }
 
 .card_right {
-    color: $gray600;
+    color: $secondary-text-color;
     width: 33.3%;
     height: 2.5em;
     //float: left;
@@ -132,10 +134,10 @@
 
 .title_card_right {
     font-size: 1.5em;
-    color: $gray600;
+    color: $secondary-text-color;
     width: 33.3%;
     display: inline-block;
-    // float: left; //border: 1px solid $gray600;
+    // float: left; //border: 1px solid $secondary-text-color;
 }
 
 @media screen and (max-width:768px) {
@@ -177,7 +179,7 @@
     display: inline-block;
     height: 3.2em;
     p {
-        color: $gray600;
+        color: $secondary-text-color;
     }
 }
 
@@ -203,7 +205,7 @@
     // float: left;
     height: 2em;
     font-size: 14px;
-    color: $gray600;
+    color: $secondary-text-color;
     label {
         width: 66.6%;
         display: block;
@@ -236,7 +238,7 @@
 @media only screen and (max-width:768px) {
     .select_card {
         position: relative;
-        background: linear-gradient(to bottom right, $bluePurple800, $bluePurple700);
+        background: linear-gradient(to bottom right, $primary-color-dark, $primary-color);
     }
     .paper_div {
         width: 100%;
@@ -252,7 +254,7 @@
         left: 0;
         top: 0;
         padding: 0;
-        background: linear-gradient(to bottom right, $bluePurple800, $bluePurple700);
+        background: linear-gradient(to bottom right, $primary-color-dark, $primary-color);
         overflow: hidden;
         transition: all 0.05s 0.01s cubic-bezier(0.165, 0.84, 0.44, 1);
         float: left;
@@ -266,7 +268,7 @@
         position: fixed;
         top: 0;
         height: 95vh;
-        background: linear-gradient(to bottom right, $bluePurple800, $bluePurple700);
+        background: linear-gradient(to bottom right, $primary-color-dark, $primary-color);
         /* height: 600px; js代替 */
         left: 0;
         z-index: 10;

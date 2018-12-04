@@ -4,5 +4,5 @@
     height: 24px;
     margin-right: 1em;
     line-height: 22px;
-    @include set_button_style(2px, #4b567f, #f4a931, $shadow: none);
+    @include set_button_style(2px, $primary-color, $accent-color, $shadow: none);
 }

@@ -1,16 +1,15 @@
 @mixin set_card($bor_left_width, $border_left_color, $border_radius) {
     .inverse {
-        color: #fff;
+        color: $primary-color;
     }
     .card-project.active {
         display: block;
-        border-radius: $border_radius;
         border: 0px solid #ccc;
-        border-left-width: $bor_left_width;
-        border-left-color: $border_left_color;
+        box-sizing: border-box;
+        border-radius: $border_radius;
+        overflow: hidden;
         .card-foot {
-            border-bottom-right-radius: $border_radius;
-            background: $border_left_color;
+            background: $background-color;
             height: 2em;
             position: absolute;
             bottom: 0;
@@ -29,7 +28,7 @@
         display: block;
         height: 2em;
         line-height: 2em;
-        border-bottom: 1px solid $bluePurple700;
+        border-bottom: 1px solid $primary-color;
         color: $border_left_color;
         overflow: hidden;
         .card-item {
@@ -46,7 +45,7 @@
         overflow: hidden;
         color: #fff;
         text-align: center;
-        background-color: $border_left_color;
+        background-color: $background-color;
         height: 2em;
         line-height: 2em;
     }
@@ -55,9 +54,13 @@
     }
 }
 
-@mixin set_active($width_list, $set_height, $set_minheight, $set_head_itemheight) {
+@mixin set_active($width_list, $set_height, $set_minheight, $set_head_itemheight, $open_ctrl_bgcolor) {
     .card-project {
         margin-bottom: 3em;
+        background-color: $background-color;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        margin-left: 10px;
+        padding: 1em;
     }
     .card-project {
         position: relative;
@@ -67,10 +70,13 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: 70%;
-            background-color: $bluePurple700;
+            background-color: $open_ctrl_bgcolor;
             position: absolute;
             bottom: 2em;
             width: 100%;
+            @media screen and (max-width: 768px) {
+                margin-left: -1em;
+            }
         }
         .card-body {
             position: relative;
@@ -89,6 +95,20 @@
         height: $set_head_itemheight;
     }
     .card-head,
+    .card-foot {
+        $width_sum: 0;
+        @each $width in $width_list {
+            $width_sum: $width_sum + $width;
+        }
+        $num:0;
+        @each $width in $width_list {
+            $num: $num + 1;
+            .card-item:nth-of-type(#{$num}) {
+                width: $width / $width_sum * 100%;
+                left: 0;
+            }
+        }
+    }
     .card-foot {
         $width_sum: 0;
         @each $width in $width_list {
@@ -153,6 +173,7 @@
             background-image: url(closeline.svg);
             background-repeat: no-repeat;
             bottom: 0;
+            border-bottom-right-radius: 10px;
         }
     }
     .card-project.open.move-out {

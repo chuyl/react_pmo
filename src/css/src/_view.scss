@@ -4,15 +4,15 @@
     height: 95vh;
     padding: 0.5em;
     overflow-y: auto;
-    background-color: $bluePurple700;
+    background-color: $primary-color;
     margin-left: 0.5em;
-    color: $white;
+    color: $background-color;
     position: relative;
 }
 .view_list{
     width: 30%;
     float: left;
-    background-color: $bluePurple700;
+    background-color: $primary-color;
     height: 95vh;
     padding: 0.5em;
     margin-left: 0.5em;
@@ -42,7 +42,7 @@
     }
 }
 .view_component_div{
-    border: 1px solid $gray600;
+    border: 1px solid $secondary-text-color;
     padding: 0.5em;
     margin: 0.5em 0;
 
@@ -64,14 +64,14 @@
     float: right;
     border-radius:50%;
     outline: none;
-    border: 1px solid $orange400;
-    color: $bluePurple700;
+    border: 1px solid $accent-color;
+    color: $primary-color;
     font-size: 1em;
     cursor: pointer;
-    background-color: $orange400;
+    background-color: $accent-color;
 }
 .complex_message{
-    color: $white;
+    color: $background-color;
     font-size: 14px;
     p{
         padding-top: 0.5em;

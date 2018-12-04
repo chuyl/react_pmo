@@ -26,7 +26,7 @@ select {
 
 body {
     font: 14px"Microsoft", "Arial Narrow", HELVETICA;
-    background: $white;
+    background: $background-color;
     -webkit-text-size-adjust: 100%;
 }
 
@@ -76,6 +76,7 @@ a {
     font-family: icon;
     src: url(./font/csi.woff);
 }
+
 @font-face {
     font-family: zidai;
     src: url(./font/DINPRO-MEDIUM.OTF);
@@ -83,27 +84,44 @@ a {
 
 .tab_title_wrap {
     float: left;
-	background: linear-gradient(to bottom right,  $bluePurple800, $bluePurple700);
-	width: 122px;
+    background: linear-gradient(45deg, $primary-color-dark, $primary-color);
+    width: 150px;
     height: 100vh;
-    padding-left: 18px;
-    padding-top: 28px;
-    padding-right: 10px;
+    box-sizing: border-box;
     box-shadow: 0px 0px 2px 2px rgba(5, 13, 43, 0.3);
+
+    .tab_title::before {
+        font-family: icon;
+        font-size: 0.1em;
+        position: absolute;
+        display: block;
+        left: 0;
+        top: -1px;
+        padding-left: 10px;
+    }
+    .tab_title::after {
+        font-size: 12px;
+        position: absolute;
+        right: 0;
+        font-family: icon;
+        margin-top: -1px;
+        padding-right: 10px;
+
+    }
 }
 
 .tab_title {
     display: block;
-    height: 48px;
-    line-height: 48px;
-    padding-left: 24px;
+    height: 3em;
+    line-height: 3em;
+    padding-left: 2em;
     position: relative;
-    color: $white;
+    color: $background-color;
     a {
-		display: block;
-		-webkit-tap-highlight-color: rgba(0,0,0,0);
-        -webkit-tap-highlight-color:transparent;
-        outline:none;
+        display: block;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-tap-highlight-color: transparent;
+        outline: none;
     }
     transition: width .5s; //color: #FFF;
     //background-color: #0EFF26;
@@ -111,173 +129,111 @@ a {
 }
 
 .tab_title.active {
-    color:$orange400;
-    
-}
-.tab_item .active a{
-	color:$orange400;
-  }
-  .tab_item.show .active::before{
-	background:$orange400;
-  }
-.tab_item_wrap {
-    margin-left: 100px;
-    width: 150px;
-    transition: width .5s; //height: 300px;
+    color: $primary-color-text;
+    background-color: #FF5252;
 }
 
-.tab_item {
-	display: none;
-    width: 90px;
+.tab_item .active a {
+    color: $primary-color-text;
+}
+
+.tab_item.show .active::before {
+    background: $primary-color-text;
+}
+
+.tab_item_wrap {
+    margin-left: 150px;
+    width: 150px;
     height: 100vh;
-    padding-left: 10px;
-    padding-top: 28px;
-    background: linear-gradient(to bottom right,  $bluePurple800, $bluePurple700);
+    transition: width .5s;
+    background: linear-gradient(45deg, $primary-color-dark, $primary-color);
     box-shadow: 0px 0px 2px 2px rgba(5, 13, 43, 0.3);
 }
 
-.tab_item .tab_title {
-    padding-left: 7px;
-    color: $white;
+.tab_item {
+    display: none;
 }
+
+.tab_item .tab_title {
+    padding-left: 1em;
+    color: $background-color;
+}
+
 .tab_item:nth-of-type(1) {
     //background-color: #FF660E;
     // display: block;
- 
 }
 
 .tab_item:nth-of-type(2) {
     //	background-color: #FF0E52;
-	
 }
 
 .tab_item:nth-of-type(3) {
     //background-color: #07D739;
-
 }
 
 .show {
     display: block;
 }
-.tab_item.show{
-	margin-left: 50px;
+
+.tab_item.show {
+    // margin-left: 50px;
 }
+
 .tab_title_0::before {
-    font-family: icon;
     content: '\e032';
-    display: block;
-    font-size: 0.1em;
-    position: absolute;
-    left: 0;
-    top: -1px;
+}
+
+.tab_title::after {
+    right: 0;
 }
 
 .tab_title_0::after {
     content: '\e038';
-    font-size: 12px;
-    position: absolute;
-    right: 0;
-    font-family: icon;
-    margin-top: -1px;
 }
 
 .tab_title_1::before {
-    font-family: icon;
     content: '\e033';
-    display: block;
-    font-size: 0.1em;
-    position: absolute;
-    left: 0;
-    top: -1px;
 }
 
 .tab_title_1::after {
     content: '\e038';
-    font-size: 12px;
-    position: absolute;
-    right: 0;
-    font-family: icon;
-    margin-top: -1px;
 }
 
 .tab_title_2::before {
-    font-family: icon;
     content: '\e034';
-    display: block;
-    font-size: 0.1em;
-    position: absolute;
-    left: 0;
-    top: -1px;
 }
 
 .tab_title_2::after {
     content: '\e038';
-    font-size: 12px;
-    position: absolute;
-    right: 0;
-    font-family: icon;
-    margin-top: -1px;
 }
 
 .tab_title_3::before {
-    font-family: icon;
     content: '\e035';
-    display: block;
-    font-size: 0.1em;
-    position: absolute;
-    left: 0;
-    top: -1px;
 }
 
 .tab_title_3::after {
     content: '\e038';
-    font-size: 12px;
-    position: absolute;
-    right: 0;
-    font-family: icon;
-    margin-top: -1px;
 }
 
 .tab_title_4::before {
-    font-family: icon;
     content: '\e036';
-    display: block;
-    font-size: 0.1em;
-    position: absolute;
-    left: -1px;
-    top: -1px;
 }
 
 .tab_title_4::after {
     content: '\e038';
-    font-size: 12px;
-    position: absolute;
-    right: 0;
-    font-family: icon;
-    margin-top: -1px;
 }
 
 .tab_title_5::before {
-    font-family: icon;
     content: '\e037';
-    display: block;
-    font-size: 0.1em;
-    position: absolute;
-    left: 0;
-    top: -1px;
 }
 
 .tab_title_5::after {
     content: '\e038';
-    font-size: 12px;
-    position: absolute;
-    right: 0;
-    font-family: icon;
-    margin-top: -1px;
 }
 
 .tab_title a {
-    color: $white;
+    color: $background-color;
     text-decoration: none;
 }
 
@@ -285,9 +241,9 @@ a {
     content: '';
     display: block;
     width: 2px;
-    height: 12px;
-    background: $white;
+    height: 2em;
+    background: $background-color;
     position: absolute;
-    top: 18px;
+    top: 0.5em;
     left: 0;
 }
