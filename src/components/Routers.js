@@ -34,8 +34,8 @@ import SegmenHotel from '../views/implementationManagement/SegmenHotel'
 import ServiceConsumables from '../views/implementationManagement/ServiceConsumables'
 //视图管理
 import View from '../views/viewManagement/View'
-import Langs from '../language'
-// const Langs = JSON.parse(sessionStorage.Language);
+// import Langs from '../language'
+const Langs = sessionStorage.Language?JSON.parse(sessionStorage.Language):{};
 class Routers extends Component{
 
  message=()=>{

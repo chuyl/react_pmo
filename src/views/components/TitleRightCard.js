@@ -6,10 +6,11 @@
 
     class TitleRightCard extends Component {
         render(){
-            const {message} =this.props;
+            const {message,defaultValue} =this.props;
             console.log(message)
             return (
                 <div className="title_card_right">
+                  <p>{message?message:defaultValue}</p>
                     {/* <label>{labelValue}</label> */}
                    {/* <span>{message}</span> */}
                     {/* <span className="text_field_remind"></span> */}

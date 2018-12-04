@@ -38,6 +38,7 @@
    import Invisible from './Invisible'
    import DepartmentList from './DepartmentList'
    import TitleLeftCard from './TitleLeftCard'
+   import TitleRightCard from './TitleRightCard'
    import TitleCardRightGroup from './TitleCardRightGroup'
    import DateCard from './DateCard'
    import ProvinceCity from './ProvinceCity'
@@ -45,6 +46,7 @@
    import CardRightBody from './CardRightBody'
    import SpellingCardGroup from './SpellingCardGroup'
    import LoopCardMoneyGroup from './LoopCardMoneyGroup'
+   import LoopCardGroup from './LoopCardGroup'
   import LabelChildMessage from './LabelChildMessage'
   import LabelMessage from './LabelMessage'
   import LabelTotalMessage from './LabelTotalMessage'
@@ -97,7 +99,6 @@
         this.props.delViewIndexContent(index) 
     }
        render() {
-           console.log(this.props.componentslist)
            return (
                this.props.componentslist.map((form_list,index) => {
                        return (
@@ -312,6 +313,13 @@
                                     defaultValue={form_list.default_value}
                                     // message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
+                            :form_list.type_name === "TitleRightCard"?
+                                <TitleRightCard
+                                    id={form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    defaultValue={form_list.default_value}
+                                   // message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />
                             :form_list.type_name === "TitleCardRightGroup"?
                                 <TitleCardRightGroup
                                     id={form_list.id_name} 
@@ -383,6 +391,14 @@
                                 />
                             :form_list.type_name === "LoopCardMoneyGroup"?
                                 <LoopCardMoneyGroup
+                                    id={form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    defaultValue={form_list.default_value}
+                                     beforeApiUri={form_list.before_api_uri}
+                                    message={""} 
+                                />
+                            :form_list.type_name === "LoopCardGroup"?
+                                <LoopCardGroup
                                     id={form_list.id_name} 
                                     labelValue={form_list.title} 
                                     defaultValue={form_list.default_value}

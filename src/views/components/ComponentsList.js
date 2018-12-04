@@ -30,6 +30,7 @@ import CardLeftBody from './CardLeftBody'
 import CardRightBody from './CardRightBody'
 import SpellingCardGroup from './SpellingCardGroup'
 import LoopCardMoneyGroup from './LoopCardMoneyGroup'
+import LoopCardGroup from './LoopCardGroup'
 import LabelSelectMessage from './LabelSelectMessage'
 import CardHead from './CardHead'
 import CardPage from './CardPage'
@@ -308,7 +309,15 @@ handleChildChange=(formData)=>{
                                      beforeApiUri={form_list.before_api_uri}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
-                                
+                            :form_list.type_name === "LoopCardGroup"?
+                                <LoopCardGroup
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    key={index}
+                                    defaultValue={form_list.default_value}
+                                     beforeApiUri={form_list.before_api_uri}
+                                    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />    
                             :form_list.type_name === "DateCard"?
                                 <DateCard
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 

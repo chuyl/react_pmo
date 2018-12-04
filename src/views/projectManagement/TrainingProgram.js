@@ -48,7 +48,9 @@ class TrainingProgram extends Component {
 
 	}
 	fetchListData() {
-		var json_view=JSON.parse(sessionStorage.view)
+		console.log(sessionStorage.view)
+		var json_view=sessionStorage.view?JSON.parse(sessionStorage.view):[]
+		// window.location.reload();
 		for(var i=0;i<json_view.length;i++){
 			if(json_view[i].name==="projectViewCard"){
 				
