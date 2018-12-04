@@ -1,5 +1,5 @@
 import React, { Component }  from "react"
- import Lang from "../language"
+ //import Lang from "../language"
 
 
 class TabsControl extends Component{
@@ -10,8 +10,11 @@ class TabsControl extends Component{
 		}
 	}
 	componentWillMount() {
+		
+		// sessionStorage.Language?console.log("0"):window.location.reload();
 		console.log(sessionStorage.Language)
-		//const Lang = JSON.parse(sessionStorage.Language);
+		const Lang =JSON.parse(sessionStorage.Language);
+		console.log(Lang)
 		var m=-1;
 		for(var i in Lang){
 			m++;
@@ -50,6 +53,7 @@ class TabsControl extends Component{
 				<div className="tab_title_wrap">
 					{ 
 						React.Children.map( this.props.children , ( element,index ) => {
+							console.log(element.props.name )
 							return(
 								<div onClick={() =>{this.setState({currentIndex : index }) } } className={ this.check_title_index( index )+ " tab_title_"+index }>{ element.props.name }</div>
 							)

@@ -45,6 +45,7 @@
    import CardRightBody from './CardRightBody'
    import SpellingCardGroup from './SpellingCardGroup'
    import LoopCardMoneyGroup from './LoopCardMoneyGroup'
+   import LoopCardGroup from './LoopCardGroup'
   import LabelChildMessage from './LabelChildMessage'
   import LabelMessage from './LabelMessage'
   import LabelTotalMessage from './LabelTotalMessage'
@@ -383,6 +384,14 @@
                                 />
                             :form_list.type_name === "LoopCardMoneyGroup"?
                                 <LoopCardMoneyGroup
+                                    id={form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    defaultValue={form_list.default_value}
+                                     beforeApiUri={form_list.before_api_uri}
+                                    message={""} 
+                                />
+                            :form_list.type_name === "LoopCardGroup"?
+                                <LoopCardGroup
                                     id={form_list.id_name} 
                                     labelValue={form_list.title} 
                                     defaultValue={form_list.default_value}

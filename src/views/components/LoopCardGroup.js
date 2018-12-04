@@ -6,6 +6,7 @@
     class LoopCardGroup extends Component {
         render(){
             const {message} =this.props;
+            console.log(message)
             return (
                 message?message.map((list,message,index) => {
 					return (<div key={index}>

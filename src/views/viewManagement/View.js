@@ -219,7 +219,8 @@ class View extends Component {
 		var select_type =  document.getElementById("view_type_name").innerHTML;
 		var view_data=this.state.view_data;
 		view_data["form-list"]=this.state.this_view_list;
-
+		view_data["form-temp-name"]=this.state.view_china_name;
+		console.log(this.state.view_china_name)
 		var add_cb = (route, messages, arg) => {
 			if (messages.error === 0) {
 				this.setState({
@@ -236,7 +237,7 @@ class View extends Component {
 					name:this.state.view_english_name,
 					title:this.state.view_china_name,
 					type:select_type,
-					data:JSON.stringify(view_data)} 
+					data:view_data} 
 				}, add_cb, {});
 	}
 	
@@ -350,6 +351,7 @@ class View extends Component {
 	 * @param sureAddViewCallback 函数 弹出框确定
 	 */
 	sureAddViewCallback(msg){
+		console.log(this.state.view_id)
 		this.state.view_id===""?this.addViewName():this.editViewName()
 		
 	}
@@ -361,7 +363,9 @@ class View extends Component {
 	addViewName=()=>{
 		var select_type =  document.getElementById("view_type_name").innerHTML;
 				var cb = (route, message, arg) => {
+					console.log(message.error)
 					if (message.error === 0) {
+						console.log(message.data)
 						this.setState({
 							alertAddViewState:false,
 							initializationData:message.data,
@@ -377,9 +381,10 @@ class View extends Component {
 								this.fetchListData()
 							}
 						// }
-						getData(getRouter("json_manage_add"), { token:sessionStorage.token,data:{name:this.state.view_english_name,title:this.state.view_china_name,type:select_type,data:JSON.stringify(message_temp)} }, add_cb, {});
-					}
+						console.log(message_temp)
 						
+					}
+					getData(getRouter("json_manage_add"), { token:sessionStorage.token,data:{name:this.state.view_english_name,title:this.state.view_china_name,type:select_type,data:message_temp} }, add_cb, {});
 					
 					}
 				}
@@ -389,14 +394,18 @@ class View extends Component {
 		var json_view=JSON.parse(sessionStorage.view)
 		for(var i=0;i<json_view.length;i++){
 			if(json_view[i].name===name){
+				console.log(json_view[i].data)
 				var json_message=json_view[i].data;
-				json_message["form-temp-name"]=this.state.view_china_name;
-				this.setState({
-					initializationData:json_message,
-					
-				})
-				var message_temp=JSON.parse(json_view[i].data);
-				message_temp["form-temp-name"]=this.state.view_china_name;
+				if(json_message!==null){
+					json_message["form-temp-name"]=this.state.view_china_name;
+					this.setState({
+						initializationData:json_message,
+						
+					})
+					var message_temp=json_view[i].data;
+					message_temp["form-temp-name"]=this.state.view_china_name;
+				}
+				
 			}
 		}
 		// var cb = (route, message, arg) => {
@@ -429,13 +438,14 @@ class View extends Component {
 				})
 					}
 				}
+				console.log(this.state.initializationData)
 				getData(getRouter("json_manage_edit"), 
 				{ token:sessionStorage.token,
 					data:{  id:this.state.view_id, 
 							name:this.state.view_english_name,
 							title:this.state.view_china_name,
 							type:select_type,
-							data:JSON.stringify(this.state.initializationData)} 
+							data:this.state.initializationData} 
 						}, add_cb, {});
 	
 		

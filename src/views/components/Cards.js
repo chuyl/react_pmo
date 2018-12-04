@@ -115,14 +115,14 @@ class Card extends Component {
                                     messageList={form_list.add_button}
                                     onChange = {this.handleClick}
                                 />
-                            :form_list.type_name === "CardHead"?
-                                <CardHead
-                                    id={form_list.id_name} 
-                                    addButton={form_list.add_button}
-                                    key={form_list.id_name}
-                                    message={this.props.card_list?this.props.card_list:""} 
-                                />
-                            :form_list.type_name === "CardBody"?
+                        :form_list.type_name === "CardHead"?
+                            <CardHead
+                                id={form_list.id_name} 
+                                addButton={form_list.add_button}
+                                key={form_list.id_name}
+                                message={this.props.card_list?this.props.card_list:""} 
+                            />    
+                        :form_list.type_name === "CardBody"?
                                 <CardBody
                                     openState={this.state.openCtrlState}
                                     cardIndex={this.props.index}
@@ -182,7 +182,7 @@ class Card extends Component {
                                     // delButton = {form_list.del_button}
                                     selectedInfo={this.props.card_list?this.props.card_list:""} 
                                 />
-                            : ""
+                            : ""    
                     )
 
                 })}
