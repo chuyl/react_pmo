@@ -19,7 +19,7 @@ import {getData,getRouter } from './utils/helpers';
   
 // }
 //二级路由
-
+console.log(Lang)
 class App extends Component {
     render() {
       return (
@@ -322,7 +322,6 @@ handleLogout = () => {
     for(var i in Lang){
      menuView.push({name:Lang[i].name,data:Lang[i].data})
     }
-    console.log(menuView)
 		return(
       sessionStorage.getItem("logged")==="true"?	<div className="sidebar">
      

@@ -66,6 +66,13 @@ class View extends Component {
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
 				sessionStorage.view=JSON.stringify(message.data);
+				// var array = message.data;
+				// var resultArray = array.sort(
+				// function compareFunction(param1, param2) {
+				// return param1.localeCompare(param2,"zh");
+				// }
+				// );
+				// console.log(resultArray)
 				this.setState({
 					view_table_list:message.data	
 				})
@@ -366,12 +373,13 @@ class View extends Component {
 					console.log(message.error)
 					if (message.error === 0) {
 						console.log(message.data)
-						this.setState({
-							alertAddViewState:false,
-							initializationData:message.data,
-						})
 						var message_temp=message.data;
 						message_temp["form-temp-name"]=this.state.view_china_name;
+						this.setState({
+							alertAddViewState:false,
+							initializationData:message_temp,
+						})
+					
 					// if(select_type==="cards"){
 					// 	var view_english_name=this.state.view_english_name;
 					// 	var name=[view_english_name+"Card",view_english_name+"Head",view_english_name+"Page1",view_english_name+"Page2",view_english_name+"Page3",]
@@ -398,12 +406,13 @@ class View extends Component {
 				var json_message=json_view[i].data;
 				if(json_message!==null){
 					json_message["form-temp-name"]=this.state.view_china_name;
+					console.log(json_message)
 					this.setState({
 						initializationData:json_message,
 						
 					})
-					var message_temp=json_view[i].data;
-					message_temp["form-temp-name"]=this.state.view_china_name;
+					// var message_temp=json_view[i].data;
+					// message_temp["form-temp-name"]=this.state.view_china_name;
 				}
 				
 			}
@@ -438,14 +447,16 @@ class View extends Component {
 				})
 					}
 				}
-				console.log(this.state.initializationData)
+
+				var message_temp=this.state.initializationData;
+					message_temp["form-temp-name"]=this.state.view_china_name;
 				getData(getRouter("json_manage_edit"), 
 				{ token:sessionStorage.token,
 					data:{  id:this.state.view_id, 
 							name:this.state.view_english_name,
 							title:this.state.view_china_name,
 							type:select_type,
-							data:this.state.initializationData} 
+							data:message_temp} 
 						}, add_cb, {});
 	
 		
@@ -633,6 +644,7 @@ class View extends Component {
 		getData(getRouter("newGroup"), { token:sessionStorage.token }, cb, {});
 	}
 	render() {
+
 		return(
 			<div>
 				<div style={{overflow:"hidden"}} className="view_table_list ">

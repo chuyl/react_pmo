@@ -4,20 +4,34 @@
      */
     import React, { Component } from 'react';
     class LoopCardGroup extends Component {
+            add_lists_components = () => {
+            var components = [];
+            var labelValue = this.props.labelValue.split(",");
+            var beforeApiUri = this.props.beforeApiUri.split(",");
+            var list = beforeApiUri;
+            for(var m = 0;m<this.props.message.length;m++){
+              
+                    console.log(this.props.message[m][list[0]])
+                    components.push(
+                            <div key={m} className="label_message">
+                            
+                              <label>{this.props.message[m][list[0]]}</label>
+                              {list.length>1?<span>{this.props.message[m][list[1]]}</span>:""}
+                              {/* <span className="text_field_remind"></span> */}
+                          </div>
+                     )
+                
+                
+            }
+            
+            return components
+        }
         render(){
-            const {message} =this.props;
-            console.log(message)
             return (
-                message?message.map((list,message,index) => {
-					return (<div key={index}>
-                                <div className="label_message">
-                                    <label> 
-                                        {/* {message[list[0]]} */}
-                                    </label>
-                                    <span>{message.total_price}</span>
-                                </div>
-                             </div>)}):"列表"
-            )
+                 <div>{this.add_lists_components()}</div>
+              )
+                
+                
         }
     }
     export default LoopCardGroup;
