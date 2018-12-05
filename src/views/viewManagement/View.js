@@ -78,6 +78,14 @@ class View extends Component {
 				})
 
 
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
 			}
 		}
 		getData(getRouter("json_manage_list"), { token:sessionStorage.token }, cb, {});
@@ -236,6 +244,14 @@ class View extends Component {
 					view_type:""
 				})
 				this.fetchListData()
+			}else if(messages.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
 			}
 		}
 		getData(getRouter("json_manage_edit"), 
@@ -387,6 +403,14 @@ class View extends Component {
 						var add_cb = (route, messages, arg) => {
 							if (messages.error === 0) {
 								this.fetchListData()
+							}else if(messages.error === 2){
+								console.log("未登录")
+								sessionStorage.logged = false;
+								sessionStorage.token="";
+								if(window.location.hash.split("#")[1]!=="/"){
+									window.location.href=window.location.href.split("#/")[0]
+								
+								  }
 							}
 						// }
 						console.log(message_temp)
@@ -394,6 +418,14 @@ class View extends Component {
 					}
 					getData(getRouter("json_manage_add"), { token:sessionStorage.token,data:{name:this.state.view_english_name,title:this.state.view_china_name,type:select_type,data:message_temp} }, add_cb, {});
 					
+					}else if(message.error === 2){
+						console.log("未登录")
+						sessionStorage.logged = false;
+						sessionStorage.token="";
+						if(window.location.hash.split("#")[1]!=="/"){
+							window.location.href=window.location.href.split("#/")[0]
+						
+						  }
 					}
 				}
 				getData(getRouter(select_type==="cards"?"newCard":"newFormlistGroup"), { token:sessionStorage.token }, cb, {});
@@ -445,6 +477,14 @@ class View extends Component {
 				this.setState({
 					alertAddViewState:false,
 				})
+					}else if(messages.error === 2){
+						console.log("未登录")
+						sessionStorage.logged = false;
+						sessionStorage.token="";
+						if(window.location.hash.split("#")[1]!=="/"){
+							window.location.href=window.location.href.split("#/")[0]
+						
+						  }
 					}
 				}
 
@@ -574,6 +614,14 @@ class View extends Component {
 						alertCopyState:false
 					})
 					this.fetchListData()
+				}else if(messages.error === 2){
+					console.log("未登录")
+					sessionStorage.logged = false;
+					sessionStorage.token="";
+					if(window.location.hash.split("#")[1]!=="/"){
+						window.location.href=window.location.href.split("#/")[0]
+					
+					  }
 				}
 			}
 			getData(getRouter("json_manage_add"), { token:sessionStorage.token,data:{name:name,title:title,type:type,data:data} }, cb, {});
@@ -616,6 +664,14 @@ class View extends Component {
 				this.setState({
 					this_view_list:formlist
 				})
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
 			}
 		}
 		
@@ -639,6 +695,14 @@ class View extends Component {
 					}
 				}
 				getData(getRouter("newGroup"), { token:sessionStorage.token }, cb, {});
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
 			}
 		}
 		getData(getRouter("newGroup"), { token:sessionStorage.token }, cb, {});

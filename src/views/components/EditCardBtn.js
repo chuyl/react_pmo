@@ -42,6 +42,14 @@
                             card_state:false
                         })
                         this.listProject()
+                    }else if(message.error === 2){
+                        console.log("未登录")
+                        sessionStorage.logged = false;
+                        sessionStorage.token="";
+                        if(window.location.hash.split("#")[1]!=="/"){
+                            window.location.href=window.location.href.split("#/")[0]
+                        
+                          }
                     }
         
                 }

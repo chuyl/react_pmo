@@ -81,6 +81,14 @@ class Budget extends Component {
 						form_temp_name: message.budget_paper.data["form-temp-name"],
 					})
 	
+				}else if(message.error === 2){
+					console.log("未登录")
+					sessionStorage.logged = false;
+					sessionStorage.token="";
+					if(window.location.hash.split("#")[1]!=="/"){
+						window.location.href=window.location.href.split("#/")[0]
+					
+					  }
 				}
 			}
 			getData(getRouter("budgetManage"), { token:sessionStorage.token }, cb, {});
@@ -96,6 +104,14 @@ class Budget extends Component {
 						budget_message_paper: message
 					})
 	
+				}else if(message.error === 2){
+					console.log("未登录")
+					sessionStorage.logged = false;
+					sessionStorage.token="";
+					if(window.location.hash.split("#")[1]!=="/"){
+						window.location.href=window.location.href.split("#/")[0]
+					
+					  }
 				}
 			}
 			getData(getRouter("budgetManageData"), { token:sessionStorage.token }, cb, {});
@@ -147,6 +163,14 @@ class Budget extends Component {
 		}
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
 			}
 		}
 		getData(getRouter(BUDGETINDEXADD), obj, cb, {});

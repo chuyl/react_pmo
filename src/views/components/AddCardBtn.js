@@ -62,6 +62,14 @@ import { getData, getRouter } from '../../utils/helpers'
                         add_card_state:false
                     })
                     this.success_message()
+                }else if(message.error === 2){
+                    console.log("未登录")
+                    sessionStorage.logged = false;
+                    sessionStorage.token="";
+                    if(window.location.hash.split("#")[1]!=="/"){
+                        window.location.href=window.location.href.split("#/")[0]
+                    
+                      }
                 }else{
 			
                     Alert.open({

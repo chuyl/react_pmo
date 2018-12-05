@@ -26,7 +26,15 @@ class DepartmentList extends Component {
                 this.setState({
                     searchInfoLists:message.data
                    })
-            }
+            }else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
+			}
           }
             getData(getRouter(this.state.before_api_uri), {token:sessionStorage.token }, cb, { });  
     }
@@ -36,7 +44,15 @@ class DepartmentList extends Component {
                 this.setState({
                     departmentLists:message.data
                    })
-            }
+            }else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
+			}
           }
             getData(getRouter("csst_department_list"), {token:sessionStorage.token }, cb, { });  
     }

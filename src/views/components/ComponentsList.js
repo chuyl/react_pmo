@@ -133,7 +133,9 @@ handleChildChange=(formData)=>{
      
         return (
                 this.props.componentslist.map((form_list,index) => {
-                    
+                    if(form_list.type_name==="CardGroup"){
+                        console.log(form_list.add_button)
+                    }
                    
                     return (
                             form_list.type_name === "Cards" ?

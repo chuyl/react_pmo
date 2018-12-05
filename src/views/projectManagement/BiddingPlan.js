@@ -35,6 +35,14 @@ class BiddingPlan extends Component {
 				this.setState({
 					card_list:message.data
 				})
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
 			}else{
 				Alert.open({
 					alertTip:message.msg
@@ -182,6 +190,14 @@ class BiddingPlan extends Component {
 								
 				})
 				this.listProject()  //刷新项目列表
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
 			}
 		}
 					//获取数据接口
@@ -233,6 +249,14 @@ class BiddingPlan extends Component {
 					this.setState({    //  项目创建成功,打开编辑页面。更新view
 						dataId:message.data.id,
 					}) 
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
 			}
 			
 			}else{

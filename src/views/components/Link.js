@@ -73,10 +73,18 @@
     message_list=()=> {
         var cb = (route, message, arg) =>  {
             // console.log("bianji")
-			if (message.error===0) {
+			if (message.error=== 0) {
 				this.setState( {
 					linkListCardData:message.data
 				})
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
 			}
         }
 		getData(getRouter(this.props.messageList),  {token:sessionStorage.token, project_id:this.props.isClick }, cb,  {}); 
@@ -105,6 +113,14 @@
                             }
                         }
                         
+                    }else if(messages.error === 2){
+                        console.log("未登录")
+                        sessionStorage.logged = false;
+                        sessionStorage.token="";
+                        if(window.location.hash.split("#")[1]!=="/"){
+                            window.location.href=window.location.href.split("#/")[0]
+                        
+                          }
                     }else{
                         this.setState({
                             remind_state:true

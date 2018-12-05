@@ -74,7 +74,15 @@ class ListTextSearch extends Component {
                     searchInfoLists: message.data,
                     info_lists: message.data
                 })
-            }
+            }else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
+			}
         }
         getData(getRouter(this.state.before_api_uri), { token:sessionStorage.token }, cb, {});
     }
@@ -125,12 +133,20 @@ class ListTextSearch extends Component {
 		}
 		// componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data
 		var cb = (route, message, arg) => {
-			if(message.error===0){
+			if(message.error=== 0){
                 this.setState({    //  项目创建成功,打开编辑页面。更新view
                     card_state:false,
                     add_customer:false
 				}) 
-            }
+            }else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
+			}
 				
 			
 	}

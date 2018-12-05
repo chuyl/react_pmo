@@ -10,7 +10,9 @@
     import AddCardBtn from './AddCardBtn'
     //import {LECTURERADD} from '../../enum'
     import {getData,getRouter} from '../../utils/helpers'
+    
     class CardGroup extends Component {
+        
         state = {
             addCondition: [],//讲师安排获取数据list
             data_group: [],  //获取到的数据
@@ -23,8 +25,10 @@
             parent_id:"",
             thisViewList:[] ,  //当前card数据list
             edit_list:[],  //group视图的编辑页面
-            descript_list:[] //group视图的显示页面
+            descript_list:[], //group视图的显示页面
+            addButton:this.props.addButton
         }
+    
         // shouldComponentUpdate(){
         //     if(this.props.addCardGroupBtn===true){
         //         this.listGroup(this.state.parent_id)
@@ -36,10 +40,12 @@
                 color:PropTypes.string,
                 callback:PropTypes.func,
             }
-        componentWillMount(){
-            this.fetchDescriptContent()
-            this.fetchEditContent()
-        }
+  
+        // componentDidMount(){
+       
+        //      this.fetchDescriptContent()
+        //     this.fetchEditContent()
+        // }
         /** 
          * @author xuesong
          * @param removeEvent 函数名 删除添加组件
@@ -88,6 +94,14 @@
                         view_list:[]
                     })
                      this.postListGroup(this.state.parent_id)
+                }else if(message.error === 2){
+                    console.log("未登录")
+                    sessionStorage.logged = false;
+                    sessionStorage.token="";
+                    if(window.location.hash.split("#")[1]!=="/"){
+                        window.location.href=window.location.href.split("#/")[0]
+                    
+                      }
                 }
                 
     
@@ -139,7 +153,7 @@
                 
                 var json_message=json_view[i].data;
                 this.setState({
-                    add_button: json_message["form-list"],
+                    edit_list: json_message["form-list"],
                 })
 
             }
@@ -157,18 +171,23 @@
         // getData(getRouter("json_manage_name"), { name:this.props.addButton.descript,token:sessionStorage.token }, cb, {});
     }
      //获取组件中add_button里面的查看视图
-     fetchDescriptContent() {
+     fetchDescriptContent=()=> {
+    //    console.log(this.state.addButton)
         var json_view=JSON.parse(sessionStorage.view)
+        
         for(var i=0;i<json_view.length;i++){
+
             if(json_view[i].name===this.props.addButton.descript){
-                
+              
                 var json_message=json_view[i].data;
+                // console.log(json_view[i].data["form-list"])
                 this.setState({
-                    add_button: json_message["form-list"],
+                    descript_list: json_view[i].data["form-list"],
                 })
 
             }
         }
+       
 		// var cb = (route, message, arg) => {
         //     var json_message=JSON.parse(message.data);
 		// 	if (message.error === 0) {
@@ -191,18 +210,35 @@
         this.props.editCardGroupState(newStates)
      }
         render() {
-            console.log(this.props.dataId)
+            var json_view=JSON.parse(sessionStorage.view)
+        console.log(this.props.addButton.descript)
+            for(var i=0;i<json_view.length;i++){
+    
+                if(json_view[i].name===this.props.addButton.descript){
+                  
+                    var json_message=json_view[i].data["form-list"];
+                    // console.log(json_view[i].data["form-list"])
+                    // this.setState({
+                    //     descript_list: json_view[i].data["form-list"],
+                    // })
+    
+                }
+            }
+            const json_messages = json_message;
+            const edit_list = json_message;
+            // console.log(json_message)
             return (
 
                 <div>
                     <p className="card_title">{this.props.title}</p>
                     <ul id = {this.props.idName}>
                         {this.props.beforeApiUri?this.props.beforeApiUri.map((view_list,index)=>{
+                          
                             return  (
                                 <li
                                   key={index}  className="card_info_list_card"
                                 >
-                                < ComponentsList index={index} disabled={true}  componentslist =  {this.state.descript_list?this.state.descript_list:[]} componentsdata = {view_list} ></ComponentsList > 
+                                < ComponentsList index={index} disabled={true}  componentslist =  {json_message?json_message:[]} componentsdata = {view_list} ></ComponentsList > 
                                     {/* {this.props.addButton.descript.map((card_list, index) => {
                                         return (
                                         <div key={index} style={{marginBottom:"-6px"}}>
@@ -267,7 +303,7 @@
                                 key={`executeHandle${this.state.addCondition.length}.lenght+1`}
                                 remove={this.removeEvent.bind(this)}
                                 index={this.state.addCondition.length}
-                                cardList={this.state.edit_list}
+                                cardList={edit_list}
                                 addButtonTitle ={this.props.addButtonTitle}
                                 editButton = {this.props.editButton}
                                 delButton = {this.props.delButton}

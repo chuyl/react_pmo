@@ -35,7 +35,16 @@ class TrainingProgram extends Component {
 				this.setState({
 					card_list:message.data
 				})
-			}else{
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
+			}
+			else{
 				Alert.open({
 					alertTip:message.msg
 				});
@@ -48,7 +57,6 @@ class TrainingProgram extends Component {
 
 	}
 	fetchListData() {
-		console.log(sessionStorage.view)
 		var json_view=sessionStorage.view?JSON.parse(sessionStorage.view):[]
 		// window.location.reload();
 		for(var i=0;i<json_view.length;i++){
@@ -146,6 +154,7 @@ class TrainingProgram extends Component {
 	handleChildChange=(newState)=>{ //处理子函数传回来的state,改变自身的state
 		console.log(newState)
 		if(newState){
+			console.log(this.state.card_state)
 			// this.setState(newState);
 			if(this.state.card_state){
 				setTimeout(function(){
@@ -185,6 +194,14 @@ class TrainingProgram extends Component {
 								
 				})
 				this.listProject()  //刷新项目列表
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
 			}
 		}
 					//获取数据接口
@@ -236,6 +253,14 @@ class TrainingProgram extends Component {
 					this.setState({    //  项目创建成功,打开编辑页面。更新view
 						dataId:message.data.id,
 					}) 
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
 			}
 			
 			}else{
@@ -290,7 +315,7 @@ class TrainingProgram extends Component {
 						<div className="selected_scroll_div" style={{ padding: "0 18px" }}>
 							{/* paper详细内容 */}
 							{this.state.card_state ?//判断paper是否可见
-								<div key={this.state.dataId?this.state.dataId:"addComponents"} id="editComponents">
+								<div key={this.state.dataId?this.state.dataId:"addComponents"} id="editComponents" className="edit_bar">
 								<ComponentsList editCardGroupState={this.freshCardGroup} editCardGroupStates={this.freshCardGroup} dataId={this.state.dataId} holdClick={this.onHoldClicks} componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
 						   </div>		
 								: ""}

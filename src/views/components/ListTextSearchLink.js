@@ -264,7 +264,15 @@ class ListTextSearchLink extends Component {
                     searchInfoLists: message.data,
                     info_lists:message.data
                 })
-            }
+            }else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
+			}
         }
         getData(getRouter(this.state.before_api_uri), { token:sessionStorage.token }, cb, {});
     }
@@ -290,10 +298,18 @@ class ListTextSearchLink extends Component {
      */
     fetchData() {
         var cb = (route, message, arg) =>  {
-			if (message.error===0) {
+			if (message.error=== 0) {
 				this.setState( {
                     add_button: message.adit_project.data["form-list"],
 				})
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
 			}
         }
         getData(getRouter(this.state.add_uri_button),  {token:sessionStorage.token}, cb,  {});

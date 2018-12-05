@@ -32,6 +32,14 @@
                     this.setState({
                         card_list:message.data
                     })
+                }else if(message.error === 2){
+                    console.log("未登录")
+                    sessionStorage.logged = false;
+                    sessionStorage.token="";
+                    if(window.location.hash.split("#")[1]!=="/"){
+                        window.location.href=window.location.href.split("#/")[0]
+                    
+                      }
                 }
             }
             getData(getRouter(this.props.listButton), {id:this.props.conditionAction.parent_id, token:sessionStorage.token }, cb, {});
@@ -89,6 +97,14 @@
                 if (message.error === 0) {
                    this.success_message()
                     //this.listGroup()
+                }else if(message.error === 2){
+                    console.log("未登录")
+                    sessionStorage.logged = false;
+                    sessionStorage.token="";
+                    if(window.location.hash.split("#")[1]!=="/"){
+                        window.location.href=window.location.href.split("#/")[0]
+                    
+                      }
                 }else{
 			
                     Alert.open({
@@ -104,14 +120,13 @@
            getData(getRouter(before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
         }
         render() {
+            console.log(this.props.cardList);
             return (
                 <div>
                     <div key={this.props.index} className="card_info_list_card">
                         {/* <ComponentsList componentslist={this.state.card_list}></ComponentsList> */}
                         {this.props.cardList?this.props.cardList.map((card_list, index) => {
-                            if(card_list.type_name==="TextArea"){
-                                 console.log(this.props.conditionAction[card_list.id_name])
-                            }
+                           
                             return (
                                 <div key={index} style={{marginBottom:"-6px"}}>
                                 {card_list.type_name === "ListTextSearch" ?

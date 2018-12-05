@@ -54,6 +54,14 @@ class BudgetListTextSearchLink extends Component {
 					add_button: message.adit_project.data["form-list"],
 				})
 	
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
 			}
 		}
 			getData(getRouter(this.state.add_uri_button), { token:sessionStorage.token }, cb, {});
@@ -69,7 +77,15 @@ class BudgetListTextSearchLink extends Component {
                     edit_project_data: message
                 })
         
-            }
+            }else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
+			}
         }
          getData(getRouter(this.state.showData), { token:sessionStorage.token }, cb, {});
 	}
@@ -92,7 +108,15 @@ class BudgetListTextSearchLink extends Component {
                 })
                 }
              }
-            }
+            }else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
+			}
         }
         getData(getRouter(this.state.before_api_uri),  {token:sessionStorage.token}, cb,  {}); 
     }
@@ -113,7 +137,15 @@ class BudgetListTextSearchLink extends Component {
         var cb = (route, message, arg) =>  {
             if (message.error === 0) {
                 
-            }
+            }else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
+			}
           }
             getData(getRouter(),  {token:sessionStorage.token}, cb,  {}); 
     }
@@ -125,7 +157,15 @@ class BudgetListTextSearchLink extends Component {
         var cb = (route, message, arg) =>  {
             if (message.error === 0) {
                 
-            }
+            }else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
+			}
           }
             getData(getRouter(),  {token:sessionStorage.token}, cb,  {}); 
     }

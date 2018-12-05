@@ -59,7 +59,7 @@ class TabComponent extends Component{
       dialog_show:false,
       logged: Boolean(sessionStorage.getItem("logged")),
       message_state:false,
-      login_account:"测试",
+      login_account:"刘雪松",
       login_password:"123456",
 		}
   }
@@ -238,7 +238,15 @@ handleLogout = () => {
                 }else{
                   //window.location.href = this.changeURLArg(window.location.href,'trainingProgram')
                 }
-                window.location.reload()
+                 window.location.reload()
+              }else if(message.error === 2){
+                console.log("未登录")
+                sessionStorage.logged = false;
+                sessionStorage.token="";
+                if(window.location.hash.split("#")[1]!=="/"){
+                  window.location.href=window.location.href.split("#/")[0]
+                
+                  }
               }else{
 
                 Alert.open({
@@ -251,6 +259,14 @@ handleLogout = () => {
             }
           }
             getData(getRouter("json_manage_list"), { token:sessionStorage.token }, cb_view, {});
+          }else if(message.error === 2){
+            console.log("未登录")
+            sessionStorage.logged = false;
+            sessionStorage.token="";
+            if(window.location.hash.split("#")[1]!=="/"){
+              window.location.href=window.location.href.split("#/")[0]
+            
+              }
           }else{
               Alert.open({
                 alertTip:message.msg
@@ -262,6 +278,14 @@ handleLogout = () => {
             }
         }
         getData(getRouter("menu_manage_list"), { token:sessionStorage.token }, cb_menu, {});
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
 			}else{
 
 				Alert.open({
