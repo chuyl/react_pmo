@@ -31,13 +31,12 @@ body {
 }
 
 a {
-    color: #2d374b;
+    color: $primary-color-text;
     text-decoration: none
 }
 
 a:hover {
-    color: #cd0200;
-    text-decoration: underline
+    text-decoration: underline;
 }
 
 em {

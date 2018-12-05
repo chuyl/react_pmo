@@ -939,11 +939,10 @@ body {
   -webkit-text-size-adjust: 100%; }
 
 a {
-  color: #2d374b;
+  color: #FFFFFF;
   text-decoration: none; }
 
 a:hover {
-  color: #cd0200;
   text-decoration: underline; }
 
 em {
@@ -1230,7 +1229,7 @@ html, body {
   width: 100%;
   line-height: 36px;
   z-index: 100;
-  background-color: pink; }
+  background-color: #3F51B5; }
 
 .router_screen {
   display: block;
@@ -1490,7 +1489,6 @@ html, body {
     left: 0;
     top: 0;
     padding: 0;
-    background: linear-gradient(to bottom right, #303F9F, #3F51B5);
     overflow: hidden;
     transition: all 0.05s 0.01s cubic-bezier(0.165, 0.84, 0.44, 1);
     float: left;
@@ -1504,7 +1502,6 @@ html, body {
     position: fixed;
     top: 0;
     height: 95vh;
-    background: linear-gradient(to bottom right, #303F9F, #3F51B5);
     /* height: 600px; js代替 */
     left: 0;
     z-index: 10; } }
@@ -2213,7 +2210,6 @@ html, body {
   display: block;
   height: 2em;
   overflow: hidden;
-  color: #fff;
   text-align: center;
   background-color: #fafafa;
   height: 2em;

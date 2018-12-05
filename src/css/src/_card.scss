@@ -257,7 +257,6 @@
         left: 0;
         top: 0;
         padding: 0;
-        background: linear-gradient(to bottom right, $primary-color-dark, $primary-color);
         overflow: hidden;
         transition: all 0.05s 0.01s cubic-bezier(0.165, 0.84, 0.44, 1);
         float: left;
@@ -271,7 +270,6 @@
         position: fixed;
         top: 0;
         height: 95vh;
-        background: linear-gradient(to bottom right, $primary-color-dark, $primary-color);
         /* height: 600px; js代替 */
         left: 0;
         z-index: 10;
