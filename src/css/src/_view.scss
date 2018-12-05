@@ -1,4 +1,4 @@
-.view_table_list{
+.view_table_list {
     width: 30%;
     float: left;
     height: 95vh;
@@ -9,60 +9,71 @@
     color: $background-color;
     position: relative;
 }
-.view_list{
+
+.view_list {
     width: 30%;
     float: left;
     background-color: $primary-color;
-    height: 95vh;
+    height: 100vh;
     padding: 0.5em;
     margin-left: 0.5em;
     overflow-y: auto;
     position: relative;
 }
-.view_paper_list{
+
+.view_paper_list {
     width: 100%;
     height: 90vh;
     overflow-y: auto;
     position: relative;
     display: none;
 }
-.view_paper_list.open{
+
+.view_paper_list.open {
     display: inline-block;
 }
-.view_message_div{
+
+.view_message_div {
     line-height: 30px;
-    div{
+    div {
         display: inline-block;
         width: 50%;
     }
-    button{
-        display: inline-block; 
+    button {
+        display: inline-block;
         float: right;
         margin-top: 3px;
     }
 }
-.view_component_div{
+
+.view_component_div {
+    color: $primary-color-text;
     border: 1px solid $secondary-text-color;
     padding: 0.5em;
     margin: 0.5em 0;
+    .card-item {
+        color: $primary-color-text;
+    }
+}
 
-}
-.add_component_btns{
-}
-.view_component_function{
+.add_component_btns {}
+
+.view_component_function {
     width: 100%;
     height: 1.5em;
 }
-.view_change_hr{
+
+.view_change_hr {
     margin-top: 2rem;
 }
-.view_change_btn{
+
+.view_change_btn {
     // float: right;
     height: 3em;
     margin-top: 1rem;
     width: 3em;
     float: right;
-    border-radius:50%;
+    border-radius: 50%;
     outline: none;
     border: 1px solid $accent-color;
     color: $primary-color;
@@ -70,10 +81,11 @@
     cursor: pointer;
     background-color: $accent-color;
 }
-.complex_message{
+
+.complex_message {
     color: $background-color;
     font-size: 14px;
-    p{
+    p {
         padding-top: 0.5em;
     }
 }

@@ -939,11 +939,10 @@ body {
   -webkit-text-size-adjust: 100%; }
 
 a {
-  color: #2d374b;
+  color: #FFFFFF;
   text-decoration: none; }
 
 a:hover {
-  color: #cd0200;
   text-decoration: underline; }
 
 em {
@@ -1230,7 +1229,7 @@ html, body {
   width: 100%;
   line-height: 36px;
   z-index: 100;
-  background-color: pink; }
+  background-color: #3F51B5; }
 
 .router_screen {
   display: block;
@@ -1279,22 +1278,26 @@ html, body {
     border: 1px solid,palegreen; } }
 .paper_div {
   width: 35%;
-  background: linear-gradient(to bottom right, #303F9F, #3F51B5);
+  background: #3F51B5;
   margin-left: 1rem;
   padding: 0;
   overflow: hidden;
   overflow-y: auto;
-  position: relative; }
+  position: relative;
+  padding: 1em;
+  overflow: hidden; }
 
 .card_box {
   padding: 0;
   transition: all 0.3s;
-  height: 90vh;
+  height: 100vh;
   overflow: hidden;
   overflow-y: auto;
   position: relative;
   width: 100%;
-  opacity: 0; }
+  opacity: 0;
+  border-radius: 1em;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6); }
 
 .card_box.open {
   opacity: 1; }
@@ -1309,10 +1312,12 @@ html, body {
   cursor: pointer; }
 
 .paper_card_title {
+  display: block;
   padding-top: 15px;
   height: 47px;
   text-align: center;
-  color: #fafafa; }
+  color: #fafafa;
+  z-index: 1; }
 
 .return_btn {
   display: inline-block;
@@ -1484,7 +1489,6 @@ html, body {
     left: 0;
     top: 0;
     padding: 0;
-    background: linear-gradient(to bottom right, #303F9F, #3F51B5);
     overflow: hidden;
     transition: all 0.05s 0.01s cubic-bezier(0.165, 0.84, 0.44, 1);
     float: left;
@@ -1498,7 +1502,6 @@ html, body {
     position: fixed;
     top: 0;
     height: 95vh;
-    background: linear-gradient(to bottom right, #303F9F, #3F51B5);
     /* height: 600px; js代替 */
     left: 0;
     z-index: 10; } }
@@ -2015,14 +2018,13 @@ html, body {
   line-height: 22px;
   border-radius: 2px;
   background-color: #3F51B5;
-  color: #FF5252;
+  color: #FFFFFF;
   box-shadow: none;
-  border: 1px solid #FF5252;
+  border: 0;
   text-align: center;
   outline: none; }
   .btn_list:hover {
-    background: #FF5252;
-    color: #3F51B5; }
+    background: #FF5252; }
 
 .label_title_message {
   border-top: 2px solid #3F51B5;
@@ -2080,7 +2082,7 @@ html, body {
   width: 30%;
   float: left;
   background-color: #3F51B5;
-  height: 95vh;
+  height: 100vh;
   padding: 0.5em;
   margin-left: 0.5em;
   overflow-y: auto;
@@ -2107,9 +2109,12 @@ html, body {
     margin-top: 3px; }
 
 .view_component_div {
+  color: #FFFFFF;
   border: 1px solid #757575;
   padding: 0.5em;
   margin: 0.5em 0; }
+  .view_component_div .card-item {
+    color: #FFFFFF; }
 
 .view_component_function {
   width: 100%;
@@ -2169,6 +2174,19 @@ html, body {
     position: absolute;
     bottom: 0;
     width: 100%; }
+.crius-card-list .card-project.small .card-head {
+  display: none;
+  height: 0; }
+.crius-card-list .card-project.small .card-body {
+  height: 7em; }
+.crius-card-list .card-project.small .card-page {
+  height: 5em;
+  overflow: hidden; }
+.crius-card-list .card-project.small .open-ctrl {
+  bottom: 0; }
+.crius-card-list .card-project.small .card-foot {
+  display: none;
+  height: 0; }
 .crius-card-list::after {
   content: ' ';
   clear: both;
@@ -2192,7 +2210,6 @@ html, body {
   display: block;
   height: 2em;
   overflow: hidden;
-  color: #fff;
   text-align: center;
   background-color: #fafafa;
   height: 2em;
@@ -2200,7 +2217,7 @@ html, body {
 .crius-card-list .card-head .inverse {
   background-color: #3F51B5; }
 .crius-card-list .card-project {
-  margin-bottom: 3em;
+  margin-bottom: 1em;
   background-color: #fafafa;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   margin-left: 10px;
@@ -2260,7 +2277,7 @@ html, body {
 .crius-card-list .card-page.active {
   display: block;
   opacity: 1;
-  height: auto;
+  height: 100%;
   transition: opacity .3s ease; }
 .crius-card-list .card-page.move-in {
   display: block;
@@ -2373,6 +2390,8 @@ html, body {
     margin: auto;
     padding: 0.5em 1em 1em 1em;
     border-radius: 10px; }
+    .alert_back .alert_box .search_info_list_label {
+      color: #3F51B5; }
     .alert_back .alert_box h2 {
       text-align: center;
       color: #3F51B5;
