@@ -835,7 +835,10 @@
 
 .glyphicon-menu-hamburger:before {
   content: "\e236";
-  color: #FFFFFF; }
+  color: #FFFFFF;
+  position: absolute;
+  top: 0;
+  left: 18px; }
 
 .glyphicon-modal-window:before {
   content: "\e237"; }
@@ -1266,7 +1269,8 @@ html, body {
 
   .router_button {
     display: block;
-    float: left; }
+    float: left;
+    position: fixed; }
 
   .container {
     width: 100%; }
@@ -1284,7 +1288,6 @@ html, body {
   overflow: hidden;
   overflow-y: auto;
   position: relative;
-  padding: 1em;
   overflow: hidden; }
 
 .card_box {
@@ -1310,6 +1313,9 @@ html, body {
   text-align: center;
   color: #FFFFFF;
   cursor: pointer; }
+  @media screen and (max-width: 768px) {
+    .add_button {
+      margin-bottom: 1em; } }
 
 .paper_card_title {
   display: block;
@@ -1317,6 +1323,7 @@ html, body {
   height: 47px;
   text-align: center;
   color: #fafafa;
+  background-color: #3F51B5;
   z-index: 1; }
 
 .return_btn {
@@ -1501,7 +1508,7 @@ html, body {
     width: 100%;
     position: fixed;
     top: 0;
-    height: 95vh;
+    height: 91vh;
     /* height: 600px; js代替 */
     left: 0;
     z-index: 10; } }
@@ -1510,6 +1517,7 @@ html, body {
   bottom: 50px;
   right: 10px;
   padding: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
   background-color: #fafafa;
   z-index: 10; }
 
@@ -2222,6 +2230,9 @@ html, body {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   margin-left: 10px;
   padding: 1em; }
+@media screen and (max-width: 768px) {
+  .crius-card-list .card-project:last-child {
+    margin-bottom: 3em; } }
 .crius-card-list .card-project {
   position: relative; }
   .crius-card-list .card-project .open-ctrl {

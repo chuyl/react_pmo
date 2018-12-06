@@ -7,7 +7,7 @@
     overflow: hidden;
     overflow-y: auto; // transition: all .1s;
     position: relative;
-    padding: 1em;
+    // padding: 1em;
     overflow: hidden;
 }
 
@@ -40,6 +40,9 @@
     color: $primary-color-text;
     cursor: pointer; //background-color: #fff;
     // @include set_button_style(2px, $primary-color, $accent-color, $shadow: none);
+    @media screen and (max-width:768px){
+        margin-bottom: 1em;
+    }
 }
 
 .paper_card_title {
@@ -49,6 +52,7 @@
     height: 47px;
     text-align: center;
     color: $background-color;
+    background-color: $primary-color;
     z-index: 1;
 }
 
@@ -269,7 +273,7 @@
         width: 100%;
         position: fixed;
         top: 0;
-        height: 95vh;
+        height: 91vh;
         /* height: 600px; js代替 */
         left: 0;
         z-index: 10;

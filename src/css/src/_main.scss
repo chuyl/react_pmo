@@ -81,6 +81,11 @@
         margin-left: 10px;
         padding: 1em;
     }
+    @media screen and (max-width:768px) {
+        .card-project:last-child{
+            margin-bottom: 3em;
+        }
+    }
     .card-project {
         position: relative;
         .open-ctrl {

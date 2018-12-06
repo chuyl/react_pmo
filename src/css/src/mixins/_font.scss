@@ -736,6 +736,9 @@
   .glyphicon-menu-hamburger:before {
     content: "\e236";
     color: $primary-color-text;
+    position: absolute;
+    top: 0;
+    left: 18px;
   }
   .glyphicon-modal-window:before {
     content: "\e237";
