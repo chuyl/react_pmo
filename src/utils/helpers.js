@@ -68,6 +68,21 @@ export function getRouter(key) {
   //  return router ===  router;
      return router === null ? { url: config.routers } : router;
   }
+  /** 
+	 * @time 2018-12-07
+	 * @author xuesong
+	 * @param getList 函数 获取list接口名称 list1菜单1,list菜单2
+	 */
+  export function getList(list1,list2) {
+    var message = JSON.parse(sessionStorage.Language)[list1].data;
+   	for(var i = 0;i<message.length;i++){
+			if(message[i].component==list2){
+        var list = message[i].list;
+			}
+		}
+    //  return router ===  router;
+       return list;
+    }
   export function isJson(obj) {
     return typeof (obj) === "object" && Object.prototype.toString.call(obj).toLowerCase() === "[object object]" && !obj.length;
   }

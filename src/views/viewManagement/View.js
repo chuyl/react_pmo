@@ -798,8 +798,8 @@ class View extends Component {
 							<ViewTextField 
 								key={this.state.this_index_view_list+""+this.state.index_json_view+""+index}
 								inputValue={componentsView.value} 
-								 labelValue={componentsView.key==="id_name"?"组件名称"
-											 :componentsView.key==="type_name"?"组件类型"
+								 labelValue={componentsView.key=== "id_name"?"数据名称"
+											 :componentsView.key==="type_name"?"组件名称"
 											 :componentsView.key==="title"?"输入框标题"
 											 :componentsView.key==="default_value"?"显示默认值"
 											 :componentsView.key==="key"?"输入框默认值"

@@ -4,7 +4,7 @@ import React, {
 // import Cards from '../components/Cards'
 import Alert from '../components/Remind'
 import ComponentsList from '../components/ComponentsList'
-import { getData, getRouter } from '../../utils/helpers'
+import { getData, getRouter,getList } from '../../utils/helpers'
 import { PROJECTMANAGELIST } from '../../enum'
 
 class TrainingProgram extends Component {
@@ -19,14 +19,17 @@ class TrainingProgram extends Component {
 		dataId: "",//点击card按钮获取到的card的id值
 		projectList: [],
 		addCardGroupState: "",
-		remind_state: false
+		remind_state: false,
+		list_message:""
 
 	};
 
 	componentDidMount() {
+		// this.get_list_message("projectManagement","TrainingProgram")
 		this.listProject()
 		this.fetchListData()
 		this.fetchProjectDataList()
+		
 	}
 	listProject() {
 		var cb = (route, message, arg) => {
@@ -53,9 +56,23 @@ class TrainingProgram extends Component {
 				}, 3000)
 			}
 		}
-		getData(getRouter(PROJECTMANAGELIST), { token: sessionStorage.token }, cb, {});
+		
+		getData(getRouter(getList("projectManagement","TrainingProgram")), { token: sessionStorage.token }, cb, {});
 
 	}
+	// get_list_message=(list1,list2)=>{
+	// 	var message=JSON.parse(sessionStorage.Language)[list1].data;
+	// 	for(var i = 0;i<message.length;i++){
+	// 		if(message[i].component==list2){
+	// 			console.log(message[i].list)
+	// 			this.setState({
+	// 				list_message:message[i].list
+	// 			})
+           
+	// 		}
+	// 	}
+    //     console.log(message)
+	// }
 	fetchListData() {
 		var json_view=sessionStorage.view?JSON.parse(sessionStorage.view):[]
 		// window.location.reload();
