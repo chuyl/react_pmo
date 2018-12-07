@@ -4,14 +4,14 @@
     */
 
    import React, { Component } from 'react';
-   import TextField from './TextField';
-   import Invisible from './Invisible'
-   import TextMoney from './TextMoney'
-   import TextDate from './TextDate'
-   import TextDatetime from './TextDatetime'
+   import TextField from '../components/input/TextField';
+   import Invisible from '../components/input/Invisible'
+   import TextMoney from '../components/input/TextMoney'
+   import TextDate from '../components/input/TextDate'
+   import TextDatetime from '../components/input/TextDatetime'
    import ListTextSearch from './ListTextSearch'
    import LinkCard from './LinkCard'
-   import CardGroup from './CardGroup'
+   import CardGroup from '../components/logic/CardGroup'
    //import AddTeacher from '../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
    //import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
    //import ProjectGather from '../budgetAndFinalAccountsManagementcond/budget/ProjectGather'

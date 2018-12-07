@@ -3,8 +3,8 @@
      * @param ListTextSearch 组件  下拉筛选/选择/新增
      */
 import React, { Component } from 'react';
-import { getData, getRouter } from '../../utils/helpers'
-import ComponentsList from './ComponentsList'
+import { getData, getRouter } from '../../../utils/helpers'
+import ComponentsList from '../composite/ComponentsList'
 // import TextField from '../components/input/TextField';
 // import ListText from './ListText'
 //import Select from './Select'

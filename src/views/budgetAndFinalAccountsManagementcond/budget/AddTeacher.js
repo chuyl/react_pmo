@@ -3,9 +3,9 @@
      * @param AddTeacher 组件  新增讲师
      */
     import React, { Component } from 'react';
-    import TextField from '../../components/TextField';
+    import TextField from '../../components/input/TextField';
     import AddDelCard from '../../components/AddDelCard';
-import TextMoney from '../../components/TextMoney';
+import TextMoney from '../../components/input/TextMoney';
     class AddTeacher extends Component {
         state = {
             add_lists: false,

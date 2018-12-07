@@ -3,7 +3,7 @@
      * @param ProjectTemplate 组件  项目模板
      */
     import React, { Component } from 'react';
-    import TextField from '../../components/TextField';
+    import TextField from '../../components/input/TextField';
     class ProjectTemplate extends Component {
         state = {
             add_lists: false,

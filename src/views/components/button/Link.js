@@ -4,8 +4,8 @@
      */
     import React,  {Component }from 'react'; 
     // import ComponentsList from './ComponentsList'
-    import {getData, getRouter }from '../../utils/helpers'
-    import Alert from './Remind'
+    import {getData, getRouter }from '../../../utils/helpers'
+    import Alert from '../modal/Remind'
     import PropTypes from 'prop-types'; 
     class Link extends Component {
         state =  {

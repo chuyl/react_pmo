@@ -5,8 +5,8 @@ import { getData, getRouter } from '../../utils/helpers'
 import ComponentsViewList from '../components/ComponentsViewList'
 import SelectViewListSearch from '../components/SelectViewListSearch'
 import ViewTextField from '../components/ViewTextField';
-import Popup from '../components/Popup'
-import Alert from '../components/Alert'
+import Popup from '../components/modal/Popup'
+import Alert from '../components/modal/Alert'
 import SelectList from '../components/SelectList'
 import Lang from '../../language'
 class View extends Component {

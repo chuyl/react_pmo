@@ -3,20 +3,19 @@
      * @param AddCard 组件  添加card组件
      */
     import React, { Component } from 'react'
-    import AddTeacher from '../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
-    import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
-    import SelectList from './SelectList'
-    import Alert from './Remind'
-    import TextField from './TextField'
-    import TextArea from './TextArea'
-    import DisTextArea from './DisTextArea'
-    import Invisible from './Invisible'
-    import TextMoney from './TextMoney'
-    //import ListText from '../components/ListText'
-    import TextDatetime from './TextDatetime'
-    import { getData, getRouter } from '../../utils/helpers'
+    // import AddTeacher from '../../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
+    // import ProjectTemplate from '../../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
+    import SelectList from '../select/SelectList'
+    import Alert from '../modal/Remind'
+    import TextField from '../input/TextField'
+    import TextArea from '../input/TextArea'
+    import Invisible from '../../components/input/Invisible'
+    import TextMoney from '../input/TextMoney'
+    //import ListText from '../ListText'
+    import TextDatetime from '../input/TextDatetime'
+    import { getData, getRouter } from '../../../utils/helpers'
     //import ComponentsList from './ComponentsList'
-    import ListTextSearch from './ListTextSearch'
+    import ListTextSearch from '../ListTextSearch'
     class AddCard extends Component {
         state = {
             cardList: this.props.cardList
@@ -142,9 +141,6 @@
                                 :card_list.type_name === "TextArea" ? 
                                     <TextArea
                                         id={card_list.id_name+this.props.conditionAction.id} inputValue={this.props.conditionAction[card_list.id_name]?this.props.conditionAction[card_list.id_name]:""} labelValue={card_list.title} />
-                                :card_list.type_name === "DisTextArea" ? 
-                                    <DisTextArea
-                                        id={card_list.id_name+this.props.conditionAction.id} inputValue={this.props.conditionAction[card_list.id_name]?this.props.conditionAction[card_list.id_name]:""} labelValue={card_list.title} />
                                 :card_list.type_name === "Invisible" ? 
                                     <Invisible
                                         id={card_list.id_name+this.props.conditionAction.id} inputValue={this.props.conditionAction[card_list.id_name]?this.props.conditionAction[card_list.id_name]:""} labelValue={card_list.title} />
@@ -154,10 +150,10 @@
                                 :card_list.type_name === "TextMoney" ? 
                                     <TextMoney
                                         id={card_list.id_name+this.props.conditionAction.id} inputValue={this.props.conditionAction[card_list.id_name]?this.props.conditionAction[card_list.id_name]:""} labelValue={card_list.title} />
-                                :card_list.type_name==="AddTeacher"?
-                                    <AddTeacher/> 
-                                :card_list.type_name==="ProjectTemplate"?
-                                    <ProjectTemplate/> 
+                                // :card_list.type_name==="AddTeacher"?
+                                //     <AddTeacher/> 
+                                // :card_list.type_name==="ProjectTemplate"?
+                                //     <ProjectTemplate/> 
                                 :card_list.type_name==="SelectList"?
                                     <SelectList id={card_list.id_name+this.props.conditionAction.id}
                                         labelValue={card_list.title}

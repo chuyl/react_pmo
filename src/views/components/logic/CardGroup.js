@@ -4,12 +4,12 @@
      */
     import React, { Component } from 'react';
     import AddCard from './AddCard';
-    import ComponentsList from './ComponentsList';
+    import ComponentsList from '../../components/ComponentsList';
     import PropTypes from 'prop-types';
-    import Alert from './Alert'
-    import AddCardBtn from './AddCardBtn'
+    import Alert from '../../components/modal/Alert'
+    import AddCardBtn from '../button/AddCardBtn'
     //import {LECTURERADD} from '../../enum'
-    import {getData,getRouter} from '../../utils/helpers'
+    import {getData,getRouter} from '../../../utils/helpers'
     
     class CardGroup extends Component {
         

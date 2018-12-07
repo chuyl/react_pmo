@@ -3,7 +3,7 @@
      * @param ImplementArrange 组件  实施安排
      */
     import React, { Component } from 'react';
-    import TextField from '../../components/TextField';
+    import TextField from '../../components/input/TextField';
     import LinkCard from '../../components/LinkCard'
     import ComponentsList from '../../components/ComponentsList'
     class ImplementArrange extends Component {

@@ -2,7 +2,7 @@ import React, {
 	Component
 } from 'react'
 // import Cards from '../components/Cards'
-import Alert from '../components/Remind'
+import Alert from '../components/modal/Remind'
 import ComponentsList from '../components/ComponentsList'
 import { getData, getRouter,getList } from '../../utils/helpers'
 import { PROJECTMANAGELIST } from '../../enum'

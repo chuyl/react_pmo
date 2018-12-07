@@ -77,7 +77,7 @@ export function getRouter(key) {
     var message = JSON.parse(sessionStorage.Language)[list1].data;
    	for(var i = 0;i<message.length;i++){
 			if(message[i].component==list2){
-        var list = message[i].list;
+        var list = message[i].url;
 			}
 		}
     //  return router ===  router;

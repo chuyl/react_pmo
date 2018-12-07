@@ -3,7 +3,7 @@
      * @param SelectList 组件  下拉筛选/选择
      */
 import React, { Component } from 'react';
-import { getData, getRouter } from '../../utils/helpers'
+import { getData, getRouter } from '../../../utils/helpers'
 //import TextField from '../components/input/TextField'
 //import Select from './Select'
 class SelectList extends Component {

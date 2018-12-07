@@ -5,20 +5,20 @@
 
    import React, { Component } from 'react';
    import CardView from './CardView'
-   import TextField from './TextField';
-   import TextArea from './TextArea';
+   import TextField from '../components/input/TextField';
+   import TextArea from '../components/input/TextArea';
    import DisTextArea from './DisTextArea';
    import DisTextField from './DisTextField'
-   import TextMoney from './TextMoney'
-   import TextDate from './TextDate'
-   import TextDatetime from './TextDatetime'
+   import TextMoney from '../components/input/TextMoney'
+   import TextDate from '../components/input/TextDate'
+   import TextDatetime from '../components/input/TextDatetime'
    import ListTextSearch from './ListTextSearch'
    import LinkCard from './LinkCard'
    import CardTitleItem from './CardTitleItem'
-//    import CardGroup from './CardGroup'
+//    import CardGroup from '../components/logic/CardGroup'
    import GroupButtonView from './GroupButtonView'
 //    import GroupAddButtonView from './GroupAddButtonView'
-   import Link from './Link'
+   import Link from '../components/button/Link'
    import CardHead from './CardHead'
    import CardBody from './CardBody'
    import CardOpen from './CardOpen'
@@ -26,16 +26,16 @@
    import LabelTitleMessage from './LabelTitleMessage'
    import TitleMessage from './TitleMessage'
    import LabelSelectMessage from './LabelSelectMessage'
-   import HoldBtn from './HoldBtn'
-//    import AddCardBtn from './AddCardBtn'
+   import HoldBtn from '../components/button/HoldBtn'
+//    import AddCardBtn from '../components/button/AddCardBtn'
    import EditCardBtn from './EditCardBtn'
-   import CardItem from './CardItem'
+   import CardItem from '../components/watch/CardItem'
    //import AddTeacher from '../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
    //import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
    //import ProjectGather from '../budgetAndFinalAccountsManagementcond/budget/ProjectGather'
    import SelectList from './SelectList'
    import SelectListSearch from './SelectListSearch'
-   import Invisible from './Invisible'
+   import Invisible from '../components/input/Invisible'
    import DepartmentList from './DepartmentList'
    import TitleLeftCard from './TitleLeftCard'
    import TitleRightCard from './TitleRightCard'

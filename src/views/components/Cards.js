@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Link from './Link'
+import Link from '../components/button/Link'
 import LabelTitleMessage from './LabelTitleMessage'
 import TitleMessage from './TitleMessage'
 import LabelSelectMessage from './LabelSelectMessage'
@@ -7,7 +7,7 @@ import CardHead from './CardHead'
 import CardBody from './CardBody'
 import CardOpen from './CardOpen'
 import CardFoot from './CardFoot'
-import CardGroup from './CardGroup'
+import CardGroup from '../components/logic/CardGroup'
 // import {getData,getRouter} from '../../utils/helpers'
 class Card extends Component {
     state={

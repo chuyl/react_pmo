@@ -1,6 +1,6 @@
 //成本管理
 import React, { Component } from 'react';
-import Alert from '../components/Remind'
+import Alert from '../components/modal/Remind'
 class Costing extends Component {
 	open=()=>{
         Alert.open({

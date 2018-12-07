@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import TabsControl from './components/Tab'
 import Routers from './components/Routers'
-import Alert from '../src/views/components/Remind'
+import Alert from '../src/views/components/modal/Remind'
 import {
     HashRouter,
     Link,
