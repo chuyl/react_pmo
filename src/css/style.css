@@ -1323,7 +1323,6 @@ html, body {
   height: 47px;
   text-align: center;
   color: #fafafa;
-  background-color: #3F51B5;
   z-index: 1; }
 
 .return_btn {
@@ -1577,7 +1576,6 @@ html, body {
 
 .card_info_list_card {
   border-radius: 4px;
-  background-color: #3F51B5;
   padding: 18px;
   margin-bottom: 18px;
   padding-bottom: 38px; }
