@@ -1323,7 +1323,6 @@ html, body {
   height: 47px;
   text-align: center;
   color: #fafafa;
-  background-color: #3F51B5;
   z-index: 1; }
 
 .return_btn {
@@ -1577,7 +1576,6 @@ html, body {
 
 .card_info_list_card {
   border-radius: 4px;
-  background-color: #3F51B5;
   padding: 18px;
   margin-bottom: 18px;
   padding-bottom: 38px; }
@@ -2092,6 +2090,19 @@ html, body {
   margin-left: 0.5em;
   color: #fafafa;
   position: relative; }
+  .view_table_list .add_card_btn {
+    background-color: #3F51B5;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    color: #FFFFFF; }
+  .view_table_list .add_card_btn::before {
+    color: #FFFFFF; }
+  .view_table_list .label_delete_button {
+    color: #FFFFFF;
+    border-color: #FFFFFF; }
+
+.add_component_btns .label_delete_button {
+  color: #FFFFFF;
+  border-color: #FFFFFF; }
 
 .view_list {
   width: 30%;
@@ -2217,7 +2228,8 @@ html, body {
   line-height: 2em;
   border-bottom: 1px solid #3F51B5;
   color: #3F51B5;
-  overflow: hidden; }
+  overflow: hidden;
+  padding: 1em 1em 0 1em; }
   .crius-card-list .card-head .card-item {
     float: left; }
 .crius-card-list .card-body {
@@ -2230,15 +2242,16 @@ html, body {
   text-align: center;
   background-color: #fafafa;
   height: 2em;
-  line-height: 2em; }
+  padding: 0 0.5em 0.5em 0.5em;
+  line-height: 2em;
+  box-sizing: border-box; }
 .crius-card-list .card-head .inverse {
   background-color: #3F51B5; }
 .crius-card-list .card-project {
   margin-bottom: 1em;
   background-color: #fafafa;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  margin-left: 10px;
-  padding: 1em; }
+  margin-left: 10px; }
 @media screen and (max-width: 768px) {
   .crius-card-list .card-project:last-child {
     margin-bottom: 6em; } }
@@ -2254,15 +2267,12 @@ html, body {
     position: absolute;
     bottom: 2em;
     width: 100%; }
-    @media screen and (max-width: 768px) {
-      .crius-card-list .card-project .open-ctrl {
-        margin-left: -1em; } }
   .crius-card-list .card-project .card-body {
     position: relative;
     height: 9em;
     transition: height 0.3s cubic-bezier(0.4, 0, 1, 1);
     box-sizing: border-box;
-    padding-bottom: 1em; }
+    padding: 1em; }
 .crius-card-list .card-page.active {
   display: block;
   opacity: 1;
@@ -2305,9 +2315,11 @@ html, body {
   transition: opacity .3s ease; }
 .crius-card-list .card-body .card-page {
   position: absolute;
-  padding: 1em 0 0 0.5em;
   width: 100%;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  padding: 1em 0 0 1em; }
+.crius-card-list .card-body .card-page:nth-of-type(1) {
+  padding: 0em 0 0 1em; }
 .crius-card-list .card-foot .card-item {
   float: left; }
 .crius-card-list .card-foot .active {
@@ -2329,7 +2341,7 @@ html, body {
 .crius-card-list .card-project.open .open-ctrl {
   background-image: url(closeline.svg);
   background-repeat: no-repeat;
-  bottom: 0;
+  bottom: 5px;
   border-bottom-right-radius: 10px; }
 .crius-card-list .card-project.open.move-out .card-body {
   height: 24em;
