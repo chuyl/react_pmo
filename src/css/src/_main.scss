@@ -50,6 +50,7 @@
         border-bottom: 1px solid $primary-color;
         color: $border_left_color;
         overflow: hidden;
+        padding: 1em 1em 0 1em;
         .card-item {
             float: left;
         }
@@ -65,7 +66,9 @@
         text-align: center;
         background-color: $background-color;
         height: 2em;
+        padding: 0 0.5em 0.5em 0.5em;
         line-height: 2em;
+        box-sizing: border-box;
     }
     .card-head .inverse {
         background-color: $border_left_color;
@@ -78,7 +81,6 @@
         background-color: $background-color;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         margin-left: 10px;
-        padding: 1em;
     }
     @media screen and (max-width:768px) {
         .card-project:last-child {
@@ -97,9 +99,6 @@
             position: absolute;
             bottom: 2em;
             width: 100%;
-            @media screen and (max-width: 768px) {
-                margin-left: -1em;
-            }
         }
         .card-body {
             position: relative;
