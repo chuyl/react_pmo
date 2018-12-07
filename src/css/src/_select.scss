@@ -48,7 +48,7 @@
 }
 
 .add_info_list.open {
-    height: 90vh;
+    height: 100vh;
     width: 100%;
     left: 0;
     -webkit-transition: all .1s;
@@ -89,6 +89,19 @@
     height: 90%;
     overflow-y: auto;
     padding: 0 18px;
+}
+
+.edit_bar {
+    .label_delete_button {
+        color: $primary-color-text;
+        background-color: $accent-color;
+        
+    }
+    .add_card_btn{
+        color: $primary-color-text;
+        background: $primary-color;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    }
 }
 
 .selected_scroll_div::-webkit-scrollbar {

@@ -17,23 +17,22 @@
         }
     }
     .card-project.small {
-        .card-head {
-            display: none;
-            height: 0;
-        }
         .card-body {
             height: 7em;
         }
         .card-page {
-            height: 5em;
+            height: 6em;
             overflow: hidden;
         }
-        .open-ctrl{
+        .open-ctrl {
             bottom: 0;
         }
         .card-foot {
             display: none;
             height: 0;
+        }
+        .open-ctrl {
+            display: none;
         }
     }
     &::after {
@@ -82,8 +81,8 @@
         padding: 1em;
     }
     @media screen and (max-width:768px) {
-        .card-project:last-child{
-            margin-bottom: 3em;
+        .card-project:last-child {
+            margin-bottom: 6em;
         }
     }
     .card-project {

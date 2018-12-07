@@ -6,9 +6,13 @@
     padding: 0;
     overflow: hidden;
     overflow-y: auto; // transition: all .1s;
-    position: relative;
-    // padding: 1em;
+    position: relative; // padding: 1em;
     overflow: hidden;
+}
+
+.paper_div.open {
+    border-radius: 1em;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
 }
 
 .card_box {
@@ -20,8 +24,6 @@
     position: relative;
     width: 100%;
     opacity: 0; //right: -100%;
-    border-radius: 1em;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
 }
 
 .card_box.open {
@@ -40,14 +42,13 @@
     color: $primary-color-text;
     cursor: pointer; //background-color: #fff;
     // @include set_button_style(2px, $primary-color, $accent-color, $shadow: none);
-    @media screen and (max-width:768px){
+    @media screen and (max-width: 768px) {
         margin-bottom: 1em;
     }
 }
 
 .paper_card_title {
-    display: block;
-    // position: fixed;
+    display: block; // position: fixed;
     padding-top: 15px;
     height: 47px;
     text-align: center;
@@ -55,8 +56,6 @@
     background-color: $primary-color;
     z-index: 1;
 }
-
-
 
 .return_btn {
     display: inline-block;
@@ -92,7 +91,6 @@
     margin-bottom: 28px;
     font-weight: bold;
     color: $accent-color;
-    background: $bluePurple400;
     border-radius: 4px;
     line-height: 20px;
     outline: none;
