@@ -3,8 +3,8 @@
      * @param CardFoot 组件  cardfoot
      */
     import React, { Component } from 'react';
-    import ComponentsList from './ComponentsList'
-    import {getData,getRouter} from '../../utils/helpers'
+    import ComponentsList from  '../../components/composite/ComponentsList'
+    // import {getData,getRouter} from '../../../utils/helpers'
     // import CardItem from './CardItem'
     class CardFoot extends Component {
         state={

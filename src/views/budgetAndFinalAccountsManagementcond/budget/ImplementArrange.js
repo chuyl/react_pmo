@@ -4,8 +4,7 @@
      */
     import React, { Component } from 'react';
     import TextField from '../../components/input/TextField';
-    import LinkCard from '../../components/LinkCard'
-    import ComponentsList from '../../components/ComponentsList'
+    import ComponentsList from '../../components/composite/ComponentsList'
     class ImplementArrange extends Component {
         state = {
             add_lists: false,
@@ -119,12 +118,6 @@
             return (
                 <div>
               {/* 实施安排 */}
-              <LinkCard title={"实施安排"} label={"实施费用"} button={"修改实施计划"}
-               action={[() => {
-                    this.setState({
-                    add_lists: true
-                    })
-                }]}/>
                 <div className={this.state.add_lists ? "add_info_list open" : "add_info_list"}>
                 <div className="paper_card_title">
                 <div onClick={() => {

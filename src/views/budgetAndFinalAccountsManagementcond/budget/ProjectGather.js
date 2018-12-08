@@ -3,9 +3,9 @@
      * @param ProjectGather 组件  项目集
      */
     import React, { Component } from 'react';
-    import ComponentsList from '../../components/ComponentsList'
+    import ComponentsList from '../../components/composite/ComponentsList'
     //import TextField from '../../components/input/TextField';
-    //import SelectList from '../../components/SelectList'
+
     import AddDelCard from '../../components/AddDelCard';
     class ProjectGather extends Component {
         state = {

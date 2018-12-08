@@ -4,48 +4,44 @@
     */
 
 import React, { Component } from 'react';
-import Cards from '../card/Cards'
-import TextField from '../components/input/TextField';
-import TextArea from '../components/input/TextArea'
-import DisTextArea from './DisTextArea'
-import DisTextField from './DisTextField'
-import TextMoney from '../components/input/TextMoney'
-import TextDate from '../components/input/TextDate'
-import TextDatetime from '../components/input/TextDatetime'
-import ListTextSearch from './ListTextSearch'
-import LinkCard from './LinkCard'
-import Link from '../components/button/Link'
-import DateCard from './DateCard'
-import CardGroup from './CardGroup'
-import LabelTitleMessage from './LabelTitleMessage'
-import TitleMessage from './TitleMessage'
-import LabelChildMessage from './LabelChildMessage'
-import LabelMessage from './LabelMessage'
-import LabelTotalMessage from './LabelTotalMessage'
-import TitleLeftCard from './TitleLeftCard'
-import TitleRightCard from './TitleRightCard'
-import TitleCardRightGroup from './TitleCardRightGroup'
-import ProvinceCity from './ProvinceCity'
-import CardLeftBody from './CardLeftBody'
-import CardRightBody from './CardRightBody'
-import SpellingCardGroup from './SpellingCardGroup'
-import LoopCardMoneyGroup from './LoopCardMoneyGroup'
-import LoopCardGroup from './LoopCardGroup'
-import LabelSelectMessage from './LabelSelectMessage'
-import CardHead from './CardHead'
-import CardPage from './CardPage'
-import CardTitleItem from './CardTitleItem'
-import CardItem from './CardItem'
-import HoldBtn from '../components/button/HoldBtn'
-import AddCardBtn from './AddCardBtn'
-import EditCardBtn from './EditCardBtn'
-import Invisible from './Invisible'
+import Cards from '../../components/card/Cards'
+import TextField from '../../components/input/TextField';
+import TextArea from '../../components/input/TextArea'
+import TextMoney from '../../components/input/TextMoney'
+import TextDate from '../../components/input/TextDate'
+import TextDatetime from '../../components/input/TextDatetime'
+import ListTextSearch from '../../components/select/ListTextSearch'
+import Link from '../../components/button/Link'
+import DateCard from '../watch/DateCard'
+import CardGroup from '../../components/logic/CardGroup'
+import LabelTitleMessage from '../../components/watch/LabelTitleMessage'
+import TitleMessage from '../../components/watch/TitleMessage'
+import LabelChildMessage from '../watch/LabelChildMessage'
+import LabelMessage from '../../components/watch/LabelMessage'
+import LabelTotalMessage from '../../components/watch/LabelTotalMessage'
+import TitleLeftCard from '../watch/TitleLeftCard'
+import TitleRightCard from '../watch/TitleRightCard'
+import TitleCardRightGroup from '../watch/TitleCardRightGroup'
+import ProvinceCity from '../watch/ProvinceCity'
+import CardLeftBody from '../../components/watch/CardLeftBody'
+import CardRightBody from '../watch/CardRightBody'
+import SpellingCardGroup from '../watch/SpellingCardGroup'
+import LoopCardMoneyGroup from '../watch/LoopCardMoneyGroup'
+import LoopCardGroup from '../watch/LoopCardGroup'
+import LabelSelectMessage from '../watch/LabelSelectMessage'
+import CardHead from '../../components/card/CardHead'
+import CardPage from '../watch/CardPage'
+import CardTitleItem from '../watch/CardTitleItem'
+import CardItem from '../../components/watch/CardItem'
+import HoldBtn from '../../components/button/HoldBtn'
+import AddCardBtn from '../../components/button/AddCardBtn'
+import Invisible from '../../components/input/Invisible'
 //import AddTeacher from '../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
 //import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
 //import ProjectGather from '../budgetAndFinalAccountsManagementcond/budget/ProjectGather'
-import SelectList from './SelectList'
-import SelectListSearch from './SelectListSearch'
-import DepartmentList from './DepartmentList'
+import SelectList from '../../components/select/SelectList'
+import SelectListSearch from '../../components/select/SelectListSearch'
+import DepartmentList from '../select/DepartmentList'
 
 class ComponentsList extends Component {
     constructor(props) {
@@ -175,16 +171,6 @@ handleChildChange=(formData)=>{
                                     inputValue={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                     labelValue={form_list.title} 
                                 />
-                            :form_list.type_name === "LinkCard"?
-                                <LinkCard   
-                                    button={form_list.add_button.descript} 
-                                    isClick={this.props.componentsdata.id} 
-                                    key={index}
-                                    messageList={form_list.add_button.before_api_uri} 
-                                    label={form_list.add_button.descript} 
-                                    linkpage={form_list.before_api_uri}
-                                    title={form_list.title} 
-                                />
                             :form_list.type_name === "Link"?
                                 <Link 
                                     button={form_list.title}
@@ -220,14 +206,6 @@ handleChildChange=(formData)=>{
                                     inputValue={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""} 
                                     labelValue={form_list.title} 
                                     key={index}
-                                />
-                            :form_list.type_name === "DisTextField"?
-                                <DisTextField
-                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
-                                    inputValue={this.props.componentsdata[form_list.id_name]!==null?this.props.componentsdata[form_list.id_name]:""} 
-                                    labelValue={form_list.title} 
-                                    key={index}
-                                    index={index}
                                 />
                             :form_list.type_name === "LabelTitleMessage"?
                                 <LabelTitleMessage
@@ -437,13 +415,6 @@ handleChildChange=(formData)=>{
                                 disabled={this.props.disabled}
                                 key={index}
                                 />
-                            :form_list.type_name === "DisTextArea" ? 
-                                <DisTextArea 
-                                id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
-                                inputValue={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""} 
-                                labelValue={form_list.title} 
-                                key={index}
-                            />
                             :form_list.type_name==="CardGroup"?
                                 <CardGroup 
                                     addButtonTitle={form_list.add_button_title} 
@@ -477,15 +448,6 @@ handleChildChange=(formData)=>{
                                     afterApiUri={form_list.after_api_uri}
                                     key={index}
                                     editCardSuccess={this.editCardSuccess}
-                                />
-                            :form_list.type_name==="EditCardBtn"?
-                                <EditCardBtn
-                                    title={form_list.title}
-                                    dataId={this.props.dataId}
-                                    addButton={form_list.add_button}
-                                    before_api_uri={form_list.before_api_uri}
-                                    key={index}
-                                    
                                 />
                             : ""
                        

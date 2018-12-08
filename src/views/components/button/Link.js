@@ -3,7 +3,6 @@
      * @param Link 组件  label+button
      */
     import React,  {Component }from 'react'; 
-    // import ComponentsList from './ComponentsList'
     import {getData, getRouter }from '../../../utils/helpers'
     import Alert from '../modal/Remind'
     import PropTypes from 'prop-types'; 

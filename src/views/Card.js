@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import Link from './components/Link'
-import ComponentsList from './components/ComponentsList'
+import ComponentsList from './components/composite/ComponentsList'
 class Card extends Component {
     state={
         action:[],

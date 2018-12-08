@@ -3,7 +3,7 @@
      * @param LabelTitleMessage 组件  label+message
      */
     import React, { Component } from 'react';
-    import {dealNumber} from '../../utils/helpers'
+    import {dealNumber} from '../../../utils/helpers'
     class LabelTitleMessage extends Component {
         state={
             inputValue:this.props.inputValue

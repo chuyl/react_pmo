@@ -5,7 +5,7 @@
 import React, { Component } from 'react';
 //import TextField from '../components/input/TextField'
 //import Select from './Select'
-import { getData, getRouter} from '../../utils/helpers'
+import { getData, getRouter} from '../../../utils/helpers'
 //import {STAFFOFDING} from '../../enum'
 class DepartmentList extends Component {
     state = {

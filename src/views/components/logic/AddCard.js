@@ -15,7 +15,7 @@
     import TextDatetime from '../input/TextDatetime'
     import { getData, getRouter } from '../../../utils/helpers'
     //import ComponentsList from './ComponentsList'
-    import ListTextSearch from '../ListTextSearch'
+    import ListTextSearch from '../select/ListTextSearch'
     class AddCard extends Component {
         state = {
             cardList: this.props.cardList

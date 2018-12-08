@@ -10,9 +10,8 @@ import {dealNumber }from '../../../utils/helpers'
 // import ListText from '../components/ListText'
 
 // import ListTextSearch from '../components/ListTextSearch'
-import ComponentsList from '../../components/ComponentsList'
+import ComponentsList from '../../components/composite/ComponentsList'
 //import AddDelCard from '../../components/AddDelCard';
-//import LinkCard from '../../components/LinkCard'
 //import TeacherArrange from './TeacherArrange'; 
 //import ImplementArrange from './ImplementArrange'
 //import TravelExpenses from './TravelExpenses'

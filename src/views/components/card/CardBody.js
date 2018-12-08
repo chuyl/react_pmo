@@ -3,7 +3,7 @@
      * @param CardBody 组件  card内容
      */
     import React, { Component } from 'react';
-    import ComponentsList from './ComponentsList'
+    import ComponentsList from '../../components/composite/ComponentsList'
     class CardBody extends Component {
         state={
         }

@@ -3,8 +3,8 @@
      * @param CardPage 组件  card的body 划分的结构
      */
     import React, { Component } from 'react';
-    import ComponentsList from './ComponentsList'
-    import {getData,getRouter} from '../../utils/helpers'
+    import ComponentsList from '../composite/ComponentsList'
+    import {getData,getRouter} from '../../../utils/helpers'
     // import CardItem from './CardItem'
     class CardPage extends Component {
         state={

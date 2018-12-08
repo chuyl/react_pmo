@@ -4,7 +4,7 @@
      */
     import React, { Component } from 'react';
     import AddCard from './AddCard';
-    import ComponentsList from '../../components/ComponentsList';
+    import ComponentsList from '../../components/composite/ComponentsList';
     import PropTypes from 'prop-types';
     import Alert from '../../components/modal/Alert'
     import AddCardBtn from '../button/AddCardBtn'
