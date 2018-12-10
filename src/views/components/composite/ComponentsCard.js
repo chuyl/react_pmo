@@ -18,6 +18,7 @@
    import AddCardBtn from '../../components/button/AddCardBtn'
    import SelectList from '../../components/select/SelectList'
    import Invisible from '../../components/input/Invisible'
+   import DisTextField from '../../components/input/DisTextField'
    import DepartmentList from '../select/DepartmentList'
    class ComponentsCard extends Component {
        constructor(props) {
@@ -93,6 +94,13 @@
                                    <Invisible 
                                        id={form_list.id_name} 
                                        inputValue={form_list.key} 
+                                       labelValue={form_list.title} 
+                                       key={form_list.id_name}
+                                   />
+                                :form_list.type_name === "DisTextField"?
+                                   <DisTextField
+                                       id={form_list.id_name} 
+                                       inputValue={form_list.key}
                                        labelValue={form_list.title} 
                                        key={form_list.id_name}
                                    />

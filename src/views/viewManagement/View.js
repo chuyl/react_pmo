@@ -50,11 +50,41 @@ class View extends Component {
 		add_button: "",
 		descript: "",
 		before_api_uri: "",
-		after_api_uri: ""
+		after_api_uri: "",
+		data_name:"",
+		data_message_list:[],
+		this_data_message:{}//数据名称选择获取的数据信息
 	};
 
 	componentWillMount() {
 		this.fetchListData()
+		this.getDataMessage()
+	}
+	getDataMessage(){
+		 var cb = (route, message, arg) => {
+                if (message.error === 0) {
+                   this.setState({
+					data_message_list:message.data
+				   })
+                    console.log("hhhh")
+                    // for(var i = 0;i<message.data.length;i++){
+                    //     if(this.props.selectedInfo===message.data[i].key){
+                    //         console.log(message.data[i].name)
+                    //         this.setState({data_name:message.data[i].name})
+                    //     }
+                    // }
+                }else if(message.error === 2){
+                    console.log("未登录")
+                    sessionStorage.logged = false;
+                    sessionStorage.token="";
+                    if(window.location.hash.split("#")[1]!=="/"){
+                        window.location.href=window.location.href.split("#/")[0]
+                    
+                      }
+                }
+            }
+           
+            getData(getRouter("json_type_list"), { token:sessionStorage.token}, cb, {});
 	}
 	/** 
 	 * @time 2018-11-05
@@ -688,6 +718,13 @@ class View extends Component {
 		}
 		getData(getRouter("newGroup"), { token:sessionStorage.token }, cb, {});
 	}
+	send_data_message=(newState)=>{
+		console.log("获取数据")
+		this.setState({
+			this_data_message:newState
+		})
+		console.log(newState)
+	}
 	render() {
 
 		return(
@@ -775,13 +812,23 @@ class View extends Component {
 					<div id="isViewJson" style={{marginTop:"2em"}} className={this.state.isViewJson?"view_paper_list overflow open":"view_paper_list overflow"}>
 					{this.state.componentsView.map((componentsView,index)=>{
 						if(componentsView.key=== "id_name"){
+							for(var i = 0;i<this.state.data_message_list.length;i++){
+								if(this.state.data_message_list[i].key===componentsView.value){
+									console.log( this.state.data_message_list[i].name)
+									 var data_name = this.state.data_message_list[i].name;
+								}
+							}
+							console.log(data_name)
 							return(
 								<SelectDataListSearch
+								    key={this.state.this_index_view_list+""+this.state.index_json_view+""+index}
 									labelValue={"数据名称"}
 									id={"id_name_select"}
+									sendDataMessage={this.send_data_message}
 									searchInfoLists={"json_type_list"} 
-                                    selectedIdInfo={"-选择-"} 
-                                    selectedInfo={"-选择-"} 
+									selectName={data_name}
+                                    selectedIdInfo={componentsView.value} 
+                                    selectedInfo={componentsView.value} 
 							/>
 							)
 						}

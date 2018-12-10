@@ -28,6 +28,7 @@
    import SelectList from '../../components/select/SelectList'
    import SelectListSearch from '../../components/select/SelectListSearch'
    import Invisible from '../../components/input/Invisible'
+   import DisTextField from '../../components/input/DisTextField'
    import DepartmentList from '../select/DepartmentList'
    import TitleLeftCard from '../watch/TitleLeftCard'
    import TitleRightCard from '../watch/TitleRightCard'
@@ -158,6 +159,12 @@
                                    <Invisible 
                                        id={form_list.id_name} 
                                        inputValue={form_list.key} 
+                                       labelValue={form_list.title} 
+                                   />
+                                :form_list.type_name === "DisTextField"?
+                                   <DisTextField
+                                       id={form_list.id_name} 
+                                       inputValue={form_list.key}
                                        labelValue={form_list.title} 
                                    />
                                :form_list.type_name === "LabelTitleMessage"?

@@ -19,7 +19,33 @@
             add_button:[], 
             before_api_uri: this.props.searchInfoLists,
             searchInfoLists: [],
-            info_lists: []
+            info_lists: [],
+            data_name:this.props.selectName
+        }
+        componentDidMount(){
+            console.log("did")
+            // var cb = (route, message, arg) => {
+            //     if (message.error === 0) {
+                   
+            //         console.log("hhhh")
+            //         for(var i = 0;i<message.data.length;i++){
+            //             if(this.props.selectedInfo===message.data[i].key){
+            //                 console.log(message.data[i].name)
+            //                 this.setState({data_name:message.data[i].name})
+            //             }
+            //         }
+            //     }else if(message.error === 2){
+            //         console.log("未登录")
+            //         sessionStorage.logged = false;
+            //         sessionStorage.token="";
+            //         if(window.location.hash.split("#")[1]!=="/"){
+            //             window.location.href=window.location.href.split("#/")[0]
+                    
+            //           }
+            //     }
+            // }
+           
+            // getData(getRouter(this.state.before_api_uri), { token:sessionStorage.token}, cb, {});
         }
          /** 
          * @author xuesong
@@ -37,29 +63,6 @@
     
                 }
             }
-            // var cb = (route, message, arg) =>  {
-            //     if (message.error===0) {
-            //         var json_message=JSON.parse(message.data);
-            //         this.setState( {
-            //             add_button: json_message["form-list"],
-            //             form_temp_name: json_message["form-temp-name"],
-            //         })
-            //     }
-            // }
-            // getData(getRouter("json_manage_name"), { name:this.state.add_uri_button,token:sessionStorage.token }, cb, {});
-             
-            // fetch('../json/'+this.state.add_uri_button+'.json')
-            // 	.then(response => response.json())
-            // 	.then(data => {
-                   
-            // 		this.setState({
-            //             add_button: data.data["form-list"],
-            //             form_temp_name: data.data["form-temp-name"],
-            // 		})
-            // 	})
-            // 	.catch(e => {
-            // 		console.log("error")
-            // 	})
         }
          /** 
          * @author xuesong
@@ -72,6 +75,13 @@
                         searchInfoLists: message.data,
                         info_lists: message.data
                     })
+                    console.log(message.data)
+                    for(var i = 0;i<message.data.length;i++){
+                        console.log(message.data.key)
+                        if(this.props.selectedInfo===message.data.key){
+                            this.setState({data_name:message.data.name})
+                        }
+                    }
                 }else if(message.error === 2){
                     console.log("未登录")
                     sessionStorage.logged = false;
@@ -82,6 +92,7 @@
                       }
                 }
             }
+           
             getData(getRouter(this.state.before_api_uri), { token:sessionStorage.token}, cb, {});
         }
         // componentWillMount(){
@@ -91,12 +102,14 @@
             this.setState({
                 search_state: !this.state.search_state
             })
+           
         }
  
         // componentDidMount(){
         //     this.infos()
         // }
         render() {
+            
             const { selectedInfo,selectedIdInfo, id, labelValue,disabled } = this.props;
             return (
                 <div className="search_info_list_card">
@@ -162,6 +175,10 @@
                                     <li onClick={(e) => {
                                             document.getElementById(id+"_name").innerHTML = info_lists.key;
                                             document.getElementById(id+"_id").innerHTML = info_lists.id;
+                                            this.props.sendDataMessage(info_lists)
+                                            this.setState({
+                                                data_name:info_lists.name
+                                            })
                                             this.searchShow()
                                             }} key={info_lists.id} value={info_lists.id}>{info_lists.type+"-"+info_lists.name+"-"+info_lists.key}</li>
                                         )
@@ -170,6 +187,7 @@
                            
                         </div>
                     </div>
+                    <p style={{paddingLeft:"80px",fontSize:"14px",color:"#fff",paddingTop:"5px",height:"24px"}}>{this.state.data_name}</p>
                 </div>
             )
         }
