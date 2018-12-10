@@ -3,7 +3,7 @@
      * @param TitleMessage 组件  label
      */
     import React, { Component } from 'react';
-    import {dealNumber} from '../../../utils/helpers'
+    // import {dealNumber} from '../../../utils/helpers'
     class TitleMessage extends Component {
         state={
             inputValue:this.props.inputValue

@@ -3,8 +3,6 @@
      * @param AddCard 组件  添加card组件
      */
     import React, { Component } from 'react'
-    // import AddTeacher from '../../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
-    // import ProjectTemplate from '../../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
     import SelectList from '../select/SelectList'
     import Alert from '../modal/Remind'
     import TextField from '../input/TextField'

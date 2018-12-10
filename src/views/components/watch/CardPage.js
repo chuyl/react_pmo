@@ -4,7 +4,7 @@
      */
     import React, { Component } from 'react';
     import ComponentsList from '../composite/ComponentsList'
-    import {getData,getRouter} from '../../../utils/helpers'
+    // import {getData,getRouter} from '../../../utils/helpers'
     // import CardItem from './CardItem'
     class CardPage extends Component {
         state={

@@ -16,11 +16,9 @@
    import LabelSelectMessage from '../watch/LabelSelectMessage'
    import HoldBtn from '../../components/button/HoldBtn'
    import AddCardBtn from '../../components/button/AddCardBtn'
-   //import AddTeacher from '../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
-   //import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
-   //import ProjectGather from '../budgetAndFinalAccountsManagementcond/budget/ProjectGather'
    import SelectList from '../../components/select/SelectList'
    import Invisible from '../../components/input/Invisible'
+   import DisTextField from '../../components/input/DisTextField'
    import DepartmentList from '../select/DepartmentList'
    class ComponentsCard extends Component {
        constructor(props) {
@@ -96,6 +94,13 @@
                                    <Invisible 
                                        id={form_list.id_name} 
                                        inputValue={form_list.key} 
+                                       labelValue={form_list.title} 
+                                       key={form_list.id_name}
+                                   />
+                                :form_list.type_name === "DisTextField"?
+                                   <DisTextField
+                                       id={form_list.id_name} 
+                                       inputValue={form_list.key}
                                        labelValue={form_list.title} 
                                        key={form_list.id_name}
                                    />

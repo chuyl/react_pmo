@@ -16,7 +16,7 @@ class TextField extends Component {
 		})
 	  }
 	render(){
-        const {id,disabled,inputValue,onClick,labelValue,name} =this.props;
+        const {id,disabled,onClick,labelValue,name} =this.props;
 		return (
 			<div className="text_field_div">
 				<label className="search_info_list_label">{labelValue}</label>

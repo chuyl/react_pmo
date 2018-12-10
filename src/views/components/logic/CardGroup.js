@@ -179,7 +179,7 @@
 
             if(json_view[i].name===this.props.addButton.descript){
               
-                var json_message=json_view[i].data;
+                // var json_message=json_view[i].data;
                 // console.log(json_view[i].data["form-list"])
                 this.setState({
                     descript_list: json_view[i].data["form-list"],
@@ -188,16 +188,6 @@
             }
         }
        
-		// var cb = (route, message, arg) => {
-        //     var json_message=JSON.parse(message.data);
-		// 	if (message.error === 0) {
-		// 		this.setState({
-		// 			descript_list: json_message["form-list"],
-        //         })
-
-		// 	}
-        // }
-        // getData(getRouter("json_manage_name"), { name:this.props.addButton.descript,token:sessionStorage.token }, cb, {});
     }
     //新增group中保存按钮传值
     addCardSuccess=(newState)=>{
@@ -217,16 +207,9 @@
                 if(json_view[i].name===this.props.addButton.descript){
                   
                     var json_message=json_view[i].data["form-list"];
-                    // console.log(json_view[i].data["form-list"])
-                    // this.setState({
-                    //     descript_list: json_view[i].data["form-list"],
-                    // })
-    
                 }
             }
-            const json_messages = json_message;
             const edit_list = json_message;
-            // console.log(json_message)
             return (
 
                 <div>

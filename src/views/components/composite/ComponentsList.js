@@ -36,9 +36,7 @@ import CardItem from '../../components/watch/CardItem'
 import HoldBtn from '../../components/button/HoldBtn'
 import AddCardBtn from '../../components/button/AddCardBtn'
 import Invisible from '../../components/input/Invisible'
-//import AddTeacher from '../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
-//import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
-//import ProjectGather from '../budgetAndFinalAccountsManagementcond/budget/ProjectGather'
+import DisTextField from '../../components/input/DisTextField'
 import SelectList from '../../components/select/SelectList'
 import SelectListSearch from '../../components/select/SelectListSearch'
 import DepartmentList from '../select/DepartmentList'
@@ -206,6 +204,14 @@ handleChildChange=(formData)=>{
                                     inputValue={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""} 
                                     labelValue={form_list.title} 
                                     key={index}
+                                />
+                            :form_list.type_name === "DisTextField"?
+                                <DisTextField
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
+                                    inputValue={this.props.componentsdata[form_list.id_name]!==null?this.props.componentsdata[form_list.id_name]:""} 
+                                    labelValue={form_list.title} 
+                                    key={index}
+                                    index={index}
                                 />
                             :form_list.type_name === "LabelTitleMessage"?
                                 <LabelTitleMessage

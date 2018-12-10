@@ -25,12 +25,10 @@
    import HoldBtn from '../../components/button/HoldBtn'
 //    import AddCardBtn from '../AddCardBtn'
    import CardItem from '../../components/watch/CardItem'
-   //import AddTeacher from '../budgetAndFinalAccountsManagementcond/budget/AddTeacher'
-   //import ProjectTemplate from '../budgetAndFinalAccountsManagementcond/budget/ProjectTemplate'
-   //import ProjectGather from '../budgetAndFinalAccountsManagementcond/budget/ProjectGather'
    import SelectList from '../../components/select/SelectList'
    import SelectListSearch from '../../components/select/SelectListSearch'
    import Invisible from '../../components/input/Invisible'
+   import DisTextField from '../../components/input/DisTextField'
    import DepartmentList from '../select/DepartmentList'
    import TitleLeftCard from '../watch/TitleLeftCard'
    import TitleRightCard from '../watch/TitleRightCard'
@@ -161,6 +159,12 @@
                                    <Invisible 
                                        id={form_list.id_name} 
                                        inputValue={form_list.key} 
+                                       labelValue={form_list.title} 
+                                   />
+                                :form_list.type_name === "DisTextField"?
+                                   <DisTextField
+                                       id={form_list.id_name} 
+                                       inputValue={form_list.key}
                                        labelValue={form_list.title} 
                                    />
                                :form_list.type_name === "LabelTitleMessage"?
