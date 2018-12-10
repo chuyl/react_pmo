@@ -8,6 +8,10 @@
     margin-left: 0.5em;
     color: $background-color;
     position: relative;
+    @media screen  and (max-width:768px){
+        position: initial;
+        
+    }
     .add_card_btn {
         background-color: $primary-color;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
