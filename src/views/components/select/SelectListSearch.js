@@ -4,7 +4,6 @@
      */
     import React, { Component } from 'react';
     import { getData, getRouter } from '../../../utils/helpers'
-    // import ComponentsList from './ComponentsList'
     // import TextField from '../components/input/TextField';
     // import ListText from './ListText'
     //import Select from './Select'

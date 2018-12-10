@@ -10,7 +10,7 @@ import { dealNumber } from '../../utils/helpers'
 // import ListText from '../components/ListText'
 
 // import ListTextSearch from '../components/ListTextSearch'
-import ComponentsList from './ComponentsList'
+import ComponentsList from '../../components/composite/ComponentsList'
 import AddDelCard from './AddDelCard';
 //import Select from './Select'
 class ListTextSearchLink extends Component {

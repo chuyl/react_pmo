@@ -3,7 +3,7 @@
      * @param LoopCardMoneyGroup 组件  label+message为金额
      */
     import React, { Component } from 'react';
-    import {dealNumber} from '../../utils/helpers'
+    import {dealNumber} from '../../../utils/helpers'
     class LoopCardMoneyGroup extends Component {
         render(){
             const {message} =this.props;

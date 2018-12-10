@@ -5,7 +5,6 @@
 import React, { Component } from 'react';
 import TextField from '../../components/input/TextField';
 import AddDelCard from '../../components/AddDelCard';
-import LinkCard from '../../components/LinkCard'
 class TeacherArrange extends Component {
     state = {
         add_lists: false,

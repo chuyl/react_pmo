@@ -2,12 +2,12 @@ import React, {
 	Component
 } from 'react'
 import { getData, getRouter } from '../../utils/helpers'
-import ComponentsViewList from '../components/ComponentsViewList'
-import SelectViewListSearch from '../components/SelectViewListSearch'
-import ViewTextField from '../components/ViewTextField';
+import ComponentsViewList from '../components/composite/ComponentsViewList'
+import SelectViewListSearch from '../components/select/SelectViewListSearch'
+import ViewTextField from '../components/input/ViewTextField';
 import Popup from '../components/modal/Popup'
 import Alert from '../components/modal/Alert'
-import SelectList from '../components/SelectList'
+import SelectList from '../components/select/SelectList'
 import Lang from '../../language'
 class View extends Component {
    

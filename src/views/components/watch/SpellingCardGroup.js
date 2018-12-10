@@ -3,7 +3,7 @@
      * @param SpellingCardGroup 组件  label+message
      */
     import React, { Component } from 'react';
-    import {dealNumber} from '../../utils/helpers'
+    import {dealNumber} from '../../../utils/helpers'
     class SpellingCardGroup extends Component {
         render(){
             const {message} =this.props;

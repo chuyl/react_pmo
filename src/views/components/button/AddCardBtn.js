@@ -3,7 +3,7 @@
      * @param AddCardBtn 组件  添加card按钮
      */
 import React, { Component } from 'react'
-import ComponentsCard from '../../components/ComponentsCard'
+import ComponentsCard from '../../components/composite/ComponentsCard'
 import Alert from '../../components/modal/Remind'
 import { getData, getRouter } from '../../../utils/helpers'
     class AddCardBtn extends Component {

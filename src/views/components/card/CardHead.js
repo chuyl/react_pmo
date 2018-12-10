@@ -3,7 +3,7 @@
      * @param CardHead 组件  card头
      */
     import React, { Component } from 'react';
-    import ComponentsList from './ComponentsList'
+    import ComponentsList from  '../../components/composite/ComponentsList'
     // import {getData,getRouter} from '../../utils/helpers'
     // import CardItem from './CardItem'
     class CardHead extends Component {
