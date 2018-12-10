@@ -79,7 +79,18 @@ class TabComponent extends Component{
     this.getRoutes();
     
 }
-
+componentDidMount(){
+  document.addEventListener("keydown",this.handleEnterKey);
+}
+componentWillUmount(){
+  document.removeEventListener("keydown",this.handleEenterKey);
+}
+handleEnterKey = (e) => {
+  if(e.keyCode === 13){
+    console.log("监听回车")
+      //do somethings
+  }
+}
 // getViewJsonList() {
 //   var cb = (route, message, arg) => {
 //     if (message.error === 0) {
@@ -119,7 +130,6 @@ for(var x=0;x<lang.length;x++){
 }
 }
   getRoutes = () => {
-   
     var cb = (route, message, arg) => {
       var local_remote={};
       for(var localkey in local){
@@ -158,7 +168,6 @@ for(var x=0;x<lang.length;x++){
           components.push(
             <li key={router_list.title} onClick={ () => { 
               this.setState({ currentIndex :router_list.path})  
-              console.log(router_list.data)
             } } className={ this.check_router_index(router_list.path)}><Link to={router_list.path}>{router_list.title}</Link></li>
          )
         )
@@ -240,7 +249,6 @@ handleLogout = () => {
                 }
                  window.location.reload()
               }else if(message.error === 2){
-                console.log("未登录")
                 sessionStorage.logged = false;
                 sessionStorage.token="";
                 if(window.location.hash.split("#")[1]!=="/"){
@@ -260,7 +268,6 @@ handleLogout = () => {
           }
             getData(getRouter("json_manage_list"), { token:sessionStorage.token }, cb_view, {});
           }else if(message.error === 2){
-            console.log("未登录")
             sessionStorage.logged = false;
             sessionStorage.token="";
             if(window.location.hash.split("#")[1]!=="/"){

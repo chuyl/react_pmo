@@ -13,7 +13,6 @@ import {dealNumber }from '../../../utils/helpers'
 import ComponentsList from '../../components/composite/ComponentsList'
 //import AddDelCard from '../../components/AddDelCard';
 //import TeacherArrange from './TeacherArrange'; 
-//import ImplementArrange from './ImplementArrange'
 //import TravelExpenses from './TravelExpenses'
 import {getData, getRouter}from '../../../utils/helpers'
 //import Select from './Select'

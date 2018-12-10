@@ -5,7 +5,7 @@ import React, {
 import Alert from '../components/modal/Remind'
 import ComponentsList from '../components/composite/ComponentsList'
 import { getData, getRouter } from '../../utils/helpers'
-import {PROJECTMANAGELIST} from '../../enum'
+// import {PROJECTMANAGELIST} from '../../enum'
 
 class BiddingPlan extends Component {
    

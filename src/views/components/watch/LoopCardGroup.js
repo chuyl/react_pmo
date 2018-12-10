@@ -6,7 +6,7 @@
     class LoopCardGroup extends Component {
             add_lists_components = () => {
             var components = [];
-            var labelValue = this.props.labelValue.split(",");
+            // var labelValue = this.props.labelValue.split(",");
             var beforeApiUri = this.props.beforeApiUri.split(",");
             var list = beforeApiUri;
             for(var m = 0;m<this.props.message.length;m++){
