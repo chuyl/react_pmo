@@ -1365,7 +1365,7 @@ html, body {
   content: '\e039';
   font-size: 14px;
   font-family: icon;
-  color: #FF5252;
+  color: #FFFFFF;
   padding-right: 10px;
   text-align: center; }
 
@@ -1735,6 +1735,7 @@ html, body {
   padding-left: 14px;
   line-height: 26px;
   margin-right: 10px;
+  overflow: hidden;
   font: 14px "Microsoft";
   /* padding-left: 10px; */
   /* border-bottom: 1px solid #c6c8ce; */
@@ -2049,6 +2050,10 @@ html, body {
     padding-left: 0.7em;
     padding-bottom: 0.25em;
     overflow: hidden; }
+    @media screen and (max-width: 768px) {
+      .label_title_message span,
+      .label_title_message label {
+        padding-left: 0.2em; } }
 
 .label_message span {
   box-sizing: border-box;
@@ -2061,6 +2066,10 @@ html, body {
   padding-top: 0.25em;
   padding-bottom: 0.25em;
   overflow: hidden; }
+  @media screen and (max-width: 768px) {
+    .label_message span,
+    .label_message label {
+      padding-left: 0.5em; } }
 .label_message label {
   text-align: right;
   padding-right: 1em; }
@@ -2076,6 +2085,10 @@ html, body {
   padding-top: 0.25em;
   padding-bottom: 0.25em;
   overflow: hidden; }
+  @media screen and (max-width: 768px) {
+    .label_total_message span,
+    .label_total_message label {
+      padding-left: 0.4em; } }
 .label_total_message label {
   text-align: right;
   padding-right: 1em; }
@@ -2090,6 +2103,9 @@ html, body {
   margin-left: 0.5em;
   color: #fafafa;
   position: relative; }
+  @media screen and (max-width: 768px) {
+    .view_table_list {
+      position: initial; } }
   .view_table_list .add_card_btn {
     background-color: #3F51B5;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
