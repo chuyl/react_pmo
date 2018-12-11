@@ -455,8 +455,16 @@ handleLogout = () => {
            sessionStorage.config1=JSON.stringify(config)
            console.log(sessionStorage.config) 
            }}
-          >切换路由</button>
-          
+          >666</button>
+            <button
+           onClick={()=>{
+
+           var config = {"routers":"http://192.168.4.69:777/user/route/client_route","notification":"test.php","language":"Chin","version":"1.100"};
+           
+           sessionStorage.config1=JSON.stringify(config)
+           console.log(sessionStorage.config) 
+           }}
+          >777</button>
        {/* <div style={this.state.dialog_show===true?{}:{display:"none"}} onClick={this.dialogShow.bind(this)} className="modal_backdrop"></div> */}
        {/* <div className="dialog_window"></div> */}
         </div>
