@@ -53,7 +53,7 @@
   .overflow{
     height: 100%;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
   }
   .overflow::-webkit-scrollbar {
     width: 4px;

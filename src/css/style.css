@@ -1140,7 +1140,7 @@ html, body {
 .overflow {
   height: 100%;
   overflow-x: hidden;
-  overflow-y: auto; }
+  overflow-y: scroll; }
 
 .overflow::-webkit-scrollbar {
   width: 4px;
@@ -1291,6 +1291,9 @@ html, body {
 .paper_div.open {
   border-radius: 1em;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.6); }
+  @media screen and (max-width: 768px) {
+    .paper_div.open {
+      border-radius: 0; } }
 
 .card_box {
   padding: 0;
@@ -1930,6 +1933,7 @@ html, body {
   padding-left: 10px;
   background: #fafafa;
   color: #757575;
+  outline: none;
   border-radius: 2px;
   border: 1px solid #BDBDBD; }
 
@@ -2340,7 +2344,7 @@ html, body {
   position: absolute;
   width: 100%;
   box-sizing: border-box;
-  padding: 1em 0 0 1em; }
+  padding: 1em; }
 .crius-card-list .card-foot .card-item {
   float: left; }
 .crius-card-list .card-foot .active {
