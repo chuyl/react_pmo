@@ -453,6 +453,7 @@ handleLogout = () => {
            var config = {"routers":"http://192.168.4.69:666/user/route/client_route","notification":"test.php","language":"Chin","version":"1.100"};
            
            sessionStorage.config1=JSON.stringify(config)
+           window.location.reload()
            console.log(sessionStorage.config) 
            }}
           >666</button>
@@ -462,6 +463,7 @@ handleLogout = () => {
            var config = {"routers":"http://192.168.4.69:777/user/route/client_route","notification":"test.php","language":"Chin","version":"1.100"};
            
            sessionStorage.config1=JSON.stringify(config)
+           window.location.reload()
            console.log(sessionStorage.config) 
            }}
           >777</button>
