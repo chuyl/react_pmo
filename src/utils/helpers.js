@@ -1,4 +1,5 @@
-import config from "../config"
+import configs from "../config"
+const config=sessionStorage.config1?JSON.parse(sessionStorage.config1):JSON.parse(sessionStorage.config)
 function logout() {
   let e = new Event("token_invalid");
   dispatchEvent(e);
