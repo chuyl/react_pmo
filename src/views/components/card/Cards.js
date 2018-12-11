@@ -100,9 +100,9 @@ class Card extends Component {
     }
 	render(){
         return (
-            <div id={"card_id"+this.props.index} name={"card-project"} className={this.state.openCtrlState===""?"card-project active":this.state.openCtrlState===true?"card-project active open move-out":"card-project move-in active"}>
+            <div key={this.props.index} id={"card_id"+this.props.index} name={"card-project"} className={this.state.openCtrlState===""?"card-project active":this.state.openCtrlState===true?"card-project active open move-out":"card-project move-in active"}>
                
-                {this.props.addButton.map((form_list) => {
+                {this.props.addButton.map((form_list,index) => {
                     return (
                         form_list.type_name === "Link"?
                                 <Link 
@@ -111,7 +111,7 @@ class Card extends Component {
                                     dataId={this.props.card_list.id}
                                     // isClick={this.props.card_list.id}
                                     linkpage={form_list.before_api_uri}
-                                    key={form_list.id_name}
+                                    key={index}
                                     messageList={form_list.add_button}
                                     onChange = {this.handleClick}
                                 />
@@ -119,7 +119,7 @@ class Card extends Component {
                             <CardHead
                                 id={form_list.id_name} 
                                 addButton={form_list.add_button}
-                                key={form_list.id_name}
+                                key={index}
                                 message={this.props.card_list?this.props.card_list:""} 
                             />    
                         :form_list.type_name === "CardBody"?
@@ -128,7 +128,7 @@ class Card extends Component {
                                     cardIndex={this.props.index}
                                     id={form_list.id_name} 
                                     addButton={form_list.add_button}
-                                    key={form_list.id_name}
+                                    key={index}
                                     fiveChange = {this.handleClick}  
                                     footState={this.state.cardTitleItem}
                                     message={this.props.card_list?this.props.card_list:""} 
@@ -137,7 +137,7 @@ class Card extends Component {
                                 <CardOpen 
                                     id={form_list.id_name} 
                                     addButton={form_list.add_button}
-                                    key={form_list.id_name}
+                                    key={index}
                                     openCtrlState={this.openCtrlState}
                                     message={this.props.card_list?this.props.card_list:""} />
                             :form_list.type_name === "CardFoot"?
@@ -145,7 +145,7 @@ class Card extends Component {
                                     openState={this.state.openCtrlState}
                                     id={form_list.id_name} 
                                     addButton={form_list.add_button}
-                                    key={form_list.id_name}
+                                    key={index}
                                     // threeChange = {this.handleClick}
                                     message={form_list.title} 
                                     handlethreeCardTitleItem = {this.handlethreeCardTitleItem}
@@ -154,20 +154,20 @@ class Card extends Component {
                                 <LabelTitleMessage
                                     id={form_list.id_name} 
                                     labelValue={form_list.title} 
-                                    key={form_list.id_name}
+                                    key={index}
                                     message={this.props.card_list[form_list.id_name]?this.props.card_list[form_list.id_name]:""} 
                                 />
                                 :form_list.type_name === "TitleMessage"?
                                 <TitleMessage
                                     id={form_list.id_name} 
                                     labelValue={form_list.title} 
-                                    key={form_list.id_name}
+                                    key={index}
                                 />
                             :form_list.type_name === "LabelSelectMessage"?
                                 <LabelSelectMessage
                                     id={form_list.id_name} 
                                     labelValue={form_list.title} 
-                                    key={form_list.id_name}
+                                    key={index}
                                     message={this.props.card_list[form_list.id_name+"_name"]?this.props.card_list[form_list.id_name+"_name"]:""} 
                                 />
                             :form_list.type_name==="CardGroup"?
@@ -176,7 +176,7 @@ class Card extends Component {
                                     addButtonTitle={form_list.add_button_title} 
                                     beforeApiUri={this.props.card_list[form_list.add_button.before_api_uri]} 
                                     idName={form_list.id_name}
-                                    key={form_list.id_name}
+                                    key={index}
                                     title={form_list.title} 
                                     // eidtButton={form_list.edit_button}
                                     // delButton = {form_list.del_button}

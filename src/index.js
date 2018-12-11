@@ -10,10 +10,11 @@ import {
   } from 'react-router-dom';
 import './css/style.css'
 //  import Lang from './language'
-import config from './config';
+// import config from './config';
 import local from './local' 
 import {getData,getRouter } from './utils/helpers';
  const Lang = sessionStorage.Language?JSON.parse(sessionStorage.Language):"";
+ const config=sessionStorage.config1?JSON.parse(sessionStorage.config1):JSON.parse(sessionStorage.config)
 // window.onresize = function(){
 //   console.log(document.body.clientWidth)
   
@@ -446,7 +447,16 @@ handleLogout = () => {
             }} className="return_btn">
           </div>
           这是打开的对话窗口
-          <input/>
+          <button
+           onClick={()=>{
+
+           var config = {"routers":"http://192.168.4.69:666/user/route/client_route","notification":"test.php","language":"Chin","version":"1.100"};
+           
+           sessionStorage.config1=JSON.stringify(config)
+           console.log(sessionStorage.config) 
+           }}
+          >切换路由</button>
+          
        {/* <div style={this.state.dialog_show===true?{}:{display:"none"}} onClick={this.dialogShow.bind(this)} className="modal_backdrop"></div> */}
        {/* <div className="dialog_window"></div> */}
         </div>

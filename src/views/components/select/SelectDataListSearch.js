@@ -23,7 +23,6 @@
             data_name:this.props.selectName
         }
         componentDidMount(){
-            console.log("did")
             // var cb = (route, message, arg) => {
             //     if (message.error === 0) {
                    
@@ -75,15 +74,12 @@
                         searchInfoLists: message.data,
                         info_lists: message.data
                     })
-                    console.log(message.data)
-                    for(var i = 0;i<message.data.length;i++){
-                        console.log(message.data.key)
-                        if(this.props.selectedInfo===message.data.key){
-                            this.setState({data_name:message.data.name})
-                        }
-                    }
+                    // for(var i = 0;i<message.data.length;i++){
+                    //     if(this.props.selectedInfo===message.data.key){
+                    //         this.setState({data_name:message.data.name})
+                    //     }
+                    // }
                 }else if(message.error === 2){
-                    console.log("未登录")
                     sessionStorage.logged = false;
                     sessionStorage.token="";
                     if(window.location.hash.split("#")[1]!=="/"){
@@ -157,7 +153,7 @@
                                         search_info_list: [],
                                         })
                                         for (var i = 0; i < this.state.info_lists.length; i++) {
-                                            if (this.state.info_lists[i].name.indexOf(this.state.search_name) >= 0||this.state.info_lists[i].type.indexOf(this.state.search_name) >= 0) {
+                                            if (this.state.info_lists[i].name.indexOf(this.state.search_name) >= 0||this.state.info_lists[i].type.indexOf(this.state.search_name) >= 0||this.state.info_lists[i].key.indexOf(this.state.search_name) >= 0 ){
                                                 this.state.search_info_list.push(this.state.info_lists[i])
     
                                                     }
@@ -187,7 +183,7 @@
                            
                         </div>
                     </div>
-                    <p style={{paddingLeft:"80px",fontSize:"14px",color:"#fff",paddingTop:"5px",height:"24px"}}>{this.state.data_name}</p>
+                    {/* <p style={{paddingLeft:"80px",fontSize:"14px",color:"#fff",paddingTop:"5px",height:"24px"}}>{this.state.data_name}</p> */}
                 </div>
             )
         }

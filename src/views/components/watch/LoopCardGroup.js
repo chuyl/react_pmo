@@ -11,7 +11,6 @@
             var list = beforeApiUri;
             for(var m = 0;m<this.props.message.length;m++){
               
-                    console.log(this.props.message[m][list[0]])
                     components.push(
                             <div key={m} className="label_message">
                             
@@ -28,7 +27,7 @@
         }
         render(){
             return (
-                 <div>{this.add_lists_components()}</div>
+                 <div>{this.props.message===""?"列表":this.add_lists_components()}</div>
               )
                 
                 

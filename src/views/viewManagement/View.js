@@ -66,15 +66,7 @@ class View extends Component {
                    this.setState({
 					data_message_list:message.data
 				   })
-                    console.log("hhhh")
-                    // for(var i = 0;i<message.data.length;i++){
-                    //     if(this.props.selectedInfo===message.data[i].key){
-                    //         console.log(message.data[i].name)
-                    //         this.setState({data_name:message.data[i].name})
-                    //     }
-                    // }
                 }else if(message.error === 2){
-                    console.log("未登录")
                     sessionStorage.logged = false;
                     sessionStorage.token="";
                     if(window.location.hash.split("#")[1]!=="/"){
@@ -280,14 +272,16 @@ class View extends Component {
 				  }
 			}
 		}
-		// getData(getRouter("json_manage_edit"), 
-		// { token:sessionStorage.token,
-		// 	data:{  id:this.state.view_id, 
-		// 			name:this.state.view_english_name,
-		// 			title:this.state.view_china_name,
-		// 			type:select_type,
-		// 			data:view_data} 
-		// 		}, add_cb, {});
+		console.log(this.state.this_view_list)
+		console.log(view_data)
+		getData(getRouter("json_manage_edit"), 
+		{ token:sessionStorage.token,
+			data:{  id:this.state.view_id, 
+					name:this.state.view_english_name,
+					title:this.state.view_china_name,
+					type:select_type,
+					data:view_data} 
+				}, add_cb, {});
 	}
 	
 	/** 
@@ -369,6 +363,7 @@ class View extends Component {
 	 * @param changeformlistMessage 函数 编辑group组件接口名称 
 	 */
 	changeformlistMessage=(event,componentsView)=>{
+		console.log(this.state.index_json_view)
 		var other_list=[];
 		for(var i=0;i<this.state.this_view_list.length;i++){
 			if(i!==this.state.index_json_view){
@@ -718,15 +713,38 @@ class View extends Component {
 		}
 		getData(getRouter("newGroup"), { token:sessionStorage.token }, cb, {});
 	}
+		/** 
+	 * @time 2018-12-11
+	 * @author xuesong
+	 * @param send_data_message 函数 下拉数据名称的回调函数
+	 */
 	send_data_message=(newState)=>{
-		console.log("获取数据")
 		this.setState({
 			this_data_message:newState
 		})
-		console.log(newState)
+		//修改描述，数据接口
+		document.getElementById("descript")?document.getElementById("descript").value=newState.name:"";
+		newState.url?document.getElementById("before_api_uri")?document.getElementById("before_api_uri").value=newState.url:"":""
+		var other_list=[];
+		for(var i=0;i<this.state.this_view_list.length;i++){
+			if(i!==this.state.index_json_view){
+				other_list.push(this.state.this_view_list[i])
+			}else{
+				var change_list=this.state.this_view_list[i];
+				//修改发送数据中的
+				change_list["id_name"]=newState.key;
+				change_list["descript"]=newState.name;
+				newState.url?change_list["before_api_uri"]=newState.url:"";
+				
+				other_list.push(change_list)
+			}
+		}
+		this.setState({
+			this_view_list:other_list
+		})
+		
 	}
 	render() {
-
 		return(
 			<div>
 				<div style={{overflow:"hidden"}} className="view_table_list ">
@@ -811,14 +829,12 @@ class View extends Component {
 				<div className="view_list overflow">
 					<div id="isViewJson" style={{marginTop:"2em"}} className={this.state.isViewJson?"view_paper_list overflow open":"view_paper_list overflow"}>
 					{this.state.componentsView.map((componentsView,index)=>{
+							// if(componentsView.key=== "id_name"){
+								
+								
+							// }
 						if(componentsView.key=== "id_name"){
-							for(var i = 0;i<this.state.data_message_list.length;i++){
-								if(this.state.data_message_list[i].key===componentsView.value){
-									console.log( this.state.data_message_list[i].name)
-									 var data_name = this.state.data_message_list[i].name;
-								}
-							}
-							console.log(data_name)
+							
 							return(
 								<SelectDataListSearch
 								    key={this.state.this_index_view_list+""+this.state.index_json_view+""+index}
@@ -826,14 +842,59 @@ class View extends Component {
 									id={"id_name_select"}
 									sendDataMessage={this.send_data_message}
 									searchInfoLists={"json_type_list"} 
-									selectName={data_name}
+									// selectName={data_name}
                                     selectedIdInfo={componentsView.value} 
                                     selectedInfo={componentsView.value} 
 							/>
 							)
 						}
+						// if(componentsView.key=== "descript"){
+						// 	// for(var i = 0;i<this.state.data_message_list.length;i++){
+						// 	// 	for(var m = 0; m<this.state.componentsView.length;m++){
+						// 	// 		if(this.state.data_message_list[i].key===this.state.componentsView[m].value){
+						// 	// 			var  descript_data_name = this.state.data_message_list[i].name;
+						// 	// 		}
+						// 	// 	}
+								
+						// 	// }
+						// 	return(
+						// 		<ViewTextField 
+						// 		    id={"descript"}
+						// 			key={this.state.this_index_view_list+""+this.state.index_json_view+""+index}
+						// 			inputValue={componentsView.value} 
+						// 			labelValue={"描述"} 
+						// 			//labelValue={componentsView.key} 
+						// 			onChange={(event) => {
+						// 				this.changeformlistMessage(event,componentsView)
+						// 				}} 
+						// 	/>
+						// 	)
+						// }
+						// if(componentsView.key=== "before_api_uri"){
+						// 	// for(var h = 0;h<this.state.data_message_list.length;h++){
+						// 	// 	for(var n = 0; n<this.state.componentsView.length;n++){
+						// 	// 		if(this.state.data_message_list[h].key===this.state.componentsView[n].value){
+						// 	// 			var  data_name = this.state.data_message_list[h].name;
+						// 	// 		}
+						// 	// 	}
+								
+						// 	// }
+						// 	return(
+						// 		<ViewTextField 
+						// 		    id={"before_api_uri"}
+						// 			key={this.state.this_index_view_list+""+this.state.index_json_view+""+index}
+						// 			inputValue={componentsView.value} 
+						// 			labelValue={"数据接口"} 
+						// 			//labelValue={componentsView.key} 
+						// 			onChange={(event) => {
+						// 				this.changeformlistMessage(event,componentsView)
+						// 				}} 
+						// 	/>
+						// 	)
+						// }
 						return(
 							<ViewTextField 
+							    id={componentsView.key}
 								key={this.state.this_index_view_list+""+this.state.index_json_view+""+index}
 								inputValue={componentsView.value} 
 								 labelValue={componentsView.key=== "id_name"?"数据名称"
