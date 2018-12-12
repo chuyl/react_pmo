@@ -13,6 +13,9 @@
 .paper_div.open {
     border-radius: 1em;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    @media screen  and (max-width:768px){
+         border-radius: 0;
+    }
 }
 
 .card_box {
