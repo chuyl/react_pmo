@@ -21,7 +21,6 @@ class Alert extends Component{
     this.state.closeAlert();
   }
   open =(options)=>{
-    console.log(options)
     options = options || {};
     options.alertStatus = true;
     this.setState({

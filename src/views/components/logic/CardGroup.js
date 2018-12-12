@@ -201,7 +201,6 @@
      }
         render() {
             var json_view=JSON.parse(sessionStorage.view)
-        console.log(this.props.addButton.descript)
             for(var i=0;i<json_view.length;i++){
     
                 if(json_view[i].name===this.props.addButton.descript){

@@ -169,9 +169,7 @@ class TrainingProgram extends Component {
 	 * @param handleChildChange 函数 出来Link返回的数据 
 	 */
 	handleChildChange = (newState) => { //处理子函数传回来的state,改变自身的state
-		console.log(newState)
 		if(newState){
-			console.log(this.state.card_state)
 			// this.setState(newState);
 			if (this.state.card_state) {
 				setTimeout(function () {

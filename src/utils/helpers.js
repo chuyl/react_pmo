@@ -97,6 +97,7 @@ export function notification() {
   };
 }
 export function dealNumber(money){
+  // console.log(typeof(money))
  if(money && money!=null){
     money = String(money);
     var left=money.split('.')[0],right=money.split('.')[1];

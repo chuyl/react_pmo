@@ -48,7 +48,6 @@
 	 * @param success_message 函数 修改groupCard成功的回调函数
 	 */
         success_message=()=>{
-            console.log("保存成功")
             var newState = {
                 success_message:true
             }
@@ -117,13 +116,14 @@
            getData(getRouter(before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
         }
         render() {
-            console.log(this.props.cardList);
             return (
                 <div>
                     <div key={this.props.index} className="card_info_list_card">
                         {/* <ComponentsList componentslist={this.state.card_list}></ComponentsList> */}
                         {this.props.cardList?this.props.cardList.map((card_list, index) => {
-                           
+                           if(card_list.type_name === "Invisible"){
+                               console.log(card_list.type_name === "Invisible")
+                           }
                             return (
                                 <div key={index} style={{marginBottom:"-6px"}}>
                                 {card_list.type_name === "ListTextSearch" ?

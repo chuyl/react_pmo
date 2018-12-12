@@ -100,7 +100,6 @@ class ListTextSearch extends Component {
 	 * @param onHoldClicks 函数 点击保存按钮发送数据
 	 */ 
 	onHoldClicks =(newState)=>{
-        console.log(newState)
 		var key_name = [];
 		var value = [];
 		var list_message=this.state.add_button;
@@ -201,7 +200,6 @@ class ListTextSearch extends Component {
                             <button
                                 className="select_search_button"
                                 onClick={() => {
-                                    console.log(this.state.search_name)
                                     this.setState({
                                     search_info_list: [],
                                     })

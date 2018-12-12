@@ -29,8 +29,8 @@ import { getData, getRouter } from '../../../utils/helpers'
             this.props.editCardSuccess(newState);//回调函数传递参数给父组件
         }
         project_index_add = (list_message,before_api_uri)=>{
-            console.log(this.props.dataId)
-            console.log(before_api_uri)
+            // console.log(this.props.dataId)
+            // console.log(before_api_uri)
             var key_name = [];
             var value = [];
             if(this.props.dataId){

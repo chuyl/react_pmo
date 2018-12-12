@@ -94,6 +94,7 @@ handleChildChange=(formData)=>{
     }
     this.props.sevenChange(newState);//回调函数传递参数给父组件
   }
+  //组件CardTitleItem的回调参数
   handleThisCardTitleItem=(thisBtnState)=>{
     var newState = {
         cardTitleItem:thisBtnState.cardTitleItem
@@ -114,6 +115,7 @@ handleChildChange=(formData)=>{
      
      this.props.editCardGroupState(newStates)
   }
+
   addCardGroupState=(newState)=>{
     var newStates={
        success_message:newState.success_message,
@@ -127,10 +129,6 @@ handleChildChange=(formData)=>{
      
         return (
                 this.props.componentslist.map((form_list,index) => {
-                    if(form_list.type_name==="CardGroup"){
-                        console.log(form_list.add_button)
-                    }
-                   
                     return (
                             form_list.type_name === "Cards" ?
                                 <Cards  
