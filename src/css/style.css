@@ -2217,7 +2217,6 @@ html, body {
   color: #3F51B5; }
 .crius-card-list .card-project.active {
   display: block;
-  border: 0px solid #ccc;
   box-sizing: border-box;
   border-radius: 10px;
   overflow: hidden; }
@@ -2354,6 +2353,8 @@ html, body {
   transition: border .3s ease; }
 .crius-card-list .card-project.open .card-foot {
   height: 0; }
+  .crius-card-list .card-project.open .card-foot .card-item {
+    display: none; }
 .crius-card-list .card-project.open .card-body {
   height: initial;
   transition: height 0.3s cubic-bezier(0.4, 0, 1, 1); }
