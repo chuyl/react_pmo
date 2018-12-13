@@ -201,7 +201,6 @@
      }
         render() {
             var json_view=JSON.parse(sessionStorage.view)
-        console.log(this.props.addButton.descript)
             for(var i=0;i<json_view.length;i++){
     
                 if(json_view[i].name===this.props.addButton.descript){
@@ -243,7 +242,7 @@
 
                                             }}
                                     >删除</button>:""}
-                                    <button className="label_delete_button"
+                                    {this.props.editButton!==""?<button className="label_delete_button"
                                             onClick={() => {
                                                 console.log(this.props.addButton)
                                                 this.setState({
@@ -252,7 +251,7 @@
                                                     
                                                 })
                                                 }}
-                                    >编辑</button>
+                                    >编辑</button>:""}
                                       
                                 </li>
                             )

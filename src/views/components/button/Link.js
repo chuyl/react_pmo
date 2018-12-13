@@ -53,40 +53,18 @@
         * @param stringifyMultipleButton 函数名 循环输出动态数组值
         */
        stringifyMultipleButton(list_message, index, arr_list) {
-        var key_name = []; 
-        var value = []; 
-        for (var i = 0; i < list_message.length; i ++) {
-            value.push(list_message[i].id_name)
-            key_name.push(document.getElementById(list_message[i].id_name + index).innerHTML === "-选择-"?"":document.getElementById(list_message[i].id_name + index).innerHTML || document.getElementById(list_message[i].id_name + index).value)
-        }
-        var obj =  {}; 
-        for (var j = 0; j < value.length; j ++) {
-            obj[value[j]] = key_name[j]; 
-        }
+            var key_name = []; 
+            var value = []; 
+            for (var i = 0; i < list_message.length; i ++) {
+                value.push(list_message[i].id_name)
+                key_name.push(document.getElementById(list_message[i].id_name + index).innerHTML === "-选择-"?"":document.getElementById(list_message[i].id_name + index).innerHTML || document.getElementById(list_message[i].id_name + index).value)
+            }
+            var obj =  {}; 
+            for (var j = 0; j < value.length; j ++) {
+                obj[value[j]] = key_name[j]; 
+            }
+            arr_list.push(obj); 
 
-        //var data = JSON.stringify(obj, value);//将对象转换成json
-        arr_list.push(obj); 
-      //  console.log(arr_list);
-
-    }
-    message_list=()=> {
-        var cb = (route, message, arg) =>  {
-            // console.log("bianji")
-			if (message.error=== 0) {
-				this.setState( {
-					linkListCardData:message.data
-				})
-			}else if(message.error === 2){
-				console.log("未登录")
-				sessionStorage.logged = false;
-				sessionStorage.token="";
-				if(window.location.hash.split("#")[1]!=="/"){
-					window.location.href=window.location.href.split("#/")[0]
-				
-				  }
-			}
-        }
-		getData(getRouter(this.props.messageList),  {token:sessionStorage.token, project_id:this.props.isClick }, cb,  {}); 
     }
     /** 
 	 * @time 2018-10-16
@@ -134,7 +112,6 @@
                     }
                      this.props.oneChange(newState);
                 }
-                console.log(this.props.messageList)
                 //获取数据接口
                 getData(getRouter(this.props.messageList),  {token:sessionStorage.token, id:this.props.dataId }, cb,  {}); 
             //}
@@ -143,22 +120,9 @@
       //  getData(getRouter("json_manage_name"),  {name:this.props.linkpage,token:sessionStorage.token}, cb,  {}); 
         
     //}
-    /** 
-	 * @time 2018-10-16
-	 * @author xuesong
-	 * @param handlegetByProjectId 函数 点击link组件获取数据
-	 */
-    handlegetByProjectId = ()=>{
-       
 
-    }
     render() {
             const {button} = this.props
-            // const cb = (msg,id) => {
-            //     return () => {
-            //         this.context.callback(msg,id);
-            //     }
-            // }
             return ( 
                     <button className="btn_list" onClick =  {this.handleClick}>{button} </button >  
                

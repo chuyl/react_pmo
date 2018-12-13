@@ -386,7 +386,6 @@ class ListTextSearchLink extends Component {
     // }
     render() {
         const { selectedInfo, id, labelValue } = this.props;
-        console.log(selectedInfo)
         return (
             <div>
                 <div onClick={() => {
@@ -418,7 +417,6 @@ class ListTextSearchLink extends Component {
                                     this.setState({
                                         search_info_list: [],
                                     })
-                                    console.log(this.state.info_lists)
                                     for (var i = 0; i < this.state.info_lists.length; i++) {
                                         if (this.state.info_lists[i].name.indexOf(this.state.search_name) >= 0) {
                                             this.state.search_info_list.push(this.state.info_lists[i])
@@ -530,13 +528,11 @@ class ListTextSearchLink extends Component {
                                     this.setState({
                                         addCondition: this.state.addCondition,
                                     })
-                                    console.log(this.state.addCondition)
 
                                 }}
                             >新增讲师</button>
                             <button  className="hold_btn"
                                 onClick={() => {
-                                    console.log(this.state.addCondition)
                                     var addCondition = this.state.addCondition;
                                     var teacher_data_group = [];
                                     this.setState({
@@ -546,7 +542,6 @@ class ListTextSearchLink extends Component {
                                     var lenghts = 0;
                                     for (var i = 0; i < addCondition.length; i++) {
                                         if (addCondition[i] !== "") {
-                                            console.log(lenghts)
                                             teacher_data_group.push({ teacher_name: "", teacher_income_tax: "", teacher_lecture_fee: "", teacher_lecture_days: "", teacher_duty: "" })
                                             teacher_data_group[lenghts].teacher_name = document.getElementById("teacher_name" + i).innerText === "-选择-" ? "" : document.getElementById("teacher_name" + i).innerText;
                                             //console.log(teacher_data_group[0])
@@ -562,27 +557,17 @@ class ListTextSearchLink extends Component {
                                     for (var m = 0; m < teacher_data_group.length; m++) {
                                         this.state.teacher_data_group.push(teacher_data_group[m])
                                     }
-
-
-                                    console.log(this.state.teacher_data_group)
-
                                 }}
 
                             >保存</button>
                             </div>
                         </div>
                     </div>
-
-
-
-
                     <button  className="hold_btn" onClick={() => {
                         for (var i = 0; i < this.state.add_button.data["form-list"].length; i++) {
-
                             console.log(document.getElementById(this.state.add_button.data["form-list"][i].id_name).innerHTML || document.getElementById(this.state.add_button.data["form-list"][i].id_name).value)
-
                         }
-                    }}>保存1</button>
+                    }}>保存</button>
                     </div>
                 </div>
             </div>

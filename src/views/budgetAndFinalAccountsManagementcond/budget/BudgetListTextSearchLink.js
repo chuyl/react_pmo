@@ -185,7 +185,6 @@ class BudgetListTextSearchLink extends Component {
             obj[value[j]] = key_name[j]; 
         }
     //  var data = JSON.stringify(obj,value);//将对象转换成json
-      　　　 console.log(obj); 
     }
 
 
@@ -233,7 +232,6 @@ class BudgetListTextSearchLink extends Component {
                             return ( < li onClick =  {(e) =>  {
                                     for (var i = 0; i < this.state.searchInfoLists.length; i++ ) {
                                         if (info_lists.name === this.state.searchInfoLists[i].name) {
-                                            console.log()
                                             this.setState( {
                                                 changeResult:this.state.searchInfoLists[i].money
                                             })

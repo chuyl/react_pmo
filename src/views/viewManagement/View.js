@@ -87,13 +87,6 @@ class View extends Component {
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
 				sessionStorage.view=JSON.stringify(message.data);
-				// var array = message.data;
-				// var resultArray = array.sort(
-				// function compareFunction(param1, param2) {
-				// return param1.localeCompare(param2,"zh");
-				// }
-				// );
-				// console.log(resultArray)
 				this.setState({
 					view_table_list:message.data	
 				})
@@ -272,7 +265,6 @@ class View extends Component {
 				  }
 			}
 		}
-		console.log(this.state.this_view_list)
 		console.log(view_data)
 		getData(getRouter("json_manage_edit"), 
 		{ token:sessionStorage.token,
@@ -363,7 +355,6 @@ class View extends Component {
 	 * @param changeformlistMessage 函数 编辑group组件接口名称 
 	 */
 	changeformlistMessage=(event,componentsView)=>{
-		console.log(this.state.index_json_view)
 		var other_list=[];
 		for(var i=0;i<this.state.this_view_list.length;i++){
 			if(i!==this.state.index_json_view){
@@ -413,11 +404,6 @@ class View extends Component {
 							alertAddViewState:false,
 							initializationData:message_temp,
 						})
-					
-					// if(select_type==="cards"){
-					// 	var view_english_name=this.state.view_english_name;
-					// 	var name=[view_english_name+"Card",view_english_name+"Head",view_english_name+"Page1",view_english_name+"Page2",view_english_name+"Page3",]
-					// }else{
 						var add_cb = (route, messages, arg) => {
 							if (messages.error === 0) {
 								this.fetchListData()
@@ -429,8 +415,6 @@ class View extends Component {
 								
 								  }
 							}
-						// }
-						
 					}
 					getData(getRouter("json_manage_add"), { token:sessionStorage.token,data:{name:this.state.view_english_name,title:this.state.view_china_name,type:select_type,data:message_temp} }, add_cb, {});
 					
@@ -439,7 +423,6 @@ class View extends Component {
 						sessionStorage.token="";
 						if(window.location.hash.split("#")[1]!=="/"){
 							window.location.href=window.location.href.split("#/")[0]
-						
 						  }
 					}
 				}
@@ -454,10 +437,7 @@ class View extends Component {
 					json_message["form-temp-name"]=this.state.view_china_name;
 					this.setState({
 						initializationData:json_message,
-						
 					})
-					// var message_temp=json_view[i].data;
-					// message_temp["form-temp-name"]=this.state.view_china_name;
 				}
 				
 			}
@@ -560,11 +540,6 @@ class View extends Component {
 			}
 			
 		}
-		// if(newState.addButtonTitle.indexOf("未设置")>=0){
-		// 	this.setState({
-		// 		selectedViewTitle:"选择"
-		// 	})
-		// }
 	}
 	/** 
 	 * @time 2018-11-12
@@ -572,9 +547,7 @@ class View extends Component {
 	 * @param descriptViewButton 函数 Group展示按钮
 	 */
 	selectViewGetValue=(newState)=>{
-
 		this.changeGroupView(newState)
-
 	}
 	/** 
 	 * @time 2018-11-16
@@ -592,6 +565,27 @@ class View extends Component {
 			this_view_list:newList
 		})
 	}
+	/** 
+	 * @time 2018-12-13
+	 * @author xuesong
+	 * @param moveUpViewContent 函数 上移视图内容
+	 */
+	moveUpViewContent=(index)=>{
+		var newList=[];
+		console.log(index)
+		if(index!==0){
+			newList=this.state.this_view_list;
+			var index_arr=newList[index];
+			var index_up =newList[index-1];
+			newList[index-1]=index_arr;
+			newList[index]=index_up;
+			this.setState({
+				this_view_list:newList
+			})
+			
+		}
+		console.log(newList)
+		}
 	/** 
 	 * @time 2018-11-16
 	 * @author xuesong
@@ -643,7 +637,6 @@ class View extends Component {
 	 * @param sureCopyCallback 函数 一键复制视图
 	 */
 	sureCopyCallback=()=>{
-		// console.log(this.state.copy_message.name)
 		this.copyViewMessage(this.state.copy_message)
 
 	}
@@ -657,8 +650,6 @@ class View extends Component {
 			alertCopyState:false
 		})		
 	}
-			
-
 	/** 
 	 * @time 2018-11-20
 	 * @author xuesong
@@ -817,6 +808,7 @@ class View extends Component {
 						< ComponentsViewList 
 							descriptViewonClickButton={this.descriptViewButton}
 							handleViewJson={this.thisJsonView} 
+							moveUpViewIndexContent={this.moveUpViewContent}
 							delViewIndexContent={this.delViewContent}
 							interfaceViewDataButton={this.interfaceViewData}
 							componentslist = {this.state.this_view_list?this.state.this_view_list:[]}  ></ComponentsViewList > 
@@ -829,12 +821,7 @@ class View extends Component {
 				<div className="view_list overflow">
 					<div id="isViewJson" style={{marginTop:"2em"}} className={this.state.isViewJson?"view_paper_list overflow open":"view_paper_list overflow"}>
 					{this.state.componentsView.map((componentsView,index)=>{
-							// if(componentsView.key=== "id_name"){
-								
-								
-							// }
 						if(componentsView.key=== "id_name"){
-							
 							return(
 								<SelectDataListSearch
 								    key={this.state.this_index_view_list+""+this.state.index_json_view+""+index}
@@ -848,69 +835,23 @@ class View extends Component {
 							/>
 							)
 						}
-						// if(componentsView.key=== "descript"){
-						// 	// for(var i = 0;i<this.state.data_message_list.length;i++){
-						// 	// 	for(var m = 0; m<this.state.componentsView.length;m++){
-						// 	// 		if(this.state.data_message_list[i].key===this.state.componentsView[m].value){
-						// 	// 			var  descript_data_name = this.state.data_message_list[i].name;
-						// 	// 		}
-						// 	// 	}
-								
-						// 	// }
-						// 	return(
-						// 		<ViewTextField 
-						// 		    id={"descript"}
-						// 			key={this.state.this_index_view_list+""+this.state.index_json_view+""+index}
-						// 			inputValue={componentsView.value} 
-						// 			labelValue={"描述"} 
-						// 			//labelValue={componentsView.key} 
-						// 			onChange={(event) => {
-						// 				this.changeformlistMessage(event,componentsView)
-						// 				}} 
-						// 	/>
-						// 	)
-						// }
-						// if(componentsView.key=== "before_api_uri"){
-						// 	// for(var h = 0;h<this.state.data_message_list.length;h++){
-						// 	// 	for(var n = 0; n<this.state.componentsView.length;n++){
-						// 	// 		if(this.state.data_message_list[h].key===this.state.componentsView[n].value){
-						// 	// 			var  data_name = this.state.data_message_list[h].name;
-						// 	// 		}
-						// 	// 	}
-								
-						// 	// }
-						// 	return(
-						// 		<ViewTextField 
-						// 		    id={"before_api_uri"}
-						// 			key={this.state.this_index_view_list+""+this.state.index_json_view+""+index}
-						// 			inputValue={componentsView.value} 
-						// 			labelValue={"数据接口"} 
-						// 			//labelValue={componentsView.key} 
-						// 			onChange={(event) => {
-						// 				this.changeformlistMessage(event,componentsView)
-						// 				}} 
-						// 	/>
-						// 	)
-						// }
 						return(
 							<ViewTextField 
 							    id={componentsView.key}
 								key={this.state.this_index_view_list+""+this.state.index_json_view+""+index}
 								inputValue={componentsView.value} 
-								 labelValue={componentsView.key=== "id_name"?"数据名称"
-											 :componentsView.key==="type_name"?"组件名称"
-											 :componentsView.key==="title"?"输入框标题"
-											 :componentsView.key==="default_value"?"显示默认值"
-											 :componentsView.key==="key"?"输入框默认值"
-											 :componentsView.key==="tip"?"提示"
-											 :componentsView.key==="add_button"?"关联"
-											 :componentsView.key==="descript"?"描述"
-											 :componentsView.key==="before_api_uri"?"数据接口"
-											 :componentsView.key==="after_api_uri"?"发送接口"
-											 :""} 
-											 
-
-								//labelValue={componentsView.key} 
+								labelValue={componentsView.key=== "id_name"?"数据名称"
+								 			:componentsView.key==="type_name"?"组件名称"
+											:componentsView.key==="class"?"样式名称"
+											:componentsView.key==="title"?"输入框标题"
+											:componentsView.key==="default_value"?"显示默认值"
+											:componentsView.key==="key"?"输入框默认值"
+											:componentsView.key==="tip"?"提示"
+											:componentsView.key==="add_button"?"关联"
+											:componentsView.key==="descript"?"描述"
+											:componentsView.key==="before_api_uri"?"数据接口"
+											:componentsView.key==="after_api_uri"?"发送接口"
+											:""} 
 								onChange={(event) => {
 									this.changeformlistMessage(event,componentsView)
 									}} 
@@ -933,17 +874,12 @@ class View extends Component {
 										}} 
 								/>
 					:""}
-						{/* <button onClick={()=>{
-						
-							this.editJsonView()
-						}}>确定</button> */}
 					</div>
 				</div>
 				<Popup 
 					content={
 						<div>
 							<h2>视图</h2>
-								{/* <p>{this.props.alertMsg}</p> */}
 							<ViewTextField 
 								onChange={(e)=>{
 									this.setState({
@@ -971,7 +907,6 @@ class View extends Component {
 							/> 
 						</div>
 					}	 
-						// alertMsg = {this.state.alertMsg} 
 					sureCallback = {this.sureAddViewCallback.bind(this)} 
 					cancelCallback = { this.cancelAddViewCallback.bind(this) } 
 					alertState={this.state.alertAddViewState}

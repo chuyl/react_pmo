@@ -8,7 +8,6 @@
         
         onlyNumber=()=>{
                 //得到第一个字符是否为负号  
-                console.log(this.number.value);
                 var number = this.number.value;
                   
                     if(/^\d+\.?\d{0,2}$/.test(number)){

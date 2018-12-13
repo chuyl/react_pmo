@@ -7,7 +7,7 @@ import ComponentsList from '../components/composite/ComponentsList'
 import { getData, getRouter,getList } from '../../utils/helpers'
 // import { PROJECTMANAGELIST } from '../../enum'
 
-class TrainingProgram extends Component {
+class Budget extends Component {
 
 	state = {
 		card_list: [],//项目信息列表
@@ -77,7 +77,7 @@ class TrainingProgram extends Component {
 		var json_view=sessionStorage.view?JSON.parse(sessionStorage.view):[]
 		// window.location.reload();
 		for (var i = 0; i < json_view.length; i++) {
-			if (json_view[i].name === "projectViewCard") {
+			if (json_view[i].name === "budgetViewCard") {
 
 				var json_message = json_view[i].data;
 				this.setState({
@@ -240,7 +240,6 @@ class TrainingProgram extends Component {
 		for (var i = 0; i < list_message.length; i++) {
 			if (list_message[i].type_name !== "HoldBtn") {
 				if (list_message[i].type_name === "ListTextSearch" || list_message[i].type_name === "SelectList" || list_message[i].type_name === "SelectListSearch") {
-					console.log(list_message[i].id_name + "_name")
 					value.push(list_message[i].id_name + "_name")
 					key_name.push(document.getElementById(list_message[i].id_name + "_name").innerHTML === "-选择-" ? "" : document.getElementById(list_message[i].id_name + "_name").innerHTML)
 					value.push(list_message[i].id_name + "_id")
@@ -345,4 +344,4 @@ class TrainingProgram extends Component {
 	}
 }
 
-export default TrainingProgram;
+export default Budget;

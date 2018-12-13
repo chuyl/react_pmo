@@ -17,6 +17,7 @@
    import HoldBtn from '../../components/button/HoldBtn'
    import AddCardBtn from '../../components/button/AddCardBtn'
    import SelectList from '../../components/select/SelectList'
+   import DisSelectList from '../../components/select/DisSelectList'
    import Invisible from '../../components/input/Invisible'
    import DisTextField from '../../components/input/DisTextField'
    import DepartmentList from '../select/DepartmentList'
@@ -134,6 +135,15 @@
                                    />
                                :form_list.type_name==="SelectList"?
                                    <SelectList 
+                                       id={form_list.id_name}
+                                       labelValue={form_list.title}
+                                       searchInfoLists={form_list.before_api_uri} 
+                                       key={form_list.id_name}
+                                       selectedIdInfo={"-选择-"} 
+                                       selectedInfo={"-选择-"} 
+                                   /> 
+                                :form_list.type_name==="DisSelectList"?
+                                   <DisSelectList 
                                        id={form_list.id_name}
                                        labelValue={form_list.title}
                                        searchInfoLists={form_list.before_api_uri} 

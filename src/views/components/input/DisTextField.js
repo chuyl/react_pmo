@@ -14,7 +14,7 @@
             return (
                 <div className="text_field_div">
                     <label className="search_info_list_label">{labelValue}</label>
-                    <input type={"text"} className={"text_field_input"} name={name} defaultValue={inputValue} disabled={true} id={id+index}/>
+                    <input type={"text"} className={"text_field_input"} name={name} defaultValue={inputValue} disabled={true} id={id}/>
                     {/* <span className="text_field_remind"></span> */}
               </div>
             )

@@ -4,6 +4,7 @@
      */
     import React, { Component } from 'react'
     import SelectList from '../select/SelectList'
+    import DisSelectList from '../select/DisSelectList'
     import Alert from '../modal/Remind'
     import TextField from '../input/TextField'
     import TextArea from '../input/TextArea'
@@ -48,7 +49,6 @@
 	 * @param success_message 函数 修改groupCard成功的回调函数
 	 */
         success_message=()=>{
-            console.log("保存成功")
             var newState = {
                 success_message:true
             }
@@ -117,13 +117,14 @@
            getData(getRouter(before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
         }
         render() {
-            console.log(this.props.cardList);
             return (
                 <div>
                     <div key={this.props.index} className="card_info_list_card">
                         {/* <ComponentsList componentslist={this.state.card_list}></ComponentsList> */}
                         {this.props.cardList?this.props.cardList.map((card_list, index) => {
-                           
+                           if(card_list.type_name === "Invisible"){
+                               console.log(card_list.type_name === "Invisible")
+                           }
                             return (
                                 <div key={index} style={{marginBottom:"-6px"}}>
                                 {card_list.type_name === "ListTextSearch" ?
@@ -154,6 +155,12 @@
                                 //     <ProjectTemplate/> 
                                 :card_list.type_name==="SelectList"?
                                     <SelectList id={card_list.id_name+this.props.conditionAction.id}
+                                        labelValue={card_list.title}
+                                        searchInfoLists={card_list.before_api_uri}
+                                        selectedIdInfo={this.props.conditionAction[card_list.id_name+"_id"]?this.props.conditionAction[card_list.id_name+"_id"]:"-选择-"} 
+                                        selectedInfo={this.props.conditionAction[card_list.id_name+"_name"]?this.props.conditionAction[card_list.id_name+"_name"]:"-选择-"}  />
+                                :card_list.type_name==="DisSelectList"?
+                                    <DisSelectList id={card_list.id_name+this.props.conditionAction.id}
                                         labelValue={card_list.title}
                                         searchInfoLists={card_list.before_api_uri}
                                         selectedIdInfo={this.props.conditionAction[card_list.id_name+"_id"]?this.props.conditionAction[card_list.id_name+"_id"]:"-选择-"} 

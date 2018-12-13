@@ -7,7 +7,6 @@
     class TitleRightCard extends Component {
         render(){
             const {message,defaultValue} =this.props;
-            console.log(message)
             return (
                 <div className="title_card_right">
                   <p>{message?message:defaultValue}</p>
