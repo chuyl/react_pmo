@@ -4,6 +4,7 @@
      */
     import React, { Component } from 'react'
     import SelectList from '../select/SelectList'
+    import DisSelectList from '../select/DisSelectList'
     import Alert from '../modal/Remind'
     import TextField from '../input/TextField'
     import TextArea from '../input/TextArea'
@@ -154,6 +155,12 @@
                                 //     <ProjectTemplate/> 
                                 :card_list.type_name==="SelectList"?
                                     <SelectList id={card_list.id_name+this.props.conditionAction.id}
+                                        labelValue={card_list.title}
+                                        searchInfoLists={card_list.before_api_uri}
+                                        selectedIdInfo={this.props.conditionAction[card_list.id_name+"_id"]?this.props.conditionAction[card_list.id_name+"_id"]:"-选择-"} 
+                                        selectedInfo={this.props.conditionAction[card_list.id_name+"_name"]?this.props.conditionAction[card_list.id_name+"_name"]:"-选择-"}  />
+                                :card_list.type_name==="DisSelectList"?
+                                    <DisSelectList id={card_list.id_name+this.props.conditionAction.id}
                                         labelValue={card_list.title}
                                         searchInfoLists={card_list.before_api_uri}
                                         selectedIdInfo={this.props.conditionAction[card_list.id_name+"_id"]?this.props.conditionAction[card_list.id_name+"_id"]:"-选择-"} 

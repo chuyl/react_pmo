@@ -3,6 +3,7 @@
     "data":{
         "id_name": "",
         "type_name": "MutiText",
+        "class":"",
         "key": "",
         "title": "未设置名称",
         "default_value":"默认值",

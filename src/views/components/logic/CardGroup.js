@@ -242,7 +242,7 @@
 
                                             }}
                                     >删除</button>:""}
-                                    <button className="label_delete_button"
+                                    {this.props.editButton!==""?<button className="label_delete_button"
                                             onClick={() => {
                                                 console.log(this.props.addButton)
                                                 this.setState({
@@ -251,7 +251,7 @@
                                                     
                                                 })
                                                 }}
-                                    >编辑</button>
+                                    >编辑</button>:""}
                                       
                                 </li>
                             )

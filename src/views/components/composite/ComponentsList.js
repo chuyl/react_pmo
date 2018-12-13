@@ -17,6 +17,8 @@ import CardGroup from '../../components/logic/CardGroup'
 import LabelTitleMessage from '../../components/watch/LabelTitleMessage'
 import TitleMessage from '../../components/watch/TitleMessage'
 import LabelChildMessage from '../watch/LabelChildMessage'
+import SpellMessage from '../watch/SpellMessage'
+import ApplicationsState from '../watch/ApplicationsState';
 import LabelMessage from '../../components/watch/LabelMessage'
 import LabelTotalMessage from '../../components/watch/LabelTotalMessage'
 import TitleLeftCard from '../watch/TitleLeftCard'
@@ -38,6 +40,7 @@ import AddCardBtn from '../../components/button/AddCardBtn'
 import Invisible from '../../components/input/Invisible'
 import DisTextField from '../../components/input/DisTextField'
 import SelectList from '../../components/select/SelectList'
+import DisSelectList from '../../components/select/DisSelectList'
 import SelectListSearch from '../../components/select/SelectListSearch'
 import DepartmentList from '../select/DepartmentList'
 
@@ -232,6 +235,26 @@ handleChildChange=(formData)=>{
                                     beforeApiUri={form_list.before_api_uri}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
+                            :form_list.type_name === "SpellMessage"?
+                                <SpellMessage
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    key={index}
+                                    className={form_list.class}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    defaultValue={form_list.default_value}
+                                    message={this.props.componentsdata?this.props.componentsdata:""} 
+                                />
+                            :form_list.type_name === "ApplicationsState"?
+                                <ApplicationsState
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    key={index}
+                                    className={form_list.class}
+                                    defaultValue={form_list.default_value}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={this.props.componentsdata?this.props.componentsdata:""} 
+                                />
                             :form_list.type_name === "LabelMessage"?
                                 <LabelMessage
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
@@ -385,6 +408,16 @@ handleChildChange=(formData)=>{
                                 />
                             :form_list.type_name==="SelectList"?
                                 <SelectList 
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
+                                    labelValue={form_list.title}
+                                    key={index}
+                                    disabled={this.props.disabled}
+                                    searchInfoLists={form_list.before_api_uri} 
+                                    selectedIdInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_id"]:"-选择-"} 
+                                    selectedInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_name"]:"-选择-"} 
+                                /> 
+                            :form_list.type_name==="DisSelectList"?
+                                <DisSelectList 
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title}
                                     key={index}

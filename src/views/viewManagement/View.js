@@ -265,6 +265,7 @@ class View extends Component {
 				  }
 			}
 		}
+		console.log(view_data)
 		getData(getRouter("json_manage_edit"), 
 		{ token:sessionStorage.token,
 			data:{  id:this.state.view_id, 
@@ -565,6 +566,27 @@ class View extends Component {
 		})
 	}
 	/** 
+	 * @time 2018-12-13
+	 * @author xuesong
+	 * @param moveUpViewContent 函数 上移视图内容
+	 */
+	moveUpViewContent=(index)=>{
+		var newList=[];
+		console.log(index)
+		if(index!==0){
+			newList=this.state.this_view_list;
+			var index_arr=newList[index];
+			var index_up =newList[index-1];
+			newList[index-1]=index_arr;
+			newList[index]=index_up;
+			this.setState({
+				this_view_list:newList
+			})
+			
+		}
+		console.log(newList)
+		}
+	/** 
 	 * @time 2018-11-16
 	 * @author xuesong
 	 * @param changeViewMessage 函数 修改视图列表信息
@@ -786,6 +808,7 @@ class View extends Component {
 						< ComponentsViewList 
 							descriptViewonClickButton={this.descriptViewButton}
 							handleViewJson={this.thisJsonView} 
+							moveUpViewIndexContent={this.moveUpViewContent}
 							delViewIndexContent={this.delViewContent}
 							interfaceViewDataButton={this.interfaceViewData}
 							componentslist = {this.state.this_view_list?this.state.this_view_list:[]}  ></ComponentsViewList > 
@@ -817,20 +840,18 @@ class View extends Component {
 							    id={componentsView.key}
 								key={this.state.this_index_view_list+""+this.state.index_json_view+""+index}
 								inputValue={componentsView.value} 
-								 labelValue={componentsView.key=== "id_name"?"数据名称"
-											 :componentsView.key==="type_name"?"组件名称"
-											 :componentsView.key==="title"?"输入框标题"
-											 :componentsView.key==="default_value"?"显示默认值"
-											 :componentsView.key==="key"?"输入框默认值"
-											 :componentsView.key==="tip"?"提示"
-											 :componentsView.key==="add_button"?"关联"
-											 :componentsView.key==="descript"?"描述"
-											 :componentsView.key==="before_api_uri"?"数据接口"
-											 :componentsView.key==="after_api_uri"?"发送接口"
-											 :""} 
-											 
-
-								//labelValue={componentsView.key} 
+								labelValue={componentsView.key=== "id_name"?"数据名称"
+								 			:componentsView.key==="type_name"?"组件名称"
+											:componentsView.key==="class"?"样式名称"
+											:componentsView.key==="title"?"输入框标题"
+											:componentsView.key==="default_value"?"显示默认值"
+											:componentsView.key==="key"?"输入框默认值"
+											:componentsView.key==="tip"?"提示"
+											:componentsView.key==="add_button"?"关联"
+											:componentsView.key==="descript"?"描述"
+											:componentsView.key==="before_api_uri"?"数据接口"
+											:componentsView.key==="after_api_uri"?"发送接口"
+											:""} 
 								onChange={(event) => {
 									this.changeformlistMessage(event,componentsView)
 									}} 

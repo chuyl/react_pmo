@@ -27,6 +27,7 @@
    import CardItem from '../../components/watch/CardItem'
    import SelectList from '../../components/select/SelectList'
    import SelectListSearch from '../../components/select/SelectListSearch'
+   import DisSelectList from '../../components/select/DisSelectList'
    import Invisible from '../../components/input/Invisible'
    import DisTextField from '../../components/input/DisTextField'
    import DepartmentList from '../select/DepartmentList'
@@ -43,7 +44,8 @@
   import LabelChildMessage from '../watch/LabelChildMessage'
   import LabelMessage from '../../components/watch/LabelMessage'
   import LabelTotalMessage from '../../components/watch/LabelTotalMessage'
-
+  import SpellMessage from '../../components/watch/SpellMessage'
+  import ApplicationsState from '../watch/ApplicationsState';
    class ComponentsViewList extends Component {
     /** 
      * @time 2018-11-09 
@@ -90,6 +92,9 @@
     }
     delViewContent=(index)=>{
         this.props.delViewIndexContent(index) 
+    }
+    moveUpViewContent=(index)=>{
+        this.props.moveUpViewIndexContent(index) 
     }
        render() {
            return (
@@ -200,6 +205,14 @@
                                    />
                                :form_list.type_name==="SelectList"?
                                    <SelectList 
+                                       id={form_list.id_name}
+                                       labelValue={form_list.title}
+                                       searchInfoLists={form_list.before_api_uri} 
+                                       selectedIdInfo={"-选择-"} 
+                                       selectedInfo={"-选择-"} 
+                                   /> 
+                                :form_list.type_name==="DisSelectList"?
+                                   <DisSelectList 
                                        id={form_list.id_name}
                                        labelValue={form_list.title}
                                        searchInfoLists={form_list.before_api_uri} 
@@ -344,6 +357,24 @@
                                     beforeApiUri={form_list.before_api_uri}
                                     message={""} 
                                 />
+                            :form_list.type_name === "SpellMessage"?
+                                <SpellMessage
+                                    id={form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    className={form_list.class}
+                                    defaultValue={form_list.default_value}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={""} 
+                                />
+                            :form_list.type_name === "ApplicationsState"?
+                                <ApplicationsState
+                                    id={form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    className={form_list.class}
+                                    defaultValue={form_list.default_value}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={""} 
+                                />
                             :form_list.type_name === "LabelMessage"?
                                 <LabelMessage
                                     id={form_list.id_name} 
@@ -379,6 +410,9 @@
                             
                            </div>
                           <div className="view_component_function">
+                          <button className="label_delete_button" onClick={()=>{
+                               this.moveUpViewContent(index)
+                           }}>上移</button>
                           <button className="label_delete_button" onClick={()=>{
                                this.delViewContent(index)
                            }}>删除</button>
