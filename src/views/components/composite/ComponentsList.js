@@ -18,7 +18,8 @@ import LabelTitleMessage from '../../components/watch/LabelTitleMessage'
 import TitleMessage from '../../components/watch/TitleMessage'
 import LabelChildMessage from '../watch/LabelChildMessage'
 import SpellMessage from '../watch/SpellMessage'
-import ApplicationsState from '../watch/ApplicationsState';
+import ApplicationsState from '../watch/ApplicationsState'
+import SubmitApplications from '../watch/SubmitApplications'
 import LabelMessage from '../../components/watch/LabelMessage'
 import LabelTotalMessage from '../../components/watch/LabelTotalMessage'
 import TitleLeftCard from '../watch/TitleLeftCard'
@@ -255,6 +256,17 @@ handleChildChange=(formData)=>{
                                     beforeApiUri={form_list.before_api_uri}
                                     message={this.props.componentsdata?this.props.componentsdata:""} 
                                 />
+                            :form_list.type_name === "SubmitApplications"?
+                                <SubmitApplications
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    key={index}
+                                    className={form_list.class}
+                                    defaultValue={form_list.default_value}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={this.props.componentsdata?this.props.componentsdata:""} 
+                                />
+                                
                             :form_list.type_name === "LabelMessage"?
                                 <LabelMessage
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 

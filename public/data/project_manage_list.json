@@ -8,7 +8,7 @@
 				"project_person_in_charge_name":"实施负责人", 
 				"project_leader_name":"项目负责人", 
 				"project_customer_name":"客户名称", 
-				"project_days":"天数", 
+				"project_days":"1", 
 				"project_start_date":"2018-10-11", 
 				"project_end_date":"2018-10-14",
 				"project_date":{
@@ -16,44 +16,82 @@
 					"end":"2018-10-14"
 				},
 				
-				"project_training_numbers":"培训人数", 
+				"project_training_numbers":"1", 
 				"project_training_ares":{
 					"province":"黑龙江省",
 					"city":"哈尔滨市"
 					
 				}, 
 				"address":"香坊区红旗大街",
-				"project_income":"收入", 
-				"project_tax_rate":"税率", 
-				"institutional_consulting_fees":"机构咨询费", 
-				"personal_consulting_fees":"个人咨询费", 
-				"labor_cost":"人工成本",
-				"implementation_cost":"实施成本",
-				"travel_cost":"差旅成本",
-				"consulting_cost":"咨询成本",
-				"costing":"成本合计",
-				"expected_income":"预计收入",
-				"project_profit":"项目利润",
-				"gross_interest_rate":"毛利率",
-				"cooperative_gross_margin":"去合作费毛利率",
+				"project_income":"1", 
+				"project_tax_rate":"6", 
+				"institutional_consulting_fees":"1", 
+				"personal_consulting_fees":"1", 
+				"labor_cost":"1",
+				"implementation_cost":"1",
+				"travel_cost":"1",
+				"consulting_cost":"1",
+				"costing":"1",
+				"expected_income":"1",
+				"project_profit":"1",
+				"gross_interest_rate":"10",
+				"cooperative_gross_margin":"10",
+				"examine":{
+					"budget":{
+						"state":"0",
+						"step":[{
+							"admin_user":"褚寅良",
+							"time":"2018-10-26 14:23:38",
+							"pass":"1",
+							"note":"备注",
+							"examine_type":"1",
+							"admin_id":"110"
+						}]
+					},
+					"finalAccounts":{
+						"state":"0",
+						"step":[{
+							"admin_user":"褚寅良",
+							"time":"2018-10-26 14:23:38",
+							"pass":"1",
+							"note":"备注",
+							"examine_type":"1",
+							"admin_id":"110"
+						}]
+					}
+				},
 				"lecturer":[ 
 					{   "id":"166",
 						"teacher_duty_name":"职责", 
-						"teacher_lecture_fee":"讲课费",
-						"teacher_income_tax":"所得税", 
+						"teacher_lecture_fee":"1",
+						"teacher_income_tax":"1", 
 						"teacher_name_name":"宋丹"
 						},
 						{   "id":"166",
 							"teacher_duty_name":"职责", 
-							"teacher_lecture_fee":"讲课费",
-							"teacher_income_tax":"所得税", 
+							"teacher_lecture_fee":"1",
+							"teacher_income_tax":"1", 
 							"teacher_name_name":"宋丹"
 							}
 					],
+				"lecturers":[ 
+						{   "id":"166",
+							"teacher_duty_name":"职责", 
+							"teacher_lecture_fee":"1",
+							"teacher_income_tax":"1", 
+							"teacher_name_name":"宋丹"
+							},
+							{   "id":"166",
+								"teacher_duty_name":"职责", 
+								"teacher_lecture_fee":"1",
+								"teacher_income_tax":"1", 
+								"teacher_name_name":"宋丹"
+								}
+						],
 				"implement":
 					{	"id":"45",
-						"venue_fee":"null",
-						"material_and_equipment_cost":"",
+						"venue_fee":"1",
+						"material_and_equipment_cost":"1",
 						"examination_fee":"456",
 						"tea_break":"654",
 						"stationery":"654",
@@ -66,17 +104,17 @@
 						"equipment_cost":"456"},
 				"venue":[
 					{	"id":"12",
-						"total_price":"总价",
+						"total_price":"1",
 						"meetingplace_name":"会议名称"
 						},
 					{	"id":"12",
-							"total_price":"总价",
+							"total_price":"1",
 							"meetingplace_name":"会议名称"
 							}],
-				"stay":"总价",
-				"city":"总价",
-				"province":"总价",
-				"meal":"总价"
+				"stay":"1",
+				"city":"1",
+				"province":"1",
+				"meal":"1"
 			}
         ], 
     "code":0, 

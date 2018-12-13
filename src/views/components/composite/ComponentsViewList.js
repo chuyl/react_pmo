@@ -45,7 +45,8 @@
   import LabelMessage from '../../components/watch/LabelMessage'
   import LabelTotalMessage from '../../components/watch/LabelTotalMessage'
   import SpellMessage from '../../components/watch/SpellMessage'
-  import ApplicationsState from '../watch/ApplicationsState';
+  import ApplicationsState from '../watch/ApplicationsState'
+  import SubmitApplications from '../watch/SubmitApplications'
    class ComponentsViewList extends Component {
     /** 
      * @time 2018-11-09 
@@ -368,6 +369,15 @@
                                 />
                             :form_list.type_name === "ApplicationsState"?
                                 <ApplicationsState
+                                    id={form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    className={form_list.class}
+                                    defaultValue={form_list.default_value}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={""} 
+                                />
+                            :form_list.type_name === "SubmitApplications"?
+                                <SubmitApplications
                                     id={form_list.id_name} 
                                     labelValue={form_list.title} 
                                     className={form_list.class}

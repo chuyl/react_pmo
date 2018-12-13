@@ -1,6 +1,6 @@
 /** 
      * @author xuesong
-     * @param ApplicationsState 组件  提交状态
+     * @param ApplicationsState 组件  提交申请
      */
     import React, { Component } from 'react';
     // import {dealNumber} from '../../../utils/helpers'
@@ -18,12 +18,8 @@
             var className = this.props.className.split(","); 
             return (
                 this.props.message?<div className={className[0]?className[0]:""}>
-                   <span>{labelValue}</span>
-                    <ul>
-                        {/* {this.props.message.} */}
-                    </ul>
-                   {/* <span>{message?dealNumber(message):"0.00"}</span> */}
-                    {/* <span className="text_field_remind"></span> */}
+                  {/* 根据state显示button里面的文字 */}
+                  <button></button>
               </div>:<div className={className[0]?className[0]:""}>{this.props.defaultValue}</div>
             )
         }
