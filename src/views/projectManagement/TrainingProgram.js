@@ -251,8 +251,6 @@ class TrainingProgram extends Component {
 					value.push(list_message[i].id_name)
 					key_name.push(document.getElementById(list_message[i].id_name).value)
 				} else {
-					console.log(list_message[i].id_name)
-					console.log(document.getElementById(list_message[i].id_name))
 					value.push(list_message[i].id_name)
 					key_name.push(document.getElementById(list_message[i].id_name).innerHTML === "-选择-" ? "" : document.getElementById(list_message[i].id_name).innerHTML || document.getElementById(list_message[i].id_name).value === "-选择-" ? "" : document.getElementById(list_message[i].id_name).value)
 				}
