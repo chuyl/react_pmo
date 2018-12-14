@@ -880,31 +880,33 @@ class View extends Component {
 					content={
 						<div>
 							<h2>视图</h2>
-							<ViewTextField 
-								onChange={(e)=>{
-									this.setState({
-										view_china_name:e.target.value
+							<div className="popup_content">
+								<ViewTextField 
+									onChange={(e)=>{
+										this.setState({
+											view_china_name:e.target.value
+											})
+									}}
+									value={this.state.view_china_name} 
+									labelValue={"中文名称"} 
+								/>
+								<ViewTextField 
+									onChange={(e)=>{
+										this.setState({
+											view_english_name:e.target.value
 										})
-								}}
-								value={this.state.view_china_name} 
-								labelValue={"中文名称"} 
-							/>
-							<ViewTextField 
-								onChange={(e)=>{
-									this.setState({
-										view_english_name:e.target.value
-									})
-								}}
-								value={this.state.view_english_name} 
-								labelValue={"英文名称"} 
-							/>
-							<SelectList 
-								id={"view_type"} 
-								labelValue={"类型"}
-								searchInfoLists={"view_type"} 
-								selectedIdInfo={this.state.view_type_name} 
-								selectedInfo={this.state.view_type_name} 
-							/> 
+									}}
+									value={this.state.view_english_name} 
+									labelValue={"英文名称"} 
+								/>
+								<SelectList 
+									id={"view_type"} 
+									labelValue={"类型"}
+									searchInfoLists={"view_type"} 
+									selectedIdInfo={this.state.view_type_name} 
+									selectedInfo={this.state.view_type_name} 
+								/> 
+							</div>
 						</div>
 					}	 
 					sureCallback = {this.sureAddViewCallback.bind(this)} 
