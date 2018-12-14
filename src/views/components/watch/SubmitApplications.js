@@ -52,7 +52,7 @@ sureCallback(msg){
             return (
                 this.props.message?<div className={className[0]?className[0]:""}>
                   {/* 根据state显示button里面的文字 */}
-                  {message.examine[thisKey].state==="0"?
+                  {message.examine[thisKey]?message.examine[thisKey].state==="0"?
                     <button className={className[1]?className[1]:""}
                         onClick={()=>{
                             this.setState({
@@ -69,7 +69,7 @@ sureCallback(msg){
                             })
                         }}
                   >再次提交</button>
-                  :""}
+                  :"":""}
                     <Alert alertTitle={"提交"+labelValue} alertMsg = {this.state.alertMsg} sureCallback = {this.sureCallback.bind(this)} cancelCallback = { this.cancelCallback.bind(this) } alertState={this.state.alertState}/>
               </div>:<div className={className[0]?className[0]:""}>{this.props.defaultValue}</div>
             )
