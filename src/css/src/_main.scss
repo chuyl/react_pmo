@@ -4,7 +4,6 @@
     }
     .card-project.active {
         display: block;
-        border: 0px solid #ccc;
         box-sizing: border-box;
         border-radius: $border_radius;
         overflow: hidden;
@@ -184,6 +183,9 @@
     .card-project.open {
         .card-foot {
             height: 0;
+            .card-item{
+                display: none;
+            }
         }
         .card-body {
             height: initial;
