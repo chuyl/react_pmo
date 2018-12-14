@@ -71,15 +71,17 @@ sureCallback(msg){
 					content={
 						<div>
 							<h2>备注</h2>
-							<TextField 
-								onChange={(e)=>{
-									this.setState({
-										isAgreeMessage:e.target.value
-										})
-								}}
-								value={this.state.isAgreeMessage} 
-								labelValue={"备注"} 
-							/>
+							<div className="popup_content">
+                                <TextField 
+                                    onChange={(e)=>{
+                                        this.setState({
+                                            isAgreeMessage:e.target.value
+                                            })
+                                    }}
+                                    value={this.state.isAgreeMessage} 
+                                    labelValue={"备注"} 
+                                />
+                            </div>
 						
 						</div>
 					}	 
