@@ -8,8 +8,10 @@
     }
     .popup_content {
         display: block;
-        height: 9em;
-        border-top: 1px solid $primary-color;
+        height: 10em;
+        margin-top: 1em;
+        padding: 0.5em;
+        box-sizing: border-box;
     }
     &.open {
         position: fixed;
@@ -89,6 +91,9 @@
     }
     .alert_box.btn_border {
         .popup_content {
+            border-bottom: 1px solid $primary-color;
+        }
+        p {
             border-bottom: 1px solid $primary-color;
         }
     }
