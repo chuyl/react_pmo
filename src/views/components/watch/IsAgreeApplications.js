@@ -1,13 +1,15 @@
 /** 
      * @author xuesong
-     * @param ApplicationsState 组件  提交申请
+     * @param IsAgreeApplications 组件  审批申请
      */
     import React, { Component } from 'react';
-    import Alert from '../modal/Alert'
+    import Popup from '../modal/Popup'
     import {getData,getRouter} from '../../../utils/helpers'
-    class ApplicationsState extends Component {
+    import TextField from '../input/TextField'
+    class IsAgreeApplications extends Component {
         state={
             alertState:false, //弹出框的状态
+            isAgreeMessage:""
         }
         /** 
 	 * @time 2018-12-14
@@ -51,29 +53,44 @@ sureCallback(msg){
             var className = this.props.className.split(","); 
             return (
                 this.props.message?<div className={className[0]?className[0]:""}>
-                  {/* 根据state显示button里面的文字 */}
-                  {message.examine[thisKey].state==="0"?
                     <button className={className[1]?className[1]:""}
                         onClick={()=>{
                             this.setState({
                                 alertState:true
                             })
                         }}
-                    >提交</button>
-                  :message.examine[thisKey].state==="1"?<span>待审核</span>
-                  :message.examine[thisKey].state==="2"?<span>审核通过</span>
-                  :message.examine[thisKey].state==="-1"?<button className={className[1]?className[1]:""} 
+                    >同意</button>
+                  <button className={className[1]?className[1]:""}
                         onClick={()=>{
                             this.setState({
                                 alertState:true
                             })
                         }}
-                  >再次提交</button>
-                  :""}
-                    <Alert alertTitle={"提交"+labelValue} alertMsg = {this.state.alertMsg} sureCallback = {this.sureCallback.bind(this)} cancelCallback = { this.cancelCallback.bind(this) } alertState={this.state.alertState}/>
+                    >拒绝</button>
+                    <Popup 
+					content={
+						<div>
+							<h2>备注</h2>
+							<TextField 
+								onChange={(e)=>{
+									this.setState({
+										isAgreeMessage:e.target.value
+										})
+								}}
+								value={this.state.isAgreeMessage} 
+								labelValue={"备注"} 
+							/>
+						
+						</div>
+					}	 
+					sureCallback = {this.sureCallback.bind(this)} 
+					cancelCallback = { this.cancelCallback.bind(this) } 
+					alertState={this.state.alertState}
+				/>
+                    {/* <Popup alertTitle={"提交"+labelValue} alertMsg = {this.state.alertMsg} sureCallback = {this.sureCallback.bind(this)} cancelCallback = { this.cancelCallback.bind(this) } alertState={this.state.alertState}/> */}
               </div>:<div className={className[0]?className[0]:""}>{this.props.defaultValue}</div>
             )
         }
     }
-    export default ApplicationsState;
+    export default IsAgreeApplications;
     

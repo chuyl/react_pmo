@@ -24,7 +24,7 @@ class Popup extends Component {
 		return (
         
                 <div className={this.props.alertState ?"alert_back open":"alert_back"}>
-                    <div className={this.props.alertState ?"alert_box open":"alert_box"}>
+                    <div className={this.props.alertState ?"alert_box open btn_border":"alert_box"}>
                         {content}
                         <button onClick = { sure("false") }>确定</button>
                         <button onClick = { cancel("false") }

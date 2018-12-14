@@ -38,11 +38,26 @@
 				"cooperative_gross_margin":"10",
 				"examine":{
 					"budget":{
-						"state":"0",
+						"state":"-1",
 						"step":[{
 							"admin_user":"褚寅良",
 							"time":"2018-10-26 14:23:38",
 							"pass":"1",
+							"note":"备注",
+							"examine_type":"1",
+							"admin_id":"110"
+						},{
+							"admin_user":"褚寅良",
+							"time":"2018-10-26 14:23:38",
+							"pass":"0",
+							"note":"备注",
+							"examine_type":"1",
+							"admin_id":"110"
+						}
+						,{
+							"admin_user":"褚寅良",
+							"time":"2018-10-26 14:23:38",
+							"pass":"-1",
 							"note":"备注",
 							"examine_type":"1",
 							"admin_id":"110"
@@ -54,6 +69,21 @@
 							"admin_user":"褚寅良",
 							"time":"2018-10-26 14:23:38",
 							"pass":"1",
+							"note":"备注",
+							"examine_type":"1",
+							"admin_id":"110"
+						},{
+							"admin_user":"褚寅良",
+							"time":"2018-10-26 14:23:38",
+							"pass":"0",
+							"note":"备注",
+							"examine_type":"1",
+							"admin_id":"110"
+						}
+						,{
+							"admin_user":"褚寅良",
+							"time":"2018-10-26 14:23:38",
+							"pass":"-1",
 							"note":"备注",
 							"examine_type":"1",
 							"admin_id":"110"

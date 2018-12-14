@@ -44,7 +44,7 @@ import SelectList from '../../components/select/SelectList'
 import DisSelectList from '../../components/select/DisSelectList'
 import SelectListSearch from '../../components/select/SelectListSearch'
 import DepartmentList from '../select/DepartmentList'
-
+import IsAgreeApplications from '../watch/IsAgreeApplications'
 class ComponentsList extends Component {
     constructor(props) {
         super(props);
@@ -251,6 +251,7 @@ handleChildChange=(formData)=>{
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={index}
+                                    thisKey={form_list.key}
                                     className={form_list.class}
                                     defaultValue={form_list.default_value}
                                     beforeApiUri={form_list.before_api_uri}
@@ -261,6 +262,18 @@ handleChildChange=(formData)=>{
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={index}
+                                    thisKey={form_list.key}
+                                    className={form_list.class}
+                                    defaultValue={form_list.default_value}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={this.props.componentsdata?this.props.componentsdata:""} 
+                                />
+                            :form_list.type_name === "IsAgreeApplications"?
+                                <IsAgreeApplications
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    key={index}
+                                    thisKey={form_list.key}
                                     className={form_list.class}
                                     defaultValue={form_list.default_value}
                                     beforeApiUri={form_list.before_api_uri}

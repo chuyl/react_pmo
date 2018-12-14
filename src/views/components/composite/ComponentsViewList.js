@@ -47,6 +47,7 @@
   import SpellMessage from '../../components/watch/SpellMessage'
   import ApplicationsState from '../watch/ApplicationsState'
   import SubmitApplications from '../watch/SubmitApplications'
+  import IsAgreeApplications from '../watch/IsAgreeApplications'
    class ComponentsViewList extends Component {
     /** 
      * @time 2018-11-09 
@@ -372,6 +373,7 @@
                                     id={form_list.id_name} 
                                     labelValue={form_list.title} 
                                     className={form_list.class}
+                                    thisKey={form_list.key}
                                     defaultValue={form_list.default_value}
                                     beforeApiUri={form_list.before_api_uri}
                                     message={""} 
@@ -381,6 +383,17 @@
                                     id={form_list.id_name} 
                                     labelValue={form_list.title} 
                                     className={form_list.class}
+                                    thisKey={form_list.key}
+                                    defaultValue={form_list.default_value}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={""} 
+                                />
+                            :form_list.type_name === "IsAgreeApplications"?
+                                <IsAgreeApplications
+                                    id={form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    className={form_list.class}
+                                    thisKey={form_list.key}
                                     defaultValue={form_list.default_value}
                                     beforeApiUri={form_list.before_api_uri}
                                     message={""} 
