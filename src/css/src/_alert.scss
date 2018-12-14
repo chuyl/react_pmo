@@ -29,7 +29,6 @@
         display: none;
         background-color: $prompt_main_color;
         margin: auto;
-        padding: 0.5 * $padding $padding $padding $padding;
         border-radius: $border_radius;
         h2 {
             text-align: center;
@@ -37,25 +36,23 @@
             overflow: hidden;
             padding: 0;
             font-size: 16px;
-            margin-bottom: $padding;
+            border-bottom: 1px solid $primary-color;
+            padding: 1em 0;
         }
         p {
             display: block;
-            height: 10em;
-            color: $prompt_main_color;
-            background-color: $content_color;
-            padding: 10px 8px;
+            height: 9em;
+            color: $primary-color;
+            padding: 2em 2em 0em 2em;
             margin-bottom: $padding;
-            border-radius: $border_radius;
             overflow: hidden;
-            box-shadow: inset 0 0 4px 4px rgba(0, 0, 0, 0.3);
         }
         button {
             display: block;
             height: 2em;
             width: 4em;
             background: $primary-color;
-            color:$primary-color-text;
+            color: $primary-color-text;
             border-radius: 2px;
             overflow: hidden;
             border: none;
@@ -83,6 +80,11 @@
         }
         @media screen and (max-width:768px) {
             margin: auto 1em;
+        }
+    }
+    .alert_box.btn_border {
+        p {
+            border-bottom: 1px solid $primary-color;
         }
     }
     .alert_box.open {
