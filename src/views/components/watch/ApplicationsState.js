@@ -19,7 +19,7 @@
                         {message.examine[thisKey]?message.examine[thisKey].state==="0"?"未提交":message.examine[thisKey].state==="1"?"待审核":message.examine[thisKey].state==="2"?"审核通过":message.examine[thisKey].state==="-1"?"未通过":"":""}
                     </span>
                     <ul className={className[2]?className[2]+"_ul":""}>
-                        {message.examine[thisKey].step.map((step,index)=>{
+                        {message.examine[thisKey]?message.examine[thisKey].step.map((step,index)=>{
                             if(step.pass==="0"){
                                 console.log(step.pass)
                                 return(
@@ -46,7 +46,7 @@
                             }
                             
                             console.log(step)
-                        })}
+                        }):""}
                     </ul>
                    {/* <span>{message?dealNumber(message):"0.00"}</span> */}
                     {/* <span className="text_field_remind"></span> */}
