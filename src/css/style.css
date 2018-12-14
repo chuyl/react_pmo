@@ -2427,6 +2427,10 @@ html, body {
     width: 0;
     height: 0;
     overflow: hidden; }
+  .alert_back .popup_content {
+    display: block;
+    height: 9em;
+    border-top: 1px solid #3F51B5; }
   .alert_back.open {
     position: fixed;
     display: flex;
@@ -2493,9 +2497,7 @@ html, body {
     @media screen and (max-width: 768px) {
       .alert_back .alert_box {
         margin: auto 1em; } }
-  .alert_back .alert_box.btn_border p {
-    border-bottom: 1px solid #3F51B5; }
-  .alert_back .alert_box.btn_border .search_info_list_card:last-child {
+  .alert_back .alert_box.btn_border .popup_content {
     border-bottom: 1px solid #3F51B5; }
   .alert_back .alert_box.open {
     display: block;
