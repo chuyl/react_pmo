@@ -15,7 +15,7 @@
                 this.props.message?
                    
                     <ul className={className[0]?className[0]+"_ul":""}>
-                        {message.examine[thisKey].step.map((step,index)=>{
+                        {message.examine[thisKey]?message.examine[thisKey].step.map((step,index)=>{
                             if(step.pass==="0"){
                                 return(
                                     <li key={index} className={className[0]?className[0]+"_item_default":""}>
@@ -59,7 +59,7 @@
                                 )
                             }
                             
-                        })}
+                        }):""}
                     </ul>
               :<div className={className[0]?className[0]:""}>{this.props.defaultValue}</div>
             )
