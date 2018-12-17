@@ -57,7 +57,7 @@ class Budget extends Component {
 			}
 		}
 		
-		getData(getRouter(getList("projectManagement","TrainingProgram")), { token: sessionStorage.token }, cb, {});
+		getData(getRouter(getList("budgetAndFinalAccountsManagementcond","Budget")), { token: sessionStorage.token }, cb, {});
 
 	}
 	// get_list_message=(list1,list2)=>{

@@ -1123,7 +1123,6 @@ a {
 html, body {
   margin: 0;
   padding: 0;
-  font-size: 16px;
   overflow: hidden;
   height: 100%; }
 
@@ -1171,7 +1170,7 @@ html, body {
   position: fixed;
   top: 0;
   background-color: #427881;
-  /* height: 600px; js代替 */
+  /* height: 600px; js浠ｆ浛 */
   left: 0;
   z-index: 10; }
 
@@ -1513,7 +1512,7 @@ html, body {
     position: fixed;
     top: 0;
     height: 91vh;
-    /* height: 600px; js代替 */
+    /* height: 600px; js浠ｆ浛 */
     left: 0;
     z-index: 10; } }
 .dialog_open {
@@ -1544,7 +1543,7 @@ html, body {
   bottom: 5px;
   height: 500px;
   background-color: #FF5252;
-  /* height: 600px; js代替 */
+  /* height: 600px; js浠ｆ浛 */
   right: 5px;
   z-index: 20; }
 
@@ -1568,7 +1567,7 @@ html, body {
     bottom: 0;
     height: 100vh;
     background-color: #FF5252;
-    /* height: 600px; js代替 */
+    /* height: 600px; js浠ｆ浛 */
     right: 0;
     z-index: 20; } }
 .add_info_list {
@@ -1671,6 +1670,7 @@ html, body {
   background: #fafafa;
   color: #757575;
   border-radius: 2px;
+  box-sizing: content-box;
   border: 1px solid #BDBDBD; }
 
 .selectedInfo::before {
@@ -2251,6 +2251,7 @@ html, body {
   border-bottom: 1px solid #3F51B5;
   color: #3F51B5;
   overflow: hidden;
+  box-sizing: content-box;
   padding: 1em 1em 0 1em; }
   .crius-card-list .card-head .card-item {
     float: left; }

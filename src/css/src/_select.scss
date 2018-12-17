@@ -118,6 +118,7 @@
     background: $background-color;
     color: $secondary-text-color;
     border-radius: 2px;
+    box-sizing: content-box;
     border: 1px solid $divider-color; //margin-bottom: 26px;
 }
 

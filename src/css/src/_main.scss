@@ -48,6 +48,7 @@
         border-bottom: 1px solid $primary-color;
         color: $border_left_color;
         overflow: hidden;
+        box-sizing: content-box;
         padding: 1em 1em 0 1em;
         .card-item {
             float: left;
