@@ -45,6 +45,7 @@ var local = {
                 "menu_manage_list":{"url":"../data/menu_manage_list.json","version":"1.0"},//菜单管理
                 "examin_manage_commitbudget":{"url":"../data/examin_manage_commitbudget.json","version":"1.0"},//提交预算接口
                 "examin_manage_commitfinal":{"url":"../data/examin_manage_commitfinal.json","version":"1.0"},//提交决算接口
+                "examine_manage_bool":{"url":"../data/examine_manage_bool.json","version":"1.0"},//预算审批接口
                 //视图
                
                 // "addProject":{"url":"../json/addProject.json","version":"1.0"},//新建项目

@@ -287,6 +287,11 @@ class Budget extends Component {
 		}
 		getData(getRouter(newState.before_api_uri), { data: obj, token: sessionStorage.token }, cb, {});
 	}
+	examine_bool_message=(state)=>{
+		//this.props.examine_bool_second(state)
+		 console.log(state)
+		 this.listProject()  //刷新项目列表
+	}
 	render() {
 		return (
 			<div>
@@ -307,7 +312,7 @@ class Budget extends Component {
 					<div className="overflow crius-card-list">
 						{this.state.card_list !== null ? this.state.card_list.map((card_list, index) => {
 							return (
-								<ComponentsList index={index} sevenChange={this.handleChildChange} key={index} componentslist={this.state.projectCard} componentsdata={card_list} ></ComponentsList >
+								<ComponentsList examine_bool_seventh={this.examine_bool_message} examine_bools={this.examine_bool_message} index={index} sevenChange={this.handleChildChange} key={index} componentslist={this.state.projectCard} componentsdata={card_list} ></ComponentsList >
 								// <Cards 
 								// 		index={index}
 								// 		sixChange = {this.handleChildChange}

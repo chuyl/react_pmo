@@ -21,10 +21,14 @@
       }
       this.props.fiveChange(newState);//回调函数传递参数给父组件
   }
+  examine_bool_message=(state)=>{
+    this.props.examine_bool_fifth(state)
+    // console.log(state)
+}
         render(){
             return (
                 <div className={"card-body"}>
-                <ComponentsList cardIndex={this.props.cardIndex} footState={this.props.footState} fourChange = {this.handleClick}  componentslist =  {this.props.addButton} componentsdata={this.props.message}></ComponentsList > 
+                <ComponentsList cardIndex={this.props.cardIndex} footState={this.props.footState} fourChange = {this.handleClick} examine_bool_fourth={this.examine_bool_message} componentslist =  {this.props.addButton} componentsdata={this.props.message}></ComponentsList > 
           </div>
             )
         }

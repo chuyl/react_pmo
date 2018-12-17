@@ -9,21 +9,22 @@
             var components = [];
             var labelValue = this.props.labelValue.split(",");
             var beforeApiUri = this.props.beforeApiUri.split(",");
-            // var className = this.props.className.split(",");
+            var className = this.props.className.split(",");
             var list = beforeApiUri;
             for (var i = 0; i <list.length; i++) {
                 components.push(
-                       
-                           <span key={i}>
-                           {/* {labelValue[i]}: */}
-                           {this.props.message[list[i]]}{i===list.length-1?"":"/"}</span>
-                      
+                       <div className={className[1]?className[1]:""}  key={i}>
+                           <div className={className[3]?className[3]:""}>
+                                {this.props.message[list[i]]>9999?this.props.message[list[i]]/10000+"万":this.props.message[list[i]]}
+                           </div>
+                           <div className={className[2]?className[2]:""}>{labelValue[i]}</div>
+                           
+                        </div>
                  )
             }
             return components
         }
         render(){
-            console.log(this.props.className)
             var className = this.props.className.split(",");
             return (
                  <div className={className[0]?className[0]:""}>{this.props.message?this.add_lists_components():this.props.defaultValue}</div>

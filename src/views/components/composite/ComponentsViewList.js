@@ -48,6 +48,9 @@
   import ApplicationsState from '../watch/ApplicationsState'
   import SubmitApplications from '../watch/SubmitApplications'
   import IsAgreeApplications from '../watch/IsAgreeApplications'
+  import LabelShowMessage from '../watch/LabelShowMessage'
+  import GetDataSpellingLabel from '../watch/GetDataSpellingLabel'
+  import ApplicationsFlow from '../watch/ApplicationsFlow'
    class ComponentsViewList extends Component {
     /** 
      * @time 2018-11-09 
@@ -368,6 +371,16 @@
                                     beforeApiUri={form_list.before_api_uri}
                                     message={""} 
                                 />
+                            :form_list.type_name === "LabelShowMessage"?
+                                <LabelShowMessage
+                                    id={form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    className={form_list.class}
+                                    defaultValue={form_list.default_value}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={""} 
+                                />
+                                
                             :form_list.type_name === "ApplicationsState"?
                                 <ApplicationsState
                                     id={form_list.id_name} 
@@ -405,6 +418,29 @@
                                     beforeApiUri={form_list.before_api_uri}
                                     message={""} 
                                 />
+                            :form_list.type_name === "GetDataSpellingLabel"?
+                                <GetDataSpellingLabel
+                                    id_name={form_list.id_name}
+                                    id={form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    className={form_list.class}
+                                    thisKey={form_list.key}
+                                    defaultValue={form_list.default_value}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={""} 
+                                />
+                            :form_list.type_name === "ApplicationsFlow"?
+                                <ApplicationsFlow
+                                    id_name={form_list.id_name}
+                                    id={form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    className={form_list.class}
+                                    thisKey={form_list.key}
+                                    defaultValue={form_list.default_value}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={""} 
+                                />
+                                
                             :form_list.type_name === "LabelTotalMessage"?
                                 <LabelTotalMessage
                                     id={form_list.id_name} 

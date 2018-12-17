@@ -9,7 +9,8 @@
     class IsAgreeApplications extends Component {
         state={
             alertState:false, //弹出框的状态
-            isAgreeMessage:""
+            isAgreeMessage:"",
+            pass:""
         }
         /** 
 	 * @time 2018-12-14
@@ -33,6 +34,7 @@ sureCallback(msg){
             this.setState({
                 alertState:false,
             })
+            this.props.examine_bool_first(true)
         }else if(message.error === 2){
             console.log("未登录")
             sessionStorage.logged = false;
@@ -45,8 +47,9 @@ sureCallback(msg){
         
 
     }
-    console.log(this.props.beforeApiUri)
-  getData(getRouter(this.props.beforeApiUri), {id:this.props.message.id,token:sessionStorage.token}, cb, {});
+    console.log(this.state.isAgreeMessage)
+    console.log(this.state.pass)
+  getData(getRouter(this.props.beforeApiUri), {parent_id:this.props.message.id,note:this.state.isAgreeMessage,pass:this.state.pass,token:sessionStorage.token}, cb, {});
 }
         render(){
             const {message,labelValue,thisKey} =this.props;
@@ -56,14 +59,16 @@ sureCallback(msg){
                     <button className={className[1]?className[1]:""}
                         onClick={()=>{
                             this.setState({
-                                alertState:true
+                                alertState:true,
+                                pass:"1"
                             })
                         }}
                     >同意</button>
                   <button className={className[1]?className[1]:""}
                         onClick={()=>{
                             this.setState({
-                                alertState:true
+                                alertState:true,
+                                pass:"2"
                             })
                         }}
                     >拒绝</button>

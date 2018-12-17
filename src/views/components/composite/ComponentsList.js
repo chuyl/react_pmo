@@ -45,6 +45,9 @@ import DisSelectList from '../../components/select/DisSelectList'
 import SelectListSearch from '../../components/select/SelectListSearch'
 import DepartmentList from '../select/DepartmentList'
 import IsAgreeApplications from '../watch/IsAgreeApplications'
+import LabelShowMessage from '../watch/LabelShowMessage'
+import GetDataSpellingLabel from '../watch/GetDataSpellingLabel'
+import ApplicationsFlow from '../watch/ApplicationsFlow'
 class ComponentsList extends Component {
     constructor(props) {
         super(props);
@@ -88,6 +91,18 @@ class ComponentsList extends Component {
       form_temp_name:formData.form_temp_name
   }
   this.props.fiveChange(newState);//回调函数传递参数给父组件
+}
+examine_bool_message=(state)=>{
+    this.props.examine_bool_second(state)
+    // console.log(state)
+}
+examine_bool_message_third=(state)=>{
+    this.props.examine_bool_fourth(state)
+    // console.log(state)
+}
+examine_bool_message_sixth=(state)=>{
+    this.props.examine_bool_seventh(state)
+    // console.log(state)
 }
 handleChildChange=(formData)=>{
     var newState = {
@@ -140,6 +155,7 @@ handleChildChange=(formData)=>{
                                     index={this.props.index}
                                     key={index}
                                     sixChange = {this.handleChildChange}
+                                    examine_bool_sixth={this.examine_bool_message_sixth}
                                     addButton={form_list.add_button}
                                     card_list={this.props.componentsdata}
                                 />
@@ -277,9 +293,44 @@ handleChildChange=(formData)=>{
                                     className={form_list.class}
                                     defaultValue={form_list.default_value}
                                     beforeApiUri={form_list.before_api_uri}
+                                    examine_bool_first={this.examine_bool_message}
                                     message={this.props.componentsdata?this.props.componentsdata:""} 
                                 />
-                                
+                            :form_list.type_name === "LabelShowMessage"?
+                                <LabelShowMessage
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    key={index}
+                                    thisKey={form_list.key}
+                                    className={form_list.class}
+                                    defaultValue={form_list.default_value}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={this.props.componentsdata?this.props.componentsdata:""} 
+                                />
+                            :form_list.type_name === "GetDataSpellingLabel"?
+                                <GetDataSpellingLabel
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    key={index}
+                                    id_name={form_list.id_name}
+                                    thisKey={form_list.key}
+                                    className={form_list.class}
+                                    defaultValue={form_list.default_value}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={this.props.componentsdata?this.props.componentsdata:""} 
+                                />
+                            :form_list.type_name === "ApplicationsFlow"?
+                                <ApplicationsFlow
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    key={index}
+                                    id_name={form_list.id_name}
+                                    thisKey={form_list.key}
+                                    className={form_list.class}
+                                    defaultValue={form_list.default_value}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={this.props.componentsdata?this.props.componentsdata:""} 
+                                /> 
                             :form_list.type_name === "LabelMessage"?
                                 <LabelMessage
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
@@ -399,6 +450,7 @@ handleChildChange=(formData)=>{
                                     index={index}
                                     footState={this.props.footState}
                                     threeChange = {this.handlethreeClick}
+                                    examine_bool_third={this.examine_bool_message_third}
                                     message={this.props.componentsdata?this.props.componentsdata:""} 
                                 />
                             :form_list.type_name === "CardItem"?   

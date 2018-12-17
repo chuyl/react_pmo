@@ -98,6 +98,10 @@ class Card extends Component {
          }
       }
     }
+    examine_bool_message=(state)=>{
+        this.props.examine_bool_sixth(state)
+        // console.log(state)
+    }
 	render(){
         return (
             <div key={this.props.index} id={"card_id"+this.props.index} name={"card-project"} className={this.state.openCtrlState===""?"card-project active":this.state.openCtrlState===true?"card-project active open move-out":"card-project move-in active"}>
@@ -129,7 +133,8 @@ class Card extends Component {
                                     id={form_list.id_name} 
                                     addButton={form_list.add_button}
                                     key={index}
-                                    fiveChange = {this.handleClick}  
+                                    fiveChange = {this.handleClick}
+                                    examine_bool_fifth = {this.examine_bool_message}  
                                     footState={this.state.cardTitleItem}
                                     message={this.props.card_list?this.props.card_list:""} 
                                 />

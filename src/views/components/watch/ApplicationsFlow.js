@@ -11,43 +11,57 @@
         render(){
             const {message,labelValue,thisKey} =this.props;
             var className = this.props.className.split(","); 
-            // console.log(message.examine[thisKey])
             return (
-                this.props.message?<div className={className[0]?className[0]:""}>
+                this.props.message?
                    
-                    <ul className={className[2]?className[2]+"_ul":""}>
+                    <ul className={className[0]?className[0]+"_ul":""}>
                         {message.examine[thisKey].step.map((step,index)=>{
                             if(step.pass==="0"){
-                                console.log(step.pass)
                                 return(
-                                    <li key={index} className={className[2]?className[2]+"_item_default":""}>
-    
+                                    <li key={index} className={className[0]?className[0]+"_item_default":""}>
+                                      <div className={className[1]?className[1]:""}>
+                                          <span>{step.admin_position}</span>
+                                          <span>{step.admin_user}</span>
+                                          <span>待审批</span>
+                                      </div>
+                                      <div className={className[2]?className[2]:""}>
+                                          {step.time}
+                                      </div>
                                     </li>
                                 )
                             }
                             if(step.pass==="1"){
-                                console.log(step.pass)
                                 return(
-                                    <li key={index} className={className[2]?className[2]+"_item_success":""}>
-    
+                                    <li key={index} className={className[0]?className[0]+"_item_success":""}>
+                                        <div className={className[1]?className[1]:""}>
+                                          <span>{step.admin_position}</span>
+                                          <span>{step.admin_user}</span>
+                                          <span>已通过</span>
+                                      </div>
+                                      <div className={className[2]?className[2]:""}>
+                                          {step.time}
+                                      </div>
                                     </li>
                                 )
                             }
                             if(step.pass==="-1"){
-                                console.log(step.pass)
                                 return(
-                                    <li key={index} className={className[2]?className[2]+"_item_fail":""}>
-    
+                                    <li key={index} className={className[0]?className[0]+"_item_fail":""}>
+                                        <div className={className[1]?className[1]:""}>
+                                          <span>{step.admin_position}</span>
+                                          <span>{step.admin_user}</span>
+                                          <span>未通过</span>
+                                      </div>
+                                      <div className={className[2]?className[2]:""}>
+                                          {step.time}
+                                      </div>
                                     </li>
                                 )
                             }
                             
-                            console.log(step)
                         })}
                     </ul>
-                   {/* <span>{message?dealNumber(message):"0.00"}</span> */}
-                    {/* <span className="text_field_remind"></span> */}
-              </div>:<div className={className[0]?className[0]:""}>{this.props.defaultValue}</div>
+              :<div className={className[0]?className[0]:""}>{this.props.defaultValue}</div>
             )
         }
     }

@@ -25,15 +25,15 @@
 					
 				}, 
 				"address":"香坊区红旗大街",
-				"project_income":"1", 
+				"project_income":"11", 
 				"project_tax_rate":"6", 
 				"institutional_consulting_fees":"1", 
 				"personal_consulting_fees":"1", 
-				"labor_cost":"1",
+				"labor_cost":"11",
 				"implementation_cost":"1",
 				"travel_cost":"1",
 				"consulting_cost":"1",
-				"costing":"1",
+				"costing":"52554",
 				"expected_income":"1",
 				"project_profit":"1",
 				"gross_interest_rate":"10",
@@ -42,6 +42,7 @@
 					"budget":{
 						"state":"-1",
 						"step":[{
+							"admin_position":"一级经理",
 							"admin_user":"褚寅良",
 							"time":"2018-10-26 14:23:38",
 							"pass":"1",
@@ -49,6 +50,7 @@
 							"examine_type":"1",
 							"admin_id":"110"
 						},{
+							"admin_position":"一级经理",
 							"admin_user":"褚寅良",
 							"time":"2018-10-26 14:23:38",
 							"pass":"0",
@@ -57,6 +59,7 @@
 							"admin_id":"110"
 						}
 						,{
+							"admin_position":"一级经理",
 							"admin_user":"褚寅良",
 							"time":"2018-10-26 14:23:38",
 							"pass":"-1",
@@ -68,6 +71,7 @@
 					"finalAccounts":{
 						"state":"0",
 						"step":[{
+							"admin_position":"一级经理",
 							"admin_user":"褚寅良",
 							"time":"2018-10-26 14:23:38",
 							"pass":"1",
@@ -75,6 +79,7 @@
 							"examine_type":"1",
 							"admin_id":"110"
 						},{
+							"admin_position":"一级经理",
 							"admin_user":"褚寅良",
 							"time":"2018-10-26 14:23:38",
 							"pass":"0",
@@ -83,6 +88,7 @@
 							"admin_id":"110"
 						}
 						,{
+							"admin_position":"一级经理",
 							"admin_user":"褚寅良",
 							"time":"2018-10-26 14:23:38",
 							"pass":"-1",
