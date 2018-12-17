@@ -27,6 +27,7 @@
         render() {
      
             const { selectedInfo, id, labelValue,disabled } = this.props;
+            console.log(this.state.searchInfoLists)
             return (
                 <div className="search_info_list_card">
                     <div 

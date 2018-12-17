@@ -736,6 +736,7 @@ class View extends Component {
 		
 	}
 	render() {
+		console.log(this.state.view_table_list)
 		return(
 			<div>
 				<div style={{overflow:"hidden"}} className="view_table_list ">
@@ -748,6 +749,13 @@ class View extends Component {
 							view_id:""
 						})
 					}} >添加</button>
+					{/* <SelectViewListSearch
+						labelValue={"视图类"}
+						id={"selectModeView"}
+						selectedInfo={this.state.selectedViewTitle}
+						selectViewValue={this.selectViewGetValue}
+						selectLists={this.state.view_table_list}
+					/> */}
 					{/* 一键插入菜单栏 */}
 					{/* <button onClick={()=>{
 						var cb = (route, message, arg) => {
@@ -764,7 +772,7 @@ class View extends Component {
 						}
 						getData(getRouter("json_add"), { token:sessionStorage.token,data: this.state.view_table_list}, cb, {});
 					}}>发送data</button> */}
-					<ul style={{height:"88vh",paddingBottom:"1em"}} className="overflow">
+					<ul style={{height:"80vh",paddingBottom:"1em"}} className="overflow">
 						{this.state.view_table_list.map((view,index)=>{
 							return <li className="view_message_div" key={index}><div onClick={()=>{
 										this.viewList(view,index)
