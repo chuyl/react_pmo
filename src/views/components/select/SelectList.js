@@ -50,7 +50,7 @@ class SelectList extends Component {
     render() {
         const { selectedInfo,selectedIdInfo, id, labelValue,disabled } = this.props;
         return (
-            <div className="search_info_list_card">
+            <div style={this.props.view?{marginBottom:"10px"}:{}} className="search_info_list_card">
                 <div onClick={() => {
                         this.searchShow()
                       }} 
@@ -77,13 +77,13 @@ class SelectList extends Component {
                         className={this.state.search_state ? "search_info_list open" : "search_info_list"}
                     >
                         <ul className="search_info_list_ul select_info_list_ul">
-                            {this.state.searchInfoLists?this.state.searchInfoLists.map((info_lists) => {
+                            {this.state.searchInfoLists?this.state.searchInfoLists.map((info_lists,index) => {
                                 return (
                                     <li onClick={(e) => {
                                         document.getElementById(id+"_name").innerHTML = info_lists.name;
                                         document.getElementById(id+"_id").innerHTML = info_lists.id;
                                         this.searchShow()
-                                    }} key={info_lists.id}>{info_lists.name}</li>
+                                    }} key={index}>{info_lists.name}</li>
                                 )
                             }):""}
                         </ul>

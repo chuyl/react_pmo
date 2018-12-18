@@ -937,7 +937,6 @@ select {
   padding: 0; }
 
 body {
-  font: 14px "Microsoft", "Arial Narrow", HELVETICA;
   background: #fafafa;
   -webkit-text-size-adjust: 100%; }
 
@@ -2426,8 +2425,7 @@ html, body {
   height: 0; }
   .alert_back .alert_box {
     width: 0;
-    height: 0;
-    overflow: hidden; }
+    height: 0; }
   .alert_back .popup_content {
     display: block;
     height: 10em;

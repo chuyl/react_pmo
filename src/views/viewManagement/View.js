@@ -8,11 +8,14 @@ import SelectDataListSearch from '../components/select/SelectDataListSearch'
 import ViewTextField from '../components/input/ViewTextField';
 import Popup from '../components/modal/Popup'
 import Alert from '../components/modal/Alert'
+// import SelectListSearch from '../components/select/SelectListSearch'
+import ScreeningMessage from '../components/search/ScreeningMessage'
 import SelectList from '../components/select/SelectList'
 class View extends Component {
    
 	state = {
 		view_table_list:[],//所有的视图json表
+		view_table_lists:[],
 		this_view_list:[],//当前json内容,
 		form_temp_name:[],//视图名称
 		this_json_view:[],//获取当前某个组件json
@@ -42,6 +45,7 @@ class View extends Component {
 		view_china_name:"",
 		view_english_name:"",
 		view_type_name:"formlist",
+		view_mode_name:"",
 		id_name:"",
 		type_name:"",
 		key:"",
@@ -88,7 +92,8 @@ class View extends Component {
 			if (message.error === 0) {
 				sessionStorage.view=JSON.stringify(message.data);
 				this.setState({
-					view_table_list:message.data	
+					view_table_list:message.data,
+					view_table_lists:message.data,
 				})
 
 
@@ -245,6 +250,7 @@ class View extends Component {
 	 */
 	editViewList=()=>{
 		var select_type =  document.getElementById("view_type_name").innerHTML;
+		var select_mode = document.getElementById("view_mode_name").innerHTML==="-选择-"?"":document.getElementById("view_mode_name").innerHTML;
 		var view_data=this.state.view_data;
 		view_data["form-list"]=this.state.this_view_list;
 		view_data["form-temp-name"]=this.state.view_china_name;
@@ -265,15 +271,15 @@ class View extends Component {
 				  }
 			}
 		}
-		console.log(view_data)
 		getData(getRouter("json_manage_edit"), 
-		{ token:sessionStorage.token,
-			data:{  id:this.state.view_id, 
-					name:this.state.view_english_name,
-					title:this.state.view_china_name,
-					type:select_type,
-					data:view_data} 
-				}, add_cb, {});
+			{ token:sessionStorage.token,
+				data:{  id:this.state.view_id, 
+						name:this.state.view_english_name,
+						title:this.state.view_china_name,
+						type:select_type,
+						mode:select_mode,
+						data:view_data} 
+					}, add_cb, {});
 	}
 	
 	/** 
@@ -396,6 +402,8 @@ class View extends Component {
 	 */
 	addViewName=()=>{
 		var select_type =  document.getElementById("view_type_name").innerHTML;
+		var select_mode = document.getElementById("view_mode_name").innerHTML==="-选择-"?"":document.getElementById("view_mode_name").innerHTML;
+
 				var cb = (route, message, arg) => {
 					if (message.error === 0) {
 						var message_temp=message.data;
@@ -416,7 +424,7 @@ class View extends Component {
 								  }
 							}
 					}
-					getData(getRouter("json_manage_add"), { token:sessionStorage.token,data:{name:this.state.view_english_name,title:this.state.view_china_name,type:select_type,data:message_temp} }, add_cb, {});
+					getData(getRouter("json_manage_add"), { token:sessionStorage.token,data:{name:this.state.view_english_name,title:this.state.view_china_name,type:select_type,data:message_temp,mode:select_mode} }, add_cb, {});
 					
 					}else if(message.error === 2){
 						sessionStorage.logged = false;
@@ -463,7 +471,7 @@ class View extends Component {
 	 */
 	editViewName=()=>{
 		var select_type =  document.getElementById("view_type_name").innerHTML;
-	
+		var select_mode = document.getElementById("view_mode_name").innerHTML==="-选择-"?"":document.getElementById("view_mode_name").innerHTML;
 		var add_cb = (route, messages, arg) => {
 			if (messages.error === 0) {
 				this.fetchListData()
@@ -482,12 +490,13 @@ class View extends Component {
 
 				var message_temp=this.state.initializationData;
 					message_temp["form-temp-name"]=this.state.view_china_name;
-				getData(getRouter("json_manage_edit"), 
+					getData(getRouter("json_manage_edit"), 
 				{ token:sessionStorage.token,
 					data:{  id:this.state.view_id, 
 							name:this.state.view_english_name,
 							title:this.state.view_china_name,
 							type:select_type,
+							mode:select_mode,
 							data:message_temp} 
 						}, add_cb, {});
 	
@@ -598,7 +607,8 @@ class View extends Component {
 			view_china_name:message.title,
 			view_english_name:message.name,
 			view_type_name:message.type,
-			view_id:message.id
+			view_id:message.id,
+			view_mode:message.mode
 
 		})
 	}
@@ -611,7 +621,8 @@ class View extends Component {
 		var name = message.name+"copy",
 			title = message.title+"复制",
 			type = message.type,
-			data = message.data;
+			data = message.data,
+			mode=message.mode;
 			var cb = (route, messages, arg) => {
 				if (messages.error === 0) {
 					this.setState({
@@ -627,7 +638,7 @@ class View extends Component {
 					  }
 				}
 			}
-			getData(getRouter("json_manage_add"), { token:sessionStorage.token,data:{name:name,title:title,type:type,data:data} }, cb, {});
+			getData(getRouter("json_manage_add"), { token:sessionStorage.token,data:{name:name,title:title,type:type,data:data,mode:mode} }, cb, {});
 			
 
 	}
@@ -735,8 +746,12 @@ class View extends Component {
 		})
 		
 	}
+	screening_information=(message)=>{
+		this.setState({
+			view_table_list:message
+		})
+	}
 	render() {
-		console.log(this.state.view_table_list)
 		return(
 			<div>
 				<div style={{overflow:"hidden"}} className="view_table_list ">
@@ -746,9 +761,19 @@ class View extends Component {
 							view_type_name:"formlist",
 							view_china_name:"",
 							view_english_name:"",
+							// view_mode:"",
 							view_id:""
 						})
 					}} >添加</button>
+					{/* <ScreeningMessage 
+					   message={this.state.view_table_lists}
+					   keywordSearch={"title"}
+					   selectListMessage={["view_mode","view_type"]}
+					   selectNameMessage={["mode","type"]}
+
+					   screening_message={this.screening_information}
+					/> */}
+					
 					{/* <SelectViewListSearch
 						labelValue={"视图类"}
 						id={"selectModeView"}
@@ -908,11 +933,20 @@ class View extends Component {
 									labelValue={"英文名称"} 
 								/>
 								<SelectList 
+									view={true}
 									id={"view_type"} 
 									labelValue={"类型"}
 									searchInfoLists={"view_type"} 
 									selectedIdInfo={this.state.view_type_name} 
 									selectedInfo={this.state.view_type_name} 
+								/> 
+								<SelectList 
+								    key={"view_mode"}
+									id={"view_mode"} 
+									labelValue={"所属模块"}
+									searchInfoLists={"view_mode"} 
+									selectedIdInfo={this.state.view_mode} 
+									selectedInfo={this.state.view_mode} 
 								/> 
 							</div>
 						</div>

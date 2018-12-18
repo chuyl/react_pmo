@@ -292,12 +292,12 @@ class Expenditure extends Component {
 	render(){
 		return (
 			<div>
-				<a id="print-1"
+				{/* <a id="print-1"
 					onClick={()=>{
 						$('#loan_print').printArea();
 					}}
-				>打印此处</a>
-				{/* <div id="" className="container">
+				>打印此处</a> */}
+				<div id="" className="container">
 					<div>
 						<div className="add_button" onClick={(e) => {
 							this.fetchProjectData("addProject")
@@ -342,7 +342,7 @@ class Expenditure extends Component {
 					</div>
 
 
-				</div> */}
+				</div>
 				<LoanBill message={this.state.loan_bill_list}/>
 				
 			</div>

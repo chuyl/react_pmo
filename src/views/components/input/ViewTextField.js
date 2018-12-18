@@ -16,7 +16,7 @@ class ViewTextField extends Component {
 	render(){
         const {id,disabled,inputValue,onClick,labelValue,name,onChange,value} =this.props;
 		return (
-			<div className="text_field_div">
+			<div style={{marginBottom:"10px"}} className="text_field_div">
 				<label className="search_info_list_label">{labelValue}</label>
 				<input type={"text"} value={value} className={"text_field_input"} onClick={onClick} name={name} defaultValue={inputValue} onChange={onChange} disabled={disabled} id={id}/>
 				{/* <span className="text_field_remind"></span> */}
