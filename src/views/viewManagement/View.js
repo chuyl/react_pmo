@@ -746,6 +746,11 @@ class View extends Component {
 		})
 		
 	}
+	/** 
+	 * @time 2018-12-19
+	 * @author xuesong
+	 * @param screening_information 函数 筛选的回调函数
+	 */
 	screening_information=(message)=>{
 		this.setState({
 			view_table_list:message
@@ -767,7 +772,7 @@ class View extends Component {
 					}} >添加</button>
 					<ScreeningMessage 
 					   message={this.state.view_table_lists}
-					   keywordSearch={"title"}
+					   keywordSearch={["title","name","id"]}
 					   selectListMessage={["view_mode","view_type"]}
 					   selectNameMessage={["mode","type"]}
 
