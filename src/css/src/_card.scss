@@ -13,8 +13,8 @@
 .paper_div.open {
     border-radius: 1em;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
-    @media screen  and (max-width:768px){
-         border-radius: 0;
+    @media screen and (max-width: 768px) {
+        border-radius: 0;
     }
 }
 
@@ -124,30 +124,29 @@
 }
 
 .card_left {
-    color: $secondary-text-color;
     width: 66.6%;
-    height: 2.5em;
-    display: inline-block; // float: left;
-    p {
+    line-height: 2.5em;
+    float: left;
+    p{
         font-size: 1.5em;
-    } //border: 1px solid $secondary-text-color;
+    }
+    //border: 1px solid $secondary-text-color;
 }
 
 .card_right {
     color: $secondary-text-color;
     width: 33.3%;
-    height: 2.5em; //float: left;
-    display: inline-block;
-    p {
-        font-size: 1.5em;
-    }
+    float: left;
+    line-height: 1.5em;
 }
 
 .title_card_right {
-    font-size: 1.5em;
-    color: $secondary-text-color;
     width: 33.3%;
-    display: inline-block; // float: left; //border: 1px solid $secondary-text-color;
+    float: left; //border: 1px solid $secondary-text-color;
+    line-height: 2.5em;
+    p {
+        font-size: 1.5em;
+    }
 }
 
 @media screen and (max-width:768px) {
@@ -160,11 +159,8 @@
 
 .date_card {
     width: 66.6%;
-    display: inline-block; // float: left;
-    height: 3.2em;
-    p {
-        display: inline-block;
-    }
+    float: left;
+    line-height: 3em;
     p>span {
         font-size: 1.5em;
     }
@@ -183,30 +179,30 @@
 
 .change_line {
     box-sizing: border-box;
-    width: 33.3%; // float: left;
-    display: inline-block;
-    height: 3.2em;
+    width: 33.3%;
+    float: left;
+    margin-bottom: 1em;
     p {
-        color: $secondary-text-color;
+        line-height: 1.5em;
     }
 }
 
 .label_title_message {
     width: 100%;
     float: left;
-    height: 2em;
-    font-size: 20px;
+    line-height: 2em;
+    overflow: hidden;
     label {
         width: 66.6%;
         display: block;
-        float: left;
+        float: left; // font-size: 1.5em;
     }
     span {
         width: 33.3%;
         display: block;
         float: left;
     }
-    @media screen and (max-width:768px){
+    @media screen and (max-width:768px) {
         font-size: 16px;
     }
 }
@@ -214,14 +210,17 @@
 .label_message {
     width: 100%; // float: left;
     height: 2em;
-    font-size: 14px;
+    font-size: 1em;
+    float: left;
     color: $secondary-text-color;
+    overflow: hidden;
     label {
         width: 66.6%;
         display: block;
         float: left;
     }
     span {
+        text-align: right;
         width: 33.3%;
         display: block;
         float: left;
