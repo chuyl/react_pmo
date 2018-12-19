@@ -518,7 +518,7 @@ handleChildChange=(formData)=>{
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     key={index}
                                     disabled={this.props.disabled}
-                                    inputValue={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""}  
+                                    inputValue={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""}  
                                     labelValue={form_list.title} 
                                 /> 
                             :form_list.type_name === "TextArea" ? 

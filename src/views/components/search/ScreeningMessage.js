@@ -13,31 +13,47 @@
             search_arr:[]
             // message_spare_list:this.props.message,
         }
-     
+        /** 
+         * @time 2018-12-19
+         * @author xuesong
+         * @param screening_information 函数 筛选搜索
+         */
           screening_information=()=>{
+              //selectNameMessage 数据表中需要select筛选的字段名称
             var key=this.props.selectNameMessage?this.props.selectNameMessage:[];
+           //value 用来存储select的option
             var value=[];
-           if(this.props.selectNameMessage){
+            //keyword_list 用来存储需要模糊关键字筛选的字段名称
+            var keyword_list=[];
+            //keywordSearch为input的value.就是模糊查询的关键字
+            var keywordSearch = document.getElementById("keywordSearch").value;
+           
+            if(this.props.selectNameMessage){
             
                 for(var i = 0; i<this.props.selectNameMessage.length;i++){
                     value.push(document.getElementById("select_message"+i+"_name").innerHTML==="-选择-"?"":document.getElementById("select_message"+i+"_name").innerHTML)
                 }
             }
-            // var value=this.props.selectNameMessage;
-            console.log(this.props.keywordSearch)
-            key.push(this.props.keywordSearch);
-            value.push(document.getElementById("keywordSearch").value)
+            
+            // key.push(this.props.keywordSearch);
+            // value.push(document.getElementById("keywordSearch").value)
             var obj = {};
             for (var j = 0; j < key.length; j++) {
                 obj[key[j]] = value[j]
             }
+            //obj的key为数据表中的字段，value对应字段中筛选的数据
             console.log(obj)
+            //所有筛选条件的数组
             var search_arr=[];
+            var num = 0;
             for(var key in obj){ 
+                console.log(key)
                 if(obj[key]!==""){
-                    search_arr.push({name:obj[key]})   
+                    search_arr.push({name:obj[key],id:"select_message"+num+"_name"})  
+                    num++; 
                 }
-                }   
+                }  
+                search_arr.push({name:keywordSearch,id:"keywordSearch"})   
                 this.setState({
                     search_arr:search_arr
                 })
@@ -50,13 +66,38 @@
                         } )
                 } )
                 }
+              
+                if(keywordSearch!==""){
+                    if(this.props.keywordSearch){
+                        for(var m = 0; m<this.props.keywordSearch.length;m++){
+                            for(var k = 0; k<filter(obj,this.props.message).length;k++){
+                                
+                                    // console.log(this.props.keywordSearch[m]])
+                                    if(filter(obj,this.props.message)[k][this.props.keywordSearch[m]].indexOf(keywordSearch)>=0){
+                                        keyword_list.push(filter(obj,this.props.message)[k])
+                                    }
+                                }
+                            
+                            }
+                    }
+                }else{
+                    for(var n = 0;n<filter(obj,this.props.message).length;n++){
+                        keyword_list.push(filter(obj,this.props.message)[n])
+                    }
+                }
+                console.log(keyword_list)
     //  console.log(filter(obj,this.props.message))
-    this.props.screening_message(filter(obj,this.props.message))
+    this.props.screening_message(keyword_list)
             // this.setState({
             //     view_table_list:screening_list
             // })
     
         }
+         /** 
+         * @time 2018-12-19
+         * @author xuesong
+         * @param clear_search 函数 清空所有筛选条件
+         */
         clear_search=()=>{
             if(this.props.selectNameMessage){
             for(var i = 0; i<this.props.selectNameMessage.length;i++){
@@ -67,8 +108,16 @@
             this.setState({
                 search_arr:[]
             })
-            console.log(this.props.message)
+            // console.log(this.props.message)
             this.props.screening_message(this.props.message)
+        }
+        /** 
+         * @time 2018-12-19
+         * @author xuesong
+         * @param clear_this_search 函数 清空某一项筛选条件
+         */
+        clear_this_search=()=>{
+
         }
         render(){
             const {id,message} =this.props;
@@ -98,7 +147,16 @@
                         </span>
                         {this.state.search_arr.map((search_arr,index)=>{
                             return(
-                                <span key={index} style={search_arr.name!==""?{border:"1px dashed #fff",margin:"3px",padding:"2px 5px"}:{}}>{search_arr.name+"  "}</span>
+                                <div key={index}>
+                                    <span style={search_arr.name!==""?{border:"1px dashed #fff",margin:"3px",padding:"2px 5px"}:{}}>{search_arr.name+"  "}
+                                        <span
+                                            onClick={()=>{
+                                            this.clear_this_search() 
+                                            }}
+                                        >X</span>
+                                    </span>
+                                    
+                                </div>
                             )
                         })}
                         {this.state.search_arr.length>0?<button
