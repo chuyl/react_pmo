@@ -1413,13 +1413,14 @@ html, body {
 .date_card {
   width: 66.6%;
   float: left;
-  line-height: 3em; }
-  .date_card p > span {
-    font-size: 1.5em; }
+  line-height: 3em;
+  overflow: hidden; }
+  .date_card span {
+    font-size: 2em; }
+  .date_card p {
+    float: left; }
 
 @media screen and (max-width: 768px) {
-  .date_card p {
-    display: inline-block; }
   .date_card p > span {
     font-size: 1em; } }
 .change_line {
@@ -1442,7 +1443,9 @@ html, body {
   .label_title_message span {
     width: 33.3%;
     display: block;
-    float: left; }
+    float: left;
+    text-align: right;
+    padding-right: 1em; }
   @media screen and (max-width: 768px) {
     .label_title_message {
       font-size: 16px; } }
@@ -1476,7 +1479,9 @@ html, body {
   .label_total_message span {
     width: 33.3%;
     display: block;
-    float: left; }
+    float: left;
+    text-align: right;
+    padding-right: 1em; }
 
 @media only screen and (max-width: 768px) {
   .select_card {
@@ -1513,6 +1518,28 @@ html, body {
     /* height: 600px; js代替 */
     left: 0;
     z-index: 10; } }
+.message_left {
+  float: left;
+  width: 100%;
+  overflow: hidden; }
+  .message_left .spelling_div {
+    float: left;
+    width: 33%;
+    overflow: hidden; }
+    .message_left .spelling_div .spelling_content {
+      width: 100%;
+      float: left; }
+    .message_left .spelling_div .spelling_label {
+      width: 100%;
+      float: left; }
+
+div.disabled,
+input:disabled,
+textarea:disabled {
+  border: 0;
+  background: transparent;
+  color: #fff; }
+
 .dialog_open {
   position: absolute;
   bottom: 50px;
@@ -1581,7 +1608,8 @@ html, body {
   border-radius: 4px;
   padding: 18px;
   margin-bottom: 18px;
-  padding-bottom: 38px; }
+  padding-bottom: 38px;
+  background: rgba(255, 255, 255, 0.1); }
 
 .search_info_list_label {
   float: left;
@@ -2032,10 +2060,10 @@ html, body {
   outline: 0; }
 
 .btn_list {
-  height: 24px;
+  width: 5em;
+  line-height: 2em;
   margin-right: 1em;
-  line-height: 22px;
-  border-radius: 2px;
+  border-radius: 0.5em;
   background-color: #3F51B5;
   color: #FFFFFF;
   box-shadow: none;
@@ -2081,24 +2109,29 @@ html, body {
   padding-left: 0;
   padding-right: 1em; }
 
-.label_total_message span {
-  box-sizing: border-box;
-  height: 2em;
-  border-left: 1px solid #3F51B5; }
-.label_total_message span,
-.label_total_message label {
-  box-sizing: border-box;
-  padding-left: 0.8em;
-  padding-top: 0.25em;
-  padding-bottom: 0.25em;
-  overflow: hidden; }
-  @media screen and (max-width: 768px) {
-    .label_total_message span,
-    .label_total_message label {
-      padding-left: 0.4em; } }
-.label_total_message label {
-  text-align: right;
-  padding-right: 1em; }
+.label_total_message {
+  border-bottom: 2px solid #3F51B5; }
+  .label_total_message span {
+    box-sizing: border-box;
+    height: 2em;
+    border-left: 1px solid #3F51B5; }
+  .label_total_message span,
+  .label_total_message label {
+    box-sizing: border-box;
+    padding-left: 0.8em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    overflow: hidden; }
+    @media screen and (max-width: 768px) {
+      .label_total_message span,
+      .label_total_message label {
+        padding-left: 0.4em; } }
+  .label_total_message label {
+    text-align: right;
+    padding-right: 1em; }
+
+.label_total_message:last-child {
+  border: 0; }
 
 .view_table_list {
   width: 30%;
@@ -2161,7 +2194,8 @@ html, body {
   color: #FFFFFF;
   border: 1px solid #FFFFFF;
   padding: 0.5em;
-  margin: 0.5em 0; }
+  margin: 0.5em 0;
+  overflow: hidden; }
   .view_component_div .card-item {
     color: #FFFFFF; }
 

@@ -17,6 +17,7 @@
     padding: 18px;
     margin-bottom: 18px;
     padding-bottom: 38px;
+    background: rgba(255, 255, 255, .1);
 }
 
 .search_info_list_label {
@@ -94,9 +95,8 @@
     .label_delete_button {
         color: $primary-color-text;
         background-color: $accent-color;
-        
     }
-    .add_card_btn{
+    .add_card_btn {
         color: $primary-color-text;
         background: $primary-color;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);

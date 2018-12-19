@@ -1,8 +1,7 @@
 @import 'mixins/btn';
 .btn_list {
-    // width: 48px;
-    height: 24px;
+    width: 5em;
+    line-height: 2em;
     margin-right: 1em;
-    line-height: 22px;
-    @include set_button_style(2px, $primary-color, $accent-color, $shadow: none);
+    @include set_button_style(0.5em, $primary-color, $accent-color, $shadow: none);
 }

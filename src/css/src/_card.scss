@@ -127,10 +127,9 @@
     width: 66.6%;
     line-height: 2.5em;
     float: left;
-    p{
+    p {
         font-size: 1.5em;
-    }
-    //border: 1px solid $secondary-text-color;
+    } //border: 1px solid $secondary-text-color;
 }
 
 .card_right {
@@ -161,16 +160,17 @@
     width: 66.6%;
     float: left;
     line-height: 3em;
-    p>span {
-        font-size: 1.5em;
+    overflow: hidden;
+    span {
+        font-size: 2em;
+    }
+    p {
+        float: left;
     }
 }
 
 @media screen and (max-width:768px) {
     .date_card {
-        p {
-            display: inline-block;
-        }
         p>span {
             font-size: 1em;
         }
@@ -201,6 +201,8 @@
         width: 33.3%;
         display: block;
         float: left;
+        text-align: right;
+        padding-right: 1em;
     }
     @media screen and (max-width:768px) {
         font-size: 16px;
@@ -241,6 +243,8 @@
         width: 33.3%;
         display: block;
         float: left;
+        text-align: right;
+        padding-right: 1em;
     }
 }
 
@@ -280,4 +284,31 @@
         left: 0;
         z-index: 10;
     }
+}
+
+.message_left {
+    float: left;
+    width: 100%;
+    overflow: hidden;
+    .spelling_div {
+        float: left;
+        width: 33%;
+        overflow: hidden;
+        .spelling_content {
+            width: 100%;
+            float: left;
+        }
+        .spelling_label {
+            width: 100%;
+            float: left;
+        }
+    }
+}
+
+div.disabled,
+input:disabled,
+textarea:disabled {
+    border: 0;
+    background: transparent;
+    color: #fff;
 }
