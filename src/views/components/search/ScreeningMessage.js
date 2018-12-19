@@ -19,11 +19,16 @@
          * @param screening_information 函数 筛选搜索
          */
           screening_information=()=>{
+              //selectNameMessage 数据表中需要select筛选的字段名称
             var key=this.props.selectNameMessage?this.props.selectNameMessage:[];
+           //value 用来存储select的option
             var value=[];
+            //keyword_list 用来存储需要模糊关键字筛选的字段名称
             var keyword_list=[];
+            //keywordSearch为input的value.就是模糊查询的关键字
             var keywordSearch = document.getElementById("keywordSearch").value;
-           if(this.props.selectNameMessage){
+           
+            if(this.props.selectNameMessage){
             
                 for(var i = 0; i<this.props.selectNameMessage.length;i++){
                     value.push(document.getElementById("select_message"+i+"_name").innerHTML==="-选择-"?"":document.getElementById("select_message"+i+"_name").innerHTML)
@@ -36,14 +41,19 @@
             for (var j = 0; j < key.length; j++) {
                 obj[key[j]] = value[j]
             }
+            //obj的key为数据表中的字段，value对应字段中筛选的数据
             console.log(obj)
+            //所有筛选条件的数组
             var search_arr=[];
+            var num = 0;
             for(var key in obj){ 
+                console.log(key)
                 if(obj[key]!==""){
-                    search_arr.push({name:obj[key]})   
+                    search_arr.push({name:obj[key],id:"select_message"+num+"_name"})  
+                    num++; 
                 }
                 }  
-                search_arr.push({name:keywordSearch})   
+                search_arr.push({name:keywordSearch,id:"keywordSearch"})   
                 this.setState({
                     search_arr:search_arr
                 })

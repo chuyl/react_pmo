@@ -176,7 +176,8 @@ class ListTextSearch extends Component {
                             this.infos();
                         }
                     }}
-                    className="selectedInfo"
+                    
+                    className={disabled===true?"selectedInfo disabled":"selectedInfo"}
                     disabled={disabled}
                     id={id+"_name"}
                 >

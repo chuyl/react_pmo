@@ -57,7 +57,7 @@ class SelectList extends Component {
                     className={this.state.search_state ? "add_list_close" : ""}>
                 </div>
                 <label className="search_info_list_label">{labelValue}</label>
-                <div className="selectedInfo" id={id+"_name"}
+                <div className={disabled===true?"selectedInfo disabled":"selectedInfo"} id={id+"_name"}
                      onClick={() => {
                          if(disabled===true){
                              return false;
