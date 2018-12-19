@@ -19,7 +19,6 @@
                  end_month=end_month_date.split("-")[0];
                 end_date=end_month_date.split("-")[1];
             }
-               
             return (
                 <div className="date_card">
                  {this.props.message.start?<p><span>{start_month}</span>

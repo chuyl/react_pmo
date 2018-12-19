@@ -765,14 +765,14 @@ class View extends Component {
 							view_id:""
 						})
 					}} >添加</button>
-					{/* <ScreeningMessage 
+					<ScreeningMessage 
 					   message={this.state.view_table_lists}
 					   keywordSearch={"title"}
 					   selectListMessage={["view_mode","view_type"]}
 					   selectNameMessage={["mode","type"]}
 
 					   screening_message={this.screening_information}
-					/> */}
+					/>
 					
 					{/* <SelectViewListSearch
 						labelValue={"视图类"}
@@ -920,6 +920,7 @@ class View extends Component {
 											view_china_name:e.target.value
 											})
 									}}
+									view={true}
 									value={this.state.view_china_name} 
 									labelValue={"中文名称"} 
 								/>
@@ -929,6 +930,7 @@ class View extends Component {
 											view_english_name:e.target.value
 										})
 									}}
+									view={true}
 									value={this.state.view_english_name} 
 									labelValue={"英文名称"} 
 								/>

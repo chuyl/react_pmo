@@ -5,6 +5,7 @@ import React, {
 import Alert from '../components/modal/Remind'
 import ComponentsList from '../components/composite/ComponentsList'
 import { getData, getRouter,getList } from '../../utils/helpers'
+import ScreeningMessage from '../components/search/ScreeningMessage'
 // import { PROJECTMANAGELIST } from '../../enum'
 
 class Budget extends Component {
@@ -36,7 +37,8 @@ class Budget extends Component {
 
 			if (message.error === 0) {
 				this.setState({
-					card_list: message.data
+					card_list: message.data,
+					card_lists:message.data
 				})
 			}else if(message.error === 2){
 				console.log("未登录")
@@ -292,6 +294,11 @@ class Budget extends Component {
 		 console.log(state)
 		 this.listProject()  //刷新项目列表
 	}
+	screening_information=(message)=>{
+		this.setState({
+			card_list:message
+		})
+	}
 	render() {
 		return (
 			<div>
@@ -308,6 +315,14 @@ class Budget extends Component {
 						>
 							添加
 						</div>
+						{/* <ScreeningMessage 
+							message={this.state.card_lists}
+							keywordSearch={"project_name"}
+							// selectListMessage={["view_mode","view_type"]}
+							// selectNameMessage={["mode","type"]}
+
+							screening_message={this.screening_information}
+						/> */}
 					</div>
 					<div className="overflow crius-card-list">
 						{this.state.card_list !== null ? this.state.card_list.map((card_list, index) => {

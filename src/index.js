@@ -456,7 +456,7 @@ handleLogout = () => {
            window.location.reload()
            console.log(sessionStorage.config) 
            }}
-          >666</button>
+          >开发</button>
             <button
            onClick={()=>{
 
@@ -466,7 +466,7 @@ handleLogout = () => {
            window.location.reload()
            console.log(sessionStorage.config) 
            }}
-          >777</button>
+          >测试</button>
        {/* <div style={this.state.dialog_show===true?{}:{display:"none"}} onClick={this.dialogShow.bind(this)} className="modal_backdrop"></div> */}
        {/* <div className="dialog_window"></div> */}
         </div>
