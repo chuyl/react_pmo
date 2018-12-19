@@ -6,7 +6,6 @@
     label {
         box-sizing: border-box;
         padding-left: 0.7em;
-        padding-bottom: 0.25em;
         overflow: hidden;
         @media screen and (max-width: 768px) {
             padding-left: 0.4em;
@@ -29,6 +28,10 @@
     }
     label {
         text-align: right;
+        padding-right: 1em;
+    }
+    span{
+        padding-left: 0;
         padding-right: 1em;
     }
 }

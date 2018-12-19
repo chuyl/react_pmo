@@ -48,8 +48,8 @@
         border-bottom: 1px solid $primary-color;
         color: $border_left_color;
         overflow: hidden;
-        box-sizing: content-box;
-        padding: 1em 1em 0 1em;
+        box-sizing: border-box;
+        padding: 0 1em 0 1em;
         .card-item {
             float: left;
         }
@@ -83,6 +83,7 @@
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         margin-left: 10px;
         padding-bottom: 0.5em;
+        color: $secondary-text-color;
     }
     @media screen and (max-width:768px) {
         .card-project:last-child {
@@ -154,6 +155,7 @@
         display: none;
         border: none;
         opacity: 0;
+        overflow: hidden;
     }
     .card-page.active {
         display: block;
