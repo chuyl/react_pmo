@@ -17,6 +17,7 @@
     padding: 18px;
     margin-bottom: 18px;
     padding-bottom: 38px;
+    background: rgba(255, 255, 255, .1);
 }
 
 .search_info_list_label {
@@ -94,9 +95,8 @@
     .label_delete_button {
         color: $primary-color-text;
         background-color: $accent-color;
-        
     }
-    .add_card_btn{
+    .add_card_btn {
         color: $primary-color-text;
         background: $primary-color;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
@@ -185,8 +185,15 @@
 }
 
 .search_info_list_ul::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
+    height: 0px;
+    width: 5px;
+    background: $divider-color;
+}
+
+.search_info_list_ul::-webkit-scrollbar-thumb {
+    width: 5px;
+    border-radius: 4px;
+    background: $primary-color;
 }
 
 /* select ul-li part */

@@ -125,12 +125,14 @@
 
 .card_left {
     width: 66.6%;
-    line-height: 2.5em;
     float: left;
-    p{
+    p {
         font-size: 1.5em;
-    }
-    //border: 1px solid $secondary-text-color;
+    } //border: 1px solid $secondary-text-color;
+}
+
+.card_title_left {
+    line-height: 2.5em;
 }
 
 .card_right {
@@ -161,16 +163,17 @@
     width: 66.6%;
     float: left;
     line-height: 3em;
-    p>span {
-        font-size: 1.5em;
+    overflow: hidden;
+    span {
+        font-size: 2em;
+    }
+    p {
+        float: left;
     }
 }
 
 @media screen and (max-width:768px) {
     .date_card {
-        p {
-            display: inline-block;
-        }
         p>span {
             font-size: 1em;
         }
@@ -201,6 +204,8 @@
         width: 33.3%;
         display: block;
         float: left;
+        text-align: right;
+        padding-right: 1em;
     }
     @media screen and (max-width:768px) {
         font-size: 16px;
@@ -241,6 +246,8 @@
         width: 33.3%;
         display: block;
         float: left;
+        text-align: right;
+        padding-right: 1em;
     }
 }
 
@@ -279,5 +286,171 @@
         /* height: 600px; js代替 */
         left: 0;
         z-index: 10;
+    }
+}
+
+.message_left {
+    float: left;
+    width: 100%;
+    overflow: hidden;
+    .spelling_div {
+        float: left;
+        width: 33%;
+        overflow: hidden;
+        .spelling_content {
+            width: 100%;
+            float: left;
+        }
+        .spelling_label {
+            width: 100%;
+            float: left;
+        }
+    }
+}
+
+div.disabled,
+input:disabled,
+textarea:disabled {
+    border: 0;
+    background: transparent;
+    color: #fff;
+}
+
+.card_budget,
+.card_final_accounts {
+    float: left;
+    width: 67%;
+    box-sizing: border-box;
+    padding-left: 1em;
+    overflow: hidden;
+    line-height: 3em;
+    .message_label {
+        float: left;
+        font-size: 24px;
+        width: 3em;
+    }
+    span:nth-of-type(2) {
+        padding-left: 1em;
+    }
+}
+
+.card_budget_btn,
+.card_final_btn {
+    float: right;
+    line-height: 3em;
+    width: 33%;
+    text-align: center;
+    overflow: hidden;
+    padding: 0.5em 1em 0.5em 0;
+    box-sizing: border-box;
+    .btn_list {
+        float: left;
+        width: 100%;
+        margin-bottom: 0.2em;
+    }
+}
+
+.status_box_ul {
+    float: left;
+    overflow: hidden;
+    line-height: 2em;
+    height: 2em;
+    padding-top: 1em;
+    box-sizing: border-box;
+    .status_box_item_success,
+    .status_box_item_default,
+    .status_box_item_fail {
+        float: left;
+        width: 2em;
+        height: 1em;
+        border-radius: 2px;
+        margin-right: 0.2em;
+    }
+    .status_box_item_success {
+        background-color: $primary-color;
+    }
+    .status_box_item_default {
+        background-color: $secondary-text-color;
+    }
+    .status_box_item_fail {
+        background-color: $accent-color;
+    }
+}
+
+.card_budget {
+    position: relative;
+}
+
+.card_budget .message_label::before {
+    position: absolute;
+}
+
+.budget_menu {
+    overflow: hidden;
+    width: 100%;
+    .spelling_div {
+        float: left;
+        display: block;
+        width: 33%;
+        overflow: hidden;
+        .spelling_content {
+            float: left;
+            width: 100%;
+            line-height: 1.5em;
+        }
+        .spelling_label {
+            float: left;
+            width: 100%;
+            line-height: 1.5em;
+        }
+    }
+}
+
+.card_ask {
+    float: left;
+    width: 100%;
+    overflow: hidden;
+    button {
+        border: 0;
+        float: left;
+        text-align: center;
+        outline: none;
+        background-color: $primary-color;
+        width: 5em;
+        line-height: 2em;
+        margin-right: 1em;
+        border-radius: 0.5em;
+        background-color: $primary-color;
+        color: $primary-color-text;
+    }
+}
+
+.card_approval {
+    float: left;
+    display: block;
+    box-sizing: border-box;
+    font-size: 1em;
+    line-height: 3em;
+    width: 100%;
+}
+
+.card_launch_approval {
+    float: left;
+    line-height: 3em;
+    width: 66%;
+}
+
+.card-body .card-page:nth-of-type(2) {
+    overflow: hidden;
+    .btn_list {
+        float: left;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+    button {
+        width: 30%;
+    }
+    button:first-child {
+        width: 100%;
     }
 }
