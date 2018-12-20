@@ -1,7 +1,7 @@
 @import 'mixins/color';
 @import 'mixins/table';
 .label_title_message {
-    @include title_border(2px, $primary-color);
+    @include title_border(2px, $secondary-text-color);
     span,
     label {
         box-sizing: border-box;
@@ -12,9 +12,10 @@
         }
     }
 }
-
+.label_title_message:first-child{
+    border-top: 0;
+}
 .label_message {
-    @include content_border(1px, $primary-color);
     span,
     label {
         box-sizing: border-box;
@@ -22,23 +23,16 @@
         padding-top: 0.25em;
         padding-bottom: 0.25em;
         overflow: hidden;
-        @media screen and (max-width: 768px) {
-            padding-left: 0.5em;
-        }
     }
     label {
         text-align: right;
-        padding-right: 1em;
     }
     span {
         padding-left: 0;
-        padding-right: 1em;
     }
 }
 
 .label_total_message {
-    @include content_border(1px, $primary-color);
-    border-bottom: 2px solid $primary-color;
     span,
     label {
         box-sizing: border-box;
@@ -46,15 +40,13 @@
         padding-top: 0.25em;
         padding-bottom: 0.25em;
         overflow: hidden;
+        color: $primary-text-color;
+        font-weight: bold;
         @media screen and (max-width: 768px) {
             padding-left: 0.4em;
         }
     }
     label {
         text-align: right;
-        padding-right: 1em;
     }
-}
-.label_total_message:last-child{
-    border: 0;
 }

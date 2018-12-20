@@ -102,9 +102,8 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: 70%;
-            background-color: $open_ctrl_bgcolor;
             position: absolute;
-            bottom: 2em;
+            bottom: 0;
             width: 100%;
         }
         .card-body {
@@ -176,7 +175,7 @@
         position: absolute;
         width: 100%;
         box-sizing: border-box;
-        padding: 1em;
+        padding: 0 1em;
     }
     .card-foot .card-item {
         float: left;
@@ -203,7 +202,7 @@
         .open-ctrl {
             background-image: url(closeline.svg);
             background-repeat: no-repeat;
-            bottom: 2em;
+            bottom: 0;
             border-bottom-right-radius: 10px;
         }
         .card-page.active {
