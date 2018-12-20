@@ -19,7 +19,8 @@ class BiddingPlan extends Component {
 		dataId:"",//点击card按钮获取到的card的id值
 		projectList:[],
 		addCardGroupState:"",
-		remind_state:false
+		remind_state:false,
+		activeState:""
 
 	};
 
@@ -268,6 +269,11 @@ class BiddingPlan extends Component {
 	}
 		getData(getRouter(newState.before_api_uri), {data:obj,token:sessionStorage.token}, cb, {});
 	  }
+	  activeState=(newState)=>{
+		this.setState({
+				activeState:newState
+			})
+	  }
 	render() {
 		return(
 			<div>
@@ -288,8 +294,8 @@ class BiddingPlan extends Component {
 					<div className="overflow crius-card-list">
 						{this.state.card_list!==null?this.state.card_list.map((card_list,index) => {
 							return (
-								<ComponentsList index={index}  sevenChange = {this.handleChildChange} key={index} componentslist =  {this.state.projectCard} componentsdata = {card_list} ></ComponentsList > 
-
+								<ComponentsList indexKey={this.state.activeState} card_active_state={this.activeState}	index={index}  sevenChange = {this.handleChildChange} key={index} componentslist =  {this.state.projectCard} componentsdata = {card_list} ></ComponentsList > 
+									
 								// <Cards 
 								// 		index={index}
 								// 		sixChange = {this.handleChildChange}

@@ -21,7 +21,8 @@ class Budget extends Component {
 		projectList: [],
 		addCardGroupState: "",
 		remind_state: false,
-		list_message:""
+		list_message:"",
+		activeState:""
 
 	};
 
@@ -299,6 +300,11 @@ class Budget extends Component {
 			card_list:message
 		})
 	}
+	activeState=(newState)=>{
+		this.setState({
+				activeState:newState
+			})
+	  }
 	render() {
 		return (
 			<div>
@@ -315,19 +321,19 @@ class Budget extends Component {
 						>
 							添加
 						</div>
-						{/* <ScreeningMessage 
+						<ScreeningMessage 
 							message={this.state.card_lists}
 							keywordSearch={["project_name","project_gather_name"]}
 							// selectListMessage={["view_mode","view_type"]}
 							// selectNameMessage={["mode","type"]}
 
 							screening_message={this.screening_information}
-						/> */}
+						/>
 					</div>
 					<div className="overflow crius-card-list">
 						{this.state.card_list !== null ? this.state.card_list.map((card_list, index) => {
 							return (
-								<ComponentsList examine_bool_seventh={this.examine_bool_message} examine_bools={this.examine_bool_message} index={index} sevenChange={this.handleChildChange} key={index} componentslist={this.state.projectCard} componentsdata={card_list} ></ComponentsList >
+								<ComponentsList indexKey={this.state.activeState} card_active_state={this.activeState} examine_bool_seventh={this.examine_bool_message} examine_bools={this.examine_bool_message} index={index} sevenChange={this.handleChildChange} key={index} componentslist={this.state.projectCard} componentsdata={card_list} ></ComponentsList >
 								// <Cards 
 								// 		index={index}
 								// 		sixChange = {this.handleChildChange}

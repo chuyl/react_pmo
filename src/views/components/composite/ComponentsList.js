@@ -56,7 +56,8 @@ class ComponentsList extends Component {
             inputValue:"inputValue",
             targetValue:"",
             componentslist: this.props.componentslist,
-            componentsdata:this.props.componentsdata
+            componentsdata:this.props.componentsdata,
+            activeState:""
         }
     }
     handleChildClick=(newState)=>{
@@ -145,6 +146,12 @@ handleChildChange=(formData)=>{
     
     this.props.editCardGroupStates(newStates)
  }
+ activeState=(newState)=>{
+    //  this.setState({
+    //     activeState:newState
+    //  })
+    this.props.card_active_state(newState)
+ }
     render() {
      
         return (
@@ -155,6 +162,9 @@ handleChildChange=(formData)=>{
                                     id={form_list.id_name} 
                                     index={this.props.index}
                                     key={index}
+                                    card_active_state={this.activeState}
+
+                                     indexKey={this.props.indexKey}
                                     sixChange = {this.handleChildChange}
                                     examine_bool_sixth={this.examine_bool_message_sixth}
                                     addButton={form_list.add_button}

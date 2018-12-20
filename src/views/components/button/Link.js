@@ -124,8 +124,9 @@
     render() {
             const {button} = this.props
             return ( 
-                    <button className="btn_list" onClick =  {this.handleClick}>{button} </button >  
-               
+                    <div className="card_ide_btn">
+                        <button className="btn_list" onClick =  {this.handleClick}>{button} </button >  
+                    </div>
              )
         }
     }
