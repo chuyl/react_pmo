@@ -252,7 +252,6 @@
     }
 }
 
-
 @media only screen and (max-width:768px) {
     .select_card {
         position: relative;
@@ -328,11 +327,12 @@ textarea:disabled {
     line-height: 3em;
     .message_label {
         float: left;
-        font-size: 24px;
+        font-size: 1.5em;
         width: 3em;
     }
     span:nth-of-type(2) {
-        padding-left: 1em;
+        padding-right: 1em;
+        float: right;
     }
 }
 
@@ -446,7 +446,17 @@ textarea:disabled {
 .card_launch_approval {
     float: left;
     line-height: 2em;
-    width: 66%;
+    width: 40%;
+    text-align: right;
+    box-sizing: border-box;
+    padding-right: 3em;
+}
+
+.card_get_time {
+    float: left;
+    line-height: 2em;
+    text-align: left;
+    box-sizing: border-box;
 }
 
 .card-body .card-page:nth-of-type(2) {
