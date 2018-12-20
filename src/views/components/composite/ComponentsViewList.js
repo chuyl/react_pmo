@@ -51,6 +51,7 @@
   import LabelShowMessage from '../watch/LabelShowMessage'
   import GetDataSpellingLabel from '../watch/GetDataSpellingLabel'
   import ApplicationsFlow from '../watch/ApplicationsFlow'
+  import ApplicationsDefault from '../watch/ApplicationsDefault'
    class ComponentsViewList extends Component {
     /** 
      * @time 2018-11-09 
@@ -383,6 +384,16 @@
                                 
                             :form_list.type_name === "ApplicationsState"?
                                 <ApplicationsState
+                                    id={form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    className={form_list.class}
+                                    thisKey={form_list.key}
+                                    defaultValue={form_list.default_value}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={""} 
+                                />
+                            :form_list.type_name === "ApplicationsDefault"?
+                                <ApplicationsDefault
                                     id={form_list.id_name} 
                                     labelValue={form_list.title} 
                                     className={form_list.class}
