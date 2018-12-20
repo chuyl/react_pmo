@@ -25,7 +25,7 @@
         box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
     }
     @include set_card( 10px, $primary-color, 10px);
-    @include set_active((1, 1, 1), 24em, 9em, 2em, $background-color);
+    @include set_active((1, 1, 1), 24em, 6em, 2em, $background-color);
 }
 
 .input_list {

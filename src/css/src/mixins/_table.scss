@@ -1,7 +1,6 @@
 
 
 @mixin title_border($border_weight, $color) {
-    border-top: $border_weight solid $color;
     border-bottom: $border_weight solid $color;
     line-height: 2em;
 }

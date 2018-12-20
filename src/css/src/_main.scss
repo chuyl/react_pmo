@@ -2,7 +2,7 @@
     .inverse {
         color: $primary-color;
     }
-    .card-project.active {
+    .card-project {
         display: block;
         box-sizing: border-box;
         border-radius: $border_radius;
@@ -22,15 +22,9 @@
             height: 6em;
             overflow: hidden;
         }
-        .open-ctrl {
-            bottom: 0;
-        }
         .card-foot {
             display: none;
             height: 0;
-        }
-        .open-ctrl {
-            display: none;
         }
     }
     &::after {
@@ -71,9 +65,7 @@
         padding: 0 0.5em 0.5em 0.5em;
         line-height: 2em;
         box-sizing: border-box;
-        .card-item {
-            background: $background-color;
-        }
+        background-color: $primary-color-text;
     }
     .card-head .inverse {
         background-color: $border_left_color;
@@ -97,16 +89,6 @@
     }
     .card-project {
         position: relative;
-        .open-ctrl {
-            height: 1em;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 70%;
-            background-color: $open_ctrl_bgcolor;
-            position: absolute;
-            bottom: 2em;
-            width: 100%;
-        }
         .card-body {
             position: relative;
             height: $set_minheight;
@@ -176,7 +158,7 @@
         position: absolute;
         width: 100%;
         box-sizing: border-box;
-        padding: 1em;
+        padding: 0 1em;
     }
     .card-foot .card-item {
         float: left;
@@ -187,7 +169,7 @@
         position: relative;
         transition: border .3s ease;
     }
-    .card-project.open {
+    .card-project.active {
         .card-body {
             height: initial;
             transition: height .3s cubic-bezier(0.4, 0, 1, 1);
@@ -201,9 +183,7 @@
             min-height: 8em;
         }
         .open-ctrl {
-            background-image: url(closeline.svg);
-            background-repeat: no-repeat;
-            bottom: 2em;
+            bottom: 0;
             border-bottom-right-radius: 10px;
         }
         .card-page.active {
@@ -213,18 +193,6 @@
             opacity: 1;
         }
     }
-    .card-project.open.move-out {
-        .card-body {
-            height: $set_height;
-            transition: height .3s cubic-bezier(0.4, 0, 1, 1);
-        }
-    }
-    .card-project.active.move-in {
-        .card-body {
-            height: $set_height;
-            transition: height .3s cubic-bezier(0.4, 0, 1, 1);
-        }
-    }
     .card-foot .active::before {
         position: absolute;
         content: ' ';
@@ -232,7 +200,7 @@
         height: 0;
         border-left: 16px solid transparent;
         border-right: 16px solid transparent;
-        border-top: 10px solid #fff;
+        border-top: 10px solid $primary-color-dark;
         left: 50%;
         margin-left: -23px;
         margin-top: -4px;
