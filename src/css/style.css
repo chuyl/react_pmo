@@ -1387,10 +1387,12 @@ html, body {
 
 .card_left {
   width: 66.6%;
-  line-height: 2.5em;
   float: left; }
   .card_left p {
     font-size: 1.5em; }
+
+.card_title_left {
+  line-height: 2.5em; }
 
 .card_right {
   color: #757575;
@@ -1539,6 +1541,72 @@ textarea:disabled {
   border: 0;
   background: transparent;
   color: #fff; }
+
+.card_budget,
+.card_final_accounts {
+  float: left;
+  line-height: 3em;
+  width: 67%;
+  box-sizing: border-box;
+  padding-left: 1em; }
+
+.card_budget_btn,
+.card_final_btn {
+  float: right;
+  line-height: 3em;
+  width: 33%;
+  text-align: center; }
+
+.card_budget,
+.card_budget_btn {
+  border-bottom: 1px solid #3F51B5; }
+
+.budget_menu {
+  overflow: hidden;
+  width: 100%; }
+  .budget_menu .spelling_div {
+    float: left;
+    display: block;
+    width: 33%;
+    overflow: hidden; }
+    .budget_menu .spelling_div .spelling_content {
+      float: left;
+      width: 100%;
+      line-height: 1.5em; }
+    .budget_menu .spelling_div .spelling_label {
+      float: left;
+      width: 100%;
+      line-height: 1.5em; }
+
+.card_ask {
+  float: left;
+  width: 100%;
+  overflow: hidden; }
+  .card_ask button {
+    border: 0;
+    float: left;
+    text-align: center;
+    outline: none;
+    background-color: #3F51B5;
+    width: 5em;
+    line-height: 2em;
+    margin-right: 1em;
+    border-radius: 0.5em;
+    background-color: #3F51B5;
+    color: #FFFFFF; }
+
+.card_approval {
+  float: left;
+  display: block;
+  box-sizing: border-box;
+  font-size: 1em;
+  line-height: 3em;
+  width: 100%; }
+
+.card_launch_approval {
+  float: left;
+  line-height: 3em;
+  width: 66%; }
 
 .dialog_open {
   position: absolute;
@@ -1756,8 +1824,14 @@ textarea:disabled {
   color: #757575; }
 
 .search_info_list_ul::-webkit-scrollbar {
-  width: 4px;
-  height: 4px; }
+  height: 0px;
+  width: 5px;
+  background: #BDBDBD; }
+
+.search_info_list_ul::-webkit-scrollbar-thumb {
+  width: 5px;
+  border-radius: 4px;
+  background: #3F51B5; }
 
 /* select ul-li part */
 .search_info_list_ul li {
@@ -2319,7 +2393,6 @@ textarea:disabled {
   position: relative; }
   .crius-card-list .card-project .open-ctrl {
     height: 1em;
-    background-image: url(openline.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 70%;
@@ -2388,24 +2461,26 @@ textarea:disabled {
   border: none;
   position: relative;
   transition: border .3s ease; }
-.crius-card-list .card-project.open .card-foot {
-  height: 0; }
-  .crius-card-list .card-project.open .card-foot .card-item {
-    display: none; }
 .crius-card-list .card-project.open .card-body {
   height: initial;
   transition: height 0.3s cubic-bezier(0.4, 0, 1, 1); }
 .crius-card-list .card-project.open .card-body .card-page {
   transition: opacity .3s ease;
-  display: block;
+  display: none;
   opacity: 1;
   clear: both;
-  position: initial; }
+  position: initial;
+  min-height: 8em; }
 .crius-card-list .card-project.open .open-ctrl {
   background-image: url(closeline.svg);
   background-repeat: no-repeat;
-  bottom: 5px;
+  bottom: 2em;
   border-bottom-right-radius: 10px; }
+.crius-card-list .card-project.open .card-page.active {
+  display: block;
+  transition: opacity .3s ease;
+  display: block;
+  opacity: 1; }
 .crius-card-list .card-project.open.move-out .card-body {
   height: 24em;
   transition: height 0.3s cubic-bezier(0.4, 0, 1, 1); }
@@ -2431,7 +2506,7 @@ textarea:disabled {
   left: 50%;
   margin-left: -5em;
   height: 2px;
-  background-color: #fff; }
+  background-color: #3F51B5; }
 
 .input_list {
   position: fixed;

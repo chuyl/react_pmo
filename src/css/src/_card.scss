@@ -125,11 +125,14 @@
 
 .card_left {
     width: 66.6%;
-    line-height: 2.5em;
     float: left;
     p {
         font-size: 1.5em;
     } //border: 1px solid $secondary-text-color;
+}
+
+.card_title_left {
+    line-height: 2.5em;
 }
 
 .card_right {
@@ -311,4 +314,79 @@ textarea:disabled {
     border: 0;
     background: transparent;
     color: #fff;
+}
+
+.card_budget,
+.card_final_accounts {
+    float: left;
+    line-height: 3em;
+    width: 67%;
+    box-sizing: border-box;
+    padding-left: 1em;
+}
+
+.card_budget_btn,
+.card_final_btn {
+    float: right;
+    line-height: 3em;
+    width: 33%;
+    text-align: center;
+}
+
+.card_budget,
+.card_budget_btn {
+    border-bottom: 1px solid $primary-color;
+}
+
+.budget_menu {
+    overflow: hidden;
+    width: 100%;
+    .spelling_div {
+        float: left;
+        display: block;
+        width: 33%;
+        overflow: hidden;
+        .spelling_content {
+            float: left;
+            width: 100%;
+            line-height: 1.5em;
+        }
+        .spelling_label {
+            float: left;
+            width: 100%;
+            line-height: 1.5em;
+        }
+    }
+}
+
+.card_ask {
+    float: left;
+    width: 100%;
+    overflow: hidden;
+    button {
+        border: 0;
+        float: left;
+        text-align: center;
+        outline: none;
+        background-color: $primary-color;
+        width: 5em;
+        line-height: 2em;
+        margin-right: 1em;
+        border-radius: 0.5em;
+        background-color: $primary-color;
+        color: $primary-color-text;
+    }
+}
+.card_approval{
+    float: left;
+    display: block;
+    box-sizing: border-box;
+    font-size: 1em;
+    line-height: 3em;
+    width: 100%;
+}
+.card_launch_approval{
+    float: left;
+    line-height: 3em;
+    width: 66%;
 }

@@ -185,8 +185,15 @@
 }
 
 .search_info_list_ul::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
+    height: 0px;
+    width: 5px;
+    background: $divider-color;
+}
+
+.search_info_list_ul::-webkit-scrollbar-thumb {
+    width: 5px;
+    border-radius: 4px;
+    background: $primary-color;
 }
 
 /* select ul-li part */
