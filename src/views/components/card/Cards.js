@@ -18,6 +18,7 @@ class Card extends Component {
         form_temp_name:"",
         formData:this.props.formData,
         cardTitleItem:"",
+        card_active_state:1,
         openCtrlState:""//openCard
     }
     // componentWillMount(){
@@ -102,10 +103,31 @@ class Card extends Component {
         this.props.examine_bool_sixth(state)
         // console.log(state)
     }
+    card_active_state( index ){
+		return index === this.state.card_active_state ? "card-project active": "card-project"
+	}
 	render(){
+        // if(this.state.card_active_state===this.props.index){
+        //     console.log(this.state.card_active_state)
+        // }
+        // console.log(this.state.card_active_state)
         return (
-            <div key={this.props.index} id={"card_id"+this.props.index} name={"card-project"} className={this.state.openCtrlState===""?"card-project active":this.state.openCtrlState===true?"card-project active open move-out":"card-project move-in active"}>
-               
+            // <div key={this.props.index} id={"card_id"+this.props.index} name={"card-project"} className={this.state.openCtrlState===""?"card-project active":this.state.openCtrlState===true?"card-project active open move-out":"card-project move-in active"}>
+            <div
+                key={this.props.index} 
+                id={"card_id"+this.props.index} 
+                name={"card-project"} 
+                className={this.props.index === this.props.indexKey ? "card-project active": "card-project"}
+                // onClick={this.props.card_active_state}
+                onClick={()=>{
+                    
+                    // this.setState({
+                    //     card_active_state:this.props.index
+                    // })
+                    this.props.card_active_state(this.props.index)
+                }}
+                >
+                
                 {this.props.addButton.map((form_list,index) => {
                     return (
                         form_list.type_name === "Link"?

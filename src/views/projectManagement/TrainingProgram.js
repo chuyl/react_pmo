@@ -20,7 +20,8 @@ class TrainingProgram extends Component {
 		projectList: [],
 		addCardGroupState: "",
 		remind_state: false,
-		list_message:""
+		list_message:"",
+		activeState:""
 
 	};
 
@@ -288,6 +289,11 @@ class TrainingProgram extends Component {
 		}
 		getData(getRouter(newState.before_api_uri), { data: obj, token: sessionStorage.token }, cb, {});
 	}
+	activeState=(newState)=>{
+		this.setState({
+				activeState:newState
+			})
+	  }
 	render() {
 		return (
 			<div>
@@ -308,7 +314,7 @@ class TrainingProgram extends Component {
 					<div className="overflow crius-card-list">
 						{this.state.card_list !== null ? this.state.card_list.map((card_list, index) => {
 							return (
-								<ComponentsList index={index} sevenChange={this.handleChildChange} key={index} componentslist={this.state.projectCard} componentsdata={card_list} ></ComponentsList >
+								<ComponentsList indexKey={this.state.activeState} card_active_state={this.activeState} index={index} sevenChange={this.handleChildChange} key={index} componentslist={this.state.projectCard} componentsdata={card_list} ></ComponentsList >
 								// <Cards 
 								// 		index={index}
 								// 		sixChange = {this.handleChildChange}
