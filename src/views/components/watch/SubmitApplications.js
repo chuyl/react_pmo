@@ -59,7 +59,7 @@ sureCallback(msg){
                                 alertState:true
                             })
                         }}
-                    >提交</button>
+                    >{"提交"+labelValue}</button>
                   :message.examine[thisKey].state==="1"?<span>待审核</span>
                   :message.examine[thisKey].state==="2"?<span>审核通过</span>
                   :message.examine[thisKey].state==="-1"?<button className={className[1]?className[1]:""} 

@@ -317,7 +317,7 @@ class Budget extends Component {
 						</div>
 						{/* <ScreeningMessage 
 							message={this.state.card_lists}
-							keywordSearch={"project_name"}
+							keywordSearch={["project_name"]}
 							// selectListMessage={["view_mode","view_type"]}
 							// selectNameMessage={["mode","type"]}
 
