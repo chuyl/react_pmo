@@ -10,6 +10,7 @@
             inputValue:"",
             inputState:false,
             message_list:this.props.message,
+            filter_box_state:false,
             search_arr:[]
             // message_spare_list:this.props.message,
         }
@@ -42,12 +43,10 @@
                 obj[key[j]] = value[j]
             }
             //obj的key为数据表中的字段，value对应字段中筛选的数据
-            console.log(obj)
             //所有筛选条件的数组
             var search_arr=[];
             var num = 0;
             for(var key in obj){ 
-                console.log(key)
                 if(obj[key]!==""){
                     search_arr.push({name:obj[key],id:"select_message"+num+"_name"})  
                     num++; 
@@ -57,7 +56,6 @@
                 this.setState({
                     search_arr:search_arr
                 })
-                console.log(search_arr)
             let filter=(condition,data)=>{
                 return data.filter( item => {
                     return Object.keys( condition ).every( key => {
@@ -72,10 +70,12 @@
                         for(var m = 0; m<this.props.keywordSearch.length;m++){
                             for(var k = 0; k<filter(obj,this.props.message).length;k++){
                                 
-                                    // console.log(this.props.keywordSearch[m]])
-                                    if(filter(obj,this.props.message)[k][this.props.keywordSearch[m]].indexOf(keywordSearch)>=0){
-                                        keyword_list.push(filter(obj,this.props.message)[k])
-                                    }
+                                     if(filter(obj,this.props.message)[k][this.props.keywordSearch[m]]!==null){
+                                        if(filter(obj,this.props.message)[k][this.props.keywordSearch[m]].indexOf(keywordSearch)>=0){
+                                            keyword_list.push(filter(obj,this.props.message)[k])
+                                        }
+                                     }
+                                   
                                 }
                             
                             }
@@ -85,7 +85,6 @@
                         keyword_list.push(filter(obj,this.props.message)[n])
                     }
                 }
-                console.log(keyword_list)
     //  console.log(filter(obj,this.props.message))
     this.props.screening_message(keyword_list)
             // this.setState({
@@ -116,13 +115,24 @@
          * @author xuesong
          * @param clear_this_search 函数 清空某一项筛选条件
          */
-        clear_this_search=()=>{
-
+        clear_this_search=(id)=>{
+            document.getElementById(id).innerHTML? document.getElementById(id).innerHTML="-选择-": document.getElementById(id).value=""
+            this.screening_information()
         }
         render(){
             const {id,message} =this.props;
             return (
                 <div>
+                    <button
+                        onClick={()=>{
+                            this.setState({
+                               filter_box_state:!this.state.filter_box_state 
+                            })
+                        }}
+                    >
+                        {this.state.filter_box_state?"关闭筛选框":"打开筛选框"}
+                    </button>
+                    <div style={this.state.filter_box_state?{display:"block"}:{display:"none"}}>
                     <KeywordSearch
                         id={"keywordSearch"}
                     />
@@ -146,19 +156,22 @@
                             {this.state.search_arr.length>0?"关键字:":""}
                         </span>
                         {this.state.search_arr.map((search_arr,index)=>{
+                            console.log(this.state.search_arr)
+                            if(search_arr.name!==""){
                             return(
-                                <div key={index}>
-                                    <span style={search_arr.name!==""?{border:"1px dashed #fff",margin:"3px",padding:"2px 5px"}:{}}>{search_arr.name+"  "}
-                                        <span
-                                            onClick={()=>{
-                                            this.clear_this_search() 
-                                            }}
-                                        >X</span>
+                                <div style={{border:"1px dashed #fff",margin:"3px",padding:"2px 5px"}} key={index}>
+                                    <span>{search_arr.name+"  "}
+                                       
                                     </span>
-                                    
+                                    <span
+                                        onClick={()=>{
+                                            this.clear_this_search(search_arr.id) 
+                                        }}
+                                    >X</span>
                                 </div>
                             )
-                        })}
+                        
+                        }})}
                         {this.state.search_arr.length>0?<button
                             onClick={()=>{
                                this.clear_search() 
@@ -166,6 +179,7 @@
                         >
                             清空
                         </button>:""}
+                    </div>
                     </div>
               </div>
             )

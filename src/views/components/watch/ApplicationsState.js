@@ -16,7 +16,7 @@
                 this.props.message?<div className={className[0]?className[0]:""}>
                    <span className={className[1]?className[1]:""}>
                        {labelValue}
-                        {message.examine[thisKey]?message.examine[thisKey].state==="0"?"未提交":message.examine[thisKey].state==="1"?"待审核":message.examine[thisKey].state==="2"?"审核通过":message.examine[thisKey].state==="-1"?"未通过":"":""}
+                       
                     </span>
                     <ul className={className[2]?className[2]+"_ul":""}>
                         {message.examine[thisKey]?message.examine[thisKey].step.map((step,index)=>{
@@ -48,6 +48,9 @@
                             console.log(step)
                         }):""}
                     </ul>
+                    <span  className={className[1]?className[1]:""}>
+                    {message.examine[thisKey]?message.examine[thisKey].state==="0"?"未提交":message.examine[thisKey].state==="1"?"待审核":message.examine[thisKey].state==="2"?"审核通过":message.examine[thisKey].state==="-1"?"未通过":"":""}
+                    </span>
                    {/* <span>{message?dealNumber(message):"0.00"}</span> */}
                     {/* <span className="text_field_remind"></span> */}
               </div>:<div className={className[0]?className[0]:""}>{this.props.defaultValue}</div>
