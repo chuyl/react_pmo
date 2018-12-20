@@ -34,6 +34,7 @@ import SegmenHotel from '../views/implementationManagement/SegmenHotel'
 import ServiceConsumables from '../views/implementationManagement/ServiceConsumables'
 //视图管理
 import View from '../views/viewManagement/View'
+import Menu from '../views/viewManagement/Menu'
 // import Langs from '../language'
 const Langs = sessionStorage.Language?JSON.parse(sessionStorage.Language):{};
 class Routers extends Component{
@@ -72,6 +73,7 @@ class Routers extends Component{
               :message.component==="SegmenHotel"?SegmenHotel
               :message.component==="ServiceConsumables"?ServiceConsumables
               :message.component==="View"?View
+              :message.component==="Menu"?Menu
               :""} />
              
 
