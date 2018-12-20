@@ -48,6 +48,7 @@ import IsAgreeApplications from '../watch/IsAgreeApplications'
 import LabelShowMessage from '../watch/LabelShowMessage'
 import GetDataSpellingLabel from '../watch/GetDataSpellingLabel'
 import ApplicationsFlow from '../watch/ApplicationsFlow'
+import ApplicationsDefault from '../watch/ApplicationsDefault'
 class ComponentsList extends Component {
     constructor(props) {
         super(props);
@@ -273,6 +274,18 @@ handleChildChange=(formData)=>{
                                     beforeApiUri={form_list.before_api_uri}
                                     message={this.props.componentsdata?this.props.componentsdata:""} 
                                 />
+                            :form_list.type_name === "ApplicationsDefault"?
+                                <ApplicationsDefault
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    key={index}
+                                    thisKey={form_list.key}
+                                    className={form_list.class}
+                                    defaultValue={form_list.default_value}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />
+                                
                             :form_list.type_name === "SubmitApplications"?
                                 <SubmitApplications
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
