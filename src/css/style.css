@@ -1545,21 +1545,62 @@ textarea:disabled {
 .card_budget,
 .card_final_accounts {
   float: left;
-  line-height: 3em;
   width: 67%;
   box-sizing: border-box;
-  padding-left: 1em; }
+  padding-left: 1em;
+  overflow: hidden;
+  line-height: 3em; }
+  .card_budget .message_label,
+  .card_final_accounts .message_label {
+    float: left;
+    font-size: 24px;
+    width: 3em; }
+  .card_budget span:nth-of-type(2),
+  .card_final_accounts span:nth-of-type(2) {
+    padding-left: 1em; }
 
 .card_budget_btn,
 .card_final_btn {
   float: right;
   line-height: 3em;
   width: 33%;
-  text-align: center; }
+  text-align: center;
+  overflow: hidden;
+  padding: 0.5em 1em 0.5em 0;
+  box-sizing: border-box; }
+  .card_budget_btn .btn_list,
+  .card_final_btn .btn_list {
+    float: left;
+    width: 100%;
+    margin-bottom: 0.2em; }
 
-.card_budget,
-.card_budget_btn {
-  border-bottom: 1px solid #3F51B5; }
+.status_box_ul {
+  float: left;
+  overflow: hidden;
+  line-height: 2em;
+  height: 2em;
+  padding-top: 1em;
+  box-sizing: border-box; }
+  .status_box_ul .status_box_item_success,
+  .status_box_ul .status_box_item_default,
+  .status_box_ul .status_box_item_fail {
+    float: left;
+    width: 2em;
+    height: 1em;
+    border-radius: 2px;
+    margin-right: 0.2em; }
+  .status_box_ul .status_box_item_success {
+    background-color: #3F51B5; }
+  .status_box_ul .status_box_item_default {
+    background-color: #757575; }
+  .status_box_ul .status_box_item_fail {
+    background-color: #FF5252; }
+
+.card_budget {
+  position: relative; }
+
+.card_budget .message_label::before {
+  position: absolute; }
 
 .budget_menu {
   overflow: hidden;
@@ -1607,6 +1648,17 @@ textarea:disabled {
   float: left;
   line-height: 3em;
   width: 66%; }
+
+.card-body .card-page:nth-of-type(2) {
+  overflow: hidden; }
+  .card-body .card-page:nth-of-type(2) .btn_list {
+    float: left;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em; }
+  .card-body .card-page:nth-of-type(2) button {
+    width: 30%; }
+  .card-body .card-page:nth-of-type(2) button:first-child {
+    width: 100%; }
 
 .dialog_open {
   position: absolute;
@@ -2137,7 +2189,7 @@ textarea:disabled {
   width: 5em;
   line-height: 2em;
   margin-right: 1em;
-  border-radius: 0.5em;
+  border-radius: 4px;
   background-color: #3F51B5;
   color: #FFFFFF;
   box-shadow: none;
@@ -2331,7 +2383,7 @@ textarea:disabled {
   .crius-card-list .card-project.active .card-foot {
     height: 2em;
     position: absolute;
-    bottom: 0;
+    top: 2em;
     width: 100%; }
 .crius-card-list .card-project.small .card-body {
   height: 7em; }
@@ -2357,10 +2409,14 @@ textarea:disabled {
   height: 2em;
   line-height: 2em;
   border-bottom: 1px solid #3F51B5;
-  color: #3F51B5;
+  color: #FFFFFF;
   overflow: hidden;
   box-sizing: border-box;
-  padding: 0 1em 0 1em; }
+  padding: 0 1em 0 1em;
+  position: absolute;
+  top: 0;
+  background-color: #303F9F;
+  width: 100%; }
   .crius-card-list .card-head .card-item {
     float: left; }
 .crius-card-list .card-body {
@@ -2385,7 +2441,8 @@ textarea:disabled {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   margin-left: 10px;
   padding-bottom: 0.5em;
-  color: #757575; }
+  color: #757575;
+  padding-top: 4em; }
 @media screen and (max-width: 768px) {
   .crius-card-list .card-project:last-child {
     margin-bottom: 6em; } }
@@ -2501,10 +2558,9 @@ textarea:disabled {
 .crius-card-list .card-foot .active::after {
   position: absolute;
   content: ' ';
+  display: block;
   bottom: 0px;
-  width: 9em;
-  left: 50%;
-  margin-left: -5em;
+  width: 100%;
   height: 2px;
   background-color: #3F51B5; }
 

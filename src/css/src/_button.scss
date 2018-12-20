@@ -3,5 +3,5 @@
     width: 5em;
     line-height: 2em;
     margin-right: 1em;
-    @include set_button_style(0.5em, $primary-color, $accent-color, $shadow: none);
+    @include set_button_style(4px, $primary-color, $accent-color, $shadow: none);
 }

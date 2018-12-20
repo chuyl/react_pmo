@@ -319,10 +319,19 @@ textarea:disabled {
 .card_budget,
 .card_final_accounts {
     float: left;
-    line-height: 3em;
     width: 67%;
     box-sizing: border-box;
     padding-left: 1em;
+    overflow: hidden;
+    line-height: 3em;
+    .message_label {
+        float: left;
+        font-size: 24px;
+        width: 3em;
+    }
+    span:nth-of-type(2) {
+        padding-left: 1em;
+    }
 }
 
 .card_budget_btn,
@@ -331,11 +340,49 @@ textarea:disabled {
     line-height: 3em;
     width: 33%;
     text-align: center;
+    overflow: hidden;
+    padding: 0.5em 1em 0.5em 0;
+    box-sizing: border-box;
+    .btn_list {
+        float: left;
+        width: 100%;
+        margin-bottom: 0.2em;
+    }
 }
 
-.card_budget,
-.card_budget_btn {
-    border-bottom: 1px solid $primary-color;
+.status_box_ul {
+    float: left;
+    overflow: hidden;
+    line-height: 2em;
+    height: 2em;
+    padding-top: 1em;
+    box-sizing: border-box;
+    .status_box_item_success,
+    .status_box_item_default,
+    .status_box_item_fail {
+        float: left;
+        width: 2em;
+        height: 1em;
+        border-radius: 2px;
+        margin-right: 0.2em;
+    }
+    .status_box_item_success {
+        background-color: $primary-color;
+    }
+    .status_box_item_default {
+        background-color: $secondary-text-color;
+    }
+    .status_box_item_fail {
+        background-color: $accent-color;
+    }
+}
+
+.card_budget {
+    position: relative;
+}
+
+.card_budget .message_label::before {
+    position: absolute;
 }
 
 .budget_menu {
@@ -377,7 +424,8 @@ textarea:disabled {
         color: $primary-color-text;
     }
 }
-.card_approval{
+
+.card_approval {
     float: left;
     display: block;
     box-sizing: border-box;
@@ -385,8 +433,24 @@ textarea:disabled {
     line-height: 3em;
     width: 100%;
 }
-.card_launch_approval{
+
+.card_launch_approval {
     float: left;
     line-height: 3em;
     width: 66%;
+}
+
+.card-body .card-page:nth-of-type(2) {
+    overflow: hidden;
+    .btn_list {
+        float: left;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+    button {
+        width: 30%;
+    }
+    button:first-child {
+        width: 100%;
+    }
 }
