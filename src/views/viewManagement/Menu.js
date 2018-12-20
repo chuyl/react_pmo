@@ -32,11 +32,7 @@ class Menu extends Component {
 				{/* <button style={{marginBottom:"5px"}} className="add_card_btn" onClick={()=>{
 						this.setState({
 							 alertAddRoleState:true,
-							// view_type_name:"formlist",
-							// view_china_name:"",
-							// view_english_name:"",
-							// // view_mode:"",
-							// view_id:""
+							
 						})
 					}} >添加</button> */}
 					<Popup 
