@@ -156,6 +156,9 @@
     .card_right p,
     .title_card_right {
         font-size: 1em;
+        p {
+            font-size: 1em;
+        }
     }
 }
 
@@ -293,7 +296,6 @@
 .message_left {
     float: left;
     width: 100%;
-    overflow: hidden;
     .spelling_div {
         float: left;
         width: 33%;
@@ -390,6 +392,7 @@ textarea:disabled {
 .budget_menu {
     overflow: hidden;
     width: 100%;
+    margin-bottom: 0.5em;
     .spelling_div {
         float: left;
         display: block;
@@ -412,7 +415,7 @@ textarea:disabled {
     float: left;
     width: 100%;
     overflow: hidden;
-    padding: 1em 1em 1em 2em;
+    padding: 1em 0;
     box-sizing: border-box;
     button {
         border: 0;
@@ -420,14 +423,12 @@ textarea:disabled {
         text-align: center;
         outline: none;
         background-color: $primary-color;
-        width: 12em;
+        width: 8em;
         line-height: 2em;
         border-radius: 0.5em;
+        margin-right: 2em;
         background-color: $primary-color;
         color: $primary-color-text;
-    }
-    button:nth-of-type(2) {
-        float: right;
     }
     button:hover {
         background: $accent-color;
@@ -449,39 +450,129 @@ textarea:disabled {
     width: 40%;
     text-align: right;
     box-sizing: border-box;
-    padding-right: 3em;
+    font-size: 1em;
+    padding-right: 1.5em;
 }
 
 .card_get_time {
-    float: left;
+    float: right;
+    width: 50%;
+    font-size: 1em;
     line-height: 2em;
     text-align: left;
+    padding-left: 2em;
     box-sizing: border-box;
 }
 
 .card-body .card-page:nth-of-type(2) {
     overflow: hidden;
-    .btn_list {
-        float: left;
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
-    }
-    button {
-        width: 30%;
-    }
     .card_ide_btn {
         float: left;
         width: 33%;
         line-height: 3em;
         box-sizing: border-box;
         padding: 0.5em 1em 0.5em 0;
+        .btn_list {
+            float: left;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            width: 100%;
+            margin: 0;
+        }
     }
-    button:first-child {
+    .card_ide_btn:first-child {
         width: 100%;
+    }
+    .card_ide_btn:last-child {
+        float: right;
     }
 }
 
-.status_flow_ul {}
+.status_flow_ul {
+    float: left;
+    width: 100%;
+    overflow: hidden;
+    li {
+        clear: both;
+    }
+    .message_left,
+    .message_right {
+        float: left;
+        line-height: 2em;
+        font-size: 1em;
+        box-sizing: border-box;
+        span {
+            display: block;
+            width: 3em;
+            float: left;
+            padding-right: 1em;
+        }
+    }
+    .message_left {
+        text-align: right;
+        width: 40%;
+        position: relative;
+    }
+    .message_left::before {
+        position: absolute;
+        content: ' ';
+        display: block;
+        width: 0.5em;
+        height: 0.5em;
+        border-radius: 50%;
+        top: 0.7em;
+        right: 0;
+    }
+    .message_left::after {
+        position: absolute;
+        content: ' ';
+        width: 0.1em;
+        height: 1.7em;
+        top: 1.1em;
+        right: 0.2em;
+    }
+    li:last-child {
+        .message_left::after {
+            display: none;
+        }
+    }
+    .message_right {
+        width: 60%;
+        font-size: 1em;
+        padding-left: 1em;
+        box-sizing: border-box;
+    }
+    .status_flow_item_default {
+        .message_left,
+        .message_right {
+            color: $secondary-text-color;
+        }
+        .message_left::before,
+        .message_left::after {
+            background-color: $secondary-text-color;
+        }
+    }
+    .status_flow_item_success {
+        .message_left,
+        .message_right {
+            color: $primary-color;
+        }
+        .message_left::before,
+        .message_left::after {
+            background-color: $primary-color;
+        }
+    }
+    .status_flow_item_fail {
+        .message_left,
+        .message_right {
+            color: $accent-color;
+        }
+        .message_left::before,
+        .message_left::after {
+            background-color: $accent-color;
+        }
+    }
+}
 
 // success
 // default

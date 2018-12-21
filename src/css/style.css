@@ -1411,7 +1411,11 @@ html, body {
   .card_left p,
   .card_right p,
   .title_card_right {
-    font-size: 1em; } }
+    font-size: 1em; }
+    .card_left p p,
+    .card_right p p,
+    .title_card_right p {
+      font-size: 1em; } }
 .date_card {
   width: 66.6%;
   float: left;
@@ -1523,8 +1527,7 @@ html, body {
     z-index: 10; } }
 .message_left {
   float: left;
-  width: 100%;
-  overflow: hidden; }
+  width: 100%; }
   .message_left .spelling_div {
     float: left;
     width: 33%;
@@ -1606,7 +1609,8 @@ textarea:disabled {
 
 .budget_menu {
   overflow: hidden;
-  width: 100%; }
+  width: 100%;
+  margin-bottom: 0.5em; }
   .budget_menu .spelling_div {
     float: left;
     display: block;
@@ -1625,7 +1629,7 @@ textarea:disabled {
   float: left;
   width: 100%;
   overflow: hidden;
-  padding: 1em 1em 1em 2em;
+  padding: 1em 0;
   box-sizing: border-box; }
   .card_ask button {
     border: 0;
@@ -1633,13 +1637,12 @@ textarea:disabled {
     text-align: center;
     outline: none;
     background-color: #3F51B5;
-    width: 12em;
+    width: 8em;
     line-height: 2em;
     border-radius: 0.5em;
+    margin-right: 2em;
     background-color: #3F51B5;
     color: #FFFFFF; }
-  .card_ask button:nth-of-type(2) {
-    float: right; }
   .card_ask button:hover {
     background: #FF5252; }
 
@@ -1657,30 +1660,100 @@ textarea:disabled {
   width: 40%;
   text-align: right;
   box-sizing: border-box;
-  padding-right: 3em; }
+  font-size: 1em;
+  padding-right: 1.5em; }
 
 .card_get_time {
-  float: left;
+  float: right;
+  width: 50%;
+  font-size: 1em;
   line-height: 2em;
   text-align: left;
+  padding-left: 2em;
   box-sizing: border-box; }
 
 .card-body .card-page:nth-of-type(2) {
   overflow: hidden; }
-  .card-body .card-page:nth-of-type(2) .btn_list {
-    float: left;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em; }
-  .card-body .card-page:nth-of-type(2) button {
-    width: 30%; }
   .card-body .card-page:nth-of-type(2) .card_ide_btn {
     float: left;
     width: 33%;
     line-height: 3em;
     box-sizing: border-box;
     padding: 0.5em 1em 0.5em 0; }
-  .card-body .card-page:nth-of-type(2) button:first-child {
+    .card-body .card-page:nth-of-type(2) .card_ide_btn .btn_list {
+      float: left;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+      width: 100%;
+      margin: 0; }
+  .card-body .card-page:nth-of-type(2) .card_ide_btn:first-child {
     width: 100%; }
+  .card-body .card-page:nth-of-type(2) .card_ide_btn:last-child {
+    float: right; }
+
+.status_flow_ul {
+  float: left;
+  width: 100%;
+  overflow: hidden; }
+  .status_flow_ul li {
+    clear: both; }
+  .status_flow_ul .message_left,
+  .status_flow_ul .message_right {
+    float: left;
+    line-height: 2em;
+    font-size: 1em;
+    box-sizing: border-box; }
+    .status_flow_ul .message_left span,
+    .status_flow_ul .message_right span {
+      display: block;
+      width: 3em;
+      float: left;
+      padding-right: 1em; }
+  .status_flow_ul .message_left {
+    text-align: right;
+    width: 40%;
+    position: relative; }
+  .status_flow_ul .message_left::before {
+    position: absolute;
+    content: ' ';
+    display: block;
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 50%;
+    top: 0.7em;
+    right: 0; }
+  .status_flow_ul .message_left::after {
+    position: absolute;
+    content: ' ';
+    width: 0.1em;
+    height: 1.7em;
+    top: 1.1em;
+    right: 0.2em; }
+  .status_flow_ul li:last-child .message_left::after {
+    display: none; }
+  .status_flow_ul .message_right {
+    width: 60%;
+    font-size: 1em;
+    padding-left: 1em;
+    box-sizing: border-box; }
+  .status_flow_ul .status_flow_item_default .message_left,
+  .status_flow_ul .status_flow_item_default .message_right {
+    color: #757575; }
+  .status_flow_ul .status_flow_item_default .message_left::before,
+  .status_flow_ul .status_flow_item_default .message_left::after {
+    background-color: #757575; }
+  .status_flow_ul .status_flow_item_success .message_left,
+  .status_flow_ul .status_flow_item_success .message_right {
+    color: #3F51B5; }
+  .status_flow_ul .status_flow_item_success .message_left::before,
+  .status_flow_ul .status_flow_item_success .message_left::after {
+    background-color: #3F51B5; }
+  .status_flow_ul .status_flow_item_fail .message_left,
+  .status_flow_ul .status_flow_item_fail .message_right {
+    color: #FF5252; }
+  .status_flow_ul .status_flow_item_fail .message_left::before,
+  .status_flow_ul .status_flow_item_fail .message_left::after {
+    background-color: #FF5252; }
 
 .dialog_open {
   position: absolute;
@@ -2384,7 +2457,7 @@ textarea:disabled {
 .crius-card-list .card-project {
   display: block;
   box-sizing: border-box;
-  border-radius: 10px;
+  border-radius: 1em;
   overflow: hidden; }
   .crius-card-list .card-project .card-foot {
     height: 2em;
@@ -2410,7 +2483,6 @@ textarea:disabled {
   display: block;
   height: 2em;
   line-height: 2em;
-  border-bottom: 1px solid #3F51B5;
   color: #FFFFFF;
   overflow: hidden;
   box-sizing: border-box;
@@ -2423,7 +2495,8 @@ textarea:disabled {
     float: left; }
 .crius-card-list .card-body {
   display: block;
-  overflow: hidden; }
+  overflow: hidden;
+  background-color: #fafafa; }
 .crius-card-list .card-foot {
   display: block;
   height: 2em;
@@ -2438,10 +2511,8 @@ textarea:disabled {
   background-color: #3F51B5; }
 .crius-card-list .card-project {
   margin-bottom: 1em;
-  background-color: #fafafa;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   margin-left: 10px;
-  padding-bottom: 0.5em;
   color: #757575;
   padding-top: 4em; }
 @media screen and (max-width: 768px) {
@@ -2528,17 +2599,6 @@ textarea:disabled {
   transition: opacity .3s ease;
   display: block;
   opacity: 1; }
-.crius-card-list .card-foot .active::before {
-  position: absolute;
-  content: ' ';
-  width: 0;
-  height: 0;
-  border-left: 16px solid transparent;
-  border-right: 16px solid transparent;
-  border-top: 10px solid #303F9F;
-  left: 50%;
-  margin-left: -23px;
-  margin-top: -4px; }
 .crius-card-list .card-foot .active::after {
   position: absolute;
   content: ' ';

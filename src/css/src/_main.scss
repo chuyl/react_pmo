@@ -39,7 +39,6 @@
         display: block;
         height: 2em;
         line-height: 2em;
-        border-bottom: 1px solid $primary-color;
         color: $primary-color-text;
         overflow: hidden;
         box-sizing: border-box;
@@ -55,6 +54,7 @@
     .card-body {
         display: block;
         overflow: hidden;
+        background-color: $background-color;
     }
     .card-foot {
         display: block;
@@ -75,10 +75,8 @@
 @mixin set_active($width_list, $set_height, $set_minheight, $set_head_itemheight, $open_ctrl_bgcolor) {
     .card-project {
         margin-bottom: 1em;
-        background-color: $background-color;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         margin-left: 10px;
-        padding-bottom: 0.5em;
         color: $secondary-text-color;
         padding-top: 4em;
     }
@@ -193,18 +191,18 @@
             opacity: 1;
         }
     }
-    .card-foot .active::before {
-        position: absolute;
-        content: ' ';
-        width: 0;
-        height: 0;
-        border-left: 16px solid transparent;
-        border-right: 16px solid transparent;
-        border-top: 10px solid $primary-color-dark;
-        left: 50%;
-        margin-left: -23px;
-        margin-top: -4px;
-    }
+    // .card-foot .active::before {
+    //     position: absolute;
+    //     content: ' ';
+    //     width: 0;
+    //     height: 0;
+    //     border-left: 16px solid transparent;
+    //     border-right: 16px solid transparent;
+    //     border-top: 10px solid $primary-color-dark;
+    //     left: 50%;
+    //     margin-left: -23px;
+    //     margin-top: -4px;
+    // }
     .card-foot .active::after {
         position: absolute;
         content: ' ';
