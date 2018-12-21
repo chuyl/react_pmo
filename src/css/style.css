@@ -1567,7 +1567,7 @@ textarea:disabled {
 .card_budget_btn,
 .card_final_btn {
   float: right;
-  line-height: 3em;
+  line-height: 2em;
   width: 33%;
   text-align: center;
   overflow: hidden;
@@ -1754,6 +1754,83 @@ textarea:disabled {
   .status_flow_ul .status_flow_item_fail .message_left::before,
   .status_flow_ul .status_flow_item_fail .message_left::after {
     background-color: #FF5252; }
+
+.input-group {
+  background-color: #fafafa;
+  color: #757575;
+  overflow: hidden; }
+  .input-group .input-group-btn {
+    float: left;
+    position: relative; }
+    .input-group .input-group-btn .button {
+      font-size: 1em;
+      line-height: 3em;
+      padding: 0.5em 1em;
+      border: 1px solid #757575;
+      border-top-left-radius: 1em;
+      border-bottom-left-radius: 1em;
+      margin-right: -1px;
+      box-sizing: border-box; }
+    .input-group .input-group-btn span {
+      position: absolute;
+      right: 1em;
+      top: 1em;
+      display: block;
+      border-top: 4px dashed;
+      border-right: 4px solid transparent;
+      border-left: 4px solid transparent; }
+  .input-group .form-control_input {
+    float: left;
+    border: 1px solid #757575;
+    box-sizing: border-box;
+    width: 16em;
+    height: 3em;
+    padding: 0.5em 2em; }
+  .input-group .input-group-btn_right {
+    float: left;
+    position: relative; }
+    .input-group .input-group-btn_right .button {
+      font-size: 1em;
+      line-height: 3em;
+      padding: 0.5em 1em;
+      border: 1px solid #757575;
+      border-top-right-radius: 1em;
+      border-bottom-right-radius: 1em;
+      margin-left: -1px;
+      box-sizing: border-box; }
+
+.search_terms {
+  float: left;
+  width: 9em;
+  line-height: 2em;
+  font-size: 1em;
+  color: #757575;
+  background-color: #fafafa;
+  box-sizing: border-box;
+  position: relative; }
+
+.del_btn {
+  content: '\E039';
+  width: 1em;
+  height: 1em;
+  display: block;
+  background-color: #757575;
+  border-radius: 50%;
+  outline: 7px solid #fafafa;
+  outline-offset: -14px;
+  transform: rotate(45deg);
+  position: absolute;
+  right: 0.5em;
+  top: 0.2em; }
+
+.del_btn_all {
+  float: left;
+  width: 6em;
+  line-height: 2em;
+  font-size: 1em;
+  color: #757575;
+  background-color: #fafafa;
+  box-sizing: border-box; }
 
 .dialog_open {
   position: absolute;
