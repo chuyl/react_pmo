@@ -324,8 +324,8 @@ class Budget extends Component {
 						<ScreeningMessage 
 							message={this.state.card_lists}
 							keywordSearch={["project_name","project_gather_name"]}
-							// selectListMessage={["view_mode","view_type"]}
-							// selectNameMessage={["mode","type"]}
+							selectListMessage={["staff_manage_list","project_type_list"]}
+							selectNameMessage={["project_leader_name","project_project_template_name"]}
 
 							screening_message={this.screening_information}
 						/>

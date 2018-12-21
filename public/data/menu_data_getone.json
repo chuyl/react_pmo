@@ -1,0 +1,51 @@
+{
+    "code": 0,
+    "error": 0,
+    "data": 
+        {
+            "id": 1,
+            "name":"PMO",
+            "data": {
+                "projectManagement": {
+                    "data": [
+                        {
+                            "id": "1",
+                            "name": "项目管理",
+                            "type": "projectManagement",
+                            "path": "/trainingProgram",
+                            "title": "培训项目",
+                            "component": "TrainingProgram"
+                        },
+                        {
+                            "id": "2",
+                            "name": "项目管理",
+                            "type": "projectManagement",
+                            "path": "/biddingPlan",
+                            "title": "所属项目集",
+                            "component": "BiddingPlan"
+                        }
+                    ],
+                    "name": "项目管理"
+                },
+                "budgetAndFinalAccountsManagementcond": {
+                    "data": [
+                        {
+                            "id": "3",
+                            "name": "预决算管理",
+                            "type": "budgetAndFinalAccountsManagementcond",
+                            "path": "/budgetExaminationAndApproval",
+                            "title": "审批",
+                            "component": "BudgetExaminationAndApproval"
+                        }
+                    ],
+                    "name": "预决算管理"
+                }
+            },
+            "role_id":"8"
+        }
+    ,
+    "during_time": 27,
+    "end_time": 1539500978642,
+    "msg": "查询成功",
+    "stat_time": 1539500978615
+}

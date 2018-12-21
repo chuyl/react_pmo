@@ -43,6 +43,8 @@ var local = {
                 "view_type":{"url":"../data/view_type.json","version":"1.0"},//视图类型
                 "view_mode":{"url":"../data/view_mode.json","version":"1.0"},//视图模块
                 "new_view":{"url":"../data/new_view.json","version":"1.0"},//新增视图
+                "menu_data_list":{"url":"../data/menu_data_list.json","version":"1.0"},//菜单角色list
+                "menu_data_getone":{"url":"../data/menu_data_getone.json","version":"1.0"},
                 "menu_manage_list":{"url":"../data/menu_manage_list.json","version":"1.0"},//菜单管理
                 "examine_manage_commitbudget":{"url":"../data/examine_manage_commitbudget.json","version":"1.0"},//提交预算接口
                 "examine_manage_commitfinal":{"url":"../data/examine_manage_commitfinal.json","version":"1.0"},//提交决算接口

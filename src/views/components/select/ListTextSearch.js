@@ -155,6 +155,7 @@ class ListTextSearch extends Component {
     //     this.infos()
     // }
     render() {
+        console.log(this.props.addButton)
         const { selectedInfo,selectedIdInfo, id, labelValue,disabled } = this.props;
         return (
             <div className="search_info_list_card">
@@ -228,7 +229,7 @@ class ListTextSearch extends Component {
                                     )
                                 })}
                         </ul>
-                        <div className="add_project_new" onClick={(e) => {
+                        {this.props.addButton===""?"":<div className="add_project_new" onClick={(e) => {
                                 this.setState({
                                     add_customer: true
                                 })
@@ -237,7 +238,8 @@ class ListTextSearch extends Component {
                                 this.fetchData()
                             }}
 
-                        >新增</div>
+                        >新增</div>}
+                        
                     </div>
                 </div>
                 <div className={this.state.add_customer ? "add_info_list open" : "add_info_list"}>
