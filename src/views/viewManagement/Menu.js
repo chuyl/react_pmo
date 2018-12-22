@@ -9,13 +9,14 @@ class Menu extends Component {
 		this_role_message_id:"",
 		role_id:"",
 		role_table_list:[],
-		role_table_list:[],
+		role_table_lists:[],
 		role_data:{},
 		role_message_data:{},
 		menuLeft:[],
 		menuRight:[],
 		showMenuListState:false,
-		checkedMenuList:[]
+		checkedMenuLeftList:[],
+		checkedMenuRightList:[]
 	}
 	componentWillMount(){
 		this.fetchListData()
@@ -94,7 +95,6 @@ class Menu extends Component {
 			}
 		}
 		var data = {name:this.state.role_name,role_id:this.state.this_role_message_id,data:{}};
-		console.log(data)
 		getData(getRouter("menu_manage_add"), { token:sessionStorage.token,data:data }, cb, {});
 	}
 		/** 
@@ -122,7 +122,6 @@ class Menu extends Component {
 			}
 		}
 		var data = {id:this.state.role_id,name:this.state.role_name,role_id:this.state.this_role_message_id,data:this.state.role_data};
-		console.log(data)
 		getData(getRouter("menu_manage_edit"), { token:sessionStorage.token,data:data }, cb, {});
 	}
 	/** 
@@ -155,6 +154,11 @@ class Menu extends Component {
 		getData(getRouter("menu_data_getone"), { token:sessionStorage.token,id:id }, cb, {});
 		
 	}
+	/** 
+	 * @time 2018-12-22
+	 * @author xuesong
+	 * @param roleList 函数 获取getone的rolelist
+	 */
 	roleList=(id)=>{
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
@@ -164,28 +168,27 @@ class Menu extends Component {
 					this_role_message_id:message.data.role_id,
 					role_id:message.data.id,
 					role_message_data:message.data.data
-		
 				})
-			
 				var data = message.data.data;
 				var menuLeftCheck = document.getElementsByName("menuLeftCheck");
-				var checkedMenuList=[];
+				for(var i = 0;i<menuLeftCheck.length;i++){
+					menuLeftCheck[i].checked=false;
+				}
+				var checkedMenuLeftList=[];
 				for(var m in data){
 					for(var n=0;n<this.state.menuLeft.length;n++ ){
 						if(m===this.state.menuLeft[n].type){
 							for(var j = 0;j<menuLeftCheck.length;j++){
 								if(menuLeftCheck[j].value===m){
-									checkedMenuList.push(this.state.menuLeft[n])
+									checkedMenuLeftList.push(this.state.menuLeft[n])
 									menuLeftCheck[j].checked=true;
 								}
 							}
-						
 						}
 					}
-					
 				}
 				this.setState({
-					checkedMenuList:checkedMenuList
+					checkedMenuLeftList:checkedMenuLeftList
 				})
 				this.menu_data_listmenuright()
 			}else if(message.error === 2){
@@ -193,13 +196,17 @@ class Menu extends Component {
 				sessionStorage.token="";
 				if(window.location.hash.split("#")[1]!=="/"){
 					window.location.href=window.location.href.split("#/")[0]
-				
 				  }
 			}
 		}
 		getData(getRouter("menu_data_getone"), { token:sessionStorage.token,id:id }, cb, {});
 			
 	}
+	/** 
+	 * @time 2018-12-22
+	 * @author xuesong
+	 * @param menu_data_listmenuleft 函数 获取左侧menu列表
+	 */
 	menu_data_listmenuleft=()=>{
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
@@ -217,20 +224,24 @@ class Menu extends Component {
 		}
 		getData(getRouter("menu_data_listmenuleft"), { token:sessionStorage.token }, cb, {});
 	}
-	// menu_right_list=()=>{}
+	/** 
+	 * @time 2018-12-22
+	 * @author xuesong
+	 * @param menu_data_listmenuright 函数 获取右侧menu列表
+	 */
 	menu_data_listmenuright=()=>{
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
 				var menuRight=[];
 				// var menuLeftCheck = document.getElementsByName("menuLeftCheck");
 				var menuRightCheck = document.getElementsByName("menuRightCheck");
-				// for(var i = 0;i<menuLeftCheck.length;i++){
-					
-				// }
+				for(var w = 0;w<menuRightCheck.length;w++){
+					menuRightCheck[w].checked=false;
+				}
 				//循环初始化被选中的menu1的子节点
-				for(var m = 0;m<this.state.checkedMenuList.length;m++){
+				for(var m = 0;m<this.state.checkedMenuLeftList.length;m++){
 					for(var n = 0;n<message.data.length;n++){
-						if(message.data[n].fid===this.state.checkedMenuList[m].id){
+						if(message.data[n].fid===this.state.checkedMenuLeftList[m].id){
 							menuRight.push(message.data[n])
 						}
 					}
@@ -238,25 +249,17 @@ class Menu extends Component {
 				this.setState({
 					menuRight:menuRight
 				})
-				// console.log(menuLeftCheck[1].value)
-				//role_message_data为初始化menu的object
 				var role_message_data=this.state.role_message_data;
 				for(var k in role_message_data){
 					for(var j = 0;j<role_message_data[k].data.length;j++){
 						for(var s = 0;s<menuRightCheck.length;s++){
-							var title_url = role_message_data[k].data[j].url===null?role_message_data[k].data[j].title:role_message_data[k].data[j].title+role_message_data[k].data[j].url;
+							var title_url = role_message_data[k].data[j].url===null?role_message_data[k].data[j].component:role_message_data[k].data[j].component+role_message_data[k].data[j].url;
 							if(menuRightCheck[s].value===title_url){
 								menuRightCheck[s].checked=true;
 							}
 						}
 					}
-				
-					// for(var k = 0;message)
-					
 				}
-				// this.setState({
-				// 	menuRight:message.data
-				// })
 			}else if(message.error === 2){
 				sessionStorage.logged = false;
 				sessionStorage.token="";
@@ -268,49 +271,91 @@ class Menu extends Component {
 		}
 		getData(getRouter("menu_data_listmenuright"), { token:sessionStorage.token }, cb, {});
 	}
+	/** 
+	 * @time 2018-12-22
+	 * @author xuesong
+	 * @param click_check_left 函数 选中左侧menu的check
+	 */
 	click_check_left=()=>{
 		var data = this.state.role_message_data;
 				var menuLeftCheck = document.getElementsByName("menuLeftCheck");
 			
-				var checkedMenuList=[];
-				console.log(this.state.menuLeft)
-				
+				var checkedMenuLeftList=[];
 					for(var j = 0;j<menuLeftCheck.length;j++){
-						console.log(menuLeftCheck[j].checked)
 						if(menuLeftCheck[j].checked===true){
 							for(var i=0;i<this.state.menuLeft.length;i++ ){
 								if(this.state.menuLeft[i].type===menuLeftCheck[j].value){
 									
-									checkedMenuList.push(this.state.menuLeft[i])
+									checkedMenuLeftList.push(this.state.menuLeft[i])
 								}
 							}
 						}
 					}
 					this.setState({
-						checkedMenuList:checkedMenuList
+						checkedMenuLeftList:checkedMenuLeftList
 					})
-					console.log(checkedMenuList)
 					this.menu_data_listmenuright()
 				
 	}
-	change_menu_right=()=>{
-		console.log(this.state.checkedMenuList)
-	}
+/** 
+	 * @time 2018-12-22
+	 * @author xuesong
+	 * @param hold_menu_data 函数 保存
+	 */
 	hold_menu_data=()=>{
-		var menuLeftCheck = document.getElementsByName("menuLeftCheck");
+		// var menuLeftCheck = document.getElementsByName("menuLeftCheck");
 		var menuRightCheck = document.getElementsByName("menuRightCheck");
+		var checkedMenuRightList=[];
 		var obj = {};
-		// var menu_left
-		for(var i = 0;i<menuRightCheck.length;i++){
-			if(menuRightCheck[i].checked===true){
-
-				console.log(menuRightCheck[i])
+		var checkedMenuLeftList = this.state.checkedMenuLeftList;
+		
+		
+		var menuRight = this.state.menuRight;
+		for(var j = 0;j<menuRightCheck.length;j++){
+			if(menuRightCheck[j].checked===true){
+				for(var n = 0;n<menuRight.length;n++){
+					var menuRightMessage = menuRight[n].url!==null?menuRight[n].component+menuRight[n].url:menuRight[n].component;
+					if(menuRightMessage===menuRightCheck[j].value){
+						checkedMenuRightList.push(menuRight[n])
+					}
+				}
 			}
-			// for(var j = 0;j<this.state.menuRight.length;j++){
-				
-			// }
-			
 		}
+		for(var i = 0;i<checkedMenuLeftList.length;i++){
+			var list_arr=[]
+			for(var m = 0;m<checkedMenuRightList.length;m++){
+				if(checkedMenuLeftList[i].id===checkedMenuRightList[m].fid){
+					list_arr.push(checkedMenuRightList[m])
+					console.log(list_arr)
+					 obj[checkedMenuLeftList[i].type]={data:list_arr,name:checkedMenuLeftList[i].name}
+				}
+			}
+
+		}
+		var cb = (route, message, arg) => {
+			if (message.error === 0) {
+				this.setState({
+					alertAddRoleState:false,
+					showMenuListState:false
+				})
+
+
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
+			}
+		}
+		var data = {id:this.state.role_id,name:this.state.role_name,role_id:this.state.this_role_message_id,data:obj};
+		console.log(data)
+		getData(getRouter("menu_manage_edit"), { token:sessionStorage.token,data:data }, cb, {});
+		// this.setState({
+		// 	checkedMenuRightList:checkedMenuRightList
+		// })
 	}
 	del_role=(id)=>{
 		var cb = (route, message, arg) => {
@@ -375,6 +420,25 @@ class Menu extends Component {
 				{this.state.showMenuListState?<div  className="view_list overflow">
 				
 					<ul>
+						<li>
+							<input id="menuLeftAllCheck" onClick={()=>{
+								 var checklist = document.getElementsByName("menuLeftCheck");
+								 if(document.getElementById("menuLeftAllCheck").checked) {
+									 for(var i = 0; i < checklist.length; i++) {
+										 checklist[i].checked = 1;
+									 }
+								 } else {
+									 for(var j = 0; j < checklist.length; j++) {
+										 checklist[j].checked = 0;
+									 }
+								 }
+								 this.click_check_left()
+										// console.log(document.getElementsByName("menuLeftCheck").checked)
+									}}  name="menuLeftAllCheck" className="menucheckbox" type="checkbox"/>
+							<span>
+								全选
+							</span>
+						</li>
 						{this.state.menuLeft.map((menuLeft,index)=>{
 							return(
 								<li key={index}>
@@ -397,10 +461,28 @@ class Menu extends Component {
 				</div>:""}
 				{this.state.showMenuListState?<div  className="view_list overflow">
 					<ul>
+					<li>
+							<input id="menuRigthAllCheck" onClick={()=>{
+								 var checklist = document.getElementsByName("menuRightCheck");
+								 if(document.getElementById("menuRigthAllCheck").checked) {
+									 for(var i = 0; i < checklist.length; i++) {
+										 checklist[i].checked = 1;
+									 }
+								 } else {
+									 for(var j = 0; j < checklist.length; j++) {
+										 checklist[j].checked = 0;
+									 }
+								 }
+										// console.log(document.getElementsByName("menuLeftCheck").checked)
+									}}  name="menuLeftAllCheck" className="menucheckbox" type="checkbox"/>
+							<span>
+								全选
+							</span>
+						</li>
 						{this.state.menuRight.map((menuRight,index)=>{
 							return(
 								<li key={index}>
-									<input value={menuRight.url===null?menuRight.title:menuRight.title+menuRight.url} name="menuRightCheck" className="menucheckbox" type="checkbox"/>
+									<input value={menuRight.url===null?menuRight.component:menuRight.component+menuRight.url} name="menuRightCheck" className="menucheckbox" type="checkbox"/>
 									<span>
 										{menuRight.title}
 									</span>
