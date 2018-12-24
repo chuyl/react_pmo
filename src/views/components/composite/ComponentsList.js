@@ -156,6 +156,7 @@ handleChildChange=(formData)=>{
      
         return (
                 this.props.componentslist.map((form_list,index) => {
+                    console.log(this.props.disabled)
                     return (
                             form_list.type_name === "Cards" ?
                                 <Cards  
