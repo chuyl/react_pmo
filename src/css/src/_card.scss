@@ -353,7 +353,11 @@ textarea:disabled {
         margin-bottom: 0.2em;
     }
 }
-
+.card_budget_btn{
+    span{
+        font-size: 1.5em;
+    }
+}
 .status_box_ul {
     float: left;
     overflow: hidden;
@@ -585,7 +589,7 @@ textarea:disabled {
             font-size: 1em;
             line-height: 3em;
             padding: 0.5em 1em;
-            border: 1px solid $secondary-text-color;
+            border-right: 1px solid $secondary-text-color;
             border-top-left-radius: 1em;
             border-bottom-left-radius: 1em;
             margin-right: -1px;
@@ -616,7 +620,7 @@ textarea:disabled {
             font-size: 1em;
             line-height: 3em;
             padding: 0.5em 1em;
-            border: 1px solid $secondary-text-color;
+            border-left: 1px solid $secondary-text-color;
             border-top-right-radius: 1em;
             border-bottom-right-radius: 1em;
             margin-left: -1px;
@@ -637,7 +641,6 @@ textarea:disabled {
 }
 
 .del_btn {
-    content: '\E039';
     width: 1em;
     height: 1em;
     display: block;
