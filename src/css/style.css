@@ -1136,7 +1136,7 @@ html, body {
   height: 4px; }
 
 .overflow {
-  height: 100%;
+  height: 96vh;
   overflow-x: hidden;
   overflow-y: scroll; }
 
@@ -1169,7 +1169,7 @@ html, body {
   position: fixed;
   top: 0;
   background-color: #427881;
-  /* height: 600px; js代替 */
+  /* height: 600px; js浠ｆ浛 */
   left: 0;
   z-index: 10; }
 
@@ -1197,7 +1197,7 @@ html, body {
   display: flex;
   background: #3F51B5;
   width: 100%;
-  height: 100%;
+  height: 96vh;
   position: fixed;
   flex: 1 0 auto; }
 
@@ -1296,7 +1296,7 @@ html, body {
 .card_box {
   padding: 0;
   transition: all 0.3s;
-  height: 100vh;
+  height: 96vh;
   overflow: hidden;
   overflow-y: auto;
   position: relative;
@@ -1522,7 +1522,7 @@ html, body {
     position: fixed;
     top: 0;
     height: 91vh;
-    /* height: 600px; js代替 */
+    /* height: 600px; js浠ｆ浛 */
     left: 0;
     z-index: 10; } }
 .message_left {
@@ -1862,7 +1862,7 @@ textarea:disabled {
   bottom: 5px;
   height: 500px;
   background-color: #FF5252;
-  /* height: 600px; js代替 */
+  /* height: 600px; js浠ｆ浛 */
   right: 5px;
   z-index: 20; }
 
@@ -1886,7 +1886,7 @@ textarea:disabled {
     bottom: 0;
     height: 100vh;
     background-color: #FF5252;
-    /* height: 600px; js代替 */
+    /* height: 600px; js浠ｆ浛 */
     right: 0;
     z-index: 20; } }
 .add_info_list {

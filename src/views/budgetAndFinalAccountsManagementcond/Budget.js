@@ -310,7 +310,7 @@ class Budget extends Component {
 			<div>
 				<div id="" className="container">
 					<div>
-						<div className="add_button" onClick={(e) => {
+						{/* <div className="add_button" onClick={(e) => {
 							this.fetchProjectData("addProject")
 							this.card_box_concent([], e)
 							this.setState({
@@ -320,7 +320,7 @@ class Budget extends Component {
 						}}
 						>
 							添加
-						</div>
+						</div> */}
 						<ScreeningMessage 
 							message={this.state.card_lists}
 							keywordSearch={["project_name","project_gather_name"]}

@@ -269,6 +269,7 @@ class TrainingProgram extends Component {
 					this.fetchProjectData("editProject")
 					this.setState({    //  项目创建成功,打开编辑页面。更新view
 						dataId:message.data.id,
+						// add_button:{unicode:message.unicode}
 					}) 
 			}else if(message.error === 2){
 				console.log("未登录")

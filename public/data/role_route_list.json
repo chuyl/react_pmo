@@ -1,0 +1,25 @@
+{
+    "code": 0,
+    "error": 0,
+    "data": [
+        {
+            "id": 1,
+            "name":"PMO",
+            "role_id":"6"
+        },
+        {
+            "id": 2,
+            "name":"系统管理员",
+            "role_id":"8"
+        },
+        {
+            "id": 3,
+            "name":"普通员工",
+            "role_id":"9"
+        }
+    ],
+    "during_time": 27,
+    "end_time": 1539500978642,
+    "msg": "查询成功",
+    "stat_time": 1539500978615
+}

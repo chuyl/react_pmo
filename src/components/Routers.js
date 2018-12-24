@@ -35,6 +35,7 @@ import ServiceConsumables from '../views/implementationManagement/ServiceConsuma
 //视图管理
 import View from '../views/viewManagement/View'
 import Menu from '../views/viewManagement/Menu'
+import UrlPower from '../views/viewManagement/UrlPower'
 // import Langs from '../language'
 const Langs = sessionStorage.Language?JSON.parse(sessionStorage.Language):{};
 class Routers extends Component{
@@ -74,6 +75,7 @@ class Routers extends Component{
               :message.component==="ServiceConsumables"?ServiceConsumables
               :message.component==="View"?View
               :message.component==="Menu"?Menu
+              :message.component==="UrlPower"?UrlPower
               :""} />
              
 
