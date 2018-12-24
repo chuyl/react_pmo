@@ -305,6 +305,7 @@ handleChildChange=(formData)=>{
                                     className={form_list.class}
                                     defaultValue={form_list.default_value}
                                     beforeApiUri={form_list.before_api_uri}
+                                    submit_application_first={this.examine_bool_message}
                                     message={this.props.componentsdata?this.props.componentsdata:""} 
                                 />
                             :form_list.type_name === "IsAgreeApplications"?
@@ -316,6 +317,7 @@ handleChildChange=(formData)=>{
                                     className={form_list.class}
                                     defaultValue={form_list.default_value}
                                     beforeApiUri={form_list.before_api_uri}
+                                    
                                     examine_bool_first={this.examine_bool_message}
                                     message={this.props.componentsdata?this.props.componentsdata:""} 
                                 />

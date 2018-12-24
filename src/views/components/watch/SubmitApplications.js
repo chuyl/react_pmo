@@ -8,6 +8,7 @@
     class ApplicationsState extends Component {
         state={
             alertState:false, //弹出框的状态
+            alertTitle:"提交"
         }
         /** 
 	 * @time 2018-12-14
@@ -31,6 +32,7 @@ sureCallback(msg){
             this.setState({
                 alertState:false,
             })
+            this.props.submit_application_first(true)
         }else if(message.error === 2){
             console.log("未登录")
             sessionStorage.logged = false;
@@ -43,8 +45,17 @@ sureCallback(msg){
         
 
     }
-    console.log(this.props.beforeApiUri)
-  getData(getRouter(this.props.beforeApiUri), {id:this.props.message.id,token:sessionStorage.token}, cb, {});
+    var beforeApiUri=this.props.beforeApiUri.split(",");
+
+    if(this.props.message.examine[this.props.thisKey].state==="0"||this.props.message.examine[this.props.thisKey].state==="-1"){
+       getData(getRouter(beforeApiUri[0]?beforeApiUri[0]:""), {id:this.props.message.id,token:sessionStorage.token}, cb, {});
+    }
+    else if(this.props.message.examine[this.props.thisKey].state==="1"){
+        console.log(beforeApiUri)
+        console.log(beforeApiUri[1])
+        getData(getRouter(beforeApiUri[1]?beforeApiUri[1]:""), {id:this.props.message.id,token:sessionStorage.token}, cb, {});
+    }
+ // getData(getRouter(this.props.beforeApiUri), {id:this.props.message.id,token:sessionStorage.token}, cb, {});
 }
         render(){
             const {message,labelValue,thisKey} =this.props;
@@ -60,7 +71,18 @@ sureCallback(msg){
                             })
                         }}
                     >{"提交"+labelValue}</button>
-                  :message.examine[thisKey].state==="1"?<span>待审核</span>
+                  :message.examine[thisKey].state==="1"?
+                    <div>
+                        <span>待审核</span>
+                        <button 
+                                onClick={()=>{
+                                    this.setState({
+                                        alertTitle:"撤销",
+                                        alertState:true
+                                    })
+                                }}
+                            >{"撤销"+labelValue}</button>
+                    </div>
                   :message.examine[thisKey].state==="2"?<span>审核通过</span>
                   :message.examine[thisKey].state==="-1"?<button className={className[1]?className[1]:""} 
                         onClick={()=>{
@@ -70,7 +92,7 @@ sureCallback(msg){
                         }}
                   >再次提交</button>
                   :"":""}
-                    <Alert alertTitle={"提交"+labelValue} alertMsg = {this.state.alertMsg} sureCallback = {this.sureCallback.bind(this)} cancelCallback = { this.cancelCallback.bind(this) } alertState={this.state.alertState}/>
+                    <Alert alertTitle={this.state.alertTitle+labelValue} alertMsg = {this.state.alertMsg} sureCallback = {this.sureCallback.bind(this)} cancelCallback = { this.cancelCallback.bind(this) } alertState={this.state.alertState}/>
               </div>:<div className={className[0]?className[0]:""}>{this.props.defaultValue}</div>
             )
         }

@@ -49,7 +49,15 @@ sureCallback(msg){
     }
     console.log(this.state.isAgreeMessage)
     console.log(this.state.pass)
-  getData(getRouter(this.props.beforeApiUri), {parent_id:this.props.message.id,note:this.state.isAgreeMessage,pass:this.state.pass,token:sessionStorage.token}, cb, {});
+    var beforeApiUri=this.props.beforeApiUri.split(",");
+    if(this.state.pass==="1"){
+        console.log(beforeApiUri[0])
+        getData(getRouter(beforeApiUri[0]?beforeApiUri[0]:""), {parent_id:this.props.message.id,note:this.state.isAgreeMessage,token:sessionStorage.token}, cb, {});
+    }else if(this.state.pass==="2"){
+        console.log(beforeApiUri[1])
+        getData(getRouter(beforeApiUri[1]?beforeApiUri[1]:""), {parent_id:this.props.message.id,note:this.state.isAgreeMessage,token:sessionStorage.token}, cb, {});
+    }
+  
 }
         render(){
             const {message,labelValue,thisKey} =this.props;

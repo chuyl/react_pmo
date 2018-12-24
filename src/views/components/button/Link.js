@@ -15,7 +15,7 @@
             group_data_arr:[], 
             edit_linkCard_data:[], 
             linkListCardData:[], 
-            linkpage:this.props.linkpage,
+            messageList:this.props.messageList,
             remind_state:false
         }
         static contextTypes = {
@@ -29,7 +29,7 @@
         fetchData=()=> {
             var json_view=JSON.parse(sessionStorage.view)
             for(var i=0;i<json_view.length;i++){
-                if(json_view[i].name===this.state.linkpage){
+                if(json_view[i].name===this.state.messageList){
                     
                     var json_message=json_view[i].data;
                     this.setState({
@@ -46,7 +46,7 @@
             //         })
             //     }
             // }
-            // getData(getRouter("json_manage_name"), {name:this.state.linkpage,token:sessionStorage.token }, cb, {});
+            // getData(getRouter("json_manage_name"), {name:this.state.messageList,token:sessionStorage.token }, cb, {});
         }
         /** 
         * @author xuesong
@@ -79,7 +79,7 @@
                         var json_view=JSON.parse(sessionStorage.view)
                         for(var i=0;i<json_view.length;i++){
 
-                            if(json_view[i].name===this.props.linkpage){
+                            if(json_view[i].name===this.props.messageList){
                                 var json_message=json_view[i].data;
                                 var newState = {
                                     add_button:json_message["form-list"]?json_message["form-list"]:[],
@@ -113,11 +113,12 @@
                      this.props.oneChange(newState);
                 }
                 //获取数据接口
-                getData(getRouter(this.props.messageList),  {token:sessionStorage.token, id:this.props.dataId }, cb,  {}); 
+                console.log(this.props.linkpage)
+                getData(getRouter(this.props.linkpage),  {token:sessionStorage.token, id:this.props.dataId }, cb,  {}); 
             //}
         }
         //获取视图接口
-      //  getData(getRouter("json_manage_name"),  {name:this.props.linkpage,token:sessionStorage.token}, cb,  {}); 
+      //  getData(getRouter("json_manage_name"),  {name:this.props.messageList,token:sessionStorage.token}, cb,  {}); 
         
     //}
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Popup from '../components/modal/Popup'
 import ViewTextField from '../components/input/ViewTextField'
+import Alert from '../components/modal/Alert'
 import { getData, getRouter } from '../../utils/helpers'
 class Menu extends Component {
 	state = {
@@ -16,11 +17,34 @@ class Menu extends Component {
 		menuRight:[],
 		showMenuListState:false,
 		checkedMenuLeftList:[],
-		checkedMenuRightList:[]
+		checkedMenuRightList:[],
+		alertDelState:false,
+		alertDelMsg:"是否确认删除"
 	}
 	componentWillMount(){
 		this.fetchListData()
 		this.menu_data_listmenuleft()
+	}
+		/** 
+	 * @time 2018-11-29
+	 * @author xuesong
+	 * @param sureCopyCallback 函数 一键复制视图
+	 */
+	sureDelCallback=()=>{
+		console.log(this.state.this_role_message_id)
+		this.del_role(this.state.this_role_message_id)
+		// this.copyViewMessage(this.state.copy_message)
+
+	}
+			/** 
+	 * @time 2018-11-29
+	 * @author xuesong
+	 * @param cancelCopyCallback 函数 一键复制视图
+	 */
+	cancelDelCallback=()=>{
+		this.setState({
+			alertDelState:false
+		})		
 	}
 	/** 
 	 * @time 2018-12-15
@@ -351,15 +375,22 @@ class Menu extends Component {
 			}
 		}
 		var data = {id:this.state.role_id,name:this.state.role_name,role_id:this.state.this_role_message_id,data:obj};
-		console.log(data)
 		getData(getRouter("menu_manage_edit"), { token:sessionStorage.token,data:data }, cb, {});
 		// this.setState({
 		// 	checkedMenuRightList:checkedMenuRightList
 		// })
 	}
+	/** 
+	 * @time 2018-12-22
+	 * @author xuesong
+	 * @param del_role 函数 删除角色数据
+	 */
 	del_role=(id)=>{
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
+				this.setState({
+					alertDelState:false
+				})
 				this.fetchListData()
 			}else if(message.error === 2){
 				sessionStorage.logged = false;
@@ -400,7 +431,13 @@ class Menu extends Component {
 												}}>修改名称
 											</button>
 											<button style={{width:"70px"}} className="label_delete_button" onClick={()=>{
-												this.del_role(view.id)
+												this.setState({
+													alertDelState:true,
+													this_role_message_id:view.id
+													
+												})
+												
+												// this.del_role(view.id)
 												
 												}}>删除
 											</button>
@@ -491,6 +528,7 @@ class Menu extends Component {
 									</span>
 							</li>
 							)
+							
 						})}
 					</ul>
 				</div>:""}
@@ -527,6 +565,7 @@ class Menu extends Component {
 					cancelCallback = { this.cancelAddRoleCallback.bind(this) } 
 					alertState={this.state.alertAddRoleState}
 				/>
+				<Alert alertTitle={"删除"} alertMsg = {this.state.alertDelMsg} sureCallback = {this.sureDelCallback.bind(this)} cancelCallback = { this.cancelDelCallback.bind(this) } alertState={this.state.alertDelState}/>
         </div>
 		)
 	}
