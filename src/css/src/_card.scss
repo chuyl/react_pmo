@@ -583,86 +583,176 @@ textarea:disabled {
 }
 
 .select_search_list {
-    .search_info_list_card {
-        background-color: $background-color;
-        color: $secondary-text-color;
-        overflow: hidden;
-        .search_info_list_label {
-            float: left;
-            position: relative;
-            .button {
-                font-size: 1em;
-                line-height: 3em;
-                padding: 0.5em 1em;
-                border-right: 1px solid $secondary-text-color;
-                border-top-left-radius: 1em;
-                border-bottom-left-radius: 1em;
-                margin-right: -1px;
-                box-sizing: border-box;
-            }
-            span {
-                position: absolute;
-                right: 1em;
-                top: 1em;
-                display: block;
-                border-top: 4px dashed;
-                border-right: 4px solid transparent;
-                border-left: 4px solid transparent;
-            }
-        }
-        .form_control {
-            float: left;
-            border: 1px solid $secondary-text-color;
-            box-sizing: border-box;
-            width: 16em;
-            height: 3em;
-            padding: 0.5em 2em;
-        }
-        .select_right_btn {
-            float: left;
-            position: relative;
-            .button {
-                font-size: 1em;
-                line-height: 3em;
-                padding: 0.5em 1em;
-                border-left: 1px solid $secondary-text-color;
-                border-top-right-radius: 1em;
-                border-bottom-right-radius: 1em;
-                margin-left: -1px;
-                box-sizing: border-box;
-            }
-        }
-    }
-    .search_terms {
+    background-color: $background-color;
+    color: $secondary-text-color;
+    overflow: hidden;
+    float: left;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width: 20%;
+    box-sizing: border-box;
+    .selectedInfo {
         float: left;
-        width: 9em;
-        line-height: 2em;
-        font-size: 1em;
-        color: $secondary-text-color;
-        background-color: $background-color;
-        box-sizing: border-box;
         position: relative;
-    }
-    .del_btn {
-        width: 1em;
-        height: 2em;
-        display: block;
-        background-color: $secondary-text-color;
-        border-radius: 50%;
-        outline: 7px solid $background-color;
-        outline-offset: -14px;
-        transform: rotate(45deg);
-        position: absolute;
-        right: 0.5em;
-        top: 0.2em;
-    }
-    .del_btn_all {
-        float: left;
-        width: 6em;
-        line-height: 2em;
-        font-size: 1em;
-        color: $secondary-text-color;
-        background-color: $background-color;
+        width: 100%;
         box-sizing: border-box;
+        height: 2em;
+        outline: none;
+        border: 0;
+        span {
+            position: absolute;
+            right: 1em;
+            top: 1em;
+            display: block;
+            border-top: 4px dashed;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;
+        }
+    }
+    .search_info_list.open {
+        margin: 0;
+    }
+}
+
+.form_control {
+    float: left;
+    box-sizing: border-box;
+    width: 60%;
+    height: 2em;
+    padding-bottom: 1px;
+    input {
+        border: 0;
+        outline: none;
+        float: left;
+        width: 100%;
+        height: 2.1em;
+        border-left: 1px solid $secondary-text-color;
+        box-sizing: border-box;
+        padding-left: 0.5em;
+        border-right: 1px solid $secondary-text-color;
+    }
+}
+
+.select_right_btn {
+    position: relative;
+    width: 20%;
+    float: left;
+    line-height: 2em;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: $background-color;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    margin-bottom: 2em;
+}
+
+.search_terms {
+    float: left;
+    width: 60%;
+    line-height: 2em;
+    color: $secondary-text-color;
+    background-color: $background-color;
+    box-sizing: border-box;
+    position: relative;
+    .search_info_list.open {
+        margin: 0;
+    }
+    .selectedInfo {
+        float: left;
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+        height: 2em;
+        outline: none;
+        border: 0;
+        span {
+            position: absolute;
+            right: 1em;
+            top: 1em;
+            display: block;
+            border-top: 4px dashed;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;
+        }
+    }
+}
+
+.del_btn {
+    width: 1em;
+    height: 2em;
+    display: block;
+    background-color: $secondary-text-color;
+    border-radius: 50%;
+    outline: 7px solid $background-color;
+    outline-offset: -14px;
+    transform: rotate(45deg);
+    position: absolute;
+    right: 0.5em;
+    top: 0.2em;
+}
+
+.del_btn_all {
+    float: left;
+    width: 6em;
+    line-height: 2em;
+    font-size: 1em;
+    color: $secondary-text-color;
+    background-color: $background-color;
+    box-sizing: border-box;
+}
+
+.statistical_table {
+    background: $background-color;
+    width: 60%;
+    $table_base_tr: 1.5em left (1em 0) (0);
+    $table_base_td: 1.5em left (1em 0.5em) (0);
+    $table_base_th: 1.5em left (1em 0.5em) (0);
+    $table_base: ( tr: $table_base_tr, td:$table_base_td, th: $table_base_th, );
+    @include creat_table($table_base); //
+    // @include set_init(1); //设置是否有标题空隙
+    @include set_title_space(1em, 2); //设置格线
+    $table_title_line: 1px solid #666;
+    $table_content_line: 1px solid $secondary-text-color;
+    $table_out_line: 1px solid #000;
+    @include set_x_title_line($table_title_line, 2);
+    @include set_y_title_line($table_title_line, 1); //
+    @include set_x_content_line($table_content_line, 1);
+    // @include set_y_content_line($table_content_line, 1);
+    // @include set_x_out_line($table_out_line); //
+    //设置颜色
+    // $table_title_bgcolor: (#fff #000 #aaf #00d);
+    // $table_content_x_bgcolor: (#fff rgba(0, 0, 0, .2) #fff rgba(0, 0, 0, .3));
+    // $table_content_y_bgcolor: (#fff rgba(0, 0, 0, .2) #fff rgba(0, 0, 0, .3));
+    // $table_content_x_y_bgcolor: (#000 #fff #fff #000); // @include set_x_title_bgcolor($table_title_bgcolor);//
+    // @include set_y_title_bgcolor($table_title_bgcolor);//
+    // @include set_x_content_bgcolor($table_content_x_bgcolor);//
+    // @include set_y_content_bgcolor($table_content_y_bgcolor);//
+    // @include set_x_y_content_bgcolor($table_content_x_y_bgcolor);//
+}
+
+.nyx-change-page {
+    color: $primary-color-text;
+    display: block;
+    width: 60%;
+    box-sizing: border-box;
+    text-align: center;
+    padding-left: 2em;
+    margin-top: 1em;
+    span:nth-of-type(1) {
+        margin-right: 2em;
+    }
+    a {
+        cursor: pointer;
+        text-decoration: none;
+        margin-right: 1em;
+    }
+    .nyx-change-page-href:nth-of-type(1),
+    .nyx-change-page-href:nth-of-type(2) {
+        float: left;
+    }
+    .nyx-change-page-href:nth-of-type(3),
+    .nyx-change-page-href:nth-of-type(4) {
+        float: right;
     }
 }

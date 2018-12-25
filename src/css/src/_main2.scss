@@ -1,0 +1,364 @@
+$weight1:1em;
+$color1:#ff00ff;
+$paragraph3:( // key    weight                color                           style
+border-left: 0.1*$weight1 $color1 solid, );
+$paragraph4:( //    weight            color                           style
+border: 0.1*$weight1 saturate($color1, 60%) solid, );
+@mixin creat_table($data) {
+    @each $key,
+    $value in $data {
+        #{$key} {
+            line-height: nth($value, 1);
+            text-align: nth($value, 2);
+            padding: nth($value, 3);
+            margin: nth($value, 4);
+        }
+    }
+}
+
+@mixin set_init($type) {
+    @if ($type==1) {
+        thead {
+            tr {
+                border: none;
+            }
+            th {
+                border: none;
+            }
+            td {
+                border: none;
+            }
+        }
+        tbody {
+            th {
+                border: none;
+            }
+            td {
+                border: none;
+            }
+            tr {
+                border: none;
+            }
+        }
+        tfoot {
+            tr {
+                border: none;
+            }
+            th {
+                border: none;
+            }
+            td {
+                border: none;
+            }
+        }
+    }
+}
+
+@mixin set_x_title_line($border, $type) {
+    @if ($type==2) {
+        thead {
+            tr {
+                border-bottom: $border;
+            }
+        }
+        tfoot {
+            tr {
+                border-top: $border;
+            }
+        }
+    }
+    @else if ($type==1) {
+        thead {
+            th {
+                border-bottom: $border;
+            }
+            th:first-child {
+                border: none;
+            }
+        }
+        tfoot {
+            td {
+                border-top: $border;
+            }
+        }
+    }
+}
+
+@mixin set_y_title_line($border, $type) {
+    @if ($type==2) {
+        thead {
+            tr {
+                th:first-child {
+                    border-right: $border;
+                }
+                th:last-child {
+                    border-left: $border;
+                }
+            }
+        }
+        tbody {
+            th:first-child {
+                border-right: $border;
+            }
+            th:last-child {
+                border-left: $border;
+            }
+        }
+        tfoot {
+            th:first-child {
+                border-right: $border;
+            }
+            th:last-child {
+                border-left: $border;
+            }
+        }
+    }
+    @if ($type==1) {
+        tbody {
+            th:first-child {
+                border-right: $border;
+            }
+            th:last-child {
+                border-left: $border;
+            }
+        }
+    }
+}
+
+@mixin set_x_content_line($border, $type) {
+    @if ($type==2) {
+        tbody {
+            th {
+                border-bottom: $border;
+            }
+            td {
+                border-bottom: $border;
+            }
+            tr:last-child {
+                th {
+                    border-bottom: none;
+                }
+                td {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+    @else if ($type==1) {
+        tbody {
+            td {
+                border-bottom: $border;
+            }
+            tr:last-child {
+                td {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+}
+
+@mixin set_y_content_line($border, $type) {
+    @if ($type==1) {
+        tbody {
+            td {
+                border-left: $border;
+            }
+        }
+    }
+    @if ($type==2) {
+        thead {
+            th {
+                border-left: $border;
+            }
+            th:first-child {
+                border-left: none;
+            }
+        }
+        tbody {
+            td {
+                border-left: $border;
+            }
+        }
+        tfoot {
+            td {
+                border-left: $border;
+            }
+        }
+    }
+}
+
+@mixin set_x_out_line($border) {
+    table {
+        border-top: $border;
+        border-bottom: $border;
+    }
+}
+
+@mixin set_y_out_line($border) {
+    table {
+        border-left: $border;
+        border-right: $border;
+    }
+}
+
+@mixin set_x_title_bgcolor($color_list) {
+    //$color_list: font_color1 bg_color1 font_color2 bg_color2 
+    @if (length($color_list)==2) {
+        thead th,
+        thead td,
+        tfoot th,
+        tfoot td {
+            color: nth($color_list, 1);
+            background-color: nth($color_list, 2);
+        }
+    }
+    @if (length($color_list)==4) {
+        //
+        thead th:nth-of-type(even),
+        thead td:nth-of-type(even),
+        tfoot th:nth-of-type(even),
+        tfoot td:nth-of-type(even) {
+            color: nth($color_list, 1);
+            background-color: nth($color_list, 2);
+        }
+        thead th:nth-of-type(odd),
+        thead td:nth-of-type(odd),
+        tfoot th:nth-of-type(odd),
+        tfoot td:nth-of-type(odd) {
+            color: nth($color_list, 3);
+            background-color: nth($color_list, 4);
+        }
+    }
+}
+
+@mixin set_y_title_bgcolor($color_list) {
+    //$color_list: bg_color1 font_color1 bg_color2 font_color2
+    @if (length($color_list)==2) {
+        thead th:first-child,
+        thead th:last-child,
+        tbody th:first-child,
+        tbody th:last-child,
+        tfoot th:first-child,
+        tfoot th:last-child {
+            color: nth($color_list, 1);
+            background-color: nth($color_list, 2);
+        }
+    }
+    @if (length($color_list)==4) {
+        //
+        thead tr:nth-of-type(odd) th:first-child,
+        thead tr:nth-of-type(odd) th:last-child,
+        tbody tr:nth-of-type(even) th:first-child,
+        tbody tr:nth-of-type(even) th:last-child,
+        tfoot tr:nth-of-type(odd) th:first-child,
+        tfoot tr:nth-of-type(odd) th:last-child {
+            color: nth($color_list, 1);
+            background-color: nth($color_list, 2);
+        }
+        thead tr:nth-of-type(even) th:first-child,
+        thead tr:nth-of-type(even) th:last-child,
+        tbody tr:nth-of-type(odd) th:first-child,
+        tbody tr:nth-of-type(odd) th:last-child,
+        tfoot tr:nth-of-type(even) th:first-child,
+        tfoot tr:nth-of-type(even) th:last-child {
+            color: nth($color_list, 3);
+            background-color: nth($color_list, 4);
+        }
+    }
+}
+
+@mixin set_x_content_bgcolor($color_list) {
+    //$color_list: bg_color1 font_color1 bg_color2 font_color2
+    @if (length($color_list)==2) {
+        tbody td {
+            color: nth($color_list, 1);
+            background-color: nth($color_list, 2);
+        }
+    }
+    @if (length($color_list)==4) {
+        //
+        tbody td:nth-of-type(even) {
+            color: nth($color_list, 1);
+            background-color: nth($color_list, 2);
+        }
+        tbody td:nth-of-type(odd) {
+            color: nth($color_list, 3);
+            background-color: nth($color_list, 4);
+        }
+    }
+}
+
+@mixin set_y_content_bgcolor($color_list) {
+    //$color_list: bg_color1 font_color1 bg_color2 font_color2
+    @if (length($color_list)==2) {
+        tbody td {
+            color: nth($color_list, 1);
+            background-color: nth($color_list, 2);
+        }
+    }
+    @if (length($color_list)==4) {
+        //
+        tbody tr:nth-of-type(odd) {
+            color: nth($color_list, 1);
+            background-color: nth($color_list, 2);
+        }
+        tbody tr:nth-of-type(even) {
+            color: nth($color_list, 3);
+            background-color: nth($color_list, 4);
+        }
+    }
+}
+
+@mixin set_x_y_content_bgcolor($color_list) {
+    //$color_list: bg_color1 font_color1 bg_color2 font_color2
+    @if (length($color_list)==2) {
+        tbody td {
+            color: nth($color_list, 1);
+            background-color: nth($color_list, 2);
+        }
+    }
+    @if (length($color_list)==4) {
+        //
+        tbody tr:nth-of-type(odd) td:nth-of-type(odd),
+        tbody tr:nth-of-type(even) td:nth-of-type(even) {
+            color: nth($color_list, 1);
+            background-color: nth($color_list, 2);
+        }
+        tbody tr:nth-of-type(odd) td:nth-of-type(even),
+        tbody tr:nth-of-type(even) td:nth-of-type(odd) {
+            color: nth($color_list, 3);
+            background-color: nth($color_list, 4);
+        }
+    }
+}
+
+@mixin set_title_space($height, $type) {
+    @if ($type==1) {
+        thead {
+            &:after {
+                content: " ";
+                display: table-row;
+                height: $height;
+                background-color: transparent;
+            }
+        }
+        tfoot {
+            &:before {
+                content: " ";
+                display: table-row;
+                height: $height;
+            }
+        }
+    }
+    @if ($type==2) {
+        thead {
+            &:after {
+                content: " ";
+                display: table-row;
+                height: $height;
+                background-color: transparent;
+            }
+        }
+    }
+}

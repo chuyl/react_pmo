@@ -50,6 +50,7 @@
         border: 1px solid $primary-color-text;
         text-align: center;
         outline: none;
+        margin-top: 1em;
     }
     button:hover {
         background-color: $accent-color;
@@ -57,7 +58,8 @@
     }
 }
 
-.view_menu_list ul {
+.view_menu_list ul,
+.view_url_list ul {
     border-radius: 1em;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
     overflow: hidden;
@@ -71,6 +73,8 @@
         line-height: 2em;
     }
 }
+
+
 
 .view_paper_list {
     width: 100%;
