@@ -1169,7 +1169,7 @@ html, body {
   position: fixed;
   top: 0;
   background-color: #427881;
-  /* height: 600px; js浠ｆ浛 */
+  /* height: 600px; js代替 */
   left: 0;
   z-index: 10; }
 
@@ -1522,7 +1522,7 @@ html, body {
     position: fixed;
     top: 0;
     height: 91vh;
-    /* height: 600px; js浠ｆ浛 */
+    /* height: 600px; js代替 */
     left: 0;
     z-index: 10; } }
 .message_left {
@@ -1862,7 +1862,7 @@ textarea:disabled {
   bottom: 5px;
   height: 500px;
   background-color: #FF5252;
-  /* height: 600px; js浠ｆ浛 */
+  /* height: 600px; js代替 */
   right: 5px;
   z-index: 20; }
 
@@ -1886,7 +1886,7 @@ textarea:disabled {
     bottom: 0;
     height: 100vh;
     background-color: #FF5252;
-    /* height: 600px; js浠ｆ浛 */
+    /* height: 600px; js代替 */
     right: 0;
     z-index: 20; } }
 .add_info_list {
@@ -2448,11 +2448,37 @@ textarea:disabled {
   width: 30%;
   float: left;
   background-color: #3F51B5;
-  height: 100vh;
+  height: 96vh;
   padding: 0.5em;
   margin-left: 0.5em;
   overflow-y: auto;
   position: relative; }
+  .view_list button {
+    margin-top: 1em;
+    display: block;
+    width: 5em;
+    line-height: 2em;
+    border-radius: 4px;
+    background-color: #3F51B5;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    text-align: center;
+    outline: none; }
+  .view_list button:hover {
+    background-color: #FF5252; }
+
+.view_list ul {
+  border-radius: 1em;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  box-sizing: border-box;
+  display: block;
+  padding: 1em 0 1em 1em; }
+  .view_list ul li {
+    float: left;
+    width: 100%;
+    color: #FFFFFF;
+    line-height: 2em; }
 
 .view_paper_list {
   width: 100%;

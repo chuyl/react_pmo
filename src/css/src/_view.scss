@@ -8,9 +8,8 @@
     margin-left: 0.5em;
     color: $background-color;
     position: relative;
-    @media screen  and (max-width:768px){
+    @media screen and (max-width: 768px) {
         position: initial;
-        
     }
     .add_card_btn {
         background-color: $primary-color;
@@ -37,11 +36,41 @@
     width: 30%;
     float: left;
     background-color: $primary-color;
-    height: 100vh;
+    height: 96vh;
     padding: 0.5em;
     margin-left: 0.5em;
     overflow-y: auto;
     position: relative;
+    button {
+        margin-top: 1em;
+        display: block;
+        width: 5em;
+        line-height: 2em;
+        border-radius: 4px;
+        background-color: $primary-color;
+        color: $primary-color-text;
+        border: 1px solid $primary-color-text;
+        text-align: center;
+        outline: none;
+    }
+    button:hover {
+        background-color: $accent-color;
+    }
+}
+
+.view_list ul {
+    border-radius: 1em;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    box-sizing: border-box;
+    display: block;
+    padding: 1em 0 1em 1em;
+    li {
+        float: left;
+        width: 100%;
+        color: $primary-color-text;
+        line-height: 2em;
+    }
 }
 
 .view_paper_list {
