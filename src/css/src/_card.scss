@@ -518,6 +518,7 @@ textarea:disabled {
     .message_left {
         text-align: right;
         width: 40%;
+        padding-left: 6em;
         position: relative;
     }
     .message_left::before {
@@ -581,88 +582,88 @@ textarea:disabled {
     }
 }
 
-.input-group {
-    background-color: $background-color;
-    color: $secondary-text-color;
-    overflow: hidden;
-    .input-group-btn {
-        float: left;
-        position: relative;
-        .button {
-            font-size: 1em;
-            line-height: 3em;
-            padding: 0.5em 1em;
-            border-right: 1px solid $secondary-text-color;
-            border-top-left-radius: 1em;
-            border-bottom-left-radius: 1em;
-            margin-right: -1px;
-            box-sizing: border-box;
-        }
-        span {
-            position: absolute;
-            right: 1em;
-            top: 1em;
-            display: block;
-            border-top: 4px dashed;
-            border-right: 4px solid transparent;
-            border-left: 4px solid transparent;
-        }
-    }
-    .form-control_input {
-        float: left;
-        border: 1px solid $secondary-text-color;
-        box-sizing: border-box;
-        width: 16em;
-        height: 3em;
-        padding: 0.5em 2em;
-    }
-    .input-group-btn_right {
-        float: left;
-        position: relative;
-        .button {
-            font-size: 1em;
-            line-height: 3em;
-            padding: 0.5em 1em;
-            border-left: 1px solid $secondary-text-color;
-            border-top-right-radius: 1em;
-            border-bottom-right-radius: 1em;
-            margin-left: -1px;
-            box-sizing: border-box;
-        }
-    }
-}
+// .search_info_list_card {
+//     background-color: $background-color;
+//     color: $secondary-text-color;
+//     overflow: hidden;
+//     .search_info_list_label{
+//         float: left;
+//         position: relative;
+//         .button {
+//             font-size: 1em;
+//             line-height: 3em;
+//             padding: 0.5em 1em;
+//             border-right: 1px solid $secondary-text-color;
+//             border-top-left-radius: 1em;
+//             border-bottom-left-radius: 1em;
+//             margin-right: -1px;
+//             box-sizing: border-box;
+//         }
+//         span {
+//             position: absolute;
+//             right: 1em;
+//             top: 1em;
+//             display: block;
+//             border-top: 4px dashed;
+//             border-right: 4px solid transparent;
+//             border-left: 4px solid transparent;
+//         }
+//     }
+//     .search_info_position {
+//         float: left;
+//         border: 1px solid $secondary-text-color;
+//         box-sizing: border-box;
+//         width: 16em;
+//         height: 3em;
+//         padding: 0.5em 2em;
+//     }
+//     .input-group-btn_right {
+//         float: left;
+//         position: relative;
+//         .button {
+//             font-size: 1em;
+//             line-height: 3em;
+//             padding: 0.5em 1em;
+//             border-left: 1px solid $secondary-text-color;
+//             border-top-right-radius: 1em;
+//             border-bottom-right-radius: 1em;
+//             margin-left: -1px;
+//             box-sizing: border-box;
+//         }
+//     }
+// }
 
-.search_terms {
-    float: left;
-    width: 9em;
-    line-height: 2em;
-    font-size: 1em;
-    color: $secondary-text-color;
-    background-color: $background-color;
-    box-sizing: border-box;
-    position: relative;
-}
+// .search_terms {
+//     float: left;
+//     width: 9em;
+//     line-height: 2em;
+//     font-size: 1em;
+//     color: $secondary-text-color;
+//     background-color: $background-color;
+//     box-sizing: border-box;
+//     position: relative;
+// }
 
-.del_btn {
-    width: 1em;
-    height: 1em;
-    display: block;
-    background-color: $secondary-text-color;
-    border-radius: 50%;
-    outline: 7px solid $background-color;
-    outline-offset: -14px;
-    transform: rotate(45deg);
-    position: absolute;
-    right: 0.5em;
-    top: 0.2em;
-}
+// .del_btn {
+//     width: 1em;
+//     height: 1em;
+//     display: block;
+//     background-color: $secondary-text-color;
+//     border-radius: 50%;
+//     outline: 7px solid $background-color;
+//     outline-offset: -14px;
+//     transform: rotate(45deg);
+//     position: absolute;
+//     right: 0.5em;
+//         top: 0.2em;
+// }
 
-.del_btn_all {
-    float: left;
-    width: 6em;
-    line-height: 2em;
-    font-size: 1em;
-    color: $secondary-text-color;
-    background-color: $background-color;
-    box-sizing: border-box;
-}
+// .del_btn_all {
+//     float: left;
+//     width: 6em;
+//     line-height: 2em;
+//     font-size: 1em;
+//     color: $secondary-text-color;
+//     background-color: $background-color;
+//     box-sizing: border-box;
+// }

@@ -3,8 +3,7 @@
     height: 0;
     .alert_box {
         width: 0;
-        height: 0;
-        // overflow: hidden;
+        height: 0; // overflow: hidden;
     }
     .popup_content {
         display: block;
@@ -13,7 +12,17 @@
         padding: 0.5em;
         box-sizing: border-box;
     }
-
+    &.open {
+        position: fixed;
+        display: flex;
+        height: 100vh;
+        width: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        background-color: rgba($color: $screen_color, $alpha: 0.3);
+    }
     .alert_box {
         .search_info_list_label {
             color: $primary-color;
