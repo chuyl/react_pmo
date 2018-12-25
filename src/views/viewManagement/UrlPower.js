@@ -9,6 +9,7 @@ class UrlPower extends Component {
 	routeLists:[],//路由列表
 	myRoute:[],//对应账户的路由
 	search_url_message:"",
+	role_id:""
 
 	// alertMsg:"",
 	// alertTitle:""
@@ -50,11 +51,12 @@ class UrlPower extends Component {
 	my_route_list=(id)=>{
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
-               this.route_list()
+             
 				this.setState({
 					showMenuListState:true,
 					myRoute:message.data
 				})
+				this.route_list(message.data)
 				
 			}else if(message.error === 2){
 				sessionStorage.logged = false;
@@ -72,14 +74,43 @@ class UrlPower extends Component {
 	 * @author xuesong
 	 * @param route_list 函数 获取getone的rolelist
 	 */
-	route_list=()=>{
+	route_list=(myRoute)=>{
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
-                console.log
+				console.log(message.data.length)
+				var temp = []; //临时数组1 
+				var temparray = [];//临时数组2 
+				for (var i = 0; i < myRoute.length; i++) { 
+					temp[myRoute[i].id] = true;//巧妙地方：把数组B的值当成临时数组1的键并赋值为真 
+				
+				}; 
+				
+				for (var i = 0; i < message.data.length; i++) { 
+				
+				if (!temp[ message.data[i].id]) { 
+				
+				temparray.push(message.data[i]);//巧妙地方：同时把数组A的值当成临时数组1的键并判断是否为真，如果不为真说明没重复，就合并到一个新数组里，这样就可以得到一个全新并无重复的数组 
+				
+				} ; 
+				
+				}; 
+				console.log(temparray)
+				// for(var i = 0;i<message.data.length;i++){
+					
+				// 	for(var j = 0; j<myRoute.length;j++){
+						
+				// 		if(myRoute[j].id===message.data[i].id){
+							
+				// 		}else{
+				// 			routeList.push(message.data[i])
+				// 		}
+				// 	}
+				// }
+				
 				this.setState({
 					// showMenuListState:true,
-					routeList:message.data,
-					routeLists:message.data
+					routeList:temparray,
+					routeLists:temparray
 				})
 				
 			}else if(message.error === 2){
@@ -138,7 +169,8 @@ del_myRoute=()=>{
 			  }
 		}
 	}
-	//getData(getRouter("client_route_list"), { token:sessionStorage.token}, cb, {});
+	console.log(this.state.role_id)
+	getData(getRouter("role_route_del"), { token:sessionStorage.token,route_ids:route_ids,role_id:this.state.role_id}, cb, {});
 }
 add_myRoute = ()=>{
     var route_ids=[];
@@ -161,7 +193,7 @@ add_myRoute = ()=>{
 			  }
 		}
 	}
-	//getData(getRouter("client_route_list"), { token:sessionStorage.token}, cb, {});
+	getData(getRouter("role_route_add"), { token:sessionStorage.token,route_ids:route_ids,role_id:this.state.role_id}, cb, {});
 }
 	render(){
 		return (
@@ -172,6 +204,9 @@ add_myRoute = ()=>{
 							return <li className="view_message_div" key={index}>
 										<div style={{height:"1em"}} onClick={()=>{
 											 this.my_route_list(view.id)
+											 this.setState({
+												 role_id:view.id
+											 })
 												
 											}} >{view.name}
 											</div>
