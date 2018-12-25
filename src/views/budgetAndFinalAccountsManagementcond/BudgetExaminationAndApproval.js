@@ -39,13 +39,28 @@ class BudgetExaminationAndApproval extends Component {
         var endRow = currentPage * pageSize;//结束显示的行   40
         endRow = (endRow > num)? num : endRow;    40
         this.state.note_list.map((note_list)=>{
-          components.push (<tr
-                  style={{maxHeight:"25px",display:this.state.note_list.indexOf(note_list)+1>=startRow &&this.state.note_list.indexOf(note_list)+1<=endRow?"":"none"}}
-                  key = {note_list.id}> 
-                  <td width={60} height={25} style={{textAlign:"center"}}>{this.state.note_list.indexOf(note_list)+1}</td>
+            components.push (
+                <tr
+                    //   style={{maxHeight:"25px",display:this.state.note_list.indexOf(note_list)+1>=startRow &&this.state.note_list.indexOf(note_list)+1<=endRow?"":"none"}}
+                    key = {note_list.id}> 
+                    <td 
+                        width={60}
+                        style={{textAlign:"center"}}>
+                        {this.state.note_list.indexOf(note_list)+1}
+                    </td>
                   {/* <td title={this.timestamp2Time(note_list.time+"000", "-")} width={100} style={{textAlign:"center"}}>{this.timestamp2Time(note_list.time+"000", "-")}</td> */}
-                  <td title={note_list.user} width={120}  style={{textAlign:"center"}}>{note_list.project_name}</td>
-                  <td title={note_list.content} width={180}>{note_list.content}</td>
+                    <td 
+                        title={note_list.project_name} 
+                        width={100}  
+                        style={{textAlign:"center"}}>
+                        {note_list.project_name}
+                    </td>
+                    <td 
+                        title={note_list.project_project_template_name} 
+                        style={{textAlign:"center"}} 
+                        width={120}>
+                        {note_list.project_project_template_name}
+                    </td>
                 </tr>
        
         )});
@@ -104,29 +119,22 @@ class BudgetExaminationAndApproval extends Component {
 	render(){
 		return (
             <div>
-        <div
-                  style={{height:"300px"}}
-                  >
-                    <table
-                    className="nyx-history-list"
-                   id="idData"
-                   >
-				   <tbody>
-                       <tr style={{textAlign:"center",maxHeight:"25px"}}>
-                           <td  height={25} width={60}>序号</td>
-                           <td width={100}>操作时间</td>
-                           <td width={120}>操作人</td>
-                           <td width={180}>操作信息</td>
-                        </tr>
-					   {this.goPage(this.state.pno,this.state.psize)}
-					   </tbody>
-                   </table>
-                  </div>
-                   
-                  
-                    <div className="nyx-change-page"
-                      
-                    >{this.change_page(1,10)}</div>
+                <div>
+                    <table className="statistical_table">
+                        <tbody>
+                            <tr style={{textAlign:"center",maxHeight:"25px"}}>
+                                <td  height={25} width={60}>序号</td>
+                                <td width={100}>项目名称</td>
+                                <td width={120}>项目模板</td>
+                                <td width={180}>操作信息</td>
+                                </tr>
+                            {this.goPage(this.state.pno,this.state.psize)}
+                        </tbody>
+                    </table>
+                </div>
+                <div className="nyx-change-page">
+                    {this.change_page(1,10)}
+                </div>
         </div>
 		)
 	}
