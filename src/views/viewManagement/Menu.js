@@ -54,7 +54,6 @@ class Menu extends Component {
 	fetchListData() {
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
-				sessionStorage.view=JSON.stringify(message.data);
 				this.setState({
 					role_table_list:message.data,
 					role_table_lists:message.data,

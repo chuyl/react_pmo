@@ -90,7 +90,6 @@ class View extends Component {
 	fetchListData() {
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
-				sessionStorage.view=JSON.stringify(message.data);
 				this.setState({
 					view_table_list:message.data,
 					view_table_lists:message.data,
