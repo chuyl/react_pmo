@@ -5,8 +5,11 @@ class UrlPower extends Component {
    state={
     role_table_list:[],
     showMenuListState:false,
-    routeList:[],//路由列表
+	routeList:[],//路由列表
+	routeLists:[],//路由列表
 	myRoute:[],//对应账户的路由
+	search_url_message:"",
+
 	// alertMsg:"",
 	// alertTitle:""
    }
@@ -75,7 +78,8 @@ class UrlPower extends Component {
                 console.log
 				this.setState({
 					// showMenuListState:true,
-					routeList:message.data
+					routeList:message.data,
+					routeLists:message.data
 				})
 				
 			}else if(message.error === 2){
@@ -122,7 +126,19 @@ del_myRoute=()=>{
             route_ids.push(my_route_check[i].value)
         }
     }
-    console.log(route_ids)
+	console.log(route_ids)
+	var cb = (route, message, arg) => {
+		if (message.error === 0) {
+			
+		}else if(message.error === 2){
+			sessionStorage.logged = false;
+			sessionStorage.token="";
+			if(window.location.hash.split("#")[1]!=="/"){
+				window.location.href=window.location.href.split("#/")[0]
+			  }
+		}
+	}
+	//getData(getRouter("client_route_list"), { token:sessionStorage.token}, cb, {});
 }
 add_myRoute = ()=>{
     var route_ids=[];
@@ -133,7 +149,19 @@ add_myRoute = ()=>{
             route_ids.push(my_route_check[i].value)
         }
     }
-    console.log(route_ids)
+	console.log(route_ids)
+	var cb = (route, message, arg) => {
+		if (message.error === 0) {
+			
+		}else if(message.error === 2){
+			sessionStorage.logged = false;
+			sessionStorage.token="";
+			if(window.location.hash.split("#")[1]!=="/"){
+				window.location.href=window.location.href.split("#/")[0]
+			  }
+		}
+	}
+	//getData(getRouter("client_route_list"), { token:sessionStorage.token}, cb, {});
 }
 	render(){
 		return (
@@ -188,7 +216,7 @@ add_myRoute = ()=>{
 							)
 						})}
 					</ul>
-					<button onClick={()=>{
+					<button className="view_save_btn" onClick={()=>{
 						this.del_myRoute()
 					}}>
 						删除
@@ -200,10 +228,33 @@ add_myRoute = ()=>{
                     </span>
 					<ul>
 						<li>
-							<input  type="text"/>
-							<button onClick={()=>{
-
-							}}>搜索</button>
+							<input onChange={(e)=>{
+								var routeList=[];
+								for(var i = 0;i<this.state.routeLists.length;i++){
+									if(this.state.routeLists[i].name.indexOf(e.target.value)>= 0){
+										routeList.push(this.state.routeLists[i])
+									}
+									this.setState({
+										routeList:routeList
+									})
+								}
+								this.setState({
+									search_url_message:e.target.value
+								})
+							}} type="text" placeholder="搜索关键字" />
+							<br/>
+							{/* <button onClick={()=>{
+								console.log(this.state.search_url_message)
+								var routeList=[];
+								for(var i = 0;i<this.state.routeLists.length;i++){
+									if(this.state.routeLists[i].name.indexOf(this.state.search_url_message)>= 0){
+										routeList.push(this.state.routeLists[i])
+									}
+									this.setState({
+										routeList:routeList
+									})
+								}
+							}}>搜索</button> */}
 							<input id="routeListAllCheck" onClick={()=>{
 								 var checklist = document.getElementsByName("routeList");
 								 if(document.getElementById("routeListAllCheck").checked) {
@@ -235,7 +286,7 @@ add_myRoute = ()=>{
 							)
 						})}
 					</ul>
-					<button style={{marginBottom:"1em"}} onClick={()=>{
+					<button className="view_save_btn" style={{marginBottom:"1em"}} onClick={()=>{
 						this.add_myRoute()
 					}}>
 						添加到我的路由
