@@ -77,7 +77,11 @@ class View extends Component {
                         window.location.href=window.location.href.split("#/")[0]
                     
                       }
-                }
+                }else{
+					this.setState({
+						alertCopyMsg:message.msg
+					})
+				}
             }
            
             getData(getRouter("json_type_list"), { token:sessionStorage.token}, cb, {});

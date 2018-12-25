@@ -69,6 +69,11 @@ class Menu extends Component {
 				
 				  }
 			}
+			else{
+				this.setState({
+					alertDelMsg:message.msg
+				})
+			}
 		}
 		getData(getRouter("menu_data_list"), { token:sessionStorage.token }, cb, {});
 	}
