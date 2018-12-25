@@ -1,0 +1,327 @@
+{
+    "code":0,
+    "error":0,
+    "data":
+    [
+        {
+            "id": 1,
+            "name": "client_route"
+        },
+        {
+            "id": 2,
+            "name": "project_manage_add"
+        },
+        {
+            "id": 3,
+            "name": "project_data_edit"
+        },
+        {
+            "id": 4,
+            "name": "project_manage_list"
+        },
+        {
+            "id": 5,
+            "name": "project_data_getByProjectId"
+        },
+        {
+            "id": 6,
+            "name": "staff_manage_list"
+        },
+        {
+            "id": 7,
+            "name": "program_manage_list"
+        },
+        {
+            "id": 8,
+            "name": "program_manage_add"
+        },
+        {
+            "id": 9,
+            "name": "project_type_list"
+        },
+        {
+            "id": 10,
+            "name": "lecturer_plan_getByProjectId"
+        },
+        {
+            "id": 11,
+            "name": "lecturer_manage_list"
+        },
+        {
+            "id": 12,
+            "name": "lecturer_duty_list"
+        },
+        {
+            "id": 13,
+            "name": "lecturer_plan_add"
+        },
+        {
+            "id": 14,
+            "name": "lecturer_plan_edit"
+        },
+        {
+            "id": 15,
+            "name": "lecturer_plan_del"
+        },
+        {
+            "id": 16,
+            "name": "implement_plan_getByProjectId"
+        },
+        {
+            "id": 17,
+            "name": "implement_plan_edit"
+        },
+        {
+            "id": 18,
+            "name": "travel_plan_getByProjectId"
+        },
+        {
+            "id": 19,
+            "name": "travel_inCityTraffic_add"
+        },
+        {
+            "id": 20,
+            "name": "travel_inCityTraffic_edit"
+        },
+        {
+            "id": 21,
+            "name": "travel_inCityTraffic_del"
+        },
+        {
+            "id": 22,
+            "name": "travel_longTraffic_add"
+        },
+        {
+            "id": 23,
+            "name": "travel_longTraffic_edit"
+        },
+        {
+            "id": 24,
+            "name": "travel_longTraffic_del"
+        },
+        {
+            "id": 25,
+            "name": "travel_hotel_add"
+        },
+        {
+            "id": 26,
+            "name": "travel_hotel_edit"
+        },
+        {
+            "id": 27,
+            "name": "travel_hotel_del"
+        },
+        {
+            "id": 28,
+            "name": "travel_longTrafficType_list"
+        },
+        {
+            "id": 29,
+            "name": "user_account_login"
+        },
+        {
+            "id": 30,
+            "name": "lecturer_manage_add"
+        },
+        {
+            "id": 31,
+            "name": "lecturer_manage_cooperation"
+        },
+        {
+            "id": 32,
+            "name": "implement_venue_add"
+        },
+        {
+            "id": 33,
+            "name": "implement_venue_del"
+        },
+        {
+            "id": 34,
+            "name": "implement_venue_edit"
+        },
+        {
+            "id": 35,
+            "name": "project_address_list"
+        },
+        {
+            "id": 36,
+            "name": "project_address_province"
+        },
+        {
+            "id": 37,
+            "name": "project_address_city"
+        },
+        {
+            "id": 38,
+            "name": "project_address_add"
+        },
+        {
+            "id": 39,
+            "name": "project_address_edit"
+        },
+        {
+            "id": 40,
+            "name": "project_address_del"
+        },
+        {
+            "id": 41,
+            "name": "travel_meal_people"
+        },
+        {
+            "id": 42,
+            "name": "travel_meal_add"
+        },
+        {
+            "id": 43,
+            "name": "travel_meal_edit"
+        },
+        {
+            "id": 44,
+            "name": "travel_meal_del"
+        },
+        {
+            "id": 45,
+            "name": "examine_config_add"
+        },
+        {
+            "id": 46,
+            "name": "examine_config_edit"
+        },
+        {
+            "id": 47,
+            "name": "examine_config_del"
+        },
+        {
+            "id": 48,
+            "name": "examine_config_list"
+        },
+        {
+            "id": 49,
+            "name": "json_manage_add"
+        },
+        {
+            "id": 50,
+            "name": "json_manage_edit"
+        },
+        {
+            "id": 51,
+            "name": "json_manage_list"
+        },
+        {
+            "id": 52,
+            "name": "json_manage_name"
+        },
+        {
+            "id": 53,
+            "name": "role_route_add"
+        },
+        {
+            "id": 54,
+            "name": "role_route_del"
+        },
+        {
+            "id": 55,
+            "name": "role_route_list"
+        },
+        {
+            "id": 56,
+            "name": "role_view_add"
+        },
+        {
+            "id": 57,
+            "name": "role_view_del"
+        },
+        {
+            "id": 58,
+            "name": "role_view_list"
+        },
+        {
+            "id": 59,
+            "name": "menu_manage_add"
+        },
+        {
+            "id": 60,
+            "name": "menu_manage_edit"
+        },
+        {
+            "id": 61,
+            "name": "menu_manage_del"
+        },
+        {
+            "id": 62,
+            "name": "menu_manage_list"
+        },
+        {
+            "id": 63,
+            "name": "examine_manage_commitbudget"
+        },
+        {
+            "id": 64,
+            "name": "examine_manage_will"
+        },
+        {
+            "id": 65,
+            "name": "examine_manage_ipassed"
+        },
+        {
+            "id": 66,
+            "name": "examine_manage_agree"
+        },
+        {
+            "id": 67,
+            "name": "examine_manage_bool"
+        },
+        {
+            "id": 68,
+            "name": "json_type_list"
+        },
+        {
+            "id": 69,
+            "name": "project_manage_returnonlyuserlist"
+        },
+        {
+            "id": 70,
+            "name": "project_manage_returndepartmentlist"
+        },
+        {
+            "id": 71,
+            "name": "examine_budget_list"
+        },
+        {
+            "id": 72,
+            "name": "examine_budget_project"
+        },
+        {
+            "id": 73,
+            "name": "examine_budget_lecturer"
+        },
+        {
+            "id": 74,
+            "name": "examine_budget_implement"
+        },
+        {
+            "id": 75,
+            "name": "examine_budget_travel"
+        },
+        {
+            "id": 76,
+            "name": "menu_data_list"
+        },
+        {
+            "id": 77,
+            "name": "menu_data_listmenuleft"
+        },
+        {
+            "id": 78,
+            "name": "menu_data_listmenuright"
+        },
+        {
+            "id": 79,
+            "name": "menu_data_getone"
+        }
+    ],
+    "during_time":27,
+    "end_time":1539500978642,
+    "msg":"查询成功",
+    "stat_time":1539500978615
+    }

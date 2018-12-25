@@ -1,0 +1,38 @@
+{
+    "code":0,
+    "error":0,
+    "data":[
+        {
+            "id": 1,
+            "name": "client_route"
+        },
+        {
+            "id": 2,
+            "name": "project_manage_add"
+        },
+        {
+            "id": 3,
+            "name": "project_data_edit"
+        },
+        {
+            "id": 4,
+            "name": "project_manage_list"
+        },
+        {
+            "id": 5,
+            "name": "project_data_getByProjectId"
+        },
+        {
+            "id": 6,
+            "name": "staff_manage_list"
+        },
+        {
+            "id": 7,
+            "name": "program_manage_list"
+        }
+    ],
+    "during_time":27,
+    "end_time":1539500978642,
+    "msg":"查询成功",
+    "stat_time":1539500978615
+    }

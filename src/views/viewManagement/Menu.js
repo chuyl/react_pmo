@@ -54,7 +54,6 @@ class Menu extends Component {
 	fetchListData() {
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
-				sessionStorage.view=JSON.stringify(message.data);
 				this.setState({
 					role_table_list:message.data,
 					role_table_lists:message.data,
@@ -490,7 +489,7 @@ class Menu extends Component {
 							)
 						})}
 					</ul>
-					<button onClick={()=>{
+					<button className="view_save_btn" onClick={()=>{
 						this.hold_menu_data()
 					}}>
 						保存

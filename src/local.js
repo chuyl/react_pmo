@@ -52,6 +52,9 @@ var local = {
                 "examine_manage_commitfinal":{"url":"../data/examine_manage_commitfinal.json","version":"1.0"},//提交决算接口
                 "examine_manage_bool":{"url":"../data/examine_manage_bool.json","version":"1.0"},//预算审批接口
                 "examine_budget_list":{"url":"../data/examine_budget_list.json","version":"1.0"},//预算审批list
+                "role_route_list":{"url":"../data/role_route_list.json","version":"1.0"},
+                "get_route_by_role_id":{"url":"../data/get_route_by_role_id.json","version":"1.0"},
+                "client_route_list":{"url":"../data/client_route_list.json","version":"1.0"},
                 //视图
                
                 // "addProject":{"url":"../json/addProject.json","version":"1.0"},//新建项目

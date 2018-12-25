@@ -11,7 +11,7 @@
         render(){
             const {message,labelValue,thisKey} =this.props;
             var className = this.props.className.split(","); 
-            // console.log(message.examine[thisKey])
+             console.log(message.examine[thisKey])
             return (
                 this.props.message?<div className={className[0]?className[0]:""}>
                    <span className={className[1]?className[1]:""}>

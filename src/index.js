@@ -365,120 +365,120 @@ handleLogout = () => {
         </div>
         <div className="sidebar">
      
-     <div  style={this.state.show===true?{display:"none"}:{}} className="router_screen nav_lists">
-        {/* <div style={{display:"none"}}>{this.state.menu_list}</div> */}
-         <TabsControl>
-           {menuView.map((menuView,index)=>{
-             return(
-               <div key={index} name = {menuView.name}>
-               <HashRouter>
-                 <App>
-                   <ul>
-                     {this.router_lists(menuView.data)}
-                   </ul>  
-                 </App>
-               </HashRouter>
-             </div>
-             )
-           })}
-         </TabsControl>
-       </div>
-     <div style={this.state.show===true?{display:"none"}:{}}  className="router_button" onClick={this.changeShow.bind(this)}>
-       <i className="glyphicon glyphicon-menu-hamburger"></i>
-     </div>
-     <div>
-       <div  style={this.state.show===true?{}:{display:"none"}} onClick={this.changeShow.bind(this)} className="modal_backdrop">
-       </div>
-       <ReactCSSTransitionGroup
-           component="div"
-           transitionName="fade"
-           transitionEnterTimeout={500}
-           transitionLeaveTimeout={500}
-       >
-         {
-           this.state.show &&
-           
-           <div style={this.state.show===false?{display:"none"}:{}}  className="couter_control">
-             <TabsControl>
-               {menuView.map((menuView,index)=>{
-                   return(
-                     <div key={index} name = {menuView.name}>
-                       <HashRouter>
-                         <App>
-                           <ul>
-                             {this.router_lists(menuView.data)}
-                           </ul>  
-                         </App>
-                       </HashRouter>
-                   </div>
-                   )
-                 })}
-               </TabsControl>
-           </div>
-       
-         }
-       </ReactCSSTransitionGroup>
-   
-     </div>
-   
-     <List/>
-     <div className="footer_position router_button"> 
-       <HashRouter >
-         <App>
-           <ul>
-             {Lang!==""?this.footer_router_lists(Lang.budgetAndFinalAccountsManagementcond.data):""}
-           </ul>  
-         </App>
-       </HashRouter>
-     </div>
-     <div onClick={()=>{
-       this.setState({
-         dialog_show:true
-       })
-         console.log("goutong")
-       }} className="dialog_open">沟通
-     </div>
-     <div style={{bottom:"100px"}} onClick={()=>{
-       sessionStorage.logged = false;
-       sessionStorage.token="";
-       this.handleLogout()
-     //   sessionStorage.logged = false;
-     //  this.setState({logged:sessionStorage.getItem("logged")})
-      
-       }} className="dialog_open">退出
-     </div>
-     <div className={this.state.dialog_show?"dialog_window open":"dialog_window"}> 
-       <div  onClick={()=>{
-         this.setState({
-           dialog_show:false
-         })
-         }} className="return_btn">
-       </div>
-       这是打开的对话窗口
-       <button
-        onClick={()=>{
-
-        var config = {"routers":"http://192.168.4.69:666/user/route/client_route","notification":"test.php","language":"Chin","version":"1.100"};
+          <div  style={this.state.show===true?{display:"none"}:{}} className="router_screen nav_lists">
+              {/* <div style={{display:"none"}}>{this.state.menu_list}</div> */}
+              <TabsControl>
+                {menuView.map((menuView,index)=>{
+                  return(
+                    <div key={index} name = {menuView.name}>
+                    <HashRouter>
+                      <App>
+                        <ul>
+                          {this.router_lists(menuView.data)}
+                        </ul>  
+                      </App>
+                    </HashRouter>
+                  </div>
+                  )
+                })}
+              </TabsControl>
+          </div>
+          <div style={this.state.show===true?{display:"none"}:{}}  className="router_button" onClick={this.changeShow.bind(this)}>
+            <i className="glyphicon glyphicon-menu-hamburger"></i>
+          </div>
+          <div>
+            <div  style={this.state.show===true?{}:{display:"none"}} onClick={this.changeShow.bind(this)} className="modal_backdrop">
+            </div>
+            <ReactCSSTransitionGroup
+                component="div"
+                transitionName="fade"
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={500}
+            >
+              {
+                this.state.show &&
+                
+                <div style={this.state.show===false?{display:"none"}:{}}  className="couter_control">
+                  <TabsControl>
+                    {menuView.map((menuView,index)=>{
+                        return(
+                          <div key={index} name = {menuView.name}>
+                            <HashRouter>
+                              <App>
+                                <ul>
+                                  {this.router_lists(menuView.data)}
+                                </ul>  
+                              </App>
+                            </HashRouter>
+                        </div>
+                        )
+                      })}
+                    </TabsControl>
+                </div>
+            
+              }
+            </ReactCSSTransitionGroup>
         
-        sessionStorage.config1=JSON.stringify(config)
-        window.location.reload()
-        console.log(sessionStorage.config) 
-        }}
-       >开发</button>
-         <button
-        onClick={()=>{
+          </div>
+    
+          <List/>
+          <div className="footer_position router_button"> 
+            <HashRouter >
+              <App>
+                <ul>
+                  {Lang!==""?this.footer_router_lists(Lang.budgetAndFinalAccountsManagementcond.data):""}
+                </ul>  
+              </App>
+            </HashRouter>
+          </div>
+          <div onClick={()=>{
+            this.setState({
+              dialog_show:true
+            })
+              console.log("goutong")
+            }} className="dialog_open">沟通
+          </div>
+          <div style={{bottom:"100px"}} onClick={()=>{
+            sessionStorage.logged = false;
+            sessionStorage.token="";
+            this.handleLogout()
+          //   sessionStorage.logged = false;
+          //  this.setState({logged:sessionStorage.getItem("logged")})
+            
+            }} className="dialog_open">退出
+          </div>
+          <div className={this.state.dialog_show?"dialog_window open":"dialog_window"}> 
+            <div  onClick={()=>{
+              this.setState({
+                dialog_show:false
+              })
+              }} className="return_btn">
+            </div>
+            这是打开的对话窗口
+            <button
+              onClick={()=>{
 
-        var config = {"routers":"http://192.168.4.69:777/user/route/client_route","notification":"test.php","language":"Chin","version":"1.100"};
-        
-        sessionStorage.config1=JSON.stringify(config)
-        window.location.reload()
-        console.log(sessionStorage.config) 
-        }}
-       >测试</button>
-    {/* <div style={this.state.dialog_show===true?{}:{display:"none"}} onClick={this.dialogShow.bind(this)} className="modal_backdrop"></div> */}
-    {/* <div className="dialog_window"></div> */}
-     </div>
-   </div>
+              var config = {"routers":"http://192.168.4.69:666/user/route/client_route","notification":"test.php","language":"Chin","version":"1.100"};
+              
+              sessionStorage.config1=JSON.stringify(config)
+              window.location.reload()
+              console.log(sessionStorage.config) 
+              }}
+            >开发</button>
+              <button
+              onClick={()=>{
+
+              var config = {"routers":"http://192.168.4.69:777/user/route/client_route","notification":"test.php","language":"Chin","version":"1.100"};
+              
+              sessionStorage.config1=JSON.stringify(config)
+              window.location.reload()
+              console.log(sessionStorage.config) 
+              }}
+            >测试</button>
+          {/* <div style={this.state.dialog_show===true?{}:{display:"none"}} onClick={this.dialogShow.bind(this)} className="modal_backdrop"></div> */}
+          {/* <div className="dialog_window"></div> */}
+          </div>
+        </div>
       </div>
       :this.LoginTable()
 		)
