@@ -133,7 +133,7 @@
                     >
                         {this.state.filter_box_state?"关闭筛选框":"打开筛选框"}
                     </button>
-                    <div style={this.state.filter_box_state?{display:"block"}:{display:"none"}}>
+                    <div className="select_filter_box" style={this.state.filter_box_state?{display:"block"}:{display:"none"}}>
                         <SelectSearchType
                              id={"select_type"}
                              searchInfoLists={this.props.selectListMessage[0]}     
