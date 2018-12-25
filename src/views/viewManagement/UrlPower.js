@@ -4,7 +4,7 @@ import { getData, getRouter } from '../../utils/helpers'
 class UrlPower extends Component {
    state={
     role_table_list:[],
-    showMenuListState:true,
+    showMenuListState:false,
     routeList:[],//路由列表
 	myRoute:[],//对应账户的路由
 	// alertMsg:"",
