@@ -90,6 +90,7 @@ class View extends Component {
 	fetchListData() {
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
+				sessionStorage.view=JSON.stringify(message.data);
 				this.setState({
 					view_table_list:message.data,
 					view_table_lists:message.data,
@@ -116,6 +117,7 @@ class View extends Component {
 	viewList=(list,index)=>{
 	
 	var json_view=JSON.parse(sessionStorage.view)
+	console.log(json_view)
 	for(var i=0;i<json_view.length;i++){
 		if(json_view[i].name===list.name){
 			

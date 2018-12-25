@@ -102,6 +102,10 @@
                         window.location.href=window.location.href.split("#/")[0]
                     
                       }
+                }else{
+                    this.setState({
+                        alertMsg:message.msg
+                    })
                 }
                 
     
