@@ -489,7 +489,7 @@ class Menu extends Component {
 							)
 						})}
 					</ul>
-					<button onClick={()=>{
+					<button className="view_save_btn" onClick={()=>{
 						this.hold_menu_data()
 					}}>
 						保存

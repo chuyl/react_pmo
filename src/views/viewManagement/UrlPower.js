@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import Alert from '../components/modal/Alert'
 import { getData, getRouter } from '../../utils/helpers'
 class UrlPower extends Component {
    state={
     role_table_list:[],
-    showMenuListState:false,
+    showMenuListState:true,
     routeList:[],//路由列表
-    myRoute:[]//对应账户的路由
+	myRoute:[],//对应账户的路由
+	// alertMsg:"",
+	// alertTitle:""
    }
    componentWillMount(){
        this.fetchListData()
@@ -197,6 +200,10 @@ add_myRoute = ()=>{
                     </span>
 					<ul>
 						<li>
+							<input  type="text"/>
+							<button onClick={()=>{
+
+							}}>搜索</button>
 							<input id="routeListAllCheck" onClick={()=>{
 								 var checklist = document.getElementsByName("routeList");
 								 if(document.getElementById("routeListAllCheck").checked) {
@@ -234,6 +241,7 @@ add_myRoute = ()=>{
 						添加到我的路由
 					</button>
 				</div>:""}
+				{/* <Alert alertTitle={this.state.alertTitle} alertMsg = {this.state.alertMsg} sureCallback = {this.sureDelCallback.bind(this)} cancelCallback = { this.cancelDelCallback.bind(this) } alertState={this.state.alertDelState}/> */}
             </div>
 		)
 	}
