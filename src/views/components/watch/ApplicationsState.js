@@ -11,7 +11,6 @@
         render(){
             const {message,labelValue,thisKey} =this.props;
             var className = this.props.className.split(","); 
-             console.log(message.examine[thisKey])
             return (
                 this.props.message?<div className={className[0]?className[0]:""}>
                    <span className={className[1]?className[1]:""}>
@@ -21,7 +20,6 @@
                     <ul className={className[2]?className[2]+"_ul":""}>
                         {message.examine[thisKey]?message.examine[thisKey].step.map((step,index)=>{
                             if(step.pass==="0"){
-                                console.log(step.pass)
                                 return(
                                     <li key={index} className={className[2]?className[2]+"_item_default":""}>
     
@@ -29,7 +27,6 @@
                                 )
                             }
                             if(step.pass==="1"){
-                                console.log(step.pass)
                                 return(
                                     <li key={index} className={className[2]?className[2]+"_item_success":""}>
     
@@ -37,7 +34,6 @@
                                 )
                             }
                             if(step.pass==="-1"){
-                                console.log(step.pass)
                                 return(
                                     <li key={index} className={className[2]?className[2]+"_item_fail":""}>
     
@@ -45,7 +41,6 @@
                                 )
                             }
                             
-                            console.log(step)
                         }):""}
                     </ul>
                     <span  className={className[1]?className[1]:""}>

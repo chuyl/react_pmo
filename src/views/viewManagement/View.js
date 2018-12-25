@@ -270,6 +270,8 @@ class View extends Component {
 				  }
 			}
 		}
+		// console.log(this.state.view_id+this.state.view_english_name+this.state.view_china_name+select_type+select_mode)
+		// console.log(view_data)
 		getData(getRouter("json_manage_edit"), 
 			{ token:sessionStorage.token,
 				data:{  id:this.state.view_id, 
@@ -423,7 +425,12 @@ class View extends Component {
 								  }
 							}
 					}
-					getData(getRouter("json_manage_add"), { token:sessionStorage.token,data:{name:this.state.view_english_name,title:this.state.view_china_name,type:select_type,data:message_temp,mode:select_mode} }, add_cb, {});
+					// console.log(select_type)
+					// console.log(this.state.view_english_name)
+					// console.log(this.state.view_china_name)
+					// console.log(message_temp)
+					// console.log(select_mode)
+					 getData(getRouter("json_manage_add"), { token:sessionStorage.token,data:{name:this.state.view_english_name,title:this.state.view_china_name,type:select_type,data:message_temp,mode:select_mode} }, add_cb, {});
 					
 					}else if(message.error === 2){
 						sessionStorage.logged = false;
@@ -433,7 +440,8 @@ class View extends Component {
 						  }
 					}
 				}
-				getData(getRouter(select_type==="cards"?"newCard":"newFormlistGroup"), { token:sessionStorage.token }, cb, {});
+			
+				 getData(getRouter(select_type==="cards"?"newCard":"newFormlistGroup"), { token:sessionStorage.token }, cb, {});
 	}
     editViewMessage=(name)=>{
 		var json_view=JSON.parse(sessionStorage.view)
@@ -489,6 +497,8 @@ class View extends Component {
 
 				var message_temp=this.state.initializationData;
 					message_temp["form-temp-name"]=this.state.view_china_name;
+					// console.log(this.state.view_id+this.state.view_english_name+this.state.view_china_name+select_type+select_mode)
+					// console.log(message_temp)
 					getData(getRouter("json_manage_edit"), 
 				{ token:sessionStorage.token,
 					data:{  id:this.state.view_id, 
@@ -637,6 +647,11 @@ class View extends Component {
 					  }
 				}
 			}
+			// console.log(name)
+			// console.log(title)
+			// console.log(type)
+			// console.log(data)
+			// console.log(mode)
 			getData(getRouter("json_manage_add"), { token:sessionStorage.token,data:{name:name,title:title,type:type,data:data,mode:mode} }, cb, {});
 			
 
@@ -765,7 +780,7 @@ class View extends Component {
 							view_type_name:"formlist",
 							view_china_name:"",
 							view_english_name:"",
-							// view_mode:"",
+							view_mode:"-选择-",
 							view_id:""
 						})
 					}} >添加</button>
