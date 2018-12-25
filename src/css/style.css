@@ -1760,6 +1760,79 @@ textarea:disabled {
   .status_flow_ul .status_flow_item_fail .message_left::after {
     background-color: #FF5252; }
 
+.select_search_list .search_info_list_card {
+  background-color: #fafafa;
+  color: #757575;
+  overflow: hidden; }
+  .select_search_list .search_info_list_card .search_info_list_label {
+    float: left;
+    position: relative; }
+    .select_search_list .search_info_list_card .search_info_list_label .button {
+      font-size: 1em;
+      line-height: 3em;
+      padding: 0.5em 1em;
+      border-right: 1px solid #757575;
+      border-top-left-radius: 1em;
+      border-bottom-left-radius: 1em;
+      margin-right: -1px;
+      box-sizing: border-box; }
+    .select_search_list .search_info_list_card .search_info_list_label span {
+      position: absolute;
+      right: 1em;
+      top: 1em;
+      display: block;
+      border-top: 4px dashed;
+      border-right: 4px solid transparent;
+      border-left: 4px solid transparent; }
+  .select_search_list .search_info_list_card .form_control {
+    float: left;
+    border: 1px solid #757575;
+    box-sizing: border-box;
+    width: 16em;
+    height: 3em;
+    padding: 0.5em 2em; }
+  .select_search_list .search_info_list_card .select_right_btn {
+    float: left;
+    position: relative; }
+    .select_search_list .search_info_list_card .select_right_btn .button {
+      font-size: 1em;
+      line-height: 3em;
+      padding: 0.5em 1em;
+      border-left: 1px solid #757575;
+      border-top-right-radius: 1em;
+      border-bottom-right-radius: 1em;
+      margin-left: -1px;
+      box-sizing: border-box; }
+.select_search_list .search_terms {
+  float: left;
+  width: 9em;
+  line-height: 2em;
+  font-size: 1em;
+  color: #757575;
+  background-color: #fafafa;
+  box-sizing: border-box;
+  position: relative; }
+.select_search_list .del_btn {
+  width: 1em;
+  height: 2em;
+  display: block;
+  background-color: #757575;
+  border-radius: 50%;
+  outline: 7px solid #fafafa;
+  outline-offset: -14px;
+  transform: rotate(45deg);
+  position: absolute;
+  right: 0.5em;
+  top: 0.2em; }
+.select_search_list .del_btn_all {
+  float: left;
+  width: 6em;
+  line-height: 2em;
+  font-size: 1em;
+  color: #757575;
+  background-color: #fafafa;
+  box-sizing: border-box; }
+
 .dialog_open {
   position: absolute;
   bottom: 50px;
@@ -2389,7 +2462,21 @@ textarea:disabled {
     text-align: center;
     outline: none; }
   .view_list button:hover {
-    background-color: #FF5252; }
+    background-color: #FF5252;
+    color: #FFFFFF; }
+
+.view_menu_list ul {
+  border-radius: 1em;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  box-sizing: border-box;
+  display: block;
+  padding: 1em 0 1em 1em; }
+  .view_menu_list ul li {
+    float: left;
+    width: 100%;
+    color: #FFFFFF;
+    line-height: 2em; }
 
 .view_paper_list {
   width: 100%;
@@ -2415,8 +2502,7 @@ textarea:disabled {
   color: #FFFFFF;
   border: 1px solid #FFFFFF;
   padding: 0.5em;
-  margin: 0.5em 0;
-  overflow: hidden; }
+  margin: 0.5em 0; }
   .view_component_div .card-item {
     color: #FFFFFF; }
 
