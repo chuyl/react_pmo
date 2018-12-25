@@ -179,7 +179,7 @@ add_myRoute = ()=>{
 									})}
 					</ul>
                 </div>
-                {this.state.showMenuListState?<div  className="view_list overflow">
+                {this.state.showMenuListState?<div  className="view_list view_url_list overflow">
                     <span>
                         我的路由
                     </span>
@@ -222,7 +222,7 @@ add_myRoute = ()=>{
 						删除
 					</button>
                 </div>:""}
-                {this.state.showMenuListState?<div  className="view_list overflow">
+                {this.state.showMenuListState?<div  className="view_list view_url_list overflow">
                     <span>
                         路由列表
                     </span>

@@ -282,10 +282,14 @@ class TrainingProgram extends Component {
 			}
 			
 			}else{
-					this.setState({    //  项目创建成功,打开编辑页面。更新view
-					card_state:false
-				}) 
-				this.listProject()  //刷新项目列表
+                Alert.open({
+					alertTip:message.msg
+					
+				  });
+				  setTimeout(function(){
+					Alert.close();
+				  },3000)
+				// this.listProject()  //刷新项目列表
 			}
 		}
 		getData(getRouter(newState.before_api_uri), { data: obj, token: sessionStorage.token }, cb, {});

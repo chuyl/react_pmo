@@ -1,12 +1,12 @@
 /** 
      * @author xuesong
-     * @param SelectMessage 组件  下拉筛选/选择
+     * @param SelectSearchType 组件  下拉筛选/选择
      */
     import React, { Component } from 'react';
     import { getData, getRouter } from '../../../utils/helpers'
     //import TextField from '../components/input/TextField'
     //import Select from './Select'
-    class SelectMessage extends Component {
+    class SelectSearchType extends Component {
         state = {
             search_state: false,
             add_customer: false,
@@ -50,13 +50,12 @@
         render() {
             const { selectedInfo,selectedIdInfo, id, labelValue,disabled } = this.props;
             return (
-                <div style={this.props.view?{marginBottom:"10px"}:{}} className="search_terms">
+                <div style={this.props.view?{marginBottom:"10px"}:{}} className="select_search_list">
                     <div onClick={() => {
                             this.searchShow()
                           }} 
                         className={this.state.search_state ? "add_list_close" : ""}>
                     </div>
-                    {/* <label className="search_info_list_label">{labelValue}</label> */}
                     <div className="selectedInfo" id={id+"_name"}
                          onClick={() => {
                              if(disabled===true){
@@ -94,4 +93,4 @@
         }
     }
     
-    export default SelectMessage;
+    export default SelectSearchType;

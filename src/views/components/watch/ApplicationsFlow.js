@@ -11,7 +11,6 @@
         render(){
             const {message,labelValue,thisKey} =this.props;
             var className = this.props.className.split(","); 
-            console.log(message.examine[thisKey])
             return (
                 this.props.message?
                    

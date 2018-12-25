@@ -69,6 +69,11 @@ class Menu extends Component {
 				
 				  }
 			}
+			else{
+				this.setState({
+					alertDelMsg:message.msg
+				})
+			}
 		}
 		getData(getRouter("menu_data_list"), { token:sessionStorage.token }, cb, {});
 	}
@@ -453,7 +458,7 @@ class Menu extends Component {
 									})}
 					</ul>
 				</div>
-				{this.state.showMenuListState?<div  className="view_list overflow">
+				{this.state.showMenuListState?<div  className="view_list view_menu_list overflow">
 				
 					<ul>
 						<li>
@@ -495,7 +500,7 @@ class Menu extends Component {
 						保存
 					</button>
 				</div>:""}
-				{this.state.showMenuListState?<div  className="view_list overflow">
+				{this.state.showMenuListState?<div  className="view_list view_menu_list overflow">
 					<ul>
 					<li>
 							<input id="menuRigthAllCheck" onClick={()=>{

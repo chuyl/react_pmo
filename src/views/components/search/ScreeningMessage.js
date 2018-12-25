@@ -5,6 +5,7 @@
     import React, { Component } from 'react';
     import KeywordSearch from './KeywordSearch';
     import SelectMessage from './SelectMessage'
+    import SelectSearchType from './SelectSearchType'
     class ScreeningMessage extends Component {
         state={
             inputValue:"",
@@ -133,53 +134,58 @@
                         {this.state.filter_box_state?"关闭筛选框":"打开筛选框"}
                     </button>
                     <div style={this.state.filter_box_state?{display:"block"}:{display:"none"}}>
-                    <KeywordSearch
-                        id={"keywordSearch"}
-                    />
-                    {this.props.selectListMessage?this.props.selectListMessage.map((selectListMessage,index)=>{
-                        return(
-                            <SelectMessage
-                            key={index}
-                            id={"select_message"+index}
-                            searchInfoLists={selectListMessage}     
+                        <SelectSearchType
+                             id={"select_type"}
+                             searchInfoLists={this.props.selectListMessage[1]}     
+                            />
+                        <KeywordSearch
+                            id={"keywordSearch"}
                         />
-                        )
-                    }):""}
-                   
-                    <button
-                        onClick={()=>{
-                            this.screening_information()
-                        }}
-                    >搜索</button>
-                    <div>
-                        <span>
-                            {this.state.search_arr.length>0?"关键字:":""}
-                        </span>
-                        {this.state.search_arr.map((search_arr,index)=>{
-                            console.log(this.state.search_arr)
-                            if(search_arr.name!==""){
+                        {this.props.selectListMessage?this.props.selectListMessage.map((selectListMessage,index)=>{
                             return(
-                                <div style={{border:"1px dashed #fff",margin:"3px",padding:"2px 5px"}} key={index}>
-                                    <span>{search_arr.name+"  "}
-                                       
-                                    </span>
-                                    <span
-                                        onClick={()=>{
-                                            this.clear_this_search(search_arr.id) 
-                                        }}
-                                    >X</span>
-                                </div>
+                                <SelectMessage
+                                key={index}
+                                id={"select_message"+index}
+                                searchInfoLists={selectListMessage}     
+                            />
                             )
-                        
-                        }})}
-                        {this.state.search_arr.length>0?<button
+                        }):""}
+                    
+                        <button className="select_right_btn"
                             onClick={()=>{
-                               this.clear_search() 
+                                this.screening_information()
                             }}
-                        >
-                            清空
-                        </button>:""}
-                    </div>
+                        >搜索</button>
+                        <div>
+                            {/* <span>
+                                {this.state.search_arr.length>0?"关键字:":""}
+                            </span> */}
+                            {this.state.search_arr.map((search_arr,index)=>{
+                                console.log(this.state.search_arr)
+                                if(search_arr.name!==""){
+                                return(
+                                    <div className="del_btn" style={{border:"1px dashed #fff",margin:"3px",padding:"2px 5px"}} key={index}>
+                                        <span>{search_arr.name+"  "}
+                                        
+                                        </span>
+                                        <span
+                                            onClick={()=>{
+                                                this.clear_this_search(search_arr.id) 
+                                            }}
+                                        >X</span>
+                                    </div>
+                                )
+                            
+                            }})}
+                            {this.state.search_arr.length>0?<button
+                                className="del_btn_all"
+                                onClick={()=>{
+                                this.clear_search() 
+                                }}
+                            >
+                                清空
+                            </button>:""}
+                        </div>
                     </div>
               </div>
             )
