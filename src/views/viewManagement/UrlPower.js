@@ -5,8 +5,11 @@ class UrlPower extends Component {
    state={
     role_table_list:[],
     showMenuListState:false,
-    routeList:[],//路由列表
+	routeList:[],//路由列表
+	routeLists:[],//路由列表
 	myRoute:[],//对应账户的路由
+	search_url_message:"",
+
 	// alertMsg:"",
 	// alertTitle:""
    }
@@ -75,7 +78,8 @@ class UrlPower extends Component {
                 console.log
 				this.setState({
 					// showMenuListState:true,
-					routeList:message.data
+					routeList:message.data,
+					routeLists:message.data
 				})
 				
 			}else if(message.error === 2){
@@ -200,10 +204,33 @@ add_myRoute = ()=>{
                     </span>
 					<ul>
 						<li>
-							<input  type="text"/>
-							<button onClick={()=>{
-
-							}}>搜索</button>
+							<input onChange={(e)=>{
+								var routeList=[];
+								for(var i = 0;i<this.state.routeLists.length;i++){
+									if(this.state.routeLists[i].name.indexOf(e.target.value)>= 0){
+										routeList.push(this.state.routeLists[i])
+									}
+									this.setState({
+										routeList:routeList
+									})
+								}
+								this.setState({
+									search_url_message:e.target.value
+								})
+							}} type="text"/>
+							<br/>
+							{/* <button onClick={()=>{
+								console.log(this.state.search_url_message)
+								var routeList=[];
+								for(var i = 0;i<this.state.routeLists.length;i++){
+									if(this.state.routeLists[i].name.indexOf(this.state.search_url_message)>= 0){
+										routeList.push(this.state.routeLists[i])
+									}
+									this.setState({
+										routeList:routeList
+									})
+								}
+							}}>搜索</button> */}
 							<input id="routeListAllCheck" onClick={()=>{
 								 var checklist = document.getElementsByName("routeList");
 								 if(document.getElementById("routeListAllCheck").checked) {
