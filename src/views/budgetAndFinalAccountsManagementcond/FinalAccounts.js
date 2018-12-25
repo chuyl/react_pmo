@@ -78,9 +78,10 @@ class FinalAccounts extends Component {
 	// }
 	fetchListData() {
 		var json_view=sessionStorage.view?JSON.parse(sessionStorage.view):[]
+		console.log(json_view)
 		// window.location.reload();
 		for (var i = 0; i < json_view.length; i++) {
-			if (json_view[i].name === "budgetViewCard") {
+			if (json_view[i].name === "finalViewCard") {
 
 				var json_message = json_view[i].data;
 				this.setState({
@@ -288,6 +289,7 @@ class FinalAccounts extends Component {
 				this.listProject()  //刷新项目列表
 			}
 		}
+		console.log(newState.before_api_uri)
 		getData(getRouter(newState.before_api_uri), { data: obj, token: sessionStorage.token }, cb, {});
 	}
 	examine_bool_message=(state)=>{
