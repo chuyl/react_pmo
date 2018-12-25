@@ -793,9 +793,10 @@ class View extends Component {
 					<ScreeningMessage 
 					   message={this.state.view_table_lists}
 					   keywordSearch={["title","name","id"]}
-					   selectListMessage={["view_mode","view_type"]}
-					   selectNameMessage={["mode","type"]}
-
+					//    selectListMessage={["view_mode","view_type"]}
+					//    selectNameMessage={["mode","type"]}
+					   selectListMessage={["view_mode"]}
+					   selectNameMessage={["mode"]}
 					   screening_message={this.screening_information}
 					/>
 					

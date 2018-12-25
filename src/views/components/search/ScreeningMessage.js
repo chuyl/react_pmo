@@ -136,11 +136,22 @@
                     <div style={this.state.filter_box_state?{display:"block"}:{display:"none"}}>
                         <SelectSearchType
                              id={"select_type"}
-                             searchInfoLists={this.props.selectListMessage[1]}     
+                             searchInfoLists={this.props.selectListMessage[0]}     
                             />
+
                         <KeywordSearch
                             id={"keywordSearch"}
                         />
+                        <button className="select_right_btn"
+                            onClick={()=>{
+                                this.screening_information()
+                            }}
+                        >搜索</button>
+                         <SelectSearchType
+                             id={"select_type"}
+                             searchInfoLists={this.props.selectListMessage[0]}     
+                            />
+
                         {this.props.selectListMessage?this.props.selectListMessage.map((selectListMessage,index)=>{
                             return(
                                 <SelectMessage
