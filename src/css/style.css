@@ -2454,6 +2454,15 @@ textarea:disabled {
   margin-left: 0.5em;
   overflow-y: auto;
   position: relative; }
+  .view_list .view_save_btn {
+    display: block;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    background-color: #3F51B5;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    text-align: center;
+    outline: none; }
   .view_list button:hover {
     background-color: #FF5252; }
 
