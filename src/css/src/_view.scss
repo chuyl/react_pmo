@@ -41,15 +41,15 @@
     margin-left: 0.5em;
     overflow-y: auto;
     position: relative;
-    button {
-        // display: block;
-        // width: 5em;
-        // border-radius: 4px;
-        // background-color: $primary-color;
-        // color: $primary-color-text;
-        // border: 1px solid $primary-color-text;
-        // text-align: center;
-        // outline: none;
+    .view_save_btn {
+        display: block;
+        padding: 0.5em 1em;
+        border-radius: 4px;
+        background-color: $primary-color;
+        color: $primary-color-text;
+        border: 1px solid $primary-color-text;
+        text-align: center;
+        outline: none;
     }
     button:hover {
         background-color: $accent-color;
