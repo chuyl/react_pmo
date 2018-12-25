@@ -1562,6 +1562,7 @@ textarea:disabled {
   .card_budget span:nth-of-type(2),
   .card_final_accounts span:nth-of-type(2) {
     padding-right: 1em;
+    width: 5em;
     float: right; }
 
 .card_budget_btn,
@@ -2453,17 +2454,6 @@ textarea:disabled {
   margin-left: 0.5em;
   overflow-y: auto;
   position: relative; }
-  .view_list button {
-    margin-top: 1em;
-    display: block;
-    width: 5em;
-    line-height: 2em;
-    border-radius: 4px;
-    background-color: #3F51B5;
-    color: #FFFFFF;
-    border: 1px solid #FFFFFF;
-    text-align: center;
-    outline: none; }
   .view_list button:hover {
     background-color: #FF5252; }
 
@@ -2511,7 +2501,7 @@ textarea:disabled {
 
 .view_component_function {
   width: 100%;
-  height: 1.5em; }
+  height: 2.5em; }
   .view_component_function .label_delete_button {
     color: #FFFFFF;
     background: #FF5252; }
@@ -2749,17 +2739,6 @@ textarea:disabled {
     margin-top: 1em;
     padding: 0.5em;
     box-sizing: border-box; }
-  .alert_back.open {
-    position: fixed;
-    display: flex;
-    height: 100vh;
-    width: 100%;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    background-color: rgba(33, 33, 33, 0.3); }
   .alert_back .alert_box {
     position: relative;
     box-sizing: border-box;

@@ -126,7 +126,19 @@ del_myRoute=()=>{
             route_ids.push(my_route_check[i].value)
         }
     }
-    console.log(route_ids)
+	console.log(route_ids)
+	var cb = (route, message, arg) => {
+		if (message.error === 0) {
+			
+		}else if(message.error === 2){
+			sessionStorage.logged = false;
+			sessionStorage.token="";
+			if(window.location.hash.split("#")[1]!=="/"){
+				window.location.href=window.location.href.split("#/")[0]
+			  }
+		}
+	}
+	//getData(getRouter("client_route_list"), { token:sessionStorage.token}, cb, {});
 }
 add_myRoute = ()=>{
     var route_ids=[];
@@ -137,7 +149,19 @@ add_myRoute = ()=>{
             route_ids.push(my_route_check[i].value)
         }
     }
-    console.log(route_ids)
+	console.log(route_ids)
+	var cb = (route, message, arg) => {
+		if (message.error === 0) {
+			
+		}else if(message.error === 2){
+			sessionStorage.logged = false;
+			sessionStorage.token="";
+			if(window.location.hash.split("#")[1]!=="/"){
+				window.location.href=window.location.href.split("#/")[0]
+			  }
+		}
+	}
+	//getData(getRouter("client_route_list"), { token:sessionStorage.token}, cb, {});
 }
 	render(){
 		return (
@@ -192,7 +216,7 @@ add_myRoute = ()=>{
 							)
 						})}
 					</ul>
-					<button onClick={()=>{
+					<button className="view_save_btn" onClick={()=>{
 						this.del_myRoute()
 					}}>
 						删除
@@ -217,7 +241,7 @@ add_myRoute = ()=>{
 								this.setState({
 									search_url_message:e.target.value
 								})
-							}} type="text"/>
+							}} type="text" placeholder="搜索关键字" />
 							<br/>
 							{/* <button onClick={()=>{
 								console.log(this.state.search_url_message)
@@ -262,7 +286,7 @@ add_myRoute = ()=>{
 							)
 						})}
 					</ul>
-					<button style={{marginBottom:"1em"}} onClick={()=>{
+					<button className="view_save_btn" style={{marginBottom:"1em"}} onClick={()=>{
 						this.add_myRoute()
 					}}>
 						添加到我的路由
