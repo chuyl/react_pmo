@@ -175,7 +175,7 @@
                     <div className="select_filter_box" style={this.state.filter_box_state?{display:"block"}:{display:"none"}}>
                         <SelectSearchType
                              id={"select_title"}
-                             selectedInfo={this.props.keywordTitle[0].name}
+                             selectedInfo={this.props.keywordTitle[0]}
                              keywordTitle={this.props.keywordTitle} 
                              selectTitleIndex={this.select_title_index}    
                             />
