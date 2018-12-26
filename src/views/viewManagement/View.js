@@ -801,13 +801,9 @@ class View extends Component {
 					   keywordTitle={[
 						"中文名称+英文名称",
 						"所属模块",
-						"类型"
-					]}
-					//    keywordTitle={this.state.keywordTitle}
+						"类型"]}
 					   selectListMessage={["view_mode","view_type"]}
 					   selectNameMessage={["mode","type"]}
-					//    selectListMessage={["view_mode"]}
-					//    selectNameMessage={["mode"]}
 					   screeningMessage={this.screening_information}
 					/>
 					

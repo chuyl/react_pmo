@@ -103,7 +103,7 @@ examine_bool_message_third=(state)=>{
     // console.log(state)
 }
 examine_bool_message_sixth=(state)=>{
-    this.props.examine_bool_seventh(state)
+    this.props.examineBoolSeventh(state)
     // console.log(state)
 }
 handleChildChange=(formData)=>{

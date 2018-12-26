@@ -1,6 +1,18 @@
 /** 
      * @author xuesong
-     * @param ScreeningMessage 组件  label+input
+     * @param ScreeningMessage 组件  
+     * 调用方法
+     * <ScreeningMessage 
+			message={this.state.view_table_lists} 要筛选的数据列表
+			keywordSearch={["title","name"]}   在input中筛选的关键字在数据列表中的名称
+			keywordTitle={[                   下拉菜单选择搜索的条件
+				"中文名称+英文名称",
+				"所属模块",
+				"类型"]}
+			selectListMessage={["view_mode","view_type"]} 下拉菜单接口名称
+			selectNameMessage={["mode","type"]}  在select中筛选数据列表中的名称
+			screeningMessage={this.screening_information}   回调函数message为筛选后数据列表state代替原数据列表
+					/>
      */
     import React, { Component } from 'react';
     import KeywordSearch from './KeywordSearch';
@@ -56,11 +68,15 @@
                     search_arr.push({name:obj[key],id:"select_message"+num+"_name"})  
                     num++; 
                 }
-                }  
-                search_arr.push({name:keywordSearch,id:"keywordSearch"})   
+                } 
+                if(keywordSearch!==""){
+                    search_arr.push({name:keywordSearch,id:"keywordSearch"})   
+
+                }
                 this.setState({
                     search_arr:search_arr
                 })
+                console.log(search_arr)
             let filter=(condition,data)=>{
                 return data.filter( item => {
                     return Object.keys( condition ).every( key => {
