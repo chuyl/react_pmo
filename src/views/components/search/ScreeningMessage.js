@@ -202,8 +202,7 @@
                                 if(search_arr.name!==""){
                                 return(
                                     <div className="select_clean_bar" key={index}>
-                                        <span>{search_arr.name+""}
-                                        
+                                        <span>{search_arr.name}
                                         </span>
                                         <span  className="del_btn"
                                             onClick={()=>{
