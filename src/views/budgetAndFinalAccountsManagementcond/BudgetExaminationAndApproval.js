@@ -110,8 +110,7 @@ class BudgetExaminationAndApproval extends Component {
      }
 	render(){
 		return (
-            <div>
-                <div>
+            <div className="statistical_div">
                     <table className="statistical_table">
                         <thead>
                             <tr>
@@ -125,8 +124,7 @@ class BudgetExaminationAndApproval extends Component {
                             {this.goPage(this.state.pno,this.state.psize)}
                         </tbody>
                     </table>
-                </div>
-                <div className="nyx-change-page">
+                <div className="statistical_change_page">
                     {this.change_page(1,10)}
                 </div>
         </div>
