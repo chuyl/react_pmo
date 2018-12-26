@@ -13,10 +13,7 @@
             search_name: "",
             add_customer_input: "",
             search_info_list: [],
-            add_button: this.props.addButton,
-            before_api_uri: this.props.searchInfoLists,
-            searchInfoLists: [],
-            info_lists: this.props.searchInfoLists,
+           
         }
         /** 
          * @author xuesong

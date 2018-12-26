@@ -16,6 +16,8 @@
             keywordTitle:[]
             // message_spare_list:this.props.message,
         }
+        componentWillMount(){
+        }
         /** 
          * @time 2018-12-19
          * @author xuesong
@@ -134,8 +136,16 @@
         }
         // console.log(this.props.keywordTitle)
         render(){
-            
-            
+            // if(this.props.keywordTitle){
+            //     var keywordTitle=[];
+            //     for(var i = 0;this.props.keywordTitle.length;i++){
+            //         keywordTitle.push({id:i,name:this.props.keywordTitle[i]})
+            //     }
+            //     // this.setState({
+            //     //     keywordTitle:keywordTitle
+            //     // })
+            // }
+            // console.log(keywordTitle)
             const {id,message} =this.props;
             return (
                 <div>
@@ -151,7 +161,8 @@
                     <div className="select_filter_box" style={this.state.filter_box_state?{display:"block"}:{display:"none"}}>
                         <SelectSearchType
                              id={"select_type"}
-                             searchInfoLists={this.props.selectListMessage[0]}     
+
+                             searchInfoLists={this.props.keywordTitle}     
                             />
 
                         <KeywordSearch

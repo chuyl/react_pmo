@@ -321,14 +321,14 @@ class Budget extends Component {
 						>
 							添加
 						</div> */}
-						<ScreeningMessage 
+						{/* <ScreeningMessage 
 							message={this.state.card_lists}
 							keywordSearch={["project_name","project_gather_name"]}
 							selectListMessage={["staff_manage_list","project_type_list"]}
 							selectNameMessage={["project_leader_name","project_project_template_name"]}
 
 							screening_message={this.screening_information}
-						/>
+						/> */}
 					</div>
 					<div className="overflow crius-card-list">
 						{this.state.card_list !== null ? this.state.card_list.map((card_list, index) => {

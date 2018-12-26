@@ -238,6 +238,7 @@ add_myRoute = ()=>{
 									<span>
 										{myRoute.name}
 									</span>
+									<p style={{marginLeft:"1em"}}>{myRoute.note}</p>
 							</li>
 							)
 						})}
