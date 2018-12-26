@@ -121,13 +121,15 @@ class BudgetExaminationAndApproval extends Component {
             <div>
                 <div>
                     <table className="statistical_table">
-                        <tbody>
+                        <thead>
                             <tr style={{textAlign:"center",maxHeight:"25px"}}>
-                                <td  height={25} width={60}>序号</td>
-                                <td width={100}>项目名称</td>
-                                <td width={120}>项目模板</td>
-                                <td width={180}>操作信息</td>
-                                </tr>
+                                <th  height={25} width={60}>序号</th>
+                                <th width={100}>项目名称</th>
+                                <th width={120}>项目模板</th>
+                                <th width={180}>操作信息</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             {this.goPage(this.state.pno,this.state.psize)}
                         </tbody>
                     </table>
