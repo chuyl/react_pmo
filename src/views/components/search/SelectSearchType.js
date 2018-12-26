@@ -13,33 +13,17 @@
             search_name: "",
             add_customer_input: "",
             search_info_list: [],
+            selectedInfo:this.props.selectedInfo,
+            keywordTitle:this.props.keywordTitle
            
         }
         /** 
          * @author xuesong
          * @param infos 函数名  获取下拉内容
          */
-        infos() {
-            var cb = (route, message, arg) => {
-                if (message.error === 0) {
-                    this.setState({
-                        searchInfoLists: message.data
-                    })
-                }else if(message.error === 2){
-                    console.log("未登录")
-                    sessionStorage.logged = false;
-                    sessionStorage.token="";
-                    if(window.location.hash.split("#")[1]!=="/"){
-                        window.location.href=window.location.href.split("#/")[0]
-                    
-                      }
-                }
-            }
-            console.log(this.state.before_api_uri)
-            getData(getRouter(this.state.before_api_uri), { token:sessionStorage.token }, cb, {});
-        }
+        
     
-        searchShow() {
+        searchShow=()=> {
             this.setState({
                 search_state: !this.state.search_state
             })
@@ -54,13 +38,9 @@
                         className={this.state.search_state ? "add_list_close" : ""}>
                     </div>
                     <div className="selectedInfo" id={id+"_name"}
+                        title={this.state.selectedInfo}
                          onClick={() => {
-                             if(disabled===true){
-                                 return false;
-                             }else{
-                                this.searchShow()
-                                this.infos();
-                             }
+                            this.searchShow()
                             
                          }}
                     >
@@ -73,13 +53,19 @@
                             className={this.state.search_state ? "search_info_list open" : "search_info_list"}
                         >
                             <ul className="search_info_list_ul select_info_list_ul">
-                                {this.state.searchInfoLists?this.state.searchInfoLists.map((info_lists,index) => {
+                                {this.state.keywordTitle?this.state.keywordTitle.map((info_lists,index) => {
                                     return (
-                                        <li onClick={(e) => {
-                                            document.getElementById(id+"_name").innerHTML = info_lists.name;
-                                            document.getElementById(id+"_id").innerHTML = info_lists.id;
+                                        <li
+                                        title={info_lists}
+                                        onClick={(e) => {
+                                            document.getElementById(id+"_name").innerHTML = info_lists;
+                                            // document.getElementById(id+"_id").innerHTML = info_lists.id;
                                             this.searchShow()
-                                        }} key={index}>{info_lists.name}</li>
+                                            this.setState({
+                                                selectedInfo:info_lists
+                                            })
+                                            this.props.selectTitleIndex(index)
+                                        }} key={index}>{info_lists}</li>
                                     )
                                 }):""}
                             </ul>

@@ -359,7 +359,7 @@ handleLogout = () => {
 		return(
       sessionStorage.getItem("logged")==="true"?	
       <div>
-        <div style={{height:"4vh"}}>
+        <div className="user_info_box" style={{height:"4vh"}}>
           <span>用户名</span>
           <span>{sessionStorage.account}</span>
         </div>

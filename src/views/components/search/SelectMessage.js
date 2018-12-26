@@ -50,7 +50,7 @@
         render() {
             const { selectedInfo,selectedIdInfo, id, labelValue,disabled } = this.props;
             return (
-                <div style={this.props.view?{marginBottom:"10px"}:{}} className="search_terms">
+                <div style={this.props.displayNone===0?{display:"none"}:{}} className="search_terms">
                     <div onClick={() => {
                             this.searchShow()
                           }} 

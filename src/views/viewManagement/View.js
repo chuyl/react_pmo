@@ -57,7 +57,12 @@ class View extends Component {
 		after_api_uri: "",
 		data_name:"",
 		data_message_list:[],
-		this_data_message:{}//数据名称选择获取的数据信息
+		this_data_message:{},//数据名称选择获取的数据信息
+		keywordTitle:[
+			{id:1,name:"中文名称+英文名称"},
+			{id:2,name:"所属模块"},
+			{id:3,name:"类型"}
+		]
 	};
 
 	componentWillMount() {
@@ -793,12 +798,17 @@ class View extends Component {
 					<ScreeningMessage 
 					   message={this.state.view_table_lists}
 					   keywordSearch={["title","name"]}
-					   keywordTitle={["视图中文名称+英文名称","所属模块"]}
-					//    selectListMessage={["view_mode","view_type"]}
-					//    selectNameMessage={["mode","type"]}
-					   selectListMessage={["view_mode"]}
-					   selectNameMessage={["mode"]}
-					   screening_message={this.screening_information}
+					   keywordTitle={[
+						"中文名称+英文名称",
+						"所属模块",
+						"类型"
+					]}
+					//    keywordTitle={this.state.keywordTitle}
+					   selectListMessage={["view_mode","view_type"]}
+					   selectNameMessage={["mode","type"]}
+					//    selectListMessage={["view_mode"]}
+					//    selectNameMessage={["mode"]}
+					   screeningMessage={this.screening_information}
 					/>
 					
 					{/* <SelectViewListSearch

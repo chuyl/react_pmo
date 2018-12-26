@@ -19,7 +19,7 @@
         render(){
             const {id,inputValue} =this.props;
             return (
-                <div className="form_control">
+                <div style={this.props.displayNone===0?{display:"none"}:{color:"red"}} className="form_control">
                     <input type={"text"} defaultValue={inputValue} onChange={this.handleChange.bind(this)} id={id}/>
                 </div> 
                 )

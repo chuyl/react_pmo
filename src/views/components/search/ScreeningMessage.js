@@ -13,7 +13,8 @@
             message_list:this.props.message,
             filter_box_state:true,
             search_arr:[],
-            keywordTitle:[]
+            keywordTitle:[],
+            title_index:0
             // message_spare_list:this.props.message,
         }
         componentWillMount(){
@@ -90,7 +91,7 @@
                     }
                 }
     //  console.log(filter(obj,this.props.message))
-    this.props.screening_message(keyword_list)
+    this.props.screeningMessage(keyword_list)
             // this.setState({
             //     view_table_list:screening_list
             // })
@@ -112,7 +113,7 @@
                 search_arr:[]
             })
             // console.log(this.props.message)
-            this.props.screening_message(this.props.message)
+            this.props.screeningMessage(this.props.message)
         }
         /** 
          * @time 2018-12-19
@@ -134,18 +135,15 @@
                 })
             }
         }
+        select_title_index=(index)=>{
+            this.setState({
+                title_index:index
+            })
+            console.log(index)
+        }
         // console.log(this.props.keywordTitle)
         render(){
-            // if(this.props.keywordTitle){
-            //     var keywordTitle=[];
-            //     for(var i = 0;this.props.keywordTitle.length;i++){
-            //         keywordTitle.push({id:i,name:this.props.keywordTitle[i]})
-            //     }
-            //     // this.setState({
-            //     //     keywordTitle:keywordTitle
-            //     // })
-            // }
-            // console.log(keywordTitle)
+         console.log(this.state.title_index)
             const {id,message} =this.props;
             return (
                 <div>
@@ -160,45 +158,42 @@
                     </button>
                     <div className="select_filter_box" style={this.state.filter_box_state?{display:"block"}:{display:"none"}}>
                         <SelectSearchType
-                             id={"select_type"}
-
-                             searchInfoLists={this.props.keywordTitle}     
+                             id={"select_title"}
+                             selectedInfo={this.props.keywordTitle[0].name}
+                             keywordTitle={this.props.keywordTitle} 
+                             selectTitleIndex={this.select_title_index}    
                             />
 
-                        <KeywordSearch
+                        <KeywordSearch 
+                            displayNone={this.state.title_index===0?1:0}
+                            style={this.state.title_index===0?{}:{display:"none"}}
                             id={"keywordSearch"}
                         />
-                        <button className="select_right_btn"
-                            onClick={()=>{
-                                this.screening_information()
-                            }}
-                        >搜索</button>
-                         <SelectSearchType
-                             id={"select_type"}
-                             searchInfoLists={this.props.selectListMessage[0]}     
-                            />
-
-                        {this.props.selectListMessage?this.props.selectListMessage.map((selectListMessage,index)=>{
+                         {this.props.selectListMessage?this.props.selectListMessage.map((selectListMessage,index)=>{
                             return(
                                 <SelectMessage
                                 key={index}
+                                displayNone={index+1===this.state.title_index?1:0}
                                 id={"select_message"+index}
                                 searchInfoLists={selectListMessage}     
                             />
                             )
                         }):""}
-                    
                         <button className="select_right_btn"
                             onClick={()=>{
                                 this.screening_information()
                             }}
                         >搜索</button>
+                        
+
+                       
+                    
+                       
                         <div className="select_clean_box">
                             {/* <span>
                                 {this.state.search_arr.length>0?"关键字:":""}
                             </span> */}
                             {this.state.search_arr.map((search_arr,index)=>{
-                                console.log(this.state.search_arr)
                                 if(search_arr.name!==""){
                                 return(
                                     <div className="select_clean_bar" key={index}>
