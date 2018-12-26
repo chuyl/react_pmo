@@ -1763,11 +1763,10 @@ textarea:disabled {
 .select_search_list {
   background-color: #fafafa;
   color: #757575;
-  overflow: hidden;
   float: left;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  width: 20%;
+  width: 36%;
   box-sizing: border-box; }
   .select_search_list .selectedInfo {
     float: left;
@@ -1786,12 +1785,14 @@ textarea:disabled {
       border-right: 4px solid transparent;
       border-left: 4px solid transparent; }
   .select_search_list .search_info_list.open {
-    margin: 0; }
+    margin: 0;
+    width: 8em;
+    margin-top: 1.8em; }
 
 .form_control {
   float: left;
   box-sizing: border-box;
-  width: 60%;
+  width: 44%;
   height: 2em;
   padding-bottom: 1px; }
   .form_control input {
@@ -1820,14 +1821,16 @@ textarea:disabled {
 
 .search_terms {
   float: left;
-  width: 60%;
+  width: 44%;
   line-height: 2em;
   color: #757575;
   background-color: #fafafa;
   box-sizing: border-box;
   position: relative; }
   .search_terms .search_info_list.open {
-    margin: 0; }
+    margin: 0;
+    width: 9.5em;
+    margin-top: 1.8em; }
   .search_terms .selectedInfo {
     float: left;
     position: relative;
@@ -1835,7 +1838,9 @@ textarea:disabled {
     box-sizing: border-box;
     height: 2em;
     outline: none;
-    border: 0; }
+    border: 0;
+    border-left: 1px solid #757575;
+    border-right: 1px solid #757575; }
     .search_terms .selectedInfo span {
       position: absolute;
       right: 1em;
@@ -1899,9 +1904,7 @@ textarea:disabled {
   .statistical_table tbody th:last-child {
     border-left: 1px solid #666; }
   .statistical_table tbody td {
-    border-bottom: 1px solid #757575; }
-  .statistical_table tbody tr:last-child td {
-    border-bottom: none; }
+    border-left: 1px solid #757575; }
 
 .nyx-change-page {
   color: #FFFFFF;
