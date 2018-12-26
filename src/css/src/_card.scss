@@ -585,11 +585,10 @@ textarea:disabled {
 .select_search_list {
     background-color: $background-color;
     color: $secondary-text-color;
-    overflow: hidden;
     float: left;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    width: 20%;
+    width: 36%;
     box-sizing: border-box;
     .selectedInfo {
         float: left;
@@ -611,13 +610,19 @@ textarea:disabled {
     }
     .search_info_list.open {
         margin: 0;
+        width: 8em;
+        margin-top: 1.8em;
     }
+}
+
+.select_filter_box {
+    .select_search_list {}
 }
 
 .form_control {
     float: left;
     box-sizing: border-box;
-    width: 60%;
+    width: 44%;
     height: 2em;
     padding-bottom: 1px;
     input {
@@ -649,7 +654,7 @@ textarea:disabled {
 
 .search_terms {
     float: left;
-    width: 60%;
+    width: 44%;
     line-height: 2em;
     color: $secondary-text-color;
     background-color: $background-color;
@@ -657,6 +662,8 @@ textarea:disabled {
     position: relative;
     .search_info_list.open {
         margin: 0;
+        width: 9.5em;
+        margin-top: 1.8em;
     }
     .selectedInfo {
         float: left;
@@ -666,6 +673,8 @@ textarea:disabled {
         height: 2em;
         outline: none;
         border: 0;
+        border-left: 1px solid $secondary-text-color;
+        border-right: 1px solid $secondary-text-color;
         span {
             position: absolute;
             right: 1em;
@@ -716,10 +725,8 @@ textarea:disabled {
     $table_content_line: 1px solid $secondary-text-color;
     $table_out_line: 1px solid #000;
     @include set_x_title_line($table_title_line, 2);
-    @include set_y_title_line($table_title_line, 1); //
-    @include set_x_content_line($table_content_line, 1);
-    // @include set_y_content_line($table_content_line, 1);
-    // @include set_x_out_line($table_out_line); //
+    @include set_y_title_line($table_title_line, 1); // @include set_x_content_line($table_content_line, 1);
+    @include set_y_content_line($table_content_line, 1); // @include set_x_out_line($table_out_line); //
     //设置颜色
     // $table_title_bgcolor: (#fff #000 #aaf #00d);
     // $table_content_x_bgcolor: (#fff rgba(0, 0, 0, .2) #fff rgba(0, 0, 0, .3));
