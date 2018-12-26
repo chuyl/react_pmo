@@ -193,7 +193,7 @@
                                 this.screening_information()
                             }}
                         >搜索</button>
-                        <div>
+                        <div className="select_clean_box">
                             {/* <span>
                                 {this.state.search_arr.length>0?"关键字:":""}
                             </span> */}
@@ -201,7 +201,7 @@
                                 console.log(this.state.search_arr)
                                 if(search_arr.name!==""){
                                 return(
-                                    <div key={index}>
+                                    <div className="select_clean_bar" key={index}>
                                         <span>{search_arr.name+""}
                                         
                                         </span>

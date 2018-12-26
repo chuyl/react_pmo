@@ -220,6 +220,7 @@ class TrainingProgram extends Component {
 				  }
 			}
 		}
+		console.log(newState.freshName)
 		//获取数据接口
 		getData(getRouter(newState.freshName), { token: sessionStorage.token, id: newState.id }, cb, {});
 
@@ -279,8 +280,6 @@ class TrainingProgram extends Component {
 					window.location.href=window.location.href.split("#/")[0]
 				
 				  }
-			}
-			
 			}else{
                 Alert.open({
 					alertTip:message.msg
@@ -289,9 +288,16 @@ class TrainingProgram extends Component {
 				  setTimeout(function(){
 					Alert.close();
 				  },3000)
-				// this.listProject()  //刷新项目列表
+			
 			}
+			}else{
+				this.setState({    //  项目创建成功,打开编辑页面。更新view
+				card_state:false
+			}) 
+			this.listProject()  //刷新项目列表
 		}
+		}
+		console.log(newState.before_api_uri)
 		getData(getRouter(newState.before_api_uri), { data: obj, token: sessionStorage.token }, cb, {});
 	}
 	examine_bool_message=(state)=>{
