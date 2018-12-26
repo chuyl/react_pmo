@@ -1789,6 +1789,9 @@ textarea:disabled {
     width: 8em;
     margin-top: 1.8em; }
 
+.select_filter_box {
+  height: 7em; }
+
 .form_control {
   float: left;
   box-sizing: border-box;
@@ -1872,44 +1875,44 @@ textarea:disabled {
   background-color: #fafafa;
   box-sizing: border-box; }
 
-.statistical_table {
-  background: #fafafa;
-  width: 60%; }
-  .statistical_table tr {
-    line-height: 1.5em;
-    text-align: left;
-    padding: 1em 0;
-    margin: 0; }
-  .statistical_table td {
-    line-height: 1.5em;
-    text-align: left;
-    padding: 1em 0.5em;
-    margin: 0; }
-  .statistical_table th {
-    line-height: 1.5em;
-    text-align: left;
-    padding: 1em 0.5em;
-    margin: 0; }
-  .statistical_table thead:after {
-    content: " ";
-    display: table-row;
-    height: 1em;
-    background-color: transparent; }
-  .statistical_table thead tr {
-    border-bottom: 1px solid #666; }
-  .statistical_table tfoot tr {
-    border-top: 1px solid #666; }
-  .statistical_table tbody th:first-child {
-    border-right: 1px solid #666; }
-  .statistical_table tbody th:last-child {
-    border-left: 1px solid #666; }
-  .statistical_table tbody td {
-    border-left: 1px solid #757575; }
-
-.nyx-change-page {
-  color: #FFFFFF;
+.statistical_div {
   display: block;
   width: 60%;
+  background: #fafafa; }
+
+.statistical_table tr {
+  line-height: 1.5em;
+  text-align: left;
+  padding: 1em 0;
+  margin: 0; }
+.statistical_table td {
+  line-height: 1.5em;
+  text-align: left;
+  padding: 1em 0.5em;
+  margin: 0; }
+.statistical_table th {
+  line-height: 1.5em;
+  text-align: left;
+  padding: 1em 0.5em;
+  margin: 0; }
+.statistical_table thead:after {
+  content: " ";
+  display: table-row;
+  height: 1em;
+  background-color: transparent; }
+.statistical_table thead tr {
+  border-bottom: 1px solid #666; }
+.statistical_table tfoot tr {
+  border-top: 1px solid #666; }
+.statistical_table tbody th:first-child {
+  border-right: 1px solid #666; }
+.statistical_table tbody th:last-child {
+  border-left: 1px solid #666; }
+.statistical_table tbody td {
+  border-left: 1px solid #757575; }
+
+.nyx-change-page {
+  display: block;
   box-sizing: border-box;
   text-align: center;
   padding-left: 2em;
@@ -1917,6 +1920,7 @@ textarea:disabled {
   .nyx-change-page span:nth-of-type(1) {
     margin-right: 2em; }
   .nyx-change-page a {
+    color: #000;
     cursor: pointer;
     text-decoration: none;
     margin-right: 1em; }

@@ -616,6 +616,7 @@ textarea:disabled {
 }
 
 .select_filter_box {
+    height: 7em;
     .select_search_list {}
 }
 
@@ -711,9 +712,13 @@ textarea:disabled {
     box-sizing: border-box;
 }
 
-.statistical_table {
-    background: $background-color;
+.statistical_div {
+    display: block;
     width: 60%;
+    background: $background-color;
+}
+
+.statistical_table {
     $table_base_tr: 1.5em left (1em 0) (0);
     $table_base_td: 1.5em left (1em 0.5em) (0);
     $table_base_th: 1.5em left (1em 0.5em) (0);
@@ -739,9 +744,7 @@ textarea:disabled {
 }
 
 .nyx-change-page {
-    color: $primary-color-text;
     display: block;
-    width: 60%;
     box-sizing: border-box;
     text-align: center;
     padding-left: 2em;
@@ -750,6 +753,7 @@ textarea:disabled {
         margin-right: 2em;
     }
     a {
+        color: #000;
         cursor: pointer;
         text-decoration: none;
         margin-right: 1em;
