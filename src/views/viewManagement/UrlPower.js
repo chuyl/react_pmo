@@ -9,13 +9,15 @@ class UrlPower extends Component {
 	routeLists:[],//路由列表
 	myRoute:[],//对应账户的路由
 	search_url_message:"",
-	role_id:""
+	role_id:"",
+	allRouteList:[]
 
 	// alertMsg:"",
 	// alertTitle:""
    }
    componentWillMount(){
-       this.fetchListData()
+	   this.fetchListData()
+	   this.route_list()
     //    this.client_route()
    }
    /** 
@@ -56,7 +58,7 @@ class UrlPower extends Component {
 					showMenuListState:true,
 					myRoute:message.data
 				})
-				this.route_list(message.data)
+				this.filter_client_route(message.data)
 				
 			}else if(message.error === 2){
 				sessionStorage.logged = false;
@@ -77,40 +79,8 @@ class UrlPower extends Component {
 	route_list=(myRoute)=>{
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
-				console.log(message.data.length)
-				var temp = []; //临时数组1 
-				var temparray = [];//临时数组2 
-				for (var i = 0; i < myRoute.length; i++) { 
-					temp[myRoute[i].id] = true;//巧妙地方：把数组B的值当成临时数组1的键并赋值为真 
-				
-				}; 
-				
-				for (var i = 0; i < message.data.length; i++) { 
-				
-				if (!temp[ message.data[i].id]) { 
-				
-				temparray.push(message.data[i]);//巧妙地方：同时把数组A的值当成临时数组1的键并判断是否为真，如果不为真说明没重复，就合并到一个新数组里，这样就可以得到一个全新并无重复的数组 
-				
-				} ; 
-				
-				}; 
-				console.log(temparray)
-				// for(var i = 0;i<message.data.length;i++){
-					
-				// 	for(var j = 0; j<myRoute.length;j++){
-						
-				// 		if(myRoute[j].id===message.data[i].id){
-							
-				// 		}else{
-				// 			routeList.push(message.data[i])
-				// 		}
-				// 	}
-				// }
-				
 				this.setState({
-					// showMenuListState:true,
-					routeList:temparray,
-					routeLists:temparray
+					allRouteList:message.data
 				})
 				
 			}else if(message.error === 2){
@@ -123,6 +93,28 @@ class UrlPower extends Component {
 		}
 		getData(getRouter("client_route_list"), { token:sessionStorage.token}, cb, {});
 			
+	}
+	filter_client_route(myRoute){
+		var temp = []; //临时数组1 
+		var temparray = [];//临时数组2 
+		for (var i = 0; i < myRoute.length; i++) { 
+			temp[myRoute[i].id] = true;//巧妙地方：把数组B的值当成临时数组1的键并赋值为真 
+		
+		}; 
+		
+		for (var i = 0; i < this.state.allRouteList.length; i++) { 
+		
+		if (!temp[ this.state.allRouteList[i].id]) { 
+		
+		temparray.push(this.state.allRouteList[i]);//巧妙地方：同时把数组A的值当成临时数组1的键并判断是否为真，如果不为真说明没重复，就合并到一个新数组里，这样就可以得到一个全新并无重复的数组 
+		
+		} ; 
+		
+		}; 
+		this.setState({
+			routeList:temparray,
+			routeLists:temparray
+		})
 	}
 //     client_route() {
 // 		var cb = (route, message, arg) => {
@@ -160,7 +152,7 @@ del_myRoute=()=>{
 	console.log(route_ids)
 	var cb = (route, message, arg) => {
 		if (message.error === 0) {
-			
+			this.my_route_list(this.state.role_id)
 		}else if(message.error === 2){
 			sessionStorage.logged = false;
 			sessionStorage.token="";
@@ -177,14 +169,13 @@ add_myRoute = ()=>{
     var my_route_check=document.getElementsByName("routeList");
     for(var i = 0;i<my_route_check.length;i++){
         if(my_route_check[i].checked===true){
-            console.log
             route_ids.push(my_route_check[i].value)
         }
     }
 	console.log(route_ids)
 	var cb = (route, message, arg) => {
 		if (message.error === 0) {
-			
+			this.my_route_list(this.state.role_id)
 		}else if(message.error === 2){
 			sessionStorage.logged = false;
 			sessionStorage.token="";
@@ -317,6 +308,7 @@ add_myRoute = ()=>{
 									<span>
 										{routeList.name}
 									</span>
+									<p style={{marginLeft:"1em"}}>{routeList.note}</p>
 							</li>
 							)
 						})}

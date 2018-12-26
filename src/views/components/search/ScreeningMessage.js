@@ -11,8 +11,9 @@
             inputValue:"",
             inputState:false,
             message_list:this.props.message,
-            filter_box_state:false,
-            search_arr:[]
+            filter_box_state:true,
+            search_arr:[],
+            keywordTitle:[]
             // message_spare_list:this.props.message,
         }
         /** 
@@ -120,7 +121,21 @@
             document.getElementById(id).innerHTML? document.getElementById(id).innerHTML="-选择-": document.getElementById(id).value=""
             this.screening_information()
         }
+        keyword_title=()=>{
+            if(this.props.keywordTitle){
+                var keywordTitle=[];
+                for(var i = 0;this.props.keywordTitle.length;i++){
+                    keywordTitle.push({id:i,name:this.props.keywordTitle[i]})
+                }
+                this.setState({
+                    keywordTitle:keywordTitle
+                })
+            }
+        }
+        // console.log(this.props.keywordTitle)
         render(){
+            
+            
             const {id,message} =this.props;
             return (
                 <div>
@@ -175,15 +190,15 @@
                                 console.log(this.state.search_arr)
                                 if(search_arr.name!==""){
                                 return(
-                                    <div className="del_btn" style={{border:"1px dashed #fff",margin:"3px",padding:"2px 5px"}} key={index}>
-                                        <span>{search_arr.name+"  "}
+                                    <div key={index}>
+                                        <span>{search_arr.name+""}
                                         
                                         </span>
-                                        <span
+                                        <span  className="del_btn"
                                             onClick={()=>{
                                                 this.clear_this_search(search_arr.id) 
                                             }}
-                                        >X</span>
+                                        ></span>
                                     </div>
                                 )
                             

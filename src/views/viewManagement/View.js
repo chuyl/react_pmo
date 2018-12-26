@@ -792,7 +792,8 @@ class View extends Component {
 					}} >添加</button>
 					<ScreeningMessage 
 					   message={this.state.view_table_lists}
-					   keywordSearch={["title","name","id"]}
+					   keywordSearch={["title","name"]}
+					   keywordTitle={["视图中文名称+英文名称","所属模块"]}
 					//    selectListMessage={["view_mode","view_type"]}
 					//    selectNameMessage={["mode","type"]}
 					   selectListMessage={["view_mode"]}
