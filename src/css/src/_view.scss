@@ -23,6 +23,11 @@
         color: $primary-color-text;
         border-color: $primary-color-text;
     }
+    .search_terms{
+        .search_info_list.open{
+            width: 8em;
+        }
+    }
 }
 
 .add_component_btns {
@@ -74,7 +79,23 @@
     }
 }
 
-
+// .view_url_list {
+//     ul {
+//         li {
+//             line-height: 2em;
+//             overflow: hidden;
+//             input {
+//                 float: left;
+//             }
+//             span {
+//                 float: left;
+//             }
+//             p {
+//                 float: left;
+//             }
+//         }
+//     }
+// }
 
 .view_paper_list {
     width: 100%;

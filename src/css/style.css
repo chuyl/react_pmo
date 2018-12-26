@@ -1613,8 +1613,7 @@ textarea:disabled {
 
 .budget_menu {
   overflow: hidden;
-  width: 100%;
-  margin-bottom: 0.5em; }
+  width: 100%; }
   .budget_menu .spelling_div {
     float: left;
     display: block;
@@ -1760,6 +1759,27 @@ textarea:disabled {
   .status_flow_ul .status_flow_item_fail .message_left::after {
     background-color: #FF5252; }
 
+.cancel_box {
+  overflow: hidden;
+  display: block;
+  box-sizing: border-box;
+  padding-left: 1em; }
+  .cancel_box span {
+    float: left; }
+  .cancel_box button {
+    margin-top: 4px;
+    margin-left: 2em;
+    float: left;
+    width: 5em;
+    line-height: 2em;
+    border-radius: 4px;
+    background-color: #3F51B5;
+    color: #FFFFFF;
+    box-shadow: none;
+    border: 0;
+    text-align: center;
+    outline: none; }
+
 .select_search_list {
   background-color: #fafafa;
   color: #757575;
@@ -1786,7 +1806,7 @@ textarea:disabled {
       border-left: 4px solid transparent; }
   .select_search_list .search_info_list.open {
     margin: 0;
-    width: 10.7em;
+    width: 100%;
     margin-top: 1.8em; }
 
 .select_filter_box::after {
@@ -1836,7 +1856,7 @@ textarea:disabled {
   position: relative; }
   .search_terms .search_info_list.open {
     margin: 0;
-    width: 9.5em;
+    width: 100%;
     margin-top: 1.8em; }
   .search_terms .selectedInfo {
     float: left;
@@ -1867,13 +1887,14 @@ textarea:disabled {
     margin-right: 1em;
     color: #757575;
     box-sizing: border-box;
-    padding-left: 1em;
+    padding: 0.5em 1em;
+    padding-right: 2.5em;
     position: relative;
     float: left;
-    width: 8em;
-    line-height: 2em;
+    line-height: 1em;
     background-color: #fafafa;
-    border-radius: 1em; }
+    border-radius: 1em;
+    margin-bottom: 1em; }
 
 .del_btn {
   width: 1em;
@@ -1885,7 +1906,7 @@ textarea:disabled {
   outline-offset: -14px;
   transform: rotate(45deg);
   position: absolute;
-  right: 0.5em;
+  right: 1em;
   top: 0.5em;
   cursor: pointer; }
 
@@ -1962,6 +1983,7 @@ textarea:disabled {
   z-index: 1; }
 
 .statistical_change_page {
+  padding: 0 8em;
   display: block;
   width: calc(100% - 300px);
   box-sizing: border-box;
@@ -1985,11 +2007,15 @@ textarea:disabled {
   @media screen and (max-width: 768px) {
     .statistical_change_page {
       width: 100%;
-      bottom: 36px; }
+      bottom: 36px;
+      padding: 0; }
       .statistical_change_page span {
         margin: 0; }
       .statistical_change_page a {
         margin: 0; } }
+
+.container .select_filter_box .search_terms .search_info_list.open {
+  width: 100%; }
 
 .dialog_open {
   position: absolute;
@@ -2595,6 +2621,8 @@ textarea:disabled {
   .view_table_list .label_delete_button {
     color: #FFFFFF;
     border-color: #FFFFFF; }
+  .view_table_list .search_terms .search_info_list.open {
+    width: 8em; }
 
 .add_component_btns .label_delete_button {
   color: #FFFFFF;
