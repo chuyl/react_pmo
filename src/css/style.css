@@ -1789,8 +1789,12 @@ textarea:disabled {
     width: 8em;
     margin-top: 1.8em; }
 
-.select_filter_box {
-  height: 7em; }
+.select_filter_box::after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
 
 .form_control {
   float: left;
@@ -1855,7 +1859,7 @@ textarea:disabled {
 
 .del_btn {
   width: 1em;
-  height: 2em;
+  height: 1em;
   display: block;
   background-color: #757575;
   border-radius: 50%;
@@ -1864,16 +1868,21 @@ textarea:disabled {
   transform: rotate(45deg);
   position: absolute;
   right: 0.5em;
-  top: 0.2em; }
+  top: 0.2em;
+  cursor: pointer; }
 
 .del_btn_all {
   float: left;
   width: 6em;
   line-height: 2em;
   font-size: 1em;
-  color: #757575;
-  background-color: #fafafa;
-  box-sizing: border-box; }
+  color: #FFFFFF;
+  background-color: #757575;
+  box-sizing: border-box;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  border-radius: 1em; }
 
 .statistical_div {
   display: block;

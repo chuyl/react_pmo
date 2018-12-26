@@ -616,8 +616,15 @@ textarea:disabled {
 }
 
 .select_filter_box {
-    height: 7em;
     .select_search_list {}
+}
+
+.select_filter_box::after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }
 
 .form_control {
@@ -690,7 +697,7 @@ textarea:disabled {
 
 .del_btn {
     width: 1em;
-    height: 2em;
+    height: 1em;
     display: block;
     background-color: $secondary-text-color;
     border-radius: 50%;
@@ -700,6 +707,7 @@ textarea:disabled {
     position: absolute;
     right: 0.5em;
     top: 0.2em;
+    cursor: pointer;
 }
 
 .del_btn_all {
@@ -707,9 +715,13 @@ textarea:disabled {
     width: 6em;
     line-height: 2em;
     font-size: 1em;
-    color: $secondary-text-color;
-    background-color: $background-color;
+    color: $primary-color-text;
+    background-color: $secondary-text-color;
     box-sizing: border-box;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    border-radius: 1em;
 }
 
 .statistical_div {
