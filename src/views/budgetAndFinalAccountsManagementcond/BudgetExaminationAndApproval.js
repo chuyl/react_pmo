@@ -43,22 +43,14 @@ class BudgetExaminationAndApproval extends Component {
                 <tr
                     //   style={{maxHeight:"25px",display:this.state.note_list.indexOf(note_list)+1>=startRow &&this.state.note_list.indexOf(note_list)+1<=endRow?"":"none"}}
                     key = {note_list.id}> 
-                    <td 
-                        width={60}
-                        style={{textAlign:"center"}}>
+                    <td>
                         {this.state.note_list.indexOf(note_list)+1}
                     </td>
                   {/* <td title={this.timestamp2Time(note_list.time+"000", "-")} width={100} style={{textAlign:"center"}}>{this.timestamp2Time(note_list.time+"000", "-")}</td> */}
-                    <td 
-                        title={note_list.project_name} 
-                        width={100}  
-                        style={{textAlign:"center"}}>
+                    <td title={note_list.project_name}>
                         {note_list.project_name}
                     </td>
-                    <td 
-                        title={note_list.project_project_template_name} 
-                        style={{textAlign:"center"}} 
-                        width={120}>
+                    <td title={note_list.project_project_template_name}>
                         {note_list.project_project_template_name}
                     </td>
                 </tr>
@@ -122,11 +114,11 @@ class BudgetExaminationAndApproval extends Component {
                 <div>
                     <table className="statistical_table">
                         <thead>
-                            <tr style={{textAlign:"center",maxHeight:"25px"}}>
-                                <th  height={25} width={60}>序号</th>
-                                <th width={100}>项目名称</th>
-                                <th width={120}>项目模板</th>
-                                <th width={180}>操作信息</th>
+                            <tr>
+                                <th>序号</th>
+                                <th>项目名称</th>
+                                <th>项目模板</th>
+                                <th>操作信息</th>
                             </tr>
                         </thead>
                         <tbody>
