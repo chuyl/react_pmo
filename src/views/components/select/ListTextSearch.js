@@ -194,12 +194,21 @@ class ListTextSearch extends Component {
                     >
                         <div className="select_search_div">
                             <input className="select_search_input"  onChange={(e) => {
-                                        this.setState({
-                                            search_name: e.target.value
-                                        })
+                                        var search_info_list=[];
+                                        for (var i = 0; i < this.state.info_lists.length; i++) {
+                                           if (this.state.info_lists[i].name.indexOf(e.target.value) >= 0) {
+                                               search_info_list.push(this.state.info_lists[i])
+   
+                                                   }
+                                               }
+                                               this.setState({
+                                                   searchInfoLists: search_info_list
+                                               })
+   
+                                           
 
                                     }} />
-                            <button
+                            {/* <button
                                 className="select_search_button"
                                 onClick={() => {
                                     this.setState({
@@ -216,7 +225,7 @@ class ListTextSearch extends Component {
                                             })
 
                                         }}
-                            >搜索</button>
+                            >搜索</button> */}
                         </div>
                         <ul className="search_info_list_ul">
                             {this.state.searchInfoLists.map((info_lists) => {

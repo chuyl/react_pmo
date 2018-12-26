@@ -76,7 +76,7 @@ sureCallback(msg){
                         }}
                     >{"提交"+labelValue}</button>
                   :message.examine[thisKey].state==="1"?
-                    <div>
+                    <div className="cancel_box">
                         <span>待审核</span>
                         <button 
                                 onClick={()=>{
