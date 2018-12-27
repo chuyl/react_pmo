@@ -822,12 +822,18 @@ textarea:disabled {
     width: 100%;
     position: relative;
     top: 0;
-    background-color: $background-color;
+    background-color: $primary-color-dark;
     z-index: 1;
+    color: $primary-color-text;
+    text-align: right;
+    span{
+        line-height: 4vh;
+        padding: 0 1em;
+    }
 }
 
 .statistical_change_page {
-    padding: 0 8em;
+    padding: 1em 8em;
     display: block;
     width: calc(100% - 300px);
     box-sizing: border-box;
@@ -835,14 +841,15 @@ textarea:disabled {
     margin-top: 1em;
     position: absolute;
     bottom: 0;
-    background: $background-color;
+    background: $primary-color;
+    color: $primary-color-text;
     a {
         cursor: pointer;
         text-decoration: none;
         margin-right: 1em;
     }
     .nyx-change-page-href {
-        color: $primary-text-color;
+        color: $primary-color-text;
     }
     .nyx-change-page-href:nth-of-type(1),
     .nyx-change-page-href:nth-of-type(2) {

@@ -1979,11 +1979,16 @@ textarea:disabled {
   width: 100%;
   position: relative;
   top: 0;
-  background-color: #fafafa;
-  z-index: 1; }
+  background-color: #303F9F;
+  z-index: 1;
+  color: #FFFFFF;
+  text-align: right; }
+  .user_info_box span {
+    line-height: 4vh;
+    padding: 0 1em; }
 
 .statistical_change_page {
-  padding: 0 8em;
+  padding: 1em 8em;
   display: block;
   width: calc(100% - 300px);
   box-sizing: border-box;
@@ -1991,13 +1996,14 @@ textarea:disabled {
   margin-top: 1em;
   position: absolute;
   bottom: 0;
-  background: #fafafa; }
+  background: #3F51B5;
+  color: #FFFFFF; }
   .statistical_change_page a {
     cursor: pointer;
     text-decoration: none;
     margin-right: 1em; }
   .statistical_change_page .nyx-change-page-href {
-    color: #212121; }
+    color: #FFFFFF; }
   .statistical_change_page .nyx-change-page-href:nth-of-type(1),
   .statistical_change_page .nyx-change-page-href:nth-of-type(2) {
     float: left; }
