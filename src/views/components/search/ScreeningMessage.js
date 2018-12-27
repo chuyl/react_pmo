@@ -49,10 +49,11 @@
             if(this.props.selectNameMessage){
             
                 for(var i = 0; i<this.props.selectNameMessage.length;i++){
-                    value.push(document.getElementById("select_message"+i+"_name").innerHTML==="-选择-"?"":document.getElementById("select_message"+i+"_name").innerHTML)
+                    console.log("select_message"+this.props.selectNameMessage[i]+"_name")
+                    value.push(document.getElementById("select_message"+this.props.selectNameMessage[i]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_message"+this.props.selectNameMessage[i]+"_name").innerHTML)
                 }
             }
-            
+            console.log(value)
             // key.push(this.props.keywordSearch);
             // value.push(document.getElementById("keywordSearch").value)
             var obj = {};
@@ -62,16 +63,19 @@
             //obj的key为数据表中的字段，value对应字段中筛选的数据
             //所有筛选条件的数组
             var search_arr=[];
-            var num = 0;
+            var num = 0,
+                num1 = 0;
             for(var key in obj){ 
+                console.log("select_message"+key+"_name")
                 if(obj[key]!==""){
-                    search_arr.push({name:obj[key],id:"select_message"+num+"_name"})  
+                    search_arr.push({name:obj[key],id:"select_message"+key+"_name"})  
                     num++; 
                 }
                 } 
-                if(keywordSearch!==""){
-                    search_arr.push({name:keywordSearch,id:"keywordSearch"})   
 
+                if(keywordSearch!==""){
+                    search_arr.push({name:keywordSearch,id:"keywordSearch"+num1})   
+                    num1++;
                 }
                 this.setState({
                     search_arr:search_arr
@@ -121,7 +125,8 @@
         clear_search=()=>{
             if(this.props.selectNameMessage){
             for(var i = 0; i<this.props.selectNameMessage.length;i++){
-                document.getElementById("select_message"+i+"_name").innerHTML="-选择-"
+                console.log()
+                document.getElementById("select_message"+this.props.selectNameMessage[i]+"_name").innerHTML="-选择-"
             }
         }
             document.getElementById("keywordSearch").value="";
@@ -137,6 +142,7 @@
          * @param clear_this_search 函数 清空某一项筛选条件
          */
         clear_this_search=(id)=>{
+            console.log(id)
             document.getElementById(id).innerHTML? document.getElementById(id).innerHTML="-选择-": document.getElementById(id).value=""
             this.screening_information()
         }
@@ -151,15 +157,18 @@
                 })
             }
         }
+         /** 
+         * @time 2018-12-27
+         * @author xuesong
+         * @param select_title_index 函数 index
+         */
         select_title_index=(index)=>{
             this.setState({
                 title_index:index
             })
-            console.log(index)
         }
         // console.log(this.props.keywordTitle)
         render(){
-         console.log(this.state.title_index)
             const {id,message} =this.props;
             return (
                 <div>
@@ -190,7 +199,7 @@
                                 <SelectMessage
                                 key={index}
                                 displayNone={index+1===this.state.title_index?1:0}
-                                id={"select_message"+index}
+                                id={"select_message"+this.props.selectNameMessage[index]}
                                 searchInfoLists={selectListMessage}     
                             />
                             )
@@ -210,6 +219,7 @@
                                 {this.state.search_arr.length>0?"关键字:":""}
                             </span> */}
                             {this.state.search_arr.map((search_arr,index)=>{
+                                console.log(search_arr)
                                 if(search_arr.name!==""){
                                 return(
                                     <div className="select_clean_bar" key={index}>

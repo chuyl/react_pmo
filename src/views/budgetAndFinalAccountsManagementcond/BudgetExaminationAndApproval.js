@@ -46,12 +46,19 @@ class BudgetExaminationAndApproval extends Component {
                     <td>
                         {this.state.note_list.indexOf(note_list)+1}
                     </td>
+                    
+                    <td title={note_list.unicode}>
+                        {note_list.unicode}
+                    </td>
                   {/* <td title={this.timestamp2Time(note_list.time+"000", "-")} width={100} style={{textAlign:"center"}}>{this.timestamp2Time(note_list.time+"000", "-")}</td> */}
                     <td title={note_list.project_name}>
                         {note_list.project_name}
                     </td>
                     <td title={note_list.project_project_template_name}>
                         {note_list.project_project_template_name}
+                    </td>
+                    <td title={note_list.project_gather_name}>
+                        {note_list.project_gather_name}
                     </td>
                 </tr>
        
@@ -115,9 +122,10 @@ class BudgetExaminationAndApproval extends Component {
                         <thead>
                             <tr>
                                 <th>序号</th>
+                                <th>项目编号</th>
                                 <th>项目名称</th>
                                 <th>项目模板</th>
-                                <th>操作信息</th>
+                                <th>所属项目集</th>
                             </tr>
                         </thead>
                         <tbody>

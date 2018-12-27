@@ -265,38 +265,40 @@ class TrainingProgram extends Component {
 		}
 		// componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data
 		var cb = (route, message, arg) => {
+			if (message.error === 0) {
 			if (newState.before_api_uri === "project_manage_add") {
-				if (message.error === 0) {
+				
 					this.fetchProjectData("editProject")
 					this.setState({    //  项目创建成功,打开编辑页面。更新view
 						dataId:message.data.id,
 						// add_button:{unicode:message.unicode}
 					}) 
-			}else if(message.error === 2){
-				console.log("未登录")
-				sessionStorage.logged = false;
-				sessionStorage.token="";
-				if(window.location.hash.split("#")[1]!=="/"){
-					window.location.href=window.location.href.split("#/")[0]
-				
-				  }
-			}else{
-                Alert.open({
-					alertTip:message.msg
-					
-				  });
-				  setTimeout(function(){
-					Alert.close();
-				  },3000)
 			
-			}
 			}else{
 				this.setState({    //  项目创建成功,打开编辑页面。更新view
 				card_state:false
 			}) 
 			this.listProject()  //刷新项目列表
 		}
+		}else if(message.error === 2){
+			console.log("未登录")
+			sessionStorage.logged = false;
+			sessionStorage.token="";
+			if(window.location.hash.split("#")[1]!=="/"){
+				window.location.href=window.location.href.split("#/")[0]
+			
+			  }
+		}else{
+			Alert.open({
+				alertTip:message.msg
+				
+			  });
+			  setTimeout(function(){
+				Alert.close();
+			  },3000)
+		
 		}
+	}
 		console.log(newState.before_api_uri)
 		getData(getRouter(newState.before_api_uri), { data: obj, token: sessionStorage.token }, cb, {});
 	}
