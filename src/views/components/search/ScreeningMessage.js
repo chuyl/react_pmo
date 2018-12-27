@@ -23,7 +23,7 @@
             inputValue:"",
             inputState:false,
             message_list:this.props.message,
-            filter_box_state:true,
+            filter_box_state:false,
             search_arr:[],
             keywordTitle:[],
             title_index:0
@@ -173,6 +173,7 @@
             return (
                 <div>
                     <button
+                        className="filter_box_state"
                         onClick={()=>{
                             this.setState({
                                filter_box_state:!this.state.filter_box_state 
@@ -208,12 +209,9 @@
                             onClick={()=>{
                                 this.screening_information()
                             }}
-                        >搜索</button>
-                        
-
-                       
-                    
-                       
+                        >
+                            搜索
+                        </button>
                         <div className="select_clean_box">
                             {/* <span>
                                 {this.state.search_arr.length>0?"关键字:":""}

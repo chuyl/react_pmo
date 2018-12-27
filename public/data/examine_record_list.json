@@ -1,0 +1,351 @@
+{
+    "code": 2001,
+    "msg": "查询成功",
+    "error": 0,
+    "data": {
+        "data_head":[
+            {"key":"unicode","value":"项目编号"},
+            {"key":"project_project_template_name","value":"部门"},
+            {"key":"project_name","value":"课程名称"}
+        ],
+        "data_body":[
+            {
+                "id": "127",
+                "project_name": "课程名称1",
+                "project_gather_id": "20",
+                "project_person_in_charge_id": "1",
+                "project_project_template_id": "3",
+                "project_training_ares_id": "12",
+                "project_customer_name": "客户名称1",
+                "project_days": "2",
+                "project_start_date": "2018-12-13",
+                "project_end_date": "2018-12-14",
+                "project_training_numbers": "50",
+                "project_leader_name": "柳芳",
+                "project_leader_id": "1",
+                "project_person_in_charge_name": "柳芳",
+                "project_gather_name": "项目1",
+                "project_project_template_name": "技术资源部",
+                "province": 1000,
+                "city": 20,
+                "address": "昆明第一宾馆",
+                "project_income": "50000",
+                "project_tax_rate": "100",
+                "institutional_consulting_fees": "1000",
+                "personal_consulting_fees": "10",
+                "unicode": "2018120073",
+                "project_training_ares_name": "云南--昆明--昆明第一宾馆",
+                "project_traing_ares": {
+                    "province": "云南",
+                    "city": "昆明",
+                    "address": "昆明第一宾馆"
+                },
+                "project_date": {
+                    "start": "2018-12-13",
+                    "end": "2018-12-14"
+                },
+                "labor_cost": 3100,
+                "implementation_cost": 4,
+                "stay": 200,
+                "meal": 5000,
+                "travel_cost": 6220,
+                "lecturer": [
+                    {
+                        "id": "257",
+                        "teacher_lecture_days": "5",
+                        "teacher_duty_id": "2",
+                        "teacher_lecture_fee": "3000",
+                        "teacher_income_tax": "100",
+                        "teacher_name_id": "1",
+                        "teacher_duty_name": "主讲",
+                        "teacher_name_name": "刘雪松"
+                    }
+                ],
+                "lecturers": [
+                    {
+                        "id": "257",
+                        "teacher_lecture_days": "5",
+                        "teacher_duty_id": "2",
+                        "teacher_lecture_fee": "3000",
+                        "teacher_income_tax": "100",
+                        "teacher_name_id": "1",
+                        "teacher_duty_name": "主讲",
+                        "teacher_name_name": "刘雪松"
+                    }
+                ],
+                "implement": null,
+                "venue": [
+                    {
+                        "id": "77",
+                        "room_number": "1",
+                        "unit_price": "2",
+                        "days": "3",
+                        "total_price": "4",
+                        "meetingplace_name": "5",
+                        "meetingplace_address": "6",
+                        "time": "2018-12-27 16:51:34",
+                        "state": "0",
+                        "parent_id": "127"
+                    }
+                ],
+                "consulting_cost": 1010,
+                "costing": 10334,
+                "expected_income": "50000",
+                "project_profit": 39666,
+                "gross_interest_rate": "79.33%",
+                "examine": {
+                    "budget": {
+                        "step": [],
+                        "state": "0"
+                    },
+                    "finalAccounts": {
+                        "step": [],
+                        "state": "0"
+                    }
+                }
+            },
+            {
+                "id": "126",
+                "project_name": "312",
+                "project_gather_id": "0",
+                "project_person_in_charge_id": "",
+                "project_project_template_id": "2",
+                "project_training_ares_id": "",
+                "project_customer_name": "",
+                "project_days": "",
+                "project_start_date": "",
+                "project_end_date": "",
+                "project_training_numbers": "0",
+                "project_leader_name": null,
+                "project_leader_id": null,
+                "project_person_in_charge_name": null,
+                "project_gather_name": null,
+                "project_project_template_name": "公共培训部",
+                "province": 0,
+                "city": 0,
+                "address": null,
+                "project_income": "",
+                "project_tax_rate": "",
+                "institutional_consulting_fees": "",
+                "personal_consulting_fees": "",
+                "unicode": "2018120072",
+                "project_traing_ares": {
+                    "province": null,
+                    "city": null,
+                    "address": null
+                },
+                "project_date": {
+                    "start": "",
+                    "end": ""
+                },
+                "labor_cost": 0,
+                "implementation_cost": 0,
+                "stay": 0,
+                "meal": 0,
+                "travel_cost": 0,
+                "lecturer": [],
+                "lecturers": [],
+                "implement": null,
+                "venue": [],
+                "consulting_cost": 0,
+                "costing": 0,
+                "expected_income": 0,
+                "project_profit": 0,
+                "examine": {
+                    "budget": {
+                        "step": [
+                            {
+                                "admin_user": "段美静",
+                                "time": "2018-12-27 15:34:27",
+                                "pass": "1",
+                                "note": "",
+                                "examine_type": "1",
+                                "admin_id": "10"
+                            }
+                        ],
+                        "state": "2"
+                    },
+                    "finalAccounts": {
+                        "step": [
+                            {
+                                "admin_user": "段美静",
+                                "time": "2018-12-27 15:35:14",
+                                "pass": "1",
+                                "note": "",
+                                "examine_type": "2",
+                                "admin_id": "10"
+                            }
+                        ],
+                        "state": "2"
+                    }
+                }
+            },
+            {
+                "id": "124",
+                "project_name": "zhongji",
+                "project_gather_id": "0",
+                "project_person_in_charge_id": "",
+                "project_project_template_id": "2",
+                "project_training_ares_id": "",
+                "project_customer_name": "",
+                "project_days": "",
+                "project_start_date": "",
+                "project_end_date": "",
+                "project_training_numbers": "0",
+                "project_leader_name": null,
+                "project_leader_id": null,
+                "project_person_in_charge_name": null,
+                "project_gather_name": null,
+                "project_project_template_name": "公共培训部",
+                "province": 0,
+                "city": 0,
+                "address": null,
+                "project_income": "",
+                "project_tax_rate": "",
+                "institutional_consulting_fees": "",
+                "personal_consulting_fees": "",
+                "unicode": "2018120070",
+                "project_traing_ares": {
+                    "province": null,
+                    "city": null,
+                    "address": null
+                },
+                "project_date": {
+                    "start": "",
+                    "end": ""
+                },
+                "labor_cost": 0,
+                "implementation_cost": 0,
+                "stay": 0,
+                "meal": 0,
+                "travel_cost": 0,
+                "lecturer": [],
+                "lecturers": [],
+                "implement": null,
+                "venue": [],
+                "consulting_cost": 0,
+                "costing": 0,
+                "expected_income": 0,
+                "project_profit": 0,
+                "examine": {
+                    "budget": {
+                        "step": [
+                            {
+                                "admin_user": "段美静",
+                                "time": "2018-12-27 15:23:09",
+                                "pass": "-1",
+                                "note": "",
+                                "examine_type": "1",
+                                "admin_id": "10"
+                            },
+                            {
+                                "admin_user": "段美静",
+                                "time": "2018-12-27 15:24:45",
+                                "pass": "-1",
+                                "note": "",
+                                "examine_type": "1",
+                                "admin_id": "10"
+                            },
+                            {
+                                "admin_user": "段美静",
+                                "time": "2018-12-27 15:26:55",
+                                "pass": "-1",
+                                "note": "",
+                                "examine_type": "1",
+                                "admin_id": "10"
+                            },
+                            {
+                                "admin_user": "段美静",
+                                "time": "2018-12-27 15:27:23",
+                                "pass": "1",
+                                "note": "",
+                                "examine_type": "1",
+                                "admin_id": "10"
+                            }
+                        ],
+                        "state": "2"
+                    },
+                    "finalAccounts": {
+                        "step": [],
+                        "state": "0"
+                    }
+                }
+            },
+            {
+                "id": "123",
+                "project_name": "崔思思测试001",
+                "project_gather_id": "0",
+                "project_person_in_charge_id": "",
+                "project_project_template_id": "2",
+                "project_training_ares_id": "",
+                "project_customer_name": "",
+                "project_days": "",
+                "project_start_date": "",
+                "project_end_date": "",
+                "project_training_numbers": "0",
+                "project_leader_name": null,
+                "project_leader_id": null,
+                "project_person_in_charge_name": null,
+                "project_gather_name": null,
+                "project_project_template_name": "公共培训部",
+                "province": 0,
+                "city": 0,
+                "address": null,
+                "project_income": "",
+                "project_tax_rate": "",
+                "institutional_consulting_fees": "",
+                "personal_consulting_fees": "",
+                "unicode": "2018120069",
+                "project_traing_ares": {
+                    "province": null,
+                    "city": null,
+                    "address": null
+                },
+                "project_date": {
+                    "start": "",
+                    "end": ""
+                },
+                "labor_cost": 0,
+                "implementation_cost": 0,
+                "stay": 0,
+                "meal": 0,
+                "travel_cost": 0,
+                "lecturer": [],
+                "lecturers": [],
+                "implement": null,
+                "venue": [],
+                "consulting_cost": 0,
+                "costing": 0,
+                "expected_income": 0,
+                "project_profit": 0,
+                "examine": {
+                    "budget": {
+                        "step": [
+                            {
+                                "admin_user": "段美静",
+                                "time": "2018-12-27 15:18:45",
+                                "pass": "-1",
+                                "note": "",
+                                "examine_type": "1",
+                                "admin_id": "10"
+                            },
+                            {
+                                "admin_user": "段美静",
+                                "time": "2018-12-27 15:19:29",
+                                "pass": "1",
+                                "note": "",
+                                "examine_type": "1",
+                                "admin_id": "10"
+                            }
+                        ],
+                        "state": "2"
+                    },
+                    "finalAccounts": {
+                        "step": [],
+                        "state": "0"
+                    }
+                }
+            }
+        ]
+    }
+}

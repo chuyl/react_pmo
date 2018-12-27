@@ -425,7 +425,7 @@ handleLogout = () => {
           <div className="footer_position router_button"> 
             <HashRouter >
               <App>
-                <ul>
+                <ul className="is_shortcut">
                   {Lang!==""?this.footer_router_lists(Lang.budgetAndFinalAccountsManagementcond.data):""}
                 </ul>  
               </App>

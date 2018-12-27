@@ -55,6 +55,7 @@ var local = {
                 "role_route_list":{"url":"../data/role_route_list.json","version":"1.0"},
                 "get_route_by_role_id":{"url":"../data/get_route_by_role_id.json","version":"1.0"},
                 "client_route_list":{"url":"../data/client_route_list.json","version":"1.0"},
+                "examine_record_list":{"url":"../data/examine_record_list.json","version":"1.0"},
                 //视图
                
                 // "addProject":{"url":"../json/addProject.json","version":"1.0"},//新建项目
