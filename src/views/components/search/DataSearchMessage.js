@@ -1,8 +1,8 @@
 /** 
      * @author xuesong
-     * @param ScreeningMessage 组件  
+     * @param DataSearchMessage 组件  
      * 调用方法
-     * <ScreeningMessage 
+     * <DataSearchMessage 
 			message={this.state.view_table_lists} 要筛选的数据列表
 			keywordSearch={["title","name"]}   在input中筛选的关键字在数据列表中的名称
 			keywordTitle={[                   下拉菜单选择搜索的条件
@@ -18,7 +18,7 @@
     import KeywordSearch from './KeywordSearch';
     import SelectMessage from './SelectMessage'
     import SelectSearchType from './SelectSearchType'
-    class ScreeningMessage extends Component {
+    class DataSearchMessage extends Component {
         state={
             inputValue:"",
             inputState:false,
@@ -242,5 +242,5 @@
             )
         }
     }
-    export default ScreeningMessage;
+    export default DataSearchMessage;
     

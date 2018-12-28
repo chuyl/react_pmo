@@ -52,7 +52,20 @@
   import GetDataSpellingLabel from '../watch/GetDataSpellingLabel'
   import ApplicationsFlow from '../watch/ApplicationsFlow'
   import ApplicationsDefault from '../watch/ApplicationsDefault'
+  import SelectListLocal from '../select/SelectListLocal'
+  import Print from '../button/Print'
    class ComponentsViewList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title_index:0
+        }
+    }
+    select_title_index=(index)=>{
+        this.setState({
+            title_index:index
+        })
+    }
     /** 
      * @time 2018-11-09 
      * @author xuesong
@@ -475,6 +488,20 @@
                                     defaultValue={form_list.default_value}
                                      beforeApiUri={form_list.before_api_uri}
                                     message={""} 
+                                />
+                            :form_list.type_name==="SelectListLocal"?
+                                <SelectListLocal
+                                    id={"select_title"}
+                                    selectedInfo={"-选择-"}
+                                    labelValue={form_list.title}
+                                     keywordTitle={form_list.key} 
+                                    selectTitleIndex={this.select_title_index}
+                                />
+                            :form_list.type_name==="Print"?
+                                <Print
+                                    button={form_list.title}
+                                    isPrint={false}
+                                    buttonMessage={form_list}
                                 />
                             : ""}
                             

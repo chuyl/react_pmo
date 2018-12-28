@@ -6,12 +6,12 @@
     class LoanBill extends Component {
             
         render(){
-            const {message} = this.props;
+			const {message} = this.props;
             return (
                 <div  className="loan_box" id="loan_print" style={{"pageBreakAfter":"always"}}>
 				<div className="loan_code_id">
 					<dd>编码：</dd>
-					<dd>{message.unicode}</dd>
+					<dd>201812081</dd>
 				</div>
 				<div className="loan_title">
 					<dt><span>借款</span>单</dt>
@@ -19,32 +19,32 @@
 				<div className="loan_nav">
 					<div className="nav_block1">
 						<span>资金性质</span>
-						<span></span>
+						<span>因公借款</span>
 					</div>
 
 					<div className="nav_block2">
-						<span className="block2_year"></span>
+						<span className="block2_year">2018</span>
 						<i className="block2_unit_year">年</i>
-						<span className="block2_month"></span>
+						<span className="block2_month">12</span>
 						<i className="block2_unit_month">月</i>
-						<span className="block2_day"></span>
+						<span className="block2_day">28</span>
 						<i className="block2_unit_day">日</i>
 					</div>
 				</div>
 				<div className="loan_content">
 					<div className="content_box1">
 						<span>借款单位：</span>
-						<span>123</span>
+						<span>行业培训部</span>
 					</div>
 					<div className="content_box2">
 						<span>借款理由：</span>
-						<span></span>
+						<span>借款</span>
 					</div>
 					<div className="content_box3">
 						<span>借款数额：人民币（大写）</span>
-						<span></span>
+						<span>肆仟叁佰元整</span>
 						<span>￥</span>
-						<span></span>
+						<span>4300.00</span>
 					</div>
 					<div className="content_box4">
 						<span>本单位负责人意见：</span>

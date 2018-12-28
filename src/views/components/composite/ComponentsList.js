@@ -49,6 +49,8 @@ import LabelShowMessage from '../watch/LabelShowMessage'
 import GetDataSpellingLabel from '../watch/GetDataSpellingLabel'
 import ApplicationsFlow from '../watch/ApplicationsFlow'
 import ApplicationsDefault from '../watch/ApplicationsDefault'
+import SelectListLocal from '../select/SelectListLocal'
+import Print from '../button/Print'
 class ComponentsList extends Component {
     constructor(props) {
         super(props);
@@ -57,8 +59,14 @@ class ComponentsList extends Component {
             targetValue:"",
             componentslist: this.props.componentslist,
             componentsdata:this.props.componentsdata,
-            activeState:""
+            activeState:"",
+            title_index:0
         }
+    }
+    select_title_index=(index)=>{
+        this.setState({
+            title_index:index
+        })
     }
     handleChildClick=(newState)=>{
       //  console.log(newState)
@@ -587,6 +595,22 @@ handleChildChange=(formData)=>{
                                     afterApiUri={form_list.after_api_uri}
                                     key={index}
                                     editCardSuccess={this.editCardSuccess}
+                                />
+                            :form_list.type_name==="SelectListLocal"?
+                                <SelectListLocal
+                                    id={"select_title"}
+                                    selectedInfo={"-选择-"}
+                                    labelValue={form_list.title}
+                                    keywordTitle={form_list.key} 
+                                    selectTitleIndex={this.select_title_index}
+                                />
+                            :form_list.type_name==="Print"?
+                                <Print
+                                    button={form_list.title}
+                                    isPrint={true}
+                                    printMessage={form_list.key}
+                                    dataId={this.props.componentsdata.id}
+                                    buttonMessage={this.props.componentsdata?this.props.componentsdata:''}
                                 />
                             : ""
                        
