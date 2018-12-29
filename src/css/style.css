@@ -2063,13 +2063,14 @@ textarea:disabled {
 .filter_box_state {
   display: block;
   padding: 0 0.5em;
-  background-color: #303F9F;
+  background-color: #757575;
   color: #FFFFFF;
   border: 0;
   outline: 0;
   margin-top: 1em;
   line-height: 2em;
-  cursor: pointer; }
+  cursor: pointer;
+  border-radius: 4px; }
 
 .filter_box_state:hover {
   background-color: #FF5252; }

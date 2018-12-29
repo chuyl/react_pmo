@@ -927,13 +927,14 @@ textarea:disabled {
 .filter_box_state {
     display: block;
     padding: 0 0.5em;
-    background-color: $primary-color-dark;
+    background-color: $secondary-text-color;
     color: $primary-color-text;
     border: 0;
     outline: 0;
     margin-top: 1em;
     line-height: 2em;
     cursor: pointer;
+    border-radius: 4px;
 }
 
 .filter_box_state:hover {
