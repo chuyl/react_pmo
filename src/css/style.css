@@ -1259,7 +1259,7 @@ html, body {
 .selected_card {
   border: 1px solid,palegreen; }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1280px) {
   .router_screen {
     display: none; }
 
@@ -1269,7 +1269,7 @@ html, body {
     position: fixed; }
 
   .container {
-    width: 100%; }
+    width: 64%; }
 
   .card_list_div {
     width: 100%; }
@@ -1296,7 +1296,7 @@ html, body {
 .card_box {
   padding: 0;
   transition: all 0.3s;
-  height: 96vh;
+  height: 100vh;
   overflow: hidden;
   overflow-y: auto;
   position: relative;
@@ -2059,6 +2059,20 @@ textarea:disabled {
 
 .container .select_filter_box .search_terms .search_info_list.open {
   width: 100%; }
+
+.filter_box_state {
+  display: block;
+  padding: 0 0.5em;
+  background-color: #303F9F;
+  color: #FFFFFF;
+  border: 0;
+  outline: 0;
+  margin-top: 1em;
+  line-height: 2em;
+  cursor: pointer; }
+
+.filter_box_state:hover {
+  background-color: #FF5252; }
 
 .dialog_open {
   position: absolute;
