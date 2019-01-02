@@ -164,6 +164,9 @@ handleChildChange=(formData)=>{
      
         return (
                 this.props.componentslist.map((form_list,index) => {
+                    // if(form_list.type_name === "TextDatetime"){
+                    //     console.log(this.props.componentsdata[form_list.id_name])
+                    // }
                     return (
                             form_list.type_name === "Cards" ?
                                 <Cards  
@@ -192,7 +195,7 @@ handleChildChange=(formData)=>{
                             :form_list.type_name === "TextDatetime" ? 
                                 <TextDatetime
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
-                                    inputValue={form_list.key}
+                                    // inputValue={form_list.key}
                                     key={index}
                                     disabled={this.props.disabled}
                                     inputValue={this.props.componentsdata[form_list.id_name]} 

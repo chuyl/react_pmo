@@ -59,6 +59,27 @@
                     {/* <label className="search_info_list_label">{labelValue}</label> */}
                     <div className="selectedInfo" id={id+"_name"}
                          onClick={() => {
+                                var checklist = document.getElementsByName("checkSelectList");
+                                var checkValue="";
+                                for(var i = 0;i<checklist.length;i++){
+                                if(checklist[i].checked){
+                                  
+                                        checkValue=checkValue+checklist[i].value+",";
+                                        
+                                    }
+                                }
+                                document.getElementById(id+"_name").innerHTML=checkValue.slice(0,checkValue.length-1);
+                                // if(document.getElementById("routeListAllCheck").checked) {
+                                //     for(var i = 0; i < checklist.length; i++) {
+                                //         checklist[i].checked = 1;
+                                //     }
+                                // } else {
+                                //     for(var j = 0; j < checklist.length; j++) {
+                                //         checklist[j].checked = 0;
+                                //     }
+                                // }
+                               
+                                       // console.log(document.getElementsByName("menuLeftCheck").checked)
                              if(disabled===true){
                                  return false;
                              }else{
@@ -81,11 +102,13 @@
                                     return (
                                         <li  key={index}>
                                             <input value={info_lists.name} name="checkSelectList" type="checkbox"/>
-                                            <span onClick={(e) => {
-                                            document.getElementById(id+"_name").innerHTML = info_lists.name;
-                                            document.getElementById(id+"_id").innerHTML = info_lists.id;
-                                            this.searchShow()
-                                        }}>
+                                            <span 
+                                                //     onClick={(e) => {
+                                                //     document.getElementById(id+"_name").innerHTML = info_lists.name;
+                                                //     document.getElementById(id+"_id").innerHTML = info_lists.id;
+                                                //     this.searchShow()
+                                                // }}
+                                            >
                                                 {info_lists.name}   
                                             </span>
                                         </li>

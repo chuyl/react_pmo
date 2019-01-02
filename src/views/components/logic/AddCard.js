@@ -122,9 +122,7 @@
                     <div key={this.props.index} className="card_info_list_card">
                         {/* <ComponentsList componentslist={this.state.card_list}></ComponentsList> */}
                         {this.props.cardList?this.props.cardList.map((card_list, index) => {
-                           if(card_list.type_name === "Invisible"){
-                               console.log(card_list.type_name === "Invisible")
-                           }
+                        
                             return (
                                 <div key={index} style={{marginBottom:"-6px"}}>
                                 {card_list.type_name === "ListTextSearch" ?

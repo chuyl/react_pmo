@@ -37,6 +37,19 @@
           this.props.holdClick(newStates);//回调函数传递参数给父组件
        }
        render() {
+        var date = new Date();
+        var seperator1 = "-";
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentdate = year + seperator1 + month + seperator1 + strDate+"T00:00";
+      
            return (
                this.props.componentslist.map((form_list) => {
                        return (
@@ -54,6 +67,7 @@
                                        id={form_list.id_name} 
                                        inputValue={form_list.key}
                                        key={form_list.id_name}
+                                       inputValue={currentdate}
                                        //inputValue={this.props.componentsdata[form_list.id_name]} 
                                        labelValue={form_list.title} 
                                    />

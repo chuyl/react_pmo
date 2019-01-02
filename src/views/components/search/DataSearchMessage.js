@@ -39,7 +39,18 @@
          */
           screening_information=()=>{
               //selectNameMessage 数据表中需要select筛选的字段名称
-            var key=this.props.selectNameMessage?this.props.selectNameMessage:[];
+            var key=[];
+            if(this.props.selectNameMessage){
+                for(var m = 0; m<this.props.selectNameMessage.length;m++){
+                    key.push(this.props.selectNameMessage[m])
+                }
+            }
+            if(this.props.selectNameCheckMessage){
+                for(var n = 0; n<this.props.selectNameCheckMessage.length;n++){
+                    key.push(this.props.selectNameCheckMessage[n])
+                }
+            }
+            // this.props.selectNameMessage?this.props.selectNameMessage:[];
            //value 用来存储select的option
             var value=[];
             //keyword_list 用来存储需要模糊关键字筛选的字段名称
@@ -54,13 +65,21 @@
                     value.push(document.getElementById("select_message"+this.props.selectNameMessage[i]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_message"+this.props.selectNameMessage[i]+"_name").innerHTML)
                 }
             }
-            console.log(value)
+            if(this.props.selectNameCheckMessage){
+            
+                for(var j = 0; j<this.props.selectNameCheckMessage.length;j++){
+                    console.log("select_message"+this.props.selectNameCheckMessage[j]+"_name")
+                    // var selectValue = this.props.className.split(","); 
+                    value.push(document.getElementById("select_check_message"+this.props.selectNameCheckMessage[j]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_check_message"+this.props.selectNameCheckMessage[j]+"_name").innerHTML)
+                }
+            }
             // key.push(this.props.keywordSearch);
             // value.push(document.getElementById("keywordSearch").value)
             var obj = {};
             for (var j = 0; j < key.length; j++) {
                 obj[key[j]] = value[j]
             }
+            console.log(obj)
             //obj的key为数据表中的字段，value对应字段中筛选的数据
             //所有筛选条件的数组
             var search_arr=[];
@@ -79,14 +98,31 @@
                 })
                 console.log(search_arr)
             let filter=(condition,data)=>{
+                console.log(condition)
+                // for(var s in condition){
+                //     console.log(condition)
+                //     if(condition[s].indexOf(",")>=0){
+                //         var value_arr = condition[s].split(","); 
+                //         return data.filter( item => {
+                //             return Object.keys( value_arr ).every( key => {
+                //             return String( item[ key ] ).toLowerCase().includes( 
+                //                     String( value_arr[ key ] ).trim().toLowerCase() )
+                //                 } )
+                //         } )
+                //         console.log(value_arr[s])
+                //     }else{
+                       
+                // }
+                
+                // }
                 return data.filter( item => {
                     return Object.keys( condition ).every( key => {
                     return String( item[ key ] ).toLowerCase().includes( 
                             String( condition[ key ] ).trim().toLowerCase() )
                         } )
-                } )
-                }
-              
+                } ) 
+            }
+              console.log(keywordSearch)
                 if(keywordSearch!==""){
                     if(this.props.keywordSearch){
                         for(var m = 0; m<this.props.keywordSearch.length;m++){
@@ -103,7 +139,13 @@
                             }
                     }
                 }else{
+                    console.log(filter(obj,this.props.message))
                     for(var n = 0;n<filter(obj,this.props.message).length;n++){
+                       
+                      
+                        // if(obj.indexOf>=0){
+                        //     var className = this.props.className.split(","); 
+                        // }
                         keyword_list.push(filter(obj,this.props.message)[n])
                     }
                 }
@@ -207,7 +249,7 @@
                                 <SelectCheckSearchType
                                     key={index}
                                     displayNone={index+1===this.state.title_index?1:0}
-                                    id={"select_message"+this.props.selectNameCheckMessage[index]}
+                                    id={"select_check_message"+this.props.selectNameCheckMessage[index]}
                                     searchInfoLists={selectListCheckMessage}     
                             />
                             )

@@ -9,7 +9,8 @@
         "data_head":[
             {"key":"unicode","value":"项目编号"},
             {"key":"project_project_template_name","value":"部门"},
-            {"key":"project_name","value":"课程名称"}
+            {"key":"project_name","value":"课程名称"},
+            {"key":"project_leader_name","value":"项目负责人"}
         ],
         "data_body":[
             {
@@ -120,7 +121,7 @@
                 "project_start_date": "",
                 "project_end_date": "",
                 "project_training_numbers": "0",
-                "project_leader_name": null,
+                "project_leader_name": "宋丹",
                 "project_leader_id": null,
                 "project_person_in_charge_name": null,
                 "project_gather_name": null,

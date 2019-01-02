@@ -31,8 +31,8 @@ class BudgetExaminationAndApproval extends Component {
         this.setState({
             query_condition:obj
         })
-        console.log(obj)
-        getData(getRouter("examine_record_list"), { session: sessionStorage.session,query_condition:this.state.query_condition}, cb, {});
+        getData(getRouter("examine_record_list"), { token: sessionStorage.token,query_condition:obj }, cb, {});
+        // getData(getRouter("examine_record_list"),{ session: sessionStorage.session}, cb, {});
 
     }
 	goPage= (pno,psize) =>{
@@ -54,19 +54,23 @@ class BudgetExaminationAndApproval extends Component {
         endRow = (endRow > num)? num : endRow;    40
        
         
-        this.state.table_data_body.map((table_data_body)=>{
+        this.state.table_data_body.map((table_data_body,index)=>{
             
             components.push (
                 <tr
                     //   style={{maxHeight:"25px",display:this.state.table_data_body.indexOf(table_data_body)+1>=startRow &&this.state.table_data_body.indexOf(table_data_body)+1<=endRow?"":"none"}}
-                    key = {table_data_body.id}> 
+                    key = {index}> 
                     <td>
-                        {this.state.table_data_body.indexOf(table_data_body)+1}
+                       <div className="statistical_table_box">
+                       {this.state.table_data_body.indexOf(table_data_body)+1}
+                       </div>
                     </td>
                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
                     return(
-                    <td key={index} title={table_data_body.unicode}>
-                        {table_data_body[table_data_head.key]}
+                    <td key={index} title={table_data_body[table_data_head.key]}>
+                        <div className="statistical_table_box">
+                            {table_data_body[table_data_head.key]}
+                        </div>
                     </td>)
 }):""}
                 </tr>
@@ -140,29 +144,34 @@ class BudgetExaminationAndApproval extends Component {
 	render(){
 		return (
             <div>
-                <DataSearchMessage 
+                {/* <DataSearchMessage 
 					   message={this.state.table_data_bodys}
 					   keywordSearch={["project_name","unicode"]}
 					   keywordTitle={[
 						"课程名称+项目编号",
-						"部门"]}
+                        "项目负责人",
+                        "实施负责人"]}
 					//    selectListMessage={["project_type_list"]}
                     //    selectNameMessage={["project_project_template_name"]}
-                       selectListCheckMessage={["project_type_list"]}
-                       selectNameCheckMessage={["project_project_template_name"]}
+                       selectListCheckMessage={["staff_manage_list","project_type_list"]}
+                       selectNameCheckMessage={["project_leader_name","project_person_in_charge_name"]}
 					   screeningMessage={this.screening_information}
-					/>
+					/> */}
                 <div className="statistical_div">
                 
                     <table className="statistical_table">
                         <thead>
                             <tr>
-                                <th>序号</th>
+                                <th><div className="statistical_table_box">序号</div></th>
                                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
                                     return(
-                                        <th key={index}>{table_data_head.value}</th>
+                                        <th key={index}>
+                                            <div className="statistical_table_box">
+                                                {table_data_head.value}
+                                            </div>
+                                            </th>
                                     )
-                                }):<th></th>}
+                                }):<th> <div className="statistical_table_box"></div></th>}
                                 
                             </tr>
                         </thead>
