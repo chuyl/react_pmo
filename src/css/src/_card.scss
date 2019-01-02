@@ -57,12 +57,13 @@
 
 .paper_card_title {
     display: block; // position: fixed;
-    padding-top: 15px;
-    height: 47px;
+    padding-top: 0.5em;
+    height: 2em;
     text-align: center;
     color: $primary-text-color;
     z-index: 1;
     background-color: $background-color;
+    border-bottom: 1px solid $secondary-text-color;
 }
 
 .return_btn {
@@ -891,7 +892,7 @@ textarea:disabled {
 .statistical_change_page {
     padding: 1em 8em;
     display: block;
-    width: calc(100% - 300px);
+    width: calc(100% - 234px);
     box-sizing: border-box;
     text-align: center;
     margin-top: 1em;
