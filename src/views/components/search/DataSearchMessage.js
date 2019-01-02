@@ -18,12 +18,13 @@
     import KeywordSearch from './KeywordSearch';
     import SelectMessage from './SelectMessage'
     import SelectSearchType from './SelectSearchType'
+    import SelectCheckSearchType from './SelectCheckSearchType'
     class DataSearchMessage extends Component {
         state={
             inputValue:"",
             inputState:false,
             message_list:this.props.message,
-            filter_box_state:false,
+            filter_box_state:true,
             search_arr:[],
             keywordTitle:[],
             title_index:0
@@ -198,6 +199,16 @@
                                 displayNone={index+1===this.state.title_index?1:0}
                                 id={"select_message"+this.props.selectNameMessage[index]}
                                 searchInfoLists={selectListMessage}     
+                            />
+                            )
+                        }):""}
+                        {this.props.selectListCheckMessage?this.props.selectListCheckMessage.map((selectListCheckMessage,index)=>{
+                            return(
+                                <SelectCheckSearchType
+                                    key={index}
+                                    displayNone={index+1===this.state.title_index?1:0}
+                                    id={"select_message"+this.props.selectNameCheckMessage[index]}
+                                    searchInfoLists={selectListCheckMessage}     
                             />
                             )
                         }):""}

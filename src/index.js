@@ -60,7 +60,7 @@ class TabComponent extends Component{
       dialog_show:false,
       logged: Boolean(sessionStorage.getItem("logged")),
       message_state:false,
-      login_account:"刘雪松",
+      login_account:"",
       login_password:"123456",
 		}
   }
