@@ -75,7 +75,7 @@
 
 .search_info_list.open {
     min-height: 156px;
-    background: $background-color;
+    background: $primary-color-text;
     position: relative;
     margin-left: 80px;
     z-index: 1;
@@ -121,7 +121,7 @@
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     box-sizing: content-box;
-    border: 1px solid $divider-color; //margin-bottom: 26px;
+    border: 0px solid $divider-color; //margin-bottom: 26px;
 }
 
 .selectedInfo::before {
@@ -177,8 +177,8 @@
 
 .search_info_list_ul {
     display: block;
-    height: 80px;
-    margin-top: 14px;
+    height: 112px;
+    margin-top: 0.5em;
     overflow-y: auto; // width: calc(100% - 10px);
     width: 100%;
     border-radius: 2px;
@@ -284,6 +284,7 @@
     white-space: nowrap;
     margin-right: 10px;
     font: 14px "Microsoft";
+    background-color: $background-color;
 }
 
 .select_search_input::placeholder {
