@@ -278,7 +278,7 @@ class BiddingPlan extends Component {
 		return(
 			<div>
 				<div id="" className="container">
-					<div>
+					<div className="add_btn_box">
 						<div className="add_button" onClick={(e) => {
 							this.fetchProjectData("addProjectGather")
 							this.card_box_concent([], e)

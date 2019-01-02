@@ -1,6 +1,6 @@
 /** 
      * @author xuesong
-     * @param SelectCheckSearchType 组件  下拉筛选/选择
+     * @param SelectMessage 组件  下拉筛选/选择
      */
     import React, { Component } from 'react';
     import { getData, getRouter } from '../../../utils/helpers'
@@ -13,17 +13,36 @@
             search_name: "",
             add_customer_input: "",
             search_info_list: [],
-            selectedInfo:this.props.selectedInfo,
-            keywordTitle:this.props.keywordTitle
-           
+            add_button: this.props.addButton,
+            before_api_uri: this.props.searchInfoLists,
+            searchInfoLists: [],
+            info_lists: this.props.searchInfoLists,
         }
         /** 
          * @author xuesong
          * @param infos 函数名  获取下拉内容
          */
-        
+        infos() {
+            var cb = (route, message, arg) => {
+                if (message.error === 0) {
+                    this.setState({
+                        searchInfoLists: message.data
+                    })
+                }else if(message.error === 2){
+                    console.log("未登录")
+                    sessionStorage.logged = false;
+                    sessionStorage.token="";
+                    if(window.location.hash.split("#")[1]!=="/"){
+                        window.location.href=window.location.href.split("#/")[0]
+                    
+                      }
+                }
+            }
+            console.log(this.state.before_api_uri)
+            getData(getRouter(this.state.before_api_uri), { token:sessionStorage.token }, cb, {});
+        }
     
-        searchShow=()=> {
+        searchShow() {
             this.setState({
                 search_state: !this.state.search_state
             })
@@ -31,16 +50,21 @@
         render() {
             const { selectedInfo,selectedIdInfo, id, labelValue,disabled } = this.props;
             return (
-                <div style={this.props.view?{marginBottom:"10px"}:{}} className="select_search_list">
+                <div style={this.props.displayNone===0?{display:"none"}:{}} className="search_terms">
                     <div onClick={() => {
                             this.searchShow()
                           }} 
                         className={this.state.search_state ? "add_list_close" : ""}>
                     </div>
+                    {/* <label className="search_info_list_label">{labelValue}</label> */}
                     <div className="selectedInfo" id={id+"_name"}
-                        title={this.state.selectedInfo}
                          onClick={() => {
-                            this.searchShow()
+                             if(disabled===true){
+                                 return false;
+                             }else{
+                                this.searchShow()
+                                this.infos();
+                             }
                             
                          }}
                     >
@@ -53,19 +77,18 @@
                             className={this.state.search_state ? "search_info_list open" : "search_info_list"}
                         >
                             <ul className="search_info_list_ul select_info_list_ul">
-                                {this.state.keywordTitle?this.state.keywordTitle.map((info_lists,index) => {
+                                {this.state.searchInfoLists?this.state.searchInfoLists.map((info_lists,index) => {
                                     return (
-                                        <li
-                                        title={info_lists}
-                                        onClick={(e) => {
-                                            document.getElementById(id+"_name").innerHTML = info_lists;
-                                            // document.getElementById(id+"_id").innerHTML = info_lists.id;
+                                        <li  key={index}>
+                                            <input value={info_lists.name} name="checkSelectList" type="checkbox"/>
+                                            <span onClick={(e) => {
+                                            document.getElementById(id+"_name").innerHTML = info_lists.name;
+                                            document.getElementById(id+"_id").innerHTML = info_lists.id;
                                             this.searchShow()
-                                            this.setState({
-                                                selectedInfo:info_lists
-                                            })
-                                            this.props.selectTitleIndex(index)
-                                        }} key={index}>{info_lists}</li>
+                                        }}>
+                                                {info_lists.name}   
+                                            </span>
+                                        </li>
                                     )
                                 }):""}
                             </ul>

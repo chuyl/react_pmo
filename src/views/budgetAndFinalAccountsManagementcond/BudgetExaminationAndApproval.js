@@ -146,8 +146,10 @@ class BudgetExaminationAndApproval extends Component {
 					   keywordTitle={[
 						"课程名称+项目编号",
 						"部门"]}
-					   selectListMessage={["project_type_list"]}
-					   selectNameMessage={["project_project_template_name"]}
+					//    selectListMessage={["project_type_list"]}
+                    //    selectNameMessage={["project_project_template_name"]}
+                       selectListCheckMessage={["project_type_list"]}
+                       selectNameCheckMessage={["project_project_template_name"]}
 					   screeningMessage={this.screening_information}
 					/>
                 <div className="statistical_div">

@@ -71,7 +71,8 @@ sureCallback(msg){
                     <button className={className[1]?className[1]:""}
                         onClick={()=>{
                             this.setState({
-                                alertState:true
+                                alertState:true,
+                                alertTitle:"提交",
                             })
                         }}
                     >{"提交"+labelValue}</button>
@@ -91,7 +92,8 @@ sureCallback(msg){
                   :message.examine[thisKey].state==="-1"?<button className={className[1]?className[1]:""} 
                         onClick={()=>{
                             this.setState({
-                                alertState:true
+                                alertState:true,
+                                alertTitle:"提交",
                             })
                         }}
                   >再次提交</button>
