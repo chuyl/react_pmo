@@ -39,13 +39,13 @@
         display: block;
         height: 2em;
         line-height: 2em;
-        color: $primary-color-text;
+        color: $background-color;
         overflow: hidden;
         box-sizing: border-box;
         padding: 0 1em 0 1em;
         position: absolute;
         top: 0;
-        background-color: $primary-color-dark;
+        background-color: $primary-color;
         width: 100%;
         .card-item {
             float: left;
@@ -160,6 +160,10 @@
     }
     .card-foot .card-item {
         float: left;
+        color: $primary-color-light;
+    }
+    .card-foot .card-item.active {
+        color: $primary-color;
     }
     .card-foot .active {
         height: 2em;
@@ -186,15 +190,11 @@
         }
         .card-page.active {
             display: block;
-
-
-            
             transition: opacity .3s ease;
             display: block;
             opacity: 1;
         }
-    }
-    // .card-foot .active::before {
+    } // .card-foot .active::before {
     //     position: absolute;
     //     content: ' ';
     //     width: 0;

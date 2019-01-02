@@ -937,7 +937,7 @@ select {
   padding: 0; }
 
 body {
-  background: #fafafa;
+  background: #f5f5f5;
   -webkit-text-size-adjust: 100%; }
 
 a {
@@ -983,7 +983,9 @@ a {
   width: 150px;
   height: 100vh;
   box-sizing: border-box;
-  box-shadow: 0px 0px 2px 2px rgba(5, 13, 43, 0.3); }
+  box-shadow: 0px 0px 2px 2px rgba(5, 13, 43, 0.3);
+  position: relative;
+  z-index: 1; }
   .tab_title_wrap .tab_title::before {
     font-family: icon;
     font-size: 0.1em;
@@ -1006,7 +1008,7 @@ a {
   line-height: 3em;
   padding-left: 2em;
   position: relative;
-  color: #fafafa;
+  color: #C5CAE9;
   transition: width .5s; }
   .tab_title a {
     display: block;
@@ -1015,21 +1017,22 @@ a {
     outline: none; }
 
 .tab_title.active {
-  color: #FFFFFF;
+  color: #f5f5f5;
   background-color: #FF5252; }
 
 .tab_item .active a {
-  color: #FFFFFF; }
+  color: #f5f5f5; }
 
 .tab_item.show .active::before {
-  background: #FFFFFF; }
+  background: #f5f5f5; }
 
 .tab_item_wrap {
   margin-left: 150px;
   width: 150px;
   height: 100vh;
   transition: width .5s;
-  background: linear-gradient(45deg, #303F9F, #3F51B5);
+  position: relative;
+  background-color: #f5f5f5;
   box-shadow: 0px 0px 2px 2px rgba(5, 13, 43, 0.3); }
 
 .tab_item {
@@ -1037,7 +1040,7 @@ a {
 
 .tab_item .tab_title {
   padding-left: 1em;
-  color: #fafafa; }
+  color: #f5f5f5; }
 
 .show {
   display: block; }
@@ -1082,7 +1085,7 @@ a {
   content: '\e038'; }
 
 .tab_title a {
-  color: #fafafa;
+  color: #3F51B5;
   text-decoration: none; }
 
 .tab_item.show li::before {
@@ -1090,7 +1093,7 @@ a {
   display: block;
   width: 2px;
   height: 2em;
-  background: #fafafa;
+  background: #303F9F;
   position: absolute;
   top: 0.5em;
   left: 0; }
@@ -1119,7 +1122,8 @@ a {
     transform: rotate(0deg); }
   to {
     transform: rotate(360deg); } }
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -1184,18 +1188,18 @@ html, body {
   font-size: 24px;
   line-height: 80px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #fafafa;
+  color: #f5f5f5;
   float: right;
   padding: 0 1em;
   cursor: pointer; }
 
 .bar .btn:hover {
-  background-color: #fafafa;
+  background-color: #f5f5f5;
   color: #212121; }
 
 .sidebar {
   display: flex;
-  background: #3F51B5;
+  background-color: #3F51B5;
   width: 100%;
   height: 96vh;
   position: fixed;
@@ -1218,7 +1222,7 @@ html, body {
   width: 250px;
   overflow: hidden;
   z-index: 1000;
-  background-color: #fafafa;
+  background-color: #f5f5f5;
   transition: width .2s; }
 
 .footer_position {
@@ -1244,11 +1248,13 @@ html, body {
   overflow: hidden;
   transition: width .2s; }
 
-.fade-leave.fade-leave-active, .fade-enter {
+.fade-leave.fade-leave-active,
+.fade-enter {
   width: 0;
   left: 0; }
 
-.fade-enter.fade-enter-active, .fade-leave {
+.fade-enter.fade-enter-active,
+.fade-leave {
   width: 250px;
   left: 0; }
 
@@ -1257,7 +1263,7 @@ html, body {
   float: left; }
 
 .selected_card {
-  border: 1px solid,palegreen; }
+  border: 1px solid, palegreen; }
 
 @media only screen and (max-width: 1280px) {
   .router_screen {
@@ -1275,10 +1281,9 @@ html, body {
     width: 100%; }
 
   .selected_card {
-    border: 1px solid,palegreen; } }
+    border: 1px solid, palegreen; } }
 .paper_div {
   width: 35%;
-  background: #3F51B5;
   margin-left: 1rem;
   padding: 0;
   overflow: hidden;
@@ -1287,6 +1292,7 @@ html, body {
   overflow: hidden; }
 
 .paper_div.open {
+  background: #FFFFFF;
   border-radius: 1em;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.6); }
   @media screen and (max-width: 768px) {
@@ -1307,12 +1313,15 @@ html, body {
   opacity: 1; }
 
 .add_button {
-  margin: 0 1rem;
+  margin: 0.5em 1rem 1em 1em;
   top: 0rem;
   height: 2em;
   line-height: 2em;
+  width: 150px;
+  border-radius: 2px;
   text-align: center;
   color: #FFFFFF;
+  background-color: #3F51B5;
   cursor: pointer; }
   @media screen and (max-width: 768px) {
     .add_button {
@@ -1323,8 +1332,9 @@ html, body {
   padding-top: 15px;
   height: 47px;
   text-align: center;
-  color: #fafafa;
-  z-index: 1; }
+  color: #212121;
+  z-index: 1;
+  background-color: #f5f5f5; }
 
 .return_btn {
   display: inline-block;
@@ -1343,7 +1353,7 @@ html, body {
   font-size: 14px;
   position: relative;
   left: 0;
-  color: #fafafa;
+  color: #212121;
   font-family: icon;
   margin-top: -1px; }
 
@@ -1378,8 +1388,8 @@ html, body {
   width: 100%;
   height: 28px;
   margin-bottom: 28px;
-  color: #fafafa;
-  background-color: #FF5252;
+  color: #f5f5f5;
+  background-color: #3F51B5;
   border-radius: 4px;
   line-height: 20px;
   outline: none;
@@ -1544,7 +1554,7 @@ input:disabled,
 textarea:disabled {
   border: 0;
   background: transparent;
-  color: #fff; }
+  color: #212121; }
 
 .card_budget,
 .card_final_accounts {
@@ -1803,7 +1813,7 @@ textarea:disabled {
         font-size: 1em; } }
 
 .select_search_list {
-  background-color: #fafafa;
+  background-color: #f5f5f5;
   color: #757575;
   float: left;
   border-top-left-radius: 10px;
@@ -1836,8 +1846,10 @@ textarea:disabled {
     width: 10em;
     margin-top: 1.8em; }
 
-.container .select_filter_box .search_info_list.open {
-  width: 100%; }
+.container {
+  background-color: #3F51B5; }
+  .container .select_filter_box .search_info_list.open {
+    width: 100%; }
 
 .select_filter_box::after {
   content: " ";
@@ -1870,7 +1882,7 @@ textarea:disabled {
   line-height: 2em;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
-  background-color: #fafafa;
+  background-color: #f5f5f5;
   box-sizing: border-box;
   outline: none;
   border: none;
@@ -1881,7 +1893,7 @@ textarea:disabled {
   width: 50%;
   line-height: 2em;
   color: #757575;
-  background-color: #fafafa;
+  background-color: #f5f5f5;
   box-sizing: border-box;
   position: relative; }
   .search_terms .search_info_list.open {
@@ -1922,7 +1934,7 @@ textarea:disabled {
     position: relative;
     float: left;
     line-height: 1em;
-    background-color: #fafafa;
+    background-color: #f5f5f5;
     border-radius: 1em;
     margin-bottom: 1em; }
 
@@ -1932,7 +1944,7 @@ textarea:disabled {
   display: block;
   background-color: #757575;
   border-radius: 50%;
-  outline: 7px solid #fafafa;
+  outline: 7px solid #f5f5f5;
   outline-offset: -14px;
   transform: rotate(45deg);
   position: absolute;
@@ -1956,7 +1968,7 @@ textarea:disabled {
 .statistical_div {
   display: block;
   width: 100%;
-  background: #fafafa;
+  background: #f5f5f5;
   height: 96vh; }
 
 .statistical_table {
@@ -2009,10 +2021,11 @@ textarea:disabled {
   width: 100%;
   position: relative;
   top: 0;
-  background-color: #303F9F;
+  background: linear-gradient(90deg, #3F51B5, #303F9F);
   z-index: 1;
   color: #FFFFFF;
-  text-align: right; }
+  text-align: right;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.6); }
   .user_info_box span {
     line-height: 4vh;
     padding: 0 1em; }
@@ -2081,7 +2094,7 @@ textarea:disabled {
   right: 10px;
   padding: 10px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
-  background-color: #fafafa;
+  background-color: #f5f5f5;
   z-index: 10; }
 
 .dialog_window {
@@ -2140,17 +2153,19 @@ textarea:disabled {
   margin-bottom: 24px; }
 
 .card_info_list_card {
+  position: relative;
   border-radius: 4px;
   padding: 18px;
   margin-bottom: 18px;
   padding-bottom: 38px;
-  background: rgba(255, 255, 255, 0.1); }
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.6); }
 
 .search_info_list_label {
   float: left;
   display: inline-block;
   width: 59px;
-  color: #FFFFFF;
+  color: #BDBDBD;
   font-size: 14px;
   text-align: left;
   position: relative;
@@ -2182,7 +2197,7 @@ textarea:disabled {
   overflow: hidden;
   top: 0;
   z-index: 1;
-  background: linear-gradient(to bottom right, #303F9F, #3F51B5); }
+  background-color: #FFFFFF; }
 
 .search_info_list {
   width: 0;
@@ -2194,7 +2209,7 @@ textarea:disabled {
 
 .search_info_list.open {
   min-height: 156px;
-  background: #fafafa;
+  background: #f5f5f5;
   position: relative;
   margin-left: 80px;
   z-index: 1;
@@ -2211,7 +2226,7 @@ textarea:disabled {
 
 .edit_bar .label_delete_button {
   color: #FFFFFF;
-  background-color: #FF5252; }
+  background-color: #757575; }
 .edit_bar .add_card_btn {
   color: #FFFFFF;
   background: #3F51B5;
@@ -2228,8 +2243,8 @@ textarea:disabled {
   font: 14px "Microsoft YaHei";
   line-height: 24px;
   padding-left: 10px;
-  background: #fafafa;
-  color: #757575;
+  background: #f5f5f5;
+  color: #212121;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   box-sizing: content-box;
@@ -2254,7 +2269,7 @@ textarea:disabled {
   font: 14px "Microsoft YaHei";
   line-height: 24px;
   padding-left: 10px;
-  background: #fafafa;
+  background: #f5f5f5;
   color: #212121;
   border-radius: 2px;
   border: 1px solid #BDBDBD; }
@@ -2316,7 +2331,7 @@ textarea:disabled {
 
 .search_info_list_ul li:hover {
   background-color: #FF5252;
-  color: #fafafa; }
+  color: #f5f5f5; }
 
 .select_info_list_ul {
   height: 156px;
@@ -2366,7 +2381,7 @@ textarea:disabled {
   font-size: 12px;
   color: #FF5252;
   text-align: center;
-  background: #fafafa;
+  background: #f5f5f5;
   outline: none;
   border: 0;
   font-weight: bold;
@@ -2403,7 +2418,7 @@ textarea:disabled {
   margin-top: 14px;
   margin-left: 78px;
   font-size: 14px;
-  color: #fafafa; }
+  color: #f5f5f5; }
   .select_result_msg span {
     display: inline-block;
     font-size: 14px;
@@ -2485,7 +2500,7 @@ textarea:disabled {
   display: block;
   width: 100%;
   margin: auto;
-  color: #fafafa;
+  color: #f5f5f5;
   min-height: 24px;
   margin-bottom: 24px; }
 
@@ -2497,8 +2512,8 @@ textarea:disabled {
   font: 14px "Microsoft YaHei";
   line-height: 24px;
   padding-left: 10px;
-  background: #fafafa;
-  color: #757575;
+  background: #f5f5f5;
+  color: #212121;
   outline: none;
   border-radius: 2px;
   border: 1px solid #BDBDBD; }
@@ -2510,7 +2525,7 @@ textarea:disabled {
   font: 14px "Microsoft YaHei";
   line-height: 24px;
   padding-left: 10px;
-  background: #fafafa;
+  background: #f5f5f5;
   color: #757575;
   border-radius: 2px;
   border: 1px solid #BDBDBD; }
@@ -2544,7 +2559,7 @@ textarea:disabled {
   font-weight: 100;
   font-size: 14px;
   margin-bottom: 18px;
-  color: #fafafa;
+  color: #f5f5f5;
   word-wrap: break-word; }
 
 .label_button_button {
@@ -2558,7 +2573,7 @@ textarea:disabled {
   height: 24px;
   line-height: 24px;
   border-radius: 2px;
-  color: #fafafa;
+  color: #f5f5f5;
   cursor: pointer;
   outline: none; }
 
@@ -2570,7 +2585,7 @@ textarea:disabled {
   height: 24px;
   line-height: 24px;
   border-radius: 2px;
-  color: #fafafa;
+  color: #f5f5f5;
   cursor: pointer;
   outline: none; }
 
@@ -2596,8 +2611,11 @@ textarea:disabled {
   line-height: 20px;
   color: #FF5252;
   background: #3F51B5;
-  border: 1px solid #FF5252;
+  border: 0;
   outline: 0; }
+
+.label_delete_button:hover {
+  background: #3F51B5; }
 
 .btn_list {
   width: 5em;
@@ -2665,7 +2683,7 @@ textarea:disabled {
   overflow-y: auto;
   background-color: #3F51B5;
   margin-left: 0.5em;
-  color: #fafafa;
+  color: #f5f5f5;
   position: relative; }
   @media screen and (max-width: 768px) {
     .view_table_list {
@@ -2775,7 +2793,7 @@ textarea:disabled {
   background-color: #FF5252; }
 
 .complex_message {
-  color: #fafafa;
+  color: #f5f5f5;
   font-size: 14px; }
   .complex_message p {
     padding-top: 0.5em; }
@@ -2829,20 +2847,20 @@ textarea:disabled {
   display: block;
   height: 2em;
   line-height: 2em;
-  color: #FFFFFF;
+  color: #f5f5f5;
   overflow: hidden;
   box-sizing: border-box;
   padding: 0 1em 0 1em;
   position: absolute;
   top: 0;
-  background-color: #303F9F;
+  background-color: #3F51B5;
   width: 100%; }
   .crius-card-list .card-head .card-item {
     float: left; }
 .crius-card-list .card-body {
   display: block;
   overflow: hidden;
-  background-color: #fafafa; }
+  background-color: #f5f5f5; }
 .crius-card-list .card-foot {
   display: block;
   height: 2em;
@@ -2921,7 +2939,10 @@ textarea:disabled {
   box-sizing: border-box;
   padding: 0 1em; }
 .crius-card-list .card-foot .card-item {
-  float: left; }
+  float: left;
+  color: #C5CAE9; }
+.crius-card-list .card-foot .card-item.active {
+  color: #3F51B5; }
 .crius-card-list .card-foot .active {
   height: 2em;
   border: none;
@@ -3006,7 +3027,7 @@ textarea:disabled {
     width: 400px;
     height: 300px;
     display: none;
-    background-color: #fafafa;
+    background-color: #f5f5f5;
     margin: auto;
     border-radius: 10px; }
     .alert_back .alert_box .search_info_list_label {
@@ -3047,11 +3068,11 @@ textarea:disabled {
     .alert_back .alert_box button.active {
       background: #FF5252;
       overflow: hidden;
-      color: #fafafa; }
+      color: #f5f5f5; }
     .alert_back .alert_box button:hover {
       background: #FF5252;
       overflow: hidden;
-      color: #fafafa; }
+      color: #f5f5f5; }
     @media screen and (max-width: 768px) {
       .alert_back .alert_box {
         margin: auto 1em; } }

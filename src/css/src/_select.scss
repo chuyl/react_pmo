@@ -13,18 +13,20 @@
 }
 
 .card_info_list_card {
+    position: relative;
     border-radius: 4px;
     padding: 18px;
     margin-bottom: 18px;
     padding-bottom: 38px;
     background: rgba(255, 255, 255, .1);
+    box-shadow: 0 0 4px rgba(0, 0, 0, .6);
 }
 
 .search_info_list_label {
     float: left;
     display: inline-block;
     width: 59px;
-    color: $primary-color-text;
+    color: $divider-color;
     font-size: 14px;
     text-align: left;
     position: relative;
@@ -58,8 +60,7 @@
     overflow: hidden;
     top: 0;
     z-index: 1;
-    background: linear-gradient(to bottom right, $primary-color-dark, $primary-color);
-    ;
+    background-color: $primary-color-text;
 }
 
 .search_info_list {
@@ -94,7 +95,7 @@
 .edit_bar {
     .label_delete_button {
         color: $primary-color-text;
-        background-color: $accent-color;
+        background-color: $secondary-text-color;
     }
     .add_card_btn {
         color: $primary-color-text;
@@ -116,7 +117,7 @@
     line-height: 24px;
     padding-left: 10px;
     background: $background-color;
-    color: $secondary-text-color;
+    color: $primary-text-color;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     box-sizing: content-box;
@@ -201,13 +202,11 @@
 //     width: 5px;
 //     background: $divider-color;
 // }
-
 // .overflow::-webkit-scrollbar-thumb {
 //     width: 5px;
 //     border-radius: 4px;
 //     background: $primary-color;
 // }
-
 /* select ul-li part */
 
 .search_info_list_ul li {

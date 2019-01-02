@@ -1,103 +1,115 @@
 .App {
     text-align: center;
-  }
-  
-  .App-logo {
+}
+
+.App-logo {
     animation: App-logo-spin infinite 20s linear;
     height: 80px;
-  }
-  
-  .App-header {
+}
+
+.App-header {
     background-color: #222;
     height: 150px;
     padding: 20px;
     color: white;
-  }
-  
-  .App-title {
+}
+
+.App-title {
     font-size: 1.5em;
-  }
-  
-  .App-intro {
+}
+
+.App-intro {
     font-size: large;
-  }
-  
-  @keyframes App-logo-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  html, body{
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+html,
+body {
     margin: 0;
-    padding: 0;
-    // font-size: 16px;
+    padding: 0; // font-size: 16px;
     overflow: hidden;
     height: 100%;
-  }
-  .container{
-   // position: relative;
+}
+
+.container {
+    // position: relative;
     //padding-top: 1rem;
     //width: 1200px;
     width: 60%;
     float: left;
-    margin: 0 auto;
-    // background-color: #dedee3;
-   
+    margin: 0 auto; // background-color: #dedee3;
     // overflow-x: hidden;
     // overflow-y: auto; 
     height: 100vh;
-  }
-  .container::-webkit-scrollbar {
+}
+
+.container::-webkit-scrollbar {
     width: 4px;
     height: 4px;
 }
-  .overflow{
+
+.overflow {
     height: 96vh;
     overflow-x: hidden;
     overflow-y: scroll;
-  }
-  .overflow::-webkit-scrollbar {
+}
+
+.overflow::-webkit-scrollbar {
     width: 4px;
     height: 4px;
 }
-  .container.fixed{
+
+.container.fixed {
     overflow-y: hidden;
-  }
-  .container::before{
+}
+
+.container::before {
     content: "";
     display: table;
-  }
-  .img{
+}
+
+.img {
     width: 320px;
-    height:170px;
+    height: 170px;
     background-color: blueviolet;
-  }
-  .card{
+}
+
+.card {
     margin: 1rem;
     padding: 0;
-    background-color:darkseagreen;
+    background-color: darkseagreen;
     height: 240px;
-    overflow: hidden; 
+    overflow: hidden;
     transition: all .3s;
-  }
-  .card.open{
+}
+
+.card.open {
     margin: 0;
-    
     position: fixed;
     top: 0;
-    background-color:#427881;
+    background-color: #427881;
     /* height: 600px; js代替 */
     left: 0;
     z-index: 10;
-  }
-  
-  .bar{
+}
+
+.bar {
     position: fixed;
     bottom: 0;
     height: 80px;
     width: 100%;
     background-color: black;
-  }
-  .bar .btn{
+}
+
+.bar .btn {
     font-size: 24px;
     line-height: 80px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -105,98 +117,108 @@
     float: right;
     padding: 0 1em;
     cursor: pointer;
-  }
-  .bar .btn:hover{
+}
+
+.bar .btn:hover {
     background-color: $background-color;
-    color: $primary-text-color;   
-  }
-  .sidebar{
+    color: $primary-text-color;
+}
+
+.sidebar {
     display: flex;
-    background: $primary-color;
+    background-color: $primary-color;
     width: 100%;
     height: 96vh;
     position: fixed;
     flex: 1 0 auto;
-  }
-.modal_backdrop{
-  z-index: 15;
-  position: fixed;
+}
+
+.modal_backdrop {
+    z-index: 15;
+    position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background-color:$primary-text-color;
-    opacity:.5;
+    background-color: $primary-text-color;
+    opacity: .5;
     transition: width all .5s;
 }
-.couter_control{
-  position: absolute;
-  height: 100%;
-  width: 250px;
-  overflow: hidden;
-  z-index: 1000;
-  background-color: $background-color;
-  transition: width .2s;
 
+.couter_control {
+    position: absolute;
+    height: 100%;
+    width: 250px;
+    overflow: hidden;
+    z-index: 1000;
+    background-color: $background-color;
+    transition: width .2s;
 }
 
-.footer_position{
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  line-height: 36px;
-  z-index: 100;
-  background-color: $primary-color;
-}
-.router_screen{
-  display: block;
-  font-size: 14px;
-  }
-  .router_button{
-    display: none
-    }
-    .box1 {
-      width: 250px;
-      height: 100px;
-      background-color: green;
-      overflow: hidden;
-      transition: width .2s;
-    }
-    .fade-leave.fade-leave-active, .fade-enter {
-      width: 0;
-      left: 0;
-    }
-    
-    .fade-enter.fade-enter-active, .fade-leave {
-      width: 250px;
-      left: 0;
-    }
-    .card_list_div{
-      width: 60%;
-      float: left;
-    }
-    .selected_card{
-      border: 1px solid,palegreen;
-
-    }
-@media only screen and (max-width:1280px ){
-.router_screen{
-display: none
-}
-.router_button{
-  display: block;
-  float: left;
-  position: fixed;
-  }
-  .container{
-    width: 64%;
-  }
-  .card_list_div{
+.footer_position {
+    position: absolute;
+    left: 0;
+    bottom: 0;
     width: 100%;
-  }
-  .selected_card{
-    border: 1px solid,palegreen;
-    
-  }
+    line-height: 36px;
+    z-index: 100;
+    background-color: $primary-color;
+}
+
+.router_screen {
+    display: block;
+    font-size: 14px;
+}
+
+.router_button {
+    display: none
+}
+
+.box1 {
+    width: 250px;
+    height: 100px;
+    background-color: green;
+    overflow: hidden;
+    transition: width .2s;
+}
+
+.fade-leave.fade-leave-active,
+.fade-enter {
+    width: 0;
+    left: 0;
+}
+
+.fade-enter.fade-enter-active,
+.fade-leave {
+    width: 250px;
+    left: 0;
+}
+
+.card_list_div {
+    width: 60%;
+    float: left;
+}
+
+.selected_card {
+    border: 1px solid, palegreen;
+}
+
+@media only screen and (max-width:1280px) {
+    .router_screen {
+        display: none
+    }
+    .router_button {
+        display: block;
+        float: left;
+        position: fixed;
+    }
+    .container {
+        width: 64%;
+    }
+    .card_list_div {
+        width: 100%;
+    }
+    .selected_card {
+        border: 1px solid, palegreen;
+    }
 }
