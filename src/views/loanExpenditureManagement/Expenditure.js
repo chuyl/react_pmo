@@ -316,7 +316,7 @@ class Expenditure extends Component {
 					}}
 				>打印此处</a>
 					</div>
-					<div className="overflow crius-card-list">
+					<div className="overflow card_list_groups crius-card-list">
 						{this.state.card_list !== null ? this.state.card_list.map((card_list, index) => {
 							return (
 								<ComponentsList index={index} sevenChange={this.handleChildChange} key={index} componentslist={this.state.projectCard} componentsdata={card_list} ></ComponentsList >

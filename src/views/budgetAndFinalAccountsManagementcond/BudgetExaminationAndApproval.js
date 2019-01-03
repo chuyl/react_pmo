@@ -148,7 +148,8 @@ class BudgetExaminationAndApproval extends Component {
 					   message={this.state.table_data_bodys}
 					   keywordSearch={["project_name","unicode"]}
 					   keywordTitle={[
-						"课程名称+项目编号",
+                        "课程名称",
+                        "项目编号",
                         "项目负责人",
                         "实施负责人"]}
 					//    selectListMessage={["project_type_list"]}

@@ -329,7 +329,7 @@ class TrainingProgram extends Component {
 							添加
 						</div>
 					</div>
-					<div className="overflow crius-card-list">
+					<div className="overflow card_list_groups crius-card-list">
 						{this.state.card_list !== null ? this.state.card_list.map((card_list, index) => {
 							return (
 								<ComponentsList examineBoolSeventh={this.examine_bool_message} indexKey={this.state.activeState} card_active_state={this.activeState} index={index} sevenChange={this.handleChildChange} key={index} componentslist={this.state.projectCard} componentsdata={card_list} ></ComponentsList >
