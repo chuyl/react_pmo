@@ -26,14 +26,14 @@
     @include set_active((1, 1, 1), 24em, 6em, 2em, $background-color);
 }
 
-.crius-card-list::-webkit-scrollbar {
+.card_list_groups::-webkit-scrollbar {
     height: 0px;
     width: 5px;
     border-radius: 6px;
     background: $divider-color;
 }
 
-.crius-card-list::-webkit-scrollbar-thumb {
+.card_list_groups::-webkit-scrollbar-thumb {
     width: 5px;
     border-radius: 6px;
     background: $primary-color;
