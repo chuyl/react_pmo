@@ -8,7 +8,8 @@ class BudgetExaminationAndApproval extends Component {
         count:0,
         table_data_body:[],
         table_data_bodys:[],
-         query_condition:{}
+         query_condition:{},
+         search_message:{}
         
 	}
 	componentWillMount(){
@@ -27,7 +28,10 @@ class BudgetExaminationAndApproval extends Component {
             }
            
         }
-        var obj ={page_num:page_num,page_size:page_size}
+        var obj ={page_num:page_num,page_size:page_size};
+        console.log(obj)
+        // var places = JSON.parse((JSON.stringify(obj)+JSON.stringify(this.state.search_message)).replace(/}{/,','));
+        // console.log(places)
         this.setState({
             query_condition:obj
         })
@@ -137,27 +141,30 @@ class BudgetExaminationAndApproval extends Component {
      return components
      }
      screening_information=(message)=>{
+         //message为筛选条件
 		this.setState({
-			table_data_body:message
-		})
+			search_message:message
+        })
+        this.table_data_body(1,5)
 	}
 	render(){
 		return (
             <div>
-                {/* <DataSearchMessage 
+                <DataSearchMessage 
 					   message={this.state.table_data_bodys}
 					   keywordSearch={["project_name","unicode"]}
 					   keywordTitle={[
                         "课程名称",
                         "项目编号",
                         "项目负责人",
+                        "项目负责人",
                         "实施负责人"]}
-					//    selectListMessage={["project_type_list"]}
-                    //    selectNameMessage={["project_project_template_name"]}
+					   selectListMessage={["project_type_list"]}
+                       selectNameMessage={["project_project_template_name"]}
                        selectListCheckMessage={["staff_manage_list","project_type_list"]}
                        selectNameCheckMessage={["project_leader_name","project_person_in_charge_name"]}
 					   screeningMessage={this.screening_information}
-					/> */}
+					/>
                 <div className="statistical_div">
                 
                     <table className="statistical_table">

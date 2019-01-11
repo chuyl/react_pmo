@@ -167,7 +167,7 @@
         render(){
             const {id,message} =this.props;
             return (
-                <div>
+                <div className="filter_max_div">
                     <button
                         className="filter_box_state"
                         onClick={()=>{

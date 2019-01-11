@@ -309,7 +309,6 @@ class Budget extends Component {
 		return (
 			<div>
 				<div id="" className="container">
-					<div>
 						{/* <div className="add_button" onClick={(e) => {
 							this.fetchProjectData("addProject")
 							this.card_box_concent([], e)
@@ -330,7 +329,6 @@ class Budget extends Component {
 							keywordTitle={["项目名称+项目集名称名称","项目负责人","项目模板"]}
 							screeningMessage={this.screening_information}
 						/>
-					</div>
 					<div className="overflow card_list_groups crius-card-list">
 						{this.state.card_list !== null ? this.state.card_list.map((card_list, index) => {
 							return (

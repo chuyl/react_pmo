@@ -40,6 +40,11 @@
           screening_information=()=>{
               //selectNameMessage 数据表中需要select筛选的字段名称
             var key=[];
+            if(this.props.keywordSearch){
+                for(var o = 0; o<this.props.keywordSearch.length;o++){
+                    key.push(this.props.keywordSearch[o])
+                }
+            }
             if(this.props.selectNameMessage){
                 for(var m = 0; m<this.props.selectNameMessage.length;m++){
                     key.push(this.props.selectNameMessage[m])
@@ -50,13 +55,20 @@
                     key.push(this.props.selectNameCheckMessage[n])
                 }
             }
+           
             // this.props.selectNameMessage?this.props.selectNameMessage:[];
            //value 用来存储select的option
             var value=[];
             //keyword_list 用来存储需要模糊关键字筛选的字段名称
             var keyword_list=[];
             //keywordSearch为input的value.就是模糊查询的关键字
-            var keywordSearch = document.getElementById("keywordSearch").value;
+            if(this.props.keywordSearch){
+                for(var z = 0;z<this.props.keywordSearch.length;z++){
+                    value.push(document.getElementById("keywordSearch"+this.props.keywordSearch[z]).value)
+                }
+            }
+            
+            // var keywordSearch = document.getElementById("keywordSearch").value;
            
             if(this.props.selectNameMessage){
             
@@ -76,29 +88,31 @@
             // key.push(this.props.keywordSearch);
             // value.push(document.getElementById("keywordSearch").value)
             var obj = {};
+            console.log(key)
             for (var j = 0; j < key.length; j++) {
                 obj[key[j]] = value[j]
             }
             console.log(obj)
             //obj的key为数据表中的字段，value对应字段中筛选的数据
             //所有筛选条件的数组
-            var search_arr=[];
+            var search_arr={};
             for(var key in obj){ 
-                console.log("select_message"+key+"_name")
+                console.log(key)
                 if(obj[key]!==""){
-                    search_arr.push({name:obj[key],id:"select_message"+key+"_name"})  
+                    search_arr[key]=obj[key]
+                    // search_arr.push({name:obj[key],id:key})  
                 }
                 } 
 
-                if(keywordSearch!==""){
-                    search_arr.push({name:keywordSearch,id:"keywordSearch"})   
-                }
-                this.setState({
-                    search_arr:search_arr
-                })
+                // if(keywordSearch!==""){
+                //     search_arr.push({name:keywordSearch,id:"keywordSearch"})   
+                // }
+                // this.setState({
+                //     search_arr:search_arr
+                // })
                 console.log(search_arr)
-            let filter=(condition,data)=>{
-                console.log(condition)
+            // let filter=(condition,data)=>{
+            //     console.log(condition)
                 // for(var s in condition){
                 //     console.log(condition)
                 //     if(condition[s].indexOf(",")>=0){
@@ -115,42 +129,41 @@
                 // }
                 
                 // }
-                return data.filter( item => {
-                    return Object.keys( condition ).every( key => {
-                    return String( item[ key ] ).toLowerCase().includes( 
-                            String( condition[ key ] ).trim().toLowerCase() )
-                        } )
-                } ) 
-            }
-              console.log(keywordSearch)
-                if(keywordSearch!==""){
-                    if(this.props.keywordSearch){
-                        for(var m = 0; m<this.props.keywordSearch.length;m++){
-                            for(var k = 0; k<filter(obj,this.props.message).length;k++){
+    //             return data.filter( item => {
+    //                 return Object.keys( condition ).every( key => {
+    //                 return String( item[ key ] ).toLowerCase().includes( 
+    //                         String( condition[ key ] ).trim().toLowerCase() )
+    //                     } )
+    //             } ) 
+    //         }
+    //             if(keywordSearch!==""){
+    //                 if(this.props.keywordSearch){
+    //                     for(var m = 0; m<this.props.keywordSearch.length;m++){
+    //                         for(var k = 0; k<filter(obj,this.props.message).length;k++){
                                 
-                                     if(filter(obj,this.props.message)[k][this.props.keywordSearch[m]]!==null){
-                                        if(filter(obj,this.props.message)[k][this.props.keywordSearch[m]].indexOf(keywordSearch)>=0){
-                                            keyword_list.push(filter(obj,this.props.message)[k])
-                                        }
-                                     }
+    //                                  if(filter(obj,this.props.message)[k][this.props.keywordSearch[m]]!==null){
+    //                                     if(filter(obj,this.props.message)[k][this.props.keywordSearch[m]].indexOf(keywordSearch)>=0){
+    //                                         keyword_list.push(filter(obj,this.props.message)[k])
+    //                                     }
+    //                                  }
                                    
-                                }
+    //                             }
                             
-                            }
-                    }
-                }else{
-                    console.log(filter(obj,this.props.message))
-                    for(var n = 0;n<filter(obj,this.props.message).length;n++){
+    //                         }
+    //                 }
+    //             }else{
+    //                 console.log(filter(obj,this.props.message))
+    //                 for(var n = 0;n<filter(obj,this.props.message).length;n++){
                        
                       
-                        // if(obj.indexOf>=0){
-                        //     var className = this.props.className.split(","); 
-                        // }
-                        keyword_list.push(filter(obj,this.props.message)[n])
-                    }
-                }
-    //  console.log(filter(obj,this.props.message))
-    this.props.screeningMessage(keyword_list)
+    //                     // if(obj.indexOf>=0){
+    //                     //     var className = this.props.className.split(","); 
+    //                     // }
+    //                     keyword_list.push(filter(obj,this.props.message)[n])
+    //                 }
+    //             }
+    // //  console.log(filter(obj,this.props.message))
+    this.props.screeningMessage(search_arr)
             // this.setState({
             //     view_table_list:screening_list
             // })
@@ -210,7 +223,7 @@
         render(){
             const {id,message} =this.props;
             return (
-                <div>
+                <div className="filter_max_div">
                     <button
                         className="filter_box_state"
                         onClick={()=>{
@@ -229,16 +242,21 @@
                              selectTitleIndex={this.select_title_index}    
                             />
 
-                        <KeywordSearch 
-                            displayNone={this.state.title_index===0?1:0}
-                            style={this.state.title_index===0?{}:{display:"none"}}
-                            id={"keywordSearch"}
+                        
+                        {this.props.keywordSearch?this.props.keywordSearch.map((keywordSearch,index)=>{
+                            return(
+                                <KeywordSearch 
+                            displayNone={this.state.title_index===index?1:0}
+                            // style={this.state.title_index===index?{}:{display:"none"}}
+                            id={"keywordSearch"+keywordSearch}
                         />
+                            )
+                        }):""}
                          {this.props.selectListMessage?this.props.selectListMessage.map((selectListMessage,index)=>{
                             return(
                                 <SelectMessage
                                 key={index}
-                                displayNone={index+1===this.state.title_index?1:0}
+                                displayNone={index+this.props.keywordSearch.length===this.state.title_index?1:0}
                                 id={"select_message"+this.props.selectNameMessage[index]}
                                 searchInfoLists={selectListMessage}     
                             />
@@ -248,7 +266,7 @@
                             return(
                                 <SelectCheckSearchType
                                     key={index}
-                                    displayNone={index+1===this.state.title_index?1:0}
+                                    displayNone={index+this.props.selectListMessage.length+this.props.keywordSearch.length===this.state.title_index?1:0}
                                     id={"select_check_message"+this.props.selectNameCheckMessage[index]}
                                     searchInfoLists={selectListCheckMessage}     
                             />
