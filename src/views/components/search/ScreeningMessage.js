@@ -76,7 +76,6 @@
                 this.setState({
                     search_arr:search_arr
                 })
-                console.log(search_arr)
             let filter=(condition,data)=>{
                 return data.filter( item => {
                     return Object.keys( condition ).every( key => {
