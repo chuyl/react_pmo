@@ -52,8 +52,9 @@
             // getData(getRouter("json_manage_name"), { name:this.props.addButton,token:sessionStorage.token }, cb, {});
         }
         render(){
+            console.log(this.state.add_button)
             return (
-                <div className={"card-foot"}>
+                <div className={this.state.add_button.length===0?"":"card-foot"}>
                     <ComponentsList footItemState={this.state.thisBtnState} handleTwoCardTitleItem={this.handleTwoCardTitleItem} componentslist =  {this.state.add_button} componentsdata={this.props.message}></ComponentsList > 
               </div>
             )

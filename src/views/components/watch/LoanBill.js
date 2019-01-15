@@ -6,39 +6,44 @@
     class LoanBill extends Component {
             
         render(){
-			const {message} = this.props;
+			const {message,dataId,defaultValue} = this.props;
+			var myDate = new Date();
+			var year=myDate.getFullYear(),
+				month=myDate.getMonth()+1>9?myDate.getMonth()+1:"0"+(myDate.getMonth()+1).toString(),
+				data=myDate.getDate();
             return (
-                <div  className="loan_box" id="loan_print" style={{"pageBreakAfter":"always"}}>
+				// this.props.view?<div>{defaultValue}</div>:
+                <div  className="loan_box" id={"loan_print"+dataId} style={{"pageBreakAfter":"always"}}>
 				<div className="loan_code_id">
 					<dd>编码：</dd>
-					<dd>201812081</dd>
+					<dd>{message.unicode}</dd>
 				</div>
 				<div className="loan_title">
 					<dt><span>借款</span>单</dt>
 				</div>
 				<div className="loan_nav">
-					<div className="nav_block1">
-						<span>资金性质</span>
-						<span>因公借款</span>
-					</div>
+					{/* <div className="nav_block1">
+						<span></span>
+						<span></span>
+					</div> */}
 
 					<div className="nav_block2">
-						<span className="block2_year">2018</span>
+						<span className="block2_year">{year}</span>
 						<i className="block2_unit_year">年</i>
-						<span className="block2_month">12</span>
+						<span className="block2_month">{month}</span>
 						<i className="block2_unit_month">月</i>
-						<span className="block2_day">28</span>
+						<span className="block2_day">{data}</span>
 						<i className="block2_unit_day">日</i>
 					</div>
 				</div>
 				<div className="loan_content">
-					<div className="content_box1">
-						<span>借款单位：</span>
-						<span>行业培训部</span>
-					</div>
+					{/* <div className="content_box1">
+						<span></span>
+						<span></span>
+					</div> */}
 					<div className="content_box2">
 						<span>借款理由：</span>
-						<span>借款</span>
+						<span>{message.project_start_date+" "+message.project_customer_name+" "+message.project_name+" "+"实施课程"}</span>
 					</div>
 					<div className="content_box3">
 						<span>借款数额：人民币（大写）</span>
@@ -81,6 +86,7 @@
 					</div>
 				</div>
 			</div>
+			
               )
                 
                 

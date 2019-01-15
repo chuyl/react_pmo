@@ -6,9 +6,9 @@
     class TravelExpense extends Component {
             
         render(){
-            const {message} = this.props;
+            const {message,dataId} = this.props;
             return (
-                <div id="travel_exp_box" className="travel_exp_box">
+                <div id={"travel_exp_box"+dataId} className="travel_exp_box">
                 <div className="tvl_row1">
                     <span>部门</span>
                     <span>市场部</span>

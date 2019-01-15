@@ -93,9 +93,9 @@
             var obj = {};
             console.log(key)
             var search_arr=[];
-            for (var j = 0; j < key.length; j++) {
-                obj[key[j]] = value[j]
-                search_arr.push({name:value[j],id:id_arr[j]})  
+            for (var h = 0; h < key.length; h++) {
+                obj[key[h]] = value[h]
+                search_arr.push({name:value[h],id:id_arr[h]})  
             }
             console.log(obj)
             //obj的key为数据表中的字段，value对应字段中筛选的数据
@@ -182,6 +182,13 @@
         // console.log(this.props.keywordTitle)
         render(){
             const {id,message} =this.props;
+            console.log(this.state.search_arr)
+            var search_length=0;
+            for(var i =0; i<this.state.search_arr.length;i++){
+                if(this.state.search_arr[i].name!=""){
+                    search_length++;
+                }
+            }
             return (
                 <div className="filter_max_div">
                     <button
@@ -201,8 +208,6 @@
                              keywordTitle={this.props.keywordTitle} 
                              selectTitleIndex={this.select_title_index}    
                             />
-
-                        
                         {this.props.keywordSearch?this.props.keywordSearch.map((keywordSearch,index)=>{
                             return(
                                 <KeywordSearch 
@@ -259,7 +264,7 @@
                                 )
                             
                             }})}
-                            {this.state.search_arr.length>0?<button
+                            {search_length>0?<button
                                 className="del_btn_all"
                                 onClick={()=>{
                                 this.clear_search() 

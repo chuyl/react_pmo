@@ -17,6 +17,7 @@ import BudgetExaminationAndApproval from '../views/budgetAndFinalAccountsManagem
 //借款支出管理
 import Loan from '../views/loanExpenditureManagement/Loan'
 import Expenditure from '../views/loanExpenditureManagement/Expenditure'
+import ExpenditureManage from '../views/loanExpenditureManagement/ExpenditureManage'
 import LoanAccounting from '../views/loanExpenditureManagement/LoanAccounting'
 import LoanExaminationAndApproval from '../views/loanExpenditureManagement/LoanExaminationAndApproval'
 //收款管理
@@ -61,6 +62,7 @@ class Routers extends Component{
               :message.component==="BudgetExaminationAndApproval"?BudgetExaminationAndApproval
               :message.component==="Loan"?Loan
               :message.component==="Expenditure"?Expenditure
+              :message.component==="ExpenditureManage"?ExpenditureManage
               :message.component==="LoanAccounting"?LoanAccounting 
               :message.component==="LoanExaminationAndApproval"?LoanExaminationAndApproval
               :message.component==="Receivables"?Receivables
