@@ -2216,15 +2216,15 @@ textarea:disabled {
 
 .search_info_list.open {
   min-height: 156px;
-  background: #FFFFFF;
+  background: #f5f5f5;
   position: relative;
   margin-left: 80px;
   z-index: 1;
   border-radius: 2px;
   position: absolute;
   overflow: hidden;
-  box-shadow: 0px 1px 2px rgba(46, 50, 71, 0.7);
-  width: calc(100% - 80px); }
+  box-shadow: 0px 0px 12px rgba(46, 50, 71, 0.7);
+  width: calc(100% - 82px); }
 
 .selected_scroll_div {
   height: 90%;
@@ -2373,7 +2373,7 @@ textarea:disabled {
   white-space: nowrap;
   margin-right: 10px;
   font: 14px "Microsoft";
-  background-color: #f5f5f5; }
+  background-color: #FFFFFF; }
 
 .select_search_input::placeholder {
   color: #212121; }
@@ -2510,7 +2510,7 @@ textarea:disabled {
   margin: auto;
   color: #f5f5f5;
   min-height: 24px;
-  margin-bottom: 24px; }
+  margin-bottom: 16px; }
 
 .text_field_input {
   display: block;
@@ -2603,7 +2603,7 @@ textarea:disabled {
   margin-right: 24px; }
 
 .card_title {
-  color: #FFFFFF;
+  color: #3F51B5;
   font-size: 14px;
   font-weight: 900;
   margin-bottom: 14px; }
