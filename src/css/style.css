@@ -1975,7 +1975,7 @@ textarea:disabled {
   display: block;
   width: 100%;
   background: #f5f5f5;
-  height: 88vh;
+  height: 70vh;
   overflow: scroll; }
 
 .statistical_table {
