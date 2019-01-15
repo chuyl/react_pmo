@@ -6,13 +6,12 @@
     class Pay extends Component {
             
         render(){
-            const {message} = this.props;
+            const {message,dataId} = this.props;
             return (
-                <div className="pay_box" id="pay_box">
+                <div className="pay_box" id={"pay_box"+dataId}>
         <div className="code_id">
             <dd>项目编号：</dd>
-            <dd>20181228001</dd>
-
+            <dd>{message.unicode}</dd>
         </div>
         <div className="pay_id_num">
             <span>支出单编号：</span>

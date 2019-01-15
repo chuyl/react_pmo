@@ -6,9 +6,9 @@
     class Travel extends Component {
             
         render(){
-            const {message} = this.props;
+            const {message,dataId} = this.props;
             return (
-                <div id="travel_big_box" className="travel_big_box">
+                <div id={"travel_big_box"+dataId} className="travel_big_box">
 
         <div className="left_top_title">
             <dt>
@@ -17,7 +17,7 @@
         </div>
         <div className="travel_code_id">
             <dd>项目编号：</dd>
-            <dd>20181228001</dd>
+            <dd>{message.unicode}</dd>
         </div>
         <div className="travel_id_num">
             <span>差旅明细单编号：</span>

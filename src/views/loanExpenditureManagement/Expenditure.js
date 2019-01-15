@@ -19,9 +19,7 @@ class Expenditure extends Component {
 		addCardGroupState: "",
 		remind_state: false,
 		list_message:"",
-		loan_bill_list:{
-			unicode:"20181217"
-		}
+		activeState:""
 
 	};
 	componentDidMount() {
@@ -77,7 +75,7 @@ class Expenditure extends Component {
 		var json_view=sessionStorage.view?JSON.parse(sessionStorage.view):[]
 		// window.location.reload();
 		for (var i = 0; i < json_view.length; i++) {
-			if (json_view[i].name === "projectViewCard") {
+			if (json_view[i].name === "ViewCard") {
 
 				var json_message = json_view[i].data;
 				this.setState({
@@ -289,6 +287,11 @@ class Expenditure extends Component {
 		}
 		getData(getRouter(newState.before_api_uri), { data: obj, token: sessionStorage.token }, cb, {});
 	}
+	activeState=(newState)=>{
+		this.setState({
+				activeState:newState
+			})
+	  }
 	render(){
 		return (
 			<div>
@@ -310,16 +313,18 @@ class Expenditure extends Component {
 						>
 							添加
 						</div>
-						<a id="print-1"
-					onClick={()=>{
-						$('#loan_print').printArea();
-					}}
-				>打印此处</a>
 					</div>
 					<div className="overflow card_list_groups crius-card-list">
 						{this.state.card_list !== null ? this.state.card_list.map((card_list, index) => {
 							return (
-								<ComponentsList index={index} sevenChange={this.handleChildChange} key={index} componentslist={this.state.projectCard} componentsdata={card_list} ></ComponentsList >
+								<ComponentsList 
+									card_active_state={this.activeState} 
+									indexKey={this.state.activeState} 
+									index={index} 
+									sevenChange={this.handleChildChange} 
+									key={index} 
+									componentslist={this.state.projectCard} 
+									componentsdata={card_list} ></ComponentsList >
 							
 							)
 						}) : ""}
@@ -343,7 +348,7 @@ class Expenditure extends Component {
 
 
 				</div>
-				<LoanBill message={this.state.loan_bill_list}/>
+			
 				
 			</div>
             // <div>

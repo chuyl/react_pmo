@@ -54,6 +54,7 @@
   import ApplicationsDefault from '../watch/ApplicationsDefault'
   import SelectListLocal from '../select/SelectListLocal'
   import Print from '../button/Print'
+//   import LoanBill from '../watch/LoanBill'
    class ComponentsViewList extends Component {
     constructor(props) {
         super(props);
@@ -503,6 +504,11 @@
                                     isPrint={false}
                                     buttonMessage={form_list}
                                 />
+                            // :form_list.type_name==="LoanBill"?
+                            //     <LoanBill 
+                            //         view={true}
+                            //         defaultValue={form_list.key}
+                            //     /> 
                             : ""}
                             
                            </div>

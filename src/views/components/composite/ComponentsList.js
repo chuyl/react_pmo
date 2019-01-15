@@ -51,6 +51,7 @@ import ApplicationsFlow from '../watch/ApplicationsFlow'
 import ApplicationsDefault from '../watch/ApplicationsDefault'
 import SelectListLocal from '../select/SelectListLocal'
 import Print from '../button/Print'
+// import LoanBill from '../watch/LoanBill'
 class ComponentsList extends Component {
     constructor(props) {
         super(props);
@@ -164,9 +165,6 @@ handleChildChange=(formData)=>{
      
         return (
                 this.props.componentslist.map((form_list,index) => {
-                    // if(form_list.type_name === "TextDatetime"){
-                    //     console.log(this.props.componentsdata[form_list.id_name])
-                    // }
                     return (
                             form_list.type_name === "Cards" ?
                                 <Cards  
@@ -612,9 +610,14 @@ handleChildChange=(formData)=>{
                                     button={form_list.title}
                                     isPrint={true}
                                     printMessage={form_list.key}
+                                    // allData={this.props.allData?this.props.allData:[]}
                                     dataId={this.props.componentsdata.id}
                                     buttonMessage={this.props.componentsdata?this.props.componentsdata:''}
                                 />
+                            // :form_list.type_name==="LoanBill"?
+                            //     <LoanBill 
+                            //         dataId={this.props.componentsdata.id} 
+                            //         message={this.props.componentsdata?this.props.componentsdata:''}/>
                             : ""
                        
 )
