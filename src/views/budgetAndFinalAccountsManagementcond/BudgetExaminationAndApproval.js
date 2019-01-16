@@ -37,7 +37,7 @@ class BudgetExaminationAndApproval extends Component {
         this.setState({
             query_condition:obj
         })
-        getData(getRouter("examine_record_list"), { token: sessionStorage.token,query_condition:obj }, cb, {});
+        getData(getRouter("examine_record_list"), { token: sessionStorage.token,query_condition:objs }, cb, {});
         // getData(getRouter("examine_record_list"),{ session: sessionStorage.session}, cb, {});
 
     }

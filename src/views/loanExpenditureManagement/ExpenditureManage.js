@@ -50,8 +50,9 @@ class ExpenditureManage extends Component {
         // console.log(places)
         this.setState({
             query_condition:obj
-        })
-        getData(getRouter("payment_project_list"), { token: sessionStorage.token,query_condition:obj }, cb, {});
+		})
+		
+        getData(getRouter("payment_project_list"), { token: sessionStorage.token,query_condition:objs }, cb, {});
         // getData(getRouter("examine_record_list"),{ session: sessionStorage.session}, cb, {});
 
     }
@@ -269,7 +270,8 @@ class ExpenditureManage extends Component {
             if (message.error === 0) {
                 this.setState({
                     alertState:false
-                })
+				})
+				this.table_data_body(1,5)
             }else if(message.error === 2){
                 console.log("未登录")
                 sessionStorage.logged = false;
@@ -295,7 +297,7 @@ class ExpenditureManage extends Component {
         //获取数据接口
         console.log(this.state.linkpage)
         console.log(this.state.payment_id_arr)
-         getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, id:this.state.payment_id_arr }, cb,  {}); 
+         getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, ids:this.state.payment_id_arr }, cb,  {}); 
     //}
 	}
 	render(){
@@ -346,7 +348,19 @@ class ExpenditureManage extends Component {
 									payment_id_arr.push(paymentChecked[i].value)
 								}
 							}
-							if(payment_id_arr.length>0){
+							if(payment_id_arr.length===0){
+								this.setState({
+									remind_state:true
+								})
+								Alert.open({
+									alertTip:"请选择需要操作的支出"
+									
+								});
+								setTimeout(function(){
+									Alert.close();
+								 },2000)
+							}
+							 else if(payment_id_arr.length>0){
 								this.setState({
 									payment_id_arr:payment_id_arr,
 									alertState:true,
@@ -372,7 +386,19 @@ class ExpenditureManage extends Component {
 									payment_id_arr.push(paymentChecked[i].value)
 								}
 							}
-							if(payment_id_arr.length>0){
+							if(payment_id_arr.length===0){
+								this.setState({
+									remind_state:true
+								})
+								Alert.open({
+									alertTip:"请选择需要操作的支出"
+									
+								});
+								setTimeout(function(){
+									Alert.close();
+								 },2000)
+							}
+							 else if(payment_id_arr.length>0){
 								this.setState({
 									payment_id_arr:payment_id_arr,
 									alertState:true,
@@ -392,7 +418,19 @@ class ExpenditureManage extends Component {
 									payment_id_arr.push(paymentChecked[i].value)
 								}
 							}
-							if(payment_id_arr.length>0){
+							if(payment_id_arr.length===0){
+								this.setState({
+									remind_state:true
+								})
+								Alert.open({
+									alertTip:"请选择需要操作的支出"
+									
+								});
+								setTimeout(function(){
+									Alert.close();
+								 },2000)
+							}
+							 else if(payment_id_arr.length>0){
 								this.setState({
 									payment_id_arr:payment_id_arr,
 									alertState:true,
