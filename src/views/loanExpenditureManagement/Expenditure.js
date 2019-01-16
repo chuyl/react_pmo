@@ -55,8 +55,9 @@ class Expenditure extends Component {
 			}
 		}
 		
-		getData(getRouter(getList("projectManagement","TrainingProgram")), { token: sessionStorage.token }, cb, {});
-
+		// getData(getRouter(getList("projectManagement","TrainingProgram")), { token: sessionStorage.token }, cb, {});
+		getData(getRouter(getList("loanExpenditureManagement","Expenditure")), { token: sessionStorage.token }, cb, {});
+// 
 	}
 	// get_list_message=(list1,list2)=>{
 	// 	var message=JSON.parse(sessionStorage.Language)[list1].data;
@@ -303,7 +304,7 @@ class Expenditure extends Component {
 				<div id="" className="container">
 					<div>
 						<div className="add_button" onClick={(e) => {
-							this.fetchProjectData("addProject")
+							this.fetchProjectData("editPayment")
 							this.card_box_concent([], e)
 							this.setState({
 								edit_project_data: [],

@@ -1,0 +1,18 @@
+{
+	"code":0,
+	"error":0,
+    "data":{   "id": "1", 
+                "item_content": "支出内容",
+                "amount":"支出金额",
+                "create_time":"创建时间",
+                "payee_id":"领款人_id","payee_name":"领款人",
+                "state":"0",
+                "submit_time": "提交时间",
+                "financial_number": "财务编号"
+                }
+		,
+	"during_time":27,
+	"end_time":1539500978642,
+	"msg":"查询成功",
+	"stat_time":1539500978615
+	}

@@ -36,6 +36,7 @@ import CardHead from '../../components/card/CardHead'
 import CardPage from '../watch/CardPage'
 import CardTitleItem from '../watch/CardTitleItem'
 import CardItem from '../../components/watch/CardItem'
+import CardItemState from '../../components/watch/CardItemState'
 import HoldBtn from '../../components/button/HoldBtn'
 import AddCardBtn from '../../components/button/AddCardBtn'
 import Invisible from '../../components/input/Invisible'
@@ -493,6 +494,13 @@ handleChildChange=(formData)=>{
                                     key={index}
                                     message={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:form_list.default_value} 
                                 />
+                            :form_list.type_name === "CardItemState"?   
+                                <CardItemState
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name}  
+                                    key={index}
+                                    message={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:form_list.default_value} 
+                                />
+                                
                             :form_list.type_name === "CardTitleItem"?   
                                 <CardTitleItem
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name}  

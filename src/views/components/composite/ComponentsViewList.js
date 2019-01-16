@@ -25,6 +25,7 @@
    import HoldBtn from '../../components/button/HoldBtn'
 //    import AddCardBtn from '../AddCardBtn'
    import CardItem from '../../components/watch/CardItem'
+   import CardItemState from '../../components/watch/CardItemState'
    import SelectList from '../../components/select/SelectList'
    import SelectListSearch from '../../components/select/SelectListSearch'
    import DisSelectList from '../../components/select/DisSelectList'
@@ -306,6 +307,11 @@
                                 />
                             :form_list.type_name === "CardItem"?   
                                 <CardItem
+                                    id={form_list.id_name} 
+                                    message={form_list.title}
+                                />
+                            :form_list.type_name === "CardItemState"?   
+                                <CardItemState
                                     id={form_list.id_name} 
                                     message={form_list.title}
                                 />

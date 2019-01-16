@@ -56,6 +56,21 @@ var local = {
                 "get_route_by_role_id":{"url":"../data/get_route_by_role_id.json","version":"1.0"},
                 "client_route_list":{"url":"../data/client_route_list.json","version":"1.0"},
                 "examine_record_list":{"url":"../data/examine_record_list.json","version":"1.0"},
+                "payment_manage_add":{"url":"../data/payment_manage_add.json","version":"1.0"},//创建支出
+                "payment_manage_my_list":{"url":"../data/payment_manage_my_list.json","version":"1.0"},//查看我的支出
+                "payment_manage_by":{"url":"../data/payment_manage_by.json","version":"1.0"},//查看我的支出
+                "payment_manage_my_dep_list":{"url":"../data/payment_manage_my_dep_list.json","version":"1.0"},//查看部门支出
+                "payment_manage_list":{"url":"../data/payment_manage_list.json","version":"1.0"},//查看所有支出
+                "payment_manage_edit":{"url":"../data/payment_manage_edit.json","version":"1.0"},//修改基础数据
+                "payment_manage_edit_financial_number":{"url":"../data/payment_manage_edit_financial_number.json","version":"1.0"},//修改PMO数据 修改基础数据
+                "payment_state_pass":{"url":"../data/payment_state_pass.json","version":"1.0"},//通过支出
+                "payment_state_submit":{"url":"../data/payment_state_submit.json","version":"1.0"},//提交支出
+                "payment_state_cancel":{"url":"../data/payment_state_cancel.json","version":"1.0"},//作废支出
+                "payment_state_del":{"url":"../data/payment_state_del.json","version":"1.0"},//删除支出
+                "payment_state_recall":{"url":"../data/payment_state_recall.json","version":"1.0"},//撤回支出
+                "payment_project_add":{"url":"../data/payment_project_add.json","version":"1.0"},//关联支出到项目
+                "payment_project_list":{"url":"../data/payment_project_list.json","version":"1.0"},//查看所有支出和其所属项目
+                
                 //视图
                
                 // "addProject":{"url":"../json/addProject.json","version":"1.0"},//新建项目
