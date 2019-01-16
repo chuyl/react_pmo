@@ -55,6 +55,7 @@
   import ApplicationsDefault from '../watch/ApplicationsDefault'
   import SelectListLocal from '../select/SelectListLocal'
   import Print from '../button/Print'
+  import ClickAlert from '../../components/button/ClickAlert'
 //   import LoanBill from '../watch/LoanBill'
    class ComponentsViewList extends Component {
     constructor(props) {
@@ -277,6 +278,16 @@
                                         linkpage={form_list.before_api_uri}
                                         // messageList={form_list.add_button.before_api_uri}
                                         onChange = {this.handleClick}
+                                    />
+                                    :form_list.type_name === "ClickAlert"?
+                                    <ClickAlert 
+                                        button={form_list.title}
+                                        buttonMessage={form_list}
+                                        // dataId={this.props.card_list.id}
+                                        // isClick={this.props.card_list.id}
+                                        linkpage={form_list.before_api_uri}
+                                        // messageList={form_list.add_button.before_api_uri}
+                                        // onChange = {this.handleClick}
                                     />
                             :form_list.type_name === "CardHead"?
                                 <CardHead
