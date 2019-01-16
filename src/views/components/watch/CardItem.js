@@ -9,7 +9,6 @@
         }
         
         render(){
-            console.log(this.props.message)
             return (
                 
                 <div className="card-item">

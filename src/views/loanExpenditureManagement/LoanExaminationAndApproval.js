@@ -5,7 +5,7 @@ class LoanExaminationAndApproval extends Component {
 	render(){
 		return (
             <div>
-            审批
+            <input type="checkbox"></input>
         </div>
 		)
 	}

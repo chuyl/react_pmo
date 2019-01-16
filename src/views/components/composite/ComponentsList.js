@@ -52,6 +52,7 @@ import ApplicationsFlow from '../watch/ApplicationsFlow'
 import ApplicationsDefault from '../watch/ApplicationsDefault'
 import SelectListLocal from '../select/SelectListLocal'
 import Print from '../button/Print'
+import ClickAlert from '../button/ClickAlert';
 // import LoanBill from '../watch/LoanBill'
 class ComponentsList extends Component {
     constructor(props) {
@@ -219,6 +220,19 @@ handleChildChange=(formData)=>{
                                     messageList={form_list.add_button}
                                     oneChange = {this.handleClick}
                                 />
+                            :form_list.type_name === "ClickAlert"?
+                                <ClickAlert 
+                                    button={form_list.title}
+                                    // buttonMessage={form_list}
+                                    dataId={this.props.componentsdata.id}
+                                    // isClick={this.props.card_list.id}
+                                    linkpage={form_list.before_api_uri}
+                                    key={index}
+                                    defaultValue={form_list.key}
+                                    examine_bool_first={this.examine_bool_message}
+                                    
+                                />
+                               
                             //     <Link 
                             //     button={form_list.add_button.descript} 
                             //     handleClick = {this.props.handleClick}

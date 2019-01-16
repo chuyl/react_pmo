@@ -150,6 +150,7 @@ class Card extends Component {
                                 // isClick={this.props.card_list.id}
                                 linkpage={form_list.before_api_uri}
                                 key={index}
+                                defaultValue={form_list.key}
                                 // messageList={form_list.add_button}
                                 // onChange = {this.handleClick}
                         />

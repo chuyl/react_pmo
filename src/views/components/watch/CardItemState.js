@@ -9,7 +9,6 @@
         }
         
         render(){
-            console.log(this.props.message)
             return (
                 <div className="card-item">
                    {this.props.message?this.props.message==0?"未提交"

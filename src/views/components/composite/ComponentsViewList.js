@@ -283,6 +283,8 @@
                                     <ClickAlert 
                                         button={form_list.title}
                                         buttonMessage={form_list}
+                                        defaultValue={form_list.key}
+                                        view={true}
                                         // dataId={this.props.card_list.id}
                                         // isClick={this.props.card_list.id}
                                         linkpage={form_list.before_api_uri}

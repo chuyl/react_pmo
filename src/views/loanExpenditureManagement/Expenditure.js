@@ -195,6 +195,7 @@ class Expenditure extends Component {
 	 * @param freshCardGroup 函数 CardGroup添加Card的回调函数
 	 */
 	freshCardGroup = (newState) => {
+		console.log(newState)
 		this.setState({
 			edit_project_data: []
 
@@ -223,7 +224,11 @@ class Expenditure extends Component {
 		getData(getRouter(newState.freshName), { token: sessionStorage.token, id: newState.id }, cb, {});
 
 	}
-
+	examine_bool_message=(state)=>{
+		//this.props.examine_bool_second(state)
+		 console.log(state)
+		 this.listProject()  //刷新项目列表
+	}
 	/** 
 	* @time 2018-09-28
 	* @author xuesong
@@ -319,6 +324,7 @@ class Expenditure extends Component {
 						{this.state.card_list !== null ? this.state.card_list.map((card_list, index) => {
 							return (
 								<ComponentsList 
+									examineBoolSeventh={this.examine_bool_message} 
 									card_active_state={this.activeState} 
 									indexKey={this.state.activeState} 
 									index={index} 
