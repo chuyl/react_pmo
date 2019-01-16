@@ -4,6 +4,8 @@ import DataSearchMessage from '../components/search/DataSearchMessage'
 import Popup from '../components/modal/Popup'
 import ViewTextField from '../components/input/ViewTextField'
 import Alert from '../components/modal/Remind'
+import Alerts from '../components/modal/Alert'
+import ClickArrAlert from '../components/button/ClickArrAlert';
 class ExpenditureManage extends Component {
 	state={
 		pno:1,
@@ -16,8 +18,12 @@ class ExpenditureManage extends Component {
 		 financial_number:"",
 		 alertAddFinancialState:false,//财务编号
 		 alertAddProjectState:false,//相关内容
+		 alertState:false,
 		 payment_id:"",//支出id
 		 project_id:"",//项目id
+		 payment_id_arr:[],
+		 alertTitle:"",
+		 linkpage:""
         
 	}
 	componentWillMount(){
@@ -80,7 +86,7 @@ class ExpenditureManage extends Component {
                        </div>
 					</td> */}
 					<td>
-						<input type="checkbox" name="payment"/>
+						<input value={table_data_body.id} type="checkbox" name="payment"/>
 					</td>
                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
 						return(
@@ -249,8 +255,48 @@ class ExpenditureManage extends Component {
 	cancelCallback=()=>{
 		this.setState({
 			alertAddFinancialState:false,
-			alertAddProjectState:false
+			alertAddProjectState:false,
+			alertState:false
 		})
+	}
+	// ClickArrAlert=()=>{
+	// 	console.log("点击通过")
+	
+	// }
+	sureCallback=()=>{
+		// this.copyViewMessage(this.state.copy_message)
+        var cb = (route, message, arg) =>  {
+            if (message.error === 0) {
+                this.setState({
+                    alertState:false
+                })
+            }else if(message.error === 2){
+                console.log("未登录")
+                sessionStorage.logged = false;
+                sessionStorage.token="";
+                if(window.location.hash.split("#")[1]!=="/"){
+                    window.location.href=window.location.href.split("#/")[0]
+                
+                  }
+            }else{
+                this.setState({
+                    remind_state:true
+                })
+                Alert.open({
+                    alertTip:message.msg
+                    
+                });
+                setTimeout(function(){
+                    Alert.close();
+                 },3000)
+            }
+            //  this.props.oneChange(newState);
+        }
+        //获取数据接口
+        console.log(this.state.linkpage)
+        console.log(this.state.payment_id_arr)
+         getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, id:this.state.payment_id_arr }, cb,  {}); 
+    //}
 	}
 	render(){
 		return (
@@ -291,6 +337,72 @@ class ExpenditureManage extends Component {
                         {this.goPage(this.state.pno,this.state.psize)}
                     </tbody>
                 </table>
+				<div>
+					<button onClick={()=>{
+							var payment_id_arr=[];
+							var paymentChecked = document.getElementsByName("payment");
+							for(var i = 0;i<paymentChecked.length;i++){
+								if(paymentChecked[i].checked){
+									payment_id_arr.push(paymentChecked[i].value)
+								}
+							}
+							if(payment_id_arr.length>0){
+								this.setState({
+									payment_id_arr:payment_id_arr,
+									alertState:true,
+									alertTitle:"通过",
+									linkpage:"payment_state_pass"
+								})
+							}
+							
+					}}>通过</button>
+				</div>
+				{/* <ClickArrAlert
+					defaultValue="通过"
+					linkpage="payment_state_pass"
+					dataId={this.state.payment_id_arr}
+					onClickArrAlert={this.ClickArrAlert}
+				/> */}
+				<div>
+					<button onClick={()=>{
+							var payment_id_arr=[];
+							var paymentChecked = document.getElementsByName("payment");
+							for(var i = 0;i<paymentChecked.length;i++){
+								if(paymentChecked[i].checked){
+									payment_id_arr.push(paymentChecked[i].value)
+								}
+							}
+							if(payment_id_arr.length>0){
+								this.setState({
+									payment_id_arr:payment_id_arr,
+									alertState:true,
+									alertTitle:"撤回",
+									linkpage:"payment_state_recall"
+								})
+							}
+							
+					}}>撤回</button>
+				</div>
+				<div>
+					<button onClick={()=>{
+							var payment_id_arr=[];
+							var paymentChecked = document.getElementsByName("payment");
+							for(var i = 0;i<paymentChecked.length;i++){
+								if(paymentChecked[i].checked){
+									payment_id_arr.push(paymentChecked[i].value)
+								}
+							}
+							if(payment_id_arr.length>0){
+								this.setState({
+									payment_id_arr:payment_id_arr,
+									alertState:true,
+									alertTitle:"作废",
+									linkpage:"payment_state_cancel"
+								})
+							}
+							
+					}}>作废</button>
+				</div>
                 <div className="statistical_change_page">
                     {this.change_page(1,5)}
                 </div>
@@ -339,6 +451,7 @@ class ExpenditureManage extends Component {
 				cancelCallback = { this.cancelCallback.bind(this) } 
 				alertState={this.state.alertAddProjectState}
 			/>
+			 <Alerts alertTitle={this.state.alertTitle} alertMsg = {this.state.alertMsg} sureCallback = {this.sureCallback.bind(this)} cancelCallback = { this.cancelCallback.bind(this) } alertState={this.state.alertState}/>
         </div>
 		)
 	}

@@ -239,7 +239,7 @@ class Expenditure extends Component {
 		var value = [];
 		var list_message = this.state.add_button;
 		if (this.state.dataId) {
-			value.push("parent_id")
+			value.push("id")
 			key_name.push(this.state.dataId)
 		}
 		for (var i = 0; i < list_message.length; i++) {
@@ -291,6 +291,8 @@ class Expenditure extends Component {
 				this.listProject()  //刷新项目列表
 			}
 		}
+		console.log(newState.before_api_uri)
+		console.log(obj)
 		getData(getRouter(newState.before_api_uri), { data: obj, token: sessionStorage.token }, cb, {});
 	}
 	activeState=(newState)=>{
@@ -309,7 +311,7 @@ class Expenditure extends Component {
 				<div id="" className="container">
 					<div>
 						<div className="add_button" onClick={(e) => {
-							this.fetchProjectData("editPayment")
+							this.fetchProjectData("addPayment")
 							this.card_box_concent([], e)
 							this.setState({
 								edit_project_data: [],
