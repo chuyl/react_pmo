@@ -495,6 +495,7 @@ textarea:disabled {
         line-height: 3em;
         box-sizing: border-box;
         padding: 0.5em 1em 0.5em 0;
+        clear: both;
         .btn_list {
             float: left;
             margin-top: 0.5em;
@@ -646,6 +647,7 @@ textarea:disabled {
         width: 100%;
         box-sizing: border-box;
         height: 2em;
+        line-height: 2em;
         outline: none;
         border: 1px solid $secondary-text-color;
         border-right: 0;
@@ -683,7 +685,6 @@ textarea:disabled {
 
 .select_filter_box {
     width: 100%;
-    padding-top: 0.5em;
     .select_search_list {
         .selectedInfo {
             background-color: $primary-color-text;
@@ -725,7 +726,7 @@ textarea:disabled {
     position: relative;
     width: 4em;
     float: left;
-    line-height: 1.8em;
+    line-height: 2em;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
     background-color: $primary-color-text;
@@ -733,7 +734,9 @@ textarea:disabled {
     outline: none;
     border: 1px solid $secondary-text-color;
     border-left: 0;
+    height: 2em;
     margin-bottom: 2em;
+    box-shadow: 0 0 2px #757575;
 }
 
 .search_terms {
@@ -775,7 +778,7 @@ textarea:disabled {
     float: left;
     width: 100%;
     line-height: 4em;
-    overflow: hidden;
+    padding: 0.5em;
     .select_clean_bar {
         margin-right: 1em;
         color: $secondary-text-color;
@@ -787,8 +790,18 @@ textarea:disabled {
         line-height: 1.5em;
         background-color: $background-color;
         border-radius: 1em;
-        margin-bottom: 1em;
+        margin-bottom: 0.5em;
     }
+}
+
+.filter_max_div {
+    padding: 1em;
+    height: 6em;
+    width: calc(100% - 234px);
+}
+
+.container .filter_max_div {
+    width: 100%;
 }
 
 .del_btn {
@@ -797,10 +810,13 @@ textarea:disabled {
     display: block;
     background-color: $secondary-text-color;
     border-radius: 50%;
-    outline: 7px solid $background-color;
-    outline-offset: -14px;
+    outline: calc(.5em - .07em) solid #f5f5f5;
+    outline-offset: calc(-1em + .14em);
     transform: rotate(45deg);
     position: absolute;
+    right: 0.5em;
+    top: 0.2em;
+    cursor: pointer;
     right: 0.5em;
     top: 0.2em;
     cursor: pointer;
@@ -822,7 +838,7 @@ textarea:disabled {
 
 .statistical_div {
     display: block;
-    width: 100%;
+    width: calc(100% - 234px);
     background: $background-color;
     height: 70vh;
     overflow: scroll;
@@ -953,10 +969,12 @@ textarea:disabled {
     color: $primary-color-text;
     border: 0;
     outline: 0;
-    margin-top: 1em;
     line-height: 2em;
     cursor: pointer;
     border-radius: 4px;
+    float: right;
+    height: 2em;
+    box-sizing: border-box;
 }
 
 .filter_box_state:hover {
