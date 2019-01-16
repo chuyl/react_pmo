@@ -495,7 +495,6 @@ textarea:disabled {
         line-height: 3em;
         box-sizing: border-box;
         padding: 0.5em 1em 0.5em 0;
-        clear: both;
         .btn_list {
             float: left;
             margin-top: 0.5em;
@@ -510,6 +509,10 @@ textarea:disabled {
     .card_ide_btn:last-child {
         float: right;
     }
+}
+
+.card_ide_btn {
+    clear: both;
 }
 
 .status_flow_ul {

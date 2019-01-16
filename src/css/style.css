@@ -1788,8 +1788,7 @@ textarea:disabled {
     width: 33%;
     line-height: 3em;
     box-sizing: border-box;
-    padding: 0.5em 1em 0.5em 0;
-    clear: both; }
+    padding: 0.5em 1em 0.5em 0; }
     .card-body .card-page:nth-of-type(2) .card_ide_btn .btn_list {
       float: left;
       margin-top: 0.5em;
@@ -1800,6 +1799,9 @@ textarea:disabled {
     width: 100%; }
   .card-body .card-page:nth-of-type(2) .card_ide_btn:last-child {
     float: right; }
+
+.card_ide_btn {
+  clear: both; }
 
 .status_flow_ul {
   float: left;
