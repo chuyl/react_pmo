@@ -477,7 +477,7 @@ textarea:disabled {
     padding-right: 2em;
 }
 
-.card_get_time {
+】 .card_get_time {
     float: right;
     width: 50%;
     font-size: 1em;
@@ -509,10 +509,6 @@ textarea:disabled {
     .card_ide_btn:last-child {
         float: right;
     }
-}
-
-.card_ide_btn {
-    clear: both;
 }
 
 .status_flow_ul {
@@ -738,7 +734,7 @@ textarea:disabled {
     border: 1px solid $secondary-text-color;
     border-left: 0;
     height: 2em;
-    margin-bottom: 2em;
+    margin-bottom: 0.5em;
     box-shadow: 0 0 2px #757575;
 }
 
@@ -794,6 +790,7 @@ textarea:disabled {
         background-color: $background-color;
         border-radius: 1em;
         margin-bottom: 0.5em;
+        box-shadow: 0 0 2px $secondary-text-color;
     }
 }
 

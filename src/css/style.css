@@ -34,10 +34,6 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent; }
 
-input,
-textarea {
-  -webkit-appearance: none; }
-
 * {
   -webkit-tap-highlight-color: transparent; }
 
@@ -1772,7 +1768,7 @@ textarea:disabled {
   font-size: 1em;
   padding-right: 2em; }
 
-.card_get_time {
+】 .card_get_time {
   float: right;
   width: 50%;
   font-size: 1em;
@@ -1799,9 +1795,6 @@ textarea:disabled {
     width: 100%; }
   .card-body .card-page:nth-of-type(2) .card_ide_btn:last-child {
     float: right; }
-
-.card_ide_btn {
-  clear: both; }
 
 .status_flow_ul {
   float: left;
@@ -1977,7 +1970,7 @@ textarea:disabled {
   border: 1px solid #757575;
   border-left: 0;
   height: 2em;
-  margin-bottom: 2em;
+  margin-bottom: 0.5em;
   box-shadow: 0 0 2px #757575; }
 
 .search_terms {
@@ -2027,7 +2020,8 @@ textarea:disabled {
     line-height: 1.5em;
     background-color: #f5f5f5;
     border-radius: 1em;
-    margin-bottom: 0.5em; }
+    margin-bottom: 0.5em;
+    box-shadow: 0 0 2px #757575; }
 
 .filter_max_div {
   padding: 1em;
