@@ -1777,6 +1777,9 @@ textarea:disabled {
   padding-left: 2em;
   box-sizing: border-box; }
 
+.card_ide_btn {
+  float: left; }
+
 .card-body .card-page:nth-of-type(2) {
   overflow: hidden; }
   .card-body .card-page:nth-of-type(2) .card_ide_btn {
