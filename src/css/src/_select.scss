@@ -37,7 +37,11 @@
     padding-top: 3px;
     word-break: break-all;
 }
-
+.view_list {
+    .search_info_list_label{
+        color: $primary-color-text;
+    }
+}
 .search_info_list_label::before {
     content: '';
     display: block;
