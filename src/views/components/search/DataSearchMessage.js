@@ -82,9 +82,11 @@
             if(this.props.selectNameCheckMessage){
             
                 for(var j = 0; j<this.props.selectNameCheckMessage.length;j++){
-                   
-                    // var selectValue = this.props.className.split(","); 
-                    value.push(document.getElementById("select_check_message"+this.props.selectNameCheckMessage[j]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_check_message"+this.props.selectNameCheckMessage[j]+"_name").innerHTML)
+                   var value_arr=[];
+                   var message =document.getElementById("select_check_message"+this.props.selectNameCheckMessage[j]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_check_message"+this.props.selectNameCheckMessage[j]+"_name").innerHTML.split(","); 
+                   console.log(message)
+                   // var selectValue = this.props.className.split(","); 
+                    value.push(message)
                     id_arr.push("select_check_message"+this.props.selectNameCheckMessage[j]+"_name")
                 }
             }

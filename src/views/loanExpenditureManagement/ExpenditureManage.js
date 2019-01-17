@@ -6,6 +6,7 @@ import ViewTextField from '../components/input/ViewTextField'
 import Alert from '../components/modal/Remind'
 import Alerts from '../components/modal/Alert'
 import ClickArrAlert from '../components/button/ClickArrAlert';
+import PaymentManageBtn from '../components/button/PaymentManageBtn'
 class ExpenditureManage extends Component {
 	state={
 		pno:1,
@@ -45,7 +46,7 @@ class ExpenditureManage extends Component {
         var obj ={page_num:page_num,page_size:page_size};
         
         var objs = search_obj?Object.assign(obj, search_obj):obj
-        console.log(objs)
+        // console.log(objs)
         // var places = JSON.parse((JSON.stringify(obj)+JSON.stringify(this.state.search_message)).replace(/}{/,','));
         // console.log(places)
         this.setState({
@@ -55,7 +56,26 @@ class ExpenditureManage extends Component {
         getData(getRouter("payment_project_list"), { token: sessionStorage.token,query_condition:objs }, cb, {});
         // getData(getRouter("examine_record_list"),{ session: sessionStorage.session}, cb, {});
 
-    }
+	}
+	alertAddState=(newState)=>{
+		// console.log(newState)
+		this.setState({
+			[newState.state]:true,
+			payment_id:newState.dataId,
+			financial_number:newState.financialNumber?newState.financialNumber:""
+
+		})
+	}
+	alertHoldState=(newState)=>{
+		// console.log(newState)
+		this.setState({
+			[newState.state]:true,
+			payment_id:newState.dataId,
+			alertTitle:newState.alertTitle,
+			linkpage:newState.linkpage
+		})
+	}
+
 	goPage= (pno,psize) =>{
         // this.table_data_body()
         // {this.historyFileDialog()}
@@ -87,8 +107,46 @@ class ExpenditureManage extends Component {
                        </div>
 					</td> */}
 					<td>
-						<input value={table_data_body.id} type="checkbox" name="payment"/>
+						<PaymentManageBtn
+							onHoldClick={this.alertAddState}
+							defineValue="财务编号"
+							state="alertAddFinancialState"	
+							dataId={table_data_body.id}
+							financialNumber={table_data_body.financial_number}
+						/>
+						<PaymentManageBtn
+							onHoldClick={this.alertAddState}
+							defineValue="关联项目"
+							state="alertAddProjectState"	
+							dataId={table_data_body.id}
+						/>
+						<PaymentManageBtn
+							onHoldClick={this.alertHoldState}
+							defineValue="通过"
+							state="alertState"
+							linkpage="payment_state_pass"	
+							dataId={table_data_body.id}
+						/>
+						<PaymentManageBtn
+							onHoldClick={this.alertHoldState}
+							defineValue="撤回"
+							state="alertState"
+							linkpage="payment_state_recall"	
+							dataId={table_data_body.id}
+						/>
+						<PaymentManageBtn
+							onHoldClick={this.alertHoldState}
+							defineValue="作废"
+							state="alertState"
+							linkpage="payment_state_cancel"	
+							dataId={table_data_body.id}
+						/>
+						
+					
 					</td>
+					{/* <td>
+						<input value={table_data_body.id} type="checkbox" name="payment"/>
+					</td> */}
                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
 						return(
 						<td key={index} title={table_data_body[table_data_head.key]}>
@@ -98,24 +156,7 @@ class ExpenditureManage extends Component {
 						</td>)
 						
 					}):""}
-					<td>
-						<button onClick={()=>{
-							this.setState({
-								alertAddFinancialState:true,
-								payment_id:table_data_body.id
-							})
-							}}>财务编号
-						</button>
-					</td>
-					<td>
-						<button onClick={()=>{
-							this.setState({
-								alertAddProjectState:true,
-								payment_id:table_data_body.id
-							})
-							}}>关联项目
-						</button>
-					</td>
+					
                 </tr>
        
         );
@@ -296,8 +337,7 @@ class ExpenditureManage extends Component {
         }
         //获取数据接口
         console.log(this.state.linkpage)
-        console.log(this.state.payment_id_arr)
-         getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, ids:this.state.payment_id_arr }, cb,  {}); 
+         getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, id:this.state.payment_id }, cb,  {}); 
     //}
 	}
 	render(){
@@ -309,11 +349,12 @@ class ExpenditureManage extends Component {
 					   keywordTitle={[
                         "项目编号",
                         "项目类型",
-                        "实施负责人"]}
+						"实施负责人",
+						"实施负责人1"]}
 					   selectListMessage={["project_type_list"]}
                        selectNameMessage={["project_project_template_name"]}
                        selectListCheckMessage={["staff_manage_list","project_type_list"]}
-                       selectNameCheckMessage={["project_person_in_charge_name"]}
+                       selectNameCheckMessage={["project_person_in_charge_name","unicode"]}
 					   screeningMessage={this.screening_information}
 					/>
                 <div className="statistical_div">
@@ -322,7 +363,7 @@ class ExpenditureManage extends Component {
                         <thead>
                             <tr>
 								{/* <th><div className="statistical_table_box">序号</div></th> */}
-								<th><div className="statistical_table_box">选择</div></th>
+								<th style={{"width":"26em"}}></th>
                                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
                                     return(
                                         <th key={index}>
@@ -339,108 +380,13 @@ class ExpenditureManage extends Component {
                         {this.goPage(this.state.pno,this.state.psize)}
                     </tbody>
                 </table>
-				<div>
-					<button onClick={()=>{
-							var payment_id_arr=[];
-							var paymentChecked = document.getElementsByName("payment");
-							for(var i = 0;i<paymentChecked.length;i++){
-								if(paymentChecked[i].checked){
-									payment_id_arr.push(paymentChecked[i].value)
-								}
-							}
-							if(payment_id_arr.length===0){
-								this.setState({
-									remind_state:true
-								})
-								Alert.open({
-									alertTip:"请选择需要操作的支出"
-									
-								});
-								setTimeout(function(){
-									Alert.close();
-								 },2000)
-							}
-							 else if(payment_id_arr.length>0){
-								this.setState({
-									payment_id_arr:payment_id_arr,
-									alertState:true,
-									alertTitle:"通过",
-									linkpage:"payment_state_pass"
-								})
-							}
-							
-					}}>通过</button>
-				</div>
 				{/* <ClickArrAlert
 					defaultValue="通过"
 					linkpage="payment_state_pass"
 					dataId={this.state.payment_id_arr}
 					onClickArrAlert={this.ClickArrAlert}
 				/> */}
-				<div>
-					<button onClick={()=>{
-							var payment_id_arr=[];
-							var paymentChecked = document.getElementsByName("payment");
-							for(var i = 0;i<paymentChecked.length;i++){
-								if(paymentChecked[i].checked){
-									payment_id_arr.push(paymentChecked[i].value)
-								}
-							}
-							if(payment_id_arr.length===0){
-								this.setState({
-									remind_state:true
-								})
-								Alert.open({
-									alertTip:"请选择需要操作的支出"
-									
-								});
-								setTimeout(function(){
-									Alert.close();
-								 },2000)
-							}
-							 else if(payment_id_arr.length>0){
-								this.setState({
-									payment_id_arr:payment_id_arr,
-									alertState:true,
-									alertTitle:"撤回",
-									linkpage:"payment_state_recall"
-								})
-							}
-							
-					}}>撤回</button>
-				</div>
-				<div>
-					<button onClick={()=>{
-							var payment_id_arr=[];
-							var paymentChecked = document.getElementsByName("payment");
-							for(var i = 0;i<paymentChecked.length;i++){
-								if(paymentChecked[i].checked){
-									payment_id_arr.push(paymentChecked[i].value)
-								}
-							}
-							if(payment_id_arr.length===0){
-								this.setState({
-									remind_state:true
-								})
-								Alert.open({
-									alertTip:"请选择需要操作的支出"
-									
-								});
-								setTimeout(function(){
-									Alert.close();
-								 },2000)
-							}
-							 else if(payment_id_arr.length>0){
-								this.setState({
-									payment_id_arr:payment_id_arr,
-									alertState:true,
-									alertTitle:"作废",
-									linkpage:"payment_state_cancel"
-								})
-							}
-							
-					}}>作废</button>
-				</div>
+
                 <div className="statistical_change_page">
                     {this.change_page(1,5)}
                 </div>
