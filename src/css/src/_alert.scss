@@ -35,6 +35,9 @@
         background-color: $prompt_main_color;
         margin: auto;
         border-radius: $border_radius;
+        input {
+            background-color: $primary-color-text;
+        }
         h2 {
             text-align: center;
             color: $content_color;
