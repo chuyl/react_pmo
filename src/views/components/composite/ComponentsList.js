@@ -36,6 +36,7 @@ import CardHead from '../../components/card/CardHead'
 import CardPage from '../watch/CardPage'
 import CardTitleItem from '../watch/CardTitleItem'
 import CardItem from '../../components/watch/CardItem'
+import CardItemState from '../../components/watch/CardItemState'
 import HoldBtn from '../../components/button/HoldBtn'
 import AddCardBtn from '../../components/button/AddCardBtn'
 import Invisible from '../../components/input/Invisible'
@@ -51,6 +52,7 @@ import ApplicationsFlow from '../watch/ApplicationsFlow'
 import ApplicationsDefault from '../watch/ApplicationsDefault'
 import SelectListLocal from '../select/SelectListLocal'
 import Print from '../button/Print'
+import ClickAlert from '../button/ClickAlert';
 // import LoanBill from '../watch/LoanBill'
 class ComponentsList extends Component {
     constructor(props) {
@@ -218,6 +220,19 @@ handleChildChange=(formData)=>{
                                     messageList={form_list.add_button}
                                     oneChange = {this.handleClick}
                                 />
+                            :form_list.type_name === "ClickAlert"?
+                                <ClickAlert 
+                                    button={form_list.title}
+                                    // buttonMessage={form_list}
+                                    dataId={this.props.componentsdata.id}
+                                    // isClick={this.props.card_list.id}
+                                    linkpage={form_list.before_api_uri}
+                                    key={index}
+                                    defaultValue={form_list.key}
+                                    examine_bool_first={this.examine_bool_message}
+                                    
+                                />
+                               
                             //     <Link 
                             //     button={form_list.add_button.descript} 
                             //     handleClick = {this.props.handleClick}
@@ -493,6 +508,13 @@ handleChildChange=(formData)=>{
                                     key={index}
                                     message={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:form_list.default_value} 
                                 />
+                            :form_list.type_name === "CardItemState"?   
+                                <CardItemState
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name}  
+                                    key={index}
+                                    message={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:form_list.default_value} 
+                                />
+                                
                             :form_list.type_name === "CardTitleItem"?   
                                 <CardTitleItem
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name}  

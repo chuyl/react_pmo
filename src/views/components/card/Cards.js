@@ -8,6 +8,7 @@ import CardBody from './CardBody'
 import CardOpen from './CardOpen'
 import CardFoot from './CardFoot'
 import CardGroup from '../logic/CardGroup'
+import ClickAlert from '../../components/button/ClickAlert'
 // import {getData,getRouter} from '../../utils/helpers'
 class Card extends Component {
     state={
@@ -141,6 +142,18 @@ class Card extends Component {
                                     messageList={form_list.add_button}
                                     onChange = {this.handleClick}
                                 />
+                        :form_list.type_name === "ClickAlert"?
+                            <ClickAlert 
+                                button={form_list.title}
+                                // buttonMessage={form_list}
+                                dataId={this.props.card_list.id}
+                                // isClick={this.props.card_list.id}
+                                linkpage={form_list.before_api_uri}
+                                key={index}
+                                defaultValue={form_list.key}
+                                // messageList={form_list.add_button}
+                                // onChange = {this.handleClick}
+                        />
                         :form_list.type_name === "CardHead"?
                             <CardHead
                                 id={form_list.id_name} 

@@ -25,6 +25,7 @@
    import HoldBtn from '../../components/button/HoldBtn'
 //    import AddCardBtn from '../AddCardBtn'
    import CardItem from '../../components/watch/CardItem'
+   import CardItemState from '../../components/watch/CardItemState'
    import SelectList from '../../components/select/SelectList'
    import SelectListSearch from '../../components/select/SelectListSearch'
    import DisSelectList from '../../components/select/DisSelectList'
@@ -54,6 +55,7 @@
   import ApplicationsDefault from '../watch/ApplicationsDefault'
   import SelectListLocal from '../select/SelectListLocal'
   import Print from '../button/Print'
+  import ClickAlert from '../../components/button/ClickAlert'
 //   import LoanBill from '../watch/LoanBill'
    class ComponentsViewList extends Component {
     constructor(props) {
@@ -277,6 +279,18 @@
                                         // messageList={form_list.add_button.before_api_uri}
                                         onChange = {this.handleClick}
                                     />
+                                    :form_list.type_name === "ClickAlert"?
+                                    <ClickAlert 
+                                        button={form_list.title}
+                                        buttonMessage={form_list}
+                                        defaultValue={form_list.key}
+                                        view={true}
+                                        // dataId={this.props.card_list.id}
+                                        // isClick={this.props.card_list.id}
+                                        linkpage={form_list.before_api_uri}
+                                        // messageList={form_list.add_button.before_api_uri}
+                                        // onChange = {this.handleClick}
+                                    />
                             :form_list.type_name === "CardHead"?
                                 <CardHead
                                     id={form_list.id_name} 
@@ -306,6 +320,11 @@
                                 />
                             :form_list.type_name === "CardItem"?   
                                 <CardItem
+                                    id={form_list.id_name} 
+                                    message={form_list.title}
+                                />
+                            :form_list.type_name === "CardItemState"?   
+                                <CardItemState
                                     id={form_list.id_name} 
                                     message={form_list.title}
                                 />

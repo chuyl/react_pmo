@@ -55,8 +55,9 @@ class Expenditure extends Component {
 			}
 		}
 		
-		getData(getRouter(getList("projectManagement","TrainingProgram")), { token: sessionStorage.token }, cb, {});
-
+		// getData(getRouter(getList("projectManagement","TrainingProgram")), { token: sessionStorage.token }, cb, {});
+		getData(getRouter(getList("loanExpenditureManagement","Expenditure")), { token: sessionStorage.token }, cb, {});
+// 
 	}
 	// get_list_message=(list1,list2)=>{
 	// 	var message=JSON.parse(sessionStorage.Language)[list1].data;
@@ -194,6 +195,7 @@ class Expenditure extends Component {
 	 * @param freshCardGroup 函数 CardGroup添加Card的回调函数
 	 */
 	freshCardGroup = (newState) => {
+		console.log(newState)
 		this.setState({
 			edit_project_data: []
 
@@ -222,7 +224,11 @@ class Expenditure extends Component {
 		getData(getRouter(newState.freshName), { token: sessionStorage.token, id: newState.id }, cb, {});
 
 	}
-
+	examine_bool_message=(state)=>{
+		//this.props.examine_bool_second(state)
+		 console.log(state)
+		 this.listProject()  //刷新项目列表
+	}
 	/** 
 	* @time 2018-09-28
 	* @author xuesong
@@ -233,7 +239,7 @@ class Expenditure extends Component {
 		var value = [];
 		var list_message = this.state.add_button;
 		if (this.state.dataId) {
-			value.push("parent_id")
+			value.push("id")
 			key_name.push(this.state.dataId)
 		}
 		for (var i = 0; i < list_message.length; i++) {
@@ -285,6 +291,8 @@ class Expenditure extends Component {
 				this.listProject()  //刷新项目列表
 			}
 		}
+		console.log(newState.before_api_uri)
+		console.log(obj)
 		getData(getRouter(newState.before_api_uri), { data: obj, token: sessionStorage.token }, cb, {});
 	}
 	activeState=(newState)=>{
@@ -303,7 +311,7 @@ class Expenditure extends Component {
 				<div id="" className="container">
 					<div>
 						<div className="add_button" onClick={(e) => {
-							this.fetchProjectData("addProject")
+							this.fetchProjectData("addPayment")
 							this.card_box_concent([], e)
 							this.setState({
 								edit_project_data: [],
@@ -318,6 +326,7 @@ class Expenditure extends Component {
 						{this.state.card_list !== null ? this.state.card_list.map((card_list, index) => {
 							return (
 								<ComponentsList 
+									examineBoolSeventh={this.examine_bool_message} 
 									card_active_state={this.activeState} 
 									indexKey={this.state.activeState} 
 									index={index} 
