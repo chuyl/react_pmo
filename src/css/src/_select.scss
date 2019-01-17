@@ -37,11 +37,13 @@
     padding-top: 3px;
     word-break: break-all;
 }
+
 .view_list {
-    .search_info_list_label{
+    .search_info_list_label {
         color: $primary-color-text;
     }
 }
+
 .search_info_list_label::before {
     content: '';
     display: block;
@@ -79,7 +81,7 @@
 
 .search_info_list.open {
     min-height: 156px;
-    background:$background-color;
+    background: $background-color;
     position: relative;
     margin-left: 80px;
     z-index: 1;
@@ -126,6 +128,18 @@
     border-bottom-left-radius: 4px;
     box-sizing: content-box;
     border: 0px solid $divider-color; //margin-bottom: 26px;
+}
+
+.view_list {
+    .selectedInfo {
+        border-radius: 4px;
+    }
+}
+
+.alert_box {
+    .selectedInfo {
+        background-color: $primary-color-text;
+    }
 }
 
 .selectedInfo::before {

@@ -2356,6 +2356,12 @@ textarea:disabled {
   box-sizing: content-box;
   border: 0px solid #BDBDBD; }
 
+.view_list .selectedInfo {
+  border-radius: 4px; }
+
+.alert_box .selectedInfo {
+  background-color: #FFFFFF; }
+
 .selectedInfo::before {
   content: '';
   display: block;
