@@ -4,7 +4,8 @@
      * @param ClickAlert 组件  button
      */
     import React, { Component } from 'react';
-    import Alert from '../modal/Alert'
+    import Alerts from '../modal/Alert'
+    import Alert from '../modal/Remind'
     import {getData, getRouter }from '../../../utils/helpers'
 
     class ClickAlert extends Component {
@@ -96,7 +97,7 @@
                         className="btn_list">
                         {defaultValue}
                     </button>
-                    <Alert alertTitle={this.state.alertTitle} alertMsg = {this.state.alertMsg} sureCallback = {this.sureCallback.bind(this)} cancelCallback = { this.cancelCallback.bind(this) } alertState={this.state.alertState}/>
+                    <Alerts alertTitle={this.state.alertTitle} alertMsg = {this.state.alertMsg} sureCallback = {this.sureCallback.bind(this)} cancelCallback = { this.cancelCallback.bind(this) } alertState={this.state.alertState}/>
                 </div>
                 )
         }

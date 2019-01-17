@@ -26,6 +26,7 @@
 //    import AddCardBtn from '../AddCardBtn'
    import CardItem from '../../components/watch/CardItem'
    import CardItemState from '../../components/watch/CardItemState'
+   import CardItemTime from '../../components/watch/CardItemTime'
    import SelectList from '../../components/select/SelectList'
    import SelectListSearch from '../../components/select/SelectListSearch'
    import DisSelectList from '../../components/select/DisSelectList'
@@ -328,6 +329,12 @@
                                     id={form_list.id_name} 
                                     message={form_list.title}
                                 />
+                            :form_list.type_name === "CardItemTime"?   
+                                <CardItemTime
+                                    id={form_list.id_name} 
+                                    defaultValue={form_list.default_value}
+                                    // message={form_list.title}
+                                />
                             :form_list.type_name === "TitleLeftCard"?
                                 <TitleLeftCard
                                     id={form_list.id_name} 
@@ -521,6 +528,7 @@
                                 <Print
                                     button={form_list.title}
                                     isPrint={false}
+                                    className={form_list.class}
                                     buttonMessage={form_list}
                                 />
                             // :form_list.type_name==="LoanBill"?
