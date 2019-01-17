@@ -23,7 +23,7 @@
                     </div>
                     <div className="pay_id_num">
                         <span>支出单编号：</span>
-                        <span>20181208001</span>
+                        <span>{message.financial_number}</span>
                     </div>
                     <div className="pay_title">
 

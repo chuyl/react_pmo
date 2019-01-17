@@ -47,7 +47,7 @@
                 search_state: !this.state.search_state
             })
            
-                var checklist = document.getElementsByName("checkSelectList");
+                var checklist = document.getElementsByName(this.props.id+"checkSelectList");
                 var checkValue="";
                 for(var i = 0;i<checklist.length;i++){
                 if(checklist[i].checked){
@@ -91,7 +91,7 @@
                                 {this.state.searchInfoLists?this.state.searchInfoLists.map((info_lists,index) => {
                                     return (
                                         <li  key={index}>
-                                            <input value={info_lists.name} name="checkSelectList" type="checkbox"/>
+                                            <input value={info_lists.name} name={id+"checkSelectList"} type="checkbox"/>
                                             <span 
                                             >
                                                 {info_lists.name}   

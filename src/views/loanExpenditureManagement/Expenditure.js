@@ -168,7 +168,7 @@ class Expenditure extends Component {
 	 * @param handleChildChange 函数 出来Link返回的数据 
 	 */
 	handleChildChange = (newState) => { //处理子函数传回来的state,改变自身的state
-		console.log(newState)
+		// console.log(newState)
 		if(newState){
 			// this.setState(newState);
 			if (this.state.card_state) {
@@ -195,7 +195,6 @@ class Expenditure extends Component {
 	 * @param freshCardGroup 函数 CardGroup添加Card的回调函数
 	 */
 	freshCardGroup = (newState) => {
-		console.log(newState)
 		this.setState({
 			edit_project_data: []
 
