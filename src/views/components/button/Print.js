@@ -9,6 +9,7 @@
     import Pay from '../watch/Pay';
     import Travel from '../watch/Travel'
     import TravelExpense from '../watch/TravelExpense'
+    import ProjectPay from '../watch/ProjectPay'
     import PropTypes from 'prop-types'; 
     import $ from  'jquery';
     class Print extends Component {
@@ -20,16 +21,23 @@
         } 
     render() {
        
-            const {button,printMessage,allData} = this.props
+            const {button,printMessage,allData} = this.props;
+            var className = this.props.className.split(","); 
             return (
                 <div>
-                    <div style={{float:"left",width:"33%",lineHeight:"3em",boxSizing:"border-box",padding:"0.5em 1em 0.5em 0"}}>
-                        <button  style={{float:"left",marginTop:"0.5em",marginBottom:"0.5em",width:"100%",backgroundColor:"#3F51B5",color:"#fff",boxShadow:"none",textAlign:"center",outline:"none",lineHeight:"2em",borderRadius:"4px",border:"none"}} onClick = {()=>{
-                            // console.log(this.props.buttonMessage)
-                            console.log(printMessage)
-                            this.props.isPrint?
-                            $('#'+printMessage+this.props.dataId).printArea():""
-                        }}>{button} </button >  
+                    <div className={className[0]?className[0]:""}
+                        // style={{float:"left",width:"33%",lineHeight:"3em",boxSizing:"border-box",padding:"0.5em 1em 0.5em 0"}}
+                    >
+                        <button  className={className[1]?className[1]:""}
+                            // style={{float:"left",marginTop:"0.5em",marginBottom:"0.5em",width:"100%",backgroundColor:"#3F51B5",color:"#fff",boxShadow:"none",textAlign:"center",outline:"none",lineHeight:"2em",borderRadius:"4px",border:"none"}} 
+                            onClick = {()=>{
+                                // console.log(this.props.buttonMessage)
+                                console.log(printMessage)
+                                this.props.isPrint?
+                                $('#'+printMessage+this.props.dataId).printArea():""
+                            }}>
+                            {button} 
+                        </button >  
                     </div>
                     {/* <Popup 
                         content={
@@ -81,6 +89,7 @@
                     /> */}
                     <LoanBill dataId={this.props.dataId} message={this.props.buttonMessage}/>
                     <Pay dataId={this.props.dataId} message={this.props.buttonMessage}/>
+                    <ProjectPay dataId={this.props.dataId} message={this.props.buttonMessage}/>
                     <Travel dataId={this.props.dataId} message={this.props.buttonMessage}/>
                     <TravelExpense dataId={this.props.dataId} message={this.props.buttonMessage}/>
                 </div> 

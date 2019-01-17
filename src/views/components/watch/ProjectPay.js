@@ -3,23 +3,15 @@
      * @param LoanBill 组件  借款单
      */
     import React, { Component } from 'react';
-    import {dealNumber,dxNumber} from '../../../utils/helpers'
-    class Pay extends Component {
-        
-       
-         
-        //console.log({});
+    class ProjectPay extends Component {
+            
         render(){
             const {message,dataId} = this.props;
-            var myDate = new Date();
-			var year=myDate.getFullYear(),
-				month=myDate.getMonth()+1>9?myDate.getMonth()+1:"0"+(myDate.getMonth()+1).toString(),
-				data=myDate.getDate();
             return (
-                <div className="pay_box" id={"pay_box"+dataId}>
+                <div className="pay_box" id={"project_pay_box"+dataId}>
                     <div className="code_id">
                         <dd>项目编号：</dd>
-                        <dd>{message.id}</dd>
+                        <dd>{message.unicode}</dd>
                     </div>
                     <div className="pay_id_num">
                         <span>支出单编号：</span>
@@ -31,11 +23,11 @@
                         <dt className="dt_big">支出凭单</dt>
 
                         <span className="time_write">
-                            <span className="time_year">{year}</span>
+                            <span className="time_year">2018</span>
                             <i>年</i>
-                            <span className="time_month">{month}</span>
+                            <span className="time_month">12</span>
                             <i>月</i>
-                            <span className="time_day">{data}</span>
+                            <span className="time_day">28</span>
                             <i className="font_day">日</i>
                         </span>
                     </div>
@@ -44,14 +36,14 @@
                             <div className="pay_row1">
 
                                 <span className="now_pay"><b>即</b>付</span>
-                                <span className="now_num">{message.item_content}</span>
+                                <span className="now_num">培训支出</span>
                                 <span className="unit_font">款</span>
                             </div>
                             <div className="pay_row2">
                                 <span>计人民币：</span>
-                                <span className="count_num_s">{dxNumber(message.amount)}</span>
+                                <span className="count_num_s">肆仟叁佰元整</span>
                                 <span>￥</span>
-                                <span className="count_rmb">{message.amount?dealNumber(message.amount):"0.00"}</span>
+                                <span className="count_rmb">4300.00</span>
                             </div>
                         </div>
                         <div className="pay_content_box2">
@@ -92,5 +84,5 @@
                 
         }
     }
-    export default Pay;
+    export default ProjectPay;
     
