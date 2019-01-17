@@ -3167,6 +3167,8 @@ textarea:disabled {
     border-radius: 10px; }
     .alert_back .alert_box .search_info_list_label {
       color: #3F51B5; }
+    .alert_back .alert_box input {
+      background-color: #FFFFFF; }
     .alert_back .alert_box h2 {
       text-align: center;
       color: #3F51B5;
