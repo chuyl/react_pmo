@@ -1944,6 +1944,16 @@ textarea:disabled {
   clear: both;
   visibility: hidden; }
 
+.view_table_list .filter_max_div {
+  width: 100%;
+  position: relative; }
+.view_table_list .filter_box_state {
+  position: absolute;
+  bottom: 0;
+  right: 0; }
+.view_table_list .select_clean_box {
+  padding: 0; }
+
 .form_control {
   float: left;
   box-sizing: border-box;
@@ -2028,7 +2038,7 @@ textarea:disabled {
 
 .filter_max_div {
   padding: 1em;
-  height: 6em;
+  height: 7em;
   width: calc(100% - 234px); }
 
 .container .filter_max_div {
