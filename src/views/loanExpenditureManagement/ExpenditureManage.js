@@ -43,8 +43,8 @@ class ExpenditureManage extends Component {
             }
            
         }
-        var obj ={page_num:page_num,page_size:page_size};
-        
+        var obj ={page_num:{"condition":"equal","query_data":page_num},page_size:{"condition":"equal","query_data":page_size}};
+        console.log(obj)
         var objs = search_obj?Object.assign(obj, search_obj):obj
         // console.log(objs)
         // var places = JSON.parse((JSON.stringify(obj)+JSON.stringify(this.state.search_message)).replace(/}{/,','));
@@ -52,8 +52,8 @@ class ExpenditureManage extends Component {
         this.setState({
             query_condition:obj
 		})
-		
-        getData(getRouter("payment_project_list"), { token: sessionStorage.token,query_condition:objs }, cb, {});
+		console.log(objs)
+        getData(getRouter("payment_project_list"), { token: sessionStorage.token,query_condition:objs,data_type:"page_json" }, cb, {});
         // getData(getRouter("examine_record_list"),{ session: sessionStorage.session}, cb, {});
 
 	}
@@ -345,16 +345,19 @@ class ExpenditureManage extends Component {
             <div>
                 <DataSearchMessage 
 					   message={this.state.table_data_bodys}
-					   keywordSearch={["unicode"]}
+					   keywordSearch={["financial_number"]}
 					   keywordTitle={[
-                        "项目编号",
-                        "项目类型",
-						"实施负责人",
-						"实施负责人1"]}
-					   selectListMessage={["project_type_list"]}
-                       selectNameMessage={["project_project_template_name"]}
-                       selectListCheckMessage={["staff_manage_list","project_type_list"]}
-                       selectNameCheckMessage={["project_person_in_charge_name","unicode"]}
+                        "财务编号",
+                        // "项目类型",
+						"领款人",
+						"时间"]}
+					//    selectListMessage={["project_type_list"]}
+					// 	selectNameMessage={["project_project_template_name"]}
+					   selectListMessage={[]}
+                       selectNameMessage={[]}
+                       selectListCheckMessage={["staff_manage_list"]}
+                       selectNameCheckMessage={["payee_name"]}
+					   sectionTimeMessage={["submit_time"]}
 					   screeningMessage={this.screening_information}
 					/>
                 <div className="statistical_div">
