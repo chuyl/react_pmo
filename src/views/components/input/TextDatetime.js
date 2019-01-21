@@ -18,7 +18,7 @@
             if (strDate >= 0 && strDate <= 9) {
                 strDate = "0" + strDate;
             }
-            var currentdate =this.props.inputValue===""? year + seperator1 + month + seperator1 + strDate+"T00:00":this.props.inputValue;
+            // var currentdate =this.props.inputValue===""? year + seperator1 + month + seperator1 + strDate+"T00:00":this.props.inputValue;
           
             const {id,disabled,inputValue,onChange,onClick,labelValue} =this.props;
             return (

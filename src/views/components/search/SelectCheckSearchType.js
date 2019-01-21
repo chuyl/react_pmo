@@ -63,6 +63,7 @@
             return (
                 <div style={this.props.displayNone===0?{display:"none"}:{}} className="search_terms">
                     <div onClick={() => {
+                     
                             this.searchShow()
                           }} 
                         className={this.state.search_state ? "add_list_close" : ""}>
@@ -75,11 +76,12 @@
                              }else{
                                 this.searchShow()
                                 this.infos();
+                               console.log(document.getElementById(id+"_name").innerHTML)
                              }
                             
                          }}
                     >
-                        {selectedInfo === null||selectedInfo===undefined ? "-选择-" : selectedInfo}
+                        {selectedInfo===null||selectedInfo===undefined ?"-选择-": selectedInfo}
                     </div>
                     <div id={id+"_id"}  style={{display:"none"}}>{selectedIdInfo === "" ? "-选择-" : selectedIdInfo}</div>
                     <div className="search_info_position">

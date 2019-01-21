@@ -44,7 +44,7 @@ class ExpenditureManage extends Component {
            
         }
         var obj ={page_num:{"condition":"equal","query_data":page_num},page_size:{"condition":"equal","query_data":page_size}};
-        console.log(obj)
+        // console.log(obj)
         var objs = search_obj?Object.assign(obj, search_obj):obj
         // console.log(objs)
         // var places = JSON.parse((JSON.stringify(obj)+JSON.stringify(this.state.search_message)).replace(/}{/,','));
@@ -52,7 +52,7 @@ class ExpenditureManage extends Component {
         this.setState({
             query_condition:obj
 		})
-		console.log(objs)
+		// console.log(objs)
         getData(getRouter("payment_project_list"), { token: sessionStorage.token,query_condition:objs,data_type:"page_json" }, cb, {});
         // getData(getRouter("examine_record_list"),{ session: sessionStorage.session}, cb, {});
 
@@ -358,6 +358,8 @@ class ExpenditureManage extends Component {
                        selectListCheckMessage={["staff_manage_list"]}
                        selectNameCheckMessage={["payee_name"]}
 					   sectionTimeMessage={["submit_time"]}
+					   langPackMessage={["state"]}
+					   langPackTitle={"-1,1,2"}
 					   screeningMessage={this.screening_information}
 					/>
                 <div className="statistical_div">

@@ -20,6 +20,7 @@
     import SelectSearchType from './SelectSearchType'
     import SelectCheckSearchType from './SelectCheckSearchType'
     import SectionTimeSearch from './SectionTimeSearch'
+    import SelectListLangLocal from '../select/SelectListLangLocal';
     class DataSearchMessage extends Component {
         state={
             inputValue:"",
@@ -28,7 +29,8 @@
             filter_box_state:true,
             search_arr:[],
             keywordTitle:[],
-            title_index:0
+            title_index:0,
+            title_lang_pack:0
             // message_spare_list:this.props.message,
         }
         componentWillMount(){
@@ -186,13 +188,24 @@
                 title_index:index
             })
         }
+         /** 
+         * @time 2018-12-27
+         * @author xuesong
+         * @param select_lang_index 函数 index
+         */
+        select_lang_index=(index)=>{
+            this.setState({
+                title_lang_pack:index
+            })
+        }
+        select_lang_index
         // console.log(this.props.keywordTitle)
         render(){
-            const {id,message} =this.props;
+            // const {id,message} =this.props;
             console.log(this.state.search_arr)
             var search_length=0;
             for(var i =0; i<this.state.search_arr.length;i++){
-                if(this.state.search_arr[i].name!=""){
+                if(this.state.search_arr[i].name!==""){
                     search_length++;
                 }
             }
@@ -255,6 +268,29 @@
                             />
                             )
                         }):""}
+                        {this.props.langPackMessage?this.props.langPackMessage.map((langPackMessage,index)=>{
+                           console.log(index+this.props.selectListMessage.length+this.props.keywordSearch.length+this.props.selectListCheckMessage.length+this.props.sectionTimeMessage.length)
+                           return(
+                                <SelectListLangLocal
+                                    key={index}
+                                    displayNone={index+this.props.selectListMessage.length+this.props.keywordSearch.length+this.props.selectListCheckMessage.length+this.props.sectionTimeMessage.length===this.state.title_index?1:0}
+                                    id={"select_title_lang_pack"+this.props.langPackMessage[index]}
+                                    langPack="paymentState"
+                                    keywordTitle={this.props.langPackTitle}
+                                    selectTitleIndex={this.select_lang_index}
+                                    selectedInfo={"-选择-"}
+                                    // searchInfoLists={selectListCheckMessage}     
+                            />
+                            )
+                        }):""}
+                        {/* <SelectListLangLocal
+                                    id={"select_title_lang_pack"}
+                                    selectedInfo={"-选择-"}
+                                    langPack="paymentState"
+                                    // labelValue={form_list.title}
+                                     keywordTitle={"-1,1,2"} 
+                                    selectTitleIndex={this.select_lang_index}
+                                /> */}
                         <button className="select_right_btn"
                             onClick={()=>{
                                 this.screening_information()

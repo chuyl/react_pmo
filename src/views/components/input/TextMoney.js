@@ -32,8 +32,9 @@
             return (
                 <div className="text_field_div">
                     <label className="search_info_list_label">{labelValue}</label>
-               <input  ref={ref=>this.number=ref} onKeyUp={()=>{this.onlyNumber()}} className={"text_field_input"} onClick={onClick} defaultValue={inputValue} disabled={disabled} id={id}/>
-            </div>
+                    <input  ref={ref=>this.number=ref} onKeyUp={()=>{this.onlyNumber()}} className={"text_field_input"} onClick={onClick} defaultValue={inputValue} disabled={disabled} id={id}/>
+            {/* <input type="number"step="0.01" name="points" min="0.01" max="10.00" /> */}
+                 </div>
             )
         }
     }

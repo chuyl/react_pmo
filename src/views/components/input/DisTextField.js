@@ -10,7 +10,7 @@
         }
       
         render(){
-            const {id,inputValue,labelValue,name,index} =this.props;
+            const {id,inputValue,labelValue,name} =this.props;
             return (
                 <div className="text_field_div">
                     <label className="search_info_list_label">{labelValue}</label>

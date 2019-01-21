@@ -9,7 +9,7 @@
         }
         
         render(){
-            const {message,labelValue,thisKey} =this.props;
+            const {message,thisKey} =this.props;
             var className = this.props.className.split(","); 
             return (
                 this.props.message?

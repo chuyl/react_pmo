@@ -28,8 +28,7 @@ class BudgetExaminationAndApproval extends Component {
             }
            
         }
-        var obj ={page_num:page_num,page_size:page_size};
-        
+        var obj ={page_num:{"condition":"equal","query_data":page_num},page_size:{"condition":"equal","query_data":page_size}};
         var objs = search_obj?Object.assign(obj, search_obj):obj
         console.log(objs)
         // var places = JSON.parse((JSON.stringify(obj)+JSON.stringify(this.state.search_message)).replace(/}{/,','));
@@ -37,7 +36,7 @@ class BudgetExaminationAndApproval extends Component {
         this.setState({
             query_condition:obj
         })
-        getData(getRouter("examine_record_list"), { token: sessionStorage.token,query_condition:objs }, cb, {});
+        getData(getRouter("examine_record_list"), { token: sessionStorage.token,query_condition:objs,data_type:"page_json"  }, cb, {});
         // getData(getRouter("examine_record_list"),{ session: sessionStorage.session}, cb, {});
 
     }
@@ -152,6 +151,14 @@ class BudgetExaminationAndApproval extends Component {
         this.table_data_body(1,5,message)
 	}
 	render(){
+        var sumLength=0;
+        if(this.state.table_data_head){
+            for(var i = 0;i<this.state.table_data_head.length;i++){
+                sumLength=sumLength+parseFloat(this.state.table_data_head[i].size);
+            }
+        }
+        
+        console.log(sumLength)
 		return (
             <div>
                 <DataSearchMessage 
@@ -165,17 +172,19 @@ class BudgetExaminationAndApproval extends Component {
                        selectNameMessage={["project_project_template_name"]}
                        selectListCheckMessage={["staff_manage_list","project_type_list"]}
                        selectNameCheckMessage={["project_person_in_charge_name"]}
+                       sectionTimeMessage={[]}
+                       
 					   screeningMessage={this.screening_information}
 					/>
                 <div className="statistical_div">
                 
-                    <table className="statistical_table">
+                    <table style={{width:sumLength+3+"em"}} className="statistical_table">
                         <thead>
-                            <tr>
-                                <th><div className="statistical_table_box">序号</div></th>
+                            <tr >
+                                <th style={{width:"3em"}}><div className="statistical_table_box">序号</div></th>
                                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
                                     return(
-                                        <th key={index}>
+                                        <th style={{width:table_data_head.size+"em"}} key={index}>
                                             <div className="statistical_table_box">
                                                 {table_data_head.value}
                                             </div>

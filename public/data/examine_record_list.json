@@ -7,10 +7,10 @@
         "page_num":1,
         "page_size":5,
         "data_head":[
-            {"key":"unicode","value":"项目编号"},
-            {"key":"project_project_template_name","value":"部门"},
-            {"key":"project_name","value":"课程名称"},
-            {"key":"project_leader_name","value":"项目负责人"}
+            {"key":"unicode","value":"项目编号","size":"5"},
+            {"key":"project_project_template_name","value":"部门","size":"7"},
+            {"key":"project_name","value":"课程名称","size":"10"},
+            {"key":"project_leader_name","value":"项目负责人","size":"7"}
         ],
         "data_body":[
             {
