@@ -19,6 +19,7 @@
     import SelectMessage from './SelectMessage'
     import SelectSearchType from './SelectSearchType'
     import SelectCheckSearchType from './SelectCheckSearchType'
+    import SectionTimeSearch from './SectionTimeSearch'
     class DataSearchMessage extends Component {
         state={
             inputValue:"",
@@ -39,87 +40,91 @@
          */
           screening_information=()=>{
               //selectNameMessage 数据表中需要select筛选的字段名称
+            //key 搜索的名称 
+            //condition_arr搜索条件 
+            //value 搜索的值 
+            //clear_value 搜索的显示值 
+            //id_arr 搜索框的id
             var key=[];
+            var condition_arr=[];
+            var value=[];
+            var clear_value=[];
+            var id_arr=[];
             if(this.props.keywordSearch){
                 for(var o = 0; o<this.props.keywordSearch.length;o++){
                     key.push(this.props.keywordSearch[o])
+                    condition_arr.push("like")
+                    value.push(document.getElementById("keywordSearch"+this.props.keywordSearch[o]).value)
+                    clear_value.push(document.getElementById("keywordSearch"+this.props.keywordSearch[o]).value)
+                    id_arr.push("keywordSearch"+this.props.keywordSearch[o])
                 }
             }
             if(this.props.selectNameMessage){
                 for(var m = 0; m<this.props.selectNameMessage.length;m++){
                     key.push(this.props.selectNameMessage[m])
+                    condition_arr.push("equal")
+                    value.push(document.getElementById("select_message"+this.props.selectNameMessage[m]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_message"+this.props.selectNameMessage[m]+"_name").innerHTML)
+                    clear_value.push(document.getElementById("select_message"+this.props.selectNameMessage[m]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_message"+this.props.selectNameMessage[m]+"_name").innerHTML)
+                    id_arr.push("select_message"+this.props.selectNameMessage[m])
                 }
             }
             if(this.props.selectNameCheckMessage){
                 for(var n = 0; n<this.props.selectNameCheckMessage.length;n++){
                     key.push(this.props.selectNameCheckMessage[n])
+                    condition_arr.push("equal_many")
+                    var message =document.getElementById("select_check_message"+this.props.selectNameCheckMessage[n]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_check_message"+this.props.selectNameCheckMessage[n]+"_name").innerHTML.split(","); 
+                     value.push(message)
+                     clear_value.push(document.getElementById("select_check_message"+this.props.selectNameCheckMessage[n]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_check_message"+this.props.selectNameCheckMessage[n]+"_name").innerHTML)
+                     id_arr.push("select_check_message"+this.props.selectNameCheckMessage[n]+"_name")
                 }
             }
-           
-            // this.props.selectNameMessage?this.props.selectNameMessage:[];
-           //value 用来存储select的option
-            var value=[];
-            //keyword_list 用来存储需要模糊关键字筛选的字段名称
-            var id_arr=[];
-            //keywordSearch为input的value.就是模糊查询的关键字
-            if(this.props.keywordSearch){
-                for(var z = 0;z<this.props.keywordSearch.length;z++){
-                    value.push(document.getElementById("keywordSearch"+this.props.keywordSearch[z]).value)
-                    id_arr.push("keywordSearch"+this.props.keywordSearch[z])
+            if(this.props.sectionTimeMessage){
+                for(var y = 0; y<this.props.sectionTimeMessage.length;y++){
+                    key.push(this.props.sectionTimeMessage[y])
+                    condition_arr.push("between")
+                    var input_value = document.getElementById("section_time_search"+this.props.sectionTimeMessage[y]).value;
+                  
+                    if(input_value!==""){
+                        var message_arr=[];
+                        var  start_date = new Date(input_value+'-01-01 00:00:00');
+                        var start_time = start_date.getTime(start_date)/1000;
+                        var  end_date = new Date(input_value+'-12-31 23:59:59');
+                        var end_time = end_date.getTime(end_date)/1000;
+                        message_arr.push(start_time)
+                        message_arr.push(end_time)
+                        value.push(message_arr)
+                        clear_value.push(input_value)
+                        id_arr.push("section_time_search"+this.props.sectionTimeMessage[y])
+                    }else{
+                        value.push("")
+                        clear_value.push(input_value)
+                        id_arr.push("section_time_search"+this.props.sectionTimeMessage[y])
                     }
-            }
-            
-            // var keywordSearch = document.getElementById("keywordSearch").value;
-           
-            if(this.props.selectNameMessage){
-            
-                for(var i = 0; i<this.props.selectNameMessage.length;i++){
-                    console.log("select_message"+this.props.selectNameMessage[i]+"_name")
-                    value.push(document.getElementById("select_message"+this.props.selectNameMessage[i]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_message"+this.props.selectNameMessage[i]+"_name").innerHTML)
-                    id_arr.push("select_message"+this.props.selectNameMessage[i])
+                   
                 }
             }
-            if(this.props.selectNameCheckMessage){
             
-                for(var j = 0; j<this.props.selectNameCheckMessage.length;j++){
-                   var value_arr=[];
-                   var message =document.getElementById("select_check_message"+this.props.selectNameCheckMessage[j]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_check_message"+this.props.selectNameCheckMessage[j]+"_name").innerHTML.split(","); 
-                   console.log(message)
-                   // var selectValue = this.props.className.split(","); 
-                    value.push(message)
-                    id_arr.push("select_check_message"+this.props.selectNameCheckMessage[j]+"_name")
-                }
-            }
-            // key.push(this.props.keywordSearch);
-            // value.push(document.getElementById("keywordSearch").value)
+           //value 用来存储select的option
             var obj = {};
+            console.log(value)
             console.log(key)
             var search_arr=[];
             for (var h = 0; h < key.length; h++) {
-                obj[key[h]] = value[h]
-                search_arr.push({name:value[h],id:id_arr[h]})  
+                if(value[h]!==""){
+                    obj[key[h]] = {"condition":condition_arr[h],"query_data":value[h]}
+                    search_arr.push({name:clear_value[h],id:id_arr[h]})  
+                }
+               
+                
             }
-            console.log(obj)
+             console.log(obj)
+           
             //obj的key为数据表中的字段，value对应字段中筛选的数据
             //所有筛选条件的数组
-            var search_obj={};
-           
-            for(var key in obj){ 
-                // console.log(key)
-                if(obj[key]!==""){
-                    search_obj[key]=obj[key]
-                  
-                }
-                } 
-
-                // if(keywordSearch!==""){
-                //     search_obj.push({name:keywordSearch,id:"keywordSearch"})   
-                // }
                 this.setState({
                     search_arr:search_arr
                 })
-                console.log(search_arr)
-                this.props.screeningMessage(search_obj)
+                this.props.screeningMessage(obj)
         }
          /** 
          * @time 2018-12-19
@@ -237,6 +242,16 @@
                                     displayNone={index+this.props.selectListMessage.length+this.props.keywordSearch.length===this.state.title_index?1:0}
                                     id={"select_check_message"+this.props.selectNameCheckMessage[index]}
                                     searchInfoLists={selectListCheckMessage}     
+                            />
+                            )
+                        }):""}
+                         {this.props.sectionTimeMessage?this.props.sectionTimeMessage.map((sectionTimeMessage,index)=>{
+                            return(
+                                <SectionTimeSearch
+                                    key={index}
+                                    displayNone={index+this.props.selectListMessage.length+this.props.keywordSearch.length+this.props.selectListCheckMessage.length===this.state.title_index?1:0}
+                                    id={"section_time_search"+this.props.sectionTimeMessage[index]}
+                                    // searchInfoLists={selectListCheckMessage}     
                             />
                             )
                         }):""}
