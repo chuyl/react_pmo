@@ -60,27 +60,16 @@ class ExpenditureManage extends Component {
 	payment_csv=(search_obj)=>{
 		var cb = (route, message, arg) => {
             if (message.error === 0) {
-            //    this.setState({
-            //     table_data_body:message.data.data_body,
-            //     table_data_bodys:message.data.data_body,
-            //     table_data_head:message.data.data_head,
-            //     count:message.data.count
-			//    })
+           
             }
            
         }
         var obj ={};
-        // console.log(obj)
-        // var objs = search_obj?Object.assign(obj, search_obj):obj
-        // console.log(objs)
-        // var places = JSON.parse((JSON.stringify(obj)+JSON.stringify(this.state.search_message)).replace(/}{/,','));
-        // console.log(places)
+     
         this.setState({
             query_condition:obj
 		})
 		console.log(search_obj)
-		// console.log(objs)
-		
          getData(getRouter("payment_project_list"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
 		 , cb, {});
 	}
@@ -403,17 +392,17 @@ class ExpenditureManage extends Component {
 					   langPackTitle={"-1,1,2"}
 					   screeningMessage={this.screening_information}
 					/>
-                <div className="statistical_div">
+                <div  style={{width:sumLength+26+"em"}} className="statistical_div">
                 
-                    <table style={{width:sumLength+26+"em"}} className="statistical_table">
+                    <table className="statistical_table">
                         <thead>
                             <tr>
 								{/* <th><div className="statistical_table_box">序号</div></th> */}
 								<th style={{"width":"26em"}}></th>
                                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
                                     return(
-                                        <th style={{width:table_data_head.size}} key={index}>
-                                            <div className="statistical_table_box">
+                                        <th key={index}>
+                                            <div  style={{width:table_data_head.size}} className="statistical_table_box">
                                                 {table_data_head.value}
                                             </div>
                                         </th>
