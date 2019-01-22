@@ -9,7 +9,7 @@ class BudgetExaminationAndApproval extends Component {
         table_data_body:[],
         table_data_bodys:[],
          query_condition:{},
-         search_message:""
+         search_message:{}
         
 	}
 	componentWillMount(){
@@ -148,6 +148,11 @@ class BudgetExaminationAndApproval extends Component {
 
      return components
      }
+     /** 
+	 * @time 2019-01-22
+	 * @author xuesong
+	 * @param screening_information 函数 筛选条件的回调函数
+	 */
      screening_information=(message)=>{
         // table_data_body()
          console.log(message)
@@ -158,6 +163,11 @@ class BudgetExaminationAndApproval extends Component {
         })
         this.table_data_body(1,5,message)
     }
+    /** 
+	 * @time 2019-01-22
+	 * @author xuesong
+	 * @param payment_csv 函数 导出按钮
+	 */
     payment_csv=(search_obj)=>{
 		var cb = (route, message, arg) => {
             if (message.error === 0) {
@@ -169,9 +179,9 @@ class BudgetExaminationAndApproval extends Component {
      
         this.setState({
             query_condition:obj
-		})
-		console.log(search_obj)
-         getData(getRouter("examine_record_list"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
+        })
+        var arr = Object.keys(search_obj);
+         getData(getRouter("examine_record_list"), arr.length==0?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
 		 , cb, {});
 	}
 	render(){

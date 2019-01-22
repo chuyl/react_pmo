@@ -219,7 +219,6 @@
                     <p className="card_title">{this.props.title}</p>
                     <ul id = {this.props.idName}>
                         {this.props.beforeApiUri?this.props.beforeApiUri.map((view_list,index)=>{
-                          
                             return  (
                                 <li
                                   key={index}  className="card_info_list_card"
@@ -262,16 +261,15 @@
                         }):""
                          }
                     </ul>
-                      {this.props.addButton.add_button!==""? <AddCardBtn
-                        addButton={this.props.addButton}
-                         title={this.props.addButton.add_title}
-                         afterApiUri={this.props.addButton.list_button}
-                          dataId={this.props.dataId}
-                          editCardSuccess={this.addCardSuccess}
-                          before_api_uri={this.props.addButton.add_button}
-                          
-                        // key={form_list.id_name}
-                     />  :""}
+                        {this.props.addButton.add_button!==""? <AddCardBtn
+                            addButton={this.props.addButton}
+                            title={this.props.addButton.add_title}
+                            afterApiUri={this.props.addButton.list_button}
+                            dataId={this.props.dataId}
+                            editCardSuccess={this.addCardSuccess}
+                            before_api_uri={this.props.addButton.add_button}
+                            // key={form_list.id_name}
+                        />  :""}
                    
                     <div className={this.state.add_card_state ? "add_info_list open" : "add_info_list"}>
                         <div className="paper_card_title">

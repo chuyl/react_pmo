@@ -75,6 +75,7 @@
        // var cb = (route, message, arg) =>  {
            // if (message.error === 0) {
                 var cb = (route, messages, arg) =>  {
+                    console.log(messages)
                     if (messages.error === 0) {
                         var json_view=JSON.parse(sessionStorage.view)
                         for(var i=0;i<json_view.length;i++){

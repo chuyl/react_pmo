@@ -267,12 +267,28 @@ class Expenditure extends Component {
 		}
 		// componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data
 		var cb = (route, message, arg) => {
-			if (newState.before_api_uri === "project_manage_add") {
+			// if (newState.before_api_uri === "project_manage_add") {
+			// 	if (message.error === 0) {
+			// 		this.fetchProjectData("editProject")
+			// 		this.setState({    //  项目创建成功,打开编辑页面。更新view
+			// 			dataId:message.data.id,
+			// 		}) 
+			// }else if(message.error === 2){
+			// 	console.log("未登录")
+			// 	sessionStorage.logged = false;
+			// 	sessionStorage.token="";
+			// 	if(window.location.hash.split("#")[1]!=="/"){
+			// 		window.location.href=window.location.href.split("#/")[0]
+				
+			// 	  }
+			// }
+			
+			// }else{
 				if (message.error === 0) {
-					this.fetchProjectData("editProject")
 					this.setState({    //  项目创建成功,打开编辑页面。更新view
-						dataId:message.data.id,
+						card_state:false
 					}) 
+					this.listProject()  //刷新项目列表
 			}else if(message.error === 2){
 				console.log("未登录")
 				sessionStorage.logged = false;
@@ -281,15 +297,21 @@ class Expenditure extends Component {
 					window.location.href=window.location.href.split("#/")[0]
 				
 				  }
-			}
-			
 			}else{
-					this.setState({    //  项目创建成功,打开编辑页面。更新view
-					card_state:false
-				}) 
-				this.listProject()  //刷新项目列表
+				this.setState({
+					remind_state:true
+				})
+				Alert.open({
+					alertTip:message.msg
+					
+				});
+				setTimeout(function(){
+					Alert.close();
+				 },3000)
 			}
-		}
+				
+			}
+		// }
 		console.log(newState.before_api_uri)
 		console.log(obj)
 		getData(getRouter(newState.before_api_uri), { data: obj, token: sessionStorage.token }, cb, {});
