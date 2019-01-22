@@ -392,9 +392,9 @@ class ExpenditureManage extends Component {
 					   langPackTitle={"-1,1,2"}
 					   screeningMessage={this.screening_information}
 					/>
-                <div  style={{width:sumLength+26+"em"}} className="statistical_div">
+                <div  className="statistical_div">
                 
-                    <table className="statistical_table">
+                    <table style={{width:sumLength+26+"em"}} className="statistical_table">
                         <thead>
                             <tr>
 								{/* <th><div className="statistical_table_box">序号</div></th> */}
