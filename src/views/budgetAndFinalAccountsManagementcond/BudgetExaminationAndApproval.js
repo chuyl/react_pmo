@@ -158,7 +158,7 @@ class BudgetExaminationAndApproval extends Component {
             }
         }
         
-        console.log(sumLength)
+        // console.log(sumLength)
 		return (
             <div>
                 <DataSearchMessage 

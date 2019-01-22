@@ -15,7 +15,7 @@ class ExpenditureManage extends Component {
         table_data_body:[],
         table_data_bodys:[],
          query_condition:{},
-		 search_message:{},
+		 search_message:"",
 		 financial_number:"",
 		 alertAddFinancialState:false,//财务编号
 		 alertAddProjectState:false,//相关内容
@@ -56,6 +56,33 @@ class ExpenditureManage extends Component {
         getData(getRouter("payment_project_list"), { token: sessionStorage.token,query_condition:objs,data_type:"page_json" }, cb, {});
         // getData(getRouter("examine_record_list"),{ session: sessionStorage.session}, cb, {});
 
+	}
+	payment_csv=(search_obj)=>{
+		var cb = (route, message, arg) => {
+            if (message.error === 0) {
+            //    this.setState({
+            //     table_data_body:message.data.data_body,
+            //     table_data_bodys:message.data.data_body,
+            //     table_data_head:message.data.data_head,
+            //     count:message.data.count
+			//    })
+            }
+           
+        }
+        var obj ={};
+        // console.log(obj)
+        // var objs = search_obj?Object.assign(obj, search_obj):obj
+        // console.log(objs)
+        // var places = JSON.parse((JSON.stringify(obj)+JSON.stringify(this.state.search_message)).replace(/}{/,','));
+        // console.log(places)
+        this.setState({
+            query_condition:obj
+		})
+		console.log(search_obj)
+		// console.log(objs)
+		
+         getData(getRouter("payment_project_list"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
+		 , cb, {});
 	}
 	alertAddState=(newState)=>{
 		// console.log(newState)
@@ -174,59 +201,66 @@ class ExpenditureManage extends Component {
           }else{   
               totalPage=parseInt(num/pageSize);   
           }   
-       var currentPage = this.state.pno;//当前页数
+       	var currentPage = this.state.pno;//当前页数
         var startRow = (currentPage - 1) * pageSize+1;//开始显示的行  31 
         var endRow = currentPage * pageSize;//结束显示的行   40
         endRow = (endRow > num)? num : endRow;    40
         var components =<div>
             <span>{"共"+num+"条记录 分"+totalPage+"页 当前第"+currentPage+"页"}</span>
-        <a 
-         className="nyx-change-page-href"
-         onClick={()=>{
-             this.setState({
-                 pno:1
-             })
-            currentPage>1?this.goPage(this.state.pno,"+psize+"):""
-            currentPage>1?this.table_data_body(1,5):""
-         }}
-         >首页</a>
-        <a 
-            className="nyx-change-page-href" onClick={()=>{
-            currentPage>1?this.setState({pno:this.state.pno-1}):""
-            currentPage>1?this.goPage(this.state.pno,"+psize+"):""
-            currentPage>1?this.table_data_body(this.state.pno-1,5):""
-        }}
-         >{"<上一页"}</a>
-        <a 
-            className="nyx-change-page-href" 
-            onClick={()=>{
-            currentPage<totalPage?this.setState({pno:this.state.pno+1}):""
-           { this.goPage("+(currentPage+1)+","+psize+")}
-            currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
-            currentPage<totalPage?this.table_data_body(this.state.pno+1,5):""
-        }}
-         >{"下一页>"}</a>
-        <a 
-             className="nyx-change-page-href"
-             onClick={()=>{
-             currentPage<totalPage?this.setState({pno:totalPage}):""
-             
-            currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
-            currentPage<totalPage?this.table_data_body(totalPage,5):""
-        } }
-            
-        >{"尾页"}</a>
+        	<a 
+				className="nyx-change-page-href"
+				onClick={()=>{
+					this.setState({
+						pno:1
+					})
+					currentPage>1?this.goPage(this.state.pno,"+psize+"):""
+					currentPage>1?this.table_data_body(1,5):""
+				}}
+				>首页
+			</a>
+			<a 
+				className="nyx-change-page-href" onClick={()=>{
+				currentPage>1?this.setState({pno:this.state.pno-1}):""
+				currentPage>1?this.goPage(this.state.pno,"+psize+"):""
+				currentPage>1?this.table_data_body(this.state.pno-1,5):""
+			}}
+			>{"<上一页"}</a>
+			<a 
+				className="nyx-change-page-href" 
+				onClick={()=>{
+				currentPage<totalPage?this.setState({pno:this.state.pno+1}):""
+			{ this.goPage("+(currentPage+1)+","+psize+")}
+				currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
+				currentPage<totalPage?this.table_data_body(this.state.pno+1,5):""
+			}}
+			>{"下一页>"}</a>
+			<a 
+				className="nyx-change-page-href"
+				onClick={()=>{
+				currentPage<totalPage?this.setState({pno:totalPage}):""
+				
+				currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
+				currentPage<totalPage?this.table_data_body(totalPage,5):""
+			} }
+			>{"尾页"}</a>
+			<a 
+				onClick={()=>{
+					this.payment_csv(this.state.search_message)
+				}}
+				className="nyx-change-page-href" style={{marginRight:"-10em",float:"right"}}>
+				{"导出"}
+			</a>
         </div>
-
      return components
      }
      screening_information=(message)=>{
         // table_data_body()
-         console.log(message)
+		 console.log(message)
+		 
          //message为筛选条件
-		// this.setState({
-		// 	search_message:message
-        // })
+		this.setState({
+			search_message:message
+        })
         this.table_data_body(1,5,message)
 	}
 	// 添加财务编号
@@ -341,6 +375,12 @@ class ExpenditureManage extends Component {
     //}
 	}
 	render(){
+		var sumLength=0;
+        if(this.state.table_data_head){
+            for(var i = 0;i<this.state.table_data_head.length;i++){
+                sumLength=sumLength+parseFloat(this.state.table_data_head[i].size);
+            }
+        }
 		return (
             <div>
                 <DataSearchMessage 
@@ -350,7 +390,8 @@ class ExpenditureManage extends Component {
                         "财务编号",
                         // "项目类型",
 						"领款人",
-						"时间"]}
+						"时间",
+						"状态"]}
 					//    selectListMessage={["project_type_list"]}
 					// 	selectNameMessage={["project_project_template_name"]}
 					   selectListMessage={[]}
@@ -364,18 +405,18 @@ class ExpenditureManage extends Component {
 					/>
                 <div className="statistical_div">
                 
-                    <table className="statistical_table">
+                    <table style={{width:sumLength+26+"em"}} className="statistical_table">
                         <thead>
                             <tr>
 								{/* <th><div className="statistical_table_box">序号</div></th> */}
 								<th style={{"width":"26em"}}></th>
                                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
                                     return(
-                                        <th key={index}>
+                                        <th style={{width:table_data_head.size}} key={index}>
                                             <div className="statistical_table_box">
                                                 {table_data_head.value}
                                             </div>
-                                            </th>
+                                        </th>
                                     )
                                 }):<th> <div className="statistical_table_box"></div></th>}
                                 

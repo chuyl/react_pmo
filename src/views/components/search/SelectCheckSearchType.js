@@ -49,15 +49,18 @@
            
                 var checklist = document.getElementsByName(this.props.id+"checkSelectList");
                 var checkValue="";
+                var checkedLength=0;
                 for(var i = 0;i<checklist.length;i++){
                 if(checklist[i].checked){
-                  
+                        console.log(checklist[i].value)
                         checkValue=checkValue+checklist[i].value+",";
-                        
+                        checkedLength++;
                     }
                 }
-                document.getElementById(this.props.id+"_name").innerHTML=checkValue.slice(0,checkValue.length-1);
+                checkedLength===0?document.getElementById(this.props.id+"_name").innerHTML="-选择-":document.getElementById(this.props.id+"_name").innerHTML=checkValue.slice(0,checkValue.length-1);
+                console.log(checkedLength)
             }
+
         render() {
             const { selectedInfo,selectedIdInfo, id, labelValue,disabled } = this.props;
             return (

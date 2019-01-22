@@ -20,7 +20,7 @@
     import SelectSearchType from './SelectSearchType'
     import SelectCheckSearchType from './SelectCheckSearchType'
     import SectionTimeSearch from './SectionTimeSearch'
-    import SelectListLangLocal from '../select/SelectListLangLocal';
+    import SelectListLangLocal from './SelectListLangLocal';
     class DataSearchMessage extends Component {
         state={
             inputValue:"",
@@ -103,6 +103,16 @@
                         id_arr.push("section_time_search"+this.props.sectionTimeMessage[y])
                     }
                    
+                }
+            }
+            if(this.props.langPackMessage){
+                for(var i = 0; i<this.props.langPackMessage.length;i++){
+                    key.push(this.props.langPackMessage[i])
+                    condition_arr.push("equal")
+                    console.log(document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_id").innerHTML)
+                    value.push(document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_id").innerHTML)
+                    clear_value.push(document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_name").innerHTML)
+                    id_arr.push("keywordSearch"+this.props.langPackMessage[i])
                 }
             }
             
@@ -274,7 +284,7 @@
                                 <SelectListLangLocal
                                     key={index}
                                     displayNone={index+this.props.selectListMessage.length+this.props.keywordSearch.length+this.props.selectListCheckMessage.length+this.props.sectionTimeMessage.length===this.state.title_index?1:0}
-                                    id={"select_title_lang_pack"+this.props.langPackMessage[index]}
+                                    id={"select_lang_pack"+this.props.langPackMessage[index]}
                                     langPack="paymentState"
                                     keywordTitle={this.props.langPackTitle}
                                     selectTitleIndex={this.select_lang_index}
@@ -298,6 +308,7 @@
                         >
                             搜索
                         </button>
+                       
                         <div className="select_clean_box">
                             {/* <span>
                                 {this.state.search_arr.length>0?"关键字:":""}
