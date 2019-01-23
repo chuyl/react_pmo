@@ -39,7 +39,6 @@ function logout() {
         },
         body: JSON.stringify(json)
       }).then(function status(response) {
-        console.log(json)
         // console.log(response.responseURL)
         let e = new Event("dataOnload");
         dispatchEvent(e);
@@ -50,11 +49,8 @@ function logout() {
           return Promise.reject(new Error(response.statusText));
         }
       }).then(function (response) {
-        console.log(response)
          return response.json();
       }).then(function (data) {
-        console.log(data)
-        console.log(callback)
         if (callback !== null) {
           if (data.code === 10099) {
             logout();
@@ -83,13 +79,14 @@ function logout() {
         },
         body: JSON.stringify(json)
       }).then(res => res.blob().then(blob => { 
-        console.log(res)
-        console.log(blob)
+        // console.log(res)
+        // console.log(blob)
       var a = document.createElement('a'); 
       var url = window.URL.createObjectURL(blob);   // 获取 blob 本地文件连接 (blob 为纯二进制对象，不能够直接保存到磁盘上)
       var filename = res.headers.get('Content-Disposition'); 
       a.href = url; 
-      a.download = `表格名称.csv`
+      var data =new Date()
+      a.download = data.toLocaleDateString()+`.csv`
       a.click(); 
       window.URL.revokeObjectURL(url); 
     })); 

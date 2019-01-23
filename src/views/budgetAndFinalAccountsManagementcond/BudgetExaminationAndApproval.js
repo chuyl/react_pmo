@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getData, getRouter,getList } from '../../utils/helpers'
+import { getData, getRouter,getList,PostCsvData } from '../../utils/helpers'
 import DataSearchMessage from '../components/search/DataSearchMessage'
 class BudgetExaminationAndApproval extends Component {
 	state={
@@ -181,7 +181,7 @@ class BudgetExaminationAndApproval extends Component {
             query_condition:obj
         })
         var arr = Object.keys(search_obj);
-         getData(getRouter("examine_record_list"), arr.length==0?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
+        PostCsvData(getRouter("examine_record_list"), arr.length==0?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
 		 , cb, {});
 	}
 	render(){
