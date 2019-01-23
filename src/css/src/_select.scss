@@ -80,7 +80,7 @@
 }
 
 .search_info_list.open {
-    min-height: 156px;
+    min-height: 178px;
     background: $background-color;
     position: relative;
     margin-left: 80px;
@@ -195,7 +195,7 @@
 
 .search_info_list_ul {
     display: block;
-    height: 112px;
+    height: 110px;
     margin-top: 0.5em;
     overflow-y: auto; // width: calc(100% - 10px);
     width: 100%;

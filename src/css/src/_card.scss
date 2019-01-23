@@ -682,6 +682,13 @@ textarea:disabled {
     }
 }
 
+.search_info_list.open {
+    .add_project_new {
+        position: absolute;
+        bottom: 0;
+    }
+}
+
 .container {
     .select_filter_box {
         .select_search_list {
@@ -870,7 +877,6 @@ textarea:disabled {
 
 .statistical_table {
     width: 2500px;
-    height: 20em;
     overflow: scroll;
     $table_base_tr: 1.5em left (1em 0) (0);
     $table_base_td: 1.5em left (1em 0.5em) (0);
