@@ -296,7 +296,7 @@
                                     displayNone={index+this.props.selectListMessage.length+this.props.keywordSearch.length+this.props.selectListCheckMessage.length+this.props.sectionTimeMessage.length===this.state.title_index?1:0}
                                     id={"select_lang_pack"+this.props.langPackMessage[index]}
                                     langPack="paymentState"
-                                    keywordTitle={this.props.langPackTitle}
+                                    keywordTitle={this.props.langPackTitle[index]}
                                     selectTitleIndex={this.select_lang_index}
                                     selectedInfo={"-选择-"}
                                     // searchInfoLists={selectListCheckMessage}     

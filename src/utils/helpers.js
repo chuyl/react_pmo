@@ -39,6 +39,8 @@ function logout() {
         },
         body: JSON.stringify(json)
       }).then(function status(response) {
+        console.log(json)
+        // console.log(response.responseURL)
         let e = new Event("dataOnload");
         dispatchEvent(e);
         if (response.status >= 200 && response.status < 300) {
@@ -48,8 +50,11 @@ function logout() {
           return Promise.reject(new Error(response.statusText));
         }
       }).then(function (response) {
-        return response.json();
+        console.log(response)
+         return response.json();
       }).then(function (data) {
+        console.log(data)
+        console.log(callback)
         if (callback !== null) {
           if (data.code === 10099) {
             logout();
@@ -58,10 +63,36 @@ function logout() {
         }
         return data;
       }).catch(function (e) {
+        //  console.log(url)
         console.log(e);
         console.log("调用" + router.url + "接口出错");
       });
       return
+    }
+    export function PostCsvData(router, json, callback = null, args = {}) {
+      let e = new Event("loading");
+      dispatchEvent(e);
+
+      fetch(router.url, {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'default',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www.form-urlencoded'
+        },
+        body: JSON.stringify(json)
+      }).then(res => res.blob().then(blob => { 
+        console.log(res)
+        console.log(blob)
+      var a = document.createElement('a'); 
+      var url = window.URL.createObjectURL(blob);   // 获取 blob 本地文件连接 (blob 为纯二进制对象，不能够直接保存到磁盘上)
+      var filename = res.headers.get('Content-Disposition'); 
+      a.href = url; 
+      a.download = `表格名称.csv`
+      a.click(); 
+      window.URL.revokeObjectURL(url); 
+    })); 
     }
   
 export function getRouter(key) {

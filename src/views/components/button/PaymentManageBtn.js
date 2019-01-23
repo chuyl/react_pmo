@@ -21,7 +21,7 @@
             const {defineValue}=this.props;
             return (
                <div  style={{"padding":"0 0.4em"}} className="card_ide_btn">
-                    <button style={{"padding":"0 0.8em"}} className="btn_list" onClick={this.onClick} className="hold_btn">{defineValue}</button>
+                    <button style={{"padding":"0 0.8em",margin:0}} className="btn_list" onClick={this.onClick} className="hold_btn">{defineValue}</button>
                </div>
             )
         }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getData, getRouter,getList } from '../../utils/helpers'
+import { getData, getRouter,getList,PostCsvData } from '../../utils/helpers'
 import DataSearchMessage from '../components/search/DataSearchMessage'
 import Popup from '../components/modal/Popup'
 import ViewTextField from '../components/input/ViewTextField'
@@ -59,6 +59,7 @@ class ExpenditureManage extends Component {
 	}
 	payment_csv=(search_obj)=>{
 		var cb = (route, message, arg) => {
+			console.log(message)
             if (message.error === 0) {
            
             }
@@ -70,7 +71,7 @@ class ExpenditureManage extends Component {
             query_condition:obj
 		})
 		console.log(search_obj)
-         getData(getRouter("payment_project_list"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
+		PostCsvData(getRouter("payment_project_list"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
 		 , cb, {});
 	}
 	alertAddState=(newState)=>{
@@ -91,7 +92,24 @@ class ExpenditureManage extends Component {
 			linkpage:newState.linkpage
 		})
 	}
+	// downloadDetailData=()=>{
 
+	// 	let formElement = document.createElement('form'); 
+	// 	formElement.style.display = "display:none;"; 
+	// 	formElement.method = 'post'; 
+	// 	formElement.action = 'http://192.168.4.69:666/payment/project/list_csv'; 
+	// 	formElement.target = 'callBackTarget'; 
+	// 	formElement.append("state","1")
+	// 	let inputElement = document.createElement('input'); 
+	// 	inputElement.type = 'hidden'; 
+	// 	inputElement.name = "params" ; 
+	// 	inputElement.value = 'params'; 
+	// 	formElement.appendChild(inputElement); 
+	// 	document.body.appendChild(formElement); 
+	// 	formElement.submit(); 
+	// 	document.body.removeChild(formElement);
+	
+	// 	}
 	goPage= (pno,psize) =>{
         // this.table_data_body()
         // {this.historyFileDialog()}
@@ -157,8 +175,6 @@ class ExpenditureManage extends Component {
 							linkpage="payment_state_cancel"	
 							dataId={table_data_body.id}
 						/>
-						
-					
 					</td>
 					{/* <td>
 						<input value={table_data_body.id} type="checkbox" name="payment"/>
@@ -234,11 +250,13 @@ class ExpenditureManage extends Component {
 			>{"尾页"}</a>
 			<a 
 				onClick={()=>{
-					this.payment_csv(this.state.search_message)
+					// this.downloadDetailData()
+					 this.payment_csv(this.state.search_message)
 				}}
 				className="nyx-change-page-href" style={{marginRight:"-10em",float:"right"}}>
 				{"导出"}
 			</a>
+			<div id='downloadDiv' style={{display:'none'}}></div>
         </div>
      return components
      }
@@ -389,7 +407,7 @@ class ExpenditureManage extends Component {
                        selectNameCheckMessage={["payee_name"]}
 					   sectionTimeMessage={["submit_time"]}
 					   langPackMessage={["state"]}
-					   langPackTitle={"-1,1,2"}
+					   langPackTitle={["-1,1,2"]}
 					   screeningMessage={this.screening_information}
 					/>
                 <div  className="statistical_div">
@@ -435,8 +453,8 @@ class ExpenditureManage extends Component {
 								onChange={(e)=>{
 									this.setState({
 										financial_number:e.target.value
-										})
-									}}
+									})
+								}}
 									// view={true}
 								value={this.state.financial_number} 
 								labelValue={"财务编号"} 
