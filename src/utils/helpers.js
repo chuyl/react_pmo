@@ -39,6 +39,7 @@ function logout() {
         },
         body: JSON.stringify(json)
       }).then(function status(response) {
+        // console.log(response.responseURL)
         let e = new Event("dataOnload");
         dispatchEvent(e);
         if (response.status >= 200 && response.status < 300) {
@@ -48,7 +49,7 @@ function logout() {
           return Promise.reject(new Error(response.statusText));
         }
       }).then(function (response) {
-        return response.json();
+         return response.json();
       }).then(function (data) {
         if (callback !== null) {
           if (data.code === 10099) {
@@ -58,10 +59,35 @@ function logout() {
         }
         return data;
       }).catch(function (e) {
+        //  console.log(url)
         console.log(e);
         console.log("调用" + router.url + "接口出错");
       });
       return
+    }
+    export function PostCsvData(router, json, callback = null, args = {}) {
+      let e = new Event("loading");
+      dispatchEvent(e);
+
+      fetch(router.url, {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'default',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www.form-urlencoded'
+        },
+        body: JSON.stringify(json)
+      }).then(res => res.blob().then(blob => { 
+        var a = document.createElement('a'); 
+        var url = window.URL.createObjectURL(blob);   // 获取 blob 本地文件连接 (blob 为纯二进制对象，不能够直接保存到磁盘上)
+        var filename = res.headers.get('Content-Disposition'); 
+        a.href = url; 
+        var data =new Date()
+        a.download = data.toLocaleDateString()+`.csv`
+        a.click(); 
+        window.URL.revokeObjectURL(url); 
+    })); 
     }
   
 export function getRouter(key) {
@@ -164,7 +190,6 @@ export function postData(list_message,before_api_uri,dataId) {
                     key_name.push(dataId)
                 }
                 for (var i = 0; i < list_message.length; i++) {
-                        
                     if(list_message[i].type_name==="ListTextSearch"||list_message[i].type_name==="SelectList"||list_message[i].type_name==="SelectListSearch"){
                         value.push(list_message[i].id_name+"_name")
                         key_name.push(document.getElementById(list_message[i].id_name+"_name").innerHTML=== "-选择-" ? "" : document.getElementById(list_message[i].id_name+"_name").innerHTML)

@@ -110,9 +110,9 @@
                     key.push(this.props.langPackMessage[i])
                     condition_arr.push("equal")
                     console.log(document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_id").innerHTML)
-                    value.push(document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_id").innerHTML)
-                    clear_value.push(document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_name").innerHTML)
-                    id_arr.push("keywordSearch"+this.props.langPackMessage[i])
+                    value.push(document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_id").innerHTML==="-选择-"?"":document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_id").innerHTML)
+                    clear_value.push(document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_name").innerHTML)
+                    id_arr.push("select_lang_pack"+this.props.langPackMessage[i]+"_id")
                 }
             }
             
@@ -158,6 +158,16 @@
             if(this.props.selectNameCheckMessage){
                 for(var m = 0; m<this.props.selectNameCheckMessage.length;m++){
                     document.getElementById("select_check_message"+this.props.selectNameCheckMessage[m]+"_name").innerHTML="-选择-"
+                }
+            }
+            if(this.props.sectionTimeMessage){
+                for(var n = 0; n<this.props.sectionTimeMessage.length;m++){
+                    document.getElementById("section_time_search"+this.props.sectionTimeMessage[n]+"_name").innerHTML="-选择-"
+                }
+            }
+            if(this.props.langPackMessage){
+                for(var p = 0; p<this.props.langPackMessage.length;p++){
+                    document.getElementById("select_lang_pack"+this.props.langPackMessage[p]+"_name").innerHTML="-选择-"
                 }
             }
             // document.getElementById("keywordSearch").value="";
@@ -286,7 +296,7 @@
                                     displayNone={index+this.props.selectListMessage.length+this.props.keywordSearch.length+this.props.selectListCheckMessage.length+this.props.sectionTimeMessage.length===this.state.title_index?1:0}
                                     id={"select_lang_pack"+this.props.langPackMessage[index]}
                                     langPack="paymentState"
-                                    keywordTitle={this.props.langPackTitle}
+                                    keywordTitle={this.props.langPackTitle[index]}
                                     selectTitleIndex={this.select_lang_index}
                                     selectedInfo={"-选择-"}
                                     // searchInfoLists={selectListCheckMessage}     

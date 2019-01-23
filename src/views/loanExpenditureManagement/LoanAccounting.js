@@ -6,6 +6,8 @@ class LoanAccounting extends Component {
 		return (
             <div>
             核算
+			{this.props.children}
+			hhh
         </div>
 		)
 	}

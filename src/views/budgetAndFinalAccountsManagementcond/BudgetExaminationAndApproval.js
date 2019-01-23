@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getData, getRouter,getList } from '../../utils/helpers'
+import { getData, getRouter,getList,PostCsvData } from '../../utils/helpers'
 import DataSearchMessage from '../components/search/DataSearchMessage'
 class BudgetExaminationAndApproval extends Component {
 	state={
@@ -95,60 +95,94 @@ class BudgetExaminationAndApproval extends Component {
           }else{   
               totalPage=parseInt(num/pageSize);   
           }   
-       var currentPage = this.state.pno;//当前页数
+        var currentPage = this.state.pno;//当前页数
         var startRow = (currentPage - 1) * pageSize+1;//开始显示的行  31 
         var endRow = currentPage * pageSize;//结束显示的行   40
         endRow = (endRow > num)? num : endRow;    40
         var components =<div>
             <span>{"共"+num+"条记录 分"+totalPage+"页 当前第"+currentPage+"页"}</span>
-        <a 
-         className="nyx-change-page-href"
-         onClick={()=>{
-             this.setState({
-                 pno:1
-             })
-            currentPage>1?this.goPage(this.state.pno,"+psize+"):""
-            currentPage>1?this.table_data_body(1,5):""
-         }}
-         >首页</a>
-        <a 
-            className="nyx-change-page-href" onClick={()=>{
-            currentPage>1?this.setState({pno:this.state.pno-1}):""
-            currentPage>1?this.goPage(this.state.pno,"+psize+"):""
-            currentPage>1?this.table_data_body(this.state.pno-1,5):""
-        }}
-         >{"<上一页"}</a>
-        <a 
-            className="nyx-change-page-href" 
+            <a 
+            className="nyx-change-page-href"
             onClick={()=>{
-            currentPage<totalPage?this.setState({pno:this.state.pno+1}):""
-           { this.goPage("+(currentPage+1)+","+psize+")}
-            currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
-            currentPage<totalPage?this.table_data_body(this.state.pno+1,5):""
-        }}
-         >{"下一页>"}</a>
-        <a 
-             className="nyx-change-page-href"
-             onClick={()=>{
-             currentPage<totalPage?this.setState({pno:totalPage}):""
-             
-            currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
-            currentPage<totalPage?this.table_data_body(totalPage,5):""
-        } }
-            
-        >{"尾页"}</a>
+                this.setState({
+                    pno:1
+                })
+                currentPage>1?this.goPage(this.state.pno,"+psize+"):""
+                currentPage>1?this.table_data_body(1,5):""
+            }}
+            >首页</a>
+            <a 
+                className="nyx-change-page-href" onClick={()=>{
+                currentPage>1?this.setState({pno:this.state.pno-1}):""
+                currentPage>1?this.goPage(this.state.pno,"+psize+"):""
+                currentPage>1?this.table_data_body(this.state.pno-1,5):""
+            }}
+            >{"<上一页"}</a>
+            <a 
+                className="nyx-change-page-href" 
+                onClick={()=>{
+                currentPage<totalPage?this.setState({pno:this.state.pno+1}):""
+            { this.goPage("+(currentPage+1)+","+psize+")}
+                currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
+                currentPage<totalPage?this.table_data_body(this.state.pno+1,5):""
+            }}
+            >{"下一页>"}</a>
+            <a 
+                className="nyx-change-page-href"
+                onClick={()=>{
+                currentPage<totalPage?this.setState({pno:totalPage}):""
+                
+                currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
+                currentPage<totalPage?this.table_data_body(totalPage,5):""
+            } }
+                
+            >{"尾页"}</a>
+            <a 
+                onClick={()=>{
+                    this.payment_csv(this.state.search_message)
+                    }}
+                className="nyx-change-page-href" style={{marginRight:"-10em",float:"right"}}>
+                {"导出"}
+            </a>
         </div>
 
      return components
      }
+     /** 
+	 * @time 2019-01-22
+	 * @author xuesong
+	 * @param screening_information 函数 筛选条件的回调函数
+	 */
      screening_information=(message)=>{
         // table_data_body()
          console.log(message)
+         
          //message为筛选条件
-		// this.setState({
-		// 	search_message:message
-        // })
+		this.setState({
+			search_message:message
+        })
         this.table_data_body(1,5,message)
+    }
+    /** 
+	 * @time 2019-01-22
+	 * @author xuesong
+	 * @param payment_csv 函数 导出按钮
+	 */
+    payment_csv=(search_obj)=>{
+		var cb = (route, message, arg) => {
+            if (message.error === 0) {
+           
+            }
+           
+        }
+        var obj ={};
+     
+        this.setState({
+            query_condition:obj
+        })
+        var arr = Object.keys(search_obj);
+        PostCsvData(getRouter("examine_record_list"), arr.length==0?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
+		 , cb, {});
 	}
 	render(){
         var sumLength=0;
@@ -178,14 +212,14 @@ class BudgetExaminationAndApproval extends Component {
 					/>
                 <div className="statistical_div">
                 
-                    <table style={{width:sumLength+3+"em"}} className="statistical_table">
+                    <table  style={{width:sumLength+3+"em"}} className="statistical_table">
                         <thead>
                             <tr >
-                                <th style={{width:"3em"}}><div className="statistical_table_box">序号</div></th>
+                                <th><div  style={{width:"3em"}} className="statistical_table_box">序号</div></th>
                                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
                                     return(
-                                        <th style={{width:table_data_head.size+"em"}} key={index}>
-                                            <div className="statistical_table_box">
+                                        <th  key={index}>
+                                            <div style={{width:table_data_head.size+"em"}} className="statistical_table_box">
                                                 {table_data_head.value}
                                             </div>
                                             </th>

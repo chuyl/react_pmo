@@ -98,7 +98,6 @@
 		})		
 	}
         render(){
-            console.log(this.props.dataId)
             const {defaultValue,linkpage} = this.props;
             return (
                 <div className="card_ide_btn">
