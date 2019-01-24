@@ -92,24 +92,7 @@ class ExpenditureManage extends Component {
 			linkpage:newState.linkpage
 		})
 	}
-	// downloadDetailData=()=>{
 
-	// 	let formElement = document.createElement('form'); 
-	// 	formElement.style.display = "display:none;"; 
-	// 	formElement.method = 'post'; 
-	// 	formElement.action = 'http://192.168.4.69:666/payment/project/list_csv'; 
-	// 	formElement.target = 'callBackTarget'; 
-	// 	formElement.append("state","1")
-	// 	let inputElement = document.createElement('input'); 
-	// 	inputElement.type = 'hidden'; 
-	// 	inputElement.name = "params" ; 
-	// 	inputElement.value = 'params'; 
-	// 	formElement.appendChild(inputElement); 
-	// 	document.body.appendChild(formElement); 
-	// 	formElement.submit(); 
-	// 	document.body.removeChild(formElement);
-	
-	// 	}
 	goPage= (pno,psize) =>{
         // this.table_data_body()
         // {this.historyFileDialog()}

@@ -205,42 +205,9 @@ class AssociatedProjects extends Component {
 					<td  style={{"width":"2em"}}>
 						<input onClick={()=>{
                                 this.checked_arr("projectCheck","project_id","paymentCheck")
-                        //     var project_name=document.getElementsByName("projectCheck");
-                        //    var project_check_arr=[];
-                        //    for(var i = 0;i<project_name.length;i++ ){
-                        //        if(project_name[i].checked){
-                        //         project_check_arr.push(project_name[i].value)
-                        //        }
-                        //    }
-                        //    this.setState({
-                        //     project_id:project_check_arr
-                        //    })
-                        //     if(this.state.payment_id.length>1){
-                        //         if(project_check_arr.length==1){
-
-                        //             console.log("hhha")
-                        //             return false;
-                        //         }
-                               
-                        //         // 
-                        //     }
-                        //    var project_name=document.getElementsByName("projectCheck");
-                        //    var project_check_arr=[];
-                        //    var payment_name=document.getElementsByName("paymentCheck");
-                        //    var payment_check_arr=[];
-                        //    var project_check_length=0;
-                        //    var payment_check_length=0;
-                        //    for(var i = 0;i<project_name.length;i++ ){
-                        //        if(project_name[i].checked){
-                        //         project_check_length++;
-                        //         project_check_arr.push(project_name[i].value)
-                        //        }
-                        //    }
-                        //    this.setState({
-                        //     project_id:project_check_arr
-                        //    })
+                      
                           
-                        }} name="projectCheck" type="checkbox"/>
+                        }}  value={table_project_data_body.id} name="projectCheck" type="checkbox"/>
 					</td>
 					{/* <td>
 						<input value={table_project_data_body.id} type="checkbox" name="payment"/>
@@ -412,9 +379,50 @@ class AssociatedProjects extends Component {
 	
 	// }
 	sureCallback=()=>{
-	
-    //}
+        var cb = (route, message, arg) => {
+			if (message.error === 0) {
+				this.setState({
+					alertState:false,
+		
+				})
+                this.table_data_body(1,5)
+                this.table_project_data_body(1,5)
+
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
+			}else{
+				Alert.open({
+				  alertTip:message.msg
+				  
+				});
+				setTimeout(function(){
+				  Alert.close();
+				},3000)
+			  }
+        }
+        console.log(this.state.payment_id)
+        console.log(this.state.project_id)
+		if(this.state.payment_id.length==1){
+             getData(getRouter("payment_project_projects"), { token:sessionStorage.token,id:this.state.payment_id[0],project_ids:this.state.project_id}, cb, {});
+        }else if(this.state.project_id.length==1){
+            getData(getRouter("payment_project_ids"), { token:sessionStorage.token,ids:this.state.payment_id,project_id:this.state.project_id[0]}, cb, {});
+       }
+		// getData(getRouter("payment_manage_edit_financial_number"), { token:sessionStorage.token,id:this.state.payment_id,financial_number:this.state.financial_number }, cb, {});
 	}
+    alertHoldState=(newState)=>{
+		
+		this.setState({
+			[newState.state]:true,
+			alertTitle:newState.alertTitle,
+		})
+	}
+
 	render(){
 		var sumLength=0;
         if(this.state.table_data_head){
@@ -424,8 +432,23 @@ class AssociatedProjects extends Component {
         }
 		return (
             <div>
-                <div>
-                    
+                <div style={{width:"100%",float:"left"}}>
+                    <PaymentManageBtn
+                        isClick={this.state.payment_id.length===1?false:true}
+						onHoldClick={this.alertHoldState}
+						defineValue="一个支出关联多个项目"
+                        state="alertState"
+						// linkpage="payment_state_recall"	
+							// dataId={table_data_body.id}
+					/>
+                    <PaymentManageBtn
+                        isClick={this.state.project_id.length===1?false:true}
+						onHoldClick={this.alertHoldState}
+						defineValue="一个项目关联多个支出"
+                        state="alertState"
+						// linkpage="payment_state_recall"	
+							// dataId={table_data_body.id}
+					/>    
                 </div>
                 <div style={{width:"50%",float:"left"}}>
                     <DataSearchMessage 
@@ -476,7 +499,6 @@ class AssociatedProjects extends Component {
                         </div>
                     </div>
 			
-			        <Alerts alertTitle={this.state.alertTitle} alertMsg = {this.state.alertMsg} sureCallback = {this.sureCallback.bind(this)} cancelCallback = { this.cancelCallback.bind(this) } alertState={this.state.alertState}/>
                 </div>
                 <div style={{width:"50%",float:"left"}}>
                     <DataSearchMessage 

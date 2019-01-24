@@ -11,6 +11,8 @@
                 state:this.props.state,
                 dataId:this.props.dataId,
                 linkpage:this.props.linkpage,
+                // projectId:this.state.projectId,
+                // paymentId:this.state.paymentId,
                 alertTitle:this.props.defineValue,
                 financialNumber:this.props.financialNumber
                }
@@ -21,7 +23,7 @@
             const {defineValue}=this.props;
             return (
                <div  style={{"padding":"0 0.4em"}} className="card_ide_btn">
-                    <button style={{"padding":"0 0.8em"}} className="btn_list" onClick={this.onClick} className="hold_btn">{defineValue}</button>
+                    <button style={{"padding":"0 0.8em"}} className="btn_list" disabled={this.props.isClick===true?true:false} onClick={this.onClick} className="hold_btn">{defineValue}</button>
                </div>
             )
         }
