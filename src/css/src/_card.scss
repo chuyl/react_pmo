@@ -886,6 +886,7 @@ textarea:disabled {
     background: $background-color;
     height: 70vh;
     overflow: scroll;
+    position: relative;
 }
 
 .statistical_table {
@@ -997,13 +998,13 @@ textarea:disabled {
 }
 
 .statistical_change_page {
-    padding: 1em 8em;
+    padding: 1em 2em;
+    width: 100%;
     display: block;
-    width: calc(100% - 234px);
+    position: absolute;
     box-sizing: border-box;
     text-align: center;
-    margin-top: 1em;
-    position: absolute;
+    margin-bottom: 0em;
     bottom: 0;
     background: $primary-color;
     color: $primary-color-text;
