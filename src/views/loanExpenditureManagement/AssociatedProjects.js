@@ -20,7 +20,8 @@ class AssociatedProjects extends Component {
         table_project_data_body:[],
         table_project_data_bodys:[],
          query_condition:{},
-		 search_message:"",
+         search_message:"",
+         search_project_message:"",
 		 financial_number:"",
 		 alertAddFinancialState:false,//财务编号
 		 alertAddProjectState:false,//相关内容
@@ -348,7 +349,7 @@ class AssociatedProjects extends Component {
 			<a 
 				onClick={()=>{
 					// this.downloadDetailData()
-					 this.payment_csv(this.state.search_message)
+					 this.payment_csv(this.state.search_project_message)
 				}}
 				className="nyx-change-page-href" style={{marginRight:"-10em",float:"right"}}>
 				{"导出"}
@@ -366,6 +367,16 @@ class AssociatedProjects extends Component {
 			search_message:message
         })
         this.table_data_body(1,5,message)
+    }
+    screening_project_information=(message)=>{
+        // table_data_body()
+		 console.log(message)
+		 
+         //message为筛选条件
+		this.setState({
+			search_project_message:message
+        })
+        this.table_project_data_body(1,5,message)
 	}
 	cancelCallback=()=>{
 		this.setState({
@@ -452,6 +463,7 @@ class AssociatedProjects extends Component {
                 </div>
                 <div style={{width:"50%",float:"left"}}>
                     <DataSearchMessage 
+                       index={0}
 					   message={this.state.table_data_bodys}
 					   keywordSearch={["financial_number"]}
 					   keywordTitle={[
@@ -502,6 +514,7 @@ class AssociatedProjects extends Component {
                 </div>
                 <div style={{width:"50%",float:"left"}}>
                     <DataSearchMessage 
+                       index={1}
 					   message={this.state.table_data_bodys}
 					   keywordSearch={["financial_number"]}
 					   keywordTitle={[
@@ -519,7 +532,7 @@ class AssociatedProjects extends Component {
 					   sectionTimeMessage={["submit_time"]}
 					   langPackMessage={["state"]}
 					   langPackTitle={["-1,1,2"]}
-					   screeningMessage={this.screening_information}
+					   screeningMessage={this.screening_project_information}
 					/>
                     <div  className="statistical_div">
                         <table style={{width:sumLength+2+"em"}} className="statistical_table">

@@ -196,6 +196,7 @@ class BudgetExaminationAndApproval extends Component {
 		return (
             <div>
                 <DataSearchMessage 
+                    index={0}
 					   message={this.state.table_data_bodys}
 					   keywordSearch={["unicode"]}
 					   keywordTitle={[

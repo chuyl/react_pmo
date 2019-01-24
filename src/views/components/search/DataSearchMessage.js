@@ -56,35 +56,35 @@
                 for(var o = 0; o<this.props.keywordSearch.length;o++){
                     key.push(this.props.keywordSearch[o])
                     condition_arr.push("like")
-                    value.push(document.getElementById("keywordSearch"+this.props.keywordSearch[o]).value)
-                    clear_value.push(document.getElementById("keywordSearch"+this.props.keywordSearch[o]).value)
-                    id_arr.push("keywordSearch"+this.props.keywordSearch[o])
+                    value.push(document.getElementById("keywordSearch"+this.props.index+this.props.keywordSearch[o]).value)
+                    clear_value.push(document.getElementById("keywordSearch"+this.props.index+this.props.keywordSearch[o]).value)
+                    id_arr.push("keywordSearch"+this.props.index+this.props.keywordSearch[o])
                 }
             }
             if(this.props.selectNameMessage){
                 for(var m = 0; m<this.props.selectNameMessage.length;m++){
                     key.push(this.props.selectNameMessage[m])
                     condition_arr.push("equal")
-                    value.push(document.getElementById("select_message"+this.props.selectNameMessage[m]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_message"+this.props.selectNameMessage[m]+"_name").innerHTML)
-                    clear_value.push(document.getElementById("select_message"+this.props.selectNameMessage[m]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_message"+this.props.selectNameMessage[m]+"_name").innerHTML)
-                    id_arr.push("select_message"+this.props.selectNameMessage[m])
+                    value.push(document.getElementById("select_message"+this.props.index+this.props.selectNameMessage[m]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_message"+this.props.index+this.props.selectNameMessage[m]+"_name").innerHTML)
+                    clear_value.push(document.getElementById("select_message"+this.props.index+this.props.selectNameMessage[m]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_message"+this.props.index+this.props.selectNameMessage[m]+"_name").innerHTML)
+                    id_arr.push("select_message"+this.props.index+this.props.selectNameMessage[m])
                 }
             }
             if(this.props.selectNameCheckMessage){
                 for(var n = 0; n<this.props.selectNameCheckMessage.length;n++){
                     key.push(this.props.selectNameCheckMessage[n])
                     condition_arr.push("equal_many")
-                    var message =document.getElementById("select_check_message"+this.props.selectNameCheckMessage[n]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_check_message"+this.props.selectNameCheckMessage[n]+"_name").innerHTML.split(","); 
+                    var message =document.getElementById("select_check_message"+this.props.index+this.props.selectNameCheckMessage[n]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_check_message"+this.props.index+this.props.selectNameCheckMessage[n]+"_name").innerHTML.split(","); 
                      value.push(message)
-                     clear_value.push(document.getElementById("select_check_message"+this.props.selectNameCheckMessage[n]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_check_message"+this.props.selectNameCheckMessage[n]+"_name").innerHTML)
-                     id_arr.push("select_check_message"+this.props.selectNameCheckMessage[n]+"_name")
+                     clear_value.push(document.getElementById("select_check_message"+this.props.index+this.props.selectNameCheckMessage[n]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_check_message"+this.props.index+this.props.selectNameCheckMessage[n]+"_name").innerHTML)
+                     id_arr.push("select_check_message"+this.props.index+this.props.selectNameCheckMessage[n]+"_name")
                 }
             }
             if(this.props.sectionTimeMessage){
                 for(var y = 0; y<this.props.sectionTimeMessage.length;y++){
                     key.push(this.props.sectionTimeMessage[y])
                     condition_arr.push("between")
-                    var input_value = document.getElementById("section_time_search"+this.props.sectionTimeMessage[y]).value;
+                    var input_value = document.getElementById("section_time_search"+this.props.index+this.props.sectionTimeMessage[y]).value;
                   
                     if(input_value!==""){
                         var message_arr=[];
@@ -96,11 +96,11 @@
                         message_arr.push(end_time)
                         value.push(message_arr)
                         clear_value.push(input_value)
-                        id_arr.push("section_time_search"+this.props.sectionTimeMessage[y])
+                        id_arr.push("section_time_search"+this.props.index+this.props.sectionTimeMessage[y])
                     }else{
                         value.push("")
                         clear_value.push(input_value)
-                        id_arr.push("section_time_search"+this.props.sectionTimeMessage[y])
+                        id_arr.push("section_time_search"+this.props.index+this.props.sectionTimeMessage[y])
                     }
                    
                 }
@@ -110,9 +110,9 @@
                     key.push(this.props.langPackMessage[i])
                     condition_arr.push("equal")
                     // console.log(document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_id").innerHTML)
-                    value.push(document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_id").innerHTML==="-选择-"?"":document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_id").innerHTML)
-                    clear_value.push(document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_name").innerHTML)
-                    id_arr.push("select_lang_pack"+this.props.langPackMessage[i]+"_id")
+                    value.push(document.getElementById("select_lang_pack"+this.props.index+this.props.langPackMessage[i]+"_id").innerHTML==="-选择-"?"":document.getElementById("select_lang_pack"+this.props.index+this.props.langPackMessage[i]+"_id").innerHTML)
+                    clear_value.push(document.getElementById("select_lang_pack"+this.props.index+this.props.langPackMessage[i]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_lang_pack"+this.props.index+this.props.langPackMessage[i]+"_name").innerHTML)
+                    id_arr.push("select_lang_pack"+this.props.index+this.props.langPackMessage[i]+"_id")
                 }
             }
             
@@ -146,28 +146,30 @@
         clear_search=()=>{
             if(this.props.keywordSearch){
                 for(var j = 0; j<this.props.keywordSearch.length;j++){
-                    document.getElementById("keywordSearch"+this.props.keywordSearch[j]).value="";
+                    document.getElementById("keywordSearch"+this.props.index+this.props.keywordSearch[j]).value="";
                 }
             }
             if(this.props.selectNameMessage){
                 for(var i = 0; i<this.props.selectNameMessage.length;i++){
-                    document.getElementById("select_message"+this.props.selectNameMessage[i]+"_name").innerHTML="-选择-"
+                    document.getElementById("select_message"+this.props.index+this.props.selectNameMessage[i]+"_name").innerHTML="-选择-"
                 }
             }
            
             if(this.props.selectNameCheckMessage){
                 for(var m = 0; m<this.props.selectNameCheckMessage.length;m++){
-                    document.getElementById("select_check_message"+this.props.selectNameCheckMessage[m]+"_name").innerHTML="-选择-"
+                    
+                    document.getElementById("select_check_message"+this.props.index+this.props.selectNameCheckMessage[m]+"_name").innerHTML="-选择-"
                 }
             }
             if(this.props.sectionTimeMessage){
-                for(var n = 0; n<this.props.sectionTimeMessage.length;m++){
-                    document.getElementById("section_time_search"+this.props.sectionTimeMessage[n]+"_name").innerHTML="-选择-"
+                for(var n = 0; n<this.props.sectionTimeMessage.length;n++){
+                    // console.log("section_time_search"+this.props.index+this.props.sectionTimeMessage[n]+"_name")
+                    document.getElementById("section_time_search"+this.props.index+this.props.sectionTimeMessage[n]).innerHTML="-选择-"
                 }
             }
             if(this.props.langPackMessage){
                 for(var p = 0; p<this.props.langPackMessage.length;p++){
-                    document.getElementById("select_lang_pack"+this.props.langPackMessage[p]+"_name").innerHTML="-选择-"
+                    document.getElementById("select_lang_pack"+this.props.index+this.props.langPackMessage[p]+"_name").innerHTML="-选择-"
                 }
             }
             // document.getElementById("keywordSearch").value="";
@@ -243,7 +245,7 @@
                     </button>
                     <div className="select_filter_box" style={this.state.filter_box_state?{display:"block"}:{display:"none"}}>
                         <SelectSearchType
-                             id={"select_title"}
+                             id={"select_title"+this.props.index}
                              selectedInfo={this.props.keywordTitle[0]}
                              keywordTitle={this.props.keywordTitle} 
                              selectTitleIndex={this.select_title_index}    
@@ -254,7 +256,7 @@
                                     key={index}
                                     displayNone={this.state.title_index===index?1:0}
                                     // style={this.state.title_index===index?{}:{display:"none"}}
-                                    id={"keywordSearch"+keywordSearch}
+                                    id={"keywordSearch"+this.props.index+keywordSearch}
                                 />
                                 )
                         }):""}
@@ -263,7 +265,7 @@
                                 <SelectMessage
                                     key={index}
                                     displayNone={index+this.props.keywordSearch.length===this.state.title_index?1:0}
-                                    id={"select_message"+this.props.selectNameMessage[index]}
+                                    id={"select_message"+this.props.index+this.props.selectNameMessage[index]}
                                     searchInfoLists={selectListMessage}     
                                 />
                             )
@@ -273,7 +275,7 @@
                                 <SelectCheckSearchType
                                     key={index}
                                     displayNone={index+this.props.selectListMessage.length+this.props.keywordSearch.length===this.state.title_index?1:0}
-                                    id={"select_check_message"+this.props.selectNameCheckMessage[index]}
+                                    id={"select_check_message"+this.props.index+this.props.selectNameCheckMessage[index]}
                                     searchInfoLists={selectListCheckMessage}     
                             />
                             )
@@ -283,7 +285,7 @@
                                 <SectionTimeSearch
                                     key={index}
                                     displayNone={index+this.props.selectListMessage.length+this.props.keywordSearch.length+this.props.selectListCheckMessage.length===this.state.title_index?1:0}
-                                    id={"section_time_search"+this.props.sectionTimeMessage[index]}
+                                    id={"section_time_search"+this.props.index+this.props.sectionTimeMessage[index]}
                                     // searchInfoLists={selectListCheckMessage}     
                             />
                             )
@@ -294,7 +296,7 @@
                                 <SelectListLangLocal
                                     key={index}
                                     displayNone={index+this.props.selectListMessage.length+this.props.keywordSearch.length+this.props.selectListCheckMessage.length+this.props.sectionTimeMessage.length===this.state.title_index?1:0}
-                                    id={"select_lang_pack"+this.props.langPackMessage[index]}
+                                    id={"select_lang_pack"+this.props.index+this.props.langPackMessage[index]}
                                     langPack="paymentState"
                                     keywordTitle={this.props.langPackTitle[index]}
                                     selectTitleIndex={this.select_lang_index}

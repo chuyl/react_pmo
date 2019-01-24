@@ -373,7 +373,8 @@ class ExpenditureManage extends Component {
         }
 		return (
             <div>
-                <DataSearchMessage 
+				<DataSearchMessage 
+				index={0}
 					   message={this.state.table_data_bodys}
 					   keywordSearch={["financial_number"]}
 					   keywordTitle={[
