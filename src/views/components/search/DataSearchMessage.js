@@ -109,7 +109,7 @@
                 for(var i = 0; i<this.props.langPackMessage.length;i++){
                     key.push(this.props.langPackMessage[i])
                     condition_arr.push("equal")
-                    console.log(document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_id").innerHTML)
+                    // console.log(document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_id").innerHTML)
                     value.push(document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_id").innerHTML==="-选择-"?"":document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_id").innerHTML)
                     clear_value.push(document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_name").innerHTML==="-选择-"?"":document.getElementById("select_lang_pack"+this.props.langPackMessage[i]+"_name").innerHTML)
                     id_arr.push("select_lang_pack"+this.props.langPackMessage[i]+"_id")
@@ -118,8 +118,8 @@
             
            //value 用来存储select的option
             var obj = {};
-            console.log(value)
-            console.log(key)
+            // console.log(value)
+            // console.log(key)
             var search_arr=[];
             for (var h = 0; h < key.length; h++) {
                 if(value[h]!==""){
@@ -129,7 +129,7 @@
                
                 
             }
-             console.log(obj)
+            //  console.log(obj)
            
             //obj的key为数据表中的字段，value对应字段中筛选的数据
             //所有筛选条件的数组
@@ -183,7 +183,7 @@
          * @param clear_this_search 函数 清空某一项筛选条件
          */
         clear_this_search=(id)=>{
-            console.log(id)
+            // console.log(id)
             document.getElementById(id).innerHTML? document.getElementById(id).innerHTML="-选择-": document.getElementById(id).value=""
              this.screening_information()
         }
@@ -222,7 +222,7 @@
         // console.log(this.props.keywordTitle)
         render(){
             // const {id,message} =this.props;
-            console.log(this.state.search_arr)
+            // console.log(this.state.search_arr)
             var search_length=0;
             for(var i =0; i<this.state.search_arr.length;i++){
                 if(this.state.search_arr[i].name!==""){
@@ -289,7 +289,7 @@
                             )
                         }):""}
                         {this.props.langPackMessage?this.props.langPackMessage.map((langPackMessage,index)=>{
-                           console.log(index+this.props.selectListMessage.length+this.props.keywordSearch.length+this.props.selectListCheckMessage.length+this.props.sectionTimeMessage.length)
+                        //    console.log(index+this.props.selectListMessage.length+this.props.keywordSearch.length+this.props.selectListCheckMessage.length+this.props.sectionTimeMessage.length)
                            return(
                                 <SelectListLangLocal
                                     key={index}

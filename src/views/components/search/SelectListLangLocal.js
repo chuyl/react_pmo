@@ -31,7 +31,6 @@
         }
         render() {
             var keywordTitle = this.props.keywordTitle?this.props.keywordTitle.split(","):[]; 
-            console.log(keywordTitle)
             var selectList=[];
             for(var i in LangPack[this.props.langPack]){
                 for(var j = 0;j<keywordTitle.length;j++){
@@ -41,9 +40,7 @@
                 }
                
             }
-            console.log(selectList)
             const { selectedInfo,selectedIdInfo, id, labelValue,disabled,displayNone } = this.props;
-            console.log(displayNone)
             return (
                 <div style={this.props.displayNone===0?{display:"none"}:{}} className="search_terms">
                     <div onClick={() => {
