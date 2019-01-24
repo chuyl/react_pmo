@@ -1,6 +1,6 @@
 @charset "utf-8";
-
 @import "src/reset";
+@import 'src/font_style';
 @import "src/mixins/color";
 @import "src/mixins/shadow";
 @import "src/mixins/font";
@@ -15,7 +15,6 @@
 @import "src/text";
 @import "src/login";
 @import 'src/main';
-@import 'src/font_style';
 @import 'src/date';
 @import 'src/button';
 @import 'src/mixins/table';
