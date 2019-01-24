@@ -511,6 +511,13 @@ textarea:disabled {
     float: left;
 }
 
+.card_related_div.active {
+    button {
+        color: $primary-color-text;
+        background-color: $primary-color;
+    }
+}
+
 .card-body .card-page:nth-of-type(2) {
     overflow: hidden;
     .card_ide_btn {

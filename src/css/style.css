@@ -1793,6 +1793,10 @@ textarea:disabled {
 .card_ide_btn {
   float: left; }
 
+.card_related_div.active button {
+  color: #FFFFFF;
+  background-color: #3F51B5; }
+
 .card-body .card-page:nth-of-type(2) {
   overflow: hidden; }
   .card-body .card-page:nth-of-type(2) .card_ide_btn {
