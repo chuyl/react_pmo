@@ -437,34 +437,22 @@ class AssociatedProjects extends Component {
 				},3000)
 			  }
         }
-        console.log(this.state.payment_id)
-        console.log(this.state.project_id)
         // project_payment_id_arr
         if(this.state.content==="add_ids_by_project"){
             var add_ids_by_project=[];
             for(var i = 0;i<this.state.project_payment_id_arr.length;i++){
                 add_ids_by_project.push({id:this.state.project_payment_id_arr[i].id,price:document.getElementById("project_payment_id_arr"+this.state.project_payment_id_arr[i].id).value})
-                //    console.log(document.getElementById("project_payment_id_arr"+this.state.project_payment_id_arr[i].id).value)
             }
-            getData(getRouter("payment_project_add_projects_by_id"), { token:sessionStorage.token,payment_object_list:add_ids_by_project,project_id:this.state.project_id[0]}, cb, {});
-           console.log(this.state.project_payment_id_arr)
+            getData(getRouter("payment_project_add_ids_by_project"), { token:sessionStorage.token,payment_object_list:add_ids_by_project,project_id:this.state.project_id[0]}, cb, {});
         }
        //一个支出到多个项目
         if(this.state.content==="add_projects_by_id"){
             var add_projects_by_id=[];
             for(var j = 0;j<this.state.project_payment_id_arr.length;j++){
                 add_projects_by_id.push({project_id:this.state.project_payment_id_arr[j].id,price:document.getElementById("project_payment_id_arr"+this.state.project_payment_id_arr[j].id).value})
-               
-                //    console.log(document.getElementById("project_payment_id_arr"+this.state.project_payment_id_arr[i].id).value)
             }
             getData(getRouter("payment_project_add_projects_by_id"), { token:sessionStorage.token,id:this.state.payment_id[0],project_object_list:add_projects_by_id}, cb, {});
         }
-	// 	if(this.state.payment_id.length==1){
-    //          getData(getRouter("payment_project_projects"), { token:sessionStorage.token,id:this.state.payment_id[0],project_ids:this.state.project_id}, cb, {});
-    //     }else if(this.state.project_id.length==1){
-    //         getData(getRouter("payment_project_ids"), { token:sessionStorage.token,ids:this.state.payment_id,project_id:this.state.project_id[0]}, cb, {});
-    //    }
-		// getData(getRouter("payment_manage_edit_financial_number"), { token:sessionStorage.token,id:this.state.payment_id,financial_number:this.state.financial_number }, cb, {});
 	}
     alertHoldState=(newState)=>{
        
@@ -475,7 +463,6 @@ class AssociatedProjects extends Component {
 	}
     alertAddState=(newState)=>{
       
-        console.log(newState.content)
         var paymentCheck=document.getElementsByName("paymentCheck");
         var projectCheck=document.getElementsByName("projectCheck");
         var payment_message=[];
@@ -491,8 +478,6 @@ class AssociatedProjects extends Component {
                     project_message.push({id:projectCheck[j].value,title:projectCheck[j].parentNode.children[1].innerHTML}); 
                 }
             }
-            console.log(project_message)
-            console.log(payment_message)
             if(newState.content==="add_ids_by_project"){
                 this.setState({
                     [newState.state]:true,
