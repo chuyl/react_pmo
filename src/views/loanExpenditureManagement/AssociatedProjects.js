@@ -86,7 +86,7 @@ class AssociatedProjects extends Component {
             query_condition:obj
 		})
 		// console.log(objs)
-        getData(getRouter("payment_project_list"), { token: sessionStorage.token,query_condition:objs,data_type:"page_json" }, cb, {});
+        getData(getRouter("project_manage_list"), { token: sessionStorage.token,query_condition:objs,data_type:"page_json" }, cb, {});
         // getData(getRouter("examine_record_list"),{ session: sessionStorage.session}, cb, {});
 
 	}
@@ -106,6 +106,21 @@ class AssociatedProjects extends Component {
 		 , cb, {});
 	}
 	
+	project_csv=(search_obj)=>{
+		var cb = (route, message, arg) => {
+            if (message.error === 0) {
+           
+            }
+           
+        }
+        var obj ={};
+     
+        this.setState({
+            query_condition:obj
+		})
+		PostCsvData(getRouter("project_manage_list"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
+		 , cb, {});
+	}
 	
     checked_arr=(name,arr,radio)=>{
         var name=document.getElementsByName(name);
@@ -349,7 +364,7 @@ class AssociatedProjects extends Component {
 			<a 
 				onClick={()=>{
 					// this.downloadDetailData()
-					 this.payment_csv(this.state.search_project_message)
+					 this.project_csv(this.state.search_project_message)
 				}}
 				className="nyx-change-page-href" style={{marginRight:"-10em",float:"right"}}>
 				{"导出"}
