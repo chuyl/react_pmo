@@ -52,6 +52,7 @@
             border: none;
             width: 100%;
             line-height: $set_height;
+            border-radius: 0.5em;
             color: #fff;
             background: linear-gradient(90deg, #453287, #262676);
         }
@@ -91,7 +92,7 @@
             width: 100%;
             padding: 4 * $padding 2em;
             background-repeat: no-repeat;
-            background-size:cover;
+            background-size: cover;
             background-image: url(src/bg_small-03.png);
         }
     }

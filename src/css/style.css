@@ -3334,6 +3334,7 @@ textarea:disabled {
       border: none;
       width: 100%;
       line-height: 4em;
+      border-radius: 0.5em;
       color: #fff;
       background: linear-gradient(90deg, #453287, #262676); }
   .login .user_name,
