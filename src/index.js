@@ -315,18 +315,24 @@ handleLogout = () => {
     return  (
       <div className="login">
         <div className="login_window">
-        <div className="user_name">
-          <input
-            id="login_account"
-            // labelValue="用户名"
-            value={this.state.login_account}
-            // inputValue={this.state.login_account}
-            onChange={(e)=>{
-              this.setState({
-                login_account:e.target.value
-              })
-            }}
-          />
+        <div className="login_nav_title">
+          <span>
+            欢迎
+          </span>
+          <span>
+            登录系统
+          </span>
+        </div>
+          <div className="user_name">
+            <input
+              id="login_account"
+              value={this.state.login_account}
+              onChange={(e)=>{
+                this.setState({
+                  login_account:e.target.value
+                })
+              }}
+            />
           </div>
           <div className="pass_word">
           <input
@@ -346,7 +352,12 @@ handleLogout = () => {
               }}
 
             >登录</button>
+             <div className="login_log_div">
+               <span></span>
+               <span>中软培训</span>
+             </div>
           </div>
+         
       </div>
     )
   }

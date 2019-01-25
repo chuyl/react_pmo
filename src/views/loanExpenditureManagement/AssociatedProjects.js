@@ -25,13 +25,14 @@ class AssociatedProjects extends Component {
          search_message:"",
          search_project_message:"",
 		 financial_number:"",
-		 alertAddFinancialState:false,//财务编号
+		 add_ids_by_project:false,//一个项目关联多个支出
 		 alertAddProjectState:false,//相关内容
 		 alertState:false,
 		 payment_id:[],//支出id
 		 project_id:[],//项目id
 		 alertTitle:"",
-		 linkpage:""
+         linkpage:"",
+         
         
 	}
 	componentWillMount(){
@@ -69,8 +70,6 @@ class AssociatedProjects extends Component {
         
         var cb = (route, message, arg) => {
             if (message.error === 0) {
-                console.log(message.data.data_body)
-                console.log(message.data.data_head)
                this.setState({
                 table_project_data_body:message.data.data_body,
                 table_project_data_bodys:message.data.data_body,
@@ -180,10 +179,9 @@ class AssociatedProjects extends Component {
                             }}
                             value={table_data_body.id}
                             name="paymentCheck" type="checkbox"/>
+                            <span style={{display:"none"}}>{table_data_body.id+" "+table_data_body.item_content+" "+table_data_body.amount}</span>
 					</td>
-					{/* <td>
-						<input value={table_data_body.id} type="checkbox" name="payment"/>
-					</td> */}
+					
                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
 						return(
 						<td key={index} title={table_data_body[table_data_head.key]}>
@@ -228,12 +226,12 @@ class AssociatedProjects extends Component {
                       
                           
                         }}  value={table_project_data_body.id} name="projectCheck" type="checkbox"/>
-					</td>
+                         <span style={{display:"none"}}>{table_project_data_body.unicode+" "+table_project_data_body.time+" "+table_project_data_body.time}</span>
+                    </td>
 					{/* <td>
 						<input value={table_project_data_body.id} type="checkbox" name="payment"/>
 					</td> */}
                     {this.state.table_project_data_head?this.state.table_project_data_head.map((table_project_data_head,index)=>{
-                        console.log(this.state.table_project_data_head)
                         return(
 						<td key={index} title={table_project_data_body[table_project_data_head.key]}>
 							<div className="statistical_table_box">
@@ -400,7 +398,7 @@ class AssociatedProjects extends Component {
 	}
 	cancelCallback=()=>{
 		this.setState({
-			alertAddFinancialState:false,
+			add_ids_by_project:false,
 			alertAddProjectState:false,
 			alertState:false
 		})
@@ -447,13 +445,80 @@ class AssociatedProjects extends Component {
 		// getData(getRouter("payment_manage_edit_financial_number"), { token:sessionStorage.token,id:this.state.payment_id,financial_number:this.state.financial_number }, cb, {});
 	}
     alertHoldState=(newState)=>{
-		
+       
 		this.setState({
 			[newState.state]:true,
 			alertTitle:newState.alertTitle,
 		})
 	}
-
+    alertAddState=(newState)=>{
+      
+        // console.log(newState)
+        var paymentCheck=document.getElementsByName("paymentCheck");
+        var projectCheck=document.getElementsByName("projectCheck");
+        var payment_message=[];
+        var project_message=[];
+            for(var i = 0;i<paymentCheck.length;i++){
+                if(paymentCheck[i].checked){
+                    payment_message.push(paymentCheck[i].parentNode.children[1].innerHTML); 
+                }
+            }
+            
+            for(var j = 0;j<projectCheck.length;j++){
+                if(projectCheck[j].checked){
+                    project_message.push(projectCheck[j].parentNode.children[1].innerHTML); 
+                    // var message=paymentCheck[i].parentNode.children[1].innerHTML; 
+                }
+            }
+            if(newState.content==="add_ids_by_project"){
+                this.setState({
+                    [newState.state]:true,
+                    alertTitle:"关联多个支出 到"+project_message[0],
+                    // payment_id:newState.dataId,
+                    // financial_number:newState.financialNumber?newState.financialNumber:""
+                })
+            }
+            if(newState.content==="add_projects_by_id"){
+                this.setState({
+                    [newState.state]:true,
+                    alertTitle:"关联"+payment_message[0]+"元到",
+                    // payment_id:newState.dataId,
+                    // financial_number:newState.financialNumber?newState.financialNumber:""
+                })
+            }
+    }
+    payment_id_and_project_id= (pno,psize) =>{
+        var components = [];
+        this.state.project_payment_id_arr.map((table_data_body,index)=>{
+            components.push (
+                <tr
+                    key = {index}> 
+					<td  style={{"width":"2em"}}>
+                        <input 
+                            onClick={()=>{
+                               this.checked_arr("paymentCheck","payment_id","projectCheck")
+                            }}
+                            value={table_data_body.id}
+                            name="paymentCheck" type="checkbox"/>
+					</td>
+				
+                    {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
+						return(
+						<td key={index} title={table_data_body[table_data_head.key]}>
+							<div className="statistical_table_box">
+								{table_data_body[table_data_head.key]}
+							</div>
+						</td>)
+						
+					}):""}
+					
+                </tr>
+       
+        );
+       
+        })
+        return components
+     }
 	render(){
 		var sumLength=0;
         if(this.state.table_data_head){
@@ -466,17 +531,19 @@ class AssociatedProjects extends Component {
                 <div style={{width:"100%",float:"left"}}>
                     <PaymentManageBtn
                         isClick={this.state.payment_id.length===1?false:true}
-						onHoldClick={this.alertHoldState}
-						defineValue="一个支出关联多个项目"
-                        state="alertState"
+						onHoldClick={this.alertAddState}
+                        defineValue="一个支出关联多个项目"
+                        content={"add_ids_by_project"}
+                        state="add_ids_by_project"
 						// linkpage="payment_state_recall"	
 							// dataId={table_data_body.id}
 					/>
                     <PaymentManageBtn
                         isClick={this.state.project_id.length===1?false:true}
-						onHoldClick={this.alertHoldState}
+						onHoldClick={this.alertAddState}
 						defineValue="一个项目关联多个支出"
                         state="alertState"
+                        content={"add_peojects_by_id"}
 						// linkpage="payment_state_recall"	
 							// dataId={table_data_body.id}
 					/>    
@@ -582,6 +649,28 @@ class AssociatedProjects extends Component {
                             {this.project_change_page(1,5)}
                         </div>
                     </div>
+                    <Popup 
+                        content={
+                            <div>
+                                <h2>{this.state.alertTitle}</h2>
+                                <div className="popup_content">
+                                    <ViewTextField 
+                                        onChange={(e)=>{
+                                            this.setState({
+                                                project_id:e.target.value
+                                                })
+                                            }}
+                                            // view={true}
+                                        value={this.state.project_id} 
+                                        labelValue={"项目id"} 
+                                    />
+                                </div>
+                            </div>
+                            }	 
+                        sureCallback = {this.sureCallback.bind(this)} 
+                        cancelCallback = { this.cancelCallback.bind(this) } 
+                        alertState={this.state.add_ids_by_project}
+                    />
 			        <Alerts alertTitle={this.state.alertTitle} alertMsg = {this.state.alertMsg} sureCallback = {this.sureCallback.bind(this)} cancelCallback = { this.cancelCallback.bind(this) } alertState={this.state.alertState}/>
                 </div>
             </div>
