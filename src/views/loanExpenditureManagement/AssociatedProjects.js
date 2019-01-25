@@ -19,6 +19,8 @@ class AssociatedProjects extends Component {
         table_data_bodys:[],
         table_project_data_body:[],
         table_project_data_bodys:[],
+        table_project_data_head:[],
+        table_data_head:[],
          query_condition:{},
          search_message:"",
          search_project_message:"",
@@ -67,6 +69,8 @@ class AssociatedProjects extends Component {
         
         var cb = (route, message, arg) => {
             if (message.error === 0) {
+                console.log(message.data.data_body)
+                console.log(message.data.data_head)
                this.setState({
                 table_project_data_body:message.data.data_body,
                 table_project_data_bodys:message.data.data_body,
@@ -229,7 +233,8 @@ class AssociatedProjects extends Component {
 						<input value={table_project_data_body.id} type="checkbox" name="payment"/>
 					</td> */}
                     {this.state.table_project_data_head?this.state.table_project_data_head.map((table_project_data_head,index)=>{
-						return(
+                        console.log(this.state.table_project_data_head)
+                        return(
 						<td key={index} title={table_project_data_body[table_project_data_head.key]}>
 							<div className="statistical_table_box">
 								{table_project_data_body[table_project_data_head.key]}
@@ -557,11 +562,11 @@ class AssociatedProjects extends Component {
 								    <th>
 									    <div style={{"width":"2em"}}></div>
 								    </th>
-                                    {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
+                                    {this.state.table_project_data_head?this.state.table_project_data_head.map((table_project_data_head,index)=>{
                                         return(
                                             <th key={index}>
-                                                <div  style={{width:table_data_head.size+"em"}} className="statistical_table_box">
-                                                    {table_data_head.value}
+                                                <div  style={{width:table_project_data_head.size+"em"}} className="statistical_table_box">
+                                                    {table_project_data_head.value}
                                                 </div>
                                             </th>
                                         )
