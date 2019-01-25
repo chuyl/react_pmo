@@ -354,7 +354,6 @@ handleLogout = () => {
             >登录</button>
              <div className="login_log_div">
                <span></span>
-               <span>中软培训</span>
              </div>
           </div>
          
