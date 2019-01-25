@@ -30,7 +30,8 @@ class AssociatedProjects extends Component {
 		 alertState:false,
 		 payment_id:[],//支出id
 		 project_id:[],//项目id
-		 alertTitle:"",
+         alertTitle:"",
+         project_payment_title:"",
          linkpage:"",
          project_payment_id_arr:[],
          content:""
@@ -171,6 +172,12 @@ class AssociatedProjects extends Component {
         var endRow = currentPage * pageSize;//结束显示的行   40
         endRow = (endRow > num)? num : endRow;    40
         this.state.table_data_body.map((table_data_body,index)=>{
+            console.log(table_data_body.id.length)
+            var id="";
+            for(var i = 0;i<4-table_data_body.id.length;i++){
+                id+="0"
+            }
+            console.log(id)
             components.push (
                 <tr
                     key = {index}> 
@@ -181,7 +188,7 @@ class AssociatedProjects extends Component {
                             }}
                             value={table_data_body.id}
                             name="paymentCheck" type="checkbox"/>
-                            <span style={{display:"none"}}>{table_data_body.id+" "+table_data_body.item_content+" "+table_data_body.amount}</span>
+                            <span style={{display:"none"}}>{id+table_data_body.id+" "+table_data_body.item_content+" "+table_data_body.amount}</span>
 					</td>
 					
                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
@@ -482,7 +489,8 @@ class AssociatedProjects extends Component {
                 this.setState({
                     [newState.state]:true,
                     content:newState.content,
-                    alertTitle:"关联多个支出 到"+project_message[0].title,
+                    alertTitle:"关联多个支出到一个项目",
+                    project_payment_title:"关联多个支出 到"+project_message[0].title,
                     project_payment_id_arr:payment_message,
                 })
             }
@@ -491,7 +499,8 @@ class AssociatedProjects extends Component {
                 this.setState({
                     [newState.state]:true,
                     content:newState.content,
-                    alertTitle:"关联"+payment_message[0].title+"元到",
+                    alertTitle:"关联一个支出到多个项目",
+                    project_payment_title:"关联"+payment_message[0].title+"元到",
                     project_payment_id_arr:project_message,
                     // payment_id:newState.dataId,
                     // financial_number:newState.financialNumber?newState.financialNumber:""
@@ -503,6 +512,7 @@ class AssociatedProjects extends Component {
         this.state.project_payment_id_arr.map((project_payment_id_arr,index)=>{
             components.push (
                 <div key={index}>
+                <div>{this.state.project_payment_title}</div>
                     <span>
                         {project_payment_id_arr.title}
                     </span>
@@ -536,7 +546,7 @@ class AssociatedProjects extends Component {
                     <PaymentManageBtn
                         isClick={this.state.payment_id.length===1?false:true}
 						onHoldClick={this.alertAddState}
-                        defineValue="一个支出关联多个项目"
+                        defineValue="关联一个支出到多个项目"
                         content={"add_projects_by_id"}
                         state="add_ids_by_project"
 						// linkpage="payment_state_recall"	
@@ -545,7 +555,7 @@ class AssociatedProjects extends Component {
                     <PaymentManageBtn
                         isClick={this.state.project_id.length===1?false:true}
 						onHoldClick={this.alertAddState}
-						defineValue="一个项目关联多个支出"
+						defineValue="关联多个支出到一个项目"
                         state="add_ids_by_project"
                         content={"add_ids_by_project"}
 						// linkpage="payment_state_recall"	
