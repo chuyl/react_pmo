@@ -1475,16 +1475,14 @@ body {
   margin-bottom: 0; }
 
 .statistical_div::-webkit-scrollbar {
-  width: 2em;
-  height: 2em;
-  background-color: #FFFFFF;
-  border-radius: 1em; }
+  width: 1em;
+  height: 1.2em; }
 
 .statistical_div::-webkit-scrollbar-thumb {
-  width: 1em;
-  height: 4em;
+  height: 1em;
+  border: 0.3em solid #f5f5f5;
   background-color: #3F51B5;
-  border-radius: 1em; }
+  border-radius: 0.6em; }
 
 .card_left {
   width: 66.6%;
@@ -3155,14 +3153,14 @@ textarea:disabled {
   background-color: #3F51B5; }
 
 .card_list_groups::-webkit-scrollbar {
-  height: 0px;
-  width: 5px;
-  border-radius: 6px;
+  width: 1.2em;
+  height: 1.2em;
   background: #BDBDBD; }
 
 .card_list_groups::-webkit-scrollbar-thumb {
-  width: 5px;
-  border-radius: 6px;
+  width: 1em;
+  border-radius: 0.5em;
+  border: 0.3em solid #BDBDBD;
   background: #3F51B5; }
 
 .input_list {
@@ -3291,7 +3289,8 @@ textarea:disabled {
   display: flex;
   height: 100vh;
   width: 100%;
-  background: linear-gradient(90deg, #3e2b7f, #3F51B5);
+  background-image: url(src/login_bg_big-01.png);
+  background-repeat: no-repeat;
   top: 0;
   right: 0;
   bottom: 40px;
@@ -3302,8 +3301,7 @@ textarea:disabled {
     background: #111111;
     opacity: 0.8;
     width: 480px;
-    height: 320px;
-    margin: auto; }
+    height: 100vh; }
     .login .login_window input {
       box-sizing: border-box;
       display: block;

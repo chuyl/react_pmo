@@ -137,17 +137,15 @@
 }
 
 .statistical_div::-webkit-scrollbar {
-    width: 2em;
-    height: 2em;
-    background-color: $primary-color-text;
-    border-radius: 1em;
+    width: 1em;
+    height: 1.2em;
 }
 
 .statistical_div::-webkit-scrollbar-thumb {
-    width: 1em;
-    height: 4em;
+    height: 1em;
+    border: 0.3em solid $background-color;
     background-color: $primary-color;
-    border-radius: 1em;
+    border-radius: 0.6em;
 }
 
 .card_left {

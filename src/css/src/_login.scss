@@ -4,7 +4,8 @@
     display: flex;
     height: 100vh;
     width: 100%;
-    background: linear-gradient(90deg, #3e2b7f, $bg_color);
+    background-image: url(src/login_bg_big-01.png);
+    background-repeat: no-repeat;
     top: 0;
     right: 0;
     bottom: 40px;
@@ -15,8 +16,7 @@
         background: #111111;
         opacity: 0.8;
         width: 480px;
-        height: 320px;
-        margin: auto;
+        height: 100vh;
         input {
             box-sizing: border-box;
             display: block;
