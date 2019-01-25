@@ -30,8 +30,11 @@ class AssociatedProjects extends Component {
 		 alertState:false,
 		 payment_id:[],//支出id
 		 project_id:[],//项目id
-		 alertTitle:"",
+         alertTitle:"",
+         project_payment_title:"",
          linkpage:"",
+         project_payment_id_arr:[],
+         content:""
          
         
 	}
@@ -169,6 +172,12 @@ class AssociatedProjects extends Component {
         var endRow = currentPage * pageSize;//结束显示的行   40
         endRow = (endRow > num)? num : endRow;    40
         this.state.table_data_body.map((table_data_body,index)=>{
+            console.log(table_data_body.id.length)
+            var id="";
+            for(var i = 0;i<4-table_data_body.id.length;i++){
+                id+="0"
+            }
+            console.log(id)
             components.push (
                 <tr
                     key = {index}> 
@@ -179,7 +188,7 @@ class AssociatedProjects extends Component {
                             }}
                             value={table_data_body.id}
                             name="paymentCheck" type="checkbox"/>
-                            <span style={{display:"none"}}>{table_data_body.id+" "+table_data_body.item_content+" "+table_data_body.amount}</span>
+                            <span style={{display:"none"}}>{id+table_data_body.id+" "+table_data_body.item_content+" "+table_data_body.amount}</span>
 					</td>
 					
                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
@@ -411,7 +420,7 @@ class AssociatedProjects extends Component {
         var cb = (route, message, arg) => {
 			if (message.error === 0) {
 				this.setState({
-					alertState:false,
+					add_ids_by_project:false,
 		
 				})
                 this.table_data_body(1,5)
@@ -435,14 +444,22 @@ class AssociatedProjects extends Component {
 				},3000)
 			  }
         }
-        console.log(this.state.payment_id)
-        console.log(this.state.project_id)
-		if(this.state.payment_id.length==1){
-             getData(getRouter("payment_project_projects"), { token:sessionStorage.token,id:this.state.payment_id[0],project_ids:this.state.project_id}, cb, {});
-        }else if(this.state.project_id.length==1){
-            getData(getRouter("payment_project_ids"), { token:sessionStorage.token,ids:this.state.payment_id,project_id:this.state.project_id[0]}, cb, {});
-       }
-		// getData(getRouter("payment_manage_edit_financial_number"), { token:sessionStorage.token,id:this.state.payment_id,financial_number:this.state.financial_number }, cb, {});
+        // project_payment_id_arr
+        if(this.state.content==="add_ids_by_project"){
+            var add_ids_by_project=[];
+            for(var i = 0;i<this.state.project_payment_id_arr.length;i++){
+                add_ids_by_project.push({id:this.state.project_payment_id_arr[i].id,price:document.getElementById("project_payment_id_arr"+this.state.project_payment_id_arr[i].id).value})
+            }
+            getData(getRouter("payment_project_add_ids_by_project"), { token:sessionStorage.token,payment_object_list:add_ids_by_project,project_id:this.state.project_id[0]}, cb, {});
+        }
+       //一个支出到多个项目
+        if(this.state.content==="add_projects_by_id"){
+            var add_projects_by_id=[];
+            for(var j = 0;j<this.state.project_payment_id_arr.length;j++){
+                add_projects_by_id.push({project_id:this.state.project_payment_id_arr[j].id,price:document.getElementById("project_payment_id_arr"+this.state.project_payment_id_arr[j].id).value})
+            }
+            getData(getRouter("payment_project_add_projects_by_id"), { token:sessionStorage.token,id:this.state.payment_id[0],project_object_list:add_projects_by_id}, cb, {});
+        }
 	}
     alertHoldState=(newState)=>{
        
@@ -453,66 +470,63 @@ class AssociatedProjects extends Component {
 	}
     alertAddState=(newState)=>{
       
-        // console.log(newState)
         var paymentCheck=document.getElementsByName("paymentCheck");
         var projectCheck=document.getElementsByName("projectCheck");
         var payment_message=[];
         var project_message=[];
             for(var i = 0;i<paymentCheck.length;i++){
                 if(paymentCheck[i].checked){
-                    payment_message.push(paymentCheck[i].parentNode.children[1].innerHTML); 
+                    payment_message.push({id:paymentCheck[i].value,title:paymentCheck[i].parentNode.children[1].innerHTML}); 
                 }
             }
             
             for(var j = 0;j<projectCheck.length;j++){
                 if(projectCheck[j].checked){
-                    project_message.push(projectCheck[j].parentNode.children[1].innerHTML); 
-                    // var message=paymentCheck[i].parentNode.children[1].innerHTML; 
+                    project_message.push({id:projectCheck[j].value,title:projectCheck[j].parentNode.children[1].innerHTML}); 
                 }
             }
             if(newState.content==="add_ids_by_project"){
                 this.setState({
                     [newState.state]:true,
-                    alertTitle:"关联多个支出 到"+project_message[0],
-                    // payment_id:newState.dataId,
-                    // financial_number:newState.financialNumber?newState.financialNumber:""
+                    content:newState.content,
+                    alertTitle:"关联多个支出到一个项目",
+                    project_payment_title:"关联多个支出 到"+project_message[0].title,
+                    project_payment_id_arr:payment_message,
                 })
             }
+           
             if(newState.content==="add_projects_by_id"){
                 this.setState({
                     [newState.state]:true,
-                    alertTitle:"关联"+payment_message[0]+"元到",
+                    content:newState.content,
+                    alertTitle:"关联一个支出到多个项目",
+                    project_payment_title:"关联"+payment_message[0].title+"元到",
+                    project_payment_id_arr:project_message,
                     // payment_id:newState.dataId,
                     // financial_number:newState.financialNumber?newState.financialNumber:""
                 })
             }
     }
-    payment_id_and_project_id= (pno,psize) =>{
+    payment_id_and_project_id= () =>{
         var components = [];
-        this.state.project_payment_id_arr.map((table_data_body,index)=>{
+        this.state.project_payment_id_arr.map((project_payment_id_arr,index)=>{
             components.push (
-                <tr
-                    key = {index}> 
-					<td  style={{"width":"2em"}}>
-                        <input 
-                            onClick={()=>{
-                               this.checked_arr("paymentCheck","payment_id","projectCheck")
-                            }}
-                            value={table_data_body.id}
-                            name="paymentCheck" type="checkbox"/>
-					</td>
-				
-                    {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
-						return(
-						<td key={index} title={table_data_body[table_data_head.key]}>
-							<div className="statistical_table_box">
-								{table_data_body[table_data_head.key]}
-							</div>
-						</td>)
-						
-					}):""}
-					
-                </tr>
+                <div key={index}>
+                <div>{this.state.project_payment_title}</div>
+                    <span>
+                        {project_payment_id_arr.title}
+                    </span>
+                    <ViewTextField 
+                         id={"project_payment_id_arr"+project_payment_id_arr.id}
+                        // onChange={(e)=>{
+                        //     this.setState({
+                        //         project_id:e.target.value
+                        //         })
+                        //     }}
+                        defineValue={""} 
+                        labelValue={"关联金额"} 
+                                    />
+                </div>
        
         );
        
@@ -532,8 +546,8 @@ class AssociatedProjects extends Component {
                     <PaymentManageBtn
                         isClick={this.state.payment_id.length===1?false:true}
 						onHoldClick={this.alertAddState}
-                        defineValue="一个支出关联多个项目"
-                        content={"add_ids_by_project"}
+                        defineValue="关联一个支出到多个项目"
+                        content={"add_projects_by_id"}
                         state="add_ids_by_project"
 						// linkpage="payment_state_recall"	
 							// dataId={table_data_body.id}
@@ -541,9 +555,9 @@ class AssociatedProjects extends Component {
                     <PaymentManageBtn
                         isClick={this.state.project_id.length===1?false:true}
 						onHoldClick={this.alertAddState}
-						defineValue="一个项目关联多个支出"
-                        state="alertState"
-                        content={"add_peojects_by_id"}
+						defineValue="关联多个支出到一个项目"
+                        state="add_ids_by_project"
+                        content={"add_ids_by_project"}
 						// linkpage="payment_state_recall"	
 							// dataId={table_data_body.id}
 					/>    
@@ -654,7 +668,8 @@ class AssociatedProjects extends Component {
                             <div>
                                 <h2>{this.state.alertTitle}</h2>
                                 <div className="popup_content">
-                                    <ViewTextField 
+                                {this.payment_id_and_project_id()}
+                                    {/* <ViewTextField 
                                         onChange={(e)=>{
                                             this.setState({
                                                 project_id:e.target.value
@@ -663,7 +678,7 @@ class AssociatedProjects extends Component {
                                             // view={true}
                                         value={this.state.project_id} 
                                         labelValue={"项目id"} 
-                                    />
+                                    /> */}
                                 </div>
                             </div>
                             }	 
