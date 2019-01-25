@@ -137,17 +137,15 @@
 }
 
 .statistical_div::-webkit-scrollbar {
-    width: 2em;
-    height: 2em;
-    background-color: $primary-color-text;
-    border-radius: 1em;
+    width: 1em;
+    height: 1.2em;
 }
 
 .statistical_div::-webkit-scrollbar-thumb {
-    width: 1em;
-    height: 4em;
+    height: 1em;
+    border: 0.3em solid $background-color;
     background-color: $primary-color;
-    border-radius: 1em;
+    border-radius: 0.6em;
 }
 
 .card_left {
@@ -509,6 +507,13 @@ textarea:disabled {
 
 .card_ide_btn {
     float: left;
+}
+
+.card_related_div.active {
+    button {
+        color: $primary-color-text;
+        background-color: $primary-color;
+    }
 }
 
 .card-body .card-page:nth-of-type(2) {
@@ -886,6 +891,7 @@ textarea:disabled {
     background: $background-color;
     height: 70vh;
     overflow: scroll;
+    position: relative;
 }
 
 .statistical_table {
@@ -997,13 +1003,13 @@ textarea:disabled {
 }
 
 .statistical_change_page {
-    padding: 1em 8em;
+    padding: 1em 2em;
+    width: 100%;
     display: block;
-    width: calc(100% - 234px);
+    position: absolute;
     box-sizing: border-box;
     text-align: center;
-    margin-top: 1em;
-    position: absolute;
+    margin-bottom: 0em;
     bottom: 0;
     background: $primary-color;
     color: $primary-color-text;

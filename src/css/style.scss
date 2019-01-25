@@ -28,15 +28,15 @@
 }
 
 .card_list_groups::-webkit-scrollbar {
-    height: 0px;
-    width: 5px;
-    border-radius: 6px;
+    width: 1.2em;
+    height: 1.2em;
     background: $divider-color;
 }
 
 .card_list_groups::-webkit-scrollbar-thumb {
-    width: 5px;
-    border-radius: 6px;
+    width: 1em;
+    border-radius: 0.5em;
+    border: 0.3em solid $divider-color;
     background: $primary-color;
 }
 
