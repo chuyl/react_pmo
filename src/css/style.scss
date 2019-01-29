@@ -51,10 +51,11 @@
 
 //弹出框
 .alert_back {
+    overflow: scroll;
     @include set_prompt($primary-text-color, $primary-color, $accent-color, 1em, $background-color, 10px);
 }
 
 //登录页面
 .login {
-    @include creat_login_style($primary-color, 20px, 40px);
+    @include creat_login_style($primary-color, 20px, 4em);
 }
