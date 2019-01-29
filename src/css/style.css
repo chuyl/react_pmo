@@ -2164,6 +2164,10 @@ textarea:disabled {
     content: '\e014'; }
   .statistical_table tr .card_ide_btn:nth-of-type(5) button:first-child::before {
     content: '\e020'; }
+  .statistical_table tr .card_ide_btn:nth-of-type(6) button:first-child::before {
+    content: '\e148'; }
+  .statistical_table tr .card_ide_btn:nth-of-type(7) button:first-child::before {
+    content: '\e095'; }
 
 .user_info_box {
   height: 4vh;
