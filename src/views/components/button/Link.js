@@ -66,6 +66,9 @@
             arr_list.push(obj); 
 
     }
+    holdViewClick=()=>{
+
+    }
     /** 
 	 * @time 2018-10-16
 	 * @author xuesong
@@ -127,7 +130,7 @@
             const {button} = this.props
             return ( 
                     <div className="card_ide_btn">
-                        <button className="btn_list" onClick =  {this.handleClick}>{button} </button >  
+                        <button className="btn_list" onClick =  {this.props.view?this.holdViewClick:this.handleClick}>{button} </button >  
                     </div>
              )
         }

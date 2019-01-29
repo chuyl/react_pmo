@@ -172,12 +172,10 @@ class AssociatedProjects extends Component {
         var endRow = currentPage * pageSize;//结束显示的行   40
         endRow = (endRow > num)? num : endRow;    40
         this.state.table_data_body.map((table_data_body,index)=>{
-            console.log(table_data_body.id.length)
             var id="";
             for(var i = 0;i<4-table_data_body.id.length;i++){
                 id+="0"
             }
-            console.log(id)
             components.push (
                 <tr
                     key = {index}> 
@@ -188,7 +186,7 @@ class AssociatedProjects extends Component {
                             }}
                             value={table_data_body.id}
                             name="paymentCheck" type="checkbox"/>
-                            <span style={{display:"none"}}>{id+table_data_body.id+" "+table_data_body.item_content+" "+table_data_body.amount}</span>
+                            <span style={{display:"none"}}>{id+table_data_body.id+" "+table_data_body.item_content===""?"未设置支出内容":table_data_body.item_content+" "+table_data_body.amount===""?"未设置金额":table_data_body.amount}</span>
 					</td>
 					
                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
@@ -235,7 +233,7 @@ class AssociatedProjects extends Component {
                       
                           
                         }}  value={table_project_data_body.id} name="projectCheck" type="checkbox"/>
-                         <span style={{display:"none"}}>{table_project_data_body.unicode+" "+table_project_data_body.time+" "+table_project_data_body.time}</span>
+                         <span style={{display:"none"}}>{table_project_data_body.unicode+" "+table_project_data_body.time===""?"未设置课程名称":table_project_data_body.time+" "+table_project_data_body.time}</span>
                     </td>
 					{/* <td>
 						<input value={table_project_data_body.id} type="checkbox" name="payment"/>
@@ -387,7 +385,6 @@ class AssociatedProjects extends Component {
      }
      screening_information=(message)=>{
         // table_data_body()
-		 console.log(message)
 		 
          //message为筛选条件
 		this.setState({
@@ -397,7 +394,6 @@ class AssociatedProjects extends Component {
     }
     screening_project_information=(message)=>{
         // table_data_body()
-		 console.log(message)
 		 
          //message为筛选条件
 		this.setState({

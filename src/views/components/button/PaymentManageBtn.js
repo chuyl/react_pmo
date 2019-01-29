@@ -15,6 +15,7 @@
                 // paymentId:this.state.paymentId,
                 alertTitle:this.props.defineValue,
                 content:this.props.content,
+                projectId:this.props.projectId,
                 financialNumber:this.props.financialNumber
                }
             this.props.onHoldClick(newState);

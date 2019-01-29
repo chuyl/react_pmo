@@ -19,9 +19,11 @@ class ExpenditureManage extends Component {
 		 financial_number:"",
 		 alertAddFinancialState:false,//财务编号
 		 alertAddProjectState:false,//相关内容
+		 alertChangeAmountState:false,//修改金额
 		 alertState:false,
 		 payment_id:"",//支出id
 		 project_id:"",//项目id
+		 price:"",
 		 payment_id_arr:[],
 		 alertTitle:"",
 		 linkpage:""
@@ -89,7 +91,8 @@ class ExpenditureManage extends Component {
 			[newState.state]:true,
 			payment_id:newState.dataId,
 			alertTitle:newState.alertTitle,
-			linkpage:newState.linkpage
+			linkpage:newState.linkpage,
+			project_id:newState.projectId
 		})
 	}
 
@@ -157,6 +160,20 @@ class ExpenditureManage extends Component {
 							state="alertState"
 							linkpage="payment_state_cancel"	
 							dataId={table_data_body.id}
+						/>
+						<PaymentManageBtn
+							onHoldClick={this.alertAddState}
+							defineValue="修改金额"
+							state="alertChangeAmountState"	
+							dataId={table_data_body.id}
+						/>
+						<PaymentManageBtn
+							onHoldClick={this.alertHoldState}
+							defineValue="取消关联"
+							state="alertState"
+							linkpage="payment_project_cancel"	
+							dataId={table_data_body.id}
+							projectId={table_data_body.project_id}
 						/>
 					</td>
 					{/* <td>
@@ -318,10 +335,43 @@ class ExpenditureManage extends Component {
 		console.log(this.state.project_id)
 		getData(getRouter("payment_project_add"), { token:sessionStorage.token,id:this.state.payment_id,project_id:this.state.project_id }, cb, {});
 	}
+	sureChangeAmountCallback=()=>{
+		console.log(this.state.payment_id)
+		var cb = (route, message, arg) => {
+			if (message.error === 0) {
+				this.setState({
+					alertChangeAmountState:false,
+		
+				})
+				this.table_data_body(1,5)
+
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
+			}else{
+				Alert.open({
+				  alertTip:message.msg
+				  
+				});
+				setTimeout(function(){
+				  Alert.close();
+				},3000)
+			  }
+		}
+		console.log(this.state.price)
+		console.log(this.state.payment_id)
+		getData(getRouter("payment_project_edit"), { token:sessionStorage.token,id:this.state.payment_id,price:this.state.price }, cb, {});
+	}
 	cancelCallback=()=>{
 		this.setState({
 			alertAddFinancialState:false,
 			alertAddProjectState:false,
+			alertChangeAmountState:false,
 			alertState:false
 		})
 	}
@@ -360,8 +410,15 @@ class ExpenditureManage extends Component {
             //  this.props.oneChange(newState);
         }
         //获取数据接口
-        console.log(this.state.linkpage)
-         getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, id:this.state.payment_id }, cb,  {}); 
+		console.log(this.state.linkpage)
+		console.log(this.state.project_id)
+		if(this.state.linkpage=="payment_project_cancel"){
+			getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, id:this.state.payment_id,project_id:this.state.project_id }, cb,  {}); 
+			//}
+		}else{
+			getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, id:this.state.payment_id }, cb,  {}); 
+
+		}
     //}
 	}
 	render(){
@@ -473,6 +530,28 @@ class ExpenditureManage extends Component {
 				sureCallback = {this.sureAddProjectCallback.bind(this)} 
 				cancelCallback = { this.cancelCallback.bind(this) } 
 				alertState={this.state.alertAddProjectState}
+			/>
+			<Popup 
+				content={
+					<div>
+						<h2>修改金额</h2>
+						<div className="popup_content">
+							<ViewTextField 
+								onChange={(e)=>{
+									this.setState({
+										price:e.target.value
+										})
+									}}
+									 defineValue={""}
+								// value={this.state.project_id} 
+								labelValue={"项目金额"} 
+							/>
+						</div>
+					</div>
+					}	 
+				sureCallback = {this.sureChangeAmountCallback.bind(this)} 
+				cancelCallback = { this.cancelCallback.bind(this) } 
+				alertState={this.state.alertChangeAmountState}
 			/>
 			 <Alerts alertTitle={this.state.alertTitle} alertMsg = {this.state.alertMsg} sureCallback = {this.sureCallback.bind(this)} cancelCallback = { this.cancelCallback.bind(this) } alertState={this.state.alertState}/>
         </div>
