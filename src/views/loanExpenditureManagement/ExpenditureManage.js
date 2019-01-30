@@ -23,6 +23,7 @@ class ExpenditureManage extends Component {
 		 alertState:false,
 		 payment_id:"",//支出id
 		 project_id:"",//项目id
+		 relation_id:"",//关联id
 		 price:"",
 		 payment_id_arr:[],
 		 alertTitle:"",
@@ -92,7 +93,8 @@ class ExpenditureManage extends Component {
 			payment_id:newState.dataId,
 			alertTitle:newState.alertTitle,
 			linkpage:newState.linkpage,
-			project_id:newState.projectId
+			project_id:newState.projectId,
+			relation_id:newState.relationId
 		})
 	}
 
@@ -126,7 +128,7 @@ class ExpenditureManage extends Component {
                        {this.state.table_data_body.indexOf(table_data_body)+1}
                        </div>
 					</td> */}
-					<td  style={{"width":"26em"}}>
+					<td  style={{"width":"34em"}}>
 						<PaymentManageBtn
 							onHoldClick={this.alertAddState}
 							defineValue="财务编号"
@@ -166,6 +168,7 @@ class ExpenditureManage extends Component {
 							defineValue="修改金额"
 							state="alertChangeAmountState"	
 							dataId={table_data_body.id}
+							relationId={table_data_body.relation_id}
 						/>
 						<PaymentManageBtn
 							onHoldClick={this.alertHoldState}
@@ -174,6 +177,7 @@ class ExpenditureManage extends Component {
 							linkpage="payment_project_cancel"	
 							dataId={table_data_body.id}
 							projectId={table_data_body.project_id}
+							relationId={table_data_body.relation_id}
 						/>
 					</td>
 					{/* <td>
@@ -365,7 +369,7 @@ class ExpenditureManage extends Component {
 		}
 		console.log(this.state.price)
 		console.log(this.state.payment_id)
-		getData(getRouter("payment_project_edit"), { token:sessionStorage.token,id:this.state.payment_id,price:this.state.price }, cb, {});
+		getData(getRouter("payment_project_edit"), { token:sessionStorage.token,relation_id:this.state.relation_id,price:this.state.price }, cb, {});
 	}
 	cancelCallback=()=>{
 		this.setState({
@@ -413,7 +417,7 @@ class ExpenditureManage extends Component {
 		console.log(this.state.linkpage)
 		console.log(this.state.project_id)
 		if(this.state.linkpage=="payment_project_cancel"){
-			getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, id:this.state.payment_id,project_id:this.state.project_id }, cb,  {}); 
+			getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, relation_id:this.state.relation_id,project_id:this.state.project_id }, cb,  {}); 
 			//}
 		}else{
 			getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, id:this.state.payment_id }, cb,  {}); 
@@ -453,12 +457,12 @@ class ExpenditureManage extends Component {
 					/>
                 <div  className="statistical_div">
                 
-                    <table style={{width:sumLength+26+"em"}} className="statistical_table">
+                    <table style={{width:sumLength+34+"em"}} className="statistical_table">
                         <thead>
                             <tr>
 								{/* <th><div className="statistical_table_box">序号</div></th> */}
 								<th>
-									<div style={{"width":"26em"}}></div>
+									<div style={{"width":"34em"}}></div>
 								</th>
                                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
                                     return(
