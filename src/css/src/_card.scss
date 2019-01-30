@@ -980,6 +980,16 @@ textarea:disabled {
                 content: '\e020';
             }
         }
+        .card_ide_btn:nth-of-type(6) {
+            button:first-child::before {
+                content: '\e148';
+            }
+        }
+        .card_ide_btn:nth-of-type(7) {
+            button:first-child::before {
+                content: '\e095';
+            }
+        }
     }
 }
 
