@@ -109,7 +109,6 @@ import { getData, getRouter } from '../../../utils/helpers'
             // getData(getRouter("json_manage_name"), {name:this.props.addButton.descript, token:sessionStorage.token }, cb, {});		
         }
         render(){
-            //console.log(this.state.add_button)
             return (
                 <div>
                     <button className="add_card_btn"  
