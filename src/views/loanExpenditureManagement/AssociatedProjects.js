@@ -615,20 +615,26 @@ class AssociatedProjects extends Component {
 					   message={this.state.table_data_bodys}
 					   keywordSearch={["financial_number"]}
 					   keywordTitle={[
-                        "财务编号",
+                        "项目编号",
                         // "项目类型",
-						"领款人",
-						"时间",
-						"状态"]}
+						// "领款人",
+						// "时间",
+                        // "状态"
+                    ]}
 					//    selectListMessage={["project_type_list"]}
 					// 	selectNameMessage={["project_project_template_name"]}
 					   selectListMessage={[]}
                        selectNameMessage={[]}
-                       selectListCheckMessage={["staff_manage_list"]}
-                       selectNameCheckMessage={["payee_name"]}
-					   sectionTimeMessage={["submit_time"]}
-					   langPackMessage={["state"]}
-					   langPackTitle={["-1,1,2"]}
+                       selectListCheckMessage={[]}
+                       selectNameCheckMessage={[]}
+					   sectionTimeMessage={[]}
+					   langPackMessage={[]}
+					   langPackTitle={[]}
+                    //    selectListCheckMessage={["staff_manage_list"]}
+                    //    selectNameCheckMessage={["payee_name"]}
+					//    sectionTimeMessage={["submit_time"]}
+					//    langPackMessage={["state"]}
+					//    langPackTitle={["-1,1,2"]}
 					   screeningMessage={this.screening_project_information}
 					/>
                     <div  className="statistical_div">
