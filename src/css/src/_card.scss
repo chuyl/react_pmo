@@ -889,7 +889,6 @@ textarea:disabled {
     display: block;
     background: $background-color;
     height: 70vh;
-    width: calc(100% - 234px);
     overflow: scroll;
     position: relative;
 }
@@ -1015,7 +1014,6 @@ textarea:disabled {
     padding: 1em 2em;
     width: 100%;
     display: block;
-    position: absolute;
     box-sizing: border-box;
     text-align: center;
     margin-bottom: 0em;
