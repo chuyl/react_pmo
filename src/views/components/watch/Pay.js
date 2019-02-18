@@ -19,7 +19,7 @@
                 <div className="pay_box" id={"pay_box"+dataId}>
                     <div className="code_id">
                         <dd>项目编号：</dd>
-                        <dd>{message.id}</dd>
+                        <dd></dd>
                     </div>
                     <div className="pay_id_num">
                         <span>支出单编号：</span>
