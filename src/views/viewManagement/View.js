@@ -126,7 +126,6 @@ class View extends Component {
 	viewList=(list,index)=>{
 	
 	var json_view=JSON.parse(sessionStorage.view)
-	console.log(json_view)
 	for(var i=0;i<json_view.length;i++){
 		if(json_view[i].name===list.name){
 			

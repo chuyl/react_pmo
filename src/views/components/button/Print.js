@@ -31,8 +31,6 @@
                         <button  className={className[1]?className[1]:""}
                             // style={{float:"left",marginTop:"0.5em",marginBottom:"0.5em",width:"100%",backgroundColor:"#3F51B5",color:"#fff",boxShadow:"none",textAlign:"center",outline:"none",lineHeight:"2em",borderRadius:"4px",border:"none"}} 
                             onClick = {()=>{
-                                // console.log(this.props.buttonMessage)
-                                console.log(printMessage)
                                 this.props.isPrint?
                                 $('#'+printMessage+this.props.dataId).printArea():""
                             }}>

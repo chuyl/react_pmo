@@ -73,9 +73,10 @@
     }
         render(){
             const {index,cardIndex}=this.props;
+            // console.log(index+""+cardIndex)
             return (
-                <div key={index+""+cardIndex} id={"card_page"+cardIndex+index} className={this.props.footState===""?this.props.index===0?"card-page active" : "card-page":this.props.footState===this.props.index?"card-page active move-in" : "card-page"}>
-                    <ComponentsList  key={index+""+cardIndex} examine_bool_second={this.examine_bool_message}  twoChange = {this.handleClick}  componentslist =  {this.state.add_button} componentsdata={this.props.message}></ComponentsList > 
+                <div id={"card_page"+cardIndex+index} className={this.props.footState===""?this.props.index===0?"card-page active" : "card-page":this.props.footState===this.props.index?"card-page active move-in" : "card-page"}>
+                    <ComponentsList key={index+""+cardIndex} examine_bool_second={this.examine_bool_message}  twoChange = {this.handleClick}  componentslist =  {this.state.add_button} componentsdata={this.props.message}></ComponentsList > 
               </div>
             )
         }

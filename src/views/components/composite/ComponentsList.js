@@ -175,8 +175,7 @@ handleChildChange=(formData)=>{
                                     index={this.props.index}
                                     key={index}
                                     card_active_state={this.activeState}
-
-                                     indexKey={this.props.indexKey}
+                                    indexKey={this.props.indexKey}
                                     sixChange = {this.handleChildChange}
                                     examine_bool_sixth={this.examine_bool_message_sixth}
                                     addButton={form_list.add_button}
@@ -496,7 +495,7 @@ handleChildChange=(formData)=>{
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name}  
                                     cardIndex={this.props.cardIndex}
                                     addButton={form_list.add_button}
-                                    key={index}
+                                    key={index+""+this.props.cardIndex}
                                     index={index}
                                     footState={this.props.footState}
                                     threeChange = {this.handlethreeClick}
