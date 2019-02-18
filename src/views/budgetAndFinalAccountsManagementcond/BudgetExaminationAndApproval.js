@@ -233,10 +233,11 @@ class BudgetExaminationAndApproval extends Component {
                         {this.goPage(this.state.pno,this.state.psize)}
                     </tbody>
                 </table>
-                <div className="statistical_change_page">
+               
+            </div>
+            <div className="statistical_change_page">
                     {this.change_page(1,5)}
                 </div>
-            </div>
         </div>
 		)
 	}

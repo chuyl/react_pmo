@@ -312,7 +312,6 @@
         position: fixed;
         top: 0;
         height: 91vh;
-        /* height: 600px; js代替 */
         left: 0;
         z-index: 10;
     }
@@ -903,7 +902,6 @@ textarea:disabled {
     $table_base_th: 1.5em left (1em 0.5em) (0);
     $table_base: ( tr: $table_base_tr, td:$table_base_td, th: $table_base_th, );
     @include creat_table($table_base); //
-    // @include set_init(1); //设置是否有标题空隙
     @include set_title_space(1em, 2); //设置格线
     $table_title_line: 1px solid #666;
     $table_content_line: 1px solid $secondary-text-color;

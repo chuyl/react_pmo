@@ -1250,7 +1250,7 @@ body {
   position: fixed;
   top: 0;
   background-color: #427881;
-  /* height: 600px; js代替 */
+  /* height: 600px; js浠ｆ浛 */
   left: 0;
   z-index: 10; }
 
@@ -1621,7 +1621,6 @@ body {
     position: fixed;
     top: 0;
     height: 91vh;
-    /* height: 600px; js代替 */
     left: 0;
     z-index: 10; } }
 .message_left {
@@ -2271,7 +2270,7 @@ textarea:disabled {
   bottom: 5px;
   height: 500px;
   background-color: #FF5252;
-  /* height: 600px; js代替 */
+  /* height: 600px; js浠ｆ浛 */
   right: 5px;
   z-index: 20; }
 
@@ -2295,7 +2294,7 @@ textarea:disabled {
     bottom: 0;
     height: 100vh;
     background-color: #FF5252;
-    /* height: 600px; js代替 */
+    /* height: 600px; js浠ｆ浛 */
     right: 0;
     z-index: 20; } }
 .add_info_list {
