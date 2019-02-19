@@ -19,11 +19,9 @@ var local = {
                 "lecturer_plan_edit":{"url":"../data/lecturer_plan_edit.json","version":"1.0"},//讲师安排修改
                 "lecturer_plan_del":{"url":"../data/lecturer_plan_del.json","version":"1.0"},//讲师安排删除
                 "lecturer_manage_cooperation":{"url":"../data/lecturer_manage_cooperation.json","version":"1.0"},//讲师合作模式
-                
                 "implement_venue_add":{"url":"../data/implement_venue_add.json","version":"1.0"},//会场安排新增
                 "implement_venue_edit":{"url":"../data/implement_venue_edit.json","version":"1.0"},//会场安排修改
                 "implement_venue_del":{"url":"../data/implement_venue_del.json","version":"1.0"},//会场安排删除
-
                 "implement_plan_getByProjectId":{"url":"../data/implement_plan_getByProjectId.json","version":"1.0"},//获取实施安排列表
                 "implement_plan_edit":{"url":"../data/implement_plan_edit.json","version":"1.0"},//实施安排修改
                 "travel_plan_getByProjectId":{"url":"../data/travel_plan_getByProjectId.json","version":"1.0"},//获取差旅安排
@@ -74,7 +72,6 @@ var local = {
                 "payment_project_add_by_price":{"url":"../data/payment_project_add_by_price.json","version":"1.0"},//查看项目的支出
                 "payment_project_edit":{"url":"../data/payment_project_edit.json","version":"1.0"},//查看项目的支出
                 //视图
-               
                 // "addProject":{"url":"../json/addProject.json","version":"1.0"},//新建项目
                 "addProjectGather":{"url":"../json/addProjectGather.json","version":"1.0"},//新建项目集
                 "addTeacher":{"url":"../json/addTeacher.json","version":"1.0"},//新建讲师
@@ -102,7 +99,6 @@ var local = {
                 "projectCardPage2":{"url":"../json/projectCardPage2.json","version":"1.0"},
                 "projectCardPage3":{"url":"../json/projectCardPage3.json","version":"1.0"},
                 "projectCardFoot":{"url":"../json/projectCardFoot.json","version":"1.0"},
-               
                 "shortTravelAddFrom":{"url":"../json/shortTravelAddFrom.json","version":"1.0"},
                 "shortTravelSelectFrom":{"url":"../json/shortTravelSelectFrom.json","version":"1.0"},
                 "teacherCardGroup":{"url":"../json/teacherCardGroup.json","version":"1.0"},//讲师安排
