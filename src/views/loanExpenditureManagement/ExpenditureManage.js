@@ -439,7 +439,7 @@ class ExpenditureManage extends Component {
             }
         }
 		return (
-            <div style={{width:"85%"}}>
+            <div>
 				<DataSearchMessage 
 				index={0}
 					   message={this.state.table_data_bodys}
