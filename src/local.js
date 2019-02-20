@@ -68,6 +68,8 @@ var local = {
                 "payment_state_recall":{"url":"../data/payment_state_recall.json","version":"1.0"},//撤回支出
                 "payment_project_add":{"url":"../data/payment_project_add.json","version":"1.0"},//关联支出到项目
                 "payment_project_list":{"url":"../data/payment_project_list.json","version":"1.0"},//查看所有支出和其所属项目
+                "payment_project_list_pass":{"url":"../data/payment_project_list_pass.json","version":"1.0"},//查看所有支出和其所属项目
+               
                 "payment_project_list_by_project_id":{"url":"../data/payment_project_list_by_project_id.json","version":"1.0"},//查看项目的支出
                 "payment_project_add_by_price":{"url":"../data/payment_project_add_by_price.json","version":"1.0"},//查看项目的支出
                 "payment_project_edit":{"url":"../data/payment_project_edit.json","version":"1.0"},//查看项目的支出

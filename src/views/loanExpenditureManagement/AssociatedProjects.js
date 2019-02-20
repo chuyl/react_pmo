@@ -65,7 +65,7 @@ class AssociatedProjects extends Component {
             query_condition:obj
 		})
 		// console.log(objs)
-        getData(getRouter("payment_project_list"), { token: sessionStorage.token,query_condition:objs,data_type:"page_json" }, cb, {});
+        getData(getRouter("payment_project_list_pass"), { token: sessionStorage.token,query_condition:objs,data_type:"page_json" }, cb, {});
         // getData(getRouter("examine_record_list"),{ session: sessionStorage.session}, cb, {});
 
     }
@@ -108,7 +108,7 @@ class AssociatedProjects extends Component {
         this.setState({
             query_condition:obj
 		})
-		PostCsvData(getRouter("payment_project_list"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
+		PostCsvData(getRouter("payment_project_list_pass"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
 		 , cb, {});
 	}
 	

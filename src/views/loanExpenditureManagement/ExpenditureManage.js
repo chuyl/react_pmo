@@ -539,7 +539,7 @@ class ExpenditureManage extends Component {
 			<Popup 
 				content={
 					<div>
-						<h2>修改金额</h2>
+						<h2>修改指定支出到项目的金额</h2>
 						<div className="popup_content">
 							<ViewTextField 
 								onChange={(e)=>{

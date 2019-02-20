@@ -25,7 +25,7 @@
    import HoldBtn from '../../components/button/HoldBtn'
 //    import AddCardBtn from '../AddCardBtn'
    import CardItem from '../../components/watch/CardItem'
-   import CardItemState from '../../components/watch/CardItemState'
+   import ShowStateMessage from '../../components/watch/ShowStateMessage'
    import CardItemTime from '../../components/watch/CardItemTime'
    import SelectList from '../../components/select/SelectList'
    import SelectListSearch from '../../components/select/SelectListSearch'
@@ -54,6 +54,7 @@
   import GetDataSpellingLabel from '../watch/GetDataSpellingLabel'
   import ApplicationsFlow from '../watch/ApplicationsFlow'
   import ApplicationsDefault from '../watch/ApplicationsDefault'
+  import ShowMessage from '../watch/ShowMessage'
   import SelectListLocal from '../select/SelectListLocal'
   import Print from '../button/Print'
   import ClickAlert from '../../components/button/ClickAlert'
@@ -325,10 +326,12 @@
                                     id={form_list.id_name} 
                                     message={form_list.title}
                                 />
-                            :form_list.type_name === "CardItemState"?   
-                                <CardItemState
+                            :form_list.type_name === "ShowStateMessage"?   
+                                <ShowStateMessage
                                     id={form_list.id_name} 
-                                    message={form_list.title}
+                                    className={form_list.class}
+                                    defaultValue={form_list.default_value}
+                                   // message={form_list.title}
                                 />
                             :form_list.type_name === "CardItemTime"?   
                                 <CardItemTime
@@ -443,6 +446,17 @@
                                     beforeApiUri={form_list.before_api_uri}
                                     message={""} 
                                 />
+                            :form_list.type_name === "ShowMessage"?
+                                <ShowMessage
+                                    id={form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    className={form_list.class}
+                                    thisKey={form_list.key}
+                                    defaultValue={form_list.default_value}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={""} 
+                                />
+                                
                             :form_list.type_name === "SubmitApplications"?
                                 <SubmitApplications
                                     id={form_list.id_name} 

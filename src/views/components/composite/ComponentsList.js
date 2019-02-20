@@ -36,7 +36,7 @@ import CardHead from '../../components/card/CardHead'
 import CardPage from '../watch/CardPage'
 import CardTitleItem from '../watch/CardTitleItem'
 import CardItem from '../../components/watch/CardItem'
-import CardItemState from '../../components/watch/CardItemState'
+import ShowStateMessage from '../../components/watch/ShowStateMessage'
 import CardItemTime from '../../components/watch/CardItemTime'
 import HoldBtn from '../../components/button/HoldBtn'
 import AddCardBtn from '../../components/button/AddCardBtn'
@@ -51,6 +51,7 @@ import LabelShowMessage from '../watch/LabelShowMessage'
 import GetDataSpellingLabel from '../watch/GetDataSpellingLabel'
 import ApplicationsFlow from '../watch/ApplicationsFlow'
 import ApplicationsDefault from '../watch/ApplicationsDefault'
+import ShowMessage from '../watch/ShowMessage'
 import SelectListLocal from '../select/SelectListLocal'
 import Print from '../button/Print'
 import ClickAlert from '../button/ClickAlert';
@@ -319,7 +320,17 @@ handleChildChange=(formData)=>{
                                     beforeApiUri={form_list.before_api_uri}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
-                                
+                            :form_list.type_name === "ShowMessage"?
+                                <ShowMessage
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    key={index}
+                                    thisKey={form_list.key}
+                                    className={form_list.class}
+                                    defaultValue={form_list.default_value}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />
                             :form_list.type_name === "SubmitApplications"?
                                 <SubmitApplications
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
@@ -509,10 +520,12 @@ handleChildChange=(formData)=>{
                                     defaultValue={form_list.default_value}
                                     message={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:form_list.default_value} 
                                 />
-                            :form_list.type_name === "CardItemState"?   
-                                <CardItemState
+                            :form_list.type_name === "ShowStateMessage"?   
+                                <ShowStateMessage
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name}  
                                     key={index}
+                                    thisKey={form_list.key}
+                                    className={form_list.class}
                                     defaultValue={form_list.default_value}
                                     message={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:form_list.default_value} 
                                 />
@@ -520,6 +533,7 @@ handleChildChange=(formData)=>{
                                 <CardItemTime
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name}  
                                     key={index}
+                                    defaultValue={form_list.default_value}
                                     message={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:form_list.default_value} 
                                 />
                                 
