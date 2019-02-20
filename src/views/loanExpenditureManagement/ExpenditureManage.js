@@ -128,7 +128,7 @@ class ExpenditureManage extends Component {
                        {this.state.table_data_body.indexOf(table_data_body)+1}
                        </div>
 					</td> */}
-					<td  style={{"width":"34em"}}>
+					<td  style={{"width":"28em"}}>
 						<PaymentManageBtn
 							onHoldClick={this.alertAddState}
 							defineValue="财务编号"
@@ -463,12 +463,12 @@ class ExpenditureManage extends Component {
 					/>
                 <div  className="statistical_div">
                 
-                    <table style={{width:sumLength+34+"em"}} className="statistical_table">
+                    <table style={{width:sumLength+28+"em"}} className="statistical_table">
                         <thead>
                             <tr>
 								{/* <th><div className="statistical_table_box">序号</div></th> */}
 								<th>
-									<div style={{"width":"34em"}}></div>
+									<div style={{"width":"28em"}}></div>
 								</th>
                                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
                                     return(
