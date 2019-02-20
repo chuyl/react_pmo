@@ -119,7 +119,7 @@
     display: block;
     text-align: center;
     font-size: 14px;
-    width: 100%;
+    width: 4em;
     height: 28px;
     margin-bottom: 28px; // font-weight: bold;
     // color: $background-color;
@@ -887,6 +887,7 @@ textarea:disabled {
 
 .statistical_div {
     display: block;
+    width: calc(100% - 70px);
     background: $background-color;
     height: 70vh;
     overflow: scroll;
@@ -952,40 +953,23 @@ textarea:disabled {
                 height: 100%;
             }
         }
-        .card_ide_btn:first-child {
-            button:first-child::before {
-                content: '\e086';
-            }
+        .financialBtn::before {
+            content: '\e086';
         }
-        .card_ide_btn:nth-of-type(2) {
-            button:first-child::before {
-                content: '\e144';
-            }
+        .passBtn::before {
+            content: '\e013';
         }
-        .card_ide_btn:nth-of-type(3) {
-            button:first-child::before {
-                content: '\e013';
-            }
+        .recallBtn::before {
+            content: '\e095';
         }
-        .card_ide_btn:nth-of-type(4) {
-            button:first-child::before {
-                content: '\e014';
-            }
+        .cancelBtn::before {
+            content: '\e020';
         }
-        .card_ide_btn:nth-of-type(5) {
-            button:first-child::before {
-                content: '\e020';
-            }
+        .cancalRelationBtn:before {
+            content: '\e014';
         }
-        .card_ide_btn:nth-of-type(6) {
-            button:first-child::before {
-                content: '\e148';
-            }
-        }
-        .card_ide_btn:nth-of-type(7) {
-            button:first-child::before {
-                content: '\e095';
-            }
+        .changePriceBtn::before {
+            content: '\e148';
         }
     }
 }
@@ -1012,7 +996,8 @@ textarea:disabled {
 
 .statistical_change_page {
     padding: 1em 2em;
-    width: 100%;
+    width: calc(100% - 234px);
+    padding-right: 10em;
     display: block;
     box-sizing: border-box;
     text-align: center;
