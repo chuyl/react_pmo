@@ -7,7 +7,6 @@
     class ApplicationsDefault extends Component {
         render(){
             const {message,defaultValue} =this.props;
-            console.log(message)
             var className = this.props.className.split(","); 
             return (
                 <div  className={className[0]?className[0]:""}>

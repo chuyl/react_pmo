@@ -17,12 +17,13 @@
                     <ul className={className[0]?className[0]+"_ul":""}>
                         {message.examine[thisKey]?message.examine[thisKey].step.map((step,index)=>{
                             if(step.pass==="0"){
+                                console.log(step.admin_user)
                                 return(
                                     <li key={index} className={className[0]?className[0]+"_item_default":""}>
                                       <div className={className[1]?className[1]:""}>
-                                          <span>{step.admin_position}</span>
-                                          <span>{step.admin_user}</span>
-                                          <span>待审批</span>
+                                          <div>{step.admin_position}</div>
+                                          <div>{step.admin_user}</div>
+                                          <div>待审批</div>
                                       </div>
                                       <div className={className[2]?className[2]:""}>
                                           {step.time}
