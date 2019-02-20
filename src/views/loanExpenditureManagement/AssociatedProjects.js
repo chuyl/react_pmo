@@ -233,7 +233,7 @@ class AssociatedProjects extends Component {
                       
                           
                         }}  value={table_project_data_body.id} name="projectCheck" type="checkbox"/>
-                         <span style={{display:"none"}}>{table_project_data_body.unicode+" "+table_project_data_body.time===""?"未设置课程名称":table_project_data_body.time+" "+table_project_data_body.time}</span>
+                         <span style={{display:"none"}}>{table_project_data_body.unicode+" "+table_project_data_body.project_name===""?"未设置课程名称":table_project_data_body.project_name+" "+table_project_data_body.time}</span>
                     </td>
 					{/* <td>
 						<input value={table_project_data_body.id} type="checkbox" name="payment"/>
@@ -472,6 +472,7 @@ class AssociatedProjects extends Component {
         var project_message=[];
             for(var i = 0;i<paymentCheck.length;i++){
                 if(paymentCheck[i].checked){
+                    console.log(paymentCheck[i].parentNode.children[1])
                     payment_message.push({id:paymentCheck[i].value,title:paymentCheck[i].parentNode.children[1].innerHTML}); 
                 }
             }
@@ -482,6 +483,7 @@ class AssociatedProjects extends Component {
                 }
             }
             if(newState.content==="add_ids_by_project"){
+                console.log(project_message[0].title)
                 this.setState({
                     [newState.state]:true,
                     content:newState.content,

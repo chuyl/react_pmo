@@ -10,11 +10,11 @@
         
         render(){
             var message;
-            if(this.props.message==null){
+            if(this.props.message===null){
                 message=this.props.defaultValue;
-            }else if(this.props.message==undefined){
+            }else if(this.props.message===undefined){
                 message=this.props.defaultValue;
-            }else if(this.props.message==""){
+            }else if(this.props.message===""){
                 message=this.props.defaultValue;
             }else{
                 message=timestampToTime(this.props.message);
