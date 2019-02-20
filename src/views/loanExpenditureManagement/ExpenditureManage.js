@@ -78,16 +78,16 @@ class ExpenditureManage extends Component {
 		 , cb, {});
 	}
 	alertAddState=(newState)=>{
-		// console.log(newState)
+		 console.log(newState)
 		this.setState({
 			[newState.state]:true,
 			payment_id:newState.dataId,
-			financial_number:newState.financialNumber?newState.financialNumber:""
-
+			financial_number:newState.financialNumber?newState.financialNumber:"",
+			relation_id:newState.relationId
 		})
 	}
 	alertHoldState=(newState)=>{
-		// console.log(newState)
+		 console.log(newState)
 		this.setState({
 			[newState.state]:true,
 			payment_id:newState.dataId,
