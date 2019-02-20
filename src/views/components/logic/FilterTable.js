@@ -126,6 +126,7 @@ class FilterTable extends Component {
 						<PaymentManageBtn
 							onHoldClick={this.alertAddState}
 							defineValue="财务编号"
+							classNames="financialBtn"
 							state="alertAddFinancialState"	
 							dataId={table_data_body.id}
 							financialNumber={table_data_body.financial_number}
@@ -139,6 +140,7 @@ class FilterTable extends Component {
 						<PaymentManageBtn
 							onHoldClick={this.alertHoldState}
 							defineValue="通过"
+							classNames="passBtn"
 							state="alertState"
 							linkpage="payment_state_pass"	
 							dataId={table_data_body.id}
@@ -147,6 +149,7 @@ class FilterTable extends Component {
 							onHoldClick={this.alertHoldState}
 							defineValue="撤回"
 							state="alertState"
+							classNames="recallBtn"
 							linkpage="payment_state_recall"	
 							dataId={table_data_body.id}
 						/>

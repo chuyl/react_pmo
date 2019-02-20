@@ -132,20 +132,22 @@ class ExpenditureManage extends Component {
 						<PaymentManageBtn
 							onHoldClick={this.alertAddState}
 							defineValue="财务编号"
+							classNames="financialBtn"
 							state="alertAddFinancialState"	
 							dataId={table_data_body.id}
 							financialNumber={table_data_body.financial_number}
 						/>
-						<PaymentManageBtn
+						{/* <PaymentManageBtn
 							onHoldClick={this.alertAddState}
 							defineValue="关联项目"
 							state="alertAddProjectState"	
 							dataId={table_data_body.id}
-						/>
+						/> */}
 						<PaymentManageBtn
 							onHoldClick={this.alertHoldState}
 							defineValue="通过"
 							state="alertState"
+							classNames="passBtn"
 							linkpage="payment_state_pass"	
 							dataId={table_data_body.id}
 						/>
@@ -153,6 +155,7 @@ class ExpenditureManage extends Component {
 							onHoldClick={this.alertHoldState}
 							defineValue="撤回"
 							state="alertState"
+							classNames="recallBtn"
 							linkpage="payment_state_recall"	
 							dataId={table_data_body.id}
 						/>
@@ -160,6 +163,7 @@ class ExpenditureManage extends Component {
 							onHoldClick={this.alertHoldState}
 							defineValue="作废"
 							state="alertState"
+							classNames="cancelBtn"
 							linkpage="payment_state_cancel"	
 							dataId={table_data_body.id}
 						/>
@@ -168,6 +172,7 @@ class ExpenditureManage extends Component {
 							defineValue="修改金额"
 							state="alertChangeAmountState"	
 							dataId={table_data_body.id}
+							classNames="changePriceBtn"
 							relationId={table_data_body.relation_id}
 						/>
 						<PaymentManageBtn
@@ -176,6 +181,7 @@ class ExpenditureManage extends Component {
 							state="alertState"
 							linkpage="payment_project_cancel"	
 							dataId={table_data_body.id}
+							classNames="cancalRelationBtn"
 							projectId={table_data_body.project_id}
 							relationId={table_data_body.relation_id}
 						/>
@@ -433,7 +439,7 @@ class ExpenditureManage extends Component {
             }
         }
 		return (
-            <div>
+            <div style={{width:"85%"}}>
 				<DataSearchMessage 
 				index={0}
 					   message={this.state.table_data_bodys}
