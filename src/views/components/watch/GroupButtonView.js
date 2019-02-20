@@ -83,6 +83,7 @@
         this.props.interfaceData(newState)
     }
         render(){
+            console.log(this.props.addButton)
             const {descriptTitle}=this.props;
             return (
                 <div className="complex_message">

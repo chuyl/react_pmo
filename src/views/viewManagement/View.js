@@ -328,9 +328,18 @@ class View extends Component {
 				   })
 			   }else{
 			   //修改视图中add_button里面的修改视图或者展示视图名称
+			   if(selectComplexView.indexOf("-组")!=-1){
+					var splitSelectComplexView=selectComplexView.split("-组")[0];
+					view_change_list.add_button.add_title="添加"+splitSelectComplexView;
+					view_change_list.title=splitSelectComplexView;
+					view_change_list.add_button.add_button_title=splitSelectComplexView+"修改";
+			   }else{
+				view_change_list.add_button.add_title="添加"+selectComplexView;
+				view_change_list.add_button.add_button_title=selectComplexView+"修改";
+				view_change_list.title=selectComplexView;
+			   }
 			   view_change_list.add_button.descript=newState.name;
-			   view_change_list.add_button.add_title="添加"+selectComplexView;
-			   
+			  
 			   //修改视图中add_button里面的修改视图或者展示视图title名称
 			//    view_change_list.add_button[this.state.selectedViewAddTitle]=selectComplexView;
 				view_change_list.add_button.descript_title=selectComplexView;  
@@ -537,6 +546,7 @@ class View extends Component {
 	 * @param interfaceViewData 函数 获取group接口名称修改点击事件
 	 */
 	interfaceViewData=(newState)=>{
+		console.log(newState)
          this.setState({
 			changeInterfaceState:true,//修改接口的状态
 			change_key_interface:newState.name,
@@ -550,7 +560,7 @@ class View extends Component {
 	 * @param getViewButtomTitle 函数 获取group相应的view名称显示在选择修改视图的位置
 	 */
 	getViewButtomTitle=(newState)=>{
-		
+		console.log(newState)
 		for(var i=0;i<this.state.view_table_list.length;i++){
 			this.setState({
 				selectedViewIndex:newState.index,

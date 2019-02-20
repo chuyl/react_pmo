@@ -506,12 +506,14 @@ handleChildChange=(formData)=>{
                                 <CardItem
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name}  
                                     key={index}
+                                    defaultValue={form_list.default_value}
                                     message={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:form_list.default_value} 
                                 />
                             :form_list.type_name === "CardItemState"?   
                                 <CardItemState
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name}  
                                     key={index}
+                                    defaultValue={form_list.default_value}
                                     message={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:form_list.default_value} 
                                 />
                             :form_list.type_name === "CardItemTime"?   
