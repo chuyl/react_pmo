@@ -72,7 +72,7 @@ import jQuery from  'jquery'
                 paWindow.focus();
                 paWindow.print();
 
-                if ( settings.mode == modes.popup && settings.popClose )
+                if ( settings.mode === modes.popup && settings.popClose )
                     setTimeout(function() { paWindow.close(); }, 2000);
             });
         },
@@ -82,12 +82,12 @@ import jQuery from  'jquery'
             PADocument.close();
         },
         docType : function() {
-            if ( settings.mode == modes.iframe ) return "";
+            if ( settings.mode === modes.iframe ) return "";
 
-            if ( settings.standard == standards.html5 ) return "<!DOCTYPE html>";
+            if ( settings.standard === standards.html5 ) return "<!DOCTYPE html>";
 
-            var transitional = settings.standard == standards.loose ? " Transitional" : "";
-            var dtd = settings.standard == standards.loose ? "loose" : "strict";
+            var transitional = settings.standard === standards.loose ? " Transitional" : "";
+            var dtd = settings.standard === standards.loose ? "loose" : "strict";
 
             return '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01' + transitional + '//EN" "http://www.w3.org/TR/html4/' + dtd +  '.dtd">';
         },
@@ -100,11 +100,11 @@ import jQuery from  'jquery'
             $(document).find("link")
                 .filter(function(){ // Requirement: <link> element MUST have rel="stylesheet" to be considered in print document
                         var relAttr = $(this).attr("rel");
-                        return ($.type(relAttr) === 'undefined') == false && relAttr.toLowerCase() == 'stylesheet';
+                        return ($.type(relAttr) === 'undefined') === false && relAttr.toLowerCase() == 'stylesheet';
                     })
                 .filter(function(){ // Include if media is undefined, empty, print or all
                         var mediaAttr = $(this).attr("media");
-                        return $.type(mediaAttr) === 'undefined' || mediaAttr == "" || mediaAttr.toLowerCase() == 'print' || mediaAttr.toLowerCase() == 'all'
+                        return $.type(mediaAttr) === 'undefined' || mediaAttr === "" || mediaAttr.toLowerCase() == 'print' || mediaAttr.toLowerCase() == 'all'
                     })
                 .each(function(){
                     
@@ -141,13 +141,13 @@ import jQuery from  'jquery'
                 if ($.type(typeInput) === 'undefined') typeInput = $(this).is("select") ? "select" : $(this).is("textarea") ? "textarea" : "";
                 var copiedInput = copiedInputs.eq( i );
 
-                if ( typeInput == "radio" || typeInput == "checkbox" ) copiedInput.attr( "checked", $(this).is(":checked") );
-                else if ( typeInput == "text" ) copiedInput.attr( "value", $(this).val() );
-                else if ( typeInput == "select" )
+                if ( typeInput === "radio" || typeInput === "checkbox" ) copiedInput.attr( "checked", $(this).is(":checked") );
+                else if ( typeInput === "text" ) copiedInput.attr( "value", $(this).val() );
+                else if ( typeInput === "select" )
                     $(this).find( "option" ).each( function( i ) {
                         if ( $(this).is(":selected") ) $("option", copiedInput).eq( i ).attr( "selected", true );
                     });
-                else if ( typeInput == "textarea" ) copiedInput.text( $(this).val() );
+                else if ( typeInput === "textarea" ) copiedInput.text( $(this).val() );
             });
             return copy;
         },
@@ -177,7 +177,7 @@ import jQuery from  'jquery'
             }
             catch( e ) { throw e + ". iframes may not be supported in this browser."; }
 
-            if ( iframe.doc == null ) throw "Cannot find document.";
+            if ( iframe.doc === null ) throw "Cannot find document.";
 
             return iframe;
         },
