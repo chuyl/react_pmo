@@ -887,11 +887,22 @@ textarea:disabled {
 
 .statistical_div {
     display: block;
-    width: calc(100% - 70px);
+    width: calc(100% - 234px);
     background: $background-color;
     height: 70vh;
     overflow: scroll;
     position: relative;
+}
+
+.loan_part_left,
+.loan_part_right {
+    .statistical_div {
+        width: 100%;
+    }
+    .statistical_change_page {
+        width: 100%;
+        padding-right: 1em;
+    }
 }
 
 .statistical_table {
