@@ -154,6 +154,7 @@
 .card_left {
     width: 66.6%;
     float: left;
+    padding: 0.1em 0;
 
     p {
         white-space: nowrap;
@@ -583,7 +584,7 @@ textarea:disabled {
     }
 
     .card_ide_btn:last-child {
-        float: right;
+        padding: 1em 1em 0 0em;
     }
 }
 

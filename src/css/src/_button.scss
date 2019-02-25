@@ -1,6 +1,5 @@
 @import 'mixins/btn';
 .btn_list {
-    width: 5em;
     line-height: 2em;
     margin-right: 1em;
     @include set_button_style(4px, $primary-color, $accent-color, $shadow: none);
