@@ -31,9 +31,13 @@ import Lecturer from '../views/lecturerManagement/Lecturer'
 import ClassRemuneration from '../views/lecturerManagement/ClassRemuneration'
 import TeachingArrangement from '../views/lecturerManagement/TeachingArrangement'
 //实施管理
-import RafficTravel from '../views/implementationManagement/RafficTravel'
-import SegmenHotel from '../views/implementationManagement/SegmenHotel'
-import ServiceConsumables from '../views/implementationManagement/ServiceConsumables'
+// import RafficTravel from '../views/implementationManagement/RafficTravel'
+// import SegmenHotel from '../views/implementationManagement/SegmenHotel'
+// import ServiceConsumables from '../views/implementationManagement/ServiceConsumables'
+//开班管理
+import ClassManagement from '../views/classOpeningManagement/ClassManagement'
+import EnrollManagement from '../views/classOpeningManagement/EnrollManagement'
+// import ServiceConsumables from '../views/implementationManagement/ServiceConsumables'
 //视图管理
 import View from '../views/viewManagement/View'
 import Menu from '../views/viewManagement/Menu'
@@ -74,9 +78,11 @@ class Routers extends Component{
               :message.component==="Lecturer"?Lecturer
               :message.component==="ClassRemuneration"?ClassRemuneration
               :message.component==="TeachingArrangement"?TeachingArrangement
-              :message.component==="RafficTravel"?RafficTravel
-              :message.component==="SegmenHotel"?SegmenHotel
-              :message.component==="ServiceConsumables"?ServiceConsumables
+              // :message.component==="RafficTravel"?RafficTravel
+              // :message.component==="SegmenHotel"?SegmenHotel
+              // :message.component==="ServiceConsumables"?ServiceConsumables
+              :message.component==="ClassManagement"?ClassManagement
+              :message.component==="EnrollManagement"?EnrollManagement
               :message.component==="View"?View
               :message.component==="Menu"?Menu
               :message.component==="UrlPower"?UrlPower

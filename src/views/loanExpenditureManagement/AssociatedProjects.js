@@ -540,7 +540,7 @@ class AssociatedProjects extends Component {
         }
 		return (
             <div>
-                <div style={{width:"100%",float:"left"}}>
+                <div style={{width:"100%",float:"left",height:"2em"}}>
                     <PaymentManageBtn
                         isClick={this.state.payment_id.length===1?false:true}
 						onHoldClick={this.alertAddState}

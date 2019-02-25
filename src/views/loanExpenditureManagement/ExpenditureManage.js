@@ -31,7 +31,7 @@ class ExpenditureManage extends Component {
         
 	}
 	componentWillMount(){
-		console.log(Math.floor(document.body.clientHeight*0.7/32))
+		// console.log(Math.floor(document.body.clientHeight*0.7/32))
 		this.table_data_body(1,5)
 	}
 	table_data_body = (page_num,page_size,search_obj) => {
@@ -462,7 +462,7 @@ class ExpenditureManage extends Component {
 					   langPackTitle={["-1,1,2"]}
 					   screeningMessage={this.screening_information}
 					/>
-                <div  className="statistical_div">
+                <div style={{height:"70vh"}} className="statistical_div">
                 
                     <table style={{width:sumLength+29+"em"}} className="statistical_table">
                         <thead>
