@@ -615,10 +615,10 @@ class AssociatedProjects extends Component {
                     <DataSearchMessage 
                        index={1}
 					   message={this.state.table_data_bodys}
-					   keywordSearch={["financial_number"]}
+					   keywordSearch={["financial_number","project_name"]}
 					   keywordTitle={[
                         "项目编号",
-                        // "项目类型",
+                        "项目名称",
 						// "领款人",
 						// "时间",
                         // "状态"
