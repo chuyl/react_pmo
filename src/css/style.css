@@ -1486,8 +1486,12 @@ body {
 
 .card_left {
   width: 66.6%;
-  float: left; }
+  float: left;
+  padding: 0.1em 0; }
   .card_left p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 1.5em; }
 
 .card_title_left {
@@ -1811,7 +1815,7 @@ textarea:disabled {
   .card-body .card-page:nth-of-type(2) .card_ide_btn:first-child {
     width: 100%; }
   .card-body .card-page:nth-of-type(2) .card_ide_btn:last-child {
-    float: right; }
+    padding: 1em 1em 0 0em; }
 
 .status_flow_ul {
   float: left;
@@ -2110,12 +2114,12 @@ textarea:disabled {
   width: 2500px;
   overflow: scroll; }
   .statistical_table tr {
-    line-height: 1.5em;
+    line-height: 2em;
     text-align: left;
     padding: 1em 0;
     margin: 0; }
   .statistical_table td {
-    line-height: 1.5em;
+    line-height: 2em;
     text-align: left;
     padding: 1em 0.5em;
     margin: 0; }
@@ -2140,12 +2144,13 @@ textarea:disabled {
   .statistical_table tbody td {
     border-left: 1px solid #757575; }
   .statistical_table tr {
-    padding: 0; }
+    padding: 0;
+    line-height: 2em; }
     .statistical_table tr td:first-child {
       border: 0; }
     .statistical_table tr td {
       padding: 0;
-      padding: 0.2em 0.5em; }
+      padding: 0 0.5em; }
     .statistical_table tr th {
       padding: 0;
       padding: 0.2em 0.5em; }
@@ -2810,7 +2815,6 @@ textarea:disabled {
   border: none; }
 
 .btn_list {
-  width: 5em;
   line-height: 2em;
   margin-right: 1em;
   border-radius: 4px;
