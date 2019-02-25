@@ -21,6 +21,24 @@
             "content3":"",
             "title4":"冲刺时间",
             "content4":""
+        },{
+            "id":"2",
+            "name":"软考北京周末班",
+            "time":"4月9日",
+            "page_token": "ieWhLCVRuY",
+            "sign_up_number": "17",
+            "f_id":"1",
+            "max_number":"30",
+            "head_name":"第一期",
+            "class_name":"北京周末班",
+            "title1":"北京周末班",
+            "content1":"3月9日-5月19日",
+            "title2":"知识精讲",
+            "content2":"3月9、10、16、17日",
+            "title3":"模拟考试与讲解",
+            "content3":"",
+            "title4":"冲刺时间",
+            "content4":""
         }
         
         
