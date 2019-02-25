@@ -1463,7 +1463,7 @@ body {
   display: block;
   text-align: center;
   font-size: 14px;
-  width: 4em;
+  min-width: 4em;
   height: 28px;
   margin-bottom: 28px;
   border-radius: 4px;
@@ -2186,7 +2186,7 @@ textarea:disabled {
 
 .statistical_change_page {
   padding: 1em 2em;
-  width: calc(100vw- 234px);
+  width: calc(100vw - 234px);
   padding-right: 10em;
   display: block;
   box-sizing: border-box;
