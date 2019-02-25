@@ -73,6 +73,8 @@ var local = {
                 "payment_project_list_by_project_id":{"url":"../data/payment_project_list_by_project_id.json","version":"1.0"},//查看项目的支出
                 "payment_project_add_by_price":{"url":"../data/payment_project_add_by_price.json","version":"1.0"},//查看项目的支出
                 "payment_project_edit":{"url":"../data/payment_project_edit.json","version":"1.0"},//查看项目的支出
+                "clazz_manage_list":{"url":"../data/clazz_manage_list.json","version":"1.0"},//查看项目的支出
+               
                 //视图
                 // "addProject":{"url":"../json/addProject.json","version":"1.0"},//新建项目
                 "addProjectGather":{"url":"../json/addProjectGather.json","version":"1.0"},//新建项目集

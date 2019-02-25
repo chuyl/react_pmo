@@ -31,8 +31,8 @@ class ExpenditureManage extends Component {
         
 	}
 	componentWillMount(){
-		console.log(Math.floor(document.body.clientHeight*0.7/32))
-		this.table_data_body(1,5)
+		// console.log(Math.floor(document.body.clientHeight*0.7/32))
+		this.table_data_body(1,5,this.state.search_message)
 	}
 	table_data_body = (page_num,page_size,search_obj) => {
         
@@ -48,7 +48,7 @@ class ExpenditureManage extends Component {
            
         }
         var obj ={page_num:{"condition":"equal","query_data":page_num},page_size:{"condition":"equal","query_data":page_size}};
-        // console.log(obj)
+		// console.log(obj)
         var objs = search_obj?Object.assign(obj, search_obj):obj
         // console.log(objs)
         // var places = JSON.parse((JSON.stringify(obj)+JSON.stringify(this.state.search_message)).replace(/}{/,','));
@@ -229,7 +229,7 @@ class ExpenditureManage extends Component {
 						pno:1
 					})
 					currentPage>1?this.goPage(this.state.pno,"+psize+"):""
-					currentPage>1?this.table_data_body(1,5):""
+					currentPage>1?this.table_data_body(1,5,this.state.search_message):""
 				}}
 				>首页
 			</a>
@@ -237,7 +237,7 @@ class ExpenditureManage extends Component {
 				className="nyx-change-page-href" onClick={()=>{
 				currentPage>1?this.setState({pno:this.state.pno-1}):""
 				currentPage>1?this.goPage(this.state.pno,"+psize+"):""
-				currentPage>1?this.table_data_body(this.state.pno-1,5):""
+				currentPage>1?this.table_data_body(this.state.pno-1,5,this.state.search_message):""
 			}}
 			>{"<上一页"}</a>
 			<a 
@@ -246,7 +246,7 @@ class ExpenditureManage extends Component {
 				currentPage<totalPage?this.setState({pno:this.state.pno+1}):""
 			{ this.goPage("+(currentPage+1)+","+psize+")}
 				currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
-				currentPage<totalPage?this.table_data_body(this.state.pno+1,5):""
+				currentPage<totalPage?this.table_data_body(this.state.pno+1,5,this.state.search_message):""
 			}}
 			>{"下一页>"}</a>
 			<a 
@@ -255,7 +255,7 @@ class ExpenditureManage extends Component {
 				currentPage<totalPage?this.setState({pno:totalPage}):""
 				
 				currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
-				currentPage<totalPage?this.table_data_body(totalPage,5):""
+				currentPage<totalPage?this.table_data_body(totalPage,5,this.state.search_message):""
 			} }
 			>{"尾页"}</a>
 			<a 
@@ -289,7 +289,7 @@ class ExpenditureManage extends Component {
 					alertAddFinancialState:false,
 		
 				})
-				this.table_data_body(1,5)
+				this.table_data_body(1,5,this.state.search_message)
 
 			}else if(message.error === 2){
 				console.log("未登录")
@@ -321,7 +321,7 @@ class ExpenditureManage extends Component {
 					alertAddProjectState:false,
 		
 				})
-				this.table_data_body(1,5)
+				this.table_data_body(1,5,this.state.search_message)
 
 			}else if(message.error === 2){
 				console.log("未登录")
@@ -353,7 +353,7 @@ class ExpenditureManage extends Component {
 					alertChangeAmountState:false,
 		
 				})
-				this.table_data_body(1,5)
+				this.table_data_body(1,5,this.state.search_message)
 
 			}else if(message.error === 2){
 				console.log("未登录")
@@ -396,7 +396,7 @@ class ExpenditureManage extends Component {
                 this.setState({
                     alertState:false
 				})
-				this.table_data_body(1,5)
+				this.table_data_body(1,5,this.state.search_message)
             }else if(message.error === 2){
                 console.log("未登录")
                 sessionStorage.logged = false;
@@ -462,7 +462,7 @@ class ExpenditureManage extends Component {
 					   langPackTitle={["-1,1,2"]}
 					   screeningMessage={this.screening_information}
 					/>
-                <div  className="statistical_div">
+                <div style={{height:"70vh"}} className="statistical_div">
                 
                     <table style={{width:sumLength+29+"em"}} className="statistical_table">
                         <thead>
