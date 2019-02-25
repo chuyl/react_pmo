@@ -31,6 +31,7 @@ class ExpenditureManage extends Component {
         
 	}
 	componentWillMount(){
+		console.log(Math.floor(document.body.clientHeight*0.7/32))
 		this.table_data_body(1,5)
 	}
 	table_data_body = (page_num,page_size,search_obj) => {
@@ -121,7 +122,6 @@ class ExpenditureManage extends Component {
             
             components.push (
                 <tr
-                    //   style={{maxHeight:"25px",display:this.state.table_data_body.indexOf(table_data_body)+1>=startRow &&this.state.table_data_body.indexOf(table_data_body)+1<=endRow?"":"none"}}
                     key = {index}> 
                     {/* <td>
                        <div className="statistical_table_box">
@@ -437,7 +437,8 @@ class ExpenditureManage extends Component {
             for(var i = 0;i<this.state.table_data_head.length;i++){
                 sumLength=sumLength+parseFloat(this.state.table_data_head[i].size);
             }
-        }
+		}
+		
 		return (
             <div>
 				<DataSearchMessage 
