@@ -13,7 +13,7 @@ class BudgetExaminationAndApproval extends Component {
         
 	}
 	componentWillMount(){
-		this.table_data_body(1,5)
+		this.table_data_body(1,5,this.state.search_message)
 	}
 	table_data_body = (page_num,page_size,search_obj) => {
         
@@ -108,14 +108,14 @@ class BudgetExaminationAndApproval extends Component {
                     pno:1
                 })
                 currentPage>1?this.goPage(this.state.pno,"+psize+"):""
-                currentPage>1?this.table_data_body(1,5):""
+                currentPage>1?this.table_data_body(1,5,this.state.search_message):""
             }}
             >首页</a>
             <a 
                 className="nyx-change-page-href" onClick={()=>{
                 currentPage>1?this.setState({pno:this.state.pno-1}):""
                 currentPage>1?this.goPage(this.state.pno,"+psize+"):""
-                currentPage>1?this.table_data_body(this.state.pno-1,5):""
+                currentPage>1?this.table_data_body(this.state.pno-1,5,this.state.search_message):""
             }}
             >{"<上一页"}</a>
             <a 
@@ -124,7 +124,7 @@ class BudgetExaminationAndApproval extends Component {
                 currentPage<totalPage?this.setState({pno:this.state.pno+1}):""
             { this.goPage("+(currentPage+1)+","+psize+")}
                 currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
-                currentPage<totalPage?this.table_data_body(this.state.pno+1,5):""
+                currentPage<totalPage?this.table_data_body(this.state.pno+1,5,this.state.search_message):""
             }}
             >{"下一页>"}</a>
             <a 
@@ -133,7 +133,7 @@ class BudgetExaminationAndApproval extends Component {
                 currentPage<totalPage?this.setState({pno:totalPage}):""
                 
                 currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
-                currentPage<totalPage?this.table_data_body(totalPage,5):""
+                currentPage<totalPage?this.table_data_body(totalPage,5,this.state.search_message):""
             } }
                 
             >{"尾页"}</a>

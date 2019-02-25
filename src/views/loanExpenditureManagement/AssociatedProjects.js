@@ -39,8 +39,8 @@ class AssociatedProjects extends Component {
         
 	}
 	componentWillMount(){
-        this.table_data_body(1,5)
-        this.table_project_data_body(1,5)
+        this.table_data_body(1,5,this.state.search_message)
+        this.table_project_data_body(1,5,this.state.search_project_message)
 	}
 	table_data_body = (page_num,page_size,search_obj) => {
         
@@ -278,7 +278,7 @@ class AssociatedProjects extends Component {
 						pno:1
 					})
 					currentPage>1?this.goPage(this.state.pno,"+psize+"):""
-					currentPage>1?this.table_data_body(1,5):""
+					currentPage>1?this.table_data_body(1,5,this.state.search_message):""
 				}}
 				>首页
 			</a>
@@ -286,7 +286,7 @@ class AssociatedProjects extends Component {
 				className="nyx-change-page-href" onClick={()=>{
 				currentPage>1?this.setState({pno:this.state.pno-1}):""
 				currentPage>1?this.goPage(this.state.pno,"+psize+"):""
-				currentPage>1?this.table_data_body(this.state.pno-1,5):""
+				currentPage>1?this.table_data_body(this.state.pno-1,5,this.state.search_message):""
 			}}
 			>{"<上一页"}</a>
 			<a 
@@ -295,7 +295,7 @@ class AssociatedProjects extends Component {
 				currentPage<totalPage?this.setState({pno:this.state.pno+1}):""
 			{ this.goPage("+(currentPage+1)+","+psize+")}
 				currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
-				currentPage<totalPage?this.table_data_body(this.state.pno+1,5):""
+				currentPage<totalPage?this.table_data_body(this.state.pno+1,5,this.state.search_message):""
 			}}
 			>{"下一页>"}</a>
 			<a 
@@ -304,7 +304,7 @@ class AssociatedProjects extends Component {
 				currentPage<totalPage?this.setState({pno:totalPage}):""
 				
 				currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
-				currentPage<totalPage?this.table_data_body(totalPage,5):""
+				currentPage<totalPage?this.table_data_body(totalPage,5,this.state.search_message):""
 			} }
 			>{"尾页"}</a>
 			<a 
@@ -342,7 +342,7 @@ class AssociatedProjects extends Component {
 						project_pno:1
 					})
 					currentPage>1?this.goProjectPage(this.state.project_pno,"+psize+"):""
-					currentPage>1?this.table_project_data_body(1,5):""
+					currentPage>1?this.table_project_data_body(1,5,this.state.search_project_message):""
 				}}
 				>首页
 			</a>
@@ -350,7 +350,7 @@ class AssociatedProjects extends Component {
 				className="nyx-change-page-href" onClick={()=>{
 				currentPage>1?this.setState({project_pno:this.state.project_pno-1}):""
 				currentPage>1?this.goProjectPage(this.state.project_pno,"+psize+"):""
-				currentPage>1?this.table_project_data_body(this.state.project_pno-1,5):""
+				currentPage>1?this.table_project_data_body(this.state.project_pno-1,5,this.state.search_project_message):""
 			}}
 			>{"<上一页"}</a>
 			<a 
@@ -359,7 +359,7 @@ class AssociatedProjects extends Component {
 				currentPage<totalPage?this.setState({project_pno:this.state.project_pno+1}):""
 			{ this.goProjectPage("+(currentPage+1)+","+psize+")}
 				currentPage<totalPage?this.goProjectPage(this.state.project_pno,"+psize+"):""
-				currentPage<totalPage?this.table_project_data_body(this.state.project_pno+1,5):""
+				currentPage<totalPage?this.table_project_data_body(this.state.project_pno+1,5,this.state.search_project_message):""
 			}}
 			>{"下一页>"}</a>
 			<a 
@@ -368,7 +368,7 @@ class AssociatedProjects extends Component {
 				currentPage<totalPage?this.setState({project_pno:totalPage}):""
 				
 				currentPage<totalPage?this.goProjectPage(this.state.project_pno,"+psize+"):""
-				currentPage<totalPage?this.table_project_data_body(totalPage,5):""
+				currentPage<totalPage?this.table_project_data_body(totalPage,5,this.state.search_project_message):""
 			} }
 			>{"尾页"}</a>
 			<a 
@@ -419,8 +419,8 @@ class AssociatedProjects extends Component {
 					add_ids_by_project:false,
 		
 				})
-                this.table_data_body(1,5)
-                this.table_project_data_body(1,5)
+                this.table_data_body(1,5,this.state.search_message)
+                this.table_project_data_body(1,5,this.state.search_project_message)
 
 			}else if(message.error === 2){
 				console.log("未登录")
