@@ -20,7 +20,10 @@
             "title3":"模拟考试与讲解",
             "content3":"",
             "title4":"冲刺时间",
-            "content4":""
+            "content4":"",
+            "enroll_manage":[
+                {"name":"lxs","phone":"13611366048"}
+            ]
         },{
             "id":"2",
             "name":"软考北京周末班",
@@ -38,7 +41,10 @@
             "title3":"模拟考试与讲解",
             "content3":"",
             "title4":"冲刺时间",
-            "content4":""
+            "content4":"",
+            "enroll_manage":[
+                {"name":"lxs","phone":"13611366048"}
+            ]
         }
         
         

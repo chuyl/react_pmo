@@ -10,10 +10,10 @@ import PaymentManageBtn from '../components/button/PaymentManageBtn'
 class AssociatedProjects extends Component {
 	state={
 		pno:1,
-        psize:5,
+        psize:Math.floor((document.body.clientHeight*0.7-40)/28),
         count:0,
         project_pno:1,
-        project_psize:5,
+        project_psize:Math.floor((document.body.clientHeight*0.7-40)/28),
         project_count:0,
         table_data_body:[],
         table_data_bodys:[],
@@ -39,8 +39,8 @@ class AssociatedProjects extends Component {
         
 	}
 	componentWillMount(){
-        this.table_data_body(1,5,this.state.search_message)
-        this.table_project_data_body(1,5,this.state.search_project_message)
+        this.table_data_body(1,this.state.psize,this.state.search_message)
+        this.table_project_data_body(1,this.state.psize,this.state.search_project_message)
 	}
 	table_data_body = (page_num,page_size,search_obj) => {
         
@@ -160,7 +160,7 @@ class AssociatedProjects extends Component {
         var components = [];
         var num = this.state.count;//表格所有行数(所有记录数)
         var totalPage = 0;//总页数
-        var pageSize = psize;//每页显示行数
+        var pageSize = this.state.psize;//每页显示行数
        // //总共分几页 
        if(num/pageSize > parseInt(num/pageSize)){   
                totalPage=parseInt(num/pageSize)+1;   
@@ -212,7 +212,7 @@ class AssociatedProjects extends Component {
         var components = [];
         var num = this.state.count;//表格所有行数(所有记录数)
         var totalPage = 0;//总页数
-        var pageSize = psize;//每页显示行数
+        var pageSize = this.state.psize;//每页显示行数
        // //总共分几页 
        if(num/pageSize > parseInt(num/pageSize)){   
                totalPage=parseInt(num/pageSize)+1;   
@@ -258,7 +258,7 @@ class AssociatedProjects extends Component {
 	 change_page = (pno,psize)=>{
         var num = this.state.count;//表格所有行数(所有记录数)
         var totalPage = 0;//总页数
-        var pageSize = psize;//每页显示行数
+        var pageSize = this.state.psize;//每页显示行数
        // //总共分几页 
        if(num/pageSize > parseInt(num/pageSize)){   
                totalPage=parseInt(num/pageSize)+1;   
@@ -278,7 +278,7 @@ class AssociatedProjects extends Component {
 						pno:1
 					})
 					currentPage>1?this.goPage(this.state.pno,"+psize+"):""
-					currentPage>1?this.table_data_body(1,5,this.state.search_message):""
+					currentPage>1?this.table_data_body(1,this.state.psize,this.state.search_message):""
 				}}
 				>首页
 			</a>
@@ -286,7 +286,7 @@ class AssociatedProjects extends Component {
 				className="nyx-change-page-href" onClick={()=>{
 				currentPage>1?this.setState({pno:this.state.pno-1}):""
 				currentPage>1?this.goPage(this.state.pno,"+psize+"):""
-				currentPage>1?this.table_data_body(this.state.pno-1,5,this.state.search_message):""
+				currentPage>1?this.table_data_body(this.state.pno-1,this.state.psize,this.state.search_message):""
 			}}
 			>{"<上一页"}</a>
 			<a 
@@ -295,7 +295,7 @@ class AssociatedProjects extends Component {
 				currentPage<totalPage?this.setState({pno:this.state.pno+1}):""
 			{ this.goPage("+(currentPage+1)+","+psize+")}
 				currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
-				currentPage<totalPage?this.table_data_body(this.state.pno+1,5,this.state.search_message):""
+				currentPage<totalPage?this.table_data_body(this.state.pno+1,this.state.psize,this.state.search_message):""
 			}}
 			>{"下一页>"}</a>
 			<a 
@@ -304,7 +304,7 @@ class AssociatedProjects extends Component {
 				currentPage<totalPage?this.setState({pno:totalPage}):""
 				
 				currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
-				currentPage<totalPage?this.table_data_body(totalPage,5,this.state.search_message):""
+				currentPage<totalPage?this.table_data_body(totalPage,this.state.psize,this.state.search_message):""
 			} }
 			>{"尾页"}</a>
 			<a 
@@ -322,7 +322,7 @@ class AssociatedProjects extends Component {
      project_change_page = (pno,psize)=>{
         var num = this.state.project_count;//表格所有行数(所有记录数)
         var totalPage = 0;//总页数
-        var pageSize = psize;//每页显示行数
+        var pageSize = this.state.psize;//每页显示行数
        // //总共分几页 
        if(num/pageSize > parseInt(num/pageSize)){   
                totalPage=parseInt(num/pageSize)+1;   
@@ -342,7 +342,7 @@ class AssociatedProjects extends Component {
 						project_pno:1
 					})
 					currentPage>1?this.goProjectPage(this.state.project_pno,"+psize+"):""
-					currentPage>1?this.table_project_data_body(1,5,this.state.search_project_message):""
+					currentPage>1?this.table_project_data_body(1,this.state.psize,this.state.search_project_message):""
 				}}
 				>首页
 			</a>
@@ -350,7 +350,7 @@ class AssociatedProjects extends Component {
 				className="nyx-change-page-href" onClick={()=>{
 				currentPage>1?this.setState({project_pno:this.state.project_pno-1}):""
 				currentPage>1?this.goProjectPage(this.state.project_pno,"+psize+"):""
-				currentPage>1?this.table_project_data_body(this.state.project_pno-1,5,this.state.search_project_message):""
+				currentPage>1?this.table_project_data_body(this.state.project_pno-1,this.state.psize,this.state.search_project_message):""
 			}}
 			>{"<上一页"}</a>
 			<a 
@@ -359,7 +359,7 @@ class AssociatedProjects extends Component {
 				currentPage<totalPage?this.setState({project_pno:this.state.project_pno+1}):""
 			{ this.goProjectPage("+(currentPage+1)+","+psize+")}
 				currentPage<totalPage?this.goProjectPage(this.state.project_pno,"+psize+"):""
-				currentPage<totalPage?this.table_project_data_body(this.state.project_pno+1,5,this.state.search_project_message):""
+				currentPage<totalPage?this.table_project_data_body(this.state.project_pno+1,this.state.psize,this.state.search_project_message):""
 			}}
 			>{"下一页>"}</a>
 			<a 
@@ -368,7 +368,7 @@ class AssociatedProjects extends Component {
 				currentPage<totalPage?this.setState({project_pno:totalPage}):""
 				
 				currentPage<totalPage?this.goProjectPage(this.state.project_pno,"+psize+"):""
-				currentPage<totalPage?this.table_project_data_body(totalPage,5,this.state.search_project_message):""
+				currentPage<totalPage?this.table_project_data_body(totalPage,this.state.psize,this.state.search_project_message):""
 			} }
 			>{"尾页"}</a>
 			<a 
@@ -390,7 +390,7 @@ class AssociatedProjects extends Component {
 		this.setState({
 			search_message:message
         })
-        this.table_data_body(1,5,message)
+        this.table_data_body(1,this.state.psize,message)
     }
     screening_project_information=(message)=>{
         // table_data_body()
@@ -399,7 +399,7 @@ class AssociatedProjects extends Component {
 		this.setState({
 			search_project_message:message
         })
-        this.table_project_data_body(1,5,message)
+        this.table_project_data_body(1,this.state.psize,message)
 	}
 	cancelCallback=()=>{
 		this.setState({
@@ -419,8 +419,8 @@ class AssociatedProjects extends Component {
 					add_ids_by_project:false,
 		
 				})
-                this.table_data_body(1,5,this.state.search_message)
-                this.table_project_data_body(1,5,this.state.search_project_message)
+                this.table_data_body(1,this.state.psize,this.state.search_message)
+                this.table_project_data_body(1,this.state.psize,this.state.search_project_message)
 
 			}else if(message.error === 2){
 				console.log("未登录")
@@ -608,7 +608,7 @@ class AssociatedProjects extends Component {
                        
                     </div>
                     <div className="statistical_change_page">
-                            {this.change_page(1,5)}
+                            {this.change_page(1,this.state.psize)}
                         </div>
                 </div>
                 <div className="loan_part_right" style={{width:"50%",float:"left"}}>
@@ -666,7 +666,7 @@ class AssociatedProjects extends Component {
                       
                     </div>
                     <div className="statistical_change_page">
-                            {this.project_change_page(1,5)}
+                            {this.project_change_page(1,this.state.psize)}
                         </div>
                     <Popup 
                         content={

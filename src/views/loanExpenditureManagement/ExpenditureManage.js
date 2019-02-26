@@ -10,7 +10,7 @@ import PaymentManageBtn from '../components/button/PaymentManageBtn'
 class ExpenditureManage extends Component {
 	state={
 		pno:1,
-        psize:5,
+        psize:Math.floor((document.body.clientHeight*0.7-40)/28),
         count:0,
         table_data_body:[],
         table_data_bodys:[],
@@ -31,8 +31,8 @@ class ExpenditureManage extends Component {
         
 	}
 	componentWillMount(){
-		// console.log(Math.floor(document.body.clientHeight*0.7/32))
-		this.table_data_body(1,5,this.state.search_message)
+		 console.log(Math.floor((document.body.clientHeight*0.7-40)/32))
+		this.table_data_body(1,this.state.psize,this.state.search_message)
 	}
 	table_data_body = (page_num,page_size,search_obj) => {
         
@@ -99,13 +99,13 @@ class ExpenditureManage extends Component {
 		})
 	}
 
-	goPage= (pno,psize) =>{
+	goPage= (pno) =>{
         // this.table_data_body()
         // {this.historyFileDialog()}
         var components = [];
         var num = this.state.count;//表格所有行数(所有记录数)
         var totalPage = 0;//总页数
-        var pageSize = psize;//每页显示行数
+        var pageSize = this.state.psize;//每页显示行数
        // //总共分几页 
        if(num/pageSize > parseInt(num/pageSize)){   
                totalPage=parseInt(num/pageSize)+1;   
@@ -209,7 +209,7 @@ class ExpenditureManage extends Component {
 	 change_page = (pno,psize)=>{
         var num = this.state.count;//表格所有行数(所有记录数)
         var totalPage = 0;//总页数
-        var pageSize = psize;//每页显示行数
+        var pageSize = this.state.psize;//每页显示行数
        // //总共分几页 
        if(num/pageSize > parseInt(num/pageSize)){   
                totalPage=parseInt(num/pageSize)+1;   
@@ -229,7 +229,7 @@ class ExpenditureManage extends Component {
 						pno:1
 					})
 					currentPage>1?this.goPage(this.state.pno,"+psize+"):""
-					currentPage>1?this.table_data_body(1,5,this.state.search_message):""
+					currentPage>1?this.table_data_body(1,this.state.psize,this.state.search_message):""
 				}}
 				>首页
 			</a>
@@ -237,7 +237,7 @@ class ExpenditureManage extends Component {
 				className="nyx-change-page-href" onClick={()=>{
 				currentPage>1?this.setState({pno:this.state.pno-1}):""
 				currentPage>1?this.goPage(this.state.pno,"+psize+"):""
-				currentPage>1?this.table_data_body(this.state.pno-1,5,this.state.search_message):""
+				currentPage>1?this.table_data_body(this.state.pno-1,this.state.psize,this.state.search_message):""
 			}}
 			>{"<上一页"}</a>
 			<a 
@@ -246,7 +246,7 @@ class ExpenditureManage extends Component {
 				currentPage<totalPage?this.setState({pno:this.state.pno+1}):""
 			{ this.goPage("+(currentPage+1)+","+psize+")}
 				currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
-				currentPage<totalPage?this.table_data_body(this.state.pno+1,5,this.state.search_message):""
+				currentPage<totalPage?this.table_data_body(this.state.pno+1,this.state.psize,this.state.search_message):""
 			}}
 			>{"下一页>"}</a>
 			<a 
@@ -255,7 +255,7 @@ class ExpenditureManage extends Component {
 				currentPage<totalPage?this.setState({pno:totalPage}):""
 				
 				currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
-				currentPage<totalPage?this.table_data_body(totalPage,5,this.state.search_message):""
+				currentPage<totalPage?this.table_data_body(totalPage,this.state.psize,this.state.search_message):""
 			} }
 			>{"尾页"}</a>
 			<a 
@@ -278,7 +278,7 @@ class ExpenditureManage extends Component {
 		this.setState({
 			search_message:message
         })
-        this.table_data_body(1,5,message)
+        this.table_data_body(1,this.state.psize,message)
 	}
 	// 添加财务编号
 	sureAddFinancialCallback=()=>{
@@ -289,7 +289,7 @@ class ExpenditureManage extends Component {
 					alertAddFinancialState:false,
 		
 				})
-				this.table_data_body(1,5,this.state.search_message)
+				this.table_data_body(1,this.state.psize,this.state.search_message)
 
 			}else if(message.error === 2){
 				console.log("未登录")
@@ -321,7 +321,7 @@ class ExpenditureManage extends Component {
 					alertAddProjectState:false,
 		
 				})
-				this.table_data_body(1,5,this.state.search_message)
+				this.table_data_body(1,this.state.psize,this.state.search_message)
 
 			}else if(message.error === 2){
 				console.log("未登录")
@@ -353,7 +353,7 @@ class ExpenditureManage extends Component {
 					alertChangeAmountState:false,
 		
 				})
-				this.table_data_body(1,5,this.state.search_message)
+				this.table_data_body(1,this.state.psize,this.state.search_message)
 
 			}else if(message.error === 2){
 				console.log("未登录")
@@ -396,7 +396,7 @@ class ExpenditureManage extends Component {
                 this.setState({
                     alertState:false
 				})
-				this.table_data_body(1,5,this.state.search_message)
+				this.table_data_body(1,this.state.psize,this.state.search_message)
             }else if(message.error === 2){
                 console.log("未登录")
                 sessionStorage.logged = false;
@@ -497,7 +497,7 @@ class ExpenditureManage extends Component {
               
             </div>
 			<div className="statistical_change_page">
-                    {this.change_page(1,5)}
+                    {this.change_page(1,this.state.psize)}
                 </div>
 			<Popup 
 				content={

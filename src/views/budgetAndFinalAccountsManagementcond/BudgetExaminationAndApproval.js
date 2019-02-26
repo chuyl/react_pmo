@@ -4,7 +4,7 @@ import DataSearchMessage from '../components/search/DataSearchMessage'
 class BudgetExaminationAndApproval extends Component {
 	state={
 		pno:1,
-        psize:5,
+        psize:Math.floor((document.body.clientHeight*0.7-40)/28),
         count:0,
         table_data_body:[],
         table_data_bodys:[],
@@ -13,7 +13,7 @@ class BudgetExaminationAndApproval extends Component {
         
 	}
 	componentWillMount(){
-		this.table_data_body(1,5,this.state.search_message)
+		this.table_data_body(1,this.state.psize,this.state.search_message)
 	}
 	table_data_body = (page_num,page_size,search_obj) => {
         
@@ -46,7 +46,7 @@ class BudgetExaminationAndApproval extends Component {
         var components = [];
         var num = this.state.count;//表格所有行数(所有记录数)
         var totalPage = 0;//总页数
-        var pageSize = psize;//每页显示行数
+        var pageSize = this.state.psize;//每页显示行数
        // //总共分几页 
        if(num/pageSize > parseInt(num/pageSize)){   
                totalPage=parseInt(num/pageSize)+1;   
@@ -88,7 +88,7 @@ class BudgetExaminationAndApproval extends Component {
 	 change_page = (pno,psize)=>{
         var num = this.state.count;//表格所有行数(所有记录数)
         var totalPage = 0;//总页数
-        var pageSize = psize;//每页显示行数
+        var pageSize = this.state.psize;//每页显示行数
        // //总共分几页 
        if(num/pageSize > parseInt(num/pageSize)){   
                totalPage=parseInt(num/pageSize)+1;   
@@ -108,14 +108,14 @@ class BudgetExaminationAndApproval extends Component {
                     pno:1
                 })
                 currentPage>1?this.goPage(this.state.pno,"+psize+"):""
-                currentPage>1?this.table_data_body(1,5,this.state.search_message):""
+                currentPage>1?this.table_data_body(1,this.state.psize,this.state.search_message):""
             }}
             >首页</a>
             <a 
                 className="nyx-change-page-href" onClick={()=>{
                 currentPage>1?this.setState({pno:this.state.pno-1}):""
                 currentPage>1?this.goPage(this.state.pno,"+psize+"):""
-                currentPage>1?this.table_data_body(this.state.pno-1,5,this.state.search_message):""
+                currentPage>1?this.table_data_body(this.state.pno-1,this.state.psize,this.state.search_message):""
             }}
             >{"<上一页"}</a>
             <a 
@@ -124,7 +124,7 @@ class BudgetExaminationAndApproval extends Component {
                 currentPage<totalPage?this.setState({pno:this.state.pno+1}):""
             { this.goPage("+(currentPage+1)+","+psize+")}
                 currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
-                currentPage<totalPage?this.table_data_body(this.state.pno+1,5,this.state.search_message):""
+                currentPage<totalPage?this.table_data_body(this.state.pno+1,this.state.psize,this.state.search_message):""
             }}
             >{"下一页>"}</a>
             <a 
@@ -133,7 +133,7 @@ class BudgetExaminationAndApproval extends Component {
                 currentPage<totalPage?this.setState({pno:totalPage}):""
                 
                 currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
-                currentPage<totalPage?this.table_data_body(totalPage,5,this.state.search_message):""
+                currentPage<totalPage?this.table_data_body(totalPage,this.state.psize,this.state.search_message):""
             } }
                 
             >{"尾页"}</a>
@@ -161,7 +161,7 @@ class BudgetExaminationAndApproval extends Component {
 		this.setState({
 			search_message:message
         })
-        this.table_data_body(1,5,message)
+        this.table_data_body(1,this.state.psize,message)
     }
     /** 
 	 * @time 2019-01-22
@@ -236,7 +236,7 @@ class BudgetExaminationAndApproval extends Component {
                
             </div>
             <div className="statistical_change_page">
-                    {this.change_page(1,5)}
+                    {this.change_page(1,this.state.psize)}
                 </div>
         </div>
 		)
