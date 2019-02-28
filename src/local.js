@@ -12,6 +12,10 @@ var local = {
                 "program_data_getByProjectId":{"url":"../data/program_data_getByProjectId.json","version":"1.0"},
                 "lecturer_manage_list":{"url":"../data/lecturer_manage_list.json","version":"1.0"},//讲师列表
                 "lecturer_manage_add":{"url":"../data/lecturer_manage_add.json","version":"1.0"},//讲师新增
+                "lecturer_manage_edit":{"url":"../data/lecturer_manage_edit.json","version":"1.0"},//讲师修改
+                "lecturer_manage_del":{"url":"../data/lecturer_manage_del.json","version":"1.0"},//讲师删除
+                "lecturer_data_getByLeturerId":{"url":"../data/lecturer_data_getByLeturerId.json","version":"1.0"},//获取一条讲师数据
+                
                 "lecturer_duty_list":{"url":"../data/lecturer_duty_list.json","version":"1.0"},//讲师职责列表
                 "lecturer_duty_add":{"url":"../data/lecturer_duty_add.json","version":"1.0"},//讲师职责新增
                 "lecturer_plan_getByProjectId":{"url":"../data/lecturer_plan_getByProjectId.json","version":"1.0"},//获取项目讲师安排

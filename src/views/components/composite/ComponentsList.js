@@ -405,6 +405,7 @@ handleChildChange=(formData)=>{
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={index}
+                                    tip={form_list.tip}
                                     defaultValue={form_list.default_value}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
