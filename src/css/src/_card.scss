@@ -1085,9 +1085,11 @@ textarea:disabled {
 }
 
 .card-project .card-page {}
-.enroll_manage{
+
+.enroll_manage {
     overflow: hidden;
 }
+
 .enroll_manage_div {
     width: 70%;
     height: 2.2em;
@@ -1095,6 +1097,9 @@ textarea:disabled {
     line-height: 2.2em;
     span {
         padding: 0 0.5em;
+        display: inline-block;
+        box-sizing: border-box;
+        width: 33%;
     }
 }
 
