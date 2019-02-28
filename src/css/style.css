@@ -2251,14 +2251,19 @@ textarea:disabled {
 .filter_box_state:hover {
   background-color: #FF5252; }
 
+.enroll_manage {
+  overflow: hidden; }
+
 .enroll_manage_div {
   width: 70%;
   height: 2.2em;
+  float: left;
   line-height: 2.2em; }
   .enroll_manage_div span {
     padding: 0 0.5em; }
 
 .card_event_btn {
+  float: left;
   display: inline-block; }
   .card_event_btn button {
     margin-top: 0.2em;
