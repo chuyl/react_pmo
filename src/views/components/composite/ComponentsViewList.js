@@ -43,6 +43,7 @@
    import SpellingCardGroup from '../watch/SpellingCardGroup'
    import LoopCardMoneyGroup from '../watch/LoopCardMoneyGroup'
    import LoopCardGroup from '../watch/LoopCardGroup'
+   import EnrollManageList from '../watch/EnrollManageList'
   import LabelChildMessage from '../watch/LabelChildMessage'
   import LabelMessage from '../../components/watch/LabelMessage'
   import LabelTotalMessage from '../../components/watch/LabelTotalMessage'
@@ -525,6 +526,14 @@
                                 />
                             :form_list.type_name === "LoopCardGroup"?
                                 <LoopCardGroup
+                                    id={form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    defaultValue={form_list.default_value}
+                                     beforeApiUri={form_list.before_api_uri}
+                                    message={""} 
+                                />
+                            :form_list.type_name === "EnrollManageList"?
+                                <EnrollManageList
                                     id={form_list.id_name} 
                                     labelValue={form_list.title} 
                                     defaultValue={form_list.default_value}

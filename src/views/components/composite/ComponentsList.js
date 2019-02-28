@@ -31,6 +31,7 @@ import CardRightBody from '../watch/CardRightBody'
 import SpellingCardGroup from '../watch/SpellingCardGroup'
 import LoopCardMoneyGroup from '../watch/LoopCardMoneyGroup'
 import LoopCardGroup from '../watch/LoopCardGroup'
+import EnrollManageList from '../watch/EnrollManageList'
 import LabelSelectMessage from '../watch/LabelSelectMessage'
 import CardHead from '../../components/card/CardHead'
 import CardPage from '../watch/CardPage'
@@ -457,10 +458,23 @@ handleChildChange=(formData)=>{
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={index}
+                                    keywordTitle={form_list.key} 
                                     defaultValue={form_list.default_value}
                                      beforeApiUri={form_list.before_api_uri}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
-                                />    
+                                />   
+                            :form_list.type_name === "EnrollManageList"?
+                                <EnrollManageList
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    key={index}
+                                    keywordTitle={form_list.key} 
+                                    defaultValue={form_list.default_value}
+                                     beforeApiUri={form_list.before_api_uri}
+                                     examine_bool_enroll={this.examine_bool_message}
+                                    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />   
+                                 
                             :form_list.type_name === "DateCard"?
                                 <DateCard
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 

@@ -22,7 +22,8 @@
             "title4":"冲刺时间",
             "content4":"",
             "enroll_manage":[
-                {"name":"lxs","phone":"13611366048"}
+                {"name":"lxs","phone":"13611366048"},
+                {"name":"lxs1","phone":"13611366048"}
             ]
         },{
             "id":"2",
