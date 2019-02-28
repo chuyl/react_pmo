@@ -17,26 +17,26 @@
                     components.push(
                             <div className="enroll_manage">
                                 <div className="enroll_manage_div" key={m}>
-                                <span>{this.props.message[m][list[0]]}</span>
-                                {list.length>1?<span>{this.props.message[m][list[1]]}</span>:""}
-                                {list.length>2?<span>{this.props.message[m][list[2]]}</span>:""}
+                                  <span>{this.props.message[m][list[0]]}</span>
+                                  {list.length>1?<span>{this.props.message[m][list[1]]}</span>:""}
+                                  {list.length>2?<span>{this.props.message[m][list[2]]}</span>:""}
                                 
                                 {/* {list.length>2?<span>{this.props.message[m][list[2]]==="1"?"待审核":this.props.message[m][list[2]]==="1"?"已通过":""}</span>:""} */}
-                              </div>
-                            <ClickAlert
-                                defaultValue={"同意"}
-                                // buttonMessage={form_list}
-                                dataId={this.props.message[m].id}
-                                // isClick={this.props.card_list.id}
-                                linkpage={"clazz_manage_enroll_is_agree"}
-                                examine_bool_first={this.examine_bool_message}/>
+                                </div>
                                 <ClickAlert
-                                defaultValue={"删除"}
-                                // buttonMessage={form_list}
-                                dataId={this.props.message[m].id}
-                                // isClick={this.props.card_list.id}
-                                linkpage={"clazz_manage_enroll_is_refuse"}
-                                examine_bool_first={this.examine_bool_message}/>
+                                    defaultValue={"同意"}
+                                    // buttonMessage={form_list}
+                                    dataId={this.props.message[m].id}
+                                    // isClick={this.props.card_list.id}
+                                    linkpage={"clazz_manage_enroll_is_agree"}
+                                    examine_bool_first={this.examine_bool_message}/>
+                                    <ClickAlert
+                                    defaultValue={"删除"}
+                                    // buttonMessage={form_list}
+                                    dataId={this.props.message[m].id}
+                                    // isClick={this.props.card_list.id}
+                                    linkpage={"clazz_manage_enroll_is_refuse"}
+                                    examine_bool_first={this.examine_bool_message}/>
                             </div>
                      )
                 

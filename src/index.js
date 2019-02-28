@@ -34,7 +34,7 @@ class App extends Component {
   class List extends Component {
     render() {
       return (
-        <div style={{height:"100%",width:"100%"}}>
+        <div className="content" style={{height:"100%",width:"100%"}}>
           <HashRouter>
           <App>
             <Routers/>
