@@ -15,8 +15,8 @@
             var list = beforeApiUri;
             for(var m = 0;m<this.props.message.length;m++){
                     components.push(
-                            <div style={{height:"2.2em"}} key={m}>
-                              <label>{this.props.message[m][list[0]]}</label>
+                            <div className="enroll_manage_div" key={m}>
+                              <span>{this.props.message[m][list[0]]}</span>
                               {list.length>1?<span>{this.props.message[m][list[1]]}</span>:""}
                               {list.length>2?<span>{this.props.message[m][list[2]]}</span>:""}
                               <ClickAlert
