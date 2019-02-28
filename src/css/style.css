@@ -2251,6 +2251,15 @@ textarea:disabled {
 .filter_box_state:hover {
   background-color: #FF5252; }
 
+.crius-card-list .card-project .card-body {
+  padding-top: 0.5em; }
+
+.card_event_btn {
+  display: inline-block;
+  line-height: 2.2em; }
+  .card_event_btn button {
+    display: inline-block; }
+
 .dialog_open {
   position: absolute;
   bottom: 50px;
