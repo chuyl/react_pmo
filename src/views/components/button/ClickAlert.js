@@ -91,7 +91,8 @@
         render(){
             const {defaultValue,linkpage} = this.props;
             return (
-                <div className="card_ide_btn">
+                 <div className="card_event_btn">
+                {/* // <div className="card_ide_btn"> */}
                     <button 
                         onClick={this.props.view?this.holdViewClick:this.holdClick} 
                         className="btn_list">
