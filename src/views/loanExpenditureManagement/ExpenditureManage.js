@@ -10,7 +10,7 @@ import PaymentManageBtn from '../components/button/PaymentManageBtn'
 class ExpenditureManage extends Component {
 	state={
 		pno:1,
-        psize:Math.floor((document.body.clientHeight*0.7-40)/28),
+        psize:Math.floor((document.body.clientHeight*0.6-40)/28),
         count:0,
         table_data_body:[],
         table_data_bodys:[],
@@ -32,6 +32,7 @@ class ExpenditureManage extends Component {
 	}
 	componentWillMount(){
 		 console.log(Math.floor((document.body.clientHeight*0.7-40)/32))
+		 console.log(document.body.clientHeight*0.7)
 		this.table_data_body(1,this.state.psize,this.state.search_message)
 	}
 	table_data_body = (page_num,page_size,search_obj) => {
@@ -462,7 +463,7 @@ class ExpenditureManage extends Component {
 					   langPackTitle={["-1,1,2"]}
 					   screeningMessage={this.screening_information}
 					/>
-                <div style={{height:"70vh"}} className="statistical_div">
+                <div className="statistical_div">
                 
                     <table style={{width:sumLength+29+"em"}} className="statistical_table">
                         <thead>

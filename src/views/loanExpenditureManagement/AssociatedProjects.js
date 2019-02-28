@@ -560,7 +560,7 @@ class AssociatedProjects extends Component {
 							// dataId={table_data_body.id}
 					/>    
                 </div>
-                <div className="loan_part_left" style={{width:"50%",float:"left"}}>
+                <div className="loan_part_left" style={{width:"50%",float:"left",position:"relative",height:"93vh"}}>
                     <DataSearchMessage 
                        index={0}
 					   message={this.state.table_data_bodys}
@@ -611,7 +611,7 @@ class AssociatedProjects extends Component {
                             {this.change_page(1,this.state.psize)}
                         </div>
                 </div>
-                <div className="loan_part_right" style={{width:"50%",float:"left"}}>
+                <div className="loan_part_right" style={{width:"50%",float:"left",position:"relative",height:"93vh"}}>
                     <DataSearchMessage 
                        index={1}
 					   message={this.state.table_data_bodys}

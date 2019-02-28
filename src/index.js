@@ -373,7 +373,7 @@ handleLogout = () => {
           <span>用户名</span>
           <span>{sessionStorage.account}</span>
         </div>
-        <div className="sidebar">
+        <div className="windows">
      
           <div  style={this.state.show===true?{display:"none"}:{}} className="router_screen nav_lists">
               {/* <div style={{display:"none"}}>{this.state.menu_list}</div> */}

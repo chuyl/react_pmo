@@ -896,20 +896,20 @@ class View extends Component {
 				<div className="view_list overflow">
 					<div id="isViewJson" style={{marginTop:"2em"}} className={this.state.isViewJson?"view_paper_list overflow open":"view_paper_list overflow"}>
 					{this.state.componentsView.map((componentsView,index)=>{
-						if(componentsView.key=== "id_name"){
-							return(
-								<SelectDataListSearch
-								    key={this.state.this_index_view_list+""+this.state.index_json_view+""+index}
-									labelValue={"数据名称"}
-									id={"id_name_select"}
-									sendDataMessage={this.send_data_message}
-									searchInfoLists={"json_type_list"} 
-									// selectName={data_name}
-                                    selectedIdInfo={componentsView.value} 
-                                    selectedInfo={componentsView.value} 
-							/>
-							)
-						}
+						// if(componentsView.key=== "id_name"){
+						// 	return(
+						// 		<SelectDataListSearch
+						// 		    key={this.state.this_index_view_list+""+this.state.index_json_view+""+index}
+						// 			labelValue={"数据名称"}
+						// 			id={"id_name_select"}
+						// 			sendDataMessage={this.send_data_message}
+						// 			searchInfoLists={"json_type_list"} 
+						// 			// selectName={data_name}
+            //                         selectedIdInfo={componentsView.value} 
+            //                         selectedInfo={componentsView.value} 
+						// 	/>
+						// 	)
+						// }
 						return(
 							<ViewTextField 
 							    id={componentsView.key}
@@ -939,7 +939,7 @@ class View extends Component {
 								id={"selectComplexView"}
 								selectedInfo={this.state.selectedViewTitle}
 								selectViewValue={this.selectViewGetValue}
-								selectLists={this.state.view_table_list}
+								selectLists={this.state.view_table_lists}
 							/>:<ViewTextField 
 									value={this.state.change_interface} 
 									labelValue={"名称"} 
