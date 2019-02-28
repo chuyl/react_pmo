@@ -2260,7 +2260,10 @@ textarea:disabled {
   float: left;
   line-height: 2.2em; }
   .enroll_manage_div span {
-    padding: 0 0.5em; }
+    padding: 0 0.5em;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 33%; }
 
 .card_event_btn {
   float: left;
