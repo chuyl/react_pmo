@@ -4,11 +4,11 @@
     "data":{"id": "1", 
              "name": "刘雪松",
              "describe":"讲师描述",
-             "basic_price":"基础课价",
+             "unit_price":"1000",
              "teaching_direction":"讲师授课方向",
              "intermediator":"联系人",
              "contact_information":"联系方式",
-             "state":"合作状态",
+             "state_name":"没联系过",
              "teaching_record":[],
              "pay_record":[]  }
            ,
