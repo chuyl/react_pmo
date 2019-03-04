@@ -310,7 +310,7 @@ class Lecturer extends Component {
 				<div id="" className="container">
 					<div className="add_btn_box">
 						<div className="add_button" onClick={(e) => {
-							this.fetchProjectData("addClass")
+							this.fetchProjectData("addTeacher")
 							this.card_box_concent([], e)
 							this.setState({
 								edit_project_data: [],
