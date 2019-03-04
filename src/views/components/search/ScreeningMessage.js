@@ -23,7 +23,7 @@
             inputValue:"",
             inputState:false,
             message_list:this.props.message,
-            filter_box_state:false,
+            filter_box_state:true,
             search_arr:[],
             keywordTitle:[],
             title_index:0
@@ -77,6 +77,7 @@
                     search_arr:search_arr
                 })
             let filter=(condition,data)=>{
+                console.log(condition)
                 return data.filter( item => {
                     return Object.keys( condition ).every( key => {
                     return String( item[ key ] ).toLowerCase().includes( 
@@ -167,7 +168,7 @@
             const {id,message} =this.props;
             return (
                 <div className="filter_max_div">
-                    <button
+                    {/* <button
                         className="filter_box_state"
                         onClick={()=>{
                             this.setState({
@@ -176,7 +177,7 @@
                         }}
                     >
                         {this.state.filter_box_state?"关闭筛选框":"打开筛选框"}
-                    </button>
+                    </button> */}
                     <div className="select_filter_box" style={this.state.filter_box_state?{display:"block"}:{display:"none"}}>
                         <SelectSearchType
                              id={"select_title"}
