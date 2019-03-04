@@ -468,7 +468,7 @@ handleLogout = () => {
             <button
               onClick={()=>{
 
-              var config = {"routers":"http://192.168.4.69:666/user/route/client_route","notification":"test.php","language":"Chin","version":"1.100"};
+              var config = {"routers":"http://192.168.60.175:666/user/route/client_route","notification":"test.php","language":"Chin","version":"1.100"};
               
               sessionStorage.config1=JSON.stringify(config)
               window.location.reload()
@@ -478,7 +478,7 @@ handleLogout = () => {
               <button
               onClick={()=>{
 
-              var config = {"routers":"http://192.168.4.69:777/user/route/client_route","notification":"test.php","language":"Chin","version":"1.100"};
+              var config = {"routers":"http://192.168.60.175:777/user/route/client_route","notification":"test.php","language":"Chin","version":"1.100"};
               
               sessionStorage.config1=JSON.stringify(config)
               window.location.reload()
