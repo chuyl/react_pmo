@@ -240,7 +240,7 @@ class ClassManagement extends Component {
 		}
 		for (var i = 0; i < list_message.length; i++) {
 			if (list_message[i].type_name !== "HoldBtn") {
-				if (list_message[i].type_name === "ListTextSearch" || list_message[i].type_name === "SelectList" || list_message[i].type_name === "SelectListSearch") {
+				if (list_message[i].type_name === "ListTextSearch" || list_message[i].type_name === "SelectList" || list_message[i].type_name === "SelectListSearch"||list_message[i].type_name==="SelectListLangPack") {
 					console.log(list_message[i].id_name + "_name")
 					value.push(list_message[i].id_name + "_name")
 					key_name.push(document.getElementById(list_message[i].id_name + "_name").innerHTML === "-选择-" ? "" : document.getElementById(list_message[i].id_name + "_name").innerHTML)

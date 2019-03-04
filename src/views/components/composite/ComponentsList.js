@@ -44,6 +44,7 @@ import AddCardBtn from '../../components/button/AddCardBtn'
 import Invisible from '../../components/input/Invisible'
 import DisTextField from '../../components/input/DisTextField'
 import SelectList from '../../components/select/SelectList'
+import SelectListLangPack from '../../components/select/SelectListLangPack'
 import DisSelectList from '../../components/select/DisSelectList'
 import SelectListSearch from '../../components/select/SelectListSearch'
 import DepartmentList from '../select/DepartmentList'
@@ -405,6 +406,7 @@ handleChildChange=(formData)=>{
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
                                     labelValue={form_list.title} 
                                     key={index}
+                                    tip={form_list.tip}
                                     defaultValue={form_list.default_value}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
@@ -585,6 +587,18 @@ handleChildChange=(formData)=>{
                                     selectedIdInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_id"]:"-选择-"} 
                                     selectedInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_name"]:"-选择-"} 
                                 /> 
+                            :form_list.type_name==="SelectListLangPack"?
+                                <SelectListLangPack 
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
+                                    labelValue={form_list.title}
+                                    key={index}
+                                    disabled={this.props.disabled}
+                                    langPack={form_list.key}
+                                    // searchInfoLists={form_list.key} 
+                                    selectedIdInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_id"]:"-选择-"} 
+                                    selectedInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_name"]:"-选择-"} 
+                                /> 
+                                
                             :form_list.type_name==="DisSelectList"?
                                 <DisSelectList 
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 

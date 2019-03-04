@@ -28,6 +28,7 @@
    import ShowStateMessage from '../../components/watch/ShowStateMessage'
    import CardItemTime from '../../components/watch/CardItemTime'
    import SelectList from '../../components/select/SelectList'
+   import SelectListLangPack from '../../components/select/SelectListLangPack'
    import SelectListSearch from '../../components/select/SelectListSearch'
    import DisSelectList from '../../components/select/DisSelectList'
    import Invisible from '../../components/input/Invisible'
@@ -236,6 +237,16 @@
                                        selectedIdInfo={"-选择-"} 
                                        selectedInfo={"-选择-"} 
                                    /> 
+                                   :form_list.type_name==="SelectListLangPack"?
+                                   <SelectListLangPack 
+                                       id={form_list.id_name}
+                                       labelValue={form_list.title}
+                                       langPack={form_list.key}
+                                       searchInfoLists={form_list.key} 
+                                       selectedIdInfo={"-选择-"} 
+                                       selectedInfo={"-选择-"} 
+                                   /> 
+                                   
                                 :form_list.type_name==="DisSelectList"?
                                    <DisSelectList 
                                        id={form_list.id_name}
