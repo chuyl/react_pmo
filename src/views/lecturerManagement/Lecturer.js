@@ -4,6 +4,7 @@ import React, {
 // import Cards from '../components/Cards'
 import Alert from '../components/modal/Remind'
 import ComponentsList from '../components/composite/ComponentsList'
+import ScreeningMessage from '../components/search/ScreeningMessage'
 import { getData, getRouter,getList } from '../../utils/helpers'
 // import { PROJECTMANAGELIST } from '../../enum'
 
@@ -11,6 +12,7 @@ class Lecturer extends Component {
 
 	state = {
 		card_list: [],//项目信息列表
+		card_lists:[],
 		selected_card: [],
 		card_state: false,
 		edit_project_data: [],
@@ -37,7 +39,8 @@ class Lecturer extends Component {
 
 			if (message.error === 0) {
 				this.setState({
-					card_list: message.data
+					card_list: message.data,
+					card_lists:message.data
 				})
 			}else if(message.error === 2){
 				console.log("未登录")
@@ -303,7 +306,12 @@ class Lecturer extends Component {
 		this.setState({
 				activeState:newState
 			})
-	  }
+		}
+	screening_information=(message)=>{
+		this.setState({
+				card_list:message
+			})
+		}
 	render() {
 		return (
 			<div>
@@ -321,6 +329,15 @@ class Lecturer extends Component {
 							添加
 						</div>
 					</div>
+					{/* <ScreeningMessage 
+							message={this.state.card_lists}
+
+							keywordSearch={["name"]}
+							// selectListMessage={["staff_manage_list","project_type_list"]}
+							// selectNameMessage={["project_leader_name","project_project_template_name"]}
+							keywordTitle={["讲师姓名"]}
+							screeningMessage={this.screening_information}
+						/> */}
 					<div className="overflow card_list_groups crius-card-list">
 						{this.state.card_list !== null ? this.state.card_list.map((card_list, index) => {
 							return (

@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import Cards from '../../components/card/Cards'
 import TextField from '../../components/input/TextField';
 import TextArea from '../../components/input/TextArea'
+import TextAreaShow from '../watch/TextAreaShow'                               
 import TextMoney from '../../components/input/TextMoney'
 import TextDate from '../../components/input/TextDate'
 import TextDatetime from '../../components/input/TextDatetime'
@@ -635,6 +636,13 @@ handleChildChange=(formData)=>{
                                 disabled={this.props.disabled}
                                 key={index}
                                 />
+                            :form_list.type_name === "TextAreaShow" ? 
+                                <TextAreaShow 
+                                id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
+                                inputValue={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""} 
+                                key={index}
+                                />
+                                
                             :form_list.type_name==="CardGroup"?
                                 <CardGroup 
                                     addButtonTitle={form_list.add_button_title} 
