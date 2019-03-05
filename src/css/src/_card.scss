@@ -223,8 +223,7 @@
 }
 
 .label_title_message {
-    width: 100%;
-    // float: left;
+    width: 100%; // float: left;
     line-height: 2em;
     overflow: hidden;
     padding-top: 1em;
@@ -892,8 +891,7 @@ textarea:disabled {
 .statistical_div {
     display: block;
     width: calc(100% - 234px);
-    background: $background-color;
-    // height: 70vh;
+    background: $background-color; // height: 70vh;
     overflow: scroll;
     position: relative;
 }
@@ -1115,4 +1113,10 @@ textarea:disabled {
 
 .card_ide_btn {
     margin-top: 0.2em;
+}
+
+.pmo_direction_area {
+    clear: both;
+    line-height: 2em;
+    padding: 0.5em 0;
 }
