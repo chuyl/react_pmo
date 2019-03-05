@@ -6,7 +6,8 @@
    import React, { Component } from 'react';
    import CardView from '../watch/CardView'
    import TextField from '../../components/input/TextField';
-   import TextArea from '../../components/input/TextArea';
+   import TextArea from '../../components/input/TextArea'
+   import TextAreaShow from '../watch/TextAreaShow'  
    import TextMoney from '../../components/input/TextMoney'
    import TextDate from '../../components/input/TextDate'
    import TextDatetime from '../../components/input/TextDatetime'
@@ -185,6 +186,11 @@
                                        id={form_list.id_name} 
                                         inputValue={form_list.key} 
                                        labelValue={form_list.title} 
+                                   />
+                                : form_list.type_name === "TextAreaShow" ? 
+                                   <TextAreaShow 
+                                       id={form_list.id_name} 
+                                        inputValue={form_list.key} 
                                    />
                                 : form_list.type_name === "Invisible" ? 
                                    <Invisible 
