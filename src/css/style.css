@@ -1250,7 +1250,7 @@ body {
   position: fixed;
   top: 0;
   background-color: #427881;
-  /* height: 600px; js浠ｆ浛 */
+  /* height: 600px; js代替 */
   left: 0;
   z-index: 10; }
 
@@ -2274,6 +2274,11 @@ textarea:disabled {
 .card_ide_btn {
   margin-top: 0.2em; }
 
+.pmo_direction_area {
+  clear: both;
+  line-height: 2em;
+  padding: 0.5em 0; }
+
 .dialog_open {
   position: absolute;
   bottom: 50px;
@@ -2302,7 +2307,7 @@ textarea:disabled {
   bottom: 5px;
   height: 500px;
   background-color: #FF5252;
-  /* height: 600px; js浠ｆ浛 */
+  /* height: 600px; js代替 */
   right: 5px;
   z-index: 20; }
 
@@ -2326,7 +2331,7 @@ textarea:disabled {
     bottom: 0;
     height: 100vh;
     background-color: #FF5252;
-    /* height: 600px; js浠ｆ浛 */
+    /* height: 600px; js代替 */
     right: 0;
     z-index: 20; } }
 .add_info_list {
