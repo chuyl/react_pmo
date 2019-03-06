@@ -203,6 +203,18 @@
         float: left;
     }
 }
+.date_card_right {
+    width: 33.3%;
+    float: left;
+    line-height: 3em;
+    overflow: hidden;
+    span {
+        font-size: 2em;
+    }
+    p {
+        float: left;
+    }
+}
 
 @media screen and (max-width:768px) {
     .date_card {
