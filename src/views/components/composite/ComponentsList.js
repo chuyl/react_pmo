@@ -330,6 +330,7 @@ handleChildChange=(formData)=>{
                                     key={index}
                                     thisKey={form_list.key}
                                     className={form_list.class}
+                                    tip={form_list.tip}
                                     defaultValue={form_list.default_value}
                                     beforeApiUri={form_list.before_api_uri}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 

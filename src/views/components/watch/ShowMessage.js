@@ -20,7 +20,7 @@
             }
             return (
                 <div className={className[0]?className[0]:""}>
-                  {message}
+                  {this.props.tip!==""?this.props.tip+message:message}
                 </div>
             )
         }

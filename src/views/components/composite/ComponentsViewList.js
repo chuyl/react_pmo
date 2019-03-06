@@ -469,6 +469,7 @@
                                     id={form_list.id_name} 
                                     labelValue={form_list.title} 
                                     className={form_list.class}
+                                    tip={form_list.tip}
                                     thisKey={form_list.key}
                                     defaultValue={form_list.default_value}
                                     beforeApiUri={form_list.before_api_uri}
