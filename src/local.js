@@ -15,6 +15,18 @@ var local = {
                 "lecturer_manage_edit":{"url":"../data/lecturer_manage_edit.json","version":"1.0"},//讲师修改
                 "lecturer_manage_del":{"url":"../data/lecturer_manage_del.json","version":"1.0"},//讲师删除
                 "lecturer_data_getByLeturerId":{"url":"../data/lecturer_data_getByLeturerId.json","version":"1.0"},//获取一条讲师数据
+                // 课程接口3.7
+                "course_manage_list":{"url":"../data/course_manage_list.json","version":"1.0"},//课程列表
+                "course_manage_add":{"url":"../data/course_manage_add.json","version":"1.0"},//课程新增
+                "course_manage_edit":{"url":"../data/course_manage_edit.json","version":"1.0"},//课程修改
+                "course_manage_del":{"url":"../data/course_manage_del.json","version":"1.0"},//课程删除
+                "course_data_getByCourseId":{"url":"../data/course_data_getByCourseId.json","version":"1.0"},//获取一条课程信息
+                // 分类接口3.7
+                "classification_manage_list":{"url":"../data/classification_manage_list.json","version":"1.0"},//分类列表
+                "classification_manage_add":{"url":"../data/classification_manage_add.json","version":"1.0"},//分类新增
+                "classification_manage_edit":{"url":"../data/classification_manage_edit.json","version":"1.0"},//分类修改
+                "classification_manage_del":{"url":"../data/classification_manage_del.json","version":"1.0"},//分类删除
+                "classification_data_getByClassificationId":{"url":"../data/classification_data_getByClassificationId.json","version":"1.0"},//获取一条分类信息
                 
                 "lecturer_duty_list":{"url":"../data/lecturer_duty_list.json","version":"1.0"},//讲师职责列表
                 "lecturer_duty_add":{"url":"../data/lecturer_duty_add.json","version":"1.0"},//讲师职责新增

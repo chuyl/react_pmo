@@ -21,7 +21,7 @@ class TabsControl extends Component{
 		// this.langMangement(Lang.projectManagement,0)
 		// this.langMangement(Lang.budgetAndFinalAccountsManagementcond,1)
 		// this.langMangement(Lang.loanExpenditureManagement,2)
-		// this.langMangement(Lang.receivablesManagement,3)
+		// this.langMangement(Lang.courseManagement,3)
 		// this.langMangement(Lang.lecturerManagement,4)
 		// this.langMangement(Lang.implementationManagement,5)
 		// this.langMangement(Lang.viewManagement,6)

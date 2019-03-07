@@ -70,21 +70,21 @@
                     "title":"审批",
                     "component":"LoanExaminationAndApproval"}]
             },
-            "receivablesManagement":{
+            "courseManagement":{
                 "name":"收款管理",
                 "data":[
                     {"id":"1",
-                    "path":"/receivables",
-                    "title":"应收款",
-                    "component":"Receivables"},
+                    "path":"/technologyClassificationManagement",
+                    "title":"技术分类管理",
+                    "component":"TechnologyClassificationManagement"},
                     {"id":"2",
                     "path":"/cashReceipts",
                     "title":"实收款",
                     "component":"CashReceipts"},
                     {"id":"3",
-                    "path":"/receivablesAccounting",
-                    "title":"核算",
-                    "component":"ReceivablesAccounting"},
+                    "path":"/Course",
+                    "title":"课程与分类",
+                    "component":"Course"},
                     {"id":"4",
                     "path":"/receivablesExaminationAndApproval",
                     "title":"审批",

@@ -21,13 +21,14 @@ class Popup extends Component {
                 this.props.sureCallback(msg)
             }
         }
+        console.log(this.props.sureBtn)
 		return (
         
                 <div className={this.props.alertState ?"alert_back open":"alert_back"}>
                     <div className={this.props.alertState ?"alert_box open btn_border":"alert_box"}>
                         {content}
-                        <button onClick = { sure("false") }>确定</button>
-                        <button onClick = { cancel("false") }
+                        {this.props.sureBtn===false?"":<button onClick = { sure("false") }>确定</button>}
+                        <button className="cancel_button" onClick = { cancel("false") }
                     >取消</button>
                     </div>
                 </div>

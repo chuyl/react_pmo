@@ -1,0 +1,28 @@
+{
+    "code":0,
+    "error":0,
+    "data":{"count":"50",
+        "page_num":1,
+        "page_size":5,
+        "data_head":[
+            {"key":"id","value":"分类id","size":"5"},
+            {"key":"name","value":"分类名称","size":"7"},
+            {"key":"type_id","value":"所属分类","size":"10"},
+            {"key":"is_leaf_name","value":"最小分类","size":"7"},
+            {"key":"filter_list","value":"筛选条件","size":"7"}
+          
+        ],
+        "data_body":[{"id": "1", 
+            "name": "分类名称",
+            "type_id": "所属分类",
+            "is_leaf_name": "是最小分类",
+            "is_leaf_id": "1",
+            "filter_list": ["1","2","3"]
+            }
+          ]},
+   
+    "during_time":27,
+    "end_time":1539500978642,
+    "msg":"查询成功",
+    "stat_time":1539500978615
+    }

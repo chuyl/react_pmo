@@ -16,10 +16,10 @@
 // // import LoanAccounting from './views/loanExpenditureManagement/LoanAccounting'
 // // import LoanExaminationAndApproval from './views/loanExpenditureManagement/LoanExaminationAndApproval'
 // // //收款管理
-// // import Receivables from './views/receivablesManagement/Receivables'
-// // import CashReceipts from './views/receivablesManagement/CashReceipts'
-// // import ReceivablesAccounting from './views/receivablesManagement/ReceivablesAccounting'
-// // import ReceivablesExaminationAndApproval from './views/receivablesManagement/ReceivablesExaminationAndApproval'
+// // import Receivables from './views/courseManagement/Receivables'
+// // import CashReceipts from './views/courseManagement/CashReceipts'
+// // import ReceivablesAccounting from './views/courseManagement/ReceivablesAccounting'
+// // import ReceivablesExaminationAndApproval from './views/courseManagement/ReceivablesExaminationAndApproval'
 // // //讲师管理
 // // import Lecturer from './views/lecturerManagement/Lecturer'
 // // import ClassRemuneration from './views/lecturerManagement/ClassRemuneration'
@@ -103,7 +103,7 @@
 //             component:"LoanExaminationAndApproval"},]
 //     },
 //     //收款管理
-//     receivablesManagement:{
+//     courseManagement:{
 //         name:"收款管理",
 //         data:[
 //             {
@@ -242,7 +242,7 @@
 //     //             component:"LoanExaminationAndApproval"},]
 //     //     },
 //     //     //收款管理
-//     //     receivablesManagement:{
+//     //     courseManagement:{
 //     //         name:"收款管理",
 //     //         data:[
 //     //             {id:"1",

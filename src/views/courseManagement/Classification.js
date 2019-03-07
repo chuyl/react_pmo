@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-class CashReceipts extends Component {
+class Classification extends Component {
    
 	render(){
 		return (
             <div>
-        实收款
+        分类管理
         </div>
 		)
 	}
 }
 
-export default CashReceipts;
+export default Classification;

@@ -21,11 +21,10 @@ import ExpenditureManage from '../views/loanExpenditureManagement/ExpenditureMan
 import LoanAccounting from '../views/loanExpenditureManagement/LoanAccounting'
 import LoanExaminationAndApproval from '../views/loanExpenditureManagement/LoanExaminationAndApproval'
 import AssociatedProjects from '../views/loanExpenditureManagement/AssociatedProjects'
-//收款管理
-import Receivables from '../views/receivablesManagement/Receivables'
-import CashReceipts from '../views/receivablesManagement/CashReceipts'
-import ReceivablesAccounting from '../views/receivablesManagement/ReceivablesAccounting'
-import ReceivablesExaminationAndApproval from '../views/receivablesManagement/ReceivablesExaminationAndApproval'
+//课程管理
+import TechnologyClassificationManagement from '../views/courseManagement/TechnologyClassificationManagement'
+import Course from '../views/courseManagement/Course'
+import Classification from '../views/courseManagement/Classification'
 //讲师管理
 import Lecturer from '../views/lecturerManagement/Lecturer'
 import ClassRemuneration from '../views/lecturerManagement/ClassRemuneration'
@@ -71,10 +70,9 @@ class Routers extends Component{
               :message.component==="LoanAccounting"?LoanAccounting 
               :message.component==="LoanExaminationAndApproval"?LoanExaminationAndApproval
               :message.component==="AssociatedProjects"?AssociatedProjects
-              :message.component==="Receivables"?Receivables
-              :message.component==="CashReceipts"?CashReceipts
-              :message.component==="ReceivablesAccounting"?ReceivablesAccounting
-              :message.component==="ReceivablesExaminationAndApproval"?ReceivablesExaminationAndApproval
+              :message.component==="TechnologyClassificationManagement"?TechnologyClassificationManagement
+              :message.component==="Course"?Course
+              :message.component==="Classification"?Classification
               :message.component==="Lecturer"?Lecturer
               :message.component==="ClassRemuneration"?ClassRemuneration
               :message.component==="TeachingArrangement"?TeachingArrangement
@@ -113,8 +111,8 @@ class Routers extends Component{
               return( <Route key={loanExpenditureManagement.id} path={loanExpenditureManagement.path} component={loanExpenditureManagement.component} />)
             })} */}
             {/* 收款管理 */}
-             {/* {Lang.receivablesManagement.map((receivablesManagement)=>{
-              return( <Route key={receivablesManagement.id} path={receivablesManagement.path} component={receivablesManagement.component} />)
+             {/* {Lang.courseManagement.map((courseManagement)=>{
+              return( <Route key={courseManagement.id} path={courseManagement.path} component={courseManagement.component} />)
             })} */}
 
             {/* 讲师管理 */}

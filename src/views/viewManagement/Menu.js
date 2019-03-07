@@ -429,7 +429,7 @@ class Menu extends Component {
 												
 											}} >{view.name}
 											</div>
-											<button style={{width:"70px"}} className="label_delete_button" onClick={()=>{
+											<button className="label_delete_button" onClick={()=>{
 												this.changeRoleMessage(view.id)
 												
 												}}>修改名称

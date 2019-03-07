@@ -72,7 +72,7 @@ class TabComponent extends Component{
     // this.langMangement(Lang.projectManagement)
 		// this.langMangement(Lang.budgetAndFinalAccountsManagementcond)
 		// this.langMangement(Lang.loanExpenditureManagement)
-		// this.langMangement(Lang.receivablesManagement)
+		// this.langMangement(Lang.courseManagement)
 		// this.langMangement(Lang.lecturerManagement)
     // this.langMangement(Lang.implementationManagement)
     // this.langMangement(Lang.viewManagement)

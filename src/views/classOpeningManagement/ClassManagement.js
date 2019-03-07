@@ -122,17 +122,6 @@ class ClassManagement extends Component {
 
 			}
 		}
-		// var cb = (route, message, arg) => {
-		// 	if (message.error === 0) {
-		// 		var json_message=JSON.parse(message.data);
-		// 		this.setState({
-		// 			add_button: json_message["form-list"],
-		// 			form_temp_name:json_message["form-temp-name"],
-		// 		})
-
-		// 	}
-		// }
-		// getData(getRouter("json_manage_name"), { name:url,token:sessionStorage.token }, cb, {});		
 	}
 
 	/** 

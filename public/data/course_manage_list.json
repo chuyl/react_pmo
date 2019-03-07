@@ -1,0 +1,35 @@
+{
+    "code":0,
+    "error":0,
+    "data":{"count":"50",
+        "page_num":1,
+        "page_size":5,
+        "data_head":[
+            {"key":"id","value":"课程id","size":"5"},
+            {"key":"name","value":"课程名称","size":"7"},
+            {"key":"is_short_name","value":"周期","size":"10"},
+            {"key":"is_cert_name","value":"是否认证","size":"7"},
+            {"key":"level_name","value":"级别","size":"7"},
+            {"key":"course_plan","value":"课程计划","size":"7"},
+            {"key":"type_name","value":"所属分类","size":"7"},
+            {"key":"lecturer_name","value":"授课讲师","size":"7"}
+        ],
+        "data_body":[{"id": "1", 
+            "name": "课程名称",
+            "is_short_id": "0",
+            "is_short_name": "长期 3天以上",
+            "is_cert_id": "1",
+            "is_cert_name": "非认证培训",
+            "level_id": "3",
+            "level_name": "高级",
+            "course_plan":"课程计划",
+            "type_id":"1",
+            "type_name":"所属分类",
+            "lecturer_name":"讲师"  }
+          ]},
+   
+    "during_time":27,
+    "end_time":1539500978642,
+    "msg":"查询成功",
+    "stat_time":1539500978615
+    }
