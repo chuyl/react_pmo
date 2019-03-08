@@ -155,7 +155,6 @@ class ListTextSearch extends Component {
     //     this.infos()
     // }
     render() {
-        console.log(this.props.addButton)
         const { selectedInfo,selectedIdInfo, id, labelValue,disabled } = this.props;
         return (
             <div className="search_info_list_card">

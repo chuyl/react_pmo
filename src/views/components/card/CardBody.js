@@ -28,7 +28,7 @@
         render(){
             return (
                 <div className={"card-body"}>
-                <ComponentsList cardIndex={this.props.cardIndex} footState={this.props.footState} fourChange = {this.handleClick} examine_bool_fourth={this.examine_bool_message} componentslist =  {this.props.addButton} componentsdata={this.props.message}></ComponentsList > 
+                <ComponentsList key={this.props.cardIndex} cardIndex={this.props.cardIndex} footState={this.props.footState} fourChange = {this.handleClick} examine_bool_fourth={this.examine_bool_message} componentslist =  {this.props.addButton} componentsdata={this.props.message}></ComponentsList > 
           </div>
             )
         }

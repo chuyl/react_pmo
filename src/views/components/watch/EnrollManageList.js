@@ -15,7 +15,7 @@
             var list = beforeApiUri;
             for(var m = 0;m<this.props.message.length;m++){
                     components.push(
-                            <div className="enroll_manage">
+                            <div key={m} className="enroll_manage">
                                 <div className="enroll_manage_div" key={m}>
                                   <span>{this.props.message[m][list[0]]}</span>
                                   {list.length>1?<span>{this.props.message[m][list[1]]}</span>:""}

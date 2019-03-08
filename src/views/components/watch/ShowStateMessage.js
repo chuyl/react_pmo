@@ -11,7 +11,6 @@
         render(){
             var message;
             var className = this.props.className.split(","); 
-            console.log(this.props.defaultValue)
             if(this.props.message===null){
                 message=this.props.defaultValue;
             }else if(this.props.message===undefined){

@@ -1501,7 +1501,8 @@ body {
   color: #757575;
   width: 33.3%;
   float: left;
-  line-height: 1.5em; }
+  line-height: 1.5em;
+  padding: 0.1em 0; }
 
 .title_card_right {
   width: 33.3%;

@@ -21,7 +21,6 @@ class Popup extends Component {
                 this.props.sureCallback(msg)
             }
         }
-        console.log(this.props.sureBtn)
 		return (
         
                 <div className={this.props.alertState ?"alert_back open":"alert_back"}>

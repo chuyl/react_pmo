@@ -22,11 +22,11 @@ class Course extends Component {
 		 alertAddProjectState:false,//相关内容
 		 alertChangeAmountState:false,//修改金额
 		 alertState:false,
-		 payment_id:"",//支出id
+		 course_id:"",//支出id
 		 project_id:"",//项目id
 		 relation_id:"",//关联id
 		 price:"",
-		 payment_id_arr:[],
+		 course_id_arr:[],
 		 alertTitle:"",
 		 linkpage:"",
 		 edit_project_data: [],
@@ -36,12 +36,9 @@ class Course extends Component {
         
 	}
 	componentWillMount(){
-		 console.log(Math.floor((document.body.clientHeight*0.7-40)/32))
-		 console.log(document.body.clientHeight*0.7)
 		this.table_data_body(1,this.state.psize,this.state.search_message)
 	}
 	fetchProjectData(url) {
-		console.log(url)
 		var json_view = JSON.parse(sessionStorage.view)
 		for (var i = 0; i < json_view.length; i++) {
 			if (json_view[i].name === url) {
@@ -60,13 +57,12 @@ class Course extends Component {
 		var value = [];
 		var list_message = this.state.add_button;
 		if (this.state.dataId) {
-			value.push("parent_id")
+			value.push("id")
 			key_name.push(this.state.dataId)
 		}
 		for (var i = 0; i < list_message.length; i++) {
 			if (list_message[i].type_name !== "HoldBtn") {
 				if (list_message[i].type_name === "ListTextSearch" || list_message[i].type_name === "SelectList" || list_message[i].type_name === "SelectListSearch"||list_message[i].type_name==="SelectListLangPack") {
-					console.log(list_message[i].id_name + "_name")
 					value.push(list_message[i].id_name + "_name")
 					key_name.push(document.getElementById(list_message[i].id_name + "_name").innerHTML === "-选择-" ? "" : document.getElementById(list_message[i].id_name + "_name").innerHTML)
 					value.push(list_message[i].id_name + "_id")
@@ -92,9 +88,9 @@ class Course extends Component {
 			if (message.error === 0) {
 			
 				this.setState({    //  项目创建成功,打开编辑页面。更新view
-				card_state:false
+					alertAddCourseState:false
 			}) 
-			this.listProject()  //刷新项目列表
+			this.table_data_body(1,this.state.psize,this.state.search_message)  //刷新项目列表
 		
 		}else if(message.error === 2){
 			console.log("未登录")
@@ -159,25 +155,43 @@ class Course extends Component {
         this.setState({
             query_condition:obj
 		})
-		console.log(search_obj)
 		PostCsvData(getRouter("payment_project_list"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
 		 , cb, {});
 	}
 	alertAddState=(newState)=>{
-		this.fetchProjectData("addCourse")
-		 console.log(newState)
+		 if(newState.dataId===""){
+			this.fetchProjectData("addCourse")
+			this.setState({
+				[newState.state]:true,
+				dataId:newState.dataId,
+				financial_number:newState.financialNumber?newState.financialNumber:"",
+				relation_id:newState.relationId,
+				edit_project_data:[]
+
+			})
+		 }else{
+			this.fetchProjectData("editCourse")
+			this.setState({
+				[newState.state]:true,
+				dataId:newState.dataId,
+				financial_number:newState.financialNumber?newState.financialNumber:"",
+				relation_id:newState.relationId,
+				edit_project_data:newState.courseData
+			})
+		 }
+		
+	}
+	freshCardGroup = (newState) => {
 		this.setState({
-			[newState.state]:true,
-			payment_id:newState.dataId,
-			financial_number:newState.financialNumber?newState.financialNumber:"",
-			relation_id:newState.relationId
+			edit_project_data: []
+
 		})
 	}
 	alertHoldState=(newState)=>{
 		 console.log(newState)
 		this.setState({
 			[newState.state]:true,
-			payment_id:newState.dataId,
+			course_id:newState.dataId,
 			alertTitle:newState.alertTitle,
 			linkpage:newState.linkpage,
 			project_id:newState.projectId,
@@ -215,7 +229,13 @@ class Course extends Component {
                        </div>
 					</td> */}
 					<td  style={{"width":"29em"}}>
-					
+						<PaymentManageBtn
+							onHoldClick={this.alertAddState}
+							defineValue="修改"
+							dataId={table_data_body.id}
+							state="alertAddCourseState"	
+							courseData={table_data_body}
+						/>
 						{/* 
 						<PaymentManageBtn
 							onHoldClick={this.alertAddState}
@@ -364,7 +384,7 @@ class Course extends Component {
 	}
 	// 添加课程
 	sureAddFinancialCallback=()=>{
-		console.log(this.state.payment_id)
+		console.log(this.state.course_id)
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
 				this.setState({
@@ -391,12 +411,12 @@ class Course extends Component {
 				},3000)
 			  }
 		}
-		console.log(this.state.payment_id)
+		console.log(this.state.course_id)
 		console.log(this.state.financial_number)
-		getData(getRouter("payment_manage_edit_financial_number"), { token:sessionStorage.token,id:this.state.payment_id,financial_number:this.state.financial_number }, cb, {});
+		getData(getRouter("payment_manage_edit_financial_number"), { token:sessionStorage.token,id:this.state.course_id,financial_number:this.state.financial_number }, cb, {});
 	}
 	sureAddProjectCallback=()=>{
-		console.log(this.state.payment_id)
+		console.log(this.state.course_id)
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
 				this.setState({
@@ -423,12 +443,12 @@ class Course extends Component {
 				},3000)
 			  }
 		}
-		console.log(this.state.payment_id)
+		console.log(this.state.course_id)
 		console.log(this.state.project_id)
-		getData(getRouter("payment_project_add"), { token:sessionStorage.token,id:this.state.payment_id,project_id:this.state.project_id }, cb, {});
+		getData(getRouter("payment_project_add"), { token:sessionStorage.token,id:this.state.course_id,project_id:this.state.project_id }, cb, {});
 	}
 	sureChangeAmountCallback=()=>{
-		console.log(this.state.payment_id)
+		console.log(this.state.course_id)
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
 				this.setState({
@@ -456,7 +476,7 @@ class Course extends Component {
 			  }
 		}
 		console.log(this.state.price)
-		console.log(this.state.payment_id)
+		console.log(this.state.course_id)
 		getData(getRouter("payment_project_edit"), { token:sessionStorage.token,relation_id:this.state.relation_id,price:this.state.price }, cb, {});
 	}
 	cancelCallback=()=>{
@@ -508,7 +528,7 @@ class Course extends Component {
 			getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, relation_id:this.state.relation_id,project_id:this.state.project_id }, cb,  {}); 
 			//}
 		}else{
-			getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, id:this.state.payment_id }, cb,  {}); 
+			getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, id:this.state.course_id }, cb,  {}); 
 
 		}
     //}
@@ -538,7 +558,8 @@ class Course extends Component {
 				<PaymentManageBtn
 					onHoldClick={this.alertAddState}
 					defineValue="添加"
-					state="alertAddCourseState"	
+					state="alertAddCourseState"
+					dataId={""}	
 					/>
 					<br/>
 				<DataSearchMessage 
@@ -590,7 +611,7 @@ class Course extends Component {
 				{/* <ClickArrAlert
 					defaultValue="通过"
 					linkpage="payment_state_pass"
-					dataId={this.state.payment_id_arr}
+					dataId={this.state.course_id_arr}
 					onClickArrAlert={this.ClickArrAlert}
 				/> */}
 

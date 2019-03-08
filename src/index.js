@@ -20,7 +20,6 @@ import {getData,getRouter } from './utils/helpers';
   
 // }
 //二级路由
-console.log(Lang)
 class App extends Component {
     render() {
       return (
