@@ -236,6 +236,14 @@ class Course extends Component {
 							state="alertAddCourseState"	
 							courseData={table_data_body}
 						/>
+						<PaymentManageBtn
+							onHoldClick={this.alertHoldState}
+							defineValue="删除"
+							state="alertState"
+							// classNames="passBtn"
+							linkpage="payment_state_pass"	
+							dataId={table_data_body.id}
+						/>
 						{/* 
 						<PaymentManageBtn
 							onHoldClick={this.alertAddState}
