@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "draft-js": "^0.10.5",
     "jquery": "^3.3.1",
     "react": "^16.4.1",
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.4.1",
+    "react-mde": "^5.8.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
+    "showdown": "^1.9.0",
     "vdraggle": "^1.0.1"
   },
   "scripts": {
