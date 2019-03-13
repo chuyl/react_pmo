@@ -4,6 +4,7 @@ const LangPack={
     lecturerState:{"0":"没联系过","1":"偶尔联系","2":"经常联系"},
     is_short:{"0":"长期 3天以上","1":"短期 1-3天"},
     level:{"1":"初级","2":"中级","3":"高级"},
-    is_cert:{"0":"认证培训","1":"非认证培训"}
+    is_cert:{"0":"认证培训","1":"非认证培训"},
+    editor:{"title_1":"标题1","title_2":"标题2","title_3":"标题3","main_boby":"正文","symbol_list":"符号列出","unsigned_list":"无符号列出"}
 }
 export default LangPack;

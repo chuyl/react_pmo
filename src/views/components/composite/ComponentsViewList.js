@@ -123,6 +123,9 @@
     moveUpViewContent=(index)=>{
         this.props.moveUpViewIndexContent(index) 
     }
+    selectLangPackProps=(newState)=>{
+
+    }
        render() {
            return (
                this.props.componentslist.map((form_list,index) => {
@@ -249,6 +252,7 @@
                                        labelValue={form_list.title}
                                        langPack={form_list.key}
                                        searchInfoLists={form_list.key} 
+                                       stateFun={this.selectLangPackProps}
                                        selectedIdInfo={"-选择-"} 
                                        selectedInfo={"-选择-"} 
                                    /> 

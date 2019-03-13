@@ -18,7 +18,8 @@
                 projectId:this.props.projectId,
                 financialNumber:this.props.financialNumber,
                 relationId:this.props.relationId,
-                courseData:this.props.courseData
+                courseData:this.props.courseData,
+                describe:this.props.describe
                }
             this.props.onHoldClick(newState);
         }

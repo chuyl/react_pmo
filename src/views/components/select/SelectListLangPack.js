@@ -54,6 +54,7 @@
             for(var i in LangPack[this.props.langPack]){
                 selectList.push({"name":LangPack[this.props.langPack][i],"id":i})
             }
+            console.log(selectedInfo)
             return (
                 <div style={this.props.view?{marginBottom:"10px"}:{}} className="search_info_list_card">
                     <div onClick={() => {
@@ -61,7 +62,7 @@
                           }} 
                         className={this.state.search_state ? "add_list_close" : ""}>
                     </div>
-                    <label className="search_info_list_label">{labelValue}</label>
+                    {labelValue?<label className="search_info_list_label">{labelValue}</label>:""}
                     <div className={disabled===true?"selectedInfo disabled":"selectedInfo"} id={id+"_name"}
                          onClick={() => {
                              if(disabled===true){
@@ -79,6 +80,7 @@
                     <div className="search_info_position">
                         <div
                             id="search_info_list_div"
+                            style={labelValue?{}:{marginLeft:"0"}}
                             className={this.state.search_state ? "search_info_list open" : "search_info_list"}
                         >
                             <ul className="search_info_list_ul select_info_list_ul">
@@ -88,6 +90,13 @@
                                             document.getElementById(id+"_name").innerHTML = info_lists.name;
                                             document.getElementById(id+"_id").innerHTML = info_lists.id;
                                             this.searchShow()
+                                            console.log(info_lists.id)
+                                            var newState = {
+                                                index:this.props.index,
+                                                name:info_lists.id,//
+                                                // select_id:id
+                                            }
+                                            this.props.stateFun(newState)
                                         }} key={index}>{info_lists.name}</li>
                                     )
                                 }):""}

@@ -16,7 +16,7 @@
 				month=myDate.getMonth()+1>9?myDate.getMonth()+1:"0"+(myDate.getMonth()+1).toString(),
 				data=myDate.getDate();
             return (
-                <div className="pay_box" id={"pay_box"+dataId}>
+                <div style={{marginTop:"2em"}} className="pay_box" id={"pay_box"+dataId}>
                     <div className="code_id">
                         <dd>项目编号：</dd>
                         <dd></dd>
@@ -86,6 +86,7 @@
                         <dd className="right_item2"></dd>
                         <dd className="right_count">张</dd>
                     </div>
+                    <div style={{margin:"2em 1em"}}>备注:{message.describe}</div>
                 </div>
               )
                 

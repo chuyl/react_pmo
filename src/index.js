@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import TabsControl from './components/Tab'
 import Routers from './components/Routers'
+import ViewTextField from '../src/views/components/input/ViewTextField'
+import PaymentManageBtn from '../src/views/components/button/PaymentManageBtn'
+import Popup from '../src/views/components/modal/Popup'
 import Alert from '../src/views/components/modal/Remind'
 import {
     HashRouter,
@@ -60,7 +63,10 @@ class TabComponent extends Component{
       logged: Boolean(sessionStorage.getItem("logged")),
       message_state:false,
       login_account:"",
-      login_password:"123456",
+      login_password:"",
+      alertPasswordState:false,//财务编号
+      again_password:"",
+      password:""
 		}
   }
   componentWillMount() {
@@ -359,7 +365,58 @@ handleLogout = () => {
       </div>
     )
   }
+// 修改密码
 
+user_account_edit_password=()=>{
+
+  if(this.state.again_password===this.state.password){
+    var cb = (route, message, arg) => {
+      if (message.error === 0) {
+        this.setState({
+          alertPasswordState:false,
+    
+        })
+      }else if(message.error === 2){
+        console.log("未登录")
+        sessionStorage.logged = false;
+        sessionStorage.token="";
+        if(window.location.hash.split("#")[1]!=="/"){
+          window.location.href=window.location.href.split("#/")[0]
+        
+          }
+      }else{
+        Alert.open({
+          alertTip:message.msg
+          
+        });
+        setTimeout(function(){
+          Alert.close();
+        },3000)
+        }
+    }
+  
+     getData(getRouter("user_account_edit_password"), { token:sessionStorage.token,new_password:this.state.password }, cb, {});
+  }else if(this.state.password===""){
+    this.setState({
+      warning_password:"请输入密码"
+    })
+  }else if(this.state.again_password===""){
+    this.setState({
+      warning_password:"请再次输入密码"
+    })
+    
+  }else{
+    this.setState({
+      warning_password:"两次密码不一致"
+    })
+  }
+  
+}
+cancelCallback=()=>{
+  this.setState({
+    alertPasswordState:false,
+  })
+}
 	render(  ){
    const menuView = [];
     for(var i in Lang){
@@ -371,6 +428,19 @@ handleLogout = () => {
         <div className="user_info_box">
           <span>用户名</span>
           <span>{sessionStorage.account}</span>
+          <span onClick={()=>{
+            this.setState({
+              alertPasswordState:true,
+              warning_password:"" 
+            })
+          }}>{"修改密码"}</span>
+
+          {/* <PaymentManageBtn
+              float={"right"}
+							onHoldClick={this.alertAddState}
+							defineValue="修改密码"
+							state="alertPasswordState"	
+						/> */}
         </div>
         <div className="windows">
      
@@ -456,6 +526,44 @@ handleLogout = () => {
             
             }} className="dialog_open">退出
           </div>
+          <Popup 
+          content={
+            <div>
+              <h2>修改密码</h2>
+              <div className="popup_content">
+                  <ViewTextField 
+                    password={true}
+                    onChange={(e)=>{
+                      this.setState({
+                        password:e.target.value,
+                        warning_password:""
+                      })
+                    }}
+                      // view={true}
+                    value={this.state.password} 
+                    labelValue={"新密码"} 
+                  />
+                  <ViewTextField 
+                  password={true}
+                    onChange={(e)=>{
+                      this.setState({
+                        again_password:e.target.value,
+                        warning_password:""
+                      })
+                    }}
+                      // view={true}
+                    value={this.state.again_password} 
+                    labelValue={"再次输入"} 
+                  />
+                  <div style={{color:"red"}}>{this.state.warning_password}</div>
+              </div>
+              
+            </div>
+            }	 
+          sureCallback = {this.user_account_edit_password.bind(this)} 
+          cancelCallback = { this.cancelCallback.bind(this) } 
+          alertState={this.state.alertPasswordState}
+			/>
           <div className={this.state.dialog_show?"dialog_window open":"dialog_window"}> 
             <div  onClick={()=>{
               this.setState({

@@ -2366,7 +2366,6 @@ textarea:disabled {
 .search_info_list_label {
   float: left;
   display: inline-block;
-  width: 59px;
   color: #757575;
   font-size: 14px;
   text-align: left;
@@ -2641,6 +2640,11 @@ textarea:disabled {
     padding-right: 14px;
     word-break: break-all;
     color: #FF5252; }
+
+.statistical_table_box {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden; }
 
 @media only screen and (max-width: 768px) {
   .add_info_list {

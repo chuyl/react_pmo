@@ -168,6 +168,9 @@ handleChildChange=(formData)=>{
     //  })
     this.props.card_active_state(newState)
  }
+ selectLangPackProps=(newState)=>{
+
+ }
     render() {
      
         return (
@@ -600,6 +603,7 @@ handleChildChange=(formData)=>{
                                     disabled={this.props.disabled}
                                     langPack={form_list.key}
                                     // searchInfoLists={form_list.key} 
+                                    stateFun={this.selectLangPackProps}
                                     selectedIdInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_id"]:"-选择-"} 
                                     selectedInfo={this.props.componentsdata?this.props.componentsdata[form_list.id_name+"_name"]:"-选择-"} 
                                 /> 

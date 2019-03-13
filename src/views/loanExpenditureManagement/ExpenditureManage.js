@@ -17,6 +17,7 @@ class ExpenditureManage extends Component {
          query_condition:{},
 		 search_message:"",
 		 financial_number:"",
+		 describe:"",
 		 alertAddFinancialState:false,//财务编号
 		 alertAddProjectState:false,//相关内容
 		 alertChangeAmountState:false,//修改金额
@@ -85,6 +86,7 @@ class ExpenditureManage extends Component {
 			[newState.state]:true,
 			payment_id:newState.dataId,
 			financial_number:newState.financialNumber?newState.financialNumber:"",
+			describe:newState.describe?newState.describe:"",
 			relation_id:newState.relationId
 		})
 	}
@@ -137,6 +139,7 @@ class ExpenditureManage extends Component {
 							state="alertAddFinancialState"	
 							dataId={table_data_body.id}
 							financialNumber={table_data_body.financial_number}
+							describe={table_data_body.describe}
 						/>
 						{/* <PaymentManageBtn
 							onHoldClick={this.alertAddState}
@@ -193,7 +196,7 @@ class ExpenditureManage extends Component {
                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
 						return(
 						<td key={index} title={table_data_body[table_data_head.key]}>
-							<div className="statistical_table_box">
+							<div style={{width:table_data_head.size+"em"}} className="statistical_table_box">
 								{table_data_body[table_data_head.key]}
 							</div>
 						</td>)
@@ -312,7 +315,7 @@ class ExpenditureManage extends Component {
 		}
 		console.log(this.state.payment_id)
 		console.log(this.state.financial_number)
-		getData(getRouter("payment_manage_edit_financial_number"), { token:sessionStorage.token,id:this.state.payment_id,financial_number:this.state.financial_number }, cb, {});
+		getData(getRouter("payment_manage_edit_financial_number"), { token:sessionStorage.token,id:this.state.payment_id,financial_number:this.state.financial_number,describe:this.state.describe }, cb, {});
 	}
 	sureAddProjectCallback=()=>{
 		console.log(this.state.payment_id)
@@ -514,6 +517,16 @@ class ExpenditureManage extends Component {
 									// view={true}
 								value={this.state.financial_number} 
 								labelValue={"财务编号"} 
+							/>
+							<ViewTextField 
+								onChange={(e)=>{
+									this.setState({
+										describe:e.target.value
+									})
+								}}
+									// view={true}
+								value={this.state.describe} 
+								labelValue={"备注"} 
 							/>
 						</div>
 					</div>
