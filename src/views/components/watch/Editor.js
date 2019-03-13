@@ -233,15 +233,25 @@
                     <div id="ceshi" contentEditable={true}>123456789</div>
                     <button onClick={()=>{
                         var str = document.getElementById("ceshi").innerHTML;
-                        var str_arr=[];
-                        for(var i=0;i<str.length;i++){
-                            if((str.charAt(i)!=="*"&&str.charAt(i+1)!=="*")){
-                                console.log(str.charAt(i));
-                            }else{
-                                console.log(str.charAt(i));
-                            }
+                        // var str_arr=[];
+                        var str_emphasize=str.split("**");
+                        // var str_weaken=;
+                        console.log()
+                        for(var i = 0; i<str_emphasize.length;i++){
                             
-                            }
+                        }
+                        // if(str.indexOf("**")!==-1){
+                        //     console.log(str)
+                        // }
+                        // for(var i=0;i<str.length;i++){
+                        //     router.url.indexOf(".json")!==-1?
+                        //     if((str.charAt(i)==="*"&&str.charAt(i+1)==="*")){
+                        //             console.log(str.charAt(i))
+                        //     }else{
+                        //         // console.log(str.charAt(i));
+                        //     }
+                            
+                        //     }
                     }}>保存</button>
                     {/* 模块3 */}
                     {/* <div style={{width:"400px",height:"300px",border:"1px solid"}}>

@@ -7,9 +7,9 @@ class Loan extends Component {
 	render(){
 		return (
 			<div>
-				<Editor 
+				{/* <Editor 
 					textarea_id={"lecturer"}
-				/>
+				/> */}
 			</div>
             // <div>
             // 	借款
