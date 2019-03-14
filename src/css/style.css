@@ -2366,6 +2366,7 @@ textarea:disabled {
 .search_info_list_label {
   float: left;
   display: inline-block;
+  width: 78px;
   color: #757575;
   font-size: 14px;
   text-align: left;

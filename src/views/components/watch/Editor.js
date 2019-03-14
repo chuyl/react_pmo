@@ -21,7 +21,8 @@
             brush_className:"",
             brush_div:null,
             brush_text:"",
-            contenteditableState:-1
+            contenteditableState:-1,
+            editor_str:""
         }
     /** 
      * @author xuesong
@@ -39,7 +40,7 @@
               
                 var message_list=[];
                 for(var i = 0;i<strContent.split("<br/>").length;i++){
-                    message_list.push({class:"",message:strContent.split("<br/>")[i],selectedInfo:null})
+                    message_list.push({id:i,class:"",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
                 }
                 console.log(message_list)
                 this.setState({
@@ -53,14 +54,15 @@
          * @param showMessageChange 组件  点击模块2的next
          */
         showMessageChange=()=>{
-            this.setState({
-                showMessageState:!this.state.showMessageState 
-            })
-            if(this.state.showMessageState){
-                this.setState({
-                    message_changed_style_list:this.state.message_list
-                })
-            }
+            console.log(this.state.message_list)
+            // this.setState({
+            //     showMessageState:!this.state.showMessageState 
+            // })
+            // if(this.state.showMessageState){
+            //     this.setState({
+            //         message_changed_style_list:this.state.message_list
+            //     })
+            // }
         }
         /** 
          * @author xuesong
@@ -72,9 +74,9 @@
            var edit_message_list=[];
            for(var i = 0;i<this.state.message_list.length;i++){
                if(newState.index===i){
-                edit_message_list.push({class:newState.name,message:this.state.message_list[i].message,selectedInfo:null})
+                edit_message_list.push({id:i,class:newState.name,content:this.state.message_list[i].content})
                }else{
-                edit_message_list.push({class:this.state.message_list[i].class,message:this.state.message_list[i].message,selectedInfo:null})
+                edit_message_list.push({id:i,class:this.state.message_list[i].class,content:this.state.message_list[i].content})
                }
             }
             this.setState({
@@ -150,38 +152,110 @@
         }
         // div可编辑
         contenteditableChange=(index)=>{
+            console.log(this.state.message_list)
+            var editor_str="";
+            for(var i = 0;i<this.state.message_list.length;i++){
+                if(index===i){
+                    var str = this.state.message_list[i].content;
+                    console.log(str)
+                    for(var j = 0;j<str.length;j++){
+                    if(str[j].type==="def"){
+                        editor_str=editor_str+str[j].text
+                    }else if(str[j].type==="red"){
+                        editor_str=editor_str+"**"+str[j].text+"**"
+                    }else if(str[j].type==="grey"){
+                        editor_str=editor_str+"=="+str[j].text+"=="
+                    }
+                }
+                }
+            }
+            console.log(editor_str)
+            document.getElementById("show_message"+index).innerHTML=editor_str;
             this.setState({
-                contenteditableState:index
+                contenteditableState:index,
+                editor_str:editor_str
             })
-        }
-        contenteditableHold=(index)=>{
-            // console.log(document.getElementById("show_message"+index).innerHTML);
-            var str = document.getElementById("show_message"+index).innerHTML;
-            var str_arr=[];
-            for(var i=0;i<str.length;i++){
-                if((str.charAt(i)!=="*"&&str.charAt(i+1)!=="*")){
-                    
-                }else{
-                    console.log(str.charAt(i));
-                }
-               
-                }
 
+        }
+        contenteditableHold=(index,text_id)=>{
+            var str = document.getElementById(text_id).innerHTML;
+            var str_all_emphasize=str.split("**");
+            var str_emphasize=[];
+            var str_content_arr=[];
+            var str_weaken=[];
+            var new_str="";
+            //  console.log(str_all_emphasize.length)
+             if(str_all_emphasize.length%2===0){
+                 for(var m = 0; m<str_all_emphasize.length-2;m++){
+                    str_emphasize.push(str_all_emphasize[m])
+                 }
+                 str_emphasize.push(str_all_emphasize[str_all_emphasize.length-2]+"**"+str_all_emphasize[str_all_emphasize.length-1])
+             }else{
+                str_emphasize=str_all_emphasize;
+             }
+                for(var i = 0; i<str_emphasize.length;i++){
+                    if(i%2===0){
+                        // 默认
+                        var str_all_weaken=str_emphasize[i].split("==");
+                        if(str_all_weaken.length%2===0){
+                            for(var n = 0; n<str_all_weaken.length-2;n++){
+                                str_weaken.push(str_all_weaken[n])
+                            }
+                            str_weaken.push(str_all_weaken[str_all_weaken.length-2]+"=="+str_all_weaken[str_all_emphasize.length-1])
+                        }else{
+                            str_weaken=str_all_weaken;
+                        }
+                        if(str_weaken.length%2!==0){
+                            for(var j = 0; j<str_weaken.length;j++){
+                                if(j%2===0){
+                                    // 默认 
+                                    new_str=new_str+str_weaken[j];
+                                    str_content_arr.push({"type":"def","text":str_weaken[j]})
+                                }else{
+                                    new_str=new_str+'<span class="weaken">'+str_weaken[j]+'</span>';
+                                    str_content_arr.push({"type":"grey","text":str_weaken[j]})
+                                }
+                            }
+                        }else{
+                            new_str=new_str+str_emphasize[i];
+                            str_content_arr.push({"type":"def","text":str_emphasize[i]})
+                        }
+                        console.log(str_emphasize[i])
+                    }else{
+                        // 强调
+                        new_str=new_str+'<span class="emphasize">'+str_emphasize[i]+'</span>';
+                        str_content_arr.push({"type":"red","text":str_emphasize[i]})
+                        console.log(str_emphasize[i])
+                    }
+                }
+            
+                var edit_message_list=[];
+            for(var y = 0;y<this.state.message_list.length;y++){
+                if(index===y){
+                    var obj=this.state.message_list[y];
+                    console.log(str_content_arr.length)
+                    obj.content=[];
+                    for(var w = 0;w<str_content_arr.length;w++){
+                        
+                        obj.content.push(str_content_arr[w])
+                       
+                    }
+                    console.log(obj.content)
+                    console.log(obj)
+                    edit_message_list.push(obj)
+                }else{
+                  edit_message_list.push(this.state.message_list[y])
+                }
+             }
             this.setState({
-                contenteditableState:-1
+                contenteditableState:-1,
+                message_list:edit_message_list,
             })
         }
        
         render(){
             const {textarea_id,inputValue} =this.props;
-            // console.log(this.state.message_list)
-            // if(window.getSelection){
-            //     var range=document.createRange();
-            //     range.selectNodeContents(this);
-            //     var selection = window.getSelection();
-            //     selection.removeAllRanges();
-            //     selection.addRange(range)            
-            //     }
+           
            
             return (
                 <div>
@@ -192,8 +266,6 @@
                     {/* 模块2 */}
                     <div style={{width:"400px",height:"300px",border:"1px solid"}} className={this.state.showMessageState?"editor_module_two active":"editor_module_two"}>
                         {this.state.message_list.map((message_list,index)=>{
-                            console.log(message_list)
-                            // console.log(document.getElementById("select_lecturer_style"+index+"_name"))
                             return(
                                 <div style={{height:"4em"}} key={index}>
                                     <div style={{width:"15em",float:"left"}}>
@@ -202,27 +274,48 @@
                                             stateFun={this.selectLangPackProps}
                                             langPack={"editor"}
                                             index={index}
-                                            selectedInfo={message_list.selectedInfo}
+                                           
                                             // isSelected={this.state.isSelected}
                                             // selectedIdInfo={"-选择-"} 
                                         />
                                     </div>
                                     <div 
+                                       style={this.state.contenteditableState==index?{display:"block"}:{display:"none"}}
                                         contentEditable={this.state.contenteditableState==index?true:false}
                                         id={"show_message"+index}
-
-                                        onChange={()=>{
-                                            this.changeContentEditDiv()
-                                        }}
                                         className={message_list.class}
                                     >
-                                        {message_list.message+message_list.class}
+                                    {message_list.content.map((content,index)=>{
+                                       
+                                        return(
+                                            content.type==="def"?content.text:
+                                            <span className={content.type}>{content.text}</span>
+
+                                        )
+                                    })}
+                                        {/* {message_list.content[0].text+message_list.class} */}
+                                    </div>
+                                    <div 
+                                        style={this.state.contenteditableState==index?{display:"none"}:{display:"block"}}
+
+                                        id={"show_style_message"+index}
+                                        className={message_list.class}
+                                    >
+                                    {message_list.content.map((content,index)=>{
+                                       
+                                        return(
+                                            content.type==="def"?content.text:
+                                            <span className={content.type}>{content.text}</span>
+
+                                        )
+                                    })}
+                                        {/* {message_list.content[0].text+message_list.class} */}
                                     </div>
                                     <button onClick={()=>{
                                         this.contenteditableChange(index)
                                     }}>编辑</button>
                                     <button onClick={()=>{
-                                        this.contenteditableHold(index)
+                                        this.contenteditableHold(index,"show_message"+index)
                                     }}>保存</button>
                                     
                                 </div>
@@ -233,25 +326,51 @@
                     <div id="ceshi" contentEditable={true}>123456789</div>
                     <button onClick={()=>{
                         var str = document.getElementById("ceshi").innerHTML;
-                        // var str_arr=[];
-                        var str_emphasize=str.split("**");
-                        // var str_weaken=;
-                        console.log()
-                        for(var i = 0; i<str_emphasize.length;i++){
-                            
-                        }
-                        // if(str.indexOf("**")!==-1){
-                        //     console.log(str)
-                        // }
-                        // for(var i=0;i<str.length;i++){
-                        //     router.url.indexOf(".json")!==-1?
-                        //     if((str.charAt(i)==="*"&&str.charAt(i+1)==="*")){
-                        //             console.log(str.charAt(i))
-                        //     }else{
-                        //         // console.log(str.charAt(i));
-                        //     }
-                            
-                        //     }
+                        var str_all_emphasize=str.split("**");
+                        var str_emphasize=[];
+                        var str_content_arr=[];
+                         var new_str="";
+                        //  console.log(str_all_emphasize.length)
+                         if(str_all_emphasize.length%2===0){
+                             for(var m = 0; m<str_all_emphasize.length-2;m++){
+                                str_emphasize.push(str_all_emphasize[m])
+                             }
+                             str_emphasize.push(str_all_emphasize[str_all_emphasize.length-2]+"**"+str_all_emphasize[str_all_emphasize.length-1])
+                         }else{
+                            str_emphasize=str_all_emphasize;
+                         }
+                            for(var i = 0; i<str_emphasize.length;i++){
+                                if(i%2===0){
+                                    // 默认
+                                    var str_weaken=str_emphasize[i].split("==");
+                                    if(str_weaken.length%2!==0){
+                                        for(var j = 0; j<str_weaken.length;j++){
+                                            if(j%2===0){
+                                                // 默认 
+                                                new_str=new_str+str_weaken[j];
+                                                str_content_arr.push({"type":"def","text":str_weaken[j]})
+                                            }else{
+                                                new_str=new_str+'<span class="weaken">'+str_weaken[j]+'</span>';
+                                                str_content_arr.push({"type":"grey","text":str_weaken[j]})
+                                            }
+                                        }
+                                    }else{
+                                        new_str=new_str+str_emphasize[i];
+                                        str_content_arr.push({"type":"def","text":str_emphasize[i]})
+                                    }
+                                    console.log(str_emphasize[i])
+                                }else{
+                                    // 强调
+                                    new_str=new_str+'<span class="emphasize">'+str_emphasize[i]+'</span>';
+                                    str_content_arr.push({"type":"red","text":str_emphasize[i]})
+                                    console.log(str_emphasize[i])
+                                }
+                            }
+                        
+                        document.getElementById("ceshi").innerHTML=new_str;
+                        console.log(new_str)
+                        console.log(str_content_arr)
+                       
                     }}>保存</button>
                     {/* 模块3 */}
                     {/* <div style={{width:"400px",height:"300px",border:"1px solid"}}>
