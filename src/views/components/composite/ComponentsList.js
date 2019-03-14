@@ -55,9 +55,12 @@ import GetDataSpellingLabel from '../watch/GetDataSpellingLabel'
 import ApplicationsFlow from '../watch/ApplicationsFlow'
 import ApplicationsDefault from '../watch/ApplicationsDefault'
 import ShowMessage from '../watch/ShowMessage'
+import ShowEditorMessage from '../watch/ShowEditorMessage'
 import SelectListLocal from '../select/SelectListLocal'
 import Print from '../button/Print'
 import ClickAlert from '../button/ClickAlert';
+import Editor from '../watch/Editor'
+import EditEditor from '../watch/EditEditor'
 // import LoanBill from '../watch/LoanBill'
 class ComponentsList extends Component {
     constructor(props) {
@@ -341,6 +344,19 @@ handleChildChange=(formData)=>{
                                     beforeApiUri={form_list.before_api_uri}
                                     message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
                                 />
+                            :form_list.type_name === "ShowEditorMessage"?
+                                <ShowEditorMessage
+                                    id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
+                                    labelValue={form_list.title} 
+                                    key={index}
+                                    thisKey={form_list.key}
+                                    className={form_list.class}
+                                    tip={form_list.tip}
+                                    defaultValue={form_list.default_value}
+                                    beforeApiUri={form_list.before_api_uri}
+                                    message={this.props.componentsdata[form_list.id_name]?this.props.componentsdata[form_list.id_name]:""} 
+                                />
+                                
                             :form_list.type_name === "SubmitApplications"?
                                 <SubmitApplications
                                     id={this.props.disabled?form_list.id_name+this.props.index:form_list.id_name} 
@@ -702,6 +718,15 @@ handleChildChange=(formData)=>{
                                     // allData={this.props.allData?this.props.allData:[]}
                                     dataId={this.props.componentsdata.id}
                                     buttonMessage={this.props.componentsdata?this.props.componentsdata:''}
+                                />
+                            :form_list.type_name==="Editor"?
+                                <Editor
+                                    textarea_id={form_list.id_name} 
+                                />
+                            :form_list.type_name==="EditEditor"?
+                                <EditEditor
+                                    textarea_id={form_list.id_name} 
+                                    message={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:form_list.default_value} 
                                 />
                             // :form_list.type_name==="LoanBill"?
                             //     <LoanBill 

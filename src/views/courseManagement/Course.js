@@ -155,7 +155,7 @@ class Course extends Component {
         this.setState({
             query_condition:obj
 		})
-		PostCsvData(getRouter("payment_project_list"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
+		PostCsvData(getRouter("course_manage_list"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
 		 , cb, {});
 	}
 	alertAddState=(newState)=>{

@@ -58,9 +58,12 @@
   import ApplicationsFlow from '../watch/ApplicationsFlow'
   import ApplicationsDefault from '../watch/ApplicationsDefault'
   import ShowMessage from '../watch/ShowMessage'
+  import ShowEditorMessage from '../watch/ShowEditorMessage'
   import SelectListLocal from '../select/SelectListLocal'
   import Print from '../button/Print'
   import ClickAlert from '../../components/button/ClickAlert'
+  import Editor from '../watch/Editor'
+  import EditEditor from '../watch/EditEditor'
 //   import LoanBill from '../watch/LoanBill'
    class ComponentsViewList extends Component {
     constructor(props) {
@@ -479,7 +482,18 @@
                                     beforeApiUri={form_list.before_api_uri}
                                     message={""} 
                                 />
-                                
+                            :form_list.type_name === "ShowEditorMessage"?
+                                <ShowEditorMessage
+                                id={form_list.id_name} 
+                                labelValue={form_list.title} 
+                                className={form_list.class}
+                                tip={form_list.tip}
+                                thisKey={form_list.key}
+                                defaultValue={form_list.default_value}
+                                beforeApiUri={form_list.before_api_uri}
+                                message={[]} 
+                                view={true}
+                                />   
                             :form_list.type_name === "SubmitApplications"?
                                 <SubmitApplications
                                     id={form_list.id_name} 
@@ -577,6 +591,17 @@
                                     className={form_list.class}
                                     buttonMessage={form_list}
                                 />
+                            :form_list.type_name==="Editor"?
+                                <Editor
+                                    textarea_id={form_list.id_name} 
+                                    view={true}
+                                />
+                            :form_list.type_name==="EditEditor"?
+                                <EditEditor
+                                    textarea_id={form_list.id_name} 
+                                    view={true}
+                                />
+                                
                             // :form_list.type_name==="LoanBill"?
                             //     <LoanBill 
                             //         view={true}

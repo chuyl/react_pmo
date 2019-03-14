@@ -242,6 +242,7 @@ class Lecturer extends Component {
 			key_name.push(this.state.dataId)
 		}
 		for (var i = 0; i < list_message.length; i++) {
+			console.log(list_message[i].type_name)
 			if (list_message[i].type_name !== "HoldBtn") {
 				if (list_message[i].type_name === "ListTextSearch" || list_message[i].type_name === "SelectList" || list_message[i].type_name === "SelectListSearch"||list_message[i].type_name==="SelectListLangPack") {
 					console.log(list_message[i].id_name + "_name")
@@ -254,6 +255,9 @@ class Lecturer extends Component {
 				else if (list_message[i].type_name === "TextArea") {
 					value.push(list_message[i].id_name)
 					key_name.push(document.getElementById(list_message[i].id_name).value)
+				}else if (list_message[i].type_name === "Editor") {
+					value.push(list_message[i].id_name)
+					key_name.push(document.getElementById(list_message[i].id_name).innerHTML)
 				} else {
 					value.push(list_message[i].id_name)
 					key_name.push(document.getElementById(list_message[i].id_name).innerHTML === "-选择-" ? "" : document.getElementById(list_message[i].id_name).innerHTML || document.getElementById(list_message[i].id_name).value === "-选择-" ? "" : document.getElementById(list_message[i].id_name).value)
@@ -261,10 +265,12 @@ class Lecturer extends Component {
 			}
 
 		}
+		console.log(key_name)
 		var obj = {};
 		for (var j = 0; j < value.length; j++) {
 			obj[value[j]] = key_name[j];
 		}
+		console.log(obj)
 		// componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
