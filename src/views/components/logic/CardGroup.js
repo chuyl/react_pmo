@@ -142,6 +142,7 @@
             view_list:[]
         })
         if(state.success_message===true){
+            console.log(this.state.conditionAction.parent_id)
             this.postListGroup(this.state.conditionAction.parent_id)
         }
        
@@ -204,6 +205,7 @@
         this.props.editCardGroupState(newStates)
      }
         render() {
+            console.log(this.props.dataId)
             var json_view=JSON.parse(sessionStorage.view)
             for(var i=0;i<json_view.length;i++){
     
@@ -247,7 +249,7 @@
                                     >删除</button>:""}
                                     {this.props.editButton!==""?<button className="label_delete_button"
                                             onClick={() => {
-                                                console.log(this.props.addButton)
+                                                console.log(view_list)
                                                 this.setState({
                                                     add_card_state: true,
                                                     conditionAction:view_list

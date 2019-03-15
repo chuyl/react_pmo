@@ -419,11 +419,13 @@
                         content={
                             <div>
                             <h2>添加段落</h2>
-                            <textarea 
-                                rows="10" 
-                                style={{width:"400px"}}
-                                id={"add_textarea"}>
-                            </textarea> 
+                            <div className="popup_body">
+                                <textarea 
+                                    className={"editor_textare"}
+                                    rows="10" 
+                                    id={"add_textarea"}>
+                                </textarea> 
+                            </div>
                             </div>
                             }	 
                         sureCallback = {this.textareaChange.bind(this)} 
@@ -434,11 +436,13 @@
                         content={
                             <div>
                             <h2>添加段落</h2>
+                            <div className="popup_body">
                             <textarea 
                                 rows="10" 
-                                style={{width:"400px"}}
+                                className={"editor_textare"}
                                 id={"add_between_textarea"}>
                             </textarea> 
+                            </div>
                             </div>
                             }	 
                         sureCallback = {this.addBetweenHold.bind(this)} 

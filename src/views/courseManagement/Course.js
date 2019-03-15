@@ -35,7 +35,9 @@ class Course extends Component {
 		 dataId: "",
 		 form_temp_name: "",
 		 alertRelationState:false,
-		 add_drawer_button:{}
+		 add_drawer_button:{},
+		 drawer_index:-1,
+		 message_list:[]
 
         
 	}
@@ -56,6 +58,7 @@ class Course extends Component {
 			}
 		}
 	}
+
 	onHoldClicks = (newState) => {
 		var key_name = [];
 		var value = [];
@@ -202,7 +205,98 @@ class Course extends Component {
 			relation_id:newState.relationId
 		})
 	}
+	editCardSuccess=(newState)=>{
+		this.relation_lecturer(newState.id)
+		console.log(newState)
+	}
+	addCardGroupState=(newState)=>{
+		this.relation_lecturer(newState.id)
+		console.log(newState)
+	}
+	relation_lecturer=(id)=>{
+		var cb = (route, message, arg) => {
 
+			if (message.error === 0) {
+				
+		this.setState({
+			alertRelationState:true,
+			add_drawer_button:{add_button:"lecturer_course_add",
+						add_button_title:"关联讲师",
+						add_title:"添加关联讲师",
+						before_api_uri:"lectuer",
+						del_button:"lecturer_course_del",
+						descript:"CourseLecturerAddFrom",
+						descript_title:"课程关联讲师-组",
+						edit_button:"lecturer_course_edit",
+						list_button:"lecturer_manage_getByCourseId"
+						},
+			drawer_index:id,
+			message_list:message.data.lecturer
+			})
+				
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
+			}
+			else{
+				Alert.open({
+					alertTip: message.msg
+				});
+				setTimeout(function () {
+					Alert.close();
+				}, 3000)
+			}
+		}
+		getData(getRouter("lecturer_manage_getByCourseId"), { token: sessionStorage.token,id:id }, cb, {});
+
+	}
+	relation_type=(id)=>{
+		var cb = (route, message, arg) => {
+
+			if (message.error === 0) {
+				
+		this.setState({
+			alertRelationState:true,
+			add_drawer_button:{add_button:"course_type_add",
+						add_button_title:"关联所属分类",
+						add_title:"添加所属分类",
+						before_api_uri:"type",
+						del_button:"course_type_del",
+						descript:"CourseLecturerAddFrom",
+						descript_title:"课程关联所属分类-组",
+						edit_button:"course_type_edit",
+						list_button:"course_type_getByCourseId"
+						},
+			drawer_index:id,
+			message_list:message.data.lecturer
+			})
+				
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
+			}
+			else{
+				Alert.open({
+					alertTip: message.msg
+				});
+				setTimeout(function () {
+					Alert.close();
+				}, 3000)
+			}
+		}
+		getData(getRouter("lecturer_manage_getByCourseId"), { token: sessionStorage.token,id:id }, cb, {});
+
+	}
 	goPage= (pno) =>{
         // this.table_data_body()
         // {this.historyFileDialog()}
@@ -251,78 +345,22 @@ class Course extends Component {
 						<div    
 							className="drawer_button" 
 							onClick={(e) => {
-								// this.setState({
-								// 	alertRelationState:true,
-								// 	add_button:{add_button:"lecturer_course_add",
-								// 				add_button_title:"关联讲师",
-								// 				add_title:"添加关联讲师",
-								// 				before_api_uri:"lectuer",
-								// 				del_button:"lecturer_course_del",
-								// 				descript:"CourseLecturerAddFrom",
-								// 				descript_title:"课程关联讲师-组",
-								// 				edit_button:"lecturer_course_edit",
-								// 				list_button:"lecturer_manage_getByCourseId"
-								// 				}
-								// 	})
+								this.relation_lecturer(table_data_body.id)
+								
 								}}
 						>
-							关联讲师
+							授课讲师
 						</div>
-						{/* 
-						<PaymentManageBtn
-							onHoldClick={this.alertAddState}
-							defineValue="课程"
-							classNames="financialBtn"
-							state="alertAddCourseState"	
-							dataId={table_data_body.id}
-							financialNumber={table_data_body.financial_number}
-						/>
-						<PaymentManageBtn
-							onHoldClick={this.alertHoldState}
-							defineValue="通过"
-							state="alertState"
-							classNames="passBtn"
-							linkpage="payment_state_pass"	
-							dataId={table_data_body.id}
-						/>
-						<PaymentManageBtn
-							onHoldClick={this.alertHoldState}
-							defineValue="撤回"
-							state="alertState"
-							classNames="recallBtn"
-							linkpage="payment_state_recall"	
-							dataId={table_data_body.id}
-						/>
-						<PaymentManageBtn
-							onHoldClick={this.alertHoldState}
-							defineValue="作废"
-							state="alertState"
-							classNames="cancelBtn"
-							linkpage="payment_state_cancel"	
-							dataId={table_data_body.id}
-						/>
-						<PaymentManageBtn
-							onHoldClick={this.alertAddState}
-							defineValue="修改金额"
-							state="alertChangeAmountState"	
-							dataId={table_data_body.id}
-							classNames="changePriceBtn"
-							relationId={table_data_body.relation_id}
-						/>
-						<PaymentManageBtn
-							onHoldClick={this.alertHoldState}
-							defineValue="取消关联"
-							state="alertState"
-							linkpage="payment_project_cancel"	
-							dataId={table_data_body.id}
-							classNames="cancalRelationBtn"
-							projectId={table_data_body.project_id}
-							relationId={table_data_body.relation_id}
-						/> */}
+						<div    
+							className="drawer_button" 
+							onClick={(e) => {
+								this.relation_type(table_data_body.id)
+								
+								}}
+						>
+							所属分类
+						</div>
 					</td>
-					{/* <td>
-						<input value={table_data_body.id} type="checkbox" name="payment"/>
-					</td> */}
                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
 						return(
 						<td key={index} title={table_data_body[table_data_head.key]}>
@@ -672,23 +710,27 @@ class Course extends Component {
 			<Drawer 
 				content={
 					<div>
-						{/* <CardGroup 
+						{/* <button onClick={()=>{
+							this.setState({
+								alertAddCourseState:true
+							})
+						}}></button> */}
+						<CardGroup 
                             addButtonTitle={"关联讲师"} 
-                            // addButton={this.state.add_button} 
-                            // beforeApiUri={this.props.componentsdata[form_list.add_button.before_api_uri]} 
-                            // uriName={form_list.add_button.before_api_uri}
-                            // delButton = {form_list.add_button.del_button}
-                            // editButton={form_list.add_button.edit_button}
-                            // listButton = {form_list.add_button.list_button}
-                            // idName={form_list.id_name}
-                            // dataId={this.props.dataId}
-                            // key={index}
-                            // selectedInfo={this.props.componentsdata?this.props.componentsdata:""} 
-                            // title={form_list.title} 
-                            // postListGroup={this.editCardSuccess}
-                            // editCardGroupState={this.addCardGroupState}
+                            addButton={this.state.add_drawer_button} 
+                             beforeApiUri={this.state.message_list} 
+                            uriName={this.state.add_drawer_button.before_api_uri}
+                            delButton = {this.state.add_drawer_button.del_button}
+                            editButton={this.state.add_drawer_button.edit_button}
+                            listButton = {this.state.add_drawer_button.list_button}
+                            idName={"course_relation_lecturer"}
+							dataId={this.state.drawer_index}
+							sureBtn={false}  
+                            selectedInfo={this.state.message_list?this.state.message_list:""} 
+							postListGroup={this.editCardSuccess}
+                            editCardGroupState={this.addCardGroupState}
                                     
-                                /> */}
+                                />
 					</div>
 					}	 
 				sureCallback = {this.sureAddFinancialCallback.bind(this)} 
