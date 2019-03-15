@@ -50,15 +50,16 @@
                 var checklist = document.getElementsByName(this.props.id+"checkSelectList");
                 var checkValue="";
                 var checkedLength=0;
+                var id_arr=[];
                 for(var i = 0;i<checklist.length;i++){
                 if(checklist[i].checked){
-                        console.log(checklist[i].value)
                         checkValue=checkValue+checklist[i].value+",";
                         checkedLength++;
+                        id_arr.push(checklist[i].id)
                     }
                 }
                 checkedLength===0?document.getElementById(this.props.id+"_name").innerHTML="-选择-":document.getElementById(this.props.id+"_name").innerHTML=checkValue.slice(0,checkValue.length-1);
-                console.log(checkedLength)
+                document.getElementById(this.props.id+"_id").innerHTML=JSON.stringify(id_arr);
             }
 
         render() {
@@ -97,7 +98,7 @@
                                 {this.state.searchInfoLists?this.state.searchInfoLists.map((info_lists,index) => {
                                     return (
                                         <li  key={index}>
-                                            <input value={info_lists.name} name={id+"checkSelectList"} type="checkbox"/>
+                                            <input id={info_lists.id} value={info_lists.name} name={id+"checkSelectList"} type="checkbox"/>
                                             <span 
                                             >
                                                 {info_lists.name}   

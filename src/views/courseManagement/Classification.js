@@ -80,6 +80,12 @@ class Classification extends Component {
 				else if (list_message[i].type_name === "TextArea") {
 					value.push(list_message[i].id_name)
 					key_name.push(document.getElementById(list_message[i].id_name).value)
+				}else if (list_message[i].type_name === "SelectCheckArray") {
+					
+					value.push(list_message[i].id_name + "_name")
+					key_name.push(document.getElementById(list_message[i].id_name + "_name").innerHTML === "-选择-" ? "" : document.getElementById(list_message[i].id_name + "_name").innerHTML)
+					value.push(list_message[i].id_name + "_id")
+					key_name.push(document.getElementById(list_message[i].id_name + "_id").innerHTML === "-选择-" ? "" : JSON.parse(document.getElementById(list_message[i].id_name + "_id").innerHTML))
 				} else {
 					value.push(list_message[i].id_name)
 					key_name.push(document.getElementById(list_message[i].id_name).innerHTML === "-选择-" ? "" : document.getElementById(list_message[i].id_name).innerHTML || document.getElementById(list_message[i].id_name).value === "-选择-" ? "" : document.getElementById(list_message[i].id_name).value)

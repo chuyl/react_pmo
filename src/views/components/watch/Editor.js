@@ -43,7 +43,7 @@
               
                 var message_list=[];
                 for(var i = 0;i<strContent.split("<br/>").length;i++){
-                    message_list.push({id:i,class:"",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
+                    message_list.push({id:i,class:"default_title",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
                 }
                 if(message_list.length>0){
                     this.setState({
@@ -73,7 +73,7 @@
                 if(j===this.state.addBetweenIndex){
                     message_list.push(this.state.message_list[j])
                     for(var i = 0;i<strContent.split("<br/>").length;i++){
-                        message_list.push({id:i,class:"",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
+                        message_list.push({id:i,class:"default_title",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
                     }
                 }else{
                     message_list.push(this.state.message_list[j])
@@ -103,9 +103,9 @@
            var edit_message_list=[];
            for(var i = 0;i<this.state.message_list.length;i++){
                if(newState.index===i){
-                edit_message_list.push({id:i,class:newState.name,content:this.state.message_list[i].content})
+                edit_message_list.push({id:i,class:newState.name+" default_title",content:this.state.message_list[i].content})
                }else{
-                edit_message_list.push({id:i,class:this.state.message_list[i].class,content:this.state.message_list[i].content})
+                edit_message_list.push({id:i,class:this.state.message_list[i].class+" default_title",content:this.state.message_list[i].content})
                }
             }
             this.setState({
@@ -336,8 +336,8 @@
                     >
                         {this.state.message_list.map((message_list,index)=>{
                             return(
-                                <div className="editor_show_content" style={{height:"4em"}} key={index}>
-                                    <div className="editor_select_title" style={{width:"15em",float:"left"}}>
+                                <div className="editor_show_content" key={index}>
+                                    <div className="editor_select_title">
                                         <SelectListLangPack
                                             id={"select_lecturer_style"+index}
                                             stateFun={this.selectLangPackProps}
