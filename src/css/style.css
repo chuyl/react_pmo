@@ -2366,14 +2366,13 @@ textarea:disabled {
 .search_info_list_label {
   float: left;
   display: inline-block;
-  width: 78px;
+  width: 68px;
   color: #757575;
   font-size: 14px;
   text-align: left;
   position: relative;
   padding-left: 7px;
   word-wrap: break-word;
-  padding-right: 14px;
   overflow: hidden;
   padding-top: 3px;
   word-break: break-all; }
