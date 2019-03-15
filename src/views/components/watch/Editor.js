@@ -336,8 +336,8 @@
                     >
                         {this.state.message_list.map((message_list,index)=>{
                             return(
-                                <div style={{height:"4em"}} key={index}>
-                                    <div style={{width:"15em",float:"left"}}>
+                                <div className="editor_show_content" style={{height:"4em"}} key={index}>
+                                    <div className="editor_select_title" style={{width:"15em",float:"left"}}>
                                         <SelectListLangPack
                                             id={"select_lecturer_style"+index}
                                             stateFun={this.selectLangPackProps}
@@ -383,23 +383,26 @@
                                         {/* {message_list.content[0].text+message_list.class} */}
                                     </div>
                                     <button
+                                        className="editor_btn"
                                         style={this.state.edit_state?{display:"none"}:{display:"block"}}
                                         onClick={()=>{
                                             this.contenteditableChange(index)
                                         }}>编辑</button>
                                     <button 
+                                        className="editor_btn"
                                         style={this.state.edit_state?{display:"block"}:{display:"none"}}
                                         onClick={()=>{
                                         this.contenteditableHold(index,"show_message"+index)
                                     }}>保存</button>
                                     <button 
+                                        className="editor_btn"
                                         onClick={()=>{
                                         this.delEditorContent(index,"show_message"+index)
                                     }}>删除</button>
-                                    <div className="float_tips_area" onClick={()=>{
+                                    <div className="editor_hover_div" onClick={()=>{
                                         this.open_between_alert(index)
                                     }}>
-                                    <div  className="mgf_tips_icons">添加段落+</div>
+                                    <div  className="editor_add_content">添加段落+</div>
                                     
                                     </div>
 
@@ -443,9 +446,9 @@
                         alertState={this.state.openBetweenState}
                         />
                     
-                    <div style={this.state.openNewState?{top:this.state.topX,left:this.state.topY,position:"fixed"}:{display:"none"}}>
-                        <button onClick={this.emphasizeMessage.bind(this)}>强调</button>
-                        <button onClick={this.weakenMessage.bind(this)}>弱化</button>
+                    <div className="change_position" style={this.state.openNewState?{top:this.state.topX,left:this.state.topY,position:"fixed"}:{display:"none"}}>
+                        <button className="emphasize_btn" onClick={this.emphasizeMessage.bind(this)}>强调</button>
+                        <button className="weaken_btn" onClick={this.weakenMessage.bind(this)}>弱化</button>
                     </div>
                     
                 </div>
