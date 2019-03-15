@@ -2293,8 +2293,15 @@ textarea:disabled {
 .editor_show_content {
   width: 100%;
   float: left; }
+  .editor_show_content .editor_hover_div {
+    width: 100%; }
   .editor_show_content .editor_add_content {
     width: 100%;
+    float: left;
+    text-align: center;
+    background-color: #3F51B5;
+    color: #fff;
+    height: 2em;
     line-height: 2em;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
     border-radius: 4px; }
