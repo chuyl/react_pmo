@@ -8,6 +8,8 @@ import Alerts from '../components/modal/Alert'
 import ClickArrAlert from '../components/button/ClickArrAlert';
 import PaymentManageBtn from '../components/button/PaymentManageBtn'
 import ComponentsList from '../components/composite/ComponentsList'
+import Drawer from '../components/modal/Drawer';
+import CardGroup from '../components/logic/CardGroup'
 class Course extends Component {
 	state={
 		pno:1,
@@ -32,6 +34,8 @@ class Course extends Component {
 		 edit_project_data: [],
 		 dataId: "",
 		 form_temp_name: "",
+		 alertRelationState:false,
+		 add_drawer_button:{}
 
         
 	}
@@ -241,9 +245,29 @@ class Course extends Component {
 							defineValue="删除"
 							state="alertState"
 							// classNames="passBtn"
-							linkpage="payment_state_pass"	
+							linkpage="course_manage_del"	
 							dataId={table_data_body.id}
 						/>
+						<div    
+							className="drawer_button" 
+							onClick={(e) => {
+								// this.setState({
+								// 	alertRelationState:true,
+								// 	add_button:{add_button:"lecturer_course_add",
+								// 				add_button_title:"关联讲师",
+								// 				add_title:"添加关联讲师",
+								// 				before_api_uri:"lectuer",
+								// 				del_button:"lecturer_course_del",
+								// 				descript:"CourseLecturerAddFrom",
+								// 				descript_title:"课程关联讲师-组",
+								// 				edit_button:"lecturer_course_edit",
+								// 				list_button:"lecturer_manage_getByCourseId"
+								// 				}
+								// 	})
+								}}
+						>
+							关联讲师
+						</div>
 						{/* 
 						<PaymentManageBtn
 							onHoldClick={this.alertAddState}
@@ -492,7 +516,8 @@ class Course extends Component {
 			alertAddCourseState:false,
 			alertAddProjectState:false,
 			alertChangeAmountState:false,
-			alertState:false
+			alertState:false,
+			alertRelationState:false
 		})
 	}
 	// ClickArrAlert=()=>{
@@ -643,6 +668,32 @@ class Course extends Component {
 				cancelCallback = { this.cancelCallback.bind(this) } 
 				sureBtn={false}  
 				alertState={this.state.alertAddCourseState}
+			/>
+			<Drawer 
+				content={
+					<div>
+						{/* <CardGroup 
+                            addButtonTitle={"关联讲师"} 
+                            // addButton={this.state.add_button} 
+                            // beforeApiUri={this.props.componentsdata[form_list.add_button.before_api_uri]} 
+                            // uriName={form_list.add_button.before_api_uri}
+                            // delButton = {form_list.add_button.del_button}
+                            // editButton={form_list.add_button.edit_button}
+                            // listButton = {form_list.add_button.list_button}
+                            // idName={form_list.id_name}
+                            // dataId={this.props.dataId}
+                            // key={index}
+                            // selectedInfo={this.props.componentsdata?this.props.componentsdata:""} 
+                            // title={form_list.title} 
+                            // postListGroup={this.editCardSuccess}
+                            // editCardGroupState={this.addCardGroupState}
+                                    
+                                /> */}
+					</div>
+					}	 
+				sureCallback = {this.sureAddFinancialCallback.bind(this)} 
+				cancelCallback = { this.cancelCallback.bind(this) } 
+				alertState={this.state.alertRelationState}
 			/>
 			{/* <Popup 
 				content={

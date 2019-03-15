@@ -722,6 +722,7 @@ handleChildChange=(formData)=>{
                             :form_list.type_name==="Editor"?
                                 <Editor
                                     textarea_id={form_list.id_name} 
+                                    message={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:""}
                                 />
                             :form_list.type_name==="EditEditor"?
                                 <EditEditor

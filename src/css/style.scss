@@ -21,6 +21,7 @@
 @import 'src/new_table';
 @import 'src/view';
 @import 'src/draggable';
+@import 'src/edit';
 // @import 'src/loan_main';
 .crius-card-list {
     @include set_card( 10px, $primary-color, 0.5em);

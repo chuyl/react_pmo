@@ -596,11 +596,11 @@
                                     textarea_id={form_list.id_name} 
                                     view={true}
                                 />
-                            :form_list.type_name==="EditEditor"?
-                                <EditEditor
-                                    textarea_id={form_list.id_name} 
-                                    view={true}
-                                />
+                            // :form_list.type_name==="EditEditor"?
+                            //     <EditEditor
+                            //         textarea_id={form_list.id_name} 
+                            //         view={true}
+                            //     />
                                 
                             // :form_list.type_name==="LoanBill"?
                             //     <LoanBill 

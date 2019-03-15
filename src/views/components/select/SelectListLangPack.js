@@ -54,7 +54,6 @@
             for(var i in LangPack[this.props.langPack]){
                 selectList.push({"name":LangPack[this.props.langPack][i],"id":i})
             }
-            console.log(selectedInfo)
             return (
                 <div style={this.props.view?{marginBottom:"10px"}:{}} className="search_info_list_card">
                     <div onClick={() => {

@@ -257,7 +257,7 @@ class Lecturer extends Component {
 					key_name.push(document.getElementById(list_message[i].id_name).value)
 				}else if (list_message[i].type_name === "Editor") {
 					value.push(list_message[i].id_name)
-					key_name.push(document.getElementById(list_message[i].id_name).innerHTML)
+					key_name.push(JSON.parse(document.getElementById(list_message[i].id_name).innerHTML))
 				} else {
 					value.push(list_message[i].id_name)
 					key_name.push(document.getElementById(list_message[i].id_name).innerHTML === "-选择-" ? "" : document.getElementById(list_message[i].id_name).innerHTML || document.getElementById(list_message[i].id_name).value === "-选择-" ? "" : document.getElementById(list_message[i].id_name).value)
@@ -380,7 +380,7 @@ class Lecturer extends Component {
 							{/* paper详细内容 */}
 							{this.state.card_state ?//判断paper是否可见
 								<div key={this.state.dataId?this.state.dataId:"addComponents"} id="editComponents" className="edit_bar">
-								<ComponentsList  editCardGroupState={this.freshCardGroup} editCardGroupStates={this.freshCardGroup} dataId={this.state.dataId} holdClick={this.onHoldClicks} componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
+								<ComponentsList editCardGroupState={this.freshCardGroup} editCardGroupStates={this.freshCardGroup} dataId={this.state.dataId} holdClick={this.onHoldClicks} componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data} ></ComponentsList > 
 						   </div>		
 								: ""}
 						</div>

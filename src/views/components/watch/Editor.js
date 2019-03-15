@@ -4,10 +4,11 @@
      */
     import React, { Component } from 'react';
     import SelectListLangPack from '../select/SelectListLangPack'
+    import Popup from '../modal/Popup';
 
     class Editor extends Component {
         state={
-            message_list:[],
+            message_list:this.props.message?this.props.message:[],
             textareaState:true,
             changeState:0,
             showMessageState:true,
@@ -17,12 +18,16 @@
             message_changed_style_list:[],
             topX:0+"px",
             topY:0+"px",
-            alert_div_state:false,
+            openNewState:false,
             brush_className:"",
             brush_div:null,
             brush_text:"",
             contenteditableState:-1,
             editor_str:"",
+            close_add_btn:true,
+            openBetweenState:false,
+            addBetweenIndex:-1,
+            edit_state:false
             // obj_message_list:{}
         }
     /** 
@@ -30,10 +35,7 @@
      * @param textareaChange 组件  点击模块1的next
      */
         textareaChange=(e)=>{
-            this.setState({
-                textareaState:!this.state.textareaState 
-            })
-            if(this.state.textareaState){
+          
                 var strContent = document.getElementById("add_textarea").value;
                 strContent = strContent.replace(/\r\n/g, '<br/>'); //IE9、FF、chrome
                 strContent = strContent.replace(/\n/g, '<br/>'); //IE7-8
@@ -43,11 +45,45 @@
                 for(var i = 0;i<strContent.split("<br/>").length;i++){
                     message_list.push({id:i,class:"",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
                 }
+                if(message_list.length>0){
+                    this.setState({
+                        close_add_btn:false,
+                        message_list:message_list,
+                        alertAddTextState:false
+                    })
+                }else{
+                    this.setState({
+                        message_list:message_list,
+                        alertAddTextState:false
+                    })
+                }
                 console.log(message_list)
-                this.setState({
-                    message_list:message_list
-                })
+               
+           
+           
+        }
+        addBetweenHold=()=>{
+
+            var strContent = document.getElementById("add_between_textarea").value;
+            strContent = strContent.replace(/\r\n/g, '<br/>'); //IE9、FF、chrome
+            strContent = strContent.replace(/\n/g, '<br/>'); //IE7-8
+            // strContent = strContent.replace(/\s/g, ' '); //空格处理
+            var message_list=[];
+            for(var j = 0;j<this.state.message_list.length;j++){
+                if(j===this.state.addBetweenIndex){
+                    message_list.push(this.state.message_list[j])
+                    for(var i = 0;i<strContent.split("<br/>").length;i++){
+                        message_list.push({id:i,class:"",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
+                    }
+                }else{
+                    message_list.push(this.state.message_list[j])
+                }
             }
+            console.log(message_list)
+                this.setState({
+                    message_list:message_list,
+                    openBetweenState:false
+                })
            
         }
         /** 
@@ -85,11 +121,12 @@
             
             var text = "";
             var text_div_content="";
-            if (window.getSelection) {
+            console.log(window.getSelection().toString().length)
+            if (window.getSelection().toString().length>0) {
                 this.setState({
-                    alert_div_state:true,
+                    openNewState:true,
                     topY:e.pageX-50+"px",
-                    topX:e.pageY-70+"px",
+                    topX:e.pageY-30+"px",
                     brush_div:window.getSelection().extentNode.parentNode,
                     brush_text: window.getSelection().toString()
 
@@ -124,10 +161,10 @@
 
             //获取选中后的前后内容
             var before_after_arr=text_div_content.split(this.state.brush_text);
-            var new_content=before_after_arr[0]+'<span class="emphasize">'+this.state.brush_text+'</span>'+before_after_arr[1];
+            var new_content=before_after_arr[0]+'**'+this.state.brush_text+'**'+before_after_arr[1];
             this.state.brush_div.innerHTML=new_content;
             this.setState({
-                alert_div_state:false
+                openNewState:false
             })
         }
         //弱化
@@ -137,14 +174,15 @@
             console.log(text_div_content.split(this.state.brush_text))
             //获取选中后的前后内容
             var before_after_arr=text_div_content.split(this.state.brush_text);
-            var new_content=before_after_arr[0]+'<span class="weaken">'+this.state.brush_text+'</span>'+before_after_arr[1];
+            var new_content=before_after_arr[0]+'=='+this.state.brush_text+'=='+before_after_arr[1];
             this.state.brush_div.innerHTML=new_content;
             this.setState({
-                alert_div_state:false
+                openNewState:false
             })
         }
         // div可编辑
         contenteditableChange=(index)=>{
+          
             console.log(this.state.message_list)
             var editor_str="";
             for(var i = 0;i<this.state.message_list.length;i++){
@@ -166,7 +204,8 @@
             document.getElementById("show_message"+index).innerHTML=editor_str;
             this.setState({
                 contenteditableState:index,
-                editor_str:editor_str
+                editor_str:editor_str,
+                edit_state:true
             })
 
         }
@@ -243,21 +282,58 @@
             this.setState({
                 contenteditableState:-1,
                 message_list:edit_message_list,
+                edit_state:false
             })
         }
-       
+        // 删除
+        delEditorContent=(index)=>{
+            var message_list=[];
+            for(var i=0;i<this.state.message_list.length;i++){
+                
+                if(i !== index){
+                    message_list.push(this.state.message_list[i])
+                }
+            }
+            this.setState({
+                message_list:message_list
+            })
+        }
+        cancelCallback=()=>{
+            this.setState({
+              alertAddTextState:false,
+              openBetweenState:false
+            })
+          }
+        open_between_alert=(index)=>{
+            this.setState({
+                openBetweenState:true,
+                addBetweenIndex:index
+            })
+             
+        }
         render(){
-            const {textarea_id,inputValue} =this.props;
-           
-           
+            const {textarea_id,inputValue,message} =this.props;
             return (
                 <div>
                     {/* 模块1 */}
-                    <textarea className={this.state.changeState===0?"editor_module_one active":"editor_module_one"} rows="10" cols="60" id={"add_textarea"}>
-                    </textarea> 
-                    <button onClick={this.textareaChange.bind(this)}>{this.state.textareaState?"next":"back"}</button>
+                    {this.props.view?"":
+                    message?"":
+                    this.state.close_add_btn?
+                    <div 
+                        className="add_card_btn"
+                        onClick={()=>{
+                            this.setState({
+                                alertAddTextState:true
+                            })
+                        }}
+                    >
+                        添加段落
+                    </div>:""}
                     {/* 模块2 */}
-                    <div style={{width:"400px",height:"300px",border:"1px solid"}} className={this.state.showMessageState?"editor_module_two active":"editor_module_two"}>
+                    <div 
+                        // style={{width:"400px",height:"300px",border:"1px solid"}} 
+                        // className={this.state.showMessageState?"editor_module_two active":"editor_module_two"}
+                    >
                         {this.state.message_list.map((message_list,index)=>{
                             return(
                                 <div style={{height:"4em"}} key={index}>
@@ -267,6 +343,7 @@
                                             stateFun={this.selectLangPackProps}
                                             langPack={"editor"}
                                             index={index}
+                                            disabled={this.state.edit_state?false:true}
                                            
                                             // isSelected={this.state.isSelected}
                                             // selectedIdInfo={"-选择-"} 
@@ -276,6 +353,7 @@
                                        style={this.state.contenteditableState==index?{display:"block"}:{display:"none"}}
                                         contentEditable={this.state.contenteditableState==index?true:false}
                                         id={"show_message"+index}
+                                        onClick={this.getSelection_message.bind(this)}
                                         className={message_list.class}
                                     >
                                     {message_list.content.map((content,index)=>{
@@ -304,86 +382,68 @@
                                     })}
                                         {/* {message_list.content[0].text+message_list.class} */}
                                     </div>
-                                    <button onClick={()=>{
-                                        this.contenteditableChange(index)
-                                    }}>编辑</button>
-                                    <button onClick={()=>{
+                                    <button
+                                        style={this.state.edit_state?{display:"none"}:{display:"block"}}
+                                        onClick={()=>{
+                                            this.contenteditableChange(index)
+                                        }}>编辑</button>
+                                    <button 
+                                        style={this.state.edit_state?{display:"block"}:{display:"none"}}
+                                        onClick={()=>{
                                         this.contenteditableHold(index,"show_message"+index)
                                     }}>保存</button>
+                                    <button 
+                                        onClick={()=>{
+                                        this.delEditorContent(index,"show_message"+index)
+                                    }}>删除</button>
+                                    <div className="float_tips_area" onClick={()=>{
+                                        this.open_between_alert(index)
+                                    }}>
+                                    <div  className="mgf_tips_icons">添加段落+</div>
                                     
+                                    </div>
+
                                 </div>
                             )
                         })}
                        
                     </div>
-                    <button onClick={this.showMessageChange.bind(this)}>{this.state.showMessageState?"next":"back"}</button>
-                    <div style={{display:"none"}} name="" id={textarea_id} cols="30" rows="10">
+                    {/* <button onClick={this.showMessageChange.bind(this)}>{this.state.showMessageState?"next":"back"}</button> */}
+                    <div  style={{display:"none"}} name="" id={textarea_id} cols="30" rows="10">
+                    {JSON.stringify(this.state.message_list)}
                     </div>
-                    {/* <div id="ceshi" contentEditable={true}>123456789</div>
-                    <button onClick={()=>{
-                        var str = document.getElementById("ceshi").innerHTML;
-                        var str_all_emphasize=str.split("**");
-                        var str_emphasize=[];
-                        var str_content_arr=[];
-                         var new_str="";
-                        //  console.log(str_all_emphasize.length)
-                         if(str_all_emphasize.length%2===0){
-                             for(var m = 0; m<str_all_emphasize.length-2;m++){
-                                str_emphasize.push(str_all_emphasize[m])
-                             }
-                             str_emphasize.push(str_all_emphasize[str_all_emphasize.length-2]+"**"+str_all_emphasize[str_all_emphasize.length-1])
-                         }else{
-                            str_emphasize=str_all_emphasize;
-                         }
-                            for(var i = 0; i<str_emphasize.length;i++){
-                                if(i%2===0){
-                                    // 默认
-                                    var str_weaken=str_emphasize[i].split("==");
-                                    if(str_weaken.length%2!==0){
-                                        for(var j = 0; j<str_weaken.length;j++){
-                                            if(j%2===0){
-                                                // 默认 
-                                                new_str=new_str+str_weaken[j];
-                                                str_content_arr.push({"type":"def","text":str_weaken[j]})
-                                            }else{
-                                                new_str=new_str+'<span class="weaken">'+str_weaken[j]+'</span>';
-                                                str_content_arr.push({"type":"grey","text":str_weaken[j]})
-                                            }
-                                        }
-                                    }else{
-                                        new_str=new_str+str_emphasize[i];
-                                        str_content_arr.push({"type":"def","text":str_emphasize[i]})
-                                    }
-                                    console.log(str_emphasize[i])
-                                }else{
-                                    // 强调
-                                    new_str=new_str+'<span class="emphasize">'+str_emphasize[i]+'</span>';
-                                    str_content_arr.push({"type":"red","text":str_emphasize[i]})
-                                    console.log(str_emphasize[i])
-                                }
-                            }
-                        
-                        document.getElementById("ceshi").innerHTML=new_str;
-                        console.log(new_str)
-                        console.log(str_content_arr)
-                       
-                    }}>保存</button> */}
-                    {/* 模块3 */}
-                    {/* <div style={{width:"400px",height:"300px",border:"1px solid"}}>
-                        {this.state.message_changed_style_list.map((list,index)=>{
-                            return(
-                                <div 
-                                key={index}
-                                id={"show_changed_message"+index}
-                                className={list.class}
-                                onClick={this.getSelection_message.bind(this)}
-                            >{list.message}</div>
-                            )
-                        })}
-                        <button onClick={this.finishChangeMessage.bind(this)}>finish</button>
-                    </div> */}
+                    <Popup 
+                        content={
+                            <div>
+                            <h2>添加段落</h2>
+                            <textarea 
+                                rows="10" 
+                                style={{width:"400px"}}
+                                id={"add_textarea"}>
+                            </textarea> 
+                            </div>
+                            }	 
+                        sureCallback = {this.textareaChange.bind(this)} 
+                        cancelCallback = { this.cancelCallback.bind(this) } 
+                        alertState={this.state.alertAddTextState}
+                    />
+                     <Popup 
+                        content={
+                            <div>
+                            <h2>添加段落</h2>
+                            <textarea 
+                                rows="10" 
+                                style={{width:"400px"}}
+                                id={"add_between_textarea"}>
+                            </textarea> 
+                            </div>
+                            }	 
+                        sureCallback = {this.addBetweenHold.bind(this)} 
+                        cancelCallback = { this.cancelCallback.bind(this) } 
+                        alertState={this.state.openBetweenState}
+                        />
                     
-                    <div style={this.state.alert_div_state?{top:this.state.topX,left:this.state.topY,position:"absolute"}:{display:"none"}}>
+                    <div style={this.state.openNewState?{top:this.state.topX,left:this.state.topY,position:"fixed"}:{display:"none"}}>
                         <button onClick={this.emphasizeMessage.bind(this)}>强调</button>
                         <button onClick={this.weakenMessage.bind(this)}>弱化</button>
                     </div>
