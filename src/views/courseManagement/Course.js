@@ -37,7 +37,8 @@ class Course extends Component {
 		 alertRelationState:false,
 		 add_drawer_button:{},
 		 drawer_index:-1,
-		 message_list:[]
+		 message_list:[],
+		 change_message_type:""//判断改变的是所属分类还是授课讲师
 
         
 	}
@@ -206,12 +207,20 @@ class Course extends Component {
 		})
 	}
 	editCardSuccess=(newState)=>{
-		this.relation_lecturer(newState.id)
+		if(this.state.change_message_type=="lecturer"){
+			this.relation_lecturer(newState.id)
+		}else if(this.state.change_message_type=="type"){
+			this.relation_type(newState.id)
+		}
+		
 		console.log(newState)
 	}
 	addCardGroupState=(newState)=>{
-		this.relation_lecturer(newState.id)
-		console.log(newState)
+		if(this.state.change_message_type=="lecturer"){
+			this.relation_lecturer(newState.id)
+		}else if(this.state.change_message_type=="type"){
+			this.relation_type(newState.id)
+		}
 	}
 	relation_lecturer=(id)=>{
 		var cb = (route, message, arg) => {
@@ -231,7 +240,8 @@ class Course extends Component {
 						list_button:"lecturer_manage_getByCourseId"
 						},
 			drawer_index:id,
-			message_list:message.data.lecturer
+			message_list:message.data.lecturer,
+			change_message_type:"lecturer"
 			})
 				
 			}else if(message.error === 2){
@@ -267,13 +277,14 @@ class Course extends Component {
 						add_title:"添加所属分类",
 						before_api_uri:"type",
 						del_button:"course_type_del",
-						descript:"CourseLecturerAddFrom",
+						descript:"CourseTypeAddFrom",
 						descript_title:"课程关联所属分类-组",
 						edit_button:"course_type_edit",
 						list_button:"course_type_getByCourseId"
 						},
 			drawer_index:id,
-			message_list:message.data.lecturer
+			message_list:message.data.type,
+			change_message_type:"type"
 			})
 				
 			}else if(message.error === 2){
@@ -294,7 +305,7 @@ class Course extends Component {
 				}, 3000)
 			}
 		}
-		getData(getRouter("lecturer_manage_getByCourseId"), { token: sessionStorage.token,id:id }, cb, {});
+		getData(getRouter("course_type_getByCourseId"), { token: sessionStorage.token,id:id }, cb, {});
 
 	}
 	goPage= (pno) =>{

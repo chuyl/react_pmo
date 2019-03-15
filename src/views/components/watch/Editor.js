@@ -349,6 +349,7 @@
                                             // selectedIdInfo={"-选择-"} 
                                         />
                                     </div>
+                                    <div className="editor_content_div">
                                     <div 
                                        style={this.state.contenteditableState==index?{display:"block"}:{display:"none"}}
                                         contentEditable={this.state.contenteditableState==index?true:false}
@@ -399,6 +400,7 @@
                                         onClick={()=>{
                                         this.delEditorContent(index,"show_message"+index)
                                     }}>删除</button>
+                                    </div>
                                     <div className="editor_hover_div" onClick={()=>{
                                         this.open_between_alert(index)
                                     }}>

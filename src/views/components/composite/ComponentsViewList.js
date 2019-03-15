@@ -63,7 +63,7 @@
   import Print from '../button/Print'
   import ClickAlert from '../../components/button/ClickAlert'
   import Editor from '../watch/Editor'
-  import EditEditor from '../watch/EditEditor'
+  import SelectCheckArray from '../search/SelectCheckArray'
 //   import LoanBill from '../watch/LoanBill'
    class ComponentsViewList extends Component {
     constructor(props) {
@@ -596,6 +596,12 @@
                                     textarea_id={form_list.id_name} 
                                     view={true}
                                 />
+                            :form_list.type_name==="SelectCheckArray"?
+                                <SelectCheckArray
+                                    id={form_list.id_name}
+                                    labelValue={form_list.title}
+                                    searchInfoLists={form_list.before_api_uri}
+                                />    
                             // :form_list.type_name==="EditEditor"?
                             //     <EditEditor
                             //         textarea_id={form_list.id_name} 

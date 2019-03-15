@@ -61,6 +61,7 @@ import Print from '../button/Print'
 import ClickAlert from '../button/ClickAlert';
 import Editor from '../watch/Editor'
 import EditEditor from '../watch/EditEditor'
+import SelectCheckArray from '../search/SelectCheckArray'
 // import LoanBill from '../watch/LoanBill'
 class ComponentsList extends Component {
     constructor(props) {
@@ -728,6 +729,12 @@ handleChildChange=(formData)=>{
                                 <EditEditor
                                     textarea_id={form_list.id_name} 
                                     message={this.props.componentsdata?this.props.componentsdata[form_list.id_name]:form_list.default_value} 
+                                />
+                            :form_list.type_name==="SelectCheckArray"?
+                                <SelectCheckArray
+                                    id={form_list.id_name}
+                                    labelValue={form_list.title}
+                                    searchInfoLists={form_list.before_api_uri}
                                 />
                             // :form_list.type_name==="LoanBill"?
                             //     <LoanBill 
