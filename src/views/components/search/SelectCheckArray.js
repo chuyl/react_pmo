@@ -41,29 +41,49 @@
             console.log(this.state.before_api_uri)
             getData(getRouter(this.state.before_api_uri), { token:sessionStorage.token }, cb, {});
         }
-    
+    componentDidMount(){
+        this.infos()
+    }
         searchShow() {
             this.setState({
                 search_state: !this.state.search_state
             })
-           
+            var selectedInfo = document.getElementById(this.props.id+"_name").innerHTML.split(","); 
+           console.log(this.props.id)
                 var checklist = document.getElementsByName(this.props.id+"checkSelectList");
+                console.log(checklist)
                 var checkValue="";
                 var checkedLength=0;
                 var id_arr=[];
-                for(var i = 0;i<checklist.length;i++){
-                if(checklist[i].checked){
-                        checkValue=checkValue+checklist[i].value+",";
-                        checkedLength++;
-                        id_arr.push(checklist[i].id)
+                if(this.state.search_state){
+                    for(var j = 0;j<checklist.length;j++){
+                        console.log(checklist[j])
+                    for(var m = 0;m<selectedInfo.length;m++){
+                        console.log(selectedInfo[m])
+                        if(checklist[j].value==selectedInfo[m]){
+                            console.log(selectedInfo[m])
+                            checklist[j].checked=true;
+                        }
                     }
+                    }
+                    for(var i = 0;i<checklist.length;i++){
+                        if(checklist[i].checked){
+                                checkValue=checkValue+checklist[i].value+",";
+                                checkedLength++;
+                                id_arr.push(checklist[i].id)
+                            }
+                        }
+                        checkedLength===0?document.getElementById(this.props.id+"_name").innerHTML="-选择-":document.getElementById(this.props.id+"_name").innerHTML=checkValue.slice(0,checkValue.length-1);
+                        document.getElementById(this.props.id+"_id").innerHTML=JSON.stringify(id_arr);
                 }
-                checkedLength===0?document.getElementById(this.props.id+"_name").innerHTML="-选择-":document.getElementById(this.props.id+"_name").innerHTML=checkValue.slice(0,checkValue.length-1);
-                document.getElementById(this.props.id+"_id").innerHTML=JSON.stringify(id_arr);
+              
+               
             }
 
         render() {
             const { selectedInfo,selectedIdInfo, id, labelValue,disabled } = this.props;
+            var selectedArrayInfo = selectedInfo.split(","); 
+            // console.log(selectedInfo)
             return (
                 <div className="search_info_list_card">
                     <div onClick={() => {
@@ -96,7 +116,9 @@
                         >
                             <ul className="search_info_list_ul select_info_list_ul">
                                 {this.state.searchInfoLists?this.state.searchInfoLists.map((info_lists,index) => {
-                                    return (
+                                   
+                                   console.log(this.state.searchInfoLists)
+                                   return (
                                         <li  key={index}>
                                             <input id={info_lists.id} value={info_lists.name} name={id+"checkSelectList"} type="checkbox"/>
                                             <span 
