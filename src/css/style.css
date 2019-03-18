@@ -2292,8 +2292,10 @@ textarea:disabled {
 
 .editor_show_content {
   width: 100%;
-  float: left; }
+  float: left;
+  padding-bottom: 0.5em; }
   .editor_show_content .editor_hover_div {
+    padding-top: 0.5em;
     width: 100%; }
   .editor_show_content .editor_add_content {
     width: 100%;
@@ -2331,7 +2333,8 @@ textarea:disabled {
   text-align: center;
   padding: 0 0.5em;
   margin-right: 0.2em;
-  border-radius: 2px; }
+  border-radius: 2px;
+  line-height: 2em; }
 
 .editor_hover_div:hover .editor_add_content {
   display: block; }
@@ -2359,6 +2362,9 @@ textarea:disabled {
 .editor_hover_div {
   float: left; }
 
+.editor_select_title {
+  width: 15em; }
+
 .editor_content_div:hover .editor_btn {
   display: block; }
 
@@ -2367,7 +2373,10 @@ textarea:disabled {
 
 .editor_content_div div.default_title {
   float: left;
-  width: calc(100% - 15em - 10em);
+  padding: 0.5em;
+  border-radius: 4px;
+  width: 65%;
+  margin-right: 10px;
   word-wrap: break-word;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.6); }
 .editor_content_div div.title_1 {
