@@ -1340,11 +1340,15 @@ textarea:disabled {
 }
 
 .emphasize_btn {
+    width: 1.5em;
+    height: 1em;
     background-color: #ff0000;
     margin-right: 5px;
 }
 
 .weaken_btn {
+    width: 1.5em;
+    height: 1em;
     background-color: #d2691e;
 }
 
@@ -1375,7 +1379,7 @@ textarea:disabled {
     background-color: #fff;
     padding: 0.2em;
     border: 1px solid #ccc;
-    margin-top: -3.5em;
+    margin-top: -1.5em;
 }
 
 .editor_content_div {
