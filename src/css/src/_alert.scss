@@ -1,10 +1,12 @@
 @mixin set_prompt($screen_color, $content_color, $btn_color, $padding, $prompt_main_color, $border_radius) {
     width: 0;
     height: 0;
+
     .alert_box {
         width: 0;
         // height: 0; // overflow: hidden;
     }
+
     .popup_content {
         display: block;
         min-height: 10em;
@@ -14,6 +16,7 @@
         margin-bottom: 5em;
         box-sizing: border-box;
     }
+
     &.open {
         position: fixed;
         display: flex;
@@ -24,11 +27,14 @@
         bottom: 0;
         z-index: 1;
         background-color: rgba($color: $screen_color, $alpha: 0.3);
+        overflow-x: hidden;
     }
+
     .alert_box {
         .search_info_list_label {
             color: $primary-color;
         }
+
         position: relative;
         box-sizing: border-box;
         width: 400px;
@@ -38,9 +44,11 @@
         background-color: $prompt_main_color;
         margin: auto;
         border-radius: $border_radius;
+
         input {
             background-color: $primary-color-text;
         }
+
         h2 {
             text-align: center;
             color: $content_color;
@@ -50,6 +58,7 @@
             border-bottom: 1px solid $primary-color;
             padding: 1em 0;
         }
+
         p {
             display: block;
             height: 9em;
@@ -59,6 +68,7 @@
             margin-bottom: 5em;
             overflow: hidden;
         }
+
         button {
             display: block;
             height: 2em;
@@ -70,6 +80,7 @@
             border: none;
             outline: none;
         }
+
         & button:nth-of-type(1) {
             position: absolute;
             // left: 2 * $padding;
@@ -77,28 +88,32 @@
             margin-left: 2em;
             margin-bottom: 0;
         }
+
         & button:nth-of-type(2) {
             position: absolute;
             right: 2 * $padding;
             bottom: 1.5 * $padding;
             margin-bottom: 0;
         }
-        
+
         button.active {
             background: $btn_color;
             overflow: hidden;
             color: $prompt_main_color;
         }
+
         button:hover {
             background: $btn_color;
             overflow: hidden;
             color: $prompt_main_color;
         }
+
         @media screen and (max-width:768px) {
             margin: auto 1em;
         }
     }
-    .alert_drawer_box_close{
+
+    .alert_drawer_box_close {
         width: calc(100% - 400px);
         background-color: transparent;
         position: fixed;
@@ -107,10 +122,12 @@
         top: 4vh;
         display: none;
     }
+
     .alert_drawer_box {
         .search_info_list_label {
             color: $primary-color;
         }
+
         position: fixed;
         width: 0;
         display: none;
@@ -120,44 +137,53 @@
         float: right;
         overflow: auto;
         background-color: $prompt_main_color;
+
         @media screen and (max-width:768px) {
             margin: auto 1em;
         }
     }
-    .cancel_button{
+
+    .cancel_button {
         position: absolute;
         right: 2 * $padding;
         bottom: 1.5 * $padding;
         margin-bottom: 0;
     }
+
     .alert_box.btn_border {
         .popup_content {
             border-bottom: 1px solid $primary-color;
         }
+
         p {
             border-bottom: 1px solid $primary-color;
         }
     }
+
     .alert_box.open {
         display: block;
         opacity: 1;
         transition: opacity .3s cubic-bezier(0.4, 0, 1, 1);
     }
+
     .alert_drawer_box.open {
         width: 400px;
         display: block;
         opacity: 1;
-        transition: width .2s; 
+        transition: width .2s;
         // transition: opacity .3s cubic-bezier(0.4, 0, 1, 1);
     }
+
     .alert_drawer_box_close.open {
         display: block;
     }
+
     .move-in {
         display: block;
         opacity: 0;
         transition: opacity .3s cubic-bezier(0.4, 0, 1, 1);
     }
+
     .move-out {
         display: block;
         opacity: 0;
