@@ -2368,7 +2368,8 @@ textarea:disabled {
     padding: 0.5em; }
 
 .emphasize_btn {
-  background-color: #ff0000; }
+  background-color: #ff0000;
+  margin-right: 5px; }
 
 .weaken_btn {
   background-color: #d2691e; }
@@ -2386,6 +2387,12 @@ textarea:disabled {
 
 .editor_content_div {
   width: calc(100% - 15em); }
+
+.change_position {
+  background-color: #fff;
+  padding: 0.2em;
+  border: 1px solid #ccc;
+  margin-top: -3.5em; }
 
 .editor_content_div div.default_title {
   float: left;

@@ -1354,6 +1354,7 @@ textarea:disabled {
 
 .emphasize_btn {
     background-color: #ff0000;
+    margin-right: 5px;
 }
 
 .weaken_btn {
@@ -1378,6 +1379,14 @@ textarea:disabled {
 
 .editor_content_div {
     width: calc(100% - 15em);
+}
+
+// 强调弱化外边大盒子
+.change_position {
+    background-color: #fff;
+    padding: 0.2em;
+    border: 1px solid #ccc;
+    margin-top: -3.5em;
 }
 
 .editor_content_div {
