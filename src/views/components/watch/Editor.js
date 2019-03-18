@@ -352,11 +352,11 @@
                                     </div>
                                     <div className="editor_content_div">
                                         <div 
-                                        // style={this.state.contenteditableState==index?{display:"block"}:{display:"none"}}
+                                         style={this.state.contenteditableState==index?{display:"block"}:{display:"none"}}
                                             contentEditable={this.state.contenteditableState==index?true:false}
                                             id={"show_message"+index}
                                             onClick={this.getSelection_message.bind(this)}
-                                            className={this.state.contenteditableState==index?message_list.class+" active":message_list.class}
+                                            className={message_list.class}
                                         >
                                             {message_list.content.map((content,index)=>{
                                                 return(
@@ -366,10 +366,10 @@
                                             })}
                                         </div>
                                         <div 
-                                            // style={this.state.contenteditableState==index?{display:"none"}:{display:"block"}}
+                                             style={this.state.contenteditableState==index?{display:"none"}:{display:"block"}}
 
                                             id={"show_style_message"+index}
-                                            className={this.state.contenteditableState==index?message_list.class:message_list.class+" active"}
+                                            className={message_list.class}
                                         >
                                             {message_list.content.map((content,index)=>{
                                                 return(

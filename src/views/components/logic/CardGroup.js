@@ -142,7 +142,6 @@
             view_list:[]
         })
         if(state.success_message===true){
-            console.log(this.state.conditionAction.parent_id)
             this.postListGroup(this.state.conditionAction.parent_id)
         }
        
@@ -205,7 +204,6 @@
         this.props.editCardGroupState(newStates)
      }
         render() {
-            console.log(this.props.dataId)
             var json_view=JSON.parse(sessionStorage.view)
             for(var i=0;i<json_view.length;i++){
     

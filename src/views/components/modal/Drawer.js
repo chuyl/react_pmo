@@ -21,7 +21,6 @@
                     this.props.sureCallback(msg)
                 }
             }
-            console.log(this.props.alertState)
             return (
             
                     <div  className={this.props.alertState ?"alert_back open":"alert_back"}>

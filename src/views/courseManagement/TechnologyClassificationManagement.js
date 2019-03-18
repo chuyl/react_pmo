@@ -56,15 +56,11 @@ class TechnologyClassificationManagement extends Component {
            
         }
         var obj ={page_num:{"condition":"equal","query_data":page_num},page_size:{"condition":"equal","query_data":page_size}};
-        // console.log(obj)
         var objs = search_obj?Object.assign(obj, search_obj):obj
-        // console.log(objs)
         // var places = JSON.parse((JSON.stringify(obj)+JSON.stringify(this.state.search_message)).replace(/}{/,','));
-        // console.log(places)
         this.setState({
             query_condition:obj
 		})
-		// console.log(objs)
         getData(getRouter("course_manage_list"), { token: sessionStorage.token,query_condition:objs,data_type:"page_json" }, cb, {});
         // getData(getRouter("examine_record_list"),{ session: sessionStorage.session}, cb, {});
 
@@ -83,15 +79,11 @@ class TechnologyClassificationManagement extends Component {
            
         }
         var obj ={page_num:{"condition":"equal","query_data":page_num},page_size:{"condition":"equal","query_data":page_size}};
-        // console.log(obj)
         var objs = search_obj?Object.assign(obj, search_obj):obj
-        // console.log(objs)
         // var places = JSON.parse((JSON.stringify(obj)+JSON.stringify(this.state.search_message)).replace(/}{/,','));
-        // console.log(places)
         this.setState({
             query_condition:obj
 		})
-		// console.log(objs)
         getData(getRouter("classification_manage_list"), { token: sessionStorage.token,query_condition:objs,data_type:"page_json" }, cb, {});
         // getData(getRouter("examine_record_list"),{ session: sessionStorage.session}, cb, {});
 
@@ -472,7 +464,6 @@ class TechnologyClassificationManagement extends Component {
         var project_message=[];
             for(var i = 0;i<paymentCheck.length;i++){
                 if(paymentCheck[i].checked){
-                    console.log(paymentCheck[i].parentNode.children[1])
                     payment_message.push({id:paymentCheck[i].value,title:paymentCheck[i].parentNode.children[1].innerHTML}); 
                 }
             }
@@ -483,7 +474,6 @@ class TechnologyClassificationManagement extends Component {
                 }
             }
             if(newState.content==="add_courses_by_type"){
-                console.log(project_message[0].title)
                 this.setState({
                     [newState.state]:true,
                     content:newState.content,
