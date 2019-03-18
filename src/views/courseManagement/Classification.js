@@ -195,7 +195,8 @@ class Classification extends Component {
 				dataId:newState.dataId,
 				financial_number:newState.financialNumber?newState.financialNumber:"",
 				relation_id:newState.relationId,
-				edit_project_data:[]
+				edit_project_data:[],
+				pno:1
 
 			})
 		 }else{
@@ -206,7 +207,8 @@ class Classification extends Component {
 				dataId:newState.dataId,
 				financial_number:newState.financialNumber?newState.financialNumber:"",
 				relation_id:newState.relationId,
-				edit_project_data:newState.classificationData
+				edit_project_data:newState.classificationData,
+				pno:1
 			})
 		 }
 		
@@ -225,7 +227,8 @@ class Classification extends Component {
 			alertTitle:newState.alertTitle,
 			linkpage:newState.linkpage,
 			project_id:newState.projectId,
-			relation_id:newState.relationId
+			relation_id:newState.relationId,
+			pno:1
 		})
 	}
 	editCardSuccess=(newState)=>{
@@ -358,11 +361,12 @@ class Classification extends Component {
                        {this.state.table_data_body.indexOf(table_data_body)+1}
                        </div>
 					</td> */}
-					<td  style={{"width":"29em"}}>
+					<td  style={{"width":"11em"}}>
 						<PaymentManageBtn
 							onHoldClick={this.alertAddState}
 							defineValue="修改"
 							dataId={table_data_body.id}
+							classNames="btn_list"
 							state="alertAddClassificationState"	
 							classificationData={table_data_body}
 						/>
@@ -370,6 +374,7 @@ class Classification extends Component {
 							onHoldClick={this.alertHoldState}
 							defineValue="删除"
 							state="alertState"
+							classNames="btn_list"
 							// classNames="passBtn"
 							linkpage="classification_manage_del"	
 							dataId={table_data_body.id}
@@ -661,6 +666,7 @@ class Classification extends Component {
 				<PaymentManageBtn
 					onHoldClick={this.alertAddState}
 					defineValue="添加"
+					classNames="btn_list"
 					state="alertAddClassificationState"
 					dataId={""}	
 					/>
@@ -672,9 +678,10 @@ class Classification extends Component {
 					   keywordTitle={[
                         "分类名称",
                         // "项目类型",
-						"领款人",
-						"时间",
-						"状态"]}
+						// "领款人",
+						// "时间",
+						// "状态"
+					]}
 					//    selectListMessage={["project_type_list"]}
 					// 	selectNameMessage={["project_project_template_name"]}
 					   selectListMessage={[]}
@@ -688,12 +695,12 @@ class Classification extends Component {
 					/>
                 <div className="statistical_div">
                 
-                    <table style={{width:sumLength+29+"em"}} className="statistical_table">
+                    <table style={{width:sumLength+11+"em"}} className="statistical_table">
                         <thead>
                             <tr>
 								{/* <th><div className="statistical_table_box">序号</div></th> */}
 								<th>
-									<div style={{"width":"29em"}}></div>
+									<div style={{"width":"11em"}}></div>
 								</th>
                                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
                                     return(

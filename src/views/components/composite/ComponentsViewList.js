@@ -595,6 +595,7 @@
                                 <Editor
                                     textarea_id={form_list.id_name} 
                                     view={true}
+                                    inputValue={form_list.key}
                                 />
                             :form_list.type_name==="SelectCheckArray"?
                                 <SelectCheckArray

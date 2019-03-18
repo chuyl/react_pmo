@@ -543,9 +543,11 @@ class AssociatedProjects extends Component {
                 <div style={{width:"100%",float:"left",height:"2em"}}>
                     <PaymentManageBtn
                         isClick={this.state.payment_id.length===1?false:true}
-						onHoldClick={this.alertAddState}
+                        onHoldClick={this.alertAddState}
+                        // classNames="btn_list"
                         defineValue="关联一个支出到多个项目"
                         content={"add_projects_by_id"}
+                        classNames="btn_list"
                         state="add_ids_by_project"
 						// linkpage="payment_state_recall"	
 							// dataId={table_data_body.id}
@@ -555,6 +557,7 @@ class AssociatedProjects extends Component {
 						onHoldClick={this.alertAddState}
 						defineValue="关联多个支出到一个项目"
                         state="add_ids_by_project"
+                        classNames="btn_list"
                         content={"add_ids_by_project"}
 						// linkpage="payment_state_recall"	
 							// dataId={table_data_body.id}

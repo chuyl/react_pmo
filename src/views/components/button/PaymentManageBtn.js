@@ -29,7 +29,7 @@
             const {defineValue}=this.props;
             return (
                <div  className={this.props.isClick===true?"card_ide_btn card_related_div":"card_ide_btn card_related_div active"}>
-                    <button title={defineValue} style={{"padding":"0 0.8em"}} disabled={this.props.isClick===true?true:false} onClick={this.onClick} className={this.props.classNames?"hold_btn"+" "+this.props.classNames:"hold_btn"}>{defineValue}</button>
+                    <button title={defineValue} style={{"padding":"0 0.8em"}} disabled={this.props.isClick===true?true:false} onClick={this.onClick} className={this.props.classNames?this.props.isClick?"hold_btn":"hold_btn"+" "+this.props.classNames:"hold_btn"}>{defineValue}</button>
                </div>
             )
         }

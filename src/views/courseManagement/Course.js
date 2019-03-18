@@ -35,6 +35,7 @@ class Course extends Component {
 		 dataId: "",
 		 form_temp_name: "",
 		 alertRelationState:false,
+		 alertRelationTypeState:false,
 		 add_drawer_button:{},
 		 drawer_index:-1,
 		 message_list:[],
@@ -271,7 +272,7 @@ class Course extends Component {
 			if (message.error === 0) {
 				
 		this.setState({
-			alertRelationState:true,
+			alertRelationTypeState:true,
 			add_drawer_button:{add_button:"course_type_add",
 						add_button_title:"关联所属分类",
 						add_title:"添加所属分类",
@@ -337,10 +338,11 @@ class Course extends Component {
                        {this.state.table_data_body.indexOf(table_data_body)+1}
                        </div>
 					</td> */}
-					<td  style={{"width":"29em"}}>
+					<td  style={{"width":"22em"}}>
 						<PaymentManageBtn
 							onHoldClick={this.alertAddState}
 							defineValue="修改"
+							classNames="btn_list"
 							dataId={table_data_body.id}
 							state="alertAddCourseState"	
 							courseData={table_data_body}
@@ -349,6 +351,7 @@ class Course extends Component {
 							onHoldClick={this.alertHoldState}
 							defineValue="删除"
 							state="alertState"
+							classNames="btn_list"
 							// classNames="passBtn"
 							linkpage="course_manage_del"	
 							dataId={table_data_body.id}
@@ -358,7 +361,7 @@ class Course extends Component {
 						>
 						<button onClick={(e) => {
 								this.relation_lecturer(table_data_body.id)
-								}} className="hold_btn">授课讲师</button>
+								}} className="btn_list">授课讲师</button>
 							
 						</div>
 						<div    
@@ -367,7 +370,7 @@ class Course extends Component {
 						<button onClick={(e) => {
 								this.relation_type(table_data_body.id)
 								
-								}} className="hold_btn">所属分类</button>
+								}} className="btn_list">所属分类</button>
 							
 						</div>
 					</td>
@@ -565,7 +568,8 @@ class Course extends Component {
 			alertAddProjectState:false,
 			alertChangeAmountState:false,
 			alertState:false,
-			alertRelationState:false
+			alertRelationState:false,
+			alertRelationTypeState:false
 		})
 	}
 	// ClickArrAlert=()=>{
@@ -639,6 +643,7 @@ class Course extends Component {
 				<PaymentManageBtn
 					onHoldClick={this.alertAddState}
 					defineValue="添加"
+					classNames="btn_list"
 					state="alertAddCourseState"
 					dataId={""}	
 					/>
@@ -650,9 +655,10 @@ class Course extends Component {
 					   keywordTitle={[
                         "课程名称",
                         // "项目类型",
-						"领款人",
-						"时间",
-						"状态"]}
+						// "领款人",
+						// "时间",
+						// "状态"
+					]}
 					//    selectListMessage={["project_type_list"]}
 					// 	selectNameMessage={["project_project_template_name"]}
 					   selectListMessage={[]}
@@ -666,12 +672,12 @@ class Course extends Component {
 					/>
                 <div className="statistical_div">
                 
-                    <table style={{width:sumLength+29+"em"}} className="statistical_table">
+                    <table style={{width:sumLength+22+"em"}} className="statistical_table">
                         <thead>
                             <tr>
 								{/* <th><div className="statistical_table_box">序号</div></th> */}
 								<th>
-									<div style={{"width":"29em"}}></div>
+									<div style={{"width":"22em"}}></div>
 								</th>
                                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
                                     return(
@@ -746,6 +752,36 @@ class Course extends Component {
 				sureCallback = {this.sureAddFinancialCallback.bind(this)} 
 				cancelCallback = { this.cancelCallback.bind(this) } 
 				alertState={this.state.alertRelationState}
+			/>
+			<Drawer 
+				content={
+					<div>
+						{/* <button onClick={()=>{
+							this.setState({
+								alertAddCourseState:true
+							})
+						}}></button> */}
+						<CardGroup 
+                            addButtonTitle={"所属分类"} 
+                            addButton={this.state.add_drawer_button} 
+                             beforeApiUri={this.state.message_list} 
+                            uriName={this.state.add_drawer_button.before_api_uri}
+                            delButton = {this.state.add_drawer_button.del_button}
+                            editButton={this.state.add_drawer_button.edit_button}
+                            listButton = {this.state.add_drawer_button.list_button}
+                            idName={"course_relation_type"}
+							dataId={this.state.drawer_index}
+							sureBtn={false}  
+                            selectedInfo={this.state.message_list?this.state.message_list:""} 
+							postListGroup={this.editCardSuccess}
+                            editCardGroupState={this.addCardGroupState}
+                                    
+                                />
+					</div>
+					}	 
+				sureCallback = {this.sureAddFinancialCallback.bind(this)} 
+				cancelCallback = { this.cancelCallback.bind(this) } 
+				alertState={this.state.alertRelationTypeState}
 			/>
 			{/* <Popup 
 				content={

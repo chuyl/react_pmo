@@ -314,26 +314,28 @@
         render(){
             const {textarea_id,inputValue,message} =this.props;
             return (
+                this.props.view?inputValue:
                 <div>
-                    {/* 模块1 */}
-                    {this.props.view?"":
-                    message?"":
-                    this.state.close_add_btn?
-                    <div 
-                        className="add_card_btn"
-                        onClick={()=>{
-                            this.setState({
-                                alertAddTextState:true
-                            })
-                        }}
-                    >
-                        添加段落
-                    </div>:""}
+                    <div className="text_field_div">
+                        <label className="search_info_list_label">{inputValue}</label>
+                    </div>
+                     {/* 模块1 */}
+                    {this.props.view?""
+                        :message?""
+                        :this.state.close_add_btn?
+                            <div 
+                                className="add_card_btn"
+                                onClick={()=>{
+                                    this.setState({
+                                        alertAddTextState:true
+                                    })
+                                }}
+                            >
+                                添加段落
+                            </div>
+                        :""}
                     {/* 模块2 */}
-                    <div 
-                        // style={{width:"400px",height:"300px",border:"1px solid"}} 
-                        // className={this.state.showMessageState?"editor_module_two active":"editor_module_two"}
-                    >
+                    <div>
                         {this.state.message_list.map((message_list,index)=>{
                             return(
                                 <div className="editor_show_content" key={index}>
@@ -344,70 +346,69 @@
                                             langPack={"editor"}
                                             index={index}
                                             disabled={this.state.edit_state?false:true}
-                                           
                                             // isSelected={this.state.isSelected}
                                             // selectedIdInfo={"-选择-"} 
                                         />
                                     </div>
                                     <div className="editor_content_div">
-                                    <div 
-                                       style={this.state.contenteditableState==index?{display:"block"}:{display:"none"}}
-                                        contentEditable={this.state.contenteditableState==index?true:false}
-                                        id={"show_message"+index}
-                                        onClick={this.getSelection_message.bind(this)}
-                                        className={message_list.class}
-                                    >
-                                    {message_list.content.map((content,index)=>{
-                                       
-                                        return(
-                                            content.type==="def"?content.text:
-                                            <span className={content.type}>{content.text}</span>
+                                        <div 
+                                        // style={this.state.contenteditableState==index?{display:"block"}:{display:"none"}}
+                                            contentEditable={this.state.contenteditableState==index?true:false}
+                                            id={"show_message"+index}
+                                            onClick={this.getSelection_message.bind(this)}
+                                            className={this.state.contenteditableState==index?message_list.class+" active":message_list.class}
+                                        >
+                                            {message_list.content.map((content,index)=>{
+                                                return(
+                                                    content.type==="def"?content.text:
+                                                    <span className={content.type}>{content.text}</span>
+                                                )
+                                            })}
+                                        </div>
+                                        <div 
+                                            // style={this.state.contenteditableState==index?{display:"none"}:{display:"block"}}
 
-                                        )
-                                    })}
+                                            id={"show_style_message"+index}
+                                            className={this.state.contenteditableState==index?message_list.class:message_list.class+" active"}
+                                        >
+                                            {message_list.content.map((content,index)=>{
+                                                return(
+                                                    content.type==="def"?content.text:
+                                                    <span className={content.type}>{content.text}</span>
+
+                                                )
+                                            })}
                                         {/* {message_list.content[0].text+message_list.class} */}
-                                    </div>
-                                    <div 
-                                        style={this.state.contenteditableState==index?{display:"none"}:{display:"block"}}
-
-                                        id={"show_style_message"+index}
-                                        className={message_list.class}
-                                    >
-                                    {message_list.content.map((content,index)=>{
-                                       
-                                        return(
-                                            content.type==="def"?content.text:
-                                            <span className={content.type}>{content.text}</span>
-
-                                        )
-                                    })}
-                                        {/* {message_list.content[0].text+message_list.class} */}
-                                    </div>
-                                    <button
-                                        className="editor_btn"
-                                        style={this.state.edit_state?{display:"none"}:{display:"block"}}
-                                        onClick={()=>{
-                                            this.contenteditableChange(index)
-                                        }}>编辑</button>
-                                    <button 
-                                        className="editor_btn"
-                                        style={this.state.edit_state?{display:"block"}:{display:"none"}}
-                                        onClick={()=>{
-                                        this.contenteditableHold(index,"show_message"+index)
-                                    }}>保存</button>
-                                    <button 
-                                        className="editor_btn"
-                                        onClick={()=>{
-                                        this.delEditorContent(index,"show_message"+index)
-                                    }}>删除</button>
+                                        </div>
+                                        <button
+                                            className={this.state.edit_state?"editor_btn":"editor_btn active"}
+                                            // style={this.state.edit_state?{display:"none"}:{display:"block"}}
+                                            onClick={()=>{
+                                                this.contenteditableChange(index)
+                                            }}>
+                                            编辑
+                                        </button>
+                                        <button 
+                                            className={this.state.edit_state?"editor_btn active":"editor_btn"}
+                                            // style={this.state.edit_state?{display:"block"}:{display:"none"}}
+                                            onClick={()=>{
+                                            this.contenteditableHold(index,"show_message"+index)
+                                        }}>
+                                            保存
+                                        </button>
+                                        <button 
+                                            className="editor_btn active"
+                                            onClick={()=>{
+                                            this.delEditorContent(index,"show_message"+index)
+                                        }}>
+                                            删除
+                                        </button>
                                     </div>
                                     <div className="editor_hover_div" onClick={()=>{
                                         this.open_between_alert(index)
-                                    }}>
-                                    <div  className="editor_add_content">添加段落+</div>
-                                    
+                                        }}>
+                                        <div  className="editor_add_content">添加段落+</div>
                                     </div>
-
                                 </div>
                             )
                         })}
@@ -434,7 +435,7 @@
                         cancelCallback = { this.cancelCallback.bind(this) } 
                         alertState={this.state.alertAddTextState}
                     />
-                     <Popup 
+                    <Popup 
                         content={
                             <div>
                             <h2>添加段落</h2>

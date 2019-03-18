@@ -29,7 +29,7 @@ var local = {
                 "classification_data_getByClassificationId":{"url":"../data/classification_data_getByClassificationId.json","version":"1.0"},//获取一条分类信息
                 
                 "lecturer_manage_getByCourseId":{"url":"../data/lecturer_manage_getByCourseId.json","version":"1.0"},//获取一条课程关联讲师信息
-                
+                "classification_manage_course":{"url":"../data/classification_manage_course.json","version":"1.0"},//关联课程和分类
                 "lecturer_duty_list":{"url":"../data/lecturer_duty_list.json","version":"1.0"},//讲师职责列表
                 "lecturer_duty_add":{"url":"../data/lecturer_duty_add.json","version":"1.0"},//讲师职责新增
                 "lecturer_plan_getByProjectId":{"url":"../data/lecturer_plan_getByProjectId.json","version":"1.0"},//获取项目讲师安排
