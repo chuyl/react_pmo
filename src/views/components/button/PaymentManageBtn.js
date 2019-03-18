@@ -19,7 +19,8 @@
                 financialNumber:this.props.financialNumber,
                 relationId:this.props.relationId,
                 courseData:this.props.courseData,
-                describe:this.props.describe
+                describe:this.props.describe,
+                classificationData:this.props.classificationData
                }
             this.props.onHoldClick(newState);
         }

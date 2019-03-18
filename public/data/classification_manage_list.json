@@ -9,7 +9,7 @@
             {"key":"name","value":"分类名称","size":"7"},
             {"key":"type_id","value":"所属分类","size":"10"},
             {"key":"is_leaf_name","value":"最小分类","size":"7"},
-            {"key":"filter_list","value":"筛选条件","size":"7"}
+            {"key":"filter_list_name","value":"筛选条件","size":"7"}
           
         ],
         "data_body":[{"id": "1", 
@@ -17,7 +17,7 @@
             "type_id": "所属分类",
             "is_leaf_name": "是最小分类",
             "is_leaf_id": "1",
-            "filter_list": ["1","2","3"]
+            "filter_list_name":"周期,等级" 
             }
           ]},
    

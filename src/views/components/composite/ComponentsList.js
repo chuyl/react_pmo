@@ -179,9 +179,6 @@ handleChildChange=(formData)=>{
      
         return (
                 this.props.componentslist.map((form_list,index) => {
-                    // if(form_list.type_name==="CardPage"){
-                    //     console.log(index+""+this.props.cardIndex)
-                    // }
                     return (
                             form_list.type_name === "Cards" ?
                                 <Cards  
@@ -734,6 +731,8 @@ handleChildChange=(formData)=>{
                                 <SelectCheckArray
                                     id={form_list.id_name}
                                     labelValue={form_list.title}
+                                    selectedIdInfo={this.props.componentsdata[form_list.id_name+"_id"]?JSON.stringify(this.props.componentsdata[form_list.id_name+"_id"]):"-选择-"} 
+                                    selectedInfo={this.props.componentsdata[form_list.id_name+"_name"]?this.props.componentsdata[form_list.id_name+"_name"]:"-选择-"} 
                                     searchInfoLists={form_list.before_api_uri}
                                 />
                             // :form_list.type_name==="LoanBill"?

@@ -80,6 +80,12 @@ class Classification extends Component {
 				else if (list_message[i].type_name === "TextArea") {
 					value.push(list_message[i].id_name)
 					key_name.push(document.getElementById(list_message[i].id_name).value)
+				}else if (list_message[i].type_name === "SelectCheckArray") {
+					console.log(document.getElementById(list_message[i].id_name + "_id").innerHTML)
+					value.push(list_message[i].id_name + "_name")
+					key_name.push(document.getElementById(list_message[i].id_name + "_name").innerHTML === "-选择-" ? "" : document.getElementById(list_message[i].id_name + "_name").innerHTML)
+					value.push(list_message[i].id_name + "_id")
+					key_name.push(document.getElementById(list_message[i].id_name + "_id").innerHTML === "-选择-" ? "" : JSON.parse(document.getElementById(list_message[i].id_name + "_id").innerHTML))
 				} else {
 					value.push(list_message[i].id_name)
 					key_name.push(document.getElementById(list_message[i].id_name).innerHTML === "-选择-" ? "" : document.getElementById(list_message[i].id_name).innerHTML || document.getElementById(list_message[i].id_name).value === "-选择-" ? "" : document.getElementById(list_message[i].id_name).value)
@@ -167,6 +173,7 @@ class Classification extends Component {
 		 , cb, {});
 	}
 	alertAddState=(newState)=>{
+		console.log(newState)
 		 if(newState.dataId===""){
 			this.fetchProjectData("addClassification")
 			this.setState({
@@ -178,6 +185,7 @@ class Classification extends Component {
 
 			})
 		 }else{
+			 console.log(newState.classificationData)
 			this.fetchProjectData("editClassification")
 			this.setState({
 				[newState.state]:true,
@@ -328,7 +336,6 @@ class Classification extends Component {
        
         
         this.state.table_data_body.map((table_data_body,index)=>{
-            
             components.push (
                 <tr
                     key = {index}> 
@@ -472,7 +479,7 @@ class Classification extends Component {
 					alertAddClassificationState:false,
 		
 				})
-				this.table_data_body(1,this.state.psize,this.state.search_message)
+				this.table_data_body(this.state.pon,this.state.psize,this.state.search_message)
 
 			}else if(message.error === 2){
 				console.log("未登录")
@@ -494,7 +501,7 @@ class Classification extends Component {
 		}
 		console.log(this.state.classification_id)
 		console.log(this.state.financial_number)
-		getData(getRouter("payment_manage_edit_financial_number"), { token:sessionStorage.token,id:this.state.classification_id,financial_number:this.state.financial_number }, cb, {});
+		getData(getRouter("classification_data_getByClassificationId"), { token:sessionStorage.token,id:this.state.classification_id,financial_number:this.state.financial_number }, cb, {});
 	}
 	sureAddProjectCallback=()=>{
 		console.log(this.state.classification_id)
@@ -649,7 +656,7 @@ class Classification extends Component {
 					   message={this.state.table_data_bodys}
 					   keywordSearch={["name"]}
 					   keywordTitle={[
-                        "课程名称",
+                        "分类名称",
                         // "项目类型",
 						"领款人",
 						"时间",
@@ -659,7 +666,7 @@ class Classification extends Component {
 					   selectListMessage={[]}
                        selectNameMessage={[]}
                        selectListCheckMessage={["staff_manage_list"]}
-                       selectNameCheckMessage={["payee_name"]}
+                       selectNameCheckMessage={["name"]}
 					   sectionTimeMessage={["submit_time"]}
 					   langPackMessage={["state"]}
 					   langPackTitle={["-1,1,2"]}
