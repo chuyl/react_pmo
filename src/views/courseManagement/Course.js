@@ -354,22 +354,21 @@ class Course extends Component {
 							dataId={table_data_body.id}
 						/>
 						<div    
-							className="drawer_button" 
-							onClick={(e) => {
-								this.relation_lecturer(table_data_body.id)
-								
-								}}
+							className="card_ide_btn card_related_div active" 
 						>
-							授课讲师
+						<button onClick={(e) => {
+								this.relation_lecturer(table_data_body.id)
+								}} className="hold_btn">授课讲师</button>
+							
 						</div>
 						<div    
-							className="drawer_button" 
-							onClick={(e) => {
+							className="card_ide_btn card_related_div active" 
+						>
+						<button onClick={(e) => {
 								this.relation_type(table_data_body.id)
 								
-								}}
-						>
-							所属分类
+								}} className="hold_btn">所属分类</button>
+							
 						</div>
 					</td>
                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
