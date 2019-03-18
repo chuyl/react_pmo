@@ -86,6 +86,20 @@ class Classification extends Component {
 					key_name.push(document.getElementById(list_message[i].id_name + "_name").innerHTML === "-选择-" ? "" : document.getElementById(list_message[i].id_name + "_name").innerHTML)
 					value.push(list_message[i].id_name + "_id")
 					key_name.push(document.getElementById(list_message[i].id_name + "_id").innerHTML === "-选择-" ? "" : JSON.parse(document.getElementById(list_message[i].id_name + "_id").innerHTML))
+					// if(Array.isArray(document.getElementById(list_message[i].id_name + "_id").innerHTML)){
+					// 	key_name.push(document.getElementById(list_message[i].id_name + "_id").innerHTML === "-选择-" ? "" : document.getElementById(list_message[i].id_name + "_id").innerHTML)
+
+					// }else{
+					// 	console.log(document.getElementById(list_message[i].id_name + "_id").innerHTML)
+					// 	var arr_split=document.getElementById(list_message[i].id_name + "_id").innerHTML;
+					// 	var arr=[];
+					// 	for(var j = 0;j<arr_split.length;j++){
+					// 		arr.push(parseInt(arr_split[j]))
+					// 		console.log(parseInt(arr_split[j])) 
+					// 	}
+					// 	key_name.push(document.getElementById(list_message[i].id_name + "_id").innerHTML === "-选择-" ? "" :arr)
+
+					// }
 				} else {
 					value.push(list_message[i].id_name)
 					key_name.push(document.getElementById(list_message[i].id_name).innerHTML === "-选择-" ? "" : document.getElementById(list_message[i].id_name).innerHTML || document.getElementById(list_message[i].id_name).value === "-选择-" ? "" : document.getElementById(list_message[i].id_name).value)

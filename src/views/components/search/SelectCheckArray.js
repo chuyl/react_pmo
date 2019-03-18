@@ -56,16 +56,16 @@
                 var checkedLength=0;
                 var id_arr=[];
                 if(this.state.search_state){
-                    for(var j = 0;j<checklist.length;j++){
-                        console.log(checklist[j])
-                    for(var m = 0;m<selectedInfo.length;m++){
-                        console.log(selectedInfo[m])
-                        if(checklist[j].value==selectedInfo[m]){
-                            console.log(selectedInfo[m])
-                            checklist[j].checked=true;
-                        }
-                    }
-                    }
+                    // for(var j = 0;j<checklist.length;j++){
+                    //     console.log(checklist[j])
+                    // for(var m = 0;m<selectedInfo.length;m++){
+                    //     console.log(selectedInfo[m])
+                    //     if(checklist[j].value==selectedInfo[m]){
+                    //         console.log(selectedInfo[m])
+                    //         checklist[j].checked=true;
+                    //     }
+                    // }
+                    // }
                     for(var i = 0;i<checklist.length;i++){
                         if(checklist[i].checked){
                                 checkValue=checkValue+checklist[i].value+",";
@@ -82,8 +82,8 @@
 
         render() {
             const { selectedInfo,selectedIdInfo, id, labelValue,disabled } = this.props;
-            var selectedArrayInfo = selectedInfo.split(","); 
-            // console.log(selectedInfo)
+            // var selectedArrayInfo = selectedIdInfo.split(","); 
+            //  console.log(selectedArrayInfo)
             return (
                 <div className="search_info_list_card">
                     <div onClick={() => {
