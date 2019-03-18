@@ -1256,6 +1256,10 @@ textarea:disabled {
     }
 }
 
+.editor_add_content {
+    display: none;
+}
+
 .card_ide_btn {
     margin-top: 0.2em;
 }
@@ -1274,21 +1278,31 @@ textarea:disabled {
 
     .editor_hover_div {
         padding-top: 0.5em;
+        height: 1em;
         width: 100%;
     }
 
+    .editor_hover_div:hover {
+
+
+        .editor_add_content {
+            display: block;
+            line-height: 1em;
+        }
+    }
+
     .editor_add_content {
-        width: 100%;
+        width: 70%;
+        margin: auto;
         float: left;
-        text-align: center;
-        background-color: #3F51B5;
-        color: #fff;
+        text-align: right;
+        color: #ccc;
         height: 2em;
         line-height: 2em;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
         border-radius: 4px;
     }
 }
+
 
 .editor_show_content::before {
     display: table;
@@ -1359,11 +1373,26 @@ textarea:disabled {
 }
 
 .editor_select_title {
-    width: 15em;
+    width: 8em;
+    padding-right: 0.5em;
+
+    .selectedInfo {
+        width: 90%;
+
+
+    }
+
+    .search_info_list {
+        width: 100%;
+    }
 }
 
 .editor_content_div {
-    width: calc(100% - 15em);
+    width: calc(100% - 8em);
+}
+
+.userSelect {
+    display: none;
 }
 
 .editor_content_div:hover {
