@@ -192,9 +192,9 @@
                     for(var j = 0;j<str.length;j++){
                     if(str[j].type==="def"){
                         editor_str=editor_str+str[j].text
-                    }else if(str[j].type==="red"){
+                    }else if(str[j].type==="emphasize"){
                         editor_str=editor_str+"**"+str[j].text+"**"
-                    }else if(str[j].type==="grey"){
+                    }else if(str[j].type==="weaken"){
                         editor_str=editor_str+"=="+str[j].text+"=="
                     }
                 }
@@ -245,7 +245,7 @@
                                     str_content_arr.push({"type":"def","text":str_weaken[j]})
                                 }else{
                                     new_str=new_str+'<span class="weaken">'+str_weaken[j]+'</span>';
-                                    str_content_arr.push({"type":"grey","text":str_weaken[j]})
+                                    str_content_arr.push({"type":"weaken","text":str_weaken[j]})
                                 }
                             }
                         }else{
@@ -256,7 +256,7 @@
                     }else{
                         // 强调
                         new_str=new_str+'<span class="emphasize">'+str_emphasize[i]+'</span>';
-                        str_content_arr.push({"type":"red","text":str_emphasize[i]})
+                        str_content_arr.push({"type":"emphasize","text":str_emphasize[i]})
                         console.log(str_emphasize[i])
                     }
                 }
@@ -366,10 +366,10 @@
                                             })}
                                         </div>
                                         <div 
-                                             style={this.state.contenteditableState==index?{display:"none"}:{display:"block"}}
+                                             style={this.state.contenteditableState==index?{display:"none"}:{display:"block",userSelect:"none"}}
 
                                             id={"show_style_message"+index}
-                                            className={message_list.class}
+                                            className={message_list.class+" userSelect"}
                                         >
                                             {message_list.content.map((content,index)=>{
                                                 return(
@@ -454,8 +454,8 @@
                         />
                     
                     <div className="change_position" style={this.state.openNewState?{top:this.state.topX,left:this.state.topY,position:"fixed"}:{display:"none"}}>
-                        <button className="emphasize_btn" onClick={this.emphasizeMessage.bind(this)}>强调</button>
-                        <button className="weaken_btn" onClick={this.weakenMessage.bind(this)}>弱化</button>
+                        <button className="emphasize_btn" onClick={this.emphasizeMessage.bind(this)}></button>
+                        <button className="weaken_btn" onClick={this.weakenMessage.bind(this)}></button>
                     </div>
                     
                 </div>
