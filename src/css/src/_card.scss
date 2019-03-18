@@ -133,6 +133,31 @@
     cursor: pointer;
 }
 
+// 具体按钮背景颜色
+.financialBtn {
+    background-color: $background-color;
+}
+
+.passBtn {
+    background-color: $background-color;
+}
+
+.recallBtn {
+    background-color: $background-color;
+}
+
+.cancelBtn {
+    background-color: $background-color;
+}
+
+.changePriceBtn {
+    background-color: $background-color;
+}
+
+.cancalRelationBtn {
+    background-color: $background-color;
+}
+
 .statistical_div {
     .hold_btn {
         margin-bottom: 0;
@@ -571,7 +596,6 @@ textarea:disabled {
 .card_related_div.active {
     button {
         color: $primary-color-text;
-        background-color: $primary-color;
     }
 }
 
@@ -1055,7 +1079,6 @@ textarea:disabled {
     tr {
         .card_ide_btn {
             .hold_btn {
-                background-color: $background-color;
                 overflow: hidden;
             }
 
@@ -1247,8 +1270,10 @@ textarea:disabled {
 .editor_show_content {
     width: 100%;
     float: left;
+    padding-bottom: 0.5em;
 
     .editor_hover_div {
+        padding-top: 0.5em;
         width: 100%;
     }
 
@@ -1292,6 +1317,16 @@ textarea:disabled {
     padding: 1em;
 }
 
+.editor_btn {
+    background-color: #3F51B5;
+    color: #fff;
+    text-align: center;
+    padding: 0 0.5em;
+    margin-right: 0.2em;
+    border-radius: 2px;
+    line-height: 2em;
+}
+
 .editor_hover_div:hover {
     .editor_add_content {
         display: block;
@@ -1331,6 +1366,10 @@ textarea:disabled {
     float: left;
 }
 
+.editor_select_title {
+    width: 15em;
+}
+
 .editor_content_div:hover {
     .editor_btn {
         display: block;
@@ -1339,19 +1378,29 @@ textarea:disabled {
 
 .editor_content_div {
     width: calc(100% - 15em);
-
 }
 
 .editor_content_div {
     div.default_title {
         float: left;
-        width: calc(100% - 15em - 10em);
+        padding: 0.5em;
+        border-radius: 4px;
+        width: 65%;
+        margin-right: 10px;
+        word-wrap: break-word;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+
+        @if (display=="block") {
+            box-shadow: 0 0 5px #b6f7ff;
+        }
     }
 
     div.title_1 {
         font-size: 3em;
         text-align: left;
         line-height: 1;
+        padding-top: 1em;
+        padding-bottom: 0.5em;
         font-weight: bold;
     }
 
@@ -1360,12 +1409,29 @@ textarea:disabled {
         font-weight: bold;
         line-height: 1;
         text-align: left;
+        padding-top: 1em;
+        padding-bottom: 0.5em;
     }
 
     div.title_3 {
         text-align: left;
         font-size: 1em;
         line-height: 1.5;
+        padding-top: 0.5em;
+        padding-bottom: 1em;
+        padding-left: 1.5em;
+        position: relative;
+    }
+
+    div.title_3::before {
+        content: ' ';
+        position: absolute;
+        display: block;
+        width: 0.2em;
+        height: 1em;
+        left: 0.5em;
+        top: 0.7em;
+        background-color: #821C21;
     }
 
     div.main_boby {
@@ -1414,5 +1480,4 @@ textarea:disabled {
         position: relative;
         padding-left: 1.5em;
     }
-
 }

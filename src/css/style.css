@@ -1471,6 +1471,24 @@ body {
   outline: none;
   cursor: pointer; }
 
+.financialBtn {
+  background-color: #f5f5f5; }
+
+.passBtn {
+  background-color: #f5f5f5; }
+
+.recallBtn {
+  background-color: #f5f5f5; }
+
+.cancelBtn {
+  background-color: #f5f5f5; }
+
+.changePriceBtn {
+  background-color: #f5f5f5; }
+
+.cancalRelationBtn {
+  background-color: #f5f5f5; }
+
 .statistical_div .hold_btn {
   margin-bottom: 0; }
 
@@ -1805,8 +1823,7 @@ textarea:disabled {
   float: left; }
 
 .card_related_div.active button {
-  color: #FFFFFF;
-  background-color: #3F51B5; }
+  color: #FFFFFF; }
 
 .card-body .card-page:nth-of-type(2) {
   overflow: hidden; }
@@ -2162,7 +2179,6 @@ textarea:disabled {
       padding: 0;
       padding: 0.2em 0.5em; }
   .statistical_table tr .card_ide_btn .hold_btn {
-    background-color: #f5f5f5;
     overflow: hidden; }
   .statistical_table tr .card_ide_btn button::before {
     font-family: 'Glyphicons Halflings';
@@ -2292,8 +2308,10 @@ textarea:disabled {
 
 .editor_show_content {
   width: 100%;
-  float: left; }
+  float: left;
+  padding-bottom: 0.5em; }
   .editor_show_content .editor_hover_div {
+    padding-top: 0.5em;
     width: 100%; }
   .editor_show_content .editor_add_content {
     width: 100%;
@@ -2325,6 +2343,15 @@ textarea:disabled {
 .foot_div {
   padding: 1em; }
 
+.editor_btn {
+  background-color: #3F51B5;
+  color: #fff;
+  text-align: center;
+  padding: 0 0.5em;
+  margin-right: 0.2em;
+  border-radius: 2px;
+  line-height: 2em; }
+
 .editor_hover_div:hover .editor_add_content {
   display: block; }
 .editor_hover_div:hover button.editor_btn {
@@ -2351,6 +2378,9 @@ textarea:disabled {
 .editor_hover_div {
   float: left; }
 
+.editor_select_title {
+  width: 15em; }
+
 .editor_content_div:hover .editor_btn {
   display: block; }
 
@@ -2359,21 +2389,43 @@ textarea:disabled {
 
 .editor_content_div div.default_title {
   float: left;
-  width: calc(100% - 15em - 10em); }
+  padding: 0.5em;
+  border-radius: 4px;
+  width: 65%;
+  margin-right: 10px;
+  word-wrap: break-word;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6); }
 .editor_content_div div.title_1 {
   font-size: 3em;
   text-align: left;
   line-height: 1;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
   font-weight: bold; }
 .editor_content_div div.title_2 {
   font-size: 2em;
   font-weight: bold;
   line-height: 1;
-  text-align: left; }
+  text-align: left;
+  padding-top: 1em;
+  padding-bottom: 0.5em; }
 .editor_content_div div.title_3 {
   text-align: left;
   font-size: 1em;
-  line-height: 1.5; }
+  line-height: 1.5;
+  padding-top: 0.5em;
+  padding-bottom: 1em;
+  padding-left: 1.5em;
+  position: relative; }
+.editor_content_div div.title_3::before {
+  content: ' ';
+  position: absolute;
+  display: block;
+  width: 0.2em;
+  height: 1em;
+  left: 0.5em;
+  top: 0.7em;
+  background-color: #821C21; }
 .editor_content_div div.main_boby {
   text-align: left;
   font-size: 1em;
