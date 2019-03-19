@@ -2368,13 +2368,13 @@ textarea:disabled {
 .emphasize_btn {
   width: 1.5em;
   height: 1em;
-  background-color: #ff0000;
+  background-color: #801c21;
   margin-right: 5px; }
 
 .weaken_btn {
   width: 1.5em;
   height: 1em;
-  background-color: #d2691e; }
+  background-color: #dddddd; }
 
 .editor_select_title,
 .editor_content_div,
@@ -2464,11 +2464,11 @@ textarea:disabled {
   content: ' ';
   position: absolute;
   display: block;
-  width: 0.2em;
+  width: 0.15em;
   height: 1em;
   left: 0;
   top: 0.8em;
-  background-color: #821C21; }
+  background-color: #801c03; }
 .editor_content_div div.main_boby {
   text-align: left;
   font-size: 1em;
@@ -2510,7 +2510,8 @@ textarea:disabled {
   line-height: 1.5;
   color: #7e7e7e;
   position: relative;
-  padding-left: 4em; }
+  padding-left: 4em;
+  margin-bottom: 2em; }
 
 .dialog_open {
   position: absolute;

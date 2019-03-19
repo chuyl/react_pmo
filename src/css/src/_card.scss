@@ -1351,14 +1351,14 @@ textarea:disabled {
 .emphasize_btn {
     width: 1.5em;
     height: 1em;
-    background-color: #ff0000;
+    background-color: rgb(128, 28, 33);
     margin-right: 5px;
 }
 
 .weaken_btn {
     width: 1.5em;
     height: 1em;
-    background-color: #d2691e;
+    background-color: rgb(221, 221, 221);
 }
 
 .editor_select_title,
@@ -1480,11 +1480,11 @@ textarea:disabled {
         content: ' ';
         position: absolute;
         display: block;
-        width: 0.2em;
+        width: 0.15em;
         height: 1em;
         left: 0;
         top: 0.8em;
-        background-color: #821C21;
+        background-color: rgb(128, 28, 3);
     }
 
     div.main_boby {
@@ -1538,5 +1538,6 @@ textarea:disabled {
         color: rgb(126, 126, 126);
         position: relative;
         padding-left: 4em;
+        margin-bottom: 2em;
     }
 }
