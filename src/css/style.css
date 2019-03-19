@@ -2316,14 +2316,13 @@ textarea:disabled {
   .editor_show_content .editor_hover_div {
     height: 1em;
     width: 100%; }
-  .editor_show_content .editor_hover_div:hover .editor_add_content {
-    display: block;
-    line-height: 1em; }
   .editor_show_content .editor_add_content {
-    width: 100%;
+    float: right;
+    width: calc(100% - 8em);
+    background-color: #90d0d4;
     margin: auto;
     text-align: right;
-    color: #ccc;
+    color: #000;
     line-height: 1em;
     border-radius: 4px; }
 
@@ -2395,9 +2394,6 @@ textarea:disabled {
 .userSelect {
   display: none; }
 
-.editor_content_div:hover .active {
-  display: block; }
-
 .change_position {
   background-color: #fff;
   padding: 0.2em;
@@ -2413,7 +2409,8 @@ textarea:disabled {
     width: calc(100% - 8rem);
     margin-right: 10px;
     padding-left: 1em;
-    word-wrap: break-word; }
+    word-wrap: break-word;
+    outline: none; }
   .editor_content_div div.title_1 {
     font-size: 3em;
     text-align: left;
@@ -2513,6 +2510,17 @@ textarea:disabled {
     color: #7e7e7e;
     position: relative;
     padding-left: 4em; }
+
+.editor_content_div:hover .editor_add_content {
+  display: block;
+  line-height: 1em; }
+.editor_content_div:hover .active {
+  display: block; }
+
+.editor_list_div.editing .editor_show_content:hover .active {
+  display: none; }
+.editor_list_div.editing .editor_show_content.active .active {
+  display: block; }
 
 .dialog_open {
   position: absolute;
