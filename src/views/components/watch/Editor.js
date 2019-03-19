@@ -384,7 +384,7 @@
                                         {/* {message_list.content[0].text+message_list.class} */}
                                         </div>
                                         <button
-                                            className={this.state.edit_state?"editor_btn":"editor_btn active"}
+                                            className={this.state.contenteditableState==index?"editor_btn":"editor_btn active"}
                                             // style={this.state.edit_state?{display:"none"}:{display:"block"}}
                                             onClick={()=>{
                                                 this.contenteditableChange(index)
@@ -392,7 +392,7 @@
                                             编辑
                                         </button>
                                         <button 
-                                            className={this.state.edit_state?"editor_btn active":"editor_btn"}
+                                            className={this.state.contenteditableState==index?"editor_btn active":"editor_btn"}
                                             // style={this.state.edit_state?{display:"block"}:{display:"none"}}
                                             onClick={()=>{
                                             this.contenteditableHold(index,"show_message"+index)
