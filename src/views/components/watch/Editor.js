@@ -121,26 +121,34 @@
             
             var text = "";
             var text_div_content="";
+           
+            console.log()
             console.log(window.getSelection().toString().length)
             if (window.getSelection().toString().length>0) {
-                this.setState({
-                    openNewState:true,
-                    topY:e.pageX-50+"px",
-                    topX:e.pageY-30+"px",
-                    brush_div:window.getSelection().extentNode.parentNode,
-                    brush_text: window.getSelection().toString()
-
-                })
+                if(window.getSelection().toString()===this.state.brush_text){
+                    this.setState({
+                        openNewState:false,
+                    })
+                }else{
+                    this.setState({
+                        openNewState:true,
+                        topY:e.pageX-50+"px",
+                        topX:e.pageY-30+"px",
+                        brush_div:window.getSelection().extentNode.parentNode,
+                        brush_text: window.getSelection().toString()
+    
+                    })
+                }
+                
                 // 鼠标选择的内容
                // text = window.getSelection().toString();
                 //所属标签的内容
                
                 // console.log(new_content)
-                console.log(window.getSelection())
-                console.log(window.getSelection().extentNode.parentNode)
-            } else if (document.selection && document.selection.type != "Control") {
-                text = document.selection.createRange().text;
-                console.log(text)
+            } else {
+                this.setState({
+                    openNewState:false,
+                })
             }
             if ("" != text) {
                 console.log(text);
@@ -345,7 +353,7 @@
                                             stateFun={this.selectLangPackProps}
                                             langPack={"editor"}
                                             index={index}
-                                            disabled={this.state.edit_state?false:true}
+                                            // disabled={this.state.edit_state?false:true}
                                             // isSelected={this.state.isSelected}
                                             // selectedIdInfo={"-选择-"} 
                                         />
@@ -366,10 +374,10 @@
                                             })}
                                         </div>
                                         <div 
-                                             style={this.state.contenteditableState==index?{display:"none"}:{display:"block",userSelect:"none"}}
+                                             style={this.state.contenteditableState==index?{display:"none"}:{display:"block"}}
 
                                             id={"show_style_message"+index}
-                                            className={message_list.class+" userSelect"}
+                                            className={message_list.class}
                                         >
                                             {message_list.content.map((content,index)=>{
                                                 return(
