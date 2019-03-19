@@ -43,7 +43,7 @@
               
                 var message_list=[];
                 for(var i = 0;i<strContent.split("<br/>").length;i++){
-                    message_list.push({id:i,class:"default_title",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
+                    message_list.push({id:i,class:"default_title main_boby",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
                 }
                 if(message_list.length>0){
                     this.setState({
@@ -73,7 +73,7 @@
                 if(j===this.state.addBetweenIndex){
                     message_list.push(this.state.message_list[j])
                     for(var i = 0;i<strContent.split("<br/>").length;i++){
-                        message_list.push({id:i,class:"default_title",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
+                        message_list.push({id:i,class:"default_title main_boby",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
                     }
                 }else{
                     message_list.push(this.state.message_list[j])
@@ -191,12 +191,10 @@
         // div可编辑
         contenteditableChange=(index)=>{
           
-            console.log(this.state.message_list)
             var editor_str="";
             for(var i = 0;i<this.state.message_list.length;i++){
                 if(index===i){
                     var str = this.state.message_list[i].content;
-                    console.log(str)
                     for(var j = 0;j<str.length;j++){
                     if(str[j].type==="def"){
                         editor_str=editor_str+str[j].text
@@ -208,7 +206,6 @@
                 }
                 }
             }
-            console.log(editor_str)
             document.getElementById("show_message"+index).innerHTML=editor_str;
             this.setState({
                 contenteditableState:index,
@@ -260,12 +257,10 @@
                             new_str=new_str+str_emphasize[i];
                             str_content_arr.push({"type":"def","text":str_emphasize[i]})
                         }
-                        console.log(str_emphasize[i])
                     }else{
                         // 强调
                         new_str=new_str+'<span class="emphasize">'+str_emphasize[i]+'</span>';
                         str_content_arr.push({"type":"emphasize","text":str_emphasize[i]})
-                        console.log(str_emphasize[i])
                     }
                 }
             
@@ -273,15 +268,13 @@
             for(var y = 0;y<this.state.message_list.length;y++){
                 if(index===y){
                     var obj=this.state.message_list[y];
-                    console.log(str_content_arr.length)
                     obj.content=[];
                     for(var w = 0;w<str_content_arr.length;w++){
                         
                         obj.content.push(str_content_arr[w])
                        
                     }
-                    console.log(obj.content)
-                    console.log(obj)
+                    
                     edit_message_list.push(obj)
                 }else{
                   edit_message_list.push(this.state.message_list[y])
@@ -303,7 +296,8 @@
                 }
             }
             this.setState({
-                message_list:message_list
+                message_list:message_list,
+                edit_state:false
             })
         }
         cancelCallback=()=>{
@@ -343,10 +337,10 @@
                             </div>
                         :""}
                     {/* 模块2 */}
-                    <div className={this.state.edit_state?"editor_list_div active":"editor_list_div"}>
+                    <div className={"editor_list_div"}>
                         {this.state.message_list.map((message_list,index)=>{
                             return(
-                                <div className="editor_show_content" key={index}>
+                                <div className={this.state.edit_state?"editor_show_content active":"editor_show_content"} key={index}>
                                     <div className="editor_select_title">
                                         <SelectListLangPack
                                             id={"select_lecturer_style"+index}
@@ -355,7 +349,8 @@
                                             index={index}
                                             // disabled={this.state.edit_state?false:true}
                                             // isSelected={this.state.isSelected}
-                                            // selectedIdInfo={"-选择-"} 
+                                            selectedInfo={"正文"} 
+                                            selectedIdInfo={"main_boby"} 
                                         />
                                     </div>
                                     <div className="editor_content_div">
@@ -368,7 +363,7 @@
                                         >
                                             {message_list.content.map((content,index)=>{
                                                 return(
-                                                    content.type==="def"?content.text:
+                                                    content.type==="def"?<span>{content.text}</span>:
                                                     <span className={content.type}>{content.text}</span>
                                                 )
                                             })}
@@ -381,7 +376,7 @@
                                         >
                                             {message_list.content.map((content,index)=>{
                                                 return(
-                                                    content.type==="def"?content.text:
+                                                    content.type==="def"?<span>{content.text}</span>:
                                                     <span className={content.type}>{content.text}</span>
 
                                                 )
