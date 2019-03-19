@@ -1289,9 +1289,8 @@ textarea:disabled {
     }
 
     .editor_add_content {
-        width: 70%;
+        width: 100%;
         margin: auto;
-        float: left;
         text-align: right;
         color: #ccc;
         line-height: 1em;
@@ -1328,10 +1327,11 @@ textarea:disabled {
 
 .editor_btn {
     display: none;
-    background-color: #3F51B5;
-    color: #fff;
+    background-color: transparent;
+    color: #3F51B5;
     text-align: center;
     padding: 0 0.5em;
+    margin-top: 0.5em;
     margin-right: 0.2em;
     border-radius: 2px;
     line-height: 2em;
@@ -1403,13 +1403,17 @@ textarea:disabled {
 }
 
 .editor_content_div {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    border-radius: 4px;
+
+    padding-left: 1em;
+
     div.default_title {
         float: left;
-        border-radius: 4px;
         width: calc(100% - 8rem);
         margin-right: 10px;
+        padding-left: 1em;
         word-wrap: break-word;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
 
         @if (display=="block") {
             box-shadow: 0 0 5px #b6f7ff;
@@ -1457,7 +1461,7 @@ textarea:disabled {
         position: relative;
     }
 
-    div.title_2::before{
+    div.title_2::before {
         content: ' ';
         position: absolute;
         display: block;
@@ -1467,6 +1471,7 @@ textarea:disabled {
         top: 1em;
         left: 0;
     }
+
     div.title_3 {
         text-align: left;
         font-size: 1em;
@@ -1493,8 +1498,6 @@ textarea:disabled {
         line-height: 1.5;
         padding: 1em 0;
         color: rgb(126, 126, 126);
-        margin-bottom: 2em;
-        
     }
 
     div.symbol_list {
@@ -1538,6 +1541,5 @@ textarea:disabled {
         color: rgb(126, 126, 126);
         position: relative;
         padding-left: 4em;
-        margin-bottom: 2em;
     }
 }
