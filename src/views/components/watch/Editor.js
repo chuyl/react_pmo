@@ -343,7 +343,7 @@
                             </div>
                         :""}
                     {/* 模块2 */}
-                    <div>
+                    <div className={this.state.edit_state?"editor_list_div active":"editor_list_div"}>
                         {this.state.message_list.map((message_list,index)=>{
                             return(
                                 <div className="editor_show_content" key={index}>
