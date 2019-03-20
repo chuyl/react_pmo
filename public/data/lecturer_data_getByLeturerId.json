@@ -3,7 +3,7 @@
     "error":0,
     "data":{"id": "1", 
              "name": "刘雪松",
-             "describe":[{"id":0,"class":"title_1","content":[{"type":"def","text":"1"},{"type":"red","text":"2"},{"type":"def","text":"345"}]}],
+             "describe":[{"id":0,"class":"title_1","content":[{"type":"def","text":"1"},{"type":"emphasize","text":"2"},{"type":"def","text":"345"}]}],
              "unit_price":"1000",
              "teaching_direction":"讲师授课方向",
              "intermediator":"联系人",

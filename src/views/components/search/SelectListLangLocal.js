@@ -32,6 +32,7 @@
         render() {
             var keywordTitle = this.props.keywordTitle?this.props.keywordTitle.split(","):[]; 
             var selectList=[];
+            console.log(this.props.langPack)
             for(var i in LangPack[this.props.langPack]){
                 for(var j = 0;j<keywordTitle.length;j++){
                     if(keywordTitle[j]==i){

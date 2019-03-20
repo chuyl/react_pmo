@@ -28,6 +28,8 @@ var local = {
                 "classification_manage_del":{"url":"../data/classification_manage_del.json","version":"1.0"},//分类删除
                 "classification_data_getByClassificationId":{"url":"../data/classification_data_getByClassificationId.json","version":"1.0"},//获取一条分类信息
                 
+                "course_plan_getByCourseId":{"url":"../data/course_plan_getByCourseId.json","version":"1.0"},//获取课程方案
+                
                 "lecturer_manage_getByCourseId":{"url":"../data/lecturer_manage_getByCourseId.json","version":"1.0"},//获取一条课程关联讲师信息
                 "classification_manage_course":{"url":"../data/classification_manage_course.json","version":"1.0"},//关联课程和分类
                 "lecturer_duty_list":{"url":"../data/lecturer_duty_list.json","version":"1.0"},//讲师职责列表
