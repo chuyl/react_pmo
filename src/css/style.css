@@ -2408,6 +2408,21 @@ textarea:disabled {
   border: 1px solid #ccc;
   margin-top: -1.5em; }
 
+.pmo_btn_div {
+  margin-top: 0.2em; }
+
+.pmp_common_btn {
+  line-height: 2em;
+  margin-right: 1em;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  color: #3F51B5;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 0;
+  text-align: center;
+  outline: none; }
+
 .editor_content_div {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
   border-radius: 4px;
