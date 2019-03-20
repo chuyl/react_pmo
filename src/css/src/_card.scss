@@ -1297,7 +1297,11 @@ textarea:disabled {
     display: table;
     content: ' ';
 }
-
+.editor_hover_div:hover{
+    .editor_add_content{
+        display: block;
+    }
+}
 .editor_show_content::after {
     clear: both;
 }
@@ -1408,7 +1412,7 @@ textarea:disabled {
         padding-left: 1em;
         word-wrap: break-word;
         outline: none;
-
+        height: 3em;
         @if (display=="block") {
             box-shadow: 0 0 5px #b6f7ff;
         }

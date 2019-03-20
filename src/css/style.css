@@ -2330,6 +2330,9 @@ textarea:disabled {
   display: table;
   content: ' '; }
 
+.editor_hover_div:hover .editor_add_content {
+  display: block; }
+
 .editor_show_content::after {
   clear: both; }
 
@@ -2410,7 +2413,8 @@ textarea:disabled {
     margin-right: 10px;
     padding-left: 1em;
     word-wrap: break-word;
-    outline: none; }
+    outline: none;
+    height: 3em; }
   .editor_content_div div.title_1 {
     font-size: 3em;
     text-align: left;
