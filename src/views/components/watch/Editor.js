@@ -45,7 +45,7 @@
               
                 var message_list=[];
                 for(var i = 0;i<strContent.split("<br/>").length;i++){
-                    message_list.push({id:i,class:"default_title main_boby",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
+                    message_list.push({id:i,class:"main_boby default_title",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
                 }
                 if(message_list.length>0){
                     this.setState({
@@ -78,7 +78,7 @@
                     message_list.push(this.state.message_list[j])
                     for(var i = 0;i<strContent.split("<br/>").length;i++){
                         console.log(strContent.split("<br/>"))
-                        message_list.push({id:i,class:"default_title main_boby",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
+                        message_list.push({id:i,class:"main_boby default_title",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
                     }
                 }else{
                     message_list.push(this.state.message_list[j])
@@ -108,9 +108,9 @@
            var edit_message_list=[];
            for(var i = 0;i<this.state.message_list.length;i++){
                if(newState.index===i){
-                edit_message_list.push({id:i,class:newState.name+" default_title",content:this.state.message_list[i].content})
+                edit_message_list.push({id:i,class:newState.name,content:this.state.message_list[i].content})
                }else{
-                edit_message_list.push({id:i,class:this.state.message_list[i].class+" default_title",content:this.state.message_list[i].content})
+                edit_message_list.push({id:i,class:this.state.message_list[i].class,content:this.state.message_list[i].content})
                }
             }
             this.setState({
@@ -360,8 +360,8 @@
                                             index={index}
                                             // disabled={this.state.edit_state?false:true}
                                             // isSelected={this.state.isSelected}
-                                            selectedInfo={"正文"} 
-                                            selectedIdInfo={"main_boby"} 
+                                            // selectedInfo={} 
+                                            selectedIdInfo={message_list.class} 
                                         />
                                     </div>
                                     <div className="editor_content_div">
