@@ -1217,7 +1217,7 @@ body {
   height: 4px; }
 
 .overflow {
-  height: 96vh;
+  height: 90vh;
   overflow-x: hidden;
   overflow-y: scroll; }
 
@@ -2329,9 +2329,12 @@ textarea:disabled {
   width: 100%;
   float: left;
   padding-bottom: 0.5em; }
+  .editor_show_content .search_info_list_card {
+    min-height: auto;
+    margin-bottom: auto; }
   .editor_show_content .editor_hover_div {
     padding-top: 0.2em;
-    height: 1em;
+    height: 2em;
     width: 100%; }
   .editor_show_content .editor_add_content {
     float: right;
@@ -2448,12 +2451,14 @@ textarea:disabled {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
   border-radius: 4px;
   padding-left: 1em; }
+  .editor_content_div .editor_btn,
+  .editor_show_div .editor_btn {
+    line-height: 1; }
   .editor_content_div div.default_title,
   .editor_show_div div.default_title {
     float: left;
     width: calc(100% - 8rem);
     margin-right: 10px;
-    padding-left: 1em;
     word-wrap: break-word;
     outline: none; }
   .editor_content_div div.title_1,
@@ -2462,8 +2467,7 @@ textarea:disabled {
     text-align: left;
     line-height: 1;
     padding-top: 0.5rem;
-    padding-bottom: 2rem;
-    font-weight: bold;
+    padding-bottom: 3rem;
     position: relative; }
   .editor_content_div div.title_1::before,
   .editor_show_div div.title_1::before {
@@ -2471,7 +2475,7 @@ textarea:disabled {
     display: block;
     content: ' ';
     width: 25%;
-    height: 0.3rem;
+    height: 5px;
     background-color: #801c21;
     left: 0;
     bottom: 0; }
@@ -2481,7 +2485,7 @@ textarea:disabled {
     display: block;
     content: ' ';
     width: 75%;
-    height: 0.3rem;
+    height: 5px;
     background-color: #dddddd;
     left: 25%;
     bottom: 0; }
@@ -2491,7 +2495,7 @@ textarea:disabled {
     font-weight: bold;
     line-height: 1;
     text-align: left;
-    padding: 1em 0 1em 1em;
+    padding: 2em 0 1em 1rem;
     position: relative; }
   .editor_content_div div.title_2::before,
   .editor_show_div div.title_2::before {
@@ -2501,7 +2505,7 @@ textarea:disabled {
     width: 0.2em;
     height: 2rem;
     background-color: #801c21;
-    top: 1em;
+    top: 2em;
     left: 0; }
   .editor_content_div div.title_3,
   .editor_show_div div.title_3 {
@@ -2526,16 +2530,17 @@ textarea:disabled {
     text-align: left;
     font-size: 1em;
     line-height: 1.5;
-    padding: 1em 0;
     color: #7e7e7e; }
   .editor_content_div div.symbol_list,
   .editor_show_div div.symbol_list {
-    padding: 1em 0;
     text-align: left;
-    line-height: 1.5;
+    line-height: 2;
     font-size: 1em;
     position: relative;
-    padding-left: 4em; }
+    padding-left: 0.64cm; }
+    .editor_content_div div.symbol_list span,
+    .editor_show_div div.symbol_list span {
+      color: #000; }
   .editor_content_div div.symbol_list::before,
   .editor_show_div div.symbol_list::before {
     content: ' ';
@@ -2545,8 +2550,8 @@ textarea:disabled {
     height: 0;
     border: 6px solid transparent;
     border-bottom: 6px solid #7e7e7e;
-    top: 12px;
-    left: calc(2em - 3px); }
+    top: 2px;
+    left: 0; }
   .editor_content_div div.symbol_list::after,
   .editor_show_div div.symbol_list::after {
     content: ' ';
@@ -2556,17 +2561,16 @@ textarea:disabled {
     height: 0;
     border: 6px solid transparent;
     border-top: 6px solid #7e7e7e;
-    top: 24px;
-    left: calc(2em - 3px); }
+    top: 14px;
+    left: 0; }
   .editor_content_div div.unsigned_list,
   .editor_show_div div.unsigned_list {
-    padding: 1em 0;
     text-align: left;
     font-size: 1em;
-    line-height: 1.5;
-    color: #7e7e7e;
+    line-height: 2;
+    color: #585858;
     position: relative;
-    padding-left: 4em; }
+    padding-left: 0.64cm; }
 
 .editor_content_div:hover .editor_add_content {
   display: block;
