@@ -157,7 +157,22 @@
 .cancalRelationBtn {
     background-color: $background-color;
 }
-
+.editBtn{
+    background-color:  $background-color;
+}
+.editBtn::before{
+    font-family: 'Glyphicons Halflings';
+    font-size: 1.2em;
+    display: block;
+    color: #3F51B5;
+    display: block;
+    line-height: 2em;
+    width: 100%;
+    height: 100%;
+}
+.editBtn::before{
+    content: "\270f";
+}
 .statistical_div {
     .hold_btn {
         margin-bottom: 0;
@@ -1419,7 +1434,6 @@ textarea:disabled {
 .pmo_btn_div {
     margin-top: 0.2em;
     float: left;
-    padding-right: 0.5em;
 }
 
 .pmo_common_btn {
