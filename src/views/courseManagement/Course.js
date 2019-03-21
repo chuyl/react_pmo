@@ -402,7 +402,7 @@ class Course extends Component {
 						<PaymentManageBtn
 							onHoldClick={this.alertAddState}
 							defineValue="修改"
-							classNames="btn_list"
+							classNames="editBtn"
 							dataId={table_data_body.id}
 							state="alertAddCourseState"	
 							courseData={table_data_body}
@@ -411,37 +411,37 @@ class Course extends Component {
 							onHoldClick={this.alertHoldState}
 							defineValue="删除"
 							state="alertState"
-							classNames="btn_list"
+							classNames="cancelBtn"
 							// classNames="passBtn"
 							linkpage="course_manage_del"	
 							dataId={table_data_body.id}
 						/>
 						<div    
-							className="card_ide_btn" 
+							className="pmo_btn_div" 
 						>
 							<button onClick={(e) => {
 									this.relation_lecturer(table_data_body.id)
-									}} className="btn_list">授课讲师
+									}} className="pmo_common_btn">授课讲师
 							</button>
 							
 						</div>
 						<div    
-							className="card_ide_btn" 
+							className="pmo_btn_div" 
 						>
 							<button onClick={(e) => {
 									this.relation_type(table_data_body.id)
 									
-									}} className="btn_list">所属分类
+									}} className="pmo_common_btn">所属分类
 							</button>
 							
 						</div>
 						<div    
-							className="card_ide_btn" 
+							className="pmo_btn_div" 
 						>
 							<button onClick={(e) => {
 									this.course_plan(table_data_body.id)
 									
-									}} className="btn_list">课程方案
+									}} className="pmo_common_btn">课程方案
 							</button>
 							{/* <Link 
                                     button={"课程方案"}

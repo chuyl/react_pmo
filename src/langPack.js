@@ -6,6 +6,8 @@ const LangPack={
     is_short:{"0":"长期 3天以上","1":"短期 1-3天"},
     level:{"1":"初级","2":"中级","3":"高级"},
     is_cert:{"0":"认证培训","1":"非认证培训"},
-    editor:{"title_1 default_title":"标题1","title_2 default_title":"标题2","title_3 default_title":"标题3","main_boby default_title":"正文","symbol_list default_title":"符号列出","unsigned_list default_title":"无符号列出"}
+    editor:{"title_1 default_title":"标题1","title_2 default_title":"标题2","title_3 default_title":"标题3","main_boby default_title":"正文","symbol_list default_title":"符号列出","unsigned_list default_title":"无符号列出"},
+    img:{"default_title img_left":"左浮动","default_title img_right":"右浮动","default_title img_center":"居中","default_title img_repeact":"平铺"}
+
 }
 export default LangPack;

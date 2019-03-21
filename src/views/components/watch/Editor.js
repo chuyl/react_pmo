@@ -7,7 +7,15 @@
     import Popup from '../modal/Popup';
 
     class Editor extends Component {
-       
+    //    componentWillMount
+    //    render
+    // componentDidMount
+    // componentWillReceiveProps
+    //    shouldcomponentupdata
+    //    componentWillUpdate
+    //    render
+    //    componentDidUpdate
+    //    componentWillUnMount
         state={
             message_list:this.props.message?this.props.message:[],
             textareaState:true,
@@ -28,8 +36,11 @@
             close_add_btn:true,
             openBetweenState:false,
             addBetweenIndex:-1,
+            openBetweenImgState:false,
+            addBetweenImgIndex:-1,
             edit_state:false,
-            add_between_textarea:""
+            add_between_textarea:"",
+            add_between_img_textarea:""
             // obj_message_list:{}
         }
     /** 
@@ -88,6 +99,34 @@
                 this.setState({
                     message_list:message_list,
                     openBetweenState:false
+                })
+           
+        }
+        // 添加图片
+        addBetweenImgHold=()=>{
+
+            // var strContent = document.getElementById(this.props.textarea_id+"add_between_img_textarea").value;
+            var strContent = this.state.add_between_img_textarea;
+            console.log(this.state.add_between_img_textarea)
+            strContent = strContent.replace(/\r\n/g, '<br/>'); //IE9、FF、chrome
+            strContent = strContent.replace(/\n/g, '<br/>'); //IE7-8
+            // strContent = strContent.replace(/\s/g, ' '); //空格处理
+            var message_list=[];
+            for(var j = 0;j<this.state.message_list.length;j++){
+                if(j===this.state.addBetweenImgIndex){
+                    message_list.push(this.state.message_list[j])
+                    for(var i = 0;i<strContent.split("<br/>").length;i++){
+                        console.log(strContent.split("<br/>"))
+                        message_list.push({id:i,class:"default_title img_left",content:[{type:"img",text:strContent.split("<br/>")[i]}]})
+                    }
+                }else{
+                    message_list.push(this.state.message_list[j])
+                }
+            }
+            console.log(message_list)
+                this.setState({
+                    message_list:message_list,
+                    openBetweenImgState:false
                 })
            
         }
@@ -207,7 +246,10 @@
                         editor_str=editor_str+"**"+str[j].text+"**"
                     }else if(str[j].type==="weaken"){
                         editor_str=editor_str+"=="+str[j].text+"=="
+                    }else if(str[j].type==="img"){
+                        editor_str=editor_str+str[j].text
                     }
+                    
                 }
                 }
             }
@@ -222,53 +264,58 @@
 
         }
         contenteditableHold=(index,text_id)=>{
+            console.log(document.getElementById(text_id).getAttribute("data-id"))
+            var str_data_id = document.getElementById(text_id).getAttribute("data-id");
             var str = document.getElementById(text_id).innerHTML;
-            var str_all_emphasize=str.split("**");
-            var str_emphasize=[];
-            var str_content_arr=[];
-            var str_weaken=[];
-            var new_str="";
-            //  console.log(str_all_emphasize.length)
-             if(str_all_emphasize.length%2===0){
-                 for(var m = 0; m<str_all_emphasize.length-2;m++){
-                    str_emphasize.push(str_all_emphasize[m])
-                 }
-                 str_emphasize.push(str_all_emphasize[str_all_emphasize.length-2]+"**"+str_all_emphasize[str_all_emphasize.length-1])
-             }else{
-                str_emphasize=str_all_emphasize;
-             }
-                for(var i = 0; i<str_emphasize.length;i++){
-                    if(i%2===0){
-                        // 默认
-                        var str_all_weaken=str_emphasize[i].split("==");
-                        if(str_all_weaken.length%2===0){
-                            for(var n = 0; n<str_all_weaken.length-2;n++){
-                                str_weaken.push(str_all_weaken[n])
-                            }
-                            str_weaken.push(str_all_weaken[str_all_weaken.length-2]+"=="+str_all_weaken[str_all_emphasize.length-1])
-                        }else{
-                            str_weaken=str_all_weaken;
-                        }
-                        if(str_weaken.length%2!==0){
-                            for(var j = 0; j<str_weaken.length;j++){
-                                if(j%2===0){
-                                    // 默认 
-                                    new_str=new_str+str_weaken[j];
-                                    str_content_arr.push({"type":"def","text":str_weaken[j]})
-                                }else{
-                                    new_str=new_str+'<span class="weaken">'+str_weaken[j]+'</span>';
-                                    str_content_arr.push({"type":"weaken","text":str_weaken[j]})
-                                }
-                            }
-                        }else{
-                            new_str=new_str+str_emphasize[i];
-                            str_content_arr.push({"type":"def","text":str_emphasize[i]})
-                        }
-                    }else{
-                        // 强调
-                        new_str=new_str+'<span class="emphasize">'+str_emphasize[i]+'</span>';
-                        str_content_arr.push({"type":"emphasize","text":str_emphasize[i]})
+            if(str_data_id === "text"){
+                var str_all_emphasize=str.split("**");
+                var str_emphasize=[];
+                var str_content_arr=[];
+                var str_weaken=[];
+                var new_str="";
+                //  console.log(str_all_emphasize.length)
+                if(str_all_emphasize.length%2===0){
+                    for(var m = 0; m<str_all_emphasize.length-2;m++){
+                        str_emphasize.push(str_all_emphasize[m])
                     }
+                    str_emphasize.push(str_all_emphasize[str_all_emphasize.length-2]+"**"+str_all_emphasize[str_all_emphasize.length-1])
+                }else{
+                    str_emphasize=str_all_emphasize;
+                }
+                    for(var i = 0; i<str_emphasize.length;i++){
+                        if(i%2===0){
+                            // 默认
+                            var str_all_weaken=str_emphasize[i].split("==");
+                            if(str_all_weaken.length%2===0){
+                                for(var n = 0; n<str_all_weaken.length-2;n++){
+                                    str_weaken.push(str_all_weaken[n])
+                                }
+                                str_weaken.push(str_all_weaken[str_all_weaken.length-2]+"=="+str_all_weaken[str_all_emphasize.length-1])
+                            }else{
+                                str_weaken=str_all_weaken;
+                            }
+                            if(str_weaken.length%2!==0){
+                                for(var j = 0; j<str_weaken.length;j++){
+                                    if(j%2===0){
+                                        // 默认 
+                                        new_str=new_str+str_weaken[j];
+                                        str_content_arr.push({"type":"def","text":str_weaken[j]})
+                                    }else{
+                                        new_str=new_str+'<span class="weaken">'+str_weaken[j]+'</span>';
+                                        str_content_arr.push({"type":"weaken","text":str_weaken[j]})
+                                    }
+                                }
+                            }else{
+                                new_str=new_str+str_emphasize[i];
+                                
+                                str_content_arr.push({"type":"def","text":str_emphasize[i]})
+                            }
+                        }else{
+                            // 强调
+                            new_str=new_str+'<span class="emphasize">'+str_emphasize[i]+'</span>';
+                            str_content_arr.push({"type":"emphasize","text":str_emphasize[i]})
+                        }
+                    
                 }
             
                 var edit_message_list=[];
@@ -287,6 +334,21 @@
                   edit_message_list.push(this.state.message_list[y])
                 }
              }
+            }else if(str_data_id==="img"){
+                var edit_message_list=[];
+                for(var m=0;m<this.state.message_list.length;m++){
+                    if(index===m){
+                        var obj=this.state.message_list[m];
+                        obj.content=[];
+                        obj.content.push({"type":"img","text":str})
+
+                        
+                        edit_message_list.push(obj)
+                    }else{
+                      edit_message_list.push(this.state.message_list[m])
+                    }
+                }        
+            }
             this.setState({
                 contenteditableState:-1,
                 message_list:edit_message_list,
@@ -310,7 +372,8 @@
         cancelCallback=()=>{
             this.setState({
               alertAddTextState:false,
-              openBetweenState:false
+              openBetweenState:false,
+              openBetweenImgState:false
             })
           }
         open_between_alert=(index)=>{
@@ -319,6 +382,12 @@
                 addBetweenIndex:index
             })
              
+        }
+        open_between_img_alert=(index)=>{
+            this.setState({
+                openBetweenImgState:true,
+                addBetweenImgIndex:index
+            }) 
         }
         render(){
             const {textarea_id,inputValue,message} =this.props;
@@ -352,8 +421,8 @@
                         {this.state.message_list.map((message_list,index)=>{
                             return(
                                 <div className={this.state.contenteditableState==index?"editor_show_content active":"editor_show_content"} key={index}>
-                                    <div className="editor_select_title">
-                                        <SelectListLangPack
+                                     {message_list.content[0].type!=="img"?<div className="editor_select_title">
+                                       <SelectListLangPack
                                             id={"select_lecturer_style"+index}
                                             stateFun={this.selectLangPackProps}
                                             langPack={"editor"}
@@ -363,12 +432,24 @@
                                             // selectedInfo={} 
                                             selectedIdInfo={message_list.class} 
                                         />
-                                    </div>
+                                    </div>:<div className="editor_select_title">
+                                       <SelectListLangPack
+                                            id={"select_lecturer_style"+index}
+                                            stateFun={this.selectLangPackProps}
+                                            langPack={"img"}
+                                            index={index}
+                                            // disabled={this.state.edit_state?false:true}
+                                            // isSelected={this.state.isSelected}
+                                            // selectedInfo={} 
+                                            selectedIdInfo={message_list.class} 
+                                        />
+                                    </div>}
                                     <div className="editor_content_div">
                                         <div 
                                          style={this.state.contenteditableState==index?{display:"block"}:{display:"none"}}
                                             contentEditable={this.state.contenteditableState==index?true:false}
                                             id={"show_message"+index}
+                                            data-id={message_list.content[0].type==="img"?"img":"text"}
                                             onClick={this.getSelection_message.bind(this)}
                                             className={message_list.class}
                                         >
@@ -387,8 +468,9 @@
                                         >
                                             {message_list.content.map((content,index)=>{
                                                 return(
-                                                    content.type==="def"?<span key={index}>{content.text}</span>:
-                                                    <span  key={index} className={content.type}>{content.text}</span>
+                                                    content.type==="def"?<span key={index}>{content.text}</span>
+                                                    :content.type==="img"?<img width="400" src={content.text}/>
+                                                    :<span  key={index} className={content.type}>{content.text}</span>
 
                                                 )
                                             })}
@@ -422,6 +504,13 @@
                                         this.open_between_alert(index)
                                         }}>
                                         <div  className="editor_add_content">添加段落+</div>
+                                       
+                                    </div>
+                                    <div className="editor_hover_div" onClick={()=>{
+                                        this.open_between_img_alert(index)
+                                        }}>
+                                        <div  className="editor_add_content">添加图片+</div>
+                                       
                                     </div>
                                 </div>
                             )
@@ -471,7 +560,28 @@
                         cancelCallback = { this.cancelCallback.bind(this) } 
                         alertState={this.state.openBetweenState}
                         />
-                    
+                    <Popup 
+                        content={
+                            <div>
+                            <h2>添加图片</h2>
+                            <div className="popup_body">
+                            <textarea 
+                                rows="10" 
+                                className={"editor_textare"}
+                                onChange={(e)=>{
+                                    this.setState({
+                                        add_between_img_textarea:e.target.value 
+                                    })
+                                }}
+                                id={textarea_id+"add_between_img_textarea"}>
+                            </textarea> 
+                            </div>
+                            </div>
+                            }	 
+                        sureCallback = {this.addBetweenImgHold.bind(this)} 
+                        cancelCallback = { this.cancelCallback.bind(this) } 
+                        alertState={this.state.openBetweenImgState}
+                        />
                     <div className="change_position" style={this.state.openNewState?{top:this.state.topX,left:this.state.topY,position:"fixed"}:{display:"none"}}>
                         <button className="emphasize_btn" onClick={this.emphasizeMessage.bind(this)}></button>
                         <button className="weaken_btn" onClick={this.weakenMessage.bind(this)}></button>
