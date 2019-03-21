@@ -179,6 +179,9 @@ handleChildChange=(formData)=>{
      
         return (
                 this.props.componentslist.map((form_list,index) => {
+                    if(form_list.type_name==="Editor"){
+                        console.log(this.props.componentsdata)
+                    }
                     return (
                             form_list.type_name === "Cards" ?
                                 <Cards  

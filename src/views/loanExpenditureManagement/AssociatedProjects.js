@@ -581,7 +581,7 @@ class AssociatedProjects extends Component {
                        selectListCheckMessage={["staff_manage_list"]}
                        selectNameCheckMessage={["payee_name"]}
 					   sectionTimeMessage={["submit_time"]}
-					   langPackMessage={["state"]}
+                       langPackMessage={["state"]}
 					   langPackTitle={["-1,1,2"]}
 					   screeningMessage={this.screening_information}
 					/>
@@ -633,7 +633,7 @@ class AssociatedProjects extends Component {
                        selectListCheckMessage={[]}
                        selectNameCheckMessage={[]}
 					   sectionTimeMessage={[]}
-					   langPackMessage={[]}
+                       langPackMessage={[]}
 					   langPackTitle={[]}
                     //    selectListCheckMessage={["staff_manage_list"]}
                     //    selectNameCheckMessage={["payee_name"]}

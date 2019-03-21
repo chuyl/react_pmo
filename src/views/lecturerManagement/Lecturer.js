@@ -301,7 +301,7 @@ class Lecturer extends Component {
 	}
 		console.log(newState.before_api_uri)
 		console.log(obj)
-		getData(getRouter(newState.before_api_uri), { data: obj, token: sessionStorage.token }, cb, {});
+		/getData(getRouter(newState.before_api_uri), { data: obj, token: sessionStorage.token }, cb, {});
 	}
 	examine_bool_message=(state)=>{
 		//this.props.examine_bool_second(state)

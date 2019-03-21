@@ -672,11 +672,13 @@ class Classification extends Component {
 					/>
 					<br/>
 				<DataSearchMessage 
-				index={0}
+					index={0}
 					   message={this.state.table_data_bodys}
-					   keywordSearch={["name"]}
+					   keywordSearch={["name","type_name"]}
 					   keywordTitle={[
-                        "分类名称",
+						"分类名称",
+						"所属分类名称",
+						"最小分类"
                         // "项目类型",
 						// "领款人",
 						// "时间",
@@ -686,11 +688,11 @@ class Classification extends Component {
 					// 	selectNameMessage={["project_project_template_name"]}
 					   selectListMessage={[]}
                        selectNameMessage={[]}
-                       selectListCheckMessage={["staff_manage_list"]}
-                       selectNameCheckMessage={["name"]}
-					   sectionTimeMessage={["submit_time"]}
-					   langPackMessage={["state"]}
-					   langPackTitle={["-1,1,2"]}
+                       selectListCheckMessage={[]}
+                       selectNameCheckMessage={[]}
+					   sectionTimeMessage={[]}
+					   langPackMessage={["is_leaf"]}
+					   langPackTitle={["0,1"]}
 					   screeningMessage={this.screening_information}
 					/>
                 <div className="statistical_div">

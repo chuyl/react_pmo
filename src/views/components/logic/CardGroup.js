@@ -200,7 +200,6 @@
            id:newState.id,
            freshName:newState.freshName,
         }
-        
         this.props.editCardGroupState(newStates)
      }
         render() {

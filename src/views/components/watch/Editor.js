@@ -7,6 +7,7 @@
     import Popup from '../modal/Popup';
 
     class Editor extends Component {
+       
         state={
             message_list:this.props.message?this.props.message:[],
             textareaState:true,
@@ -27,7 +28,8 @@
             close_add_btn:true,
             openBetweenState:false,
             addBetweenIndex:-1,
-            edit_state:false
+            edit_state:false,
+            add_between_textarea:""
             // obj_message_list:{}
         }
     /** 
@@ -43,7 +45,7 @@
               
                 var message_list=[];
                 for(var i = 0;i<strContent.split("<br/>").length;i++){
-                    message_list.push({id:i,class:"default_title main_boby",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
+                    message_list.push({id:i,class:"main_boby default_title",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
                 }
                 if(message_list.length>0){
                     this.setState({
@@ -64,7 +66,9 @@
         }
         addBetweenHold=()=>{
 
-            var strContent = document.getElementById("add_between_textarea").value;
+            // var strContent = document.getElementById(this.props.textarea_id+"add_between_textarea").value;
+            var strContent = this.state.add_between_textarea;
+            console.log(this.state.add_between_textarea)
             strContent = strContent.replace(/\r\n/g, '<br/>'); //IE9、FF、chrome
             strContent = strContent.replace(/\n/g, '<br/>'); //IE7-8
             // strContent = strContent.replace(/\s/g, ' '); //空格处理
@@ -73,7 +77,8 @@
                 if(j===this.state.addBetweenIndex){
                     message_list.push(this.state.message_list[j])
                     for(var i = 0;i<strContent.split("<br/>").length;i++){
-                        message_list.push({id:i,class:"default_title main_boby",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
+                        console.log(strContent.split("<br/>"))
+                        message_list.push({id:i,class:"main_boby default_title",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
                     }
                 }else{
                     message_list.push(this.state.message_list[j])
@@ -103,9 +108,9 @@
            var edit_message_list=[];
            for(var i = 0;i<this.state.message_list.length;i++){
                if(newState.index===i){
-                edit_message_list.push({id:i,class:newState.name+" default_title",content:this.state.message_list[i].content})
+                edit_message_list.push({id:i,class:newState.name,content:this.state.message_list[i].content})
                }else{
-                edit_message_list.push({id:i,class:this.state.message_list[i].class+" default_title",content:this.state.message_list[i].content})
+                edit_message_list.push({id:i,class:this.state.message_list[i].class,content:this.state.message_list[i].content})
                }
             }
             this.setState({
@@ -206,7 +211,9 @@
                 }
                 }
             }
-            document.getElementById("show_message"+index).innerHTML=editor_str;
+            // var element=document.getElementById("show_message"+index);
+            // element.appendChild(para);
+             document.getElementById("show_message"+index).innerHTML=editor_str;
             this.setState({
                 contenteditableState:index,
                 editor_str:editor_str,
@@ -315,6 +322,10 @@
         }
         render(){
             const {textarea_id,inputValue,message} =this.props;
+            // this.setState({
+            //     message_list:message
+            // })
+            console.log(this.state.message_list)
             return (
                 this.props.view?inputValue:
                 <div>
@@ -349,8 +360,8 @@
                                             index={index}
                                             // disabled={this.state.edit_state?false:true}
                                             // isSelected={this.state.isSelected}
-                                            selectedInfo={"正文"} 
-                                            selectedIdInfo={"main_boby"} 
+                                            // selectedInfo={} 
+                                            selectedIdInfo={message_list.class} 
                                         />
                                     </div>
                                     <div className="editor_content_div">
@@ -361,23 +372,23 @@
                                             onClick={this.getSelection_message.bind(this)}
                                             className={message_list.class}
                                         >
-                                            {message_list.content.map((content,index)=>{
+                                            {/* {message_list.content.map((content,index)=>{
                                                 return(
-                                                    content.type==="def"?<span>{content.text}</span>:
+                                                    content.type==="def"?content.text:
+                                                    content.type==="emphasize"?:"**"+content.text+"**":
                                                     <span className={content.type}>{content.text}</span>
                                                 )
-                                            })}
+                                            })} */}
                                         </div>
                                         <div 
-                                             style={this.state.contenteditableState==index?{display:"none"}:{display:"block"}}
-
+                                            style={this.state.contenteditableState==index?{display:"none"}:{display:"block"}}
                                             id={"show_style_message"+index}
                                             className={message_list.class}
                                         >
                                             {message_list.content.map((content,index)=>{
                                                 return(
-                                                    content.type==="def"?<span>{content.text}</span>:
-                                                    <span className={content.type}>{content.text}</span>
+                                                    content.type==="def"?<span key={index}>{content.text}</span>:
+                                                    <span  key={index} className={content.type}>{content.text}</span>
 
                                                 )
                                             })}
@@ -418,7 +429,7 @@
                        
                     </div>
                     {/* <button onClick={this.showMessageChange.bind(this)}>{this.state.showMessageState?"next":"back"}</button> */}
-                    <div  style={{display:"none"}} name="" id={textarea_id} cols="30" rows="10">
+                    <div  style={{display:"none"}} id={textarea_id}>
                     {JSON.stringify(this.state.message_list)}
                     </div>
                     <Popup 
@@ -446,7 +457,12 @@
                             <textarea 
                                 rows="10" 
                                 className={"editor_textare"}
-                                id={"add_between_textarea"}>
+                                onChange={(e)=>{
+                                    this.setState({
+                                        add_between_textarea:e.target.value 
+                                    })
+                                }}
+                                id={textarea_id+"add_between_textarea"}>
                             </textarea> 
                             </div>
                             </div>

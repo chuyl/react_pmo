@@ -51,9 +51,15 @@
         render() {
             const { selectedInfo,selectedIdInfo, id, labelValue,disabled,keywordTitle } = this.props;
             var selectList=[];
+            var changeSelectedInfo="";
             for(var i in LangPack[this.props.langPack]){
+                if(selectedIdInfo===i){
+                    changeSelectedInfo=LangPack[this.props.langPack][i];
+                    console.log(i)
+                }
                 selectList.push({"name":LangPack[this.props.langPack][i],"id":i})
             }
+            console.log(selectList)
             return (
                 <div style={this.props.view?{marginBottom:"10px"}:{}} className="search_info_list_card">
                     <div onClick={() => {
@@ -73,7 +79,7 @@
                             
                          }}
                     >
-                        {selectedInfo === null||selectedInfo===undefined ? "-选择-" : selectedInfo}
+                        {selectedInfo === null||selectedInfo===undefined ? changeSelectedInfo===""?"-选择-":changeSelectedInfo : selectedInfo}
                     </div>
                     <div id={id+"_id"}  style={{display:"none"}}>{selectedIdInfo === "" ? "-选择-" : selectedIdInfo}</div>
                     <div className="search_info_position">

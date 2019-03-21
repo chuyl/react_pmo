@@ -10,6 +10,8 @@ import PaymentManageBtn from '../components/button/PaymentManageBtn'
 import ComponentsList from '../components/composite/ComponentsList'
 import Drawer from '../components/modal/Drawer';
 import CardGroup from '../components/logic/CardGroup'
+import Link from '../components/button/Link'
+// import Editor from '../components/watch/Editor'
 class Course extends Component {
 	state={
 		pno:1,
@@ -36,16 +38,19 @@ class Course extends Component {
 		 form_temp_name: "",
 		 alertRelationState:false,
 		 alertRelationTypeState:false,
+		 alertCoursePlanState:false,
 		 add_drawer_button:{},
 		 drawer_index:-1,
 		 message_list:[],
-		 change_message_type:""//判断改变的是所属分类还是授课讲师
+		 change_message_type:"",//判断改变的是所属分类还是授课讲师
+		 course_plan_list:[],
 
         
 	}
 	componentWillMount(){
 		this.table_data_body(1,this.state.psize,this.state.search_message)
 	}
+
 	fetchProjectData(url) {
 		var json_view = JSON.parse(sessionStorage.view)
 		for (var i = 0; i < json_view.length; i++) {
@@ -60,7 +65,23 @@ class Course extends Component {
 			}
 		}
 	}
-
+	// handleClick=(formData)=>{
+	// 	console.log(formData)
+	// 	this.setState({
+	// 		alertCoursePlanState:true,
+	// 		course_plan_list:formData.data,
+	// 		add_button:formData.add_button,
+	// 		dataId:formData.dataId,
+	// 	})
+	// 	console.log("222")
+	// 	var newState = {
+	// 		add_button:formData.add_button,
+	// 		data:formData.data,
+	// 		dataId:formData.dataId,
+	// 		form_temp_name:formData.form_temp_name
+	// 	}
+	// 	// this.props.twoChange(newState);//回调函数传递参数给父组件
+	// }
 	onHoldClicks = (newState) => {
 		var key_name = [];
 		var value = [];
@@ -81,7 +102,11 @@ class Course extends Component {
 				else if (list_message[i].type_name === "TextArea") {
 					value.push(list_message[i].id_name)
 					key_name.push(document.getElementById(list_message[i].id_name).value)
-				} else {
+				}else if (list_message[i].type_name === "Editor") {
+					value.push(list_message[i].id_name)
+					console.log(document.getElementById(list_message[i].id_name))
+					key_name.push(JSON.parse(document.getElementById(list_message[i].id_name).innerHTML))
+				}  else {
 					value.push(list_message[i].id_name)
 					key_name.push(document.getElementById(list_message[i].id_name).innerHTML === "-选择-" ? "" : document.getElementById(list_message[i].id_name).innerHTML || document.getElementById(list_message[i].id_name).value === "-选择-" ? "" : document.getElementById(list_message[i].id_name).value)
 				}
@@ -309,6 +334,41 @@ class Course extends Component {
 		getData(getRouter("course_type_getByCourseId"), { token: sessionStorage.token,id:id }, cb, {});
 
 	}
+	course_plan=(id)=>{
+		var cb = (route, message, arg) => {
+			if (message.error === 0) {
+				
+				this.setState({
+					dataId:id,
+					alertCoursePlanState:true,
+					course_plan_list:message.data,
+					drawer_index:id,
+				// drawer_index:id,
+				// message_list:message.data.type,
+				// change_message_type:"type"
+				},this.fetchProjectData("addCoursePlan"))
+				
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
+			}
+			else{
+				Alert.open({
+					alertTip: message.msg
+				});
+				setTimeout(function () {
+					Alert.close();
+				}, 3000)
+			}
+		}
+		getData(getRouter("course_plan_getByCourseId"), { token: sessionStorage.token,id:id }, cb, {});
+
+	}
 	goPage= (pno) =>{
         // this.table_data_body()
         // {this.historyFileDialog()}
@@ -338,7 +398,7 @@ class Course extends Component {
                        {this.state.table_data_body.indexOf(table_data_body)+1}
                        </div>
 					</td> */}
-					<td  style={{"width":"22em"}}>
+					<td  style={{"width":"27em"}}>
 						<PaymentManageBtn
 							onHoldClick={this.alertAddState}
 							defineValue="修改"
@@ -357,20 +417,40 @@ class Course extends Component {
 							dataId={table_data_body.id}
 						/>
 						<div    
-							className="card_ide_btn card_related_div active" 
+							className="card_ide_btn" 
 						>
-						<button onClick={(e) => {
-								this.relation_lecturer(table_data_body.id)
-								}} className="btn_list">授课讲师</button>
+							<button onClick={(e) => {
+									this.relation_lecturer(table_data_body.id)
+									}} className="btn_list">授课讲师
+							</button>
 							
 						</div>
 						<div    
-							className="card_ide_btn card_related_div active" 
+							className="card_ide_btn" 
 						>
-						<button onClick={(e) => {
-								this.relation_type(table_data_body.id)
-								
-								}} className="btn_list">所属分类</button>
+							<button onClick={(e) => {
+									this.relation_type(table_data_body.id)
+									
+									}} className="btn_list">所属分类
+							</button>
+							
+						</div>
+						<div    
+							className="card_ide_btn" 
+						>
+							<button onClick={(e) => {
+									this.course_plan(table_data_body.id)
+									
+									}} className="btn_list">课程方案
+							</button>
+							{/* <Link 
+                                    button={"课程方案"}
+                                    dataId={table_data_body.id}
+                                    // isClick={this.props.card_list.id}
+                                    linkpage={"course_plan_getByCourseId"}
+                                    messageList={"addCoursePlan"}
+                                    oneChange = {this.handleClick}
+                                /> */}
 							
 						</div>
 					</td>
@@ -569,7 +649,8 @@ class Course extends Component {
 			alertChangeAmountState:false,
 			alertState:false,
 			alertRelationState:false,
-			alertRelationTypeState:false
+			alertRelationTypeState:false,
+			alertCoursePlanState:false
 		})
 	}
 	// ClickArrAlert=()=>{
@@ -651,11 +732,14 @@ class Course extends Component {
 				<DataSearchMessage 
 				index={0}
 					   message={this.state.table_data_bodys}
-					   keywordSearch={["name"]}
+					   keywordSearch={["name","type_name"]}
 					   keywordTitle={[
                         "课程名称",
-                        // "项目类型",
-						// "领款人",
+						"所属分类",
+						"授课讲师",
+						"周期",
+						"是否认证",
+						"级别"
 						// "时间",
 						// "状态"
 					]}
@@ -663,21 +747,23 @@ class Course extends Component {
 					// 	selectNameMessage={["project_project_template_name"]}
 					   selectListMessage={[]}
                        selectNameMessage={[]}
-                       selectListCheckMessage={["staff_manage_list"]}
-                       selectNameCheckMessage={["payee_name"]}
-					   sectionTimeMessage={["submit_time"]}
-					   langPackMessage={["state"]}
-					   langPackTitle={["-1,1,2"]}
+                       selectListCheckMessage={["lecturer_manage_list"]}
+                       selectNameCheckMessage={["lecturer_name"]}
+					   sectionTimeMessage={[]}
+					   
+					   langPackMessage={["is_short","is_cert","level"]}
+					//    langPackTitleValue={["is_short","is_cert"]}
+					   langPackTitle={["0,1","0,1","1,2,3"]}
 					   screeningMessage={this.screening_information}
 					/>
                 <div className="statistical_div">
                 
-                    <table style={{width:sumLength+22+"em"}} className="statistical_table">
+                    <table style={{width:sumLength+27+"em"}} className="statistical_table">
                         <thead>
                             <tr>
 								{/* <th><div className="statistical_table_box">序号</div></th> */}
 								<th>
-									<div style={{"width":"22em"}}></div>
+									<div style={{"width":"27em"}}></div>
 								</th>
                                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
                                     return(
@@ -707,7 +793,7 @@ class Course extends Component {
 			<div className="statistical_change_page">
                     {this.change_page(1,this.state.psize)}
                 </div>
-			<Popup 
+			{this.state.alertAddCourseState?<Popup 
 				content={
 					<div>
 						<h2>课程</h2>
@@ -718,12 +804,12 @@ class Course extends Component {
 						</div>
 					</div>
 					}	 
-				sureCallback = {this.sureAddFinancialCallback.bind(this)} 
+				// sureCallback = {this.sureAddFinancialCallback.bind(this)} 
 				cancelCallback = { this.cancelCallback.bind(this) } 
 				sureBtn={false}  
 				alertState={this.state.alertAddCourseState}
-			/>
-			<Drawer 
+			/>:""}
+			{this.state.alertRelationState?<Drawer 
 				content={
 					<div>
 						{/* <button onClick={()=>{
@@ -752,8 +838,8 @@ class Course extends Component {
 				sureCallback = {this.sureAddFinancialCallback.bind(this)} 
 				cancelCallback = { this.cancelCallback.bind(this) } 
 				alertState={this.state.alertRelationState}
-			/>
-			<Drawer 
+			/>:""}
+			{this.state.alertRelationTypeState?<Drawer 
 				content={
 					<div>
 						{/* <button onClick={()=>{
@@ -764,7 +850,7 @@ class Course extends Component {
 						<CardGroup 
                             addButtonTitle={"所属分类"} 
                             addButton={this.state.add_drawer_button} 
-                             beforeApiUri={this.state.message_list} 
+                            beforeApiUri={this.state.message_list} 
                             uriName={this.state.add_drawer_button.before_api_uri}
                             delButton = {this.state.add_drawer_button.del_button}
                             editButton={this.state.add_drawer_button.edit_button}
@@ -782,7 +868,18 @@ class Course extends Component {
 				sureCallback = {this.sureAddFinancialCallback.bind(this)} 
 				cancelCallback = { this.cancelCallback.bind(this) } 
 				alertState={this.state.alertRelationTypeState}
-			/>
+			/>:""}
+			{this.state.alertCoursePlanState?<Drawer 
+				content={
+					<div>
+						<ComponentsList  editCardGroupState={this.freshCardGroup} editCardGroupStates={this.freshCardGroup} dataId={this.state.dataId} holdClick={this.onHoldClicks} componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.course_plan_list} ></ComponentsList > 
+					</div>
+					}	 
+				// sureCallback = {this.sureAddFinancialCallback.bind(this)} 
+				cancelCallback = { this.cancelCallback.bind(this) } 
+				alertState={this.state.alertCoursePlanState}
+			/>:""}
+			
 			{/* <Popup 
 				content={
 					<div>

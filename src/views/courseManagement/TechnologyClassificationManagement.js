@@ -84,7 +84,7 @@ class TechnologyClassificationManagement extends Component {
         this.setState({
             query_condition:obj
 		})
-        getData(getRouter("classification_manage_list"), { token: sessionStorage.token,query_condition:objs,data_type:"page_json" }, cb, {});
+        getData(getRouter("classification_manage_is_leaf_list"), { token: sessionStorage.token,query_condition:objs,data_type:"page_json" }, cb, {});
         // getData(getRouter("examine_record_list"),{ session: sessionStorage.session}, cb, {});
 
 	}
@@ -116,7 +116,7 @@ class TechnologyClassificationManagement extends Component {
         this.setState({
             query_condition:obj
 		})
-		PostCsvData(getRouter("classification_manage_list"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
+		PostCsvData(getRouter("classification_manage_is_leaf_list"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
 		 , cb, {});
 	}
 	
@@ -529,26 +529,30 @@ class TechnologyClassificationManagement extends Component {
                 </div>
                 <div className="loan_part_left" style={{width:"50%",float:"left",position:"relative",height:"93vh"}}>
                     <DataSearchMessage 
-                       index={0}
-					   message={this.state.table_data_bodys}
-					   keywordSearch={["name"]}
-					   keywordTitle={[
-                        "课程名称",
-                        // "项目类型",
-						// "领款人",
-						// "时间",
-						// "状态"
-					]}
-					//    selectListMessage={["project_type_list"]}
-					// 	selectNameMessage={["project_project_template_name"]}
-					   selectListMessage={[]}
-                       selectNameMessage={[]}
-                       selectListCheckMessage={["staff_manage_list"]}
-                       selectNameCheckMessage={["payee_name"]}
-					   sectionTimeMessage={["submit_time"]}
-					   langPackMessage={["state"]}
-					   langPackTitle={["-1,1,2"]}
-					   screeningMessage={this.screening_information}
+                        index={0}
+                        message={this.state.table_data_bodys}
+                        keywordSearch={["name","type_name"]}
+                        keywordTitle={[
+                            "课程名称",
+                            "所属分类",
+                            "授课讲师",
+                            "周期",
+                            "是否认证",
+                            "级别"
+                                // "时间",
+                                // "状态"
+                            ]}
+                            //    selectListMessage={["project_type_list"]}
+                            // 	selectNameMessage={["project_project_template_name"]}
+                        selectListMessage={[]}
+                        selectNameMessage={[]}
+                        selectListCheckMessage={["lecturer_manage_list"]}
+                        selectNameCheckMessage={["lecturer_name"]}
+                        sectionTimeMessage={[]}                        
+                        langPackMessage={["is_short","is_cert","level"]}
+                        //    langPackTitleValue={["is_short","is_cert"]}
+                        langPackTitle={["0,1","0,1","1,2,3"]}
+                        screeningMessage={this.screening_information}
 					/>
                     <div  className="statistical_div">
                         <table style={{width:sumLength+2+"em"}} className="statistical_table">
@@ -581,59 +585,55 @@ class TechnologyClassificationManagement extends Component {
                 </div>
                 <div className="loan_part_right" style={{width:"50%",float:"left",position:"relative",height:"93vh"}}>
                     <DataSearchMessage 
-                       index={1}
-					   message={this.state.table_data_bodys}
-					   keywordSearch={["unicode","project_name"]}
-					   keywordTitle={[
-                        "项目编号",
-                        "项目名称",
-						// "领款人",
-						// "时间",
-                        // "状态"
-                    ]}
-					//    selectListMessage={["project_type_list"]}
-					// 	selectNameMessage={["project_project_template_name"]}
-					   selectListMessage={[]}
-                       selectNameMessage={[]}
-                       selectListCheckMessage={[]}
-                       selectNameCheckMessage={[]}
-					   sectionTimeMessage={[]}
-					   langPackMessage={[]}
-					   langPackTitle={[]}
-                    //    selectListCheckMessage={["staff_manage_list"]}
-                    //    selectNameCheckMessage={["payee_name"]}
-					//    sectionTimeMessage={["submit_time"]}
-					//    langPackMessage={["state"]}
-					//    langPackTitle={["-1,1,2"]}
-					   screeningMessage={this.screening_project_information}
-					/>
-                    <div  className="statistical_div">
-                        <table style={{width:sumLength+2+"em"}} className="statistical_table">
-                            <thead>
-                                <tr>
-								{/* <th><div className="statistical_table_box">序号</div></th> */}
-								    <th>
-									    <div style={{"width":"2em"}}></div>
-								    </th>
-                                    {this.state.table_type_data_head?this.state.table_type_data_head.map((table_type_data_head,index)=>{
-                                        return(
-                                            <th key={index}>
-                                                <div  style={{width:table_type_data_head.size+"em"}} className="statistical_table_box">
-                                                    {table_type_data_head.value}
-                                                </div>
-                                            </th>
-                                        )
-                                    }):<th> <div className="statistical_table_box"></div></th>}
-                                    
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.goProjectPage(this.state.project_pno,this.state.project_psize)}
-                            </tbody>
-                        </table>
-                      
-                    </div>
-                    <div className="statistical_change_page">
+                        index={0}
+                        message={this.state.table_data_bodys}
+                        keywordSearch={["name","type_name"]}
+                        keywordTitle={[
+                            "分类名称",
+                            "所属分类名称",
+                            "最小分类"
+                            // "项目类型",
+                            // "领款人",
+                            // "时间",
+                            // "状态"
+                        ]}
+                        //    selectListMessage={["project_type_list"]}
+                        // 	selectNameMessage={["project_project_template_name"]}
+                        selectListMessage={[]}
+                        selectNameMessage={[]}
+                        selectListCheckMessage={[]}
+                        selectNameCheckMessage={[]}
+                        sectionTimeMessage={[]}
+                        langPackMessage={["is_leaf"]}
+                        langPackTitle={["0,1"]}
+                        screeningMessage={this.screening_information}
+                        />
+                        <div  className="statistical_div">
+                            <table style={{width:sumLength+2+"em"}} className="statistical_table">
+                                <thead>
+                                    <tr>
+                                    {/* <th><div className="statistical_table_box">序号</div></th> */}
+                                        <th>
+                                            <div style={{"width":"2em"}}></div>
+                                        </th>
+                                        {this.state.table_type_data_head?this.state.table_type_data_head.map((table_type_data_head,index)=>{
+                                            return(
+                                                <th key={index}>
+                                                    <div  style={{width:table_type_data_head.size+"em"}} className="statistical_table_box">
+                                                        {table_type_data_head.value}
+                                                    </div>
+                                                </th>
+                                            )
+                                        }):<th> <div className="statistical_table_box"></div></th>}
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {this.goProjectPage(this.state.project_pno,this.state.project_psize)}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div className="statistical_change_page">
                             {this.project_change_page(1,this.state.psize)}
                         </div>
                     <Popup 
