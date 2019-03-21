@@ -366,7 +366,7 @@ class Classification extends Component {
 							onHoldClick={this.alertAddState}
 							defineValue="修改"
 							dataId={table_data_body.id}
-							classNames="btn_list"
+							classNames="editBtn"
 							state="alertAddClassificationState"	
 							classificationData={table_data_body}
 						/>
@@ -374,8 +374,7 @@ class Classification extends Component {
 							onHoldClick={this.alertHoldState}
 							defineValue="删除"
 							state="alertState"
-							classNames="btn_list"
-							// classNames="passBtn"
+							 classNames="cancelBtn"
 							linkpage="classification_manage_del"	
 							dataId={table_data_body.id}
 						/>

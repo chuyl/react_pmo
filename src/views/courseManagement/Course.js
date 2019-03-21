@@ -22,9 +22,7 @@ class Course extends Component {
          query_condition:{},
 		 search_message:"",
 		 financial_number:"",
-		 alertAddCourseState:false,//课程
-		 alertAddProjectState:false,//相关内容
-		 alertChangeAmountState:false,//修改金额
+		 alertAddCourseState:false,
 		 alertState:false,
 		 course_id:"",//支出id
 		 project_id:"",//项目id
@@ -43,14 +41,16 @@ class Course extends Component {
 		 drawer_index:-1,
 		 message_list:[],
 		 change_message_type:"",//判断改变的是所属分类还是授课讲师
-		 course_plan_list:[],
-
-        
+		 course_plan_list:[],    
 	}
 	componentWillMount(){
 		this.table_data_body(1,this.state.psize,this.state.search_message)
 	}
 
+	/** 
+	* @author xuesong
+	* @param fetchProjectData 函数 获取视图函数
+	*/
 	fetchProjectData(url) {
 		var json_view = JSON.parse(sessionStorage.view)
 		for (var i = 0; i < json_view.length; i++) {
@@ -65,23 +65,10 @@ class Course extends Component {
 			}
 		}
 	}
-	// handleClick=(formData)=>{
-	// 	console.log(formData)
-	// 	this.setState({
-	// 		alertCoursePlanState:true,
-	// 		course_plan_list:formData.data,
-	// 		add_button:formData.add_button,
-	// 		dataId:formData.dataId,
-	// 	})
-	// 	console.log("222")
-	// 	var newState = {
-	// 		add_button:formData.add_button,
-	// 		data:formData.data,
-	// 		dataId:formData.dataId,
-	// 		form_temp_name:formData.form_temp_name
-	// 	}
-	// 	// this.props.twoChange(newState);//回调函数传递参数给父组件
-	// }
+/** 
+	* @author xuesong
+	* @param onHoldClicks 函数 点击保存按钮
+	*/
 	onHoldClicks = (newState) => {
 		var key_name = [];
 		var value = [];
@@ -120,10 +107,11 @@ class Course extends Component {
 		// componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.edit_project_data
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
-			
+				this.change_edit_state(false)
 				this.setState({    //  项目创建成功,打开编辑页面。更新view
 					alertAddCourseState:false
 			}) 
+			this.cancelCallback()
 			this.table_data_body(1,this.state.psize,this.state.search_message)  //刷新项目列表
 		
 		}else if(message.error === 2){
@@ -149,6 +137,10 @@ class Course extends Component {
 		console.log(obj)
 		getData(getRouter(newState.before_api_uri), { data: obj, token: sessionStorage.token }, cb, {});
 	}
+	/** 
+	* @author xuesong
+	* @param table_data_body 函数 获取课程列表
+	*/
 	table_data_body = (page_num,page_size,search_obj) => {
         
         var cb = (route, message, arg) => {
@@ -176,6 +168,10 @@ class Course extends Component {
         // getData(getRouter("examine_record_list"),{ session: sessionStorage.session}, cb, {});
 
 	}
+	/** 
+	* @author xuesong
+	* @param payment_csv 函数 导出csv
+	*/
 	payment_csv=(search_obj)=>{
 		var cb = (route, message, arg) => {
 			console.log(message)
@@ -192,6 +188,10 @@ class Course extends Component {
 		PostCsvData(getRouter("course_manage_list"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
 		 , cb, {});
 	}
+	/** 
+	* @author xuesong
+	* @param alertAddState 函数 新建/编辑课程
+	*/
 	alertAddState=(newState)=>{
 		 if(newState.dataId===""){
 			this.fetchProjectData("addCourse")
@@ -215,14 +215,21 @@ class Course extends Component {
 		 }
 		
 	}
+	/** 
+	* @author xuesong
+	* @param freshCardGroup 函数 属性group
+	*/
 	freshCardGroup = (newState) => {
 		this.setState({
 			edit_project_data: []
 
 		})
 	}
+	/** 
+	* @author xuesong
+	* @param alertHoldState 函数 点击弹出框确认按钮
+	*/
 	alertHoldState=(newState)=>{
-		 console.log(newState)
 		this.setState({
 			[newState.state]:true,
 			course_id:newState.dataId,
@@ -232,15 +239,21 @@ class Course extends Component {
 			relation_id:newState.relationId
 		})
 	}
+	/** 
+	* @author xuesong
+	* @param editCardSuccess 函数 修改group函数成功回调
+	*/
 	editCardSuccess=(newState)=>{
 		if(this.state.change_message_type=="lecturer"){
 			this.relation_lecturer(newState.id)
 		}else if(this.state.change_message_type=="type"){
 			this.relation_type(newState.id)
 		}
-		
-		console.log(newState)
 	}
+	/** 
+	* @author xuesong
+	* @param addCardGroupState 函数 添加group函数成功回调
+	*/
 	addCardGroupState=(newState)=>{
 		if(this.state.change_message_type=="lecturer"){
 			this.relation_lecturer(newState.id)
@@ -248,6 +261,10 @@ class Course extends Component {
 			this.relation_type(newState.id)
 		}
 	}
+	/** 
+	* @author xuesong
+	* @param relation_lecturer 函数 获取关联讲师group
+	*/
 	relation_lecturer=(id)=>{
 		var cb = (route, message, arg) => {
 
@@ -291,6 +308,10 @@ class Course extends Component {
 		getData(getRouter("lecturer_manage_getByCourseId"), { token: sessionStorage.token,id:id }, cb, {});
 
 	}
+	/** 
+	* @author xuesong
+	* @param relation_type 函数 获取关联分类group
+	*/
 	relation_type=(id)=>{
 		var cb = (route, message, arg) => {
 
@@ -334,6 +355,18 @@ class Course extends Component {
 		getData(getRouter("course_type_getByCourseId"), { token: sessionStorage.token,id:id }, cb, {});
 
 	}
+	change_edit_state=(state)=>{
+		
+		if(state){
+			this.fetchProjectData("addCoursePlan")
+		}else{
+			this.fetchProjectData("showCoursePlan")
+		}
+	}
+	/** 
+	* @author xuesong
+	* @param course_plan 函数 获取课程方案
+	*/
 	course_plan=(id)=>{
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
@@ -343,10 +376,11 @@ class Course extends Component {
 					alertCoursePlanState:true,
 					course_plan_list:message.data,
 					drawer_index:id,
+					
 				// drawer_index:id,
 				// message_list:message.data.type,
 				// change_message_type:"type"
-				},this.fetchProjectData("addCoursePlan"))
+				},this.change_edit_state(false))
 				
 			}else if(message.error === 2){
 				console.log("未登录")
@@ -399,6 +433,7 @@ class Course extends Component {
                        </div>
 					</td> */}
 					<td  style={{"width":"27em"}}>
+					<input value={table_data_body.id} name="checkCourseId" style={{float:"left",marginTop:"10px"}} type="checkbox"/>
 						<PaymentManageBtn
 							onHoldClick={this.alertAddState}
 							defineValue="修改"
@@ -471,6 +506,10 @@ class Course extends Component {
         })
         return components
 	 }
+	 /** 
+	* @author xuesong
+	* @param change_page 函数 分页栏
+	*/
 	 change_page = (pno,psize)=>{
         var num = this.state.count;//表格所有行数(所有记录数)
         var totalPage = 0;//总页数
@@ -531,174 +570,64 @@ class Course extends Component {
 				className="nyx-change-page-href" style={{marginRight:"-10em",float:"right"}}>
 				{"导出"}
 			</a>
+			<a 
+				onClick={()=>{
+					// this.downloadDetailData()
+					this.funDownload()
+				}}
+				className="nyx-change-page-href" style={{marginRight:"-18em",float:"right"}}>
+				{"导出课程方案"}
+			</a>
 			<div id='downloadDiv' style={{display:'none'}}></div>
         </div>
-     return components
-     }
+     	return components
+	 }
+	  /** 
+	* @author xuesong
+	* @param screening_information 函数 筛选
+	*/
      screening_information=(message)=>{
-        // table_data_body()
-		 console.log(message)
-		 
-         //message为筛选条件
 		this.setState({
 			search_message:message
         })
         this.table_data_body(1,this.state.psize,message)
 	}
-	// 添加课程
-	sureAddFinancialCallback=()=>{
-		console.log(this.state.course_id)
-		var cb = (route, message, arg) => {
-			if (message.error === 0) {
-				this.setState({
-					alertAddCourseState:false,
-		
-				})
-				this.table_data_body(1,this.state.psize,this.state.search_message)
-
-			}else if(message.error === 2){
-				console.log("未登录")
-				sessionStorage.logged = false;
-				sessionStorage.token="";
-				if(window.location.hash.split("#")[1]!=="/"){
-					window.location.href=window.location.href.split("#/")[0]
-				
-				  }
-			}else{
-				Alert.open({
-				  alertTip:message.msg
-				  
-				});
-				setTimeout(function(){
-				  Alert.close();
-				},3000)
-			  }
-		}
-		console.log(this.state.course_id)
-		console.log(this.state.financial_number)
-		getData(getRouter("payment_manage_edit_financial_number"), { token:sessionStorage.token,id:this.state.course_id,financial_number:this.state.financial_number }, cb, {});
-	}
-	sureAddProjectCallback=()=>{
-		console.log(this.state.course_id)
-		var cb = (route, message, arg) => {
-			if (message.error === 0) {
-				this.setState({
-					alertAddProjectState:false,
-		
-				})
-				this.table_data_body(1,this.state.psize,this.state.search_message)
-
-			}else if(message.error === 2){
-				console.log("未登录")
-				sessionStorage.logged = false;
-				sessionStorage.token="";
-				if(window.location.hash.split("#")[1]!=="/"){
-					window.location.href=window.location.href.split("#/")[0]
-				
-				  }
-			}else{
-				Alert.open({
-				  alertTip:message.msg
-				  
-				});
-				setTimeout(function(){
-				  Alert.close();
-				},3000)
-			  }
-		}
-		console.log(this.state.course_id)
-		console.log(this.state.project_id)
-		getData(getRouter("payment_project_add"), { token:sessionStorage.token,id:this.state.course_id,project_id:this.state.project_id }, cb, {});
-	}
-	sureChangeAmountCallback=()=>{
-		console.log(this.state.course_id)
-		var cb = (route, message, arg) => {
-			if (message.error === 0) {
-				this.setState({
-					alertChangeAmountState:false,
-		
-				})
-				this.table_data_body(1,this.state.psize,this.state.search_message)
-
-			}else if(message.error === 2){
-				console.log("未登录")
-				sessionStorage.logged = false;
-				sessionStorage.token="";
-				if(window.location.hash.split("#")[1]!=="/"){
-					window.location.href=window.location.href.split("#/")[0]
-				
-				  }
-			}else{
-				Alert.open({
-				  alertTip:message.msg
-				  
-				});
-				setTimeout(function(){
-				  Alert.close();
-				},3000)
-			  }
-		}
-		console.log(this.state.price)
-		console.log(this.state.course_id)
-		getData(getRouter("payment_project_edit"), { token:sessionStorage.token,relation_id:this.state.relation_id,price:this.state.price }, cb, {});
-	}
 	cancelCallback=()=>{
 		this.setState({
-			alertAddCourseState:false,
-			alertAddProjectState:false,
-			alertChangeAmountState:false,
 			alertState:false,
+			alertAddCourseState:false,
 			alertRelationState:false,
 			alertRelationTypeState:false,
 			alertCoursePlanState:false
 		})
 	}
-	// ClickArrAlert=()=>{
-	// 	console.log("点击通过")
-	
-	// }
-	sureCallback=()=>{
-		// this.copyViewMessage(this.state.copy_message)
-        var cb = (route, message, arg) =>  {
-            if (message.error === 0) {
-                this.setState({
-                    alertState:false
-				})
-				this.table_data_body(1,this.state.psize,this.state.search_message)
-            }else if(message.error === 2){
-                console.log("未登录")
-                sessionStorage.logged = false;
-                sessionStorage.token="";
-                if(window.location.hash.split("#")[1]!=="/"){
-                    window.location.href=window.location.href.split("#/")[0]
-                
-                  }
-            }else{
-                this.setState({
-                    remind_state:true
-                })
-                Alert.open({
-                    alertTip:message.msg
-                    
-                });
-                setTimeout(function(){
-                    Alert.close();
-                 },3000)
-            }
-            //  this.props.oneChange(newState);
-        }
-        //获取数据接口
-		console.log(this.state.linkpage)
-		console.log(this.state.project_id)
-		if(this.state.linkpage=="payment_project_cancel"){
-			getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, relation_id:this.state.relation_id,project_id:this.state.project_id }, cb,  {}); 
-			//}
-		}else{
-			getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, id:this.state.course_id }, cb,  {}); 
-
+	funDownload=()=> {
+		var checkCourseId=document.getElementsByName("checkCourseId");
+		var ids=[];
+		for(var i = 0;i<checkCourseId.length;i++){
+			if(checkCourseId[i].checked===true){
+				ids.push(checkCourseId[i].value)
+			}
 		}
-    //}
-	}
+		var cb = (route, message, arg) => {
+			console.log(message)
+            if (message.error === 0) {
+           
+            }
+           
+        }
+        var obj ={};
+
+		getData(getRouter("course_plan_getListCourseId"), { ids: ids, token: sessionStorage.token }, cb, {});
+
+		// var filename = 'hello'
+		// var a = document.createElement('a')
+		// var blob = new Blob(['Hello World!'])
+		// a.download = filename
+		// a.href = URL.createObjectURL(blob)
+		// a.click()
+		// URL.revokeObjectURL(blob)
+	};
 	render(){
 		var sumLength=0;
         if(this.state.table_data_head){
@@ -709,18 +638,6 @@ class Course extends Component {
 		
 		return (
             <div>
-				{/* <div className="add_button" 
-					onClick={(e) => {
-						this.fetchProjectData("addTeacher")
-						// this.card_box_concent([], e)
-						this.setState({
-							edit_project_data: [],
-							dataId: ""
-						})
-					}}
-				>
-					添加
-				</div> */}
 				<PaymentManageBtn
 					onHoldClick={this.alertAddState}
 					defineValue="添加"
@@ -730,10 +647,10 @@ class Course extends Component {
 					/>
 					<br/>
 				<DataSearchMessage 
-				index={0}
-					   message={this.state.table_data_bodys}
-					   keywordSearch={["name","type_name"]}
-					   keywordTitle={[
+					index={0}
+					message={this.state.table_data_bodys}
+				    keywordSearch={["name","type_name"]}
+				    keywordTitle={[
                         "课程名称",
 						"所属分类",
 						"授课讲师",
@@ -745,19 +662,17 @@ class Course extends Component {
 					]}
 					//    selectListMessage={["project_type_list"]}
 					// 	selectNameMessage={["project_project_template_name"]}
-					   selectListMessage={[]}
-                       selectNameMessage={[]}
-                       selectListCheckMessage={["lecturer_manage_list"]}
-                       selectNameCheckMessage={["lecturer_name"]}
-					   sectionTimeMessage={[]}
-					   
-					   langPackMessage={["is_short","is_cert","level"]}
+				   selectListMessage={[]}
+                   selectNameMessage={[]}
+                   selectListCheckMessage={["lecturer_manage_list"]}
+                   selectNameCheckMessage={["lecturer_name"]}
+				   sectionTimeMessage={[]}					   
+				   langPackMessage={["is_short","is_cert","level"]}
 					//    langPackTitleValue={["is_short","is_cert"]}
-					   langPackTitle={["0,1","0,1","1,2,3"]}
-					   screeningMessage={this.screening_information}
-					/>
+				   langPackTitle={["0,1","0,1","1,2,3"]}
+				   screeningMessage={this.screening_information}
+				/>
                 <div className="statistical_div">
-                
                     <table style={{width:sumLength+27+"em"}} className="statistical_table">
                         <thead>
                             <tr>
@@ -781,18 +696,10 @@ class Course extends Component {
                         {this.goPage(this.state.pno,this.state.psize)}
                     </tbody>
                 </table>
-				{/* <ClickArrAlert
-					defaultValue="通过"
-					linkpage="payment_state_pass"
-					dataId={this.state.course_id_arr}
-					onClickArrAlert={this.ClickArrAlert}
-				/> */}
-
-              
             </div>
 			<div className="statistical_change_page">
-                    {this.change_page(1,this.state.psize)}
-                </div>
+                {this.change_page(1,this.state.psize)}
+            </div>
 			{this.state.alertAddCourseState?<Popup 
 				content={
 					<div>
@@ -804,7 +711,6 @@ class Course extends Component {
 						</div>
 					</div>
 					}	 
-				// sureCallback = {this.sureAddFinancialCallback.bind(this)} 
 				cancelCallback = { this.cancelCallback.bind(this) } 
 				sureBtn={false}  
 				alertState={this.state.alertAddCourseState}
@@ -835,18 +741,12 @@ class Course extends Component {
                                 />
 					</div>
 					}	 
-				sureCallback = {this.sureAddFinancialCallback.bind(this)} 
 				cancelCallback = { this.cancelCallback.bind(this) } 
 				alertState={this.state.alertRelationState}
 			/>:""}
 			{this.state.alertRelationTypeState?<Drawer 
 				content={
 					<div>
-						{/* <button onClick={()=>{
-							this.setState({
-								alertAddCourseState:true
-							})
-						}}></button> */}
 						<CardGroup 
                             addButtonTitle={"所属分类"} 
                             addButton={this.state.add_drawer_button} 
@@ -865,68 +765,22 @@ class Course extends Component {
                                 />
 					</div>
 					}	 
-				sureCallback = {this.sureAddFinancialCallback.bind(this)} 
 				cancelCallback = { this.cancelCallback.bind(this) } 
 				alertState={this.state.alertRelationTypeState}
 			/>:""}
 			{this.state.alertCoursePlanState?<Drawer 
 				content={
 					<div>
+						<div className="card_ide_btn"></div>
+						<button  className="btn_list" onClick={()=>{
+						this.change_edit_state(true)
+						}}>编辑</button>
 						<ComponentsList  editCardGroupState={this.freshCardGroup} editCardGroupStates={this.freshCardGroup} dataId={this.state.dataId} holdClick={this.onHoldClicks} componentslist =  {this.state.add_button?this.state.add_button:[]} componentsdata = {this.state.course_plan_list} ></ComponentsList > 
 					</div>
 					}	 
-				// sureCallback = {this.sureAddFinancialCallback.bind(this)} 
 				cancelCallback = { this.cancelCallback.bind(this) } 
 				alertState={this.state.alertCoursePlanState}
 			/>:""}
-			
-			{/* <Popup 
-				content={
-					<div>
-						<h2>关联项目</h2>
-						<div className="popup_content">
-							<ViewTextField 
-								onChange={(e)=>{
-									this.setState({
-										project_id:e.target.value
-										})
-									}}
-									// view={true}
-								value={this.state.project_id} 
-								labelValue={"项目id"} 
-							/>
-						</div>
-					</div>
-					}	 
-				sureCallback = {this.sureAddProjectCallback.bind(this)} 
-				cancelCallback = { this.cancelCallback.bind(this) } 
-				alertState={this.state.alertAddProjectState}
-			/>
-			<Popup 
-				content={
-					<div>
-						<h2>修改指定支出到项目的金额</h2>
-						<div className="popup_content">
-							<ViewTextField 
-								onChange={(e)=>{
-									this.setState({
-										price:e.target.value
-										})
-									}}
-									 defineValue={""}
-								// value={this.state.project_id} 
-								labelValue={"项目金额"} 
-							/>
-						</div>
-					</div>
-					}	
-					
-				sureCallback = {this.sureChangeAmountCallback.bind(this)} 
-				cancelCallback = { this.cancelCallback.bind(this) }
-				sureBtn={false}  
-				alertState={this.state.alertChangeAmountState}
-			/> */}
-			 <Alerts alertTitle={this.state.alertTitle} alertMsg = {this.state.alertMsg} sureCallback = {this.sureCallback.bind(this)} cancelCallback = { this.cancelCallback.bind(this) } alertState={this.state.alertState}/>
         </div>
 		)
 	}

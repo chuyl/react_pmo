@@ -9,18 +9,23 @@
             // const {message,defaultValue} =this.props;
             var className = this.props.className.split(","); 
             var message;
+            console.log(this.props.message)
             if(this.props.message===null){
-                message=this.props.defaultValue;
+                message=[];
             }else if(this.props.message===undefined){
-                message=this.props.defaultValue;
+                console.log(message)
+                // message=this.props.defaultValue;
+                message=[];
             }else if(this.props.message===""){
-                message=this.props.defaultValue;
+                message=[];
+                // message=this.props.defaultValue;
             }else{
                 message=this.props.message;
             }
+            console.log(message)
             return (
                 <div className={className[0]?className[0]:""}>
-                  {this.props.views?message:message.map((message_list,index)=>{
+                  {this.props.views?this.props.defaultValue:message.map((message_list,index)=>{
                         return(
                             <div 
                                 key={index}
@@ -29,8 +34,9 @@
                             >
                                 {message_list.content.map((content,index)=>{
                                     return(
-                                        content.type==="def"?content.text:
-                                        <span key={index} className={content.type}>{content.text}</span>
+                                        content.type==="def"?<span className={content.type}>{content.text}</span>
+                                        :content.type==="img"?<img  className={content.type} src={content.text}/>
+                                        :<span key={index} className={content.type}>{content.text}</span>
                                         )
                                     })}
                                         {/* {message_list.content[0].text+message_list.class} */}
