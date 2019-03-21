@@ -1,4 +1,5 @@
 @import 'mixins/btn';
+
 .paper_div {
     // height: 90vh;
     margin-left: 1rem;
@@ -12,6 +13,7 @@
 .paper_div.open {
     background: $primary-color-text;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+
     @media screen and (max-width: 768px) {
         border-radius: 0;
     }
@@ -49,6 +51,7 @@
     color: $primary-color-text;
     background-color: $primary-color;
     cursor: pointer; //background-color: #fff;
+
     // @include set_button_style(2px, $primary-color, $accent-color, $shadow: none);
     @media screen and (max-width: 768px) {
         margin-bottom: 1em;
@@ -177,12 +180,15 @@
     width: 66.6%;
     float: left;
     padding: 0.1em 0;
+
     p {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         font-size: 1.5em;
-    } //border: 1px solid $secondary-text-color;
+    }
+
+    //border: 1px solid $secondary-text-color;
 }
 
 .card_title_left {
@@ -201,16 +207,19 @@
     width: 33.3%;
     float: left; //border: 1px solid $secondary-text-color;
     line-height: 2.5em;
+
     p {
         font-size: 1.5em;
     }
 }
 
 @media screen and (max-width:768px) {
+
     .card_left p,
     .card_right p,
     .title_card_right {
         font-size: 1em;
+
         p {
             font-size: 1em;
         }
@@ -222,9 +231,11 @@
     float: left;
     line-height: 3em;
     overflow: hidden;
+
     span {
         font-size: 2em;
     }
+
     p {
         float: left;
     }
@@ -235,9 +246,11 @@
     float: left;
     line-height: 3em;
     overflow: hidden;
+
     span {
         font-size: 2em;
     }
+
     p {
         float: left;
     }
@@ -256,6 +269,7 @@
     width: 33.3%;
     float: left;
     margin-bottom: 1em;
+
     p {
         line-height: 1.5em;
     }
@@ -266,18 +280,21 @@
     line-height: 2em;
     overflow: hidden;
     padding-top: 1em;
+
     label {
         width: 66.6%;
         display: block;
         float: left; // font-size: 1.5em;
         text-align: right;
     }
+
     span {
         width: 33.3%;
         display: block;
         float: left;
         text-align: right;
     }
+
     @media screen and (max-width:768px) {
         font-size: 16px;
     }
@@ -290,11 +307,13 @@
     float: left;
     color: $secondary-text-color;
     overflow: hidden;
+
     label {
         width: 66.6%;
         display: block;
         float: left;
     }
+
     span {
         text-align: right;
         width: 33.3%;
@@ -309,11 +328,13 @@
     height: 2em;
     font-size: 16px;
     border-bottom: 2px solid $secondary-text-color;
+
     label {
         width: 66.6%;
         display: block;
         float: left;
     }
+
     span {
         width: 33.3%;
         display: block;
@@ -327,14 +348,17 @@
         position: relative;
         background: linear-gradient(to bottom right, $primary-color-dark, $primary-color);
     }
+
     .paper_div {
         width: 100%;
         position: fixed;
         margin-left: 0;
     }
+
     .paper_div.open {
         height: 95vh;
     }
+
     .card_box {
         margin: 0;
         position: fixed;
@@ -348,6 +372,7 @@
         width: 0%;
         z-index: 10;
     }
+
     .card_box.open {
         margin: 0;
         width: 100%;
@@ -362,14 +387,17 @@
 .message_left {
     float: left;
     width: 100%;
+
     .spelling_div {
         float: left;
         width: 33%;
         overflow: hidden;
+
         .spelling_content {
             width: 100%;
             float: left;
         }
+
         .spelling_label {
             width: 100%;
             float: left;
@@ -393,19 +421,23 @@ textarea:disabled {
     padding-left: 1em;
     overflow: hidden;
     line-height: 3em;
+
     .message_label {
         float: left;
         font-size: 1.5em;
         width: 3em;
+
         @media screen and (max-width: 768px) {
             font-size: 1em;
         }
     }
+
     span:nth-of-type(2) {
         padding-right: 1em;
         width: 5em;
         float: right;
     }
+
     @media screen and (max-width: 768px) {
         line-height: 2.5em;
     }
@@ -420,6 +452,7 @@ textarea:disabled {
     overflow: hidden;
     padding: 0.5em 1em 0.5em 0;
     box-sizing: border-box;
+
     .btn_list {
         float: left;
         width: 100%;
@@ -440,6 +473,7 @@ textarea:disabled {
     height: 2em;
     padding-top: 1em;
     box-sizing: border-box;
+
     .status_box_item_success,
     .status_box_item_default,
     .status_box_item_fail {
@@ -448,17 +482,21 @@ textarea:disabled {
         height: 1em;
         border-radius: 2px;
         margin-right: 0.2em;
+
         @media screen and (max-width: 768px) {
             width: 1em;
             height: 0.5em;
         }
     }
+
     .status_box_item_success {
         background-color: $primary-color;
     }
+
     .status_box_item_default {
         background-color: $secondary-text-color;
     }
+
     .status_box_item_fail {
         background-color: $accent-color;
     }
@@ -475,16 +513,19 @@ textarea:disabled {
 .budget_menu {
     overflow: hidden;
     width: 100%;
+
     .spelling_div {
         float: left;
         display: block;
         width: 33%;
         overflow: hidden;
+
         .spelling_content {
             float: left;
             width: 100%;
             line-height: 1.5em;
         }
+
         .spelling_label {
             float: left;
             width: 100%;
@@ -499,6 +540,7 @@ textarea:disabled {
     overflow: hidden;
     padding: 1em 0;
     box-sizing: border-box;
+
     button {
         border: 0;
         float: left;
@@ -512,6 +554,7 @@ textarea:disabled {
         background-color: $primary-color;
         color: $primary-color-text;
     }
+
     button:hover {
         background: $accent-color;
     }
@@ -558,12 +601,14 @@ textarea:disabled {
 
 .card-body .card-page:nth-of-type(2) {
     overflow: hidden;
+
     .card_ide_btn {
         float: left;
         width: 33%;
         line-height: 3em;
         box-sizing: border-box;
         padding: 0.5em 1em 0.5em 0;
+
         .btn_list {
             float: left;
             margin-top: 0.5em;
@@ -572,9 +617,11 @@ textarea:disabled {
             margin: 0;
         }
     }
+
     .card_ide_btn:first-child {
         width: 100%;
     }
+
     .card_ide_btn:last-child {
         padding: 0.7em 1em 0 0em;
     }
@@ -588,15 +635,18 @@ textarea:disabled {
     float: left;
     width: 100%;
     overflow: hidden;
+
     li {
         clear: both;
     }
+
     .message_left,
     .message_right {
         float: left;
         line-height: 2em;
         font-size: 1em;
         box-sizing: border-box;
+
         div {
             display: block;
             width: 4em;
@@ -604,12 +654,14 @@ textarea:disabled {
             padding-right: 1em;
         }
     }
+
     .message_left {
         text-align: right;
         width: 40%;
         padding-left: 6em;
         position: relative;
     }
+
     .message_left::before {
         position: absolute;
         content: ' ';
@@ -620,6 +672,7 @@ textarea:disabled {
         top: 0.7em;
         right: 0;
     }
+
     .message_left::after {
         position: absolute;
         content: ' ';
@@ -628,42 +681,53 @@ textarea:disabled {
         top: 1.1em;
         right: 0.2em;
     }
+
     li:last-child {
         .message_left::after {
             display: none;
         }
     }
+
     .message_right {
         width: 60%;
         font-size: 1em;
         padding-left: 1em;
         box-sizing: border-box;
     }
+
     .status_flow_item_default {
+
         .message_left,
         .message_right {
             color: $secondary-text-color;
         }
+
         .message_left::before,
         .message_left::after {
             background-color: $secondary-text-color;
         }
     }
+
     .status_flow_item_success {
+
         .message_left,
         .message_right {
             color: $primary-color;
         }
+
         .message_left::before,
         .message_left::after {
             background-color: $primary-color;
         }
     }
+
     .status_flow_item_fail {
+
         .message_left,
         .message_right {
             color: $accent-color;
         }
+
         .message_left::before,
         .message_left::after {
             background-color: $accent-color;
@@ -676,9 +740,11 @@ textarea:disabled {
     display: block;
     box-sizing: border-box;
     padding-left: 1em;
+
     span {
         float: left;
     }
+
     button {
         margin-top: 4px;
         margin-left: 0.2em;
@@ -692,12 +758,15 @@ textarea:disabled {
         border: 0;
         text-align: center;
         outline: none;
+
         @media screen and (max-width: 768px) {
             margin-left: 0;
         }
     }
+
     @media screen and (max-width:768px) {
         padding: 0;
+
         span {
             font-size: 1em
         }
@@ -712,6 +781,7 @@ textarea:disabled {
     border-bottom-left-radius: 10px;
     width: 8em;
     box-sizing: border-box;
+
     .selectedInfo {
         float: left;
         overflow: hidden;
@@ -723,11 +793,13 @@ textarea:disabled {
         outline: none;
         border: 1px solid $secondary-text-color;
         border-right: 0;
+
         li {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
+
         span {
             position: absolute;
             right: 1em;
@@ -738,6 +810,7 @@ textarea:disabled {
             border-left: 4px solid transparent;
         }
     }
+
     .search_info_list.open {
         margin: 0;
         width: 10em;
@@ -764,6 +837,7 @@ textarea:disabled {
 
 .select_filter_box {
     width: 100%;
+
     .select_search_list {
         .selectedInfo {
             background-color: $primary-color-text;
@@ -787,11 +861,13 @@ textarea:disabled {
     .filter_max_div {
         position: relative;
     }
+
     .filter_box_state {
         // position: absolute;
         bottom: 0;
         right: 0;
     }
+
     .select_clean_box {
         padding: 0;
     }
@@ -803,6 +879,7 @@ textarea:disabled {
     width: 10em;
     height: 2em;
     padding-bottom: 1px;
+
     input {
         border: 0;
         outline: none;
@@ -840,11 +917,13 @@ textarea:disabled {
     background-color: $background-color;
     box-sizing: border-box;
     position: relative;
+
     .search_info_list.open {
         margin: 0;
         width: 100%;
         margin-top: 1.8em;
     }
+
     .selectedInfo {
         float: left;
         position: relative;
@@ -855,6 +934,7 @@ textarea:disabled {
         border: 0;
         border: 1px solid $secondary-text-color;
         border-radius: 0;
+
         span {
             position: absolute;
             right: 1em;
@@ -872,6 +952,7 @@ textarea:disabled {
     width: 100%;
     line-height: 4em;
     padding: 0.5em;
+
     .select_clean_bar {
         margin-right: 1em;
         color: $secondary-text-color;
@@ -939,6 +1020,7 @@ textarea:disabled {
     .statistical_div {
         width: 100%;
     }
+
     .statistical_change_page {
         width: 100%;
         padding-right: 1em;
@@ -960,6 +1042,7 @@ textarea:disabled {
     @include set_x_title_line($table_title_line, 2);
     @include set_y_title_line($table_title_line, 1); // @include set_x_content_line($table_content_line, 1);
     @include set_y_content_line($table_content_line, 1); // @include set_x_out_line($table_out_line); //
+
     //设置颜色
     // $table_title_bgcolor: (#fff #000 #aaf #00d);
     // $table_content_x_bgcolor: (#fff rgba(0, 0, 0, .2) #fff rgba(0, 0, 0, .3));
@@ -972,27 +1055,33 @@ textarea:disabled {
     tr {
         padding: 0;
         line-height: 2em;
+
         td:first-child {
             border: 0;
         }
+
         td {
             padding: 0;
             padding: 0 0.5em;
         }
+
         th {
             padding: 0;
             padding: 0.2em 0.5em;
         }
     }
+
     button%extreme {
         text-indent: -999em;
         background-color: transparent;
     }
+
     tr {
         .card_ide_btn {
             .hold_btn {
                 overflow: hidden;
             }
+
             button::before {
                 font-family: 'Glyphicons Halflings';
                 font-size: 1.2em;
@@ -1004,21 +1093,27 @@ textarea:disabled {
                 height: 100%;
             }
         }
+
         .financialBtn::before {
             content: '\e086';
         }
+
         .passBtn::before {
             content: '\e013';
         }
+
         .recallBtn::before {
             content: '\e095';
         }
+
         .cancelBtn::before {
             content: '\e020';
         }
+
         .cancalRelationBtn:before {
             content: '\e014';
         }
+
         .changePriceBtn::before {
             content: '\e148';
         }
@@ -1036,10 +1131,12 @@ textarea:disabled {
     color: $primary-color-text;
     text-align: right;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+
     span {
         line-height: 4vh;
         padding: 0 1em;
     }
+
     @media screen and (max-width:768px) {
         display: none;
     }
@@ -1057,35 +1154,44 @@ textarea:disabled {
     bottom: 0;
     background: $primary-color;
     color: $primary-color-text;
+
     a {
         cursor: pointer;
         text-decoration: none;
         margin-right: 1em;
     }
+
     .nyx-change-page-href {
         color: $primary-color-text;
     }
+
     .nyx-change-page-href:nth-of-type(1),
     .nyx-change-page-href:nth-of-type(2) {
         float: left;
     }
+
     .nyx-change-page-href:nth-of-type(3),
     .nyx-change-page-href:nth-of-type(4) {
         float: right;
     }
+
     .nyx-change-page-href:nth-of-type(3) {
         margin-right: 7em;
     }
+
     .nyx-change-page-href:nth-of-type(4) {
         margin-right: -7em;
     }
+
     @media screen and (max-width: 1280px) {
         width: 100%;
         bottom: 36px;
         padding: 0;
+
         span {
             margin: 0;
         }
+
         a {
             margin: 0;
         }
@@ -1131,6 +1237,7 @@ textarea:disabled {
     height: 2.2em;
     float: left;
     line-height: 2.2em;
+
     span {
         padding: 0 0.5em;
         display: inline-block;
@@ -1142,6 +1249,7 @@ textarea:disabled {
 .card_event_btn {
     float: left;
     display: inline-block;
+
     button {
         margin-top: 0.2em;
         display: inline-block;
@@ -1167,11 +1275,13 @@ textarea:disabled {
     width: 100%;
     float: left;
     padding-bottom: 0.5em;
+
     .editor_hover_div {
         padding-top: 0.2em;
         height: 1em;
         width: 100%;
     }
+
     .editor_add_content {
         float: right;
         width: calc(100% - 8em);
@@ -1203,6 +1313,7 @@ textarea:disabled {
             }
         }
     }
+
     .editor_show_content.active {
         .editor_hover_div:hover {
             .editor_add_content {
@@ -1248,6 +1359,7 @@ textarea:disabled {
 
 .popup_body {
     padding: 0.5em;
+
     textarea {
         box-sizing: border-box;
         display: block;
@@ -1278,9 +1390,11 @@ textarea:disabled {
 .editor_select_title {
     width: 8em;
     padding-right: 0.5em;
+
     .selectedInfo {
         width: 90%;
     }
+
     .search_info_list.open {
         width: 100%;
     }
@@ -1304,14 +1418,18 @@ textarea:disabled {
 
 .pmo_btn_div {
     margin-top: 0.2em;
+    float: left;
+    padding-right: 0.5em;
 }
 
-.pmp_common_btn {
-    line-height: 2em;
+.pmo_common_btn {
+    line-height: 2em; 
     margin-right: 1em;
     border-radius: 4px;
+    padding: 0.2em 0.5em;
     background-color: #FFFFFF;
     color: #3F51B5;
+    border: 1px solid #3F51B5;
     -webkit-box-shadow: none;
     box-shadow: none;
     border: 0;
@@ -1323,6 +1441,7 @@ textarea:disabled {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
     border-radius: 4px;
     padding-left: 1em;
+
     div.default_title {
         float: left;
         width: calc(100% - 8rem);
@@ -1330,10 +1449,12 @@ textarea:disabled {
         padding-left: 1em;
         word-wrap: break-word;
         outline: none;
+
         @if (display=="block") {
             box-shadow: 0 0 5px #b6f7ff;
         }
     }
+
     div.title_1 {
         font-size: 3em;
         text-align: left;
@@ -1343,6 +1464,7 @@ textarea:disabled {
         font-weight: bold;
         position: relative;
     }
+
     div.title_1::before {
         position: absolute;
         display: block;
@@ -1353,6 +1475,7 @@ textarea:disabled {
         left: 0;
         bottom: 0;
     }
+
     div.title_1::after {
         position: absolute;
         display: block;
@@ -1363,6 +1486,7 @@ textarea:disabled {
         left: 25%;
         bottom: 0;
     }
+
     div.title_2 {
         font-size: 2em;
         font-weight: bold;
@@ -1371,6 +1495,7 @@ textarea:disabled {
         padding: 1em 0 1em 1em;
         position: relative;
     }
+
     div.title_2::before {
         content: ' ';
         position: absolute;
@@ -1381,6 +1506,7 @@ textarea:disabled {
         top: 1em;
         left: 0;
     }
+
     div.title_3 {
         text-align: left;
         font-size: 1em;
@@ -1389,6 +1515,7 @@ textarea:disabled {
         position: relative;
         font-weight: bold;
     }
+
     div.title_3::before {
         content: ' ';
         position: absolute;
@@ -1399,6 +1526,7 @@ textarea:disabled {
         top: 0.8em;
         background-color: rgb(128, 28, 3);
     }
+
     div.main_boby {
         text-align: left;
         font-size: 1em;
@@ -1406,6 +1534,7 @@ textarea:disabled {
         padding: 1em 0;
         color: rgb(126, 126, 126);
     }
+
     div.symbol_list {
         padding: 1em 0;
         text-align: left;
@@ -1414,6 +1543,7 @@ textarea:disabled {
         position: relative;
         padding-left: 4em;
     }
+
     div.symbol_list::before {
         content: ' ';
         position: absolute;
@@ -1425,6 +1555,7 @@ textarea:disabled {
         top: 12px;
         left: calc(2em - 3px);
     }
+
     div.symbol_list::after {
         content: ' ';
         position: absolute;
@@ -1436,6 +1567,7 @@ textarea:disabled {
         top: 24px;
         left: calc(2em - 3px);
     }
+
     div.unsigned_list {
         padding: 1em 0;
         text-align: left;
@@ -1453,6 +1585,7 @@ textarea:disabled {
         display: block;
         line-height: 1em;
     }
+
     .active {
         display: block;
     }
@@ -1464,6 +1597,7 @@ textarea:disabled {
             display: none;
         }
     }
+
     .editor_show_content.active {
         .active {
             display: block;
