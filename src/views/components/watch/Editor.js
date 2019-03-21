@@ -500,17 +500,15 @@
                                             删除
                                         </button>
                                     </div>
-                                    <div className="editor_hover_div" onClick={()=>{
-                                        this.open_between_alert(index)
-                                        }}>
-                                        <div  className="editor_add_content">添加段落+</div>
-                                       
-                                    </div>
-                                    <div className="editor_hover_div" onClick={()=>{
-                                        this.open_between_img_alert(index)
-                                        }}>
-                                        <div  className="editor_add_content">添加图片+</div>
-                                       
+                                    <div className="editor_hover_div" >
+                                        <div  className="editor_add_content" onClick={()=>{
+                                            this.open_between_alert(index)
+                                            }}>添加段落+
+                                        </div>
+                                        <div className="editor_add_content" onClick={()=>{
+                                            this.open_between_img_alert(index)
+                                            }}>添加图片+
+                                        </div>
                                     </div>
                                 </div>
                             )
