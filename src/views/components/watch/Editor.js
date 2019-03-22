@@ -403,7 +403,16 @@
                     </div>
                      {/* 模块1 */}
                     {this.props.view?""
-                        :message?""
+                        :message?message.length>0?"": <div 
+                        className="add_card_btn"
+                        onClick={()=>{
+                            this.setState({
+                                alertAddTextState:true
+                            })
+                        }}
+                    >
+                        添加段落
+                    </div>
                         :this.state.close_add_btn?
                             <div 
                                 className="add_card_btn"
