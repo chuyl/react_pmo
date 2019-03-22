@@ -2392,16 +2392,16 @@ textarea:disabled {
     width: 100%;
     padding: 0.5em; }
 
-.emphasize_btn {
+.emphasize {
   width: 1.5em;
   height: 1em;
-  background-color: #801c21;
+  color: #801c21;
   margin-right: 5px; }
 
-.weaken_btn {
+.weaken {
   width: 1.5em;
   height: 1em;
-  background-color: #dddddd; }
+  color: #dddddd; }
 
 .editor_select_title,
 .editor_content_div,
@@ -3344,15 +3344,6 @@ textarea:disabled {
   padding: 6px 6px 6px 6px;
   background-color: #fafafa;
   border-radius: 5%; }
-
-.title_1 {
-  font-size: 48px; }
-
-.emphasize {
-  color: red; }
-
-.weaken {
-  color: grey; }
 
 .crius-card-list .inverse {
   color: #3F51B5; }
