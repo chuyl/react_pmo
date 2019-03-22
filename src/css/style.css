@@ -1638,6 +1638,9 @@ body {
     text-align: right; }
 
 @media only screen and (max-width: 768px) {
+  .container {
+    width: 100%; }
+
   .select_card {
     position: relative;
     background: linear-gradient(to bottom right, #303F9F, #3F51B5); }
