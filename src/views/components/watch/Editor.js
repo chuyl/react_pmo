@@ -48,12 +48,10 @@
      * @param textareaChange 组件  点击模块1的next
      */
         textareaChange=(e)=>{
-          
                 var strContent = document.getElementById("add_textarea").value;
                 strContent = strContent.replace(/\r\n/g, '<br/>'); //IE9、FF、chrome
                 strContent = strContent.replace(/\n/g, '<br/>'); //IE7-8
                 // strContent = strContent.replace(/\s/g, ' '); //空格处理
-              
                 var message_list=[];
                 for(var i = 0;i<strContent.split("<br/>").length;i++){
                     message_list.push({id:i,class:"main_boby default_title",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
@@ -70,16 +68,13 @@
                         alertAddTextState:false
                     })
                 }
-                console.log(message_list)
-               
-           
-           
         }
+        /** 
+     * @author xuesong
+     * @param addBetweenHold 组件  段落之间加段落
+     */
         addBetweenHold=()=>{
-
-            // var strContent = document.getElementById(this.props.textarea_id+"add_between_textarea").value;
             var strContent = this.state.add_between_textarea;
-            console.log(this.state.add_between_textarea)
             strContent = strContent.replace(/\r\n/g, '<br/>'); //IE9、FF、chrome
             strContent = strContent.replace(/\n/g, '<br/>'); //IE7-8
             // strContent = strContent.replace(/\s/g, ' '); //空格处理
@@ -88,14 +83,12 @@
                 if(j===this.state.addBetweenIndex){
                     message_list.push(this.state.message_list[j])
                     for(var i = 0;i<strContent.split("<br/>").length;i++){
-                        console.log(strContent.split("<br/>"))
                         message_list.push({id:i,class:"main_boby default_title",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
                     }
                 }else{
                     message_list.push(this.state.message_list[j])
                 }
             }
-            console.log(message_list)
                 this.setState({
                     message_list:message_list,
                     openBetweenState:false
@@ -104,10 +97,8 @@
         }
         // 添加图片
         addBetweenImgHold=()=>{
-
             // var strContent = document.getElementById(this.props.textarea_id+"add_between_img_textarea").value;
             var strContent = this.state.add_between_img_textarea;
-            console.log(this.state.add_between_img_textarea)
             strContent = strContent.replace(/\r\n/g, '<br/>'); //IE9、FF、chrome
             strContent = strContent.replace(/\n/g, '<br/>'); //IE7-8
             // strContent = strContent.replace(/\s/g, ' '); //空格处理
@@ -116,14 +107,12 @@
                 if(j===this.state.addBetweenImgIndex){
                     message_list.push(this.state.message_list[j])
                     for(var i = 0;i<strContent.split("<br/>").length;i++){
-                        console.log(strContent.split("<br/>"))
                         message_list.push({id:i,class:"default_title img_left",content:[{type:"img",text:strContent.split("<br/>")[i]}]})
                     }
                 }else{
                     message_list.push(this.state.message_list[j])
                 }
             }
-            console.log(message_list)
                 this.setState({
                     message_list:message_list,
                     openBetweenImgState:false
@@ -142,8 +131,6 @@
          * @param selectLangPackProps 组件  下拉选择回调函数
          */
         selectLangPackProps=(newState)=>{
-            console.log(newState)
-            console.log(this.state.message_list)
            var edit_message_list=[];
            for(var i = 0;i<this.state.message_list.length;i++){
                if(newState.index===i){
@@ -165,9 +152,6 @@
             
             var text = "";
             var text_div_content="";
-           
-            console.log()
-            console.log(window.getSelection().toString().length)
             if (window.getSelection().toString().length>0) {
                 if(window.getSelection().toString()===this.state.brush_text){
                     this.setState({
@@ -264,7 +248,6 @@
 
         }
         contenteditableHold=(index,text_id)=>{
-            console.log(document.getElementById(text_id).getAttribute("data-id"))
             var str_data_id = document.getElementById(text_id).getAttribute("data-id");
             var str = document.getElementById(text_id).innerHTML;
             if(str_data_id === "text"){
@@ -391,10 +374,6 @@
         }
         render(){
             const {textarea_id,inputValue,message} =this.props;
-            // this.setState({
-            //     message_list:message
-            // })
-            console.log(this.state.message_list)
             return (
                 this.props.view?inputValue:
                 <div>
@@ -436,9 +415,6 @@
                                             stateFun={this.selectLangPackProps}
                                             langPack={"editor"}
                                             index={index}
-                                            // disabled={this.state.edit_state?false:true}
-                                            // isSelected={this.state.isSelected}
-                                            // selectedInfo={} 
                                             selectedIdInfo={message_list.class} 
                                         />
                                     </div>:<div className="editor_select_title">
@@ -447,9 +423,6 @@
                                             stateFun={this.selectLangPackProps}
                                             langPack={"img"}
                                             index={index}
-                                            // disabled={this.state.edit_state?false:true}
-                                            // isSelected={this.state.isSelected}
-                                            // selectedInfo={} 
                                             selectedIdInfo={message_list.class} 
                                         />
                                     </div>}
@@ -462,13 +435,6 @@
                                             onClick={this.getSelection_message.bind(this)}
                                             className={message_list.class}
                                         >
-                                            {/* {message_list.content.map((content,index)=>{
-                                                return(
-                                                    content.type==="def"?content.text:
-                                                    content.type==="emphasize"?:"**"+content.text+"**":
-                                                    <span className={content.type}>{content.text}</span>
-                                                )
-                                            })} */}
                                         </div>
                                         <div 
                                             style={this.state.contenteditableState==index?{display:"none"}:{display:"block"}}

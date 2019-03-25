@@ -31,41 +31,11 @@
             console.log(this.props.message)
             var text_list=document.getElementById("edit_textarea").children;
             for(var i =0;i<text_list.length;i++){
-                console.log()
-                // if(text_list[i].id)
-                // var strContent = text_list[i];
-                // console.log(strContent)
-                // strContent = strContent.replace(/\r\n/g, '<br/>'); //IE9、FF、chrome
-                // strContent = strContent.replace(/\n/g, '<br/>'); //IE7-8
-                // var message_list=[];
-                // for(var m = 0;m<strContent.split("<br/>").length;m++){
-                //     message_list.push({text:strContent.split("<br/>")[i]})
-                // }
-                // console.log(message_list)
+          
             }
                
-                // strContent = strContent.replace(/\s/g, ' '); //空格处理
               
             console.log(document.getElementById("edit_textarea"))
-            // this.setState({
-            //     textareaState:!this.state.textareaState 
-            // })
-            // if(this.state.textareaState){
-            //     var strContent = document.getElementById("add_textarea").value;
-            //     strContent = strContent.replace(/\r\n/g, '<br/>'); //IE9、FF、chrome
-            //     strContent = strContent.replace(/\n/g, '<br/>'); //IE7-8
-            //     // strContent = strContent.replace(/\s/g, ' '); //空格处理
-              
-            //     var message_list=[];
-            //     for(var i = 0;i<strContent.split("<br/>").length;i++){
-            //         message_list.push({id:i,class:"",content:[{type:"def",text:strContent.split("<br/>")[i]}]})
-            //     }
-            //     console.log(message_list)
-            //     this.setState({
-            //         message_list:message_list
-            //     })
-            // }
-           
         }
         /** 
          * @author xuesong
@@ -79,8 +49,6 @@
          * @param selectLangPackProps 组件  下拉选择回调函数
          */
         selectLangPackProps=(newState)=>{
-            console.log(newState)
-            console.log(this.state.message_list)
            var edit_message_list=[];
            for(var i = 0;i<this.state.message_list.length;i++){
                if(newState.index===i){

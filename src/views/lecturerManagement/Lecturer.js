@@ -13,9 +13,13 @@ class Lecturer extends Component {
 	state = {
 		card_list: [],//项目信息列表
 		card_lists:[],
+		count:0,
 		selected_card: [],
 		card_state: false,
 		edit_project_data: [],
+		query_condition:{},
+		page_num:1,
+		page_size:20,
 		form_temp_name: "",
 		projectCard: [],//card的json
 		dataId: "",//点击card按钮获取到的card的id值
@@ -23,24 +27,39 @@ class Lecturer extends Component {
 		addCardGroupState: "",
 		remind_state: false,
 		list_message:"",
-		activeState:""
+		activeState:"",
+		loadingContent:"加载中..."
 
 	};
 
 	componentDidMount() {
 		// this.get_list_message("projectManagement","TrainingProgram")
-		this.listProject()
+		this.listProject(this.state.page_num,this.state.page_size)
 		this.fetchListData()
 		this.fetchProjectDataList()
-		
+		document.addEventListener("scroll",this.handleEnterKey);
 	}
-	listProject() {
+	
+	handleEnterKey = (e) => {
+		console.log(e)
+		// if(e.keyCode === 13){
+		// 	console.log("监听回车")
+		// 		//do somethings
+		// }
+	}
+	listProject(page_num,page_size) {
 		var cb = (route, message, arg) => {
 
 			if (message.error === 0) {
+				var list=this.state.card_list;
+				for(var i = 0;i<message.data.data_body.length;i++){
+					list.push(message.data.data_body[i])
+				}
+			
 				this.setState({
-					card_list: message.data,
-					card_lists:message.data
+					card_list: list,
+					card_lists:list,
+					count:message.data.count
 				})
 			}else if(message.error === 2){
 				console.log("未登录")
@@ -60,9 +79,12 @@ class Lecturer extends Component {
 				}, 3000)
 			}
 		}
-		getData(getRouter(getList("lecturerManagement","Lecturer")), { token: sessionStorage.token }, cb, {});
+		var obj ={page_num:{"condition":"equal","query_data":page_num},page_size:{"condition":"equal","query_data":page_size}};
+		getData(getRouter(getList("lecturerManagement","Lecturer")), { token: sessionStorage.token,query_condition:obj,data_type:"page_json" }, cb, {});
 
 	}
+	
+
 	// get_list_message=(list1,list2)=>{
 	// 	var message=JSON.parse(sessionStorage.Language)[list1].data;
 	// 	for(var i = 0;i<message.length;i++){
@@ -211,7 +233,7 @@ class Lecturer extends Component {
 					dataId: this.state.dataId
 
 				})
-				this.listProject()  //刷新项目列表
+				this.listProject(this.state.page_num,this.state.page_size)  //刷新项目列表
 			}else if(message.error === 2){
 				console.log("未登录")
 				sessionStorage.logged = false;
@@ -278,7 +300,7 @@ class Lecturer extends Component {
 				this.setState({    //  项目创建成功,打开编辑页面。更新view
 				card_state:false
 			}) 
-			this.listProject()  //刷新项目列表
+			this.listProject(this.state.page_num,this.state.page_size)  //刷新项目列表
 		
 		}else if(message.error === 2){
 			console.log("未登录")
@@ -306,7 +328,7 @@ class Lecturer extends Component {
 	examine_bool_message=(state)=>{
 		//this.props.examine_bool_second(state)
 		 console.log(state)
-		 this.listProject()  //刷新项目列表
+		 this.listProject(this.state.page_num,this.state.page_size) //刷新项目列表
 	}
 	activeState=(newState)=>{
 		this.setState({
@@ -318,6 +340,30 @@ class Lecturer extends Component {
 				card_list:message
 			})
 		}
+		handleScroll=(e)=>{
+		
+			let clientHeight = this.refs.bodyBox.clientHeight; //可视区域高度
+			let scrollTop  = this.refs.bodyBox.scrollTop;  //滚动条滚动高度
+			let scrollHeight = this.refs.bodyBox.scrollHeight; //滚动内容高度
+			if((clientHeight+scrollTop)==(scrollHeight)){ //如果滚动到底部 
+				let num = this.state.count;
+				let pageSize = this.state.page_size;
+				var totalPage = 0;
+				if(num/pageSize > parseInt(num/pageSize)){   
+							totalPage=parseInt(num/pageSize)+1;   
+				}else{   
+						totalPage=parseInt(num/pageSize);   
+				} 
+				if(this.state.page_num+1<=totalPage){
+					this.listProject(this.state.page_num+1,this.state.page_size)
+					console.log("滚动到底部")
+				}else{
+					this.setState({
+						loadingContent:"已经全部加载完毕"
+					})
+				}
+			}  
+	}
 	render() {
 		return (
 			<div>
@@ -344,7 +390,7 @@ class Lecturer extends Component {
 							keywordTitle={["讲师姓名"]}
 							screeningMessage={this.screening_information}
 						/> */}
-					<div className="overflow card_list_groups crius-card-list">
+					<div onScroll={this.handleScroll}  ref="bodyBox" className="overflow card_list_groups crius-card-list">
 						{this.state.card_list !== null ? this.state.card_list.map((card_list, index) => {
 							return (
 								<ComponentsList 
@@ -367,6 +413,7 @@ class Lecturer extends Component {
 								// 		/>
 							)
 						}) : ""}
+						<div  className="loading">{this.state.loadingContent}</div>
 					</div>
 				</div>
 				<div className={this.state.card_state ? "paper_div open" : "paper_div"}>

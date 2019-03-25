@@ -55,11 +55,9 @@
             for(var i in LangPack[this.props.langPack]){
                 if(selectedIdInfo===i){
                     changeSelectedInfo=LangPack[this.props.langPack][i];
-                    console.log(i)
                 }
                 selectList.push({"name":LangPack[this.props.langPack][i],"id":i})
             }
-            console.log(selectList)
             return (
                 <div style={this.props.view?{marginBottom:"10px"}:{}} className="search_info_list_card">
                     <div onClick={() => {
@@ -95,7 +93,6 @@
                                             document.getElementById(id+"_name").innerHTML = info_lists.name;
                                             document.getElementById(id+"_id").innerHTML = info_lists.id;
                                             this.searchShow()
-                                            console.log(info_lists.id)
                                             var newState = {
                                                 index:this.props.index,
                                                 name:info_lists.id,//

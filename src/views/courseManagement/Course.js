@@ -42,6 +42,8 @@ class Course extends Component {
 		 message_list:[],
 		 change_message_type:"",//判断改变的是所属分类还是授课讲师
 		 course_plan_list:[],    
+		 fileContentArr:"",
+
 	}
 	componentWillMount(){
 		this.table_data_body(1,this.state.psize,this.state.search_message)
@@ -572,6 +574,9 @@ class Course extends Component {
 			</a>
 			<a 
 				onClick={()=>{
+					this.setState({
+						fileContentArr:""
+					})
 					// this.downloadDetailData()
 					this.funDownload()
 				}}
@@ -609,25 +614,105 @@ class Course extends Component {
 				ids.push(checkCourseId[i].value)
 			}
 		}
+		if(ids.length>0){
+		// ![avatar](http://baidu.com/pic/doge.png)
 		var cb = (route, message, arg) => {
-			console.log(message)
+			// console.log(message)
+			
             if (message.error === 0) {
-           
-            }
-           
+				
+				for(var m = 0;m<message.data.length;m++){
+					for(var n = 0;n<message.data[m].course_plan.length;n++){
+						// 标题1
+						if(message.data[m].course_plan[n].class==="title_1 default_title"){
+							this.title_content("# ",message.data[m].course_plan[n].content)
+						}else if(message.data[m].course_plan[n].class==="title_2 default_title"){
+							this.title_content("## ",message.data[m].course_plan[n].content)
+						}else if(message.data[m].course_plan[n].class==="title_3 default_title"){
+							this.title_content("### ",message.data[m].course_plan[n].content)
+						}else if(message.data[m].course_plan[n].class==="main_boby default_title"){
+							this.title_content("",message.data[m].course_plan[n].content)
+						}else if(message.data[m].course_plan[n].class==="symbol_list default_title"){
+							this.title_content("    * ",message.data[m].course_plan[n].content)
+						}else if(message.data[m].course_plan[n].class==="unsigned_list default_title"){
+							this.title_content("      ",message.data[m].course_plan[n].content)
+						}else if(message.data[m].course_plan[n].class==="default_title img_right"){
+							this.title_content("![avatar]",message.data[m].course_plan[n].content)
+						}else if(message.data[m].course_plan[n].class==="default_title img_left"){
+							this.title_content("![avatar]",message.data[m].course_plan[n].content)
+						}else if(message.data[m].course_plan[n].class==="default_title img_center"){
+							this.title_content("![avatar]",message.data[m].course_plan[n].content)
+						}else if(message.data[m].course_plan[n].class==="default_title img_repeact"){
+							this.title_content("![avatar]",message.data[m].course_plan[n].content)
+						}
+					}
+				}
+				var filename = '课程方案'
+				var a = document.createElement('a')
+				var blob = new Blob([this.state.fileContentArr])
+				a.download = filename
+				a.href = URL.createObjectURL(blob)
+				a.click()
+				URL.revokeObjectURL(blob)
+            }else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
+			}else{
+				Alert.open({
+					alertTip:message.msg
+					
+				  });
+				  setTimeout(function(){
+					Alert.close();
+				  },3000)
+			
+			}
         }
-        var obj ={};
-
 		getData(getRouter("course_plan_getListCourseId"), { ids: ids, token: sessionStorage.token }, cb, {});
-
+	}else{
+		Alert.open({
+			alertTip:"请选择导出的课程方案"
+		  });
+		  setTimeout(function(){
+			Alert.close();
+		  },3000)
+	}
 		// var filename = 'hello'
 		// var a = document.createElement('a')
-		// var blob = new Blob(['Hello World!'])
+		// var blob = new Blob(['Hello World!\r\nhhh'])
 		// a.download = filename
 		// a.href = URL.createObjectURL(blob)
 		// a.click()
 		// URL.revokeObjectURL(blob)
 	};
+	title_content=(markdown,this_content)=>{
+		// var fileContentArr="";
+		var title_1_content=markdown;
+		var content =this_content;
+		for(var p = 0;p<content.length;p++){
+			if(content[p].type==="def"){
+				title_1_content=title_1_content+content[p].text;
+			}else if(content[p].type==="emphasize"){
+				title_1_content=title_1_content+"**"+content[p].text+"**";
+			}else if(content[p].type==="weaken"){
+				title_1_content=title_1_content+"=="+content[p].text+"==";	
+			}else if(content[p].type==="img"){
+				title_1_content=title_1_content+"("+content[p].text+")";	
+			}
+		}
+		this.setState({
+			fileContentArr:this.state.fileContentArr+title_1_content+"\r\n"
+		})
+		// console.log(title_1_content)
+		//  fileContentArr=fileContentArr+title_1_content+"\r\n";
+		//  console.log(fileContentArr)
+		
+	}
 	render(){
 		var sumLength=0;
         if(this.state.table_data_head){

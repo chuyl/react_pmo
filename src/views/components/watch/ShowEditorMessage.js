@@ -9,11 +9,9 @@
             // const {message,defaultValue} =this.props;
             var className = this.props.className.split(","); 
             var message;
-            console.log(this.props.message)
             if(this.props.message===null){
                 message=[];
             }else if(this.props.message===undefined){
-                console.log(message)
                 // message=this.props.defaultValue;
                 message=[];
             }else if(this.props.message===""){
@@ -22,7 +20,6 @@
             }else{
                 message=this.props.message;
             }
-            console.log(message)
             return (
                 <div className={className[0]?className[0]:""}>
                   {this.props.views?this.props.defaultValue:message.map((message_list,index)=>{
