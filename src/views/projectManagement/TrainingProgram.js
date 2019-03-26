@@ -4,6 +4,7 @@ import React, {
 // import Cards from '../components/Cards'
 import Alert from '../components/modal/Remind'
 import ComponentsList from '../components/composite/ComponentsList'
+import DataSearchMessage from '../components/search/DataSearchMessage'
 import { getData, getRouter,getList } from '../../utils/helpers'
 // import { PROJECTMANAGELIST } from '../../enum'
 
@@ -21,24 +22,37 @@ class TrainingProgram extends Component {
 		addCardGroupState: "",
 		remind_state: false,
 		list_message:"",
-		activeState:""
-
+		activeState:"",
+		page_num:1,
+		page_size:20,
+		count:0,
+		search_message:"",
+		loadingContent:"",
+		search_message:"",
 	};
 
 	componentDidMount() {
 		// this.get_list_message("projectManagement","TrainingProgram")
-		this.listProject()
+		this.listProject(this.state.page_num,this.state.page_size,this.state.search_message)
 		this.fetchListData()
 		this.fetchProjectDataList()
 		
 	}
-	listProject() {
+	listProject(page_num,page_size,search_obj) {
 		var cb = (route, message, arg) => {
 
 			if (message.error === 0) {
+				var list=this.state.card_list;
+				for(var i = 0;i<message.data.data_body.length;i++){
+					list.push(message.data.data_body[i])
+				}
+			
 				this.setState({
-					card_list: message.data
+					card_list: list,
+					count:message.data.count,
+					loadingContent:""
 				})
+			
 			}else if(message.error === 2){
 				console.log("未登录")
 				sessionStorage.logged = false;
@@ -57,8 +71,10 @@ class TrainingProgram extends Component {
 				}, 3000)
 			}
 		}
-		
-		getData(getRouter(getList("projectManagement","TrainingProgram")), { token: sessionStorage.token }, cb, {});
+		var obj ={page_num:{"condition":"equal","query_data":page_num},page_size:{"condition":"equal","query_data":page_size}};
+		// console.log(obj)
+    var objs = search_obj?Object.assign(obj, search_obj):obj
+		getData(getRouter(getList("projectManagement","TrainingProgram")), { token: sessionStorage.token,query_condition:objs,data_type:"page_json" }, cb, {});
 
 	}
 	// get_list_message=(list1,list2)=>{
@@ -311,12 +327,73 @@ class TrainingProgram extends Component {
 		this.setState({
 				activeState:newState
 			})
-	  }
+		}
+		screening_information=(message)=>{
+			this.setState({
+				search_message:message,
+				card_list:[],
+				card_lists:[]
+				})
+				this.listProject(1,this.state.page_size,message)
+			}
+		handleScroll=(e)=>{
+		
+			let clientHeight = this.refs.bodyBox.clientHeight; //可视区域高度
+			let scrollTop  = this.refs.bodyBox.scrollTop;  //滚动条滚动高度
+			let scrollHeight = this.refs.bodyBox.scrollHeight; //滚动内容高度
+			if((clientHeight+scrollTop)==(scrollHeight)){ //如果滚动到底部 
+				this.setState({
+					loadingContent:"加载中..."
+				})
+				let num = this.state.count;
+				let pageSize = this.state.page_size;
+				var totalPage = 0;
+				if(num/pageSize > parseInt(num/pageSize)){   
+							totalPage=parseInt(num/pageSize)+1;   
+				}else{   
+						totalPage=parseInt(num/pageSize);   
+				} 
+				if(this.state.page_num+1<=totalPage){
+					this.listProject(this.state.page_num+1,this.state.page_size,this.state.search_message)
+					console.log("滚动到底部")
+				}else{
+					this.setState({
+						loadingContent:"已经全部加载完毕"
+					})
+				}
+			}  
+	}
 	render() {
 		return (
 			<div>
 				<div id="" className="container">
 					<div className="add_btn_box">
+						<DataSearchMessage 
+								index={0}
+								message={this.state.card_list}
+									keywordSearch={["project_name","teaching_direction"]}
+									keywordTitle={[
+									"项目名称",
+									"授课方向",
+								
+									// "合作状态",
+									// "是否认证",
+									// "级别"
+									// "时间",
+									// "状态"
+								]}
+								//    selectListMessage={["project_type_list"]}
+								// 	selectNameMessage={["project_project_template_name"]}
+								selectListMessage={[]}
+												selectNameMessage={[]}
+												selectListCheckMessage={[]}
+												selectNameCheckMessage={[]}
+								sectionTimeMessage={[]}					   
+								langPackMessage={["lecturerState"]}
+								//    langPackTitleValue={["is_short","is_cert"]}
+							langPackTitle={["0,1,2"]}
+							screeningMessage={this.screening_information}
+						/>
 						<div className="add_button" onClick={(e) => {
 							this.fetchProjectData("addProject")
 							this.card_box_concent([], e)
@@ -329,8 +406,8 @@ class TrainingProgram extends Component {
 							添加
 						</div>
 					</div>
-					<div className="overflow card_list_groups crius-card-list">
-						{this.state.card_list !== null ? this.state.card_list.map((card_list, index) => {
+					<div onScroll={this.handleScroll}  ref="bodyBox" className="overflow card_list_groups crius-card-list">
+						{/* {this.state.card_list !== null ? this.state.card_list.map((card_list, index) => {
 							return (
 								<ComponentsList 
 									// allData={this.state.card_list} 
@@ -351,7 +428,8 @@ class TrainingProgram extends Component {
 								// 		key={card_list.id} 
 								// 		/>
 							)
-						}) : ""}
+						}) : ""} */}
+					<div  className="loading">{this.state.loadingContent}</div>
 					</div>
 				</div>
 				<div className={this.state.card_state ? "paper_div open" : "paper_div"}>

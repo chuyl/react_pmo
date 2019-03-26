@@ -19,27 +19,26 @@
     import SelectMessage from './SelectMessage'
     import SelectSearchType from './SelectSearchType'
     class ScreeningMessage extends Component {
-        state={
-            inputValue:"",
-            inputState:false,
-            message_list:this.props.message,
-            filter_box_state:true,
-            search_arr:[],
-            keywordTitle:[],
-            title_index:0
-            // message_spare_list:this.props.message,
-        }
-        componentWillMount(){
-        }
+        constructor(props) {
+            super(props);
+            this.state={
+                inputValue:"",
+                inputState:false,
+                filterBoxState:true,
+                searchArr:[],//筛选条件的数组
+                keywordTitle:[],//筛选条件的名称
+                titleIndex:0
+            }
+          }
         /** 
          * @time 2018-12-19
          * @author xuesong
          * @param screening_information 函数 筛选搜索
          */
           screening_information=()=>{
-              //selectNameMessage 数据表中需要select筛选的字段名称
+            //selectNameMessage 数据表中需要select筛选的字段名称
             var key=this.props.selectNameMessage?this.props.selectNameMessage:[];
-           //value 用来存储select的option
+            //value 用来存储select的option
             var value=[];
             //keyword_list 用来存储需要模糊关键字筛选的字段名称
             var keyword_list=[];
@@ -62,19 +61,19 @@
             }
             //obj的key为数据表中的字段，value对应字段中筛选的数据
             //所有筛选条件的数组
-            var search_arr=[];
+            var searchArr=[];
             for(var key in obj){ 
                 console.log("select_message"+key+"_name")
                 if(obj[key]!==""){
-                    search_arr.push({name:obj[key],id:"select_message"+key+"_name"})  
+                    searchArr.push({name:obj[key],id:"select_message"+key+"_name"})  
                 }
                 } 
 
                 if(keywordSearch!==""){
-                    search_arr.push({name:keywordSearch,id:"keywordSearch"})   
+                    searchArr.push({name:keywordSearch,id:"keywordSearch"})   
                 }
                 this.setState({
-                    search_arr:search_arr
+                    searchArr:searchArr
                 })
             let filter=(condition,data)=>{
                 console.log(condition)
@@ -127,7 +126,7 @@
         }
             document.getElementById("keywordSearch").value="";
             this.setState({
-                search_arr:[]
+                searchArr:[]
             })
             // console.log(this.props.message)
             this.props.screeningMessage(this.props.message)
@@ -160,7 +159,7 @@
          */
         select_title_index=(index)=>{
             this.setState({
-                title_index:index
+                titleIndex:index
             })
         }
         // console.log(this.props.keywordTitle)
@@ -169,16 +168,16 @@
             return (
                 <div className="filter_max_div">
                     {/* <button
-                        className="filter_box_state"
+                        className="filterBoxState"
                         onClick={()=>{
                             this.setState({
-                               filter_box_state:!this.state.filter_box_state 
+                               filterBoxState:!this.state.filterBoxState 
                             })
                         }}
                     >
-                        {this.state.filter_box_state?"关闭筛选框":"打开筛选框"}
+                        {this.state.filterBoxState?"关闭筛选框":"打开筛选框"}
                     </button> */}
-                    <div className="select_filter_box" style={this.state.filter_box_state?{display:"block"}:{display:"none"}}>
+                    <div className="select_filter_box" style={this.state.filterBoxState?{display:"block"}:{display:"none"}}>
                         <SelectSearchType
                              id={"select_title"}
                              selectedInfo={this.props.keywordTitle[0]}
@@ -187,15 +186,15 @@
                             />
 
                         <KeywordSearch 
-                            displayNone={this.state.title_index===0?1:0}
-                            style={this.state.title_index===0?{}:{display:"none"}}
+                            displayNone={this.state.titleIndex===0?1:0}
+                            style={this.state.titleIndex===0?{}:{display:"none"}}
                             id={"keywordSearch"}
                         />
                          {this.props.selectListMessage?this.props.selectListMessage.map((selectListMessage,index)=>{
                             return(
                                 <SelectMessage
                                 key={index}
-                                displayNone={index+1===this.state.title_index?1:0}
+                                displayNone={index+1===this.state.titleIndex?1:0}
                                 id={"select_message"+this.props.selectNameMessage[index]}
                                 searchInfoLists={selectListMessage}     
                             />
@@ -210,25 +209,25 @@
                         </button>
                         <div className="select_clean_box">
                             {/* <span>
-                                {this.state.search_arr.length>0?"关键字:":""}
+                                {this.state.searchArr.length>0?"关键字:":""}
                             </span> */}
-                            {this.state.search_arr.map((search_arr,index)=>{
-                                console.log(search_arr)
-                                if(search_arr.name!==""){
+                            {this.state.searchArr.map((searchArr,index)=>{
+                                console.log(searchArr)
+                                if(searchArr.name!==""){
                                 return(
                                     <div className="select_clean_bar" key={index}>
-                                        <span>{search_arr.name}
+                                        <span>{searchArr.name}
                                         </span>
                                         <span  className="del_btn"
                                             onClick={()=>{
-                                                this.clear_this_search(search_arr.id) 
+                                                this.clear_this_search(searchArr.id) 
                                             }}
                                         ></span>
                                     </div>
                                 )
                             
                             }})}
-                            {this.state.search_arr.length>0?<button
+                            {this.state.searchArr.length>0?<button
                                 className="del_btn_all"
                                 onClick={()=>{
                                 this.clear_search() 
