@@ -42,7 +42,6 @@ class Lecturer extends Component {
 		this.listProject(this.state.page_num,this.state.page_size,this.state.search_message)
 		this.fetchListData()
 		this.fetchProjectDataList()
-		document.addEventListener("scroll",this.handleEnterKey);
 	}
 	
 	handleEnterKey = (e) => {
@@ -238,10 +237,12 @@ class Lecturer extends Component {
 					// add_button:message.data["form-list"],
 					card_state: true,
 					edit_project_data: message.data,
-					dataId: this.state.dataId
+					dataId: this.state.dataId,
+					card_list:[],
+					page_num:1
 
 				})
-				this.listProject(this.state.page_num,this.state.page_size,this.state.search_message)  //刷新项目列表
+				this.listProject(1,this.state.page_size,this.state.search_message)  //刷新项目列表
 			}else if(message.error === 2){
 				console.log("未登录")
 				sessionStorage.logged = false;
@@ -306,9 +307,11 @@ class Lecturer extends Component {
 			if (message.error === 0) {
 			
 				this.setState({    //  项目创建成功,打开编辑页面。更新view
-				card_state:false
+				card_state:false,
+				card_list:[],
+				page_num:1
 			}) 
-			this.listProject(this.state.page_num,this.state.page_size,this.state.search_message)  //刷新项目列表
+			this.listProject(1,this.state.page_size,this.state.search_message)  //刷新项目列表
 		
 		}else if(message.error === 2){
 			console.log("未登录")
@@ -336,7 +339,11 @@ class Lecturer extends Component {
 	examine_bool_message=(state)=>{
 		//this.props.examine_bool_second(state)
 		 console.log(state)
-		 this.listProject(this.state.page_num,this.state.page_size,this.state.search_message) //刷新项目列表
+		 this.setState({
+			 card_list:[],
+			 page_num:1
+		 })
+		 this.listProject(1,this.state.page_size,this.state.search_message) //刷新项目列表
 	}
 	activeState=(newState)=>{
 		this.setState({
@@ -347,7 +354,8 @@ class Lecturer extends Component {
 		this.setState({
 			search_message:message,
 			card_list:[],
-			card_lists:[]
+			card_lists:[],
+			page_num:1
 			})
 			this.listProject(1,this.state.page_size,message)
 		}
@@ -356,35 +364,41 @@ class Lecturer extends Component {
 			let clientHeight = this.refs.bodyBox.clientHeight; //可视区域高度
 			let scrollTop  = this.refs.bodyBox.scrollTop;  //滚动条滚动高度
 			let scrollHeight = this.refs.bodyBox.scrollHeight; //滚动内容高度
+	
 			if((clientHeight+scrollTop)==(scrollHeight)){ //如果滚动到底部 
-				this.setState({
-					loadingContent:"加载中..."
-				})
-				let num = this.state.count;
-				let pageSize = this.state.page_size;
-				var totalPage = 0;
-				if(num/pageSize > parseInt(num/pageSize)){   
-							totalPage=parseInt(num/pageSize)+1;   
-				}else{   
-						totalPage=parseInt(num/pageSize);   
-				} 
-				if(this.state.page_num+1<=totalPage){
-					this.listProject(this.state.page_num+1,this.state.page_size,this.state.search_message)
-					console.log("滚动到底部")
-				}else{
-					this.setState({
-						loadingContent:"已经全部加载完毕"
-					})
-				}
-			}  
+				if(this.state.card_list.length==0&&this.state.page_num==1){
+						
+					}else{
+						this.setState({
+							loadingContent:"加载中...",
+						
+						})
+						let num = this.state.count;
+						let pageSize = this.state.page_size;
+						let totalPage = 0;
+						if(num/pageSize > parseInt(num/pageSize)){   
+									totalPage=parseInt(num/pageSize)+1;   
+						}else{   
+								totalPage=parseInt(num/pageSize);   
+						} 
+					
+							if(this.state.page_num+1<=totalPage){
+								this.listProject(this.state.page_num+1,this.state.page_size,this.state.search_message)
+								this.setState({
+									page_num:this.state.page_num+1,
+								
+								})
+								console.log("滚动到底部")
+							}else{
+								this.setState({
+									loadingContent:"已经全部加载完毕"
+								})
+							
+						}
+					}
+		}
 	}
-	// screening_information=(message)=>{
-	// 	console.log(message)
-	// 	this.setState({
-	// 		search_message:message
-  //       })
-  //       this.listProject(1,this.state.page_size,message)
-	// }
+
 	render() {
 		return (
 			<div>

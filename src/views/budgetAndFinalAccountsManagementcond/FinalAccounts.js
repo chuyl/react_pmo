@@ -6,6 +6,7 @@ import Alert from '../components/modal/Remind'
 import ComponentsList from '../components/composite/ComponentsList'
 import { getData, getRouter,getList } from '../../utils/helpers'
 import ScreeningMessage from '../components/search/ScreeningMessage'
+import DataSearchMessage from '../components/search/DataSearchMessage'
 // import { PROJECTMANAGELIST } from '../../enum'
 
 class FinalAccounts extends Component {
@@ -22,18 +23,24 @@ class FinalAccounts extends Component {
 		addCardGroupState: "",
 		remind_state: false,
 		list_message:"",
-		activeState:""
+		activeState:"",
+		page_num:1,
+		page_size:20,
+		count:0,
+		loadingContent:"",
+		search_message:"",
+
 
 	};
 
 	componentDidMount() {
 		// this.get_list_message("projectManagement","TrainingProgram")
-		this.listProject()
+		this.listProject(this.state.page_num,this.state.page_size,this.state.search_message)
 		this.fetchListData()
 		this.fetchProjectDataList()
 		
 	}
-	listProject() {
+	listProject(page_num,page_size,search_obj) {
 		var cb = (route, message, arg) => {
 
 			if (message.error === 0) {
@@ -59,8 +66,10 @@ class FinalAccounts extends Component {
 				}, 3000)
 			}
 		}
-		
-		getData(getRouter(getList("budgetAndFinalAccountsManagementcond","FinalAccounts")), { token: sessionStorage.token }, cb, {});
+		var obj ={page_num:{"condition":"equal","query_data":page_num},page_size:{"condition":"equal","query_data":page_size}};
+		// console.log(obj)
+    var objs = search_obj?Object.assign(obj, search_obj):obj
+		getData(getRouter(getList("budgetAndFinalAccountsManagementcond","FinalAccounts")), { token: sessionStorage.token,query_condition:objs,data_type:"page_json" }, cb, {});
 
 	}
 	// get_list_message=(list1,list2)=>{
@@ -212,7 +221,7 @@ class FinalAccounts extends Component {
 					dataId: this.state.dataId
 
 				})
-				this.listProject()  //刷新项目列表
+				this.state.page_num,this.state.page_size,this.state.search_message  //刷新项目列表
 			}else if(message.error === 2){
 				console.log("未登录")
 				sessionStorage.logged = false;
@@ -286,7 +295,7 @@ class FinalAccounts extends Component {
 					this.setState({    //  项目创建成功,打开编辑页面。更新view
 					card_state:false
 				}) 
-				this.listProject()  //刷新项目列表
+				this.state.page_num,this.state.page_size,this.state.search_message  //刷新项目列表
 			}
 		}
 		console.log(newState.before_api_uri)
@@ -295,12 +304,55 @@ class FinalAccounts extends Component {
 	examine_bool_message=(state)=>{
 		//this.props.examine_bool_second(state)
 		 console.log(state)
-		 this.listProject()  //刷新项目列表
+		 this.state.page_num,this.state.page_size,this.state.search_message  //刷新项目列表
 	}
 	screening_information=(message)=>{
 		this.setState({
-			card_list:message
-		})
+			search_message:message,
+			card_list:[],
+			card_lists:[],
+			page_num:1
+			})
+			this.listProject(1,this.state.page_size,message)
+		}
+		handleScroll=(e)=>{
+		
+			let clientHeight = this.refs.bodyBox.clientHeight; //可视区域高度
+			let scrollTop  = this.refs.bodyBox.scrollTop;  //滚动条滚动高度
+			let scrollHeight = this.refs.bodyBox.scrollHeight; //滚动内容高度
+	
+			if((clientHeight+scrollTop)==(scrollHeight)){ //如果滚动到底部 
+				if(this.state.card_list.length==0&&this.state.page_num==1){
+						
+					}else{
+						this.setState({
+							loadingContent:"加载中...",
+						
+						})
+						let num = this.state.count;
+						let pageSize = this.state.page_size;
+						let totalPage = 0;
+						if(num/pageSize > parseInt(num/pageSize)){   
+									totalPage=parseInt(num/pageSize)+1;   
+						}else{   
+								totalPage=parseInt(num/pageSize);   
+						} 
+					
+							if(this.state.page_num+1<=totalPage){
+								this.listProject(this.state.page_num+1,this.state.page_size,this.state.search_message)
+								this.setState({
+									page_num:this.state.page_num+1,
+								
+								})
+								console.log("滚动到底部")
+							}else{
+								this.setState({
+									loadingContent:"已经全部加载完毕"
+								})
+							
+						}
+					}
+		}
 	}
 	activeState=(newState)=>{
 		this.setState({
@@ -332,7 +384,7 @@ class FinalAccounts extends Component {
 							screening_message={this.screening_information}
 						/> */}
 					</div>
-					<div className="overflow card_list_groups crius-card-list">
+					<div  onScroll={this.handleScroll}  ref="bodyBox" className="overflow card_list_groups crius-card-list">
 						{this.state.card_list !== null ? this.state.card_list.map((card_list, index) => {
 							return (
 								<ComponentsList indexKey={this.state.activeState} card_active_state={this.activeState} examineBoolSeventh={this.examine_bool_message} examine_bools={this.examine_bool_message} index={index} sevenChange={this.handleChildChange} key={index} componentslist={this.state.projectCard} componentsdata={card_list} ></ComponentsList >

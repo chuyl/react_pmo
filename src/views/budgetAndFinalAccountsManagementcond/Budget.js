@@ -223,10 +223,12 @@ class Budget extends Component {
 					// add_button:message.data["form-list"],
 					card_state: true,
 					edit_project_data: message.data,
-					dataId: this.state.dataId
+					dataId: this.state.dataId,
+					card_list:[],
+					page_num:1
 
 				})
-		this.listProject(this.state.page_num,this.state.page_size,this.state.search_message)  //刷新项目列表
+		this.listProject(1,this.state.page_size,this.state.search_message)  //刷新项目列表
 			}else if(message.error === 2){
 				console.log("未登录")
 				sessionStorage.logged = false;
@@ -298,9 +300,11 @@ class Budget extends Component {
 			
 			}else{
 					this.setState({    //  项目创建成功,打开编辑页面。更新view
-					card_state:false
+					card_state:false,
+					card_list:[],
+					page_num:1
 				}) 
-				this.listProject(this.state.page_num,this.state.page_size,this.state.search_message)   //刷新项目列表
+				this.listProject(1,this.state.page_size,this.state.search_message)   //刷新项目列表
 			}
 		}
 		getData(getRouter(newState.before_api_uri), { data: obj, token: sessionStorage.token }, cb, {});
@@ -308,13 +312,18 @@ class Budget extends Component {
 	examine_bool_message=(state)=>{
 		//this.props.examine_bool_second(state)
 		 console.log(state)
-		 this.listProject(this.state.page_num,this.state.page_size,this.state.search_message)   //刷新项目列表
+		 this.setState({
+			 card_list:[],
+			 page_num:1
+		 })
+		 this.listProject(1,this.state.page_size,this.state.search_message)   //刷新项目列表
 	}
 	screening_information=(message)=>{
 		this.setState({
 			search_message:message,
 			card_list:[],
-			card_lists:[]
+			card_lists:[],
+			page_num:1
 			})
 			this.listProject(1,this.state.page_size,message)
 		}
@@ -329,6 +338,9 @@ class Budget extends Component {
 			let scrollTop  = this.refs.bodyBox.scrollTop;  //滚动条滚动高度
 			let scrollHeight = this.refs.bodyBox.scrollHeight; //滚动内容高度
 			if((clientHeight+scrollTop)==(scrollHeight)){ //如果滚动到底部 
+				if(this.state.card_list.length==0&&this.state.page_num==1){
+						
+				}else{
 				this.setState({
 					loadingContent:"加载中..."
 				})
@@ -342,6 +354,9 @@ class Budget extends Component {
 				} 
 				if(this.state.page_num+1<=totalPage){
 					this.listProject(this.state.page_num+1,this.state.page_size,this.state.search_message)
+					this.setState({
+						page_num:this.state.page_num+1
+					})
 					console.log("滚动到底部")
 				}else{
 					this.setState({
@@ -349,6 +364,7 @@ class Budget extends Component {
 					})
 				}
 			}  
+		}
 	}
 	render() {
 		return (

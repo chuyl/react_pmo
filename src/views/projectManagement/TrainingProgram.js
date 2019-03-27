@@ -39,6 +39,7 @@ class TrainingProgram extends Component {
 		
 	}
 	listProject(page_num,page_size,search_obj) {
+		console.log(this.state.card_list)
 		var cb = (route, message, arg) => {
 
 			if (message.error === 0) {
@@ -222,10 +223,12 @@ class TrainingProgram extends Component {
 					// add_button:message.data["form-list"],
 					card_state: true,
 					edit_project_data: message.data,
-					dataId: this.state.dataId
+					dataId: this.state.dataId,
+					card_list:[],
+					page_num:1
 
 				})
-				this.listProject()  //刷新项目列表
+				this.listProject(1,this.state.page_size,this.state.message)  //刷新项目列表
 			}else if(message.error === 2){
 				console.log("未登录")
 				sessionStorage.logged = false;
@@ -292,9 +295,11 @@ class TrainingProgram extends Component {
 			
 			}else{
 				this.setState({    //  项目创建成功,打开编辑页面。更新view
-				card_state:false
+				card_state:false,
+				card_list:[],
+				page_num:1
 			}) 
-			this.listProject()  //刷新项目列表
+			this.listProject(1,this.state.page_size,this.state.message)  //刷新项目列表
 		}
 		}else if(message.error === 2){
 			console.log("未登录")
@@ -320,8 +325,12 @@ class TrainingProgram extends Component {
 	}
 	examine_bool_message=(state)=>{
 		//this.props.examine_bool_second(state)
-		 console.log(state)
-		 this.listProject()  //刷新项目列表
+		console.log("1")
+		this.setState({
+			card_list:[],
+			page_num:1
+		})
+		 this.listProject(1,this.state.page_size,this.state.message)  //刷新项目列表
 	}
 	activeState=(newState)=>{
 		this.setState({
@@ -332,16 +341,23 @@ class TrainingProgram extends Component {
 			this.setState({
 				search_message:message,
 				card_list:[],
-				card_lists:[]
+				card_lists:[],
+				page_num:1
 				})
+				console.log("1")
 				this.listProject(1,this.state.page_size,message)
+			
 			}
 		handleScroll=(e)=>{
 		
 			let clientHeight = this.refs.bodyBox.clientHeight; //可视区域高度
 			let scrollTop  = this.refs.bodyBox.scrollTop;  //滚动条滚动高度
 			let scrollHeight = this.refs.bodyBox.scrollHeight; //滚动内容高度
+		
 			if((clientHeight+scrollTop)==(scrollHeight)){ //如果滚动到底部 
+				if(this.state.card_list.length==0&&this.state.page_num==1){
+						
+				}else{
 				this.setState({
 					loadingContent:"加载中..."
 				})
@@ -355,6 +371,9 @@ class TrainingProgram extends Component {
 				} 
 				if(this.state.page_num+1<=totalPage){
 					this.listProject(this.state.page_num+1,this.state.page_size,this.state.search_message)
+					this.setState({
+						page_num:this.state.page_num+1
+					})
 					console.log("滚动到底部")
 				}else{
 					this.setState({
@@ -362,6 +381,7 @@ class TrainingProgram extends Component {
 					})
 				}
 			}  
+		}
 	}
 	render() {
 		return (
@@ -407,7 +427,7 @@ class TrainingProgram extends Component {
 						</div>
 					</div>
 					<div onScroll={this.handleScroll}  ref="bodyBox" className="overflow card_list_groups crius-card-list">
-						{/* {this.state.card_list !== null ? this.state.card_list.map((card_list, index) => {
+						{this.state.card_list !== null ? this.state.card_list.map((card_list, index) => {
 							return (
 								<ComponentsList 
 									// allData={this.state.card_list} 
@@ -428,7 +448,7 @@ class TrainingProgram extends Component {
 								// 		key={card_list.id} 
 								// 		/>
 							)
-						}) : ""} */}
+						}) : ""}
 					<div  className="loading">{this.state.loadingContent}</div>
 					</div>
 				</div>
