@@ -393,10 +393,10 @@ class Budget extends Component {
 						<DataSearchMessage 
 							index={0}
 							message={this.state.card_list}
-								keywordSearch={["name","teaching_direction"]}
+								keywordSearch={["project_name"]}
 								keywordTitle={[
-								"讲师姓名",
-								"授课方向",
+								"项目名称",
+								// "授课方向",
 							
 								// "合作状态",
 								// "是否认证",

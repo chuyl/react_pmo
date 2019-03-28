@@ -26,10 +26,8 @@
                         <span>{message.financial_number}</span>
                     </div>
                     <div className="pay_title">
-
                         <dt className="dt_name">中软总公司计算机培训中心</dt>
                         <dt className="dt_big">支出凭单</dt>
-
                         <span className="time_write">
                             <span className="time_year">{year}</span>
                             <i>年</i>

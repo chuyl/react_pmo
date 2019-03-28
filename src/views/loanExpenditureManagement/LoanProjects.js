@@ -6,7 +6,7 @@ import ViewTextField from '../components/input/ViewTextField'
 import Alert from '../components/modal/Remind'
 import Alerts from '../components/modal/Alert'
 import PaymentManageBtn from '../components/button/PaymentManageBtn'
-class TechnologyClassificationManagement extends Component {
+class LoanProjects extends Component {
 	state={
 		pno:1,
         psize:Math.floor((document.body.clientHeight*0.7-40)/28),
@@ -16,30 +16,30 @@ class TechnologyClassificationManagement extends Component {
         project_count:0,
         table_data_body:[],
         table_data_bodys:[],
-        table_type_data_body:[],
-        table_type_data_bodys:[],
-        table_type_data_head:[],
+        table_project_data_body:[],
+        table_project_data_bodys:[],
+        table_project_data_head:[],
         table_data_head:[],
          query_condition:{},
          search_message:"",
          search_project_message:"",
 		 financial_number:"",
-		 add_courses_by_type:false,//一个项目关联多个支出
+		 add_ids_by_project:false,//一个项目关联多个支出
 		 alertAddProjectState:false,//相关内容
 		 alertState:false,
-		 course_object_list:[],//支出id
-		 type_object_list:[],//项目id
+		 loan_id:[],//支出id
+		 project_id:[],//项目id
          alertTitle:"",
-         type_course_title:"",
+         project_loan_title:"",
          linkpage:"",
-         type_course_id_arr:[],
+         project_loan_id_arr:[],
          content:""
          
         
 	}
 	componentWillMount(){
         this.table_data_body(1,this.state.psize,this.state.search_message)
-        this.table_type_data_body(1,this.state.psize,this.state.search_project_message)
+        this.table_project_data_body(1,this.state.psize,this.state.search_project_message)
 	}
 	table_data_body = (page_num,page_size,search_obj) => {
         
@@ -55,39 +55,47 @@ class TechnologyClassificationManagement extends Component {
            
         }
         var obj ={page_num:{"condition":"equal","query_data":page_num},page_size:{"condition":"equal","query_data":page_size}};
+        // console.log(obj)
         var objs = search_obj?Object.assign(obj, search_obj):obj
+        // console.log(objs)
         // var places = JSON.parse((JSON.stringify(obj)+JSON.stringify(this.state.search_message)).replace(/}{/,','));
+        // console.log(places)
         this.setState({
             query_condition:obj
 		})
-        getData(getRouter("course_manage_list"), { token: sessionStorage.token,query_condition:objs,data_type:"page_json" }, cb, {});
+		// console.log(objs)
+        getData(getRouter("loan_project_list_pass"), { token: sessionStorage.token,query_condition:objs,data_type:"page_json" }, cb, {});
         // getData(getRouter("examine_record_list"),{ session: sessionStorage.session}, cb, {});
 
     }
-    table_type_data_body = (page_num,page_size,search_obj) => {
+    table_project_data_body = (page_num,page_size,search_obj) => {
         
         var cb = (route, message, arg) => {
             if (message.error === 0) {
                this.setState({
-                table_type_data_body:message.data.data_body,
-                table_type_data_bodys:message.data.data_body,
-                table_type_data_head:message.data.data_head,
+                table_project_data_body:message.data.data_body,
+                table_project_data_bodys:message.data.data_body,
+                table_project_data_head:message.data.data_head,
                 project_count:message.data.count
 			   })
             }
            
         }
         var obj ={page_num:{"condition":"equal","query_data":page_num},page_size:{"condition":"equal","query_data":page_size}};
+        // console.log(obj)
         var objs = search_obj?Object.assign(obj, search_obj):obj
+        // console.log(objs)
         // var places = JSON.parse((JSON.stringify(obj)+JSON.stringify(this.state.search_message)).replace(/}{/,','));
+        // console.log(places)
         this.setState({
             query_condition:obj
 		})
-        getData(getRouter("classification_manage_is_leaf_list"), { token: sessionStorage.token,query_condition:objs,data_type:"page_json" }, cb, {});
+		// console.log(objs)
+        getData(getRouter("project_manage_list"), { token: sessionStorage.token,query_condition:objs,data_type:"page_json" }, cb, {});
         // getData(getRouter("examine_record_list"),{ session: sessionStorage.session}, cb, {});
 
 	}
-	payment_csv=(search_obj)=>{
+	loan_csv=(search_obj)=>{
 		var cb = (route, message, arg) => {
             if (message.error === 0) {
            
@@ -99,7 +107,7 @@ class TechnologyClassificationManagement extends Component {
         this.setState({
             query_condition:obj
 		})
-		PostCsvData(getRouter("course_manage_list"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
+		PostCsvData(getRouter("loan_project_list_pass"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
 		 , cb, {});
 	}
 	
@@ -115,7 +123,7 @@ class TechnologyClassificationManagement extends Component {
         this.setState({
             query_condition:obj
 		})
-		PostCsvData(getRouter("classification_manage_is_leaf_list"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
+		PostCsvData(getRouter("project_manage_list"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
 		 , cb, {});
 	}
 	
@@ -173,10 +181,10 @@ class TechnologyClassificationManagement extends Component {
 					<td  style={{"width":"2em"}}>
                         <input 
                             onClick={()=>{
-                               this.checked_arr("paymentCheck","course_object_list","projectCheck")
+                               this.checked_arr("loanCheck","loan_id","projectCheck")
                             }}
                             value={table_data_body.id}
-                            name="paymentCheck" type="checkbox"/>
+                            name="loanCheck" type="checkbox"/>
                             <span style={{display:"none"}}>{id+table_data_body.id+" "+table_data_body.item_content===""?"未设置支出内容":table_data_body.item_content+" "+table_data_body.amount===""?"未设置金额":table_data_body.amount}</span>
 					</td>
 					
@@ -198,7 +206,7 @@ class TechnologyClassificationManagement extends Component {
         return components
      }
      goProjectPage= (pno,psize) =>{
-        // this.table_type_data_body()
+        // this.table_project_data_body()
         // {this.historyFileDialog()}
         var components = [];
         var num = this.state.count;//表格所有行数(所有记录数)
@@ -214,26 +222,26 @@ class TechnologyClassificationManagement extends Component {
         var startRow = (currentPage - 1) * pageSize+1;//开始显示的行  31 
         var endRow = currentPage * pageSize;//结束显示的行   40
         endRow = (endRow > num)? num : endRow;    40
-        this.state.table_type_data_body.map((table_type_data_body,index)=>{
+        this.state.table_project_data_body.map((table_project_data_body,index)=>{
             components.push (
                 <tr
                     key = {index}> 
 					<td  style={{"width":"2em"}}>
 						<input onClick={()=>{
-                                this.checked_arr("projectCheck","type_object_list","paymentCheck")
+                                this.checked_arr("projectCheck","project_id","loanCheck")
                       
                           
-                        }}  value={table_type_data_body.id} name="projectCheck" type="checkbox"/>
-                         <span style={{display:"none"}}>{table_type_data_body.unicode+" "+table_type_data_body.project_name===""?"未设置课程名称":table_type_data_body.project_name+" "+table_type_data_body.time}</span>
+                        }}  value={table_project_data_body.id} name="projectCheck" type="checkbox"/>
+                         <span style={{display:"none"}}>{table_project_data_body.unicode+" "+table_project_data_body.project_name===""?"未设置课程名称":table_project_data_body.project_name+" "+table_project_data_body.time}</span>
                     </td>
 					{/* <td>
-						<input value={table_type_data_body.id} type="checkbox" name="payment"/>
+						<input value={table_project_data_body.id} type="checkbox" name="loan"/>
 					</td> */}
-                    {this.state.table_type_data_head?this.state.table_type_data_head.map((table_type_data_head,index)=>{
+                    {this.state.table_project_data_head?this.state.table_project_data_head.map((table_project_data_head,index)=>{
                         return(
-						<td key={index} title={table_type_data_body[table_type_data_head.key]}>
+						<td key={index} title={table_project_data_body[table_project_data_head.key]}>
 							<div className="statistical_table_box">
-								{table_type_data_body[table_type_data_head.key]}
+								{table_project_data_body[table_project_data_head.key]}
 							</div>
 						</td>)
 						
@@ -301,7 +309,7 @@ class TechnologyClassificationManagement extends Component {
 			<a 
 				onClick={()=>{
 					// this.downloadDetailData()
-					 this.payment_csv(this.state.search_message)
+					 this.loan_csv(this.state.search_message)
 				}}
 				className="nyx-change-page-href" style={{marginRight:"-10em",float:"right"}}>
 				{"导出"}
@@ -333,7 +341,7 @@ class TechnologyClassificationManagement extends Component {
 						project_pno:1
 					})
 					currentPage>1?this.goProjectPage(this.state.project_pno,"+psize+"):""
-					currentPage>1?this.table_type_data_body(1,this.state.psize,this.state.search_project_message):""
+					currentPage>1?this.table_project_data_body(1,this.state.psize,this.state.search_project_message):""
 				}}
 				>首页
 			</a>
@@ -341,7 +349,7 @@ class TechnologyClassificationManagement extends Component {
 				className="nyx-change-page-href" onClick={()=>{
 				currentPage>1?this.setState({project_pno:this.state.project_pno-1}):""
 				currentPage>1?this.goProjectPage(this.state.project_pno,"+psize+"):""
-				currentPage>1?this.table_type_data_body(this.state.project_pno-1,this.state.psize,this.state.search_project_message):""
+				currentPage>1?this.table_project_data_body(this.state.project_pno-1,this.state.psize,this.state.search_project_message):""
 			}}
 			>{"<上一页"}</a>
 			<a 
@@ -350,7 +358,7 @@ class TechnologyClassificationManagement extends Component {
 				currentPage<totalPage?this.setState({project_pno:this.state.project_pno+1}):""
 			{ this.goProjectPage("+(currentPage+1)+","+psize+")}
 				currentPage<totalPage?this.goProjectPage(this.state.project_pno,"+psize+"):""
-				currentPage<totalPage?this.table_type_data_body(this.state.project_pno+1,this.state.psize,this.state.search_project_message):""
+				currentPage<totalPage?this.table_project_data_body(this.state.project_pno+1,this.state.psize,this.state.search_project_message):""
 			}}
 			>{"下一页>"}</a>
 			<a 
@@ -359,7 +367,7 @@ class TechnologyClassificationManagement extends Component {
 				currentPage<totalPage?this.setState({project_pno:totalPage}):""
 				
 				currentPage<totalPage?this.goProjectPage(this.state.project_pno,"+psize+"):""
-				currentPage<totalPage?this.table_type_data_body(totalPage,this.state.psize,this.state.search_project_message):""
+				currentPage<totalPage?this.table_project_data_body(totalPage,this.state.psize,this.state.search_project_message):""
 			} }
 			>{"尾页"}</a>
 			<a 
@@ -390,11 +398,11 @@ class TechnologyClassificationManagement extends Component {
 		this.setState({
 			search_project_message:message
         })
-        this.table_type_data_body(1,this.state.psize,message)
+        this.table_project_data_body(1,this.state.psize,message)
 	}
 	cancelCallback=()=>{
 		this.setState({
-			add_courses_by_type:false,
+			add_ids_by_project:false,
 			alertAddProjectState:false,
 			alertState:false
 		})
@@ -403,11 +411,11 @@ class TechnologyClassificationManagement extends Component {
         var cb = (route, message, arg) => {
 			if (message.error === 0) {
 				this.setState({
-					add_courses_by_type:false,
+					add_ids_by_project:false,
 		
 				})
                 this.table_data_body(1,this.state.psize,this.state.search_message)
-                this.table_type_data_body(1,this.state.psize,this.state.search_project_message)
+                this.table_project_data_body(1,this.state.psize,this.state.search_project_message)
 
 			}else if(message.error === 2){
 				console.log("未登录")
@@ -427,21 +435,21 @@ class TechnologyClassificationManagement extends Component {
 				},3000)
 			  }
         }
-        // type_course_id_arr
-        if(this.state.content==="add_courses_by_type"){
-            var add_courses_by_type=[];
-            for(var i = 0;i<this.state.type_course_id_arr.length;i++){
-                add_courses_by_type.push(this.state.type_course_id_arr[i].id)
+        // project_loan_id_arr
+        if(this.state.content==="add_ids_by_project"){
+            var add_ids_by_project=[];
+            for(var i = 0;i<this.state.project_loan_id_arr.length;i++){
+                add_ids_by_project.push({id:this.state.project_loan_id_arr[i].id,price:document.getElementById("project_loan_id_arr"+this.state.project_loan_id_arr[i].id).value})
             }
-            getData(getRouter("classification_manage_course"), { token:sessionStorage.token,course_object_list:add_courses_by_type,type_object_list:this.state.type_object_list}, cb, {});
+            getData(getRouter("loan_project_add_ids_by_project"), { token:sessionStorage.token,loan_object_list:add_ids_by_project,project_id:this.state.project_id[0]}, cb, {});
         }
        //一个支出到多个项目
-        if(this.state.content==="add_type_by_course"){
-            var add_type_by_course=[];
-            for(var j = 0;j<this.state.type_course_id_arr.length;j++){
-                add_type_by_course.push(this.state.type_course_id_arr[j].id)
+        if(this.state.content==="add_projects_by_id"){
+            var add_projects_by_id=[];
+            for(var j = 0;j<this.state.project_loan_id_arr.length;j++){
+                add_projects_by_id.push({project_id:this.state.project_loan_id_arr[j].id,price:document.getElementById("project_loan_id_arr"+this.state.project_loan_id_arr[j].id).value})
             }
-            getData(getRouter("classification_manage_course"), { token:sessionStorage.token,course_object_list:this.state.course_object_list,type_object_list:add_type_by_course}, cb, {});
+            getData(getRouter("loan_project_add_projects_by_id"), { token:sessionStorage.token,id:this.state.loan_id[0],project_object_list:add_projects_by_id}, cb, {});
         }
 	}
     alertHoldState=(newState)=>{
@@ -453,13 +461,14 @@ class TechnologyClassificationManagement extends Component {
 	}
     alertAddState=(newState)=>{
       
-        var paymentCheck=document.getElementsByName("paymentCheck");
+        var loanCheck=document.getElementsByName("loanCheck");
         var projectCheck=document.getElementsByName("projectCheck");
-        var payment_message=[];
+        var loan_message=[];
         var project_message=[];
-            for(var i = 0;i<paymentCheck.length;i++){
-                if(paymentCheck[i].checked){
-                    payment_message.push({id:paymentCheck[i].value,title:paymentCheck[i].parentNode.children[1].innerHTML}); 
+            for(var i = 0;i<loanCheck.length;i++){
+                if(loanCheck[i].checked){
+                    console.log(loanCheck[i].parentNode.children[1])
+                    loan_message.push({id:loanCheck[i].value,title:loanCheck[i].parentNode.children[1].innerHTML}); 
                 }
             }
             
@@ -468,29 +477,55 @@ class TechnologyClassificationManagement extends Component {
                     project_message.push({id:projectCheck[j].value,title:projectCheck[j].parentNode.children[1].innerHTML}); 
                 }
             }
-            if(newState.content==="add_courses_by_type"){
+            if(newState.content==="add_ids_by_project"){
+                console.log(project_message[0].title)
                 this.setState({
                     [newState.state]:true,
                     content:newState.content,
-                    alertTitle:"关联多个分类到一个课程",
-                    type_course_title:"关联多个支出 到"+project_message[0].name,
-                    type_course_id_arr:payment_message,
+                    alertTitle:"关联多个支出到一个项目",
+                    project_loan_title:"关联多个支出 到"+project_message[0].title,
+                    project_loan_id_arr:loan_message,
                 })
             }
            
-            if(newState.content==="add_type_by_course"){
+            if(newState.content==="add_projects_by_id"){
                 this.setState({
                     [newState.state]:true,
                     content:newState.content,
-                    alertTitle:"关联一个课程到多个分类",
-                    type_course_title:"关联"+payment_message[0].name,
-                    type_course_id_arr:project_message,
-                    // course_object_list:newState.dataId,
+                    alertTitle:"关联一个支出到多个项目",
+                    project_loan_title:"关联"+loan_message[0].title+"元到",
+                    project_loan_id_arr:project_message,
+                    // loan_id:newState.dataId,
                     // financial_number:newState.financialNumber?newState.financialNumber:""
                 })
             }
     }
-
+    loan_id_and_project_id= () =>{
+        var components = [];
+        this.state.project_loan_id_arr.map((project_loan_id_arr,index)=>{
+            components.push (
+                <div key={index}>
+                <div>{this.state.project_loan_title}</div>
+                    <span>
+                        {project_loan_id_arr.title}
+                    </span>
+                    <ViewTextField 
+                         id={"project_loan_id_arr"+project_loan_id_arr.id}
+                        // onChange={(e)=>{
+                        //     this.setState({
+                        //         project_id:e.target.value
+                        //         })
+                        //     }}
+                        defineValue={""} 
+                        labelValue={"关联金额"} 
+                                    />
+                </div>
+       
+        );
+       
+        })
+        return components
+     }
 	render(){
 		var sumLength=0;
         if(this.state.table_data_head){
@@ -502,52 +537,48 @@ class TechnologyClassificationManagement extends Component {
             <div>
                 <div style={{width:"100%",float:"left",height:"2em"}}>
                     <PaymentManageBtn
-                        isClick={this.state.course_object_list.length===1?false:true}
+                        isClick={this.state.loan_id.length===1?false:true}
                         onHoldClick={this.alertAddState}
-                         classNames="btn_list"
-                        defineValue="关联一个课程到多个分类"
-                        content={"add_type_by_course"}
-                        state="add_courses_by_type"
-						// linkpage="payment_state_recall"	
+                        // classNames="btn_list"
+                        defineValue="关联一个支出到多个项目"
+                        content={"add_projects_by_id"}
+                        classNames="btn_list"
+                        state="add_ids_by_project"
+						// linkpage="loan_state_recall"	
 							// dataId={table_data_body.id}
 					/>
                     <PaymentManageBtn
-                        isClick={this.state.type_object_list.length===1?false:true}
+                        isClick={this.state.project_id.length===1?false:true}
 						onHoldClick={this.alertAddState}
-						defineValue="关联多个分类到一个课程"
-						classNames="btn_list"
-                        state="add_courses_by_type"
-                        content={"add_courses_by_type"}
-						// linkpage="payment_state_recall"	
+						defineValue="关联多个支出到一个项目"
+                        state="add_ids_by_project"
+                        classNames="btn_list"
+                        content={"add_ids_by_project"}
+						// linkpage="loan_state_recall"	
 							// dataId={table_data_body.id}
 					/>    
                 </div>
                 <div className="loan_part_left" style={{width:"50%",float:"left",position:"relative",height:"93vh"}}>
                     <DataSearchMessage 
-                        index={0}
-                        message={this.state.table_data_bodys}
-                        keywordSearch={["name","type_name"]}
-                        keywordTitle={[
-                            "课程名称",
-                            "所属分类",
-                            "授课讲师",
-                            "周期",
-                            "是否认证",
-                            "级别"
-                                // "时间",
-                                // "状态"
-                            ]}
-                            //    selectListMessage={["project_type_list"]}
-                            // 	selectNameMessage={["project_project_template_name"]}
-                        selectListMessage={[]}
-                        selectNameMessage={[]}
-                        selectListCheckMessage={["lecturer_manage_list"]}
-                        selectNameCheckMessage={["lecturer_name"]}
-                        sectionTimeMessage={[]}                        
-                        langPackMessage={["is_short","is_cert","level"]}
-                        //    langPackTitleValue={["is_short","is_cert"]}
-                        langPackTitle={["0,1","0,1","1,2,3"]}
-                        screeningMessage={this.screening_information}
+                       index={0}
+					   message={this.state.table_data_bodys}
+					   keywordSearch={["financial_number"]}
+					   keywordTitle={[
+                        "财务编号",
+                        // "项目类型",
+						"领款人",
+						"时间",
+						"状态"]}
+					//    selectListMessage={["project_type_list"]}
+					// 	selectNameMessage={["project_project_template_name"]}
+					   selectListMessage={[]}
+                       selectNameMessage={[]}
+                       selectListCheckMessage={["staff_manage_list"]}
+                       selectNameCheckMessage={["payee_name"]}
+					   sectionTimeMessage={["submit_time"]}
+                       langPackMessage={["state"]}
+					   langPackTitle={["-1,1,2"]}
+					   screeningMessage={this.screening_information}
 					/>
                     <div  className="statistical_div">
                         <table style={{width:sumLength+2+"em"}} className="statistical_table">
@@ -580,55 +611,59 @@ class TechnologyClassificationManagement extends Component {
                 </div>
                 <div className="loan_part_right" style={{width:"50%",float:"left",position:"relative",height:"93vh"}}>
                     <DataSearchMessage 
-                        index={0}
-                        message={this.state.table_data_bodys}
-                        keywordSearch={["name","type_name"]}
-                        keywordTitle={[
-                            "分类名称",
-                            "所属分类名称",
-                            "最小分类"
-                            // "项目类型",
-                            // "领款人",
-                            // "时间",
-                            // "状态"
-                        ]}
-                        //    selectListMessage={["project_type_list"]}
-                        // 	selectNameMessage={["project_project_template_name"]}
-                        selectListMessage={[]}
-                        selectNameMessage={[]}
-                        selectListCheckMessage={[]}
-                        selectNameCheckMessage={[]}
-                        sectionTimeMessage={[]}
-                        langPackMessage={["is_leaf"]}
-                        langPackTitle={["0,1"]}
-                        screeningMessage={this.screening_information}
-                        />
-                        <div  className="statistical_div">
-                            <table style={{width:sumLength+2+"em"}} className="statistical_table">
-                                <thead>
-                                    <tr>
-                                    {/* <th><div className="statistical_table_box">序号</div></th> */}
-                                        <th>
-                                            <div style={{"width":"2em"}}></div>
-                                        </th>
-                                        {this.state.table_type_data_head?this.state.table_type_data_head.map((table_type_data_head,index)=>{
-                                            return(
-                                                <th key={index}>
-                                                    <div  style={{width:table_type_data_head.size+"em"}} className="statistical_table_box">
-                                                        {table_type_data_head.value}
-                                                    </div>
-                                                </th>
-                                            )
-                                        }):<th> <div className="statistical_table_box"></div></th>}
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {this.goProjectPage(this.state.project_pno,this.state.project_psize)}
-                                </tbody>
-                            </table>
-                        </div>
-                        <div className="statistical_change_page">
+                       index={1}
+					   message={this.state.table_data_bodys}
+					   keywordSearch={["unicode","project_name"]}
+					   keywordTitle={[
+                        "项目编号",
+                        "项目名称",
+						// "领款人",
+						// "时间",
+                        // "状态"
+                    ]}
+					//    selectListMessage={["project_type_list"]}
+					// 	selectNameMessage={["project_project_template_name"]}
+					   selectListMessage={[]}
+                       selectNameMessage={[]}
+                       selectListCheckMessage={[]}
+                       selectNameCheckMessage={[]}
+					   sectionTimeMessage={[]}
+                       langPackMessage={[]}
+					   langPackTitle={[]}
+                    //    selectListCheckMessage={["staff_manage_list"]}
+                    //    selectNameCheckMessage={["payee_name"]}
+					//    sectionTimeMessage={["submit_time"]}
+					//    langPackMessage={["state"]}
+					//    langPackTitle={["-1,1,2"]}
+					   screeningMessage={this.screening_project_information}
+					/>
+                    <div  className="statistical_div">
+                        <table style={{width:sumLength+2+"em"}} className="statistical_table">
+                            <thead>
+                                <tr>
+								{/* <th><div className="statistical_table_box">序号</div></th> */}
+								    <th>
+									    <div style={{"width":"2em"}}></div>
+								    </th>
+                                    {this.state.table_project_data_head?this.state.table_project_data_head.map((table_project_data_head,index)=>{
+                                        return(
+                                            <th key={index}>
+                                                <div  style={{width:table_project_data_head.size+"em"}} className="statistical_table_box">
+                                                    {table_project_data_head.value}
+                                                </div>
+                                            </th>
+                                        )
+                                    }):<th> <div className="statistical_table_box"></div></th>}
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.goProjectPage(this.state.project_pno,this.state.project_psize)}
+                            </tbody>
+                        </table>
+                      
+                    </div>
+                    <div className="statistical_change_page">
                             {this.project_change_page(1,this.state.psize)}
                         </div>
                     <Popup 
@@ -636,15 +671,15 @@ class TechnologyClassificationManagement extends Component {
                             <div>
                                 <h2>{this.state.alertTitle}</h2>
                                 <div className="popup_content">
-                               
+                                {this.loan_id_and_project_id()}
                                     {/* <ViewTextField 
                                         onChange={(e)=>{
                                             this.setState({
-                                                type_object_list:e.target.value
+                                                project_id:e.target.value
                                                 })
                                             }}
                                             // view={true}
-                                        value={this.state.type_object_list} 
+                                        value={this.state.project_id} 
                                         labelValue={"项目id"} 
                                     /> */}
                                 </div>
@@ -652,7 +687,7 @@ class TechnologyClassificationManagement extends Component {
                             }	 
                         sureCallback = {this.sureCallback.bind(this)} 
                         cancelCallback = { this.cancelCallback.bind(this) } 
-                        alertState={this.state.add_courses_by_type}
+                        alertState={this.state.add_ids_by_project}
                     />
 			        <Alerts alertTitle={this.state.alertTitle} alertMsg = {this.state.alertMsg} sureCallback = {this.sureCallback.bind(this)} cancelCallback = { this.cancelCallback.bind(this) } alertState={this.state.alertState}/>
                 </div>
@@ -661,4 +696,4 @@ class TechnologyClassificationManagement extends Component {
 	}
 }
 
-export default TechnologyClassificationManagement;
+export default LoanProjects;

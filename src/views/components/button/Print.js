@@ -29,8 +29,9 @@
                         // style={{float:"left",width:"33%",lineHeight:"3em",boxSizing:"border-box",padding:"0.5em 1em 0.5em 0"}}
                     >
                         <button  className={className[1]?className[1]:""}
-                            // style={{float:"left",marginTop:"0.5em",marginBottom:"0.5em",width:"100%",backgroundColor:"#3F51B5",color:"#fff",boxShadow:"none",textAlign:"center",outline:"none",lineHeight:"2em",borderRadius:"4px",border:"none"}} 
+                            //style={{float:"left",marginTop:"0.5em",marginBottom:"0.5em",width:"100%",backgroundColor:"#3F51B5",color:"#fff",boxShadow:"none",textAlign:"center",outline:"none",lineHeight:"2em",borderRadius:"4px",border:"none"}} 
                             onClick = {()=>{
+                                
                                 this.props.isPrint?
                                 $('#'+printMessage+this.props.dataId).printArea():""
                             }}>

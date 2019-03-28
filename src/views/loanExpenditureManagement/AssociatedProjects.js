@@ -5,7 +5,6 @@ import Popup from '../components/modal/Popup'
 import ViewTextField from '../components/input/ViewTextField'
 import Alert from '../components/modal/Remind'
 import Alerts from '../components/modal/Alert'
-import ClickArrAlert from '../components/button/ClickArrAlert';
 import PaymentManageBtn from '../components/button/PaymentManageBtn'
 class AssociatedProjects extends Component {
 	state={
@@ -408,10 +407,6 @@ class AssociatedProjects extends Component {
 			alertState:false
 		})
 	}
-	// ClickArrAlert=()=>{
-	// 	console.log("点击通过")
-	
-	// }
 	sureCallback=()=>{
         var cb = (route, message, arg) => {
 			if (message.error === 0) {

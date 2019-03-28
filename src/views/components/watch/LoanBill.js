@@ -2,7 +2,8 @@
      * @author xuesong
      * @param LoanBill 组件  借款单
      */
-    import React, { Component } from 'react';
+	import React, { Component } from 'react';
+	import {dealNumber,dxNumber} from '../../../utils/helpers'
     class LoanBill extends Component {
             
         render(){
@@ -13,10 +14,10 @@
 				data=myDate.getDate();
             return (
 				// this.props.view?<div>{defaultValue}</div>:
-                <div  className="loan_box" id={"loan_print"+dataId} style={{"pageBreakAfter":"always"}}>
+                <div  className="loan_box" id={"loan_box"+dataId} style={{"pageBreakAfter":"always"}}>
 				<div className="loan_code_id">
 					<dd>编码：</dd>
-					<dd>{message.unicode}</dd>
+					<dd>{message.loan_number}</dd>
 				</div>
 				<div className="loan_title">
 					<dt><span>借款</span>单</dt>
@@ -43,13 +44,13 @@
 					</div> */}
 					<div className="content_box2">
 						<span>借款理由：</span>
-						<span>{message.project_start_date+" "+message.project_customer_name+" "+message.project_name+" "+"实施课程"}</span>
+						<span>{message.loan_content}</span>
 					</div>
 					<div className="content_box3">
 						<span>借款数额：人民币（大写）</span>
-						<span>肆仟叁佰元整</span>
+						<span>{dxNumber(message.loan_fee)}</span>
 						<span>￥</span>
-						<span>4300.00</span>
+						<span>{message.loan_fee?dealNumber(message.loan_fee):"0.00"}</span>
 					</div>
 					<div className="content_box4">
 						<span>本单位负责人意见：</span>

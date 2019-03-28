@@ -364,6 +364,32 @@ class FinalAccounts extends Component {
 			<div>
 				<div id="" className="container">
 					<div>
+					<DataSearchMessage 
+							index={0}
+							message={this.state.card_list}
+								keywordSearch={["project_name"]}
+								keywordTitle={[
+								"项目名称",
+								// "授课方向",
+							
+								// "合作状态",
+								// "是否认证",
+								// "级别"
+								// "时间",
+								// "状态"
+							]}
+							//    selectListMessage={["project_type_list"]}
+							// 	selectNameMessage={["project_project_template_name"]}
+							selectListMessage={[]}
+											selectNameMessage={[]}
+											selectListCheckMessage={[]}
+											selectNameCheckMessage={[]}
+							sectionTimeMessage={[]}					   
+							langPackMessage={["lecturerState"]}
+							//    langPackTitleValue={["is_short","is_cert"]}
+						langPackTitle={["0,1,2"]}
+						screeningMessage={this.screening_information}
+						/>
 						{/* <div className="add_button" onClick={(e) => {
 							this.fetchProjectData("addProject")
 							this.card_box_concent([], e)

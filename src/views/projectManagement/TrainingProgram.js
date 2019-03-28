@@ -344,7 +344,6 @@ class TrainingProgram extends Component {
 				card_lists:[],
 				page_num:1
 				})
-				console.log("1")
 				this.listProject(1,this.state.page_size,message)
 			
 			}
@@ -355,6 +354,7 @@ class TrainingProgram extends Component {
 			let scrollHeight = this.refs.bodyBox.scrollHeight; //滚动内容高度
 		
 			if((clientHeight+scrollTop)==(scrollHeight)){ //如果滚动到底部 
+			
 				if(this.state.card_list.length==0&&this.state.page_num==1){
 						
 				}else{
@@ -381,6 +381,7 @@ class TrainingProgram extends Component {
 					})
 				}
 			}  
+
 		}
 	}
 	render() {

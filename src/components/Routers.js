@@ -21,6 +21,8 @@ import ExpenditureManage from '../views/loanExpenditureManagement/ExpenditureMan
 import LoanAccounting from '../views/loanExpenditureManagement/LoanAccounting'
 import LoanExaminationAndApproval from '../views/loanExpenditureManagement/LoanExaminationAndApproval'
 import AssociatedProjects from '../views/loanExpenditureManagement/AssociatedProjects'
+import LoanProjects from '../views/loanExpenditureManagement/LoanProjects'
+import LoanManage from '../views/loanExpenditureManagement/LoanManage'
 //课程管理
 import TechnologyClassificationManagement from '../views/courseManagement/TechnologyClassificationManagement'
 import Course from '../views/courseManagement/Course'
@@ -65,6 +67,8 @@ class Routers extends Component{
               :message.component==="BudgetAccounting"?BudgetAccounting
               :message.component==="BudgetExaminationAndApproval"?BudgetExaminationAndApproval
               :message.component==="Loan"?Loan
+              :message.component==="LoanManage"?LoanManage
+              :message.component==="LoanProjects"?LoanProjects
               :message.component==="Expenditure"?Expenditure
               :message.component==="ExpenditureManage"?ExpenditureManage
               :message.component==="LoanAccounting"?LoanAccounting 

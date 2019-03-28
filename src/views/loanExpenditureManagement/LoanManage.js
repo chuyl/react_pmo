@@ -1,33 +1,39 @@
 import React, { Component } from 'react';
-import { getData, getRouter,getList } from '../../utils/helpers'
+import { getData, getRouter,getList,PostCsvData } from '../../utils/helpers'
 import DataSearchMessage from '../components/search/DataSearchMessage'
 import Popup from '../components/modal/Popup'
 import ViewTextField from '../components/input/ViewTextField'
 import Alert from '../components/modal/Remind'
 import Alerts from '../components/modal/Alert'
 import PaymentManageBtn from '../components/button/PaymentManageBtn'
-class FilterTable extends Component {
+class LoanManage extends Component {
 	state={
 		pno:1,
-        psize:5,
+        psize:Math.floor((document.body.clientHeight*0.6-40)/28),
         count:0,
         table_data_body:[],
         table_data_bodys:[],
          query_condition:{},
 		 search_message:"",
 		 financial_number:"",
+		 describe:"",
 		 alertAddFinancialState:false,//财务编号
 		 alertAddProjectState:false,//相关内容
+		 alertChangeAmountState:false,//修改金额
 		 alertState:false,
-		 payment_id:"",//支出id
+		 loan_id:"",//支出id
 		 project_id:"",//项目id
-		 payment_id_arr:[],
+		 relation_id:"",//关联id
+		 price:"",
+		 loan_id_arr:[],
 		 alertTitle:"",
 		 linkpage:""
         
 	}
 	componentWillMount(){
-		this.table_data_body(1,5)
+		 console.log(Math.floor((document.body.clientHeight*0.7-40)/32))
+		 console.log(document.body.clientHeight*0.7)
+		this.table_data_body(1,this.state.psize,this.state.search_message)
 	}
 	table_data_body = (page_num,page_size,search_obj) => {
         
@@ -43,7 +49,7 @@ class FilterTable extends Component {
            
         }
         var obj ={page_num:{"condition":"equal","query_data":page_num},page_size:{"condition":"equal","query_data":page_size}};
-        // console.log(obj)
+		// console.log(obj)
         var objs = search_obj?Object.assign(obj, search_obj):obj
         // console.log(objs)
         // var places = JSON.parse((JSON.stringify(obj)+JSON.stringify(this.state.search_message)).replace(/}{/,','));
@@ -52,12 +58,13 @@ class FilterTable extends Component {
             query_condition:obj
 		})
 		// console.log(objs)
-        getData(getRouter("payment_project_list"), { token: sessionStorage.token,query_condition:objs,data_type:"page_json" }, cb, {});
+        getData(getRouter("loan_project_list"), { token: sessionStorage.token,query_condition:objs,data_type:"page_json" }, cb, {});
         // getData(getRouter("examine_record_list"),{ session: sessionStorage.session}, cb, {});
 
 	}
-	payment_csv=(search_obj)=>{
+	loan_csv=(search_obj)=>{
 		var cb = (route, message, arg) => {
+			console.log(message)
             if (message.error === 0) {
            
             }
@@ -69,35 +76,38 @@ class FilterTable extends Component {
             query_condition:obj
 		})
 		console.log(search_obj)
-         getData(getRouter("payment_project_list"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
+		PostCsvData(getRouter("loan_project_list"), search_obj===""?{token: sessionStorage.token,data_type:"page_csv"}:{token: sessionStorage.token,query_condition:search_obj,data_type:"page_csv"}
 		 , cb, {});
 	}
 	alertAddState=(newState)=>{
-		// console.log(newState)
+		 console.log(newState)
 		this.setState({
 			[newState.state]:true,
-			payment_id:newState.dataId,
-			financial_number:newState.financialNumber?newState.financialNumber:""
-
+			loan_id:newState.dataId,
+			financial_number:newState.financialNumber?newState.financialNumber:"",
+			describe:newState.describe?newState.describe:"",
+			relation_id:newState.relationId
 		})
 	}
 	alertHoldState=(newState)=>{
-		// console.log(newState)
+		 console.log(newState)
 		this.setState({
 			[newState.state]:true,
-			payment_id:newState.dataId,
+			loan_id:newState.dataId,
 			alertTitle:newState.alertTitle,
-			linkpage:newState.linkpage
+			linkpage:newState.linkpage,
+			project_id:newState.projectId,
+			relation_id:newState.relationId
 		})
 	}
 
-	goPage= (pno,psize) =>{
+	goPage= (pno) =>{
         // this.table_data_body()
         // {this.historyFileDialog()}
         var components = [];
         var num = this.state.count;//表格所有行数(所有记录数)
         var totalPage = 0;//总页数
-        var pageSize = psize;//每页显示行数
+        var pageSize = this.state.psize;//每页显示行数
        // //总共分几页 
        if(num/pageSize > parseInt(num/pageSize)){   
                totalPage=parseInt(num/pageSize)+1;   
@@ -114,14 +124,13 @@ class FilterTable extends Component {
             
             components.push (
                 <tr
-                    //   style={{maxHeight:"25px",display:this.state.table_data_body.indexOf(table_data_body)+1>=startRow &&this.state.table_data_body.indexOf(table_data_body)+1<=endRow?"":"none"}}
                     key = {index}> 
                     {/* <td>
                        <div className="statistical_table_box">
                        {this.state.table_data_body.indexOf(table_data_body)+1}
                        </div>
 					</td> */}
-					<td>
+					<td  style={{"width":"29em"}}>
 						<PaymentManageBtn
 							onHoldClick={this.alertAddState}
 							defineValue="财务编号"
@@ -129,19 +138,20 @@ class FilterTable extends Component {
 							state="alertAddFinancialState"	
 							dataId={table_data_body.id}
 							financialNumber={table_data_body.financial_number}
+							describe={table_data_body.describe}
 						/>
-						<PaymentManageBtn
+						{/* <PaymentManageBtn
 							onHoldClick={this.alertAddState}
 							defineValue="关联项目"
 							state="alertAddProjectState"	
 							dataId={table_data_body.id}
-						/>
+						/> */}
 						<PaymentManageBtn
 							onHoldClick={this.alertHoldState}
 							defineValue="通过"
-							classNames="passBtn"
 							state="alertState"
-							linkpage="payment_state_pass"	
+							classNames="passBtn"
+							linkpage="loan_state_pass"	
 							dataId={table_data_body.id}
 						/>
 						<PaymentManageBtn
@@ -149,26 +159,43 @@ class FilterTable extends Component {
 							defineValue="撤回"
 							state="alertState"
 							classNames="recallBtn"
-							linkpage="payment_state_recall"	
+							linkpage="loan_state_recall"	
 							dataId={table_data_body.id}
 						/>
 						<PaymentManageBtn
 							onHoldClick={this.alertHoldState}
 							defineValue="作废"
 							state="alertState"
-							linkpage="payment_state_cancel"	
+							classNames="cancelBtn"
+							linkpage="loan_state_cancel"	
 							dataId={table_data_body.id}
 						/>
-						
-					
+						<PaymentManageBtn
+							onHoldClick={this.alertAddState}
+							defineValue="修改金额"
+							state="alertChangeAmountState"	
+							dataId={table_data_body.id}
+							classNames="changePriceBtn"
+							relationId={table_data_body.relation_id}
+						/>
+						<PaymentManageBtn
+							onHoldClick={this.alertHoldState}
+							defineValue="取消关联"
+							state="alertState"
+							linkpage="loan_project_cancel"	
+							dataId={table_data_body.id}
+							classNames="cancalRelationBtn"
+							projectId={table_data_body.project_id}
+							relationId={table_data_body.relation_id}
+						/>
 					</td>
 					{/* <td>
-						<input value={table_data_body.id} type="checkbox" name="payment"/>
+						<input value={table_data_body.id} type="checkbox" name="loan"/>
 					</td> */}
                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
 						return(
 						<td key={index} title={table_data_body[table_data_head.key]}>
-							<div className="statistical_table_box">
+							<div style={{width:table_data_head.size+"em"}} className="statistical_table_box">
 								{table_data_body[table_data_head.key]}
 							</div>
 						</td>)
@@ -185,7 +212,7 @@ class FilterTable extends Component {
 	 change_page = (pno,psize)=>{
         var num = this.state.count;//表格所有行数(所有记录数)
         var totalPage = 0;//总页数
-        var pageSize = psize;//每页显示行数
+        var pageSize = this.state.psize;//每页显示行数
        // //总共分几页 
        if(num/pageSize > parseInt(num/pageSize)){   
                totalPage=parseInt(num/pageSize)+1;   
@@ -205,7 +232,7 @@ class FilterTable extends Component {
 						pno:1
 					})
 					currentPage>1?this.goPage(this.state.pno,"+psize+"):""
-					currentPage>1?this.table_data_body(1,5):""
+					currentPage>1?this.table_data_body(1,this.state.psize,this.state.search_message):""
 				}}
 				>首页
 			</a>
@@ -213,7 +240,7 @@ class FilterTable extends Component {
 				className="nyx-change-page-href" onClick={()=>{
 				currentPage>1?this.setState({pno:this.state.pno-1}):""
 				currentPage>1?this.goPage(this.state.pno,"+psize+"):""
-				currentPage>1?this.table_data_body(this.state.pno-1,5):""
+				currentPage>1?this.table_data_body(this.state.pno-1,this.state.psize,this.state.search_message):""
 			}}
 			>{"<上一页"}</a>
 			<a 
@@ -222,7 +249,7 @@ class FilterTable extends Component {
 				currentPage<totalPage?this.setState({pno:this.state.pno+1}):""
 			{ this.goPage("+(currentPage+1)+","+psize+")}
 				currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
-				currentPage<totalPage?this.table_data_body(this.state.pno+1,5):""
+				currentPage<totalPage?this.table_data_body(this.state.pno+1,this.state.psize,this.state.search_message):""
 			}}
 			>{"下一页>"}</a>
 			<a 
@@ -231,16 +258,18 @@ class FilterTable extends Component {
 				currentPage<totalPage?this.setState({pno:totalPage}):""
 				
 				currentPage<totalPage?this.goPage(this.state.pno,"+psize+"):""
-				currentPage<totalPage?this.table_data_body(totalPage,5):""
+				currentPage<totalPage?this.table_data_body(totalPage,this.state.psize,this.state.search_message):""
 			} }
 			>{"尾页"}</a>
 			<a 
 				onClick={()=>{
-					this.payment_csv(this.state.search_message)
+					// this.downloadDetailData()
+					 this.loan_csv(this.state.search_message)
 				}}
 				className="nyx-change-page-href" style={{marginRight:"-10em",float:"right"}}>
 				{"导出"}
 			</a>
+			<div id='downloadDiv' style={{display:'none'}}></div>
         </div>
      return components
      }
@@ -252,18 +281,18 @@ class FilterTable extends Component {
 		this.setState({
 			search_message:message
         })
-        this.table_data_body(1,5,message)
+        this.table_data_body(1,this.state.psize,message)
 	}
 	// 添加财务编号
 	sureAddFinancialCallback=()=>{
-		console.log(this.state.payment_id)
+		console.log(this.state.loan_id)
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
 				this.setState({
 					alertAddFinancialState:false,
 		
 				})
-				this.table_data_body(1,5)
+				this.table_data_body(1,this.state.psize,this.state.search_message)
 
 			}else if(message.error === 2){
 				console.log("未登录")
@@ -283,19 +312,19 @@ class FilterTable extends Component {
 				},3000)
 			  }
 		}
-		console.log(this.state.payment_id)
+		console.log(this.state.loan_id)
 		console.log(this.state.financial_number)
-		getData(getRouter("payment_manage_edit_financial_number"), { token:sessionStorage.token,id:this.state.payment_id,financial_number:this.state.financial_number }, cb, {});
+		getData(getRouter("loan_manage_edit_financial_number"), { token:sessionStorage.token,id:this.state.loan_id,financial_number:this.state.financial_number,describe:this.state.describe }, cb, {});
 	}
 	sureAddProjectCallback=()=>{
-		console.log(this.state.payment_id)
+		console.log(this.state.loan_id)
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
 				this.setState({
 					alertAddProjectState:false,
 		
 				})
-				this.table_data_body(1,5)
+				this.table_data_body(1,this.state.psize,this.state.search_message)
 
 			}else if(message.error === 2){
 				console.log("未登录")
@@ -315,14 +344,47 @@ class FilterTable extends Component {
 				},3000)
 			  }
 		}
-		console.log(this.state.payment_id)
+		console.log(this.state.loan_id)
 		console.log(this.state.project_id)
-		getData(getRouter("payment_project_add"), { token:sessionStorage.token,id:this.state.payment_id,project_id:this.state.project_id }, cb, {});
+		getData(getRouter("loan_project_add"), { token:sessionStorage.token,id:this.state.loan_id,project_id:this.state.project_id }, cb, {});
+	}
+	sureChangeAmountCallback=()=>{
+		console.log(this.state.loan_id)
+		var cb = (route, message, arg) => {
+			if (message.error === 0) {
+				this.setState({
+					alertChangeAmountState:false,
+		
+				})
+				this.table_data_body(1,this.state.psize,this.state.search_message)
+
+			}else if(message.error === 2){
+				console.log("未登录")
+				sessionStorage.logged = false;
+				sessionStorage.token="";
+				if(window.location.hash.split("#")[1]!=="/"){
+					window.location.href=window.location.href.split("#/")[0]
+				
+				  }
+			}else{
+				Alert.open({
+				  alertTip:message.msg
+				  
+				});
+				setTimeout(function(){
+				  Alert.close();
+				},3000)
+			  }
+		}
+		console.log(this.state.price)
+		console.log(this.state.loan_id)
+		getData(getRouter("loan_project_edit"), { token:sessionStorage.token,relation_id:this.state.relation_id,price:this.state.price }, cb, {});
 	}
 	cancelCallback=()=>{
 		this.setState({
 			alertAddFinancialState:false,
 			alertAddProjectState:false,
+			alertChangeAmountState:false,
 			alertState:false
 		})
 	}
@@ -333,7 +395,7 @@ class FilterTable extends Component {
                 this.setState({
                     alertState:false
 				})
-				this.table_data_body(1,5)
+				this.table_data_body(1,this.state.psize,this.state.search_message)
             }else if(message.error === 2){
                 console.log("未登录")
                 sessionStorage.logged = false;
@@ -357,8 +419,15 @@ class FilterTable extends Component {
             //  this.props.oneChange(newState);
         }
         //获取数据接口
-        console.log(this.state.linkpage)
-         getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, id:this.state.payment_id }, cb,  {}); 
+		console.log(this.state.linkpage)
+		console.log(this.state.project_id)
+		if(this.state.linkpage=="loan_project_cancel"){
+			getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, relation_id:this.state.relation_id,project_id:this.state.project_id }, cb,  {}); 
+			//}
+		}else{
+			getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, id:this.state.loan_id }, cb,  {}); 
+
+		}
     //}
 	}
 	render(){
@@ -367,11 +436,12 @@ class FilterTable extends Component {
             for(var i = 0;i<this.state.table_data_head.length;i++){
                 sumLength=sumLength+parseFloat(this.state.table_data_head[i].size);
             }
-        }
+		}
+		
 		return (
             <div>
 				<DataSearchMessage 
-					index={0}
+				index={0}
 					   message={this.state.table_data_bodys}
 					   keywordSearch={["financial_number"]}
 					   keywordTitle={[
@@ -388,20 +458,22 @@ class FilterTable extends Component {
                        selectNameCheckMessage={["payee_name"]}
 					   sectionTimeMessage={["submit_time"]}
 					   langPackMessage={["state"]}
-					   langPackTitle={"-1,1,2"}
+					   langPackTitle={["-1,1,2"]}
 					   screeningMessage={this.screening_information}
 					/>
-                <div  className="statistical_div">
+                <div className="statistical_div">
                 
-                    <table style={{width:sumLength+26+"em"}} className="statistical_table">
+                    <table style={{width:sumLength+29+"em"}} className="statistical_table">
                         <thead>
                             <tr>
 								{/* <th><div className="statistical_table_box">序号</div></th> */}
-								<th style={{"width":"26em"}}></th>
+								<th>
+									<div style={{"width":"29em"}}></div>
+								</th>
                                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
                                     return(
                                         <th key={index}>
-                                            <div  style={{width:table_data_head.size}} className="statistical_table_box">
+                                            <div  style={{width:table_data_head.size+"em"}} className="statistical_table_box">
                                                 {table_data_head.value}
                                             </div>
                                         </th>
@@ -413,10 +485,10 @@ class FilterTable extends Component {
                     <tbody>
                         {this.goPage(this.state.pno,this.state.psize)}
                     </tbody>
-                </table>       
+                </table>           
             </div>
 			<div className="statistical_change_page">
-                    {this.change_page(1,5)}
+                    {this.change_page(1,this.state.psize)}
                 </div>
 			<Popup 
 				content={
@@ -427,11 +499,21 @@ class FilterTable extends Component {
 								onChange={(e)=>{
 									this.setState({
 										financial_number:e.target.value
-										})
-									}}
+									})
+								}}
 									// view={true}
 								value={this.state.financial_number} 
 								labelValue={"财务编号"} 
+							/>
+							<ViewTextField 
+								onChange={(e)=>{
+									this.setState({
+										describe:e.target.value
+									})
+								}}
+									// view={true}
+								value={this.state.describe} 
+								labelValue={"备注"} 
 							/>
 						</div>
 					</div>
@@ -462,10 +544,32 @@ class FilterTable extends Component {
 				cancelCallback = { this.cancelCallback.bind(this) } 
 				alertState={this.state.alertAddProjectState}
 			/>
+			<Popup 
+				content={
+					<div>
+						<h2>修改指定支出到项目的金额</h2>
+						<div className="popup_content">
+							<ViewTextField 
+								onChange={(e)=>{
+									this.setState({
+										price:e.target.value
+										})
+									}}
+									 defineValue={""}
+								// value={this.state.project_id} 
+								labelValue={"项目金额"} 
+							/>
+						</div>
+					</div>
+					}	 
+				sureCallback = {this.sureChangeAmountCallback.bind(this)} 
+				cancelCallback = { this.cancelCallback.bind(this) } 
+				alertState={this.state.alertChangeAmountState}
+			/>
 			 <Alerts alertTitle={this.state.alertTitle} alertMsg = {this.state.alertMsg} sureCallback = {this.sureCallback.bind(this)} cancelCallback = { this.cancelCallback.bind(this) } alertState={this.state.alertState}/>
         </div>
 		)
 	}
 }
 
-export default FilterTable;
+export default LoanManage;

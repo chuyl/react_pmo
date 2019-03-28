@@ -5,7 +5,6 @@ import Popup from '../components/modal/Popup'
 import ViewTextField from '../components/input/ViewTextField'
 import Alert from '../components/modal/Remind'
 import Alerts from '../components/modal/Alert'
-import ClickArrAlert from '../components/button/ClickArrAlert';
 import PaymentManageBtn from '../components/button/PaymentManageBtn'
 import ComponentsList from '../components/composite/ComponentsList'
 import Drawer from '../components/modal/Drawer';

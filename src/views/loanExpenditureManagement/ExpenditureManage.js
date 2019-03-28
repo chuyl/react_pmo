@@ -5,7 +5,6 @@ import Popup from '../components/modal/Popup'
 import ViewTextField from '../components/input/ViewTextField'
 import Alert from '../components/modal/Remind'
 import Alerts from '../components/modal/Alert'
-import ClickArrAlert from '../components/button/ClickArrAlert';
 import PaymentManageBtn from '../components/button/PaymentManageBtn'
 class ExpenditureManage extends Component {
 	state={
@@ -389,10 +388,6 @@ class ExpenditureManage extends Component {
 			alertState:false
 		})
 	}
-	// ClickArrAlert=()=>{
-	// 	console.log("点击通过")
-	
-	// }
 	sureCallback=()=>{
 		// this.copyViewMessage(this.state.copy_message)
         var cb = (route, message, arg) =>  {
@@ -491,14 +486,6 @@ class ExpenditureManage extends Component {
                         {this.goPage(this.state.pno,this.state.psize)}
                     </tbody>
                 </table>
-				{/* <ClickArrAlert
-					defaultValue="通过"
-					linkpage="payment_state_pass"
-					dataId={this.state.payment_id_arr}
-					onClickArrAlert={this.ClickArrAlert}
-				/> */}
-
-              
             </div>
 			<div className="statistical_change_page">
                     {this.change_page(1,this.state.psize)}
