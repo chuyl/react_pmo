@@ -171,9 +171,9 @@ class Course extends Component {
 	}
 	/** 
 	* @author xuesong
-	* @param payment_csv 函数 导出csv
+	* @param export_csv 函数 导出csv
 	*/
-	payment_csv=(search_obj)=>{
+	export_csv=(search_obj)=>{
 		var cb = (route, message, arg) => {
 			console.log(message)
             if (message.error === 0) {
@@ -566,7 +566,7 @@ class Course extends Component {
 			<a 
 				onClick={()=>{
 					// this.downloadDetailData()
-					 this.payment_csv(this.state.search_message)
+					 this.export_csv(this.state.search_message)
 				}}
 				className="nyx-change-page-href" style={{marginRight:"-10em",float:"right"}}>
 				{"导出"}

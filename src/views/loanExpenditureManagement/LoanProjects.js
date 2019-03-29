@@ -23,11 +23,11 @@ class LoanProjects extends Component {
          query_condition:{},
          search_message:"",
          search_project_message:"",
-		 financial_number:"",
-		 add_ids_by_project:false,//一个项目关联多个支出
+		 loan_number:"",
+		 add_ids_by_project:false,//一个项目关联多个借款
 		 alertAddProjectState:false,//相关内容
 		 alertState:false,
-		 loan_id:[],//支出id
+		 loan_id:[],//借款id
 		 project_id:[],//项目id
          alertTitle:"",
          project_loan_title:"",
@@ -185,7 +185,7 @@ class LoanProjects extends Component {
                             }}
                             value={table_data_body.id}
                             name="loanCheck" type="checkbox"/>
-                            <span style={{display:"none"}}>{id+table_data_body.id+" "+table_data_body.item_content===""?"未设置支出内容":table_data_body.item_content+" "+table_data_body.amount===""?"未设置金额":table_data_body.amount}</span>
+                            <span style={{display:"none"}}>{id+table_data_body.id+" "+table_data_body.item_content===""?"未设置借款内容":table_data_body.item_content+" "+table_data_body.amount===""?"未设置金额":table_data_body.amount}</span>
 					</td>
 					
                     {this.state.table_data_head?this.state.table_data_head.map((table_data_head,index)=>{
@@ -439,15 +439,15 @@ class LoanProjects extends Component {
         if(this.state.content==="add_ids_by_project"){
             var add_ids_by_project=[];
             for(var i = 0;i<this.state.project_loan_id_arr.length;i++){
-                add_ids_by_project.push({id:this.state.project_loan_id_arr[i].id,price:document.getElementById("project_loan_id_arr"+this.state.project_loan_id_arr[i].id).value})
+                add_ids_by_project.push({id:this.state.project_loan_id_arr[i].id,loan_price:document.getElementById("project_loan_id_arr"+this.state.project_loan_id_arr[i].id).value})
             }
             getData(getRouter("loan_project_add_ids_by_project"), { token:sessionStorage.token,loan_object_list:add_ids_by_project,project_id:this.state.project_id[0]}, cb, {});
         }
-       //一个支出到多个项目
+       //一个借款到多个项目
         if(this.state.content==="add_projects_by_id"){
             var add_projects_by_id=[];
             for(var j = 0;j<this.state.project_loan_id_arr.length;j++){
-                add_projects_by_id.push({project_id:this.state.project_loan_id_arr[j].id,price:document.getElementById("project_loan_id_arr"+this.state.project_loan_id_arr[j].id).value})
+                add_projects_by_id.push({project_id:this.state.project_loan_id_arr[j].id,loan_price:document.getElementById("project_loan_id_arr"+this.state.project_loan_id_arr[j].id).value})
             }
             getData(getRouter("loan_project_add_projects_by_id"), { token:sessionStorage.token,id:this.state.loan_id[0],project_object_list:add_projects_by_id}, cb, {});
         }
@@ -482,8 +482,8 @@ class LoanProjects extends Component {
                 this.setState({
                     [newState.state]:true,
                     content:newState.content,
-                    alertTitle:"关联多个支出到一个项目",
-                    project_loan_title:"关联多个支出 到"+project_message[0].title,
+                    alertTitle:"关联多个借款到一个项目",
+                    project_loan_title:"关联多个借款 到"+project_message[0].title,
                     project_loan_id_arr:loan_message,
                 })
             }
@@ -492,11 +492,11 @@ class LoanProjects extends Component {
                 this.setState({
                     [newState.state]:true,
                     content:newState.content,
-                    alertTitle:"关联一个支出到多个项目",
+                    alertTitle:"关联一个借款到多个项目",
                     project_loan_title:"关联"+loan_message[0].title+"元到",
                     project_loan_id_arr:project_message,
                     // loan_id:newState.dataId,
-                    // financial_number:newState.financialNumber?newState.financialNumber:""
+                    // loan_number:newState.financialNumber?newState.financialNumber:""
                 })
             }
     }
@@ -540,7 +540,7 @@ class LoanProjects extends Component {
                         isClick={this.state.loan_id.length===1?false:true}
                         onHoldClick={this.alertAddState}
                         // classNames="btn_list"
-                        defineValue="关联一个支出到多个项目"
+                        defineValue="关联一个借款到多个项目"
                         content={"add_projects_by_id"}
                         classNames="btn_list"
                         state="add_ids_by_project"
@@ -550,7 +550,7 @@ class LoanProjects extends Component {
                     <PaymentManageBtn
                         isClick={this.state.project_id.length===1?false:true}
 						onHoldClick={this.alertAddState}
-						defineValue="关联多个支出到一个项目"
+						defineValue="关联多个借款到一个项目"
                         state="add_ids_by_project"
                         classNames="btn_list"
                         content={"add_ids_by_project"}
@@ -562,7 +562,7 @@ class LoanProjects extends Component {
                     <DataSearchMessage 
                        index={0}
 					   message={this.state.table_data_bodys}
-					   keywordSearch={["financial_number"]}
+					   keywordSearch={["loan_number"]}
 					   keywordTitle={[
                         "财务编号",
                         // "项目类型",

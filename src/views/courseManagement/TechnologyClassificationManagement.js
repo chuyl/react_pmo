@@ -87,7 +87,7 @@ class TechnologyClassificationManagement extends Component {
         // getData(getRouter("examine_record_list"),{ session: sessionStorage.session}, cb, {});
 
 	}
-	payment_csv=(search_obj)=>{
+	export_csv=(search_obj)=>{
 		var cb = (route, message, arg) => {
             if (message.error === 0) {
            
@@ -301,7 +301,7 @@ class TechnologyClassificationManagement extends Component {
 			<a 
 				onClick={()=>{
 					// this.downloadDetailData()
-					 this.payment_csv(this.state.search_message)
+					 this.export_csv(this.state.search_message)
 				}}
 				className="nyx-change-page-href" style={{marginRight:"-10em",float:"right"}}>
 				{"导出"}

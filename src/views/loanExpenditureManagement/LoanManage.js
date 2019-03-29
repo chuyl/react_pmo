@@ -137,8 +137,8 @@ class LoanManage extends Component {
 							classNames="financialBtn"
 							state="alertAddFinancialState"	
 							dataId={table_data_body.id}
-							financialNumber={table_data_body.financial_number}
-							describe={table_data_body.describe}
+							financialNumber={table_data_body.loan_number}
+							describe={table_data_body.loan_describe}
 						/>
 						{/* <PaymentManageBtn
 							onHoldClick={this.alertAddState}
@@ -312,12 +312,9 @@ class LoanManage extends Component {
 				},3000)
 			  }
 		}
-		console.log(this.state.loan_id)
-		console.log(this.state.financial_number)
-		getData(getRouter("loan_manage_edit_financial_number"), { token:sessionStorage.token,id:this.state.loan_id,financial_number:this.state.financial_number,describe:this.state.describe }, cb, {});
+		getData(getRouter("loan_manage_edit_financial_number"), { token:sessionStorage.token,id:this.state.loan_id,loan_number:this.state.financial_number,loan_describe:this.state.describe }, cb, {});
 	}
 	sureAddProjectCallback=()=>{
-		console.log(this.state.loan_id)
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
 				this.setState({
@@ -344,12 +341,9 @@ class LoanManage extends Component {
 				},3000)
 			  }
 		}
-		console.log(this.state.loan_id)
-		console.log(this.state.project_id)
 		getData(getRouter("loan_project_add"), { token:sessionStorage.token,id:this.state.loan_id,project_id:this.state.project_id }, cb, {});
 	}
 	sureChangeAmountCallback=()=>{
-		console.log(this.state.loan_id)
 		var cb = (route, message, arg) => {
 			if (message.error === 0) {
 				this.setState({
@@ -376,8 +370,6 @@ class LoanManage extends Component {
 				},3000)
 			  }
 		}
-		console.log(this.state.price)
-		console.log(this.state.loan_id)
 		getData(getRouter("loan_project_edit"), { token:sessionStorage.token,relation_id:this.state.relation_id,price:this.state.price }, cb, {});
 	}
 	cancelCallback=()=>{
@@ -419,8 +411,6 @@ class LoanManage extends Component {
             //  this.props.oneChange(newState);
         }
         //获取数据接口
-		console.log(this.state.linkpage)
-		console.log(this.state.project_id)
 		if(this.state.linkpage=="loan_project_cancel"){
 			getData(getRouter(this.state.linkpage),  {token:sessionStorage.token, relation_id:this.state.relation_id,project_id:this.state.project_id }, cb,  {}); 
 			//}

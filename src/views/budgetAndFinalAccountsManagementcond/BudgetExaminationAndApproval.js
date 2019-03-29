@@ -139,7 +139,7 @@ class BudgetExaminationAndApproval extends Component {
             >{"尾页"}</a>
             <a 
                 onClick={()=>{
-                    this.payment_csv(this.state.search_message)
+                    this.export_csv(this.state.search_message)
                     }}
                 className="nyx-change-page-href" style={{marginRight:"-10em",float:"right"}}>
                 {"导出"}
@@ -166,9 +166,9 @@ class BudgetExaminationAndApproval extends Component {
     /** 
 	 * @time 2019-01-22
 	 * @author xuesong
-	 * @param payment_csv 函数 导出按钮
+	 * @param export_csv 函数 导出按钮
 	 */
-    payment_csv=(search_obj)=>{
+    export_csv=(search_obj)=>{
 		var cb = (route, message, arg) => {
             if (message.error === 0) {
            
